@@ -74,7 +74,6 @@ const topicGrid = [
   { label: 'Software', href: '/docs/software/os-and-image', n: '6 pages' },
   { label: 'API Reference', href: '/docs/api-reference/python/lidar', n: 'Python + ROS 2' },
   { label: 'Calibration', href: '/docs/calibration/motor-trim', n: '5 cookbooks' },
-  { label: 'Roboracer', href: '/docs/roboracer/migration-from-f1tenth', n: 'F1TENTH bridge' },
   { label: 'Troubleshooting', href: '/docs/troubleshooting/faq', n: 'When things break' },
   { label: 'Reference', href: '/docs/reference/specifications', n: 'Specs + glossary' },
 ];
@@ -113,7 +112,6 @@ const buildCards = [
 const popular = [
   { label: "Why is my LiDAR scan empty?", href: '/docs/troubleshooting/lidar-empty-scan' },
   { label: 'Motor trim, fix creep at zero speed', href: '/docs/calibration/motor-trim' },
-  { label: 'Migrating an F1TENTH script to NeoRacer', href: '/docs/roboracer/migration-from-f1tenth' },
   { label: 'Recording a ROS 2 bag for replay', href: '/docs/software/telemetry-and-logs' },
   { label: 'Installing the ROS 2 driver', href: '/docs/getting-started/install-driver' },
 ];
@@ -455,9 +453,8 @@ export default function DocsLandingPage() {
                   margin: 0,
                 }}
               >
-                The full Getting Started spine, sensor reference, motor & servo
-                calibration cookbook, and weeks 1 and 2 of the classroom curriculum.
-                Roboracer F1TENTH parity matrix is live.
+                The full Getting Started spine, the sensor reference, and the
+                motor and servo calibration cookbook are live.
               </p>
               <Link
                 href="/docs/reference/changelog"

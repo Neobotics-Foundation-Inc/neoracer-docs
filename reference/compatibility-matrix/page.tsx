@@ -16,7 +16,7 @@ import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 export const metadata: Metadata = {
   title: 'Compatibility matrix · Reference · NeoRacer Docs',
   description:
-    'What the NeoRacer is built on and interoperates with: Jetson Orin Nano, Ubuntu 22.04, ROS 2 Humble, the racecar_neo teaching driver, the osracer autonomy stack, the LakiBeam1 LiDAR, and the F1TENTH and Roboracer ecosystems.',
+    'What the NeoRacer is built on and interoperates with: Jetson Orin Nano, Ubuntu 22.04, ROS 2 Humble, the racecar_neo teaching driver, the osracer autonomy stack, the LakiBeam1 LiDAR, and the F1TENTH ecosystem.',
 };
 
 const PLATFORM_COLUMNS = [
@@ -98,11 +98,6 @@ const ECOSYSTEM_ROWS = [
     target: 'F1TENTH',
     status: 'Topic-compatible',
     notes: 'The contract matches on the topics that matter: /scan for the LiDAR, /drive for Ackermann commands, and /odom for odometry. Code written against the F1TENTH topic layout reads and drives the NeoRacer.',
-  },
-  {
-    target: 'Roboracer',
-    status: 'Compatible',
-    notes: 'The Roboracer toolchain runs on the same ROS 2 foundation, so its nodes interoperate with the stack. See the parity matrix for the call-by-call mapping.',
   },
 ];
 
@@ -245,14 +240,9 @@ export default function CompatibilityMatrixPage() {
       </ScrollReveal>
 
       <ScrollReveal>
-        <Callout type="tip" title="Where to go for the call-by-call mapping">
-          Compatibility at the topic level means your nodes connect. For the exact
-          mapping of one platform's calls onto the NeoRacer API, the{' '}
-          <a href="/docs/roboracer/api-parity-matrix" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-            Roboracer API parity matrix
-          </a>{' '}
-          walks through it line by line. If a row here leaves you unsure whether a
-          specific tool fits, write to{' '}
+        <Callout type="tip" title="Not sure a tool fits?">
+          Compatibility at the topic level means your nodes connect. If a row here
+          leaves you unsure whether a specific tool fits, write to{' '}
           <a href="mailto:support@neobotics.org" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
             support@neobotics.org
           </a>{' '}

@@ -240,14 +240,6 @@ export default function ROS2DriverPage() {
           </InfoNote>{' '}
           reference build.
           Drop your existing nodes onto a NeoRacer and they run unchanged.
-          Verified parity matrix lives at{' '}
-          <a
-            href="/docs/roboracer/api-parity-matrix"
-            style={{ color: NB.neoboticsRed, fontWeight: 700, textDecoration: 'none' }}
-          >
-            Roboracer · API parity matrix
-          </a>
-          .
         </Callout>
       </ScrollReveal>
 

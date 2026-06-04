@@ -356,7 +356,7 @@ imu_node:
 
       <PrevNext
         prev={{ label: 'Camera intrinsics', href: '/docs/calibration/camera-intrinsics' }}
-        next={{ label: 'Migration from F1TENTH', href: '/docs/roboracer/migration-from-f1tenth' }}
+        next={{ label: "Won't power on", href: '/docs/troubleshooting/wont-power-on' }}
       />
     </DocsShell>
   );

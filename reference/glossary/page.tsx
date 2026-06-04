@@ -65,7 +65,6 @@ const TERMS: Term[] = [
   {
     term: 'F1TENTH',
     def: 'The MIT-originated autonomous racing competition NeoRacer is API-compatible with. F1TENTH scripts run on NeoRacer with no code changes.',
-    see: { label: 'Roboracer migration', href: '/docs/roboracer/migration-from-f1tenth' },
   },
   {
     term: 'frame_id',
@@ -132,10 +131,6 @@ const TERMS: Term[] = [
   {
     term: 'rc',
     def: 'The racecar object every program drives the car through. You create it with rc = racecar_core.create_racecar(), then call rc.drive, rc.lidar, rc.camera, and the rest. The same object works in the browser sim and on the physical car.',
-  },
-  {
-    term: 'Roboracer',
-    def: 'The competition program NeoRacer partners with. Drop-in compatible with the F1TENTH reference build, run by the same community.',
   },
   {
     term: 'ROS 2',

@@ -473,19 +473,12 @@ export default function RacecarNeoLibraryPage() {
         </section>
       </ScrollReveal>
 
-      {/* ── Coming from Roboracer? ─────────────────────────────────────── */}
+      {/* ── Coming from F1TENTH? ───────────────────────────────────────── */}
       <ScrollReveal>
-        <Callout type="tip" title="Coming from F1TENTH / Roboracer?">
-          The racecar-neo-library wraps the same ROS 2 driver topics the
-          Roboracer reference build uses, so your existing F1TENTH Python
-          helpers run unchanged. The full parity matrix lives on{' '}
-          <a
-            href="/docs/roboracer/api-parity-matrix"
-            style={{ color: NB.neoboticsRed, fontWeight: 700, textDecoration: 'none' }}
-          >
-            Roboracer · API parity matrix
-          </a>
-          .
+        <Callout type="tip" title="Coming from F1TENTH?">
+          The racecar-neo-library wraps the same ROS 2 driver topics the F1TENTH
+          reference build uses, so your existing F1TENTH Python helpers run
+          unchanged.
         </Callout>
       </ScrollReveal>
 

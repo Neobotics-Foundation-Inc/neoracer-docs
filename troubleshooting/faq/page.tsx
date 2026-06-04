@@ -123,16 +123,8 @@ const FAQS: Faq[] = [
     q: 'Will my F1TENTH code run on NeoRacer?',
     a: (
       <>
-        Yes. ROS 2 topic names and message types are the same as the
-        Roboracer reference build. Drop your existing nodes onto a NeoRacer
-        and they run unchanged. The{' '}
-        <a
-          href="/docs/roboracer/api-parity-matrix"
-          style={{ color: NB.neoboticsRed, fontWeight: 700 }}
-        >
-          parity matrix
-        </a>{' '}
-        is the source of truth on what's identical and what differs.
+        Yes. The ROS 2 topic names and message types match the F1TENTH
+        reference build, so your existing nodes run on a NeoRacer unchanged.
       </>
     ),
   },

@@ -1,0 +1,5 @@
+# This repo is built as a submodule of the website; it has no standalone build.
+node_modules/
+.next/
+.DS_Store
+*.log

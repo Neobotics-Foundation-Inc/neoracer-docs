@@ -17,7 +17,7 @@ import { Crumbs, Callout, PrevNext, Code, DataTable } from '@/components/docs/Do
 export const metadata: Metadata = {
   title: 'IMU · Hardware · NeoRacer Docs',
   description:
-    '9-axis LSM9DS1 inertial measurement unit. Topics, frames, and the rc.physics Python API.',
+    '9-axis IMU, a QMI8658A plus a QMC6309. Topics, frames, and the rc.physics Python API.',
 };
 
 export default function ImuPage() {
@@ -50,13 +50,14 @@ export default function ImuPage() {
                 maxWidth: 680,
               }}
             >
-              An LSM9DS1 inertial measurement unit: a 3-axis accelerometer, a
-              3-axis gyroscope, and a 3-axis magnetometer in one part. It reports
-              how the car is accelerating, how fast it is turning, and where
-              magnetic north sits, all in the imu_link frame at 100 Hz.
+              Two parts on one board: a QMI8658A (3-axis accelerometer and
+              3-axis gyroscope) and a QMC6309 (3-axis magnetometer), nine axes
+              between them. They report how the car is accelerating, how fast it
+              is turning, and where magnetic north sits, all in the imu_link
+              frame at 100 Hz.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="red">9-axis LSM9DS1</ChromeBadge>
+              <ChromeBadge variant="red">QMI8658A + QMC6309</ChromeBadge>
               <ChromeBadge variant="outline"><AnimatedNumeral value={100} suffix=" Hz" /></ChromeBadge>
               <ChromeBadge variant="outline">accel m/s^2</ChromeBadge>
               <ChromeBadge variant="outline">gyro rad/s</ChromeBadge>
@@ -300,7 +301,7 @@ print(mag)     # magnetic field vector`}
             }}
           >
             {[
-              ['Sensor', '9-axis LSM9DS1'],
+              ['Sensor', 'QMI8658A + QMC6309 (9-axis)'],
               ['Accelerometer', 'm/s^2'],
               ['Gyroscope', 'rad/s'],
               ['Magnetometer', 'teslas'],

@@ -21,7 +21,7 @@ import { Crumbs, PrevNext, Callout, Code } from '@/components/docs/DocsPrimitive
 export const metadata: Metadata = {
   title: 'IMU bias · Calibration · NeoRacer Docs',
   description:
-    'Zero the LSM9DS1 accelerometer and gyroscope, and fit the magnetometer, with the racecar_neo calibrate_imu and calibrate_mag scripts. They write the lsm9ds1 YAML the driver loads at launch.',
+    'Zero the QMI8658A accelerometer and gyroscope, and fit the QMC6309 magnetometer, with the calibrate_imu and calibrate_mag scripts. They write the YAML the driver loads at launch.',
 };
 
 const STEPS: CalibrationStep[] = [
@@ -29,7 +29,7 @@ const STEPS: CalibrationStep[] = [
   { n: 2, title: 'Driver up',    sub: '/imu, /mag publishing', iconKey: 'cli' },
   { n: 3, title: 'Still + level', sub: 'accel + gyro bias',    iconKey: 'stopwatch' },
   { n: 4, title: 'Rotate',       sub: 'magnetometer fit',      iconKey: 'wheel' },
-  { n: 5, title: 'Save YAML',    sub: 'config/lsm9ds1_*',      iconKey: 'save' },
+  { n: 5, title: 'Save YAML',    sub: 'config/imu_cal · mag_cal', iconKey: 'save' },
 ];
 
 export default function ImuBiasPage() {
@@ -61,9 +61,9 @@ export default function ImuBiasPage() {
                 maxWidth: 680,
               }}
             >
-              A raw LSM9DS1 reads a small, steady offset even when the car is dead
-              still, and a magnetometer reads a field warped by the metal around
-              it. Two scripts measure those once and write the corrections to a
+              A raw QMI8658A reads a small, steady offset even when the car is dead
+              still, and the QMC6309 magnetometer reads a field warped by the metal
+              around it. Two scripts measure those once and write the corrections to a
               pair of YAML files the driver loads at launch, so{' '}
               <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>rc.physics</code>{' '}
               gives you honest numbers.
@@ -124,7 +124,7 @@ export default function ImuBiasPage() {
                     <code style={{ fontFamily: NB.monoFont }}>gyroscope.bias</code>.
                   </>
                 }
-                codeChip="lsm9ds1_cal.yaml"
+                codeChip="imu_cal.yaml"
               />
               <NumberedFeatureCard
                 n={2}
@@ -140,7 +140,7 @@ export default function ImuBiasPage() {
                     sphere, not a tilted egg.
                   </>
                 }
-                codeChip="lsm9ds1_mag_cal.yaml"
+                codeChip="mag_cal.yaml"
               />
             </div>
           </div>
@@ -224,7 +224,7 @@ python3 ~/racecar_ws/src/racecar_neo/scripts/calibrate_imu.py
 
 # It connects to /imu, collects a window of samples, and averages them.
 # The mean is the bias: what the sensor reports when nothing is moving.
-# When it finishes, it writes lsm9ds1_cal.yaml.`}</Code>
+# When it finishes, it writes imu_cal.yaml.`}</Code>
 
             <Callout type="warn" title="Do not breathe on it">
               Any motion during the still pass shows up as bias. Set the car down,
@@ -252,7 +252,7 @@ python3 ~/racecar_ws/src/racecar_neo/scripts/calibrate_mag.py
 # nose up and down, roll left and right, spin through a full yaw.
 # It fits a hard-iron offset and a soft-iron matrix to the cloud of
 # points, plots them as a sphere so you can see the coverage, and
-# writes lsm9ds1_mag_cal.yaml.`}</Code>
+# writes mag_cal.yaml.`}</Code>
 
             <p
               style={{
@@ -299,7 +299,7 @@ python3 ~/racecar_ws/src/racecar_neo/scripts/calibrate_mag.py
               page.
             </p>
 
-            <Code lang="yaml">{`# config/lsm9ds1_cal.yaml, written by calibrate_imu.py
+            <Code lang="yaml">{`# config/imu_cal.yaml, written by calibrate_imu.py
 imu_node:
   ros__parameters:
     accelerometer:
@@ -307,7 +307,7 @@ imu_node:
     gyroscope:
       bias: [0.0011, 0.0006, -0.0009]  # rad/s, per axis
 
-# config/lsm9ds1_mag_cal.yaml, written by calibrate_mag.py
+# config/mag_cal.yaml, written by calibrate_mag.py
 imu_node:
   ros__parameters:
     magnetometer:

@@ -36,7 +36,7 @@ const ROWS = [
     topic: '/imu',
     type: 'sensor_msgs/Imu',
     role: 'Read it',
-    notes: 'Linear acceleration (m/s²) and angular velocity (rad/s), frame_id imu_link. Published straight from the LSM9DS1.',
+    notes: 'Linear acceleration (m/s²) and angular velocity (rad/s), frame_id imu_link. Published straight from the QMI8658A.',
   },
   {
     topic: '/mag',

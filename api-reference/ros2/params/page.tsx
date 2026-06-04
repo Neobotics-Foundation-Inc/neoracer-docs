@@ -215,9 +215,9 @@ export default function Ros2ParamsPage() {
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
             The IMU node declares these and reads them from{' '}
-            <code style={{ fontFamily: NB.monoFont }}>config/lsm9ds1_cal.yaml</code>{' '}
+            <code style={{ fontFamily: NB.monoFont }}>config/imu_cal.yaml</code>{' '}
             and{' '}
-            <code style={{ fontFamily: NB.monoFont }}>config/lsm9ds1_mag_cal.yaml</code>{' '}
+            <code style={{ fontFamily: NB.monoFont }}>config/mag_cal.yaml</code>{' '}
             when the launch file starts it. The calibration scripts in the repo
             generate those files; the{' '}
             <a href="/docs/calibration/imu-bias" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>

@@ -53,7 +53,7 @@ const ROWS = [
     type: 'sensor_msgs/Imu',
     f1tenth: 'yes',
     neoracer: 'yes',
-    notes: 'LSM9DS1, frame imu_link.',
+    notes: 'QMI8658A + QMC6309, frame imu_link.',
   },
   {
     topic: 'camera image',
@@ -137,8 +137,8 @@ export default function ApiParityMatrixPage() {
           topic, not at it. The NeoRacer publishes{' '}
           <code style={{ fontFamily: NB.monoFont }}>/scan</code> from a Richbeam
           LakiBeam1 rather than the F1TENTH reference LiDAR, and its{' '}
-          <code style={{ fontFamily: NB.monoFont }}>/imu</code> comes from an
-          LSM9DS1, but the message type and frame contract on each topic are
+          <code style={{ fontFamily: NB.monoFont }}>/imu</code> comes from a
+          QMI8658A, but the message type and frame contract on each topic are
           unchanged. Your node subscribes to{' '}
           <code style={{ fontFamily: NB.monoFont }}>sensor_msgs/LaserScan</code> and
           gets a LaserScan either way. The hardware behind the topic is the part

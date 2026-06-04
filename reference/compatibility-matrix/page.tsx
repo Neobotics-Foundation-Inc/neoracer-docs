@@ -75,9 +75,9 @@ const SENSOR_ROWS = [
   },
   {
     component: 'IMU',
-    part: 'LSM9DS1 (9-axis)',
+    part: 'QMI8658A + QMC6309 (9-axis)',
     api: 'rc.physics',
-    notes: 'Linear acceleration, angular velocity, and a magnetometer vector from the 9-axis LSM9DS1, read through rc.physics.',
+    notes: 'Linear acceleration and angular velocity from the QMI8658A, plus a magnetometer vector from the QMC6309, read through rc.physics.',
   },
   {
     component: 'Drive',

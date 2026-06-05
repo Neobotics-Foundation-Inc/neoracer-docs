@@ -21,12 +21,12 @@ export const metadata: Metadata = {
     "An interactive 3D model of the NeoRacer, built from the real osracer ROS 2 URDF: rotate it, spin the wheels, and steer the front axle through the actual continuous joints.",
 };
 
-const PARTS: { name: string; frame: string; note: string }[] = [
-  { name: 'Camera', frame: 'camera_link', note: 'front, just behind the LiDAR' },
-  { name: 'LiDAR', frame: 'laser', note: 'the scanner at the nose' },
-  { name: 'IMU', frame: 'imu_link', note: 'near the centre of the chassis' },
-  { name: 'Chassis & body', frame: 'base_link', note: 'the structural origin' },
-  { name: 'Wheels & steering', frame: '4 wheels · 2 hinges', note: 'continuous joints; the front pair steers' },
+const PARTS: { name: string; frame: string }[] = [
+  { name: 'Camera', frame: 'camera_link' },
+  { name: 'LiDAR', frame: 'laser' },
+  { name: 'IMU', frame: 'imu_link' },
+  { name: 'Chassis & body', frame: 'base_link' },
+  { name: 'Wheels & steering', frame: '4 wheels · 2 hinges' },
 ];
 
 export default function RobotModelPage() {
@@ -102,9 +102,6 @@ export default function RobotModelPage() {
                 <code style={{ fontFamily: NB.monoFont, fontSize: 13, color: NB.neoboticsRed, marginLeft: 10 }}>
                   {p.frame}
                 </code>
-                <span style={{ fontFamily: NB.bodyFont, fontSize: 14, color: NB.textMutedBeige, marginLeft: 10 }}>
-                  {p.note}
-                </span>
               </div>
             ))}
           </div>

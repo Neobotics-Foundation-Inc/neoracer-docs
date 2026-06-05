@@ -22,6 +22,17 @@ export const metadata: Metadata = {
   description: 'A single-page anatomy of the NeoRacer V1: compute, sensors, drivetrain, power, and chassis at a glance.',
 };
 
+/* One distinct colour per callout, so each part reads on its own. Shared by
+ * the diagram dots and the legend below so the numbers match by colour. */
+const ANATOMY_COLORS: Record<string, string> = {
+  '01': '#FF0033', // Camera   — red
+  '02': '#1E7FB5', // Servo    — blue
+  '03': '#0E8A4F', // Jetson   — green
+  '04': '#E08A00', // LiPo     — amber
+  '05': '#7A3FB0', // PCB      — purple
+  '06': '#0E9594', // LiDAR    — teal
+};
+
 /* Exploded anatomy diagram, labelled callouts over a top-down car silhouette. */
 function AnatomyDiagram() {
   return (
@@ -38,23 +49,24 @@ function AnatomyDiagram() {
           horizontal leader, so the lines never cross and never run through the
           text. Numbers match the subsystem list below (the legend). */}
       {[
-        { n: '01', name: 'Camera', side: 'L', tx: 271, ty: 95 },
-        { n: '02', name: 'Jetson Orin Nano', side: 'L', tx: 273, ty: 143 },
-        { n: '03', name: 'LiDAR', side: 'L', tx: 275, ty: 176 },
-        { n: '04', name: 'Motor & servo', side: 'R', tx: 276, ty: 114 },
-        { n: '05', name: 'LiPo bay', side: 'R', tx: 246, ty: 153 },
-        { n: '06', name: 'IMU + MCU', side: 'R', tx: 290, ty: 186 },
+        { n: '01', name: 'Camera', side: 'L', tx: 269, ty: 96 },
+        { n: '02', name: 'Servo', side: 'R', tx: 291, ty: 115 },
+        { n: '03', name: 'Jetson Orin Nano', side: 'L', tx: 271, ty: 142 },
+        { n: '04', name: 'LiPo bay', side: 'R', tx: 246, ty: 153 },
+        { n: '05', name: 'PCB', side: 'L', tx: 274, ty: 156 },
+        { n: '06', name: 'LiDAR', side: 'L', tx: 270, ty: 174 },
       ].map((c) => {
         const left = c.side === 'L';
         const textX = left ? 184 : 356;
         const leadStart = left ? 190 : 350;
         const leadEnd = left ? c.tx - 7 : c.tx + 7;
+        const color = ANATOMY_COLORS[c.n];
         return (
           <g key={c.n}>
-            <line x1={leadStart} y1={c.ty} x2={leadEnd} y2={c.ty} stroke={NB.tarmacBlue} strokeWidth="1" opacity="0.4" />
-            <circle cx={c.tx} cy={c.ty} r="4" fill={NB.neoboticsRed} stroke={NB.haloWhite} strokeWidth="1.5" />
-            <text x={textX} y={c.ty + 3.5} textAnchor={left ? 'end' : 'start'} fontFamily={NB.monoFont} fontSize="11" fontWeight="700" fill={NB.tarmacBlue}>
-              <tspan fill={NB.neoboticsRed} fontWeight="900">{c.n}</tspan>{`  ${c.name}`}
+            <line x1={leadStart} y1={c.ty} x2={leadEnd} y2={c.ty} stroke={color} strokeWidth="1.2" opacity="0.6" />
+            <circle cx={c.tx} cy={c.ty} r="4.5" fill={color} stroke={NB.haloWhite} strokeWidth="1.5" />
+            <text x={textX} y={c.ty + 3.5} textAnchor={left ? 'end' : 'start'} fontFamily={NB.monoFont} fontSize="11" fontWeight="700" fill={color}>
+              <tspan fontWeight="900">{c.n}</tspan>{`  ${c.name}`}
             </text>
           </g>
         );
@@ -127,11 +139,11 @@ export default function HardwareOverviewPage() {
           <div style={{ marginTop: 16 }}>
             {[
               { n: '01', name: 'Camera', href: '/docs/hardware/sensors/camera', sub: '1080p · 120 fps' },
-              { n: '02', name: 'Jetson Orin Nano', href: '/docs/hardware/compute', sub: 'AI accelerator + Linux host' },
-              { n: '03', name: 'LiDAR', href: '/docs/hardware/sensors/lidar', sub: '30 Hz · 25 m · 720 samples' },
-              { n: '04', name: 'Motor + servo', href: '/docs/hardware/drivetrain', sub: '11,000 RPM no-load · 20 kg servo' },
-              { n: '05', name: 'LiPo power', href: '/docs/hardware/power', sub: '11.1 V · 3S · battery NOT included' },
-              { n: '06', name: 'IMU + microcontroller', href: '/docs/hardware/sensors/imu', sub: '6-DOF · 100 Hz · ESP32-class' },
+              { n: '02', name: 'Servo', href: '/docs/hardware/drivetrain', sub: '20 kg steering servo' },
+              { n: '03', name: 'Jetson Orin Nano', href: '/docs/hardware/compute', sub: 'AI accelerator + Linux host' },
+              { n: '04', name: 'LiPo power', href: '/docs/hardware/power', sub: '11.1 V · 3S · battery NOT included' },
+              { n: '05', name: 'OSCORE board', href: '/docs/hardware/oscore-board', sub: 'Power + control PCB, inside the chassis' },
+              { n: '06', name: 'LiDAR', href: '/docs/hardware/sensors/lidar', sub: '30 Hz · 25 m · 720 samples' },
             ].map((row) => (
               <Link
                 key={row.n}
@@ -147,7 +159,7 @@ export default function HardwareOverviewPage() {
                   alignItems: 'center',
                 }}
               >
-                <div style={{ fontFamily: NB.headingFont, fontSize: 28, fontWeight: 900, color: NB.neoboticsRed, lineHeight: 1 }}>
+                <div style={{ fontFamily: NB.headingFont, fontSize: 28, fontWeight: 900, color: ANATOMY_COLORS[row.n], lineHeight: 1 }}>
                   {row.n}
                 </div>
                 <div>

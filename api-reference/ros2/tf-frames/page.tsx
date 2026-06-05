@@ -119,6 +119,86 @@ function FrameLayoutDiagram() {
   );
 }
 
+/* The actual TF tree the osracer stack broadcasts, read from its URDF. An
+   indented hierarchy: map and odom come from SLAM, everything below is the
+   robot_state_publisher tree. Sensor leaves are tinted to match the 3D model
+   on the hardware page; the joint type (fixed vs continuous) is on the right. */
+function UrdfFrameTree() {
+  type Node = { name: string; d: number; p: number; tag: string; color?: string; slam?: boolean };
+  const T: Node[] = [
+    { name: 'map', d: 0, p: -1, tag: 'added by SLAM', slam: true },
+    { name: 'odom', d: 1, p: 0, tag: 'added by SLAM', slam: true },
+    { name: 'base_footprint', d: 2, p: 1, tag: 'ground projection' },
+    { name: 'base_link', d: 3, p: 2, tag: 'body origin' },
+    { name: 'laser', d: 4, p: 3, tag: 'fixed', color: '#0E9594' },
+    { name: 'imu_link', d: 4, p: 3, tag: 'fixed', color: '#7A3FB0' },
+    { name: 'camera_link', d: 4, p: 3, tag: 'fixed', color: '#FF0033' },
+    { name: 'left_steering_hinge_link', d: 4, p: 3, tag: 'continuous' },
+    { name: 'Left_front_wheel_link', d: 5, p: 7, tag: 'continuous' },
+    { name: 'right_steering_hinge_link', d: 4, p: 3, tag: 'continuous' },
+    { name: 'right_front_wheel_link', d: 5, p: 9, tag: 'continuous' },
+    { name: 'left_rear_wheel_link', d: 4, p: 3, tag: 'continuous' },
+    { name: 'right_rear_wheel_link', d: 4, p: 3, tag: 'continuous' },
+  ];
+  const x0 = 26;
+  const indent = 26;
+  const rowH = 30;
+  const startY = 52;
+  const px = (n: Node) => x0 + n.d * indent;
+  const cy = (i: number) => startY + i * rowH + rowH / 2;
+  const lastChild: Record<number, number> = {};
+  T.forEach((n, i) => {
+    if (n.p >= 0) lastChild[n.p] = i;
+  });
+  return (
+    <svg viewBox="0 0 560 470" width="100%" style={{ display: 'block', maxWidth: 600, margin: '0 auto' }}>
+      <rect x="14" y="18" width="532" height="438" rx="6" fill={NB.haloWhite} stroke={NB.tarmacBlue} strokeWidth="1.2" opacity="0.5" />
+      <text x="28" y="38" fontFamily={NB.monoFont} fontSize="10" letterSpacing="2" fill={NB.textMutedBeige} fontWeight="700">
+        /tf TREE · osracer · robot_state_publisher
+      </text>
+      {/* connectors */}
+      {T.map((n, i) => {
+        if (n.p < 0) return null;
+        const spineX = px(T[n.p]) + 9;
+        return <line key={`h${i}`} x1={spineX} y1={cy(i)} x2={px(n)} y2={cy(i)} stroke={NB.tarmacBlue} strokeWidth="1" opacity="0.4" />;
+      })}
+      {Object.entries(lastChild).map(([p, last]) => {
+        const pi = Number(p);
+        const spineX = px(T[pi]) + 9;
+        return <line key={`v${p}`} x1={spineX} y1={cy(pi) + 9} x2={spineX} y2={cy(last)} stroke={NB.tarmacBlue} strokeWidth="1" opacity="0.4" />;
+      })}
+      {/* nodes */}
+      {T.map((n, i) => {
+        const x = px(n);
+        const y = cy(i);
+        const stroke = n.color ?? (n.slam ? NB.textMutedBeige : NB.tarmacBlue);
+        const w = n.name.length * 7.15 + 16;
+        return (
+          <g key={n.name}>
+            <rect
+              x={x}
+              y={y - 10}
+              width={w}
+              height={20}
+              rx={4}
+              fill={n.slam ? NB.beige : NB.haloWhite}
+              stroke={stroke}
+              strokeWidth="1.3"
+              strokeDasharray={n.slam ? '3 2' : undefined}
+            />
+            <text x={x + 8} y={y + 4} fontFamily={NB.monoFont} fontSize="12" fontWeight="700" fill={stroke}>
+              {n.name}
+            </text>
+            <text x={x + w + 10} y={y + 4} fontFamily={NB.monoFont} fontSize="10.5" fill={NB.textMutedBeige}>
+              {n.tag}
+            </text>
+          </g>
+        );
+      })}
+    </svg>
+  );
+}
+
 export default function Ros2TfFramesPage() {
   return (
     <DocsShell>
@@ -207,6 +287,15 @@ export default function Ros2TfFramesPage() {
           hand-rolled transforms below when you run the teaching stack on its own,
           or when you add a node that needs a frame osracer does not define.
         </Callout>
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <Fig
+          label="FIG. A / THE osracer TF TREE"
+          caption="The transform tree osracer's robot_state_publisher broadcasts, straight from its URDF. map and odom are added by SLAM on top. Note the LiDAR frame is laser here, not lidar_link, and the steering hinges and wheels are continuous joints, which is why the 3D model can steer and roll. See it move on the hardware 3D model page."
+        >
+          <UrdfFrameTree />
+        </Fig>
       </ScrollReveal>
 
       <ScrollReveal>

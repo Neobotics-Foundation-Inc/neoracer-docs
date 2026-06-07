@@ -27,13 +27,13 @@ import { Crumbs, PrevNext, Callout, Code } from '@/components/docs/DocsPrimitive
 export const metadata: Metadata = {
   title: 'Motor trim · Calibration · NeoRacer Docs',
   description:
-    'How the motor neutral and speed caps work on the racecar_neo driver. The ESC neutral is fixed; the speed you actually get is set by constants in throttle.py and pwm.py.',
+    'How the motor neutral and speed caps work on the neoracer_ros2_driver. Neutral lives on the ESP32; the top speed and steering caps are YAML values in config/throttle.yaml and config/controller.yaml that you edit and re-launch.',
 };
 
 const STEPS: CalibrationStep[] = [
   { n: 1, title: 'SSH in',        sub: 'to the Jetson',          iconKey: 'ssh' },
   { n: 2, title: 'Hold zero',     sub: 'watch for creep',        iconKey: 'wheel' },
-  { n: 3, title: 'Tune caps',     sub: 'throttle.py / pwm.py',   iconKey: 'cli' },
+  { n: 3, title: 'Tune caps',     sub: 'throttle.yaml + controller.yaml', iconKey: 'cli' },
   { n: 4, title: 'colcon build',  sub: 'apply the change',       iconKey: 'save' },
   { n: 5, title: 'Verify',        sub: '5 s stationary check',   iconKey: 'stopwatch' },
 ];
@@ -82,8 +82,8 @@ export default function MotorTrimPage() {
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="red"><AnimatedNumeral value={5} prefix="~" suffix=" minutes" /></ChromeBadge>
               <ChromeBadge variant="outline">Beginner</ChromeBadge>
-              <ChromeBadge variant="outline">racecar_neo source</ChromeBadge>
-              <ChromeBadge variant="outline">Edit + colcon build</ChromeBadge>
+              <ChromeBadge variant="outline">neoracer_ros2_driver</ChromeBadge>
+              <ChromeBadge variant="outline">config/throttle.yaml + config/controller.yaml</ChromeBadge>
             </div>
           </div>
         </section>
@@ -117,19 +117,23 @@ export default function MotorTrimPage() {
                 maxWidth: 740,
               }}
             >
-              The{' '}
+              The drive pipeline ends at the{' '}
+              <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>controller</code>{' '}
+              node, which owns the USB-CDC link to the OSCORE ESP32 and writes
+              the per-tick command{' '}
+              <code style={{ fontFamily: NB.monoFont }}>v &lt;m/s&gt; &lt;deg&gt;</code>
+              {' '}as a normalized request. The ESP32 turns that into the actual{' '}
               <InfoNote term="PWM" title="PWM">
                 Pulse-width modulation. A timed on/off signal where the fraction of
                 time it stays on encodes a value, here the throttle level sent to
                 the ESC.
               </InfoNote>{' '}
-              node drives the ESC through a Pololu Maestro. Neutral is a
-              fixed target of 1500 microseconds (Maestro count 6000), and a{' '}
-              <code style={{ fontFamily: NB.monoFont }}>speed</code> of zero maps
-              exactly to it. There is no software motor-neutral offset, the way
-              there is for steering. So if the car creeps at zero, the cause is
-              the ESC's own neutral or mechanical drag in the drivetrain, covered
-              in{' '}
+              for the ESC. Neutral lives on the ESP32 itself, so when{' '}
+              <code style={{ fontFamily: NB.monoFont }}>speed</code> is zero the
+              controller writes a zero command and the wheels should be still.
+              If the car creeps at zero on a charged pack and a flat floor, the
+              cause is the ESC's own neutral or mechanical drag in the drivetrain,
+              covered in{' '}
               <a href="/docs/hardware/drivetrain" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
                 Hardware · Drivetrain
               </a>
@@ -234,29 +238,26 @@ export default function MotorTrimPage() {
             <Code lang="bash">{`# 1. SSH into the Jetson (see Networking for the address).
 ssh racecar@neoracer
 
-# 2. The speed caps live as constants in the driver source.
-#    The throttle node holds the duty actually sent to the ESC:
-#      ~/racecar_ws/src/racecar_neo/racecar_neo/throttle.py
-#        CAR_THROTTLE_FORWARD  = 0.0425   # forward duty at full command
-#        CAR_THROTTLE_BACKWARD = 0.06     # reverse duty at full command
-#
-#    The PWM node holds the speed that maps to full range:
-#      ~/racecar_ws/src/racecar_neo/racecar_neo/pwm.py
-#        CAR_MAX_FORWARD  = 0.25
-#        CAR_MAX_BACKWARD = 0.25
+# 2. Open the YAML the driver loads at launch.
+#    config/throttle.yaml is the single source of truth for the speed
+#    and steering caps. config/controller.yaml holds the ESP32 m/s
+#    mapping and the steering trim in degrees.
+$EDITOR ~/ros2_ws/src/neoracer_ros2_driver/config/throttle.yaml
+$EDITOR ~/ros2_ws/src/neoracer_ros2_driver/config/controller.yaml
 
-# 3. Raise CAR_THROTTLE_FORWARD a little if you want more top speed.
-#    Small steps: 0.0425 to 0.05 is already noticeably quicker.
+# 3. Bump the top-speed cap a little if you want more headroom.
+#    Small steps. The ESC response is not linear near the bottom of the
+#    range, so a small change near zero can mean a large change at the
+#    wheel.
 
-# 4. Rebuild the package and re-source so the running node picks it up.
-cd ~/racecar_ws && colcon build --packages-select racecar_neo
-source install/setup.bash`}</Code>
+# 4. Re-launch teleop. Configs are read on launch, no colcon build needed.
+racecar teleop`}</Code>
 
             <Callout type="warn" title="Raise the cap in small steps">
-              The factory forward duty is gentle on purpose. Doubling it does not
+              The factory cap is gentle on purpose. Doubling it does not
               double the speed, it can more than double it, because the ESC
-              response is not linear near the bottom. Step it up a little, rebuild,
-              and verify on the floor before you go further.
+              response is not linear near the bottom. Step it up a little, re-launch
+              teleop, and verify on the floor before going further.
             </Callout>
           </div>
         </section>
@@ -347,31 +348,47 @@ rc.go()`}</Code>
                 maxWidth: 720,
               }}
             >
-              Unlike the IMU calibration, which writes a YAML the driver loads at
-              launch, these speed caps are constants compiled into the node. The{' '}
-              <code style={{ fontFamily: NB.monoFont }}>colcon build</code> step is
-              what applies them. To keep your edits across a re-image, hold them in
-              your own copy of the workspace or as a patch, since there is no
-              separate file to back up.
+              Both files are plain YAML the launch system reads on startup.
+              Edit, re-launch{' '}
+              <code style={{ fontFamily: NB.monoFont }}>racecar teleop</code>, and the
+              new caps are live. No colcon build, no firmware reflash. They live
+              under the driver workspace at{' '}
+              <code style={{ fontFamily: NB.monoFont }}>~/ros2_ws/src/neoracer_ros2_driver/config/</code>.
             </p>
 
-            <Code lang="python">{`# ~/racecar_ws/src/racecar_neo/racecar_neo/throttle.py
-CAR_THROTTLE_FORWARD  = 0.0425  # forward duty at full command
-CAR_THROTTLE_BACKWARD = 0.06    # reverse duty at full command
-CAR_THROTTLE_TURN     = 0.25    # steering scale before the servo
-DRIVE_MAX_SPEED       = 0.25    # the speed /drive is measured against`}</Code>
+            <Code lang="yaml">{`# ~/ros2_ws/src/neoracer_ros2_driver/config/throttle.yaml
+# Single source of truth for the top speed and steering caps.
+# All values are normalized to [-1, 1] across the pipeline.
+throttle:
+  ros__parameters:
+    max_forward: 0.25    # the speed /drive is measured against
+    max_reverse: 0.25
+    max_steer:   1.00`}</Code>
+
+            <Code lang="yaml">{`# ~/ros2_ws/src/neoracer_ros2_driver/config/controller.yaml
+# ESP32 serial port, the normalized -> m/s drive mapping, the
+# steering trim, and the Flysky RC channel map.
+controller:
+  ros__parameters:
+    port:               /dev/osrbot_base
+    max_speed_mps:      2.0
+    steering_trim_deg:  0.0
+    throttle_channel:   2
+    steering_channel:   0
+    mode_channel:       4`}</Code>
 
             <DashList
               items={[
                 <>A higher{' '}
-                  <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>CAR_THROTTLE_FORWARD</code>{' '}
-                  means more top speed for the same command.</>,
-                <>The neutral itself is in{' '}
-                  <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>pwm.py</code>{' '}
-                  as the Maestro target 6000, and is not meant to be changed.</>,
+                  <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>max_forward</code>{' '}
+                  in throttle.yaml means more top speed for the same command.</>,
+                <>Neutral is owned by the ESP32 firmware, not the YAML, so a
+                  creep at zero is the ESC neutral or drivetrain drag, not a value
+                  you set here.</>,
                 <>Every student script that calls{' '}
                   <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>rc.drive.set_speed_angle()</code>{' '}
-                  gets your caps for free once the node is rebuilt.</>,
+                  gets your caps for free on the next{' '}
+                  <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>racecar teleop</code>.</>,
               ]}
             />
           </div>

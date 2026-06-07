@@ -1,6 +1,6 @@
 # NeoRacer Docs
 
-The customer documentation for the [NeoRacer](https://neobotics.org), the 1/10 scale autonomous racing car from the Neobotics Foundation. These pages are what you see at **[neobotics.org/docs](https://neobotics.org/docs)**.
+The customer documentation for the [NeoRacer](https://neobotics.org), the 1/12 scale autonomous racing car from the Neobotics Foundation. These pages are what you see at **[neobotics.org/docs](https://neobotics.org/docs)**.
 
 ## How it works
 

@@ -27,13 +27,13 @@ import { Crumbs, PrevNext, Callout, Code } from '@/components/docs/DocsPrimitive
 export const metadata: Metadata = {
   title: 'Servo center · Calibration · NeoRacer Docs',
   description:
-    'Center the steering so a 0.0 angle is straight ahead. On the racecar_neo driver the trim is one constant, STEERING_CENTER_REL_OFFSET in pwm.py, that you nudge and rebuild.',
+    'Center the steering so a 0.0 angle is straight ahead. On the neoracer_ros2_driver the trim is steering_trim_deg in config/controller.yaml. Edit, re-launch teleop, done.',
 };
 
 const STEPS: CalibrationStep[] = [
   { n: 1, title: 'SSH in',        sub: 'to the Jetson',          iconKey: 'ssh' },
   { n: 2, title: 'Roll test',     sub: 'push 1 m on tape',       iconKey: 'stopwatch' },
-  { n: 3, title: 'Edit offset',   sub: 'pwm.py constant',        iconKey: 'cli' },
+  { n: 3, title: 'Edit trim',     sub: 'controller.yaml',         iconKey: 'cli' },
   { n: 4, title: 'colcon build',  sub: 'apply the change',       iconKey: 'save' },
   { n: 5, title: 'Re-test',       sub: 'until it holds a line',  iconKey: 'wheel' },
 ];
@@ -77,7 +77,7 @@ export default function ServoCenterPage() {
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="red"><AnimatedNumeral value={2} prefix="~" suffix=" minutes" /></ChromeBadge>
               <ChromeBadge variant="outline">Beginner</ChromeBadge>
-              <ChromeBadge variant="outline">racecar_neo source</ChromeBadge>
+              <ChromeBadge variant="outline">config/controller.yaml</ChromeBadge>
               <ChromeBadge variant="outline">Edit + colcon build</ChromeBadge>
             </div>
           </div>
@@ -112,20 +112,19 @@ export default function ServoCenterPage() {
                 maxWidth: 740,
               }}
             >
-              The{' '}
-              <InfoNote term="PWM" title="PWM">
-                Pulse-width modulation. A control signal that encodes a value in the width of a repeating electrical pulse. The servo reads the pulse width to decide how far to turn.
-              </InfoNote>{' '}
-              node maps your steering angle onto the{' '}
-              <InfoNote term="servo" title="Servo">
-                A motor that holds a commanded position rather than spinning freely. The steering servo sets the angle of the front wheels.
-              </InfoNote>: an angle of
-              zero lands on the Maestro count 6000, and the full range spans
-              roughly 4000 to 8000 counts. Right before it sends that target, it
-              adds one constant,{' '}
-              <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>STEERING_CENTER_REL_OFFSET</code>,
-              which starts at 0. That offset is your trim. Move it a few counts and
-              the wheels at zero angle shift with it.
+              Your steering angle is normalized in the range{' '}
+              <code style={{ fontFamily: NB.monoFont }}>[-1, 1]</code> all the way
+              through the drive pipeline. The{' '}
+              <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>controller</code> node
+              writes the per-tick command{' '}
+              <code style={{ fontFamily: NB.monoFont }}>v &lt;m/s&gt; &lt;deg&gt;</code>{' '}
+              over USB-CDC to the ESP32, where the angle in degrees is what the
+              servo eventually sees. Before that send, the controller adds one
+              YAML value,{' '}
+              <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>steering_trim_deg</code>,
+              from <code style={{ fontFamily: NB.monoFont }}>config/controller.yaml</code>. That
+              value starts at <code style={{ fontFamily: NB.monoFont }}>0.0</code>. Nudge it a
+              degree or two and the wheels at zero angle shift with it.
             </p>
           </div>
         </section>
@@ -171,11 +170,12 @@ export default function ServoCenterPage() {
               <NumberedFeatureCard
                 n={3}
                 title="SSH to the Jetson"
-                lede="Where the constant lives."
+                lede="Where the YAML lives."
                 body={
                   <>
-                    The offset is a line in the driver source on the car. You edit
-                    it over SSH, covered in{' '}
+                    The trim is one line in{' '}
+                    <code style={{ fontFamily: NB.monoFont }}>config/controller.yaml</code>{' '}
+                    on the car. You edit it over SSH, covered in{' '}
                     <a href="/docs/software/networking" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Networking</a>.
                   </>
                 }
@@ -213,23 +213,24 @@ export default function ServoCenterPage() {
             <Code lang="bash">{`# 1. SSH into the Jetson.
 ssh racecar@neoracer
 
-# 2. Open the PWM node and find the offset near the top.
-#      ~/racecar_ws/src/racecar_neo/racecar_neo/pwm.py
-#        STEERING_CENTER_REL_OFFSET = 0   # counts added to the servo target
+# 2. Open the controller YAML and find the trim line.
+$EDITOR ~/ros2_ws/src/neoracer_ros2_driver/config/controller.yaml
+#   controller:
+#     ros__parameters:
+#       steering_trim_deg: 0.0   # degrees added to the servo angle
 
 # 3. Roll-test first (Section 04) to see which way it drifts, then nudge:
-#      drifts LEFT  at angle 0  ->  steer it right: lower the offset
-#      drifts RIGHT at angle 0  ->  steer it left:  raise the offset
-#    Move 20 to 40 counts at a time. Four counts is about one microsecond.
+#      drifts LEFT  at angle 0  ->  steer it right: lower the trim
+#      drifts RIGHT at angle 0  ->  steer it left:  raise the trim
+#    Step a degree at a time. Half a degree is usually enough at the end.
 
-# 4. Rebuild and re-source so the running node uses the new center.
-cd ~/racecar_ws && colcon build --packages-select racecar_neo
-source install/setup.bash`}</Code>
+# 4. Re-launch teleop so the new trim is picked up.
+racecar teleop`}</Code>
 
-            <Callout type="note" title="Counts, not degrees">
-              The Maestro speaks in quarter-microsecond counts, so the numbers feel
-              large. A few dozen counts is a small, visible change at the wheel.
-              Start with 20 to 40 and halve your step as you close in.
+            <Callout type="note" title="Degrees, not counts">
+              The trim is in degrees of servo angle, which lines up with what
+              you see at the wheel. One degree is a small, visible change.
+              Start with one and halve your step as you close in.
             </Callout>
           </div>
         </section>
@@ -317,23 +318,32 @@ rc.go()`}</Code>
                 maxWidth: 720,
               }}
             >
-              The center is a constant compiled into the PWM node, so the{' '}
-              <code style={{ fontFamily: NB.monoFont }}>colcon build</code> step is
-              what applies your trim. Keep the edit in your own copy of the
-              workspace so a re-image does not reset it back to zero.
+              The trim is a YAML value the controller node reads on launch, so a
+              re-launch is what applies it. There is no colcon build to wait on.
+              Keep your edited{' '}
+              <code style={{ fontFamily: NB.monoFont }}>controller.yaml</code> in
+              your own copy of the workspace so a re-image does not reset it to
+              zero.
             </p>
 
-            <Code lang="python">{`# ~/racecar_ws/src/racecar_neo/racecar_neo/pwm.py
-CAR_MAX_TURN               = 0.4   # steering_angle that maps to full lock
-STEERING_CENTER_REL_OFFSET = 0     # your trim, in Maestro counts`}</Code>
+            <Code lang="yaml">{`# ~/ros2_ws/src/neoracer_ros2_driver/config/controller.yaml
+controller:
+  ros__parameters:
+    port:               /dev/osrbot_base
+    max_speed_mps:      2.0
+    steering_trim_deg:  0.0    # your trim, in degrees
+    throttle_channel:   2
+    steering_channel:   0
+    mode_channel:       4`}</Code>
 
             <DashList
               items={[
                 <>A positive{' '}
-                  <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>STEERING_CENTER_REL_OFFSET</code>{' '}
-                  steers the zero-angle wheels one way, negative the other. Confirm the direction on your own car with a roll test.</>,
-                <>The lock range is{' '}
-                  <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>CAR_MAX_TURN</code>; leave it unless you are deliberately limiting steering.</>,
+                  <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>steering_trim_deg</code>{' '}
+                  steers the zero-angle wheels one way, negative the other. Worth confirming the direction on your own car with a roll test.</>,
+                <>The top-speed cap is{' '}
+                  <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>max_speed_mps</code>{' '}
+                  on the same file; leave it alone if you only meant to trim the steering.</>,
                 <>Every script that sends a steering angle of 0 now points true ahead, no per-program tweak needed.</>,
               ]}
             />

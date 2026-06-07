@@ -30,13 +30,13 @@ const ROWS = [
     topic: '/scan',
     type: 'sensor_msgs/LaserScan',
     role: 'Read it',
-    notes: 'One planar sweep, 30 Hz, 720 samples, frame_id lidar_link. The depth source for wall follow, gap follow, and mapping.',
+    notes: 'One planar sweep from the Lakibeam LiDAR over UDP, frame_id lidar_link. The depth source for wall follow, gap follow, and mapping.',
   },
   {
     topic: '/imu',
     type: 'sensor_msgs/Imu',
     role: 'Read it',
-    notes: 'Linear acceleration (m/s²) and angular velocity (rad/s), frame_id imu_link. Published straight from the QMI8658A.',
+    notes: 'Linear acceleration (m/s²) and angular velocity (rad/s), frame_id imu_link. Published by the controller node from the QMI8658A on the OSCORE board.',
   },
   {
     topic: '/mag',
@@ -45,10 +45,16 @@ const ROWS = [
     notes: 'The magnetometer vector in teslas, frame_id imu_link. A rough compass, on the physical car only.',
   },
   {
+    topic: '/odom',
+    type: 'nav_msgs/Odometry',
+    role: 'Read it',
+    notes: 'Wheel odometry integrated by the controller node from the encoder counts on the ESP32. Useful for short-horizon dead reckoning between LiDAR scans.',
+  },
+  {
     topic: '/camera',
     type: 'sensor_msgs/Image',
     role: 'Read it',
-    notes: 'A JPEG-compressed colour frame from camera_node. The bytes are encoded as encoding="jpeg", so decode before display.',
+    notes: 'A JPEG-compressed colour frame from the camera node (USB webcam in MJPG). The bytes are raw JPEG with encoding="jpeg", decode with cv2.imdecode before display.',
   },
   {
     topic: '/camera/decoded',
@@ -66,7 +72,7 @@ const ROWS = [
     topic: '/joy',
     type: 'sensor_msgs/Joy',
     role: 'Teleop',
-    notes: 'Raw controller state from joy_node. The gamepad and mux nodes read it; you rarely need to.',
+    notes: 'Flysky RC stick and switch state, published by the controller node from the receiver on the ESP32. The gamepad and mux nodes read it; you rarely need to.',
   },
   {
     topic: '/gamepad_drive',
@@ -84,7 +90,13 @@ const ROWS = [
     topic: '/motor',
     type: 'ackermann_msgs/AckermannDriveStamped',
     role: 'Internal',
-    notes: 'The throttle-scaled command the PWM node turns into ESC and steering-servo signals. The last hop before hardware.',
+    notes: 'The throttle-scaled command the controller node turns into the ESP32 serial command. The last hop before hardware.',
+  },
+  {
+    topic: '/led_matrix/command',
+    type: 'std_msgs/String',
+    role: 'Publish it',
+    notes: 'Write text or simple commands to the 8x8 dot-matrix display on the back of the car. Handled by the led_matrix node over USB-UART.',
   },
 ];
 
@@ -130,9 +142,9 @@ function PipelineBlock() {
         <Arrow />
         <Hop text="/motor" kind="topic" />
         <Arrow />
-        <Hop text="pwm_node" kind="node" />
+        <Hop text="controller" kind="node" />
         <Arrow />
-        <span style={{ fontFamily: NB.monoFont, fontSize: 13, color: NB.textDimBlue }}>ESC + steering servo</span>
+        <span style={{ fontFamily: NB.monoFont, fontSize: 13, color: NB.textDimBlue }}>ESP32 → ESC + steering servo</span>
       </div>
       <div style={{ marginTop: 14, display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 6 }}>
         <Hop text="/gamepad_drive" kind="topic" />
@@ -184,15 +196,15 @@ export default function Ros2TopicsPage() {
 
       <ScrollReveal>
         <Callout type="note" title="What this reference is built from">
-          These names come from the open-source{' '}
-          <a href="https://github.com/MITRacecarNeo/racecar-neo-ros2-backend" target="_blank" rel="noopener noreferrer" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-            racecar_neo ROS 2 backend
+          The topics below are published by the{' '}
+          <a href="https://github.com/Neobotics-Foundation-Inc/neoracer_ros2_driver" target="_blank" rel="noopener noreferrer" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
+            neoracer_ros2_driver
           </a>
-          , the MIT stack your NeoRacer is compatible with. That reference build
-          targets a Raspberry Pi and an RPLIDAR, while your car ships a Jetson
-          Orin Nano and a Richbeam LakiBeam1, so the LiDAR driver node and a few
-          of its parameters differ. The topic contract here, the names and
-          message types you write code against, is the same on both.
+          , the ROS 2 backend that ships on every NeoRacer. It is a fork of the
+          MIT RACECAR Neo driver, retargeted for the Jetson Orin Nano, the
+          OSCORE ESP32 board, the Lakibeam LiDAR over UDP, and a USB MJPG
+          camera, with the same topic contract so the racecar-neo-library API
+          continues to work without changes.
         </Callout>
       </ScrollReveal>
 

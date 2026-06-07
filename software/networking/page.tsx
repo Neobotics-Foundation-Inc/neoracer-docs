@@ -17,7 +17,7 @@ import { Crumbs, PrevNext, Callout, Code, DataTable } from '@/components/docs/Do
 export const metadata: Metadata = {
   title: 'Networking · Software · NeoRacer Docs',
   description:
-    "The NeoRacer is its own Wi-Fi access point. Join neoracer_[Car ID], reach the car at the static IP 192.168.1.[100 + Car ID] as user racecar, and ROS 2 DDS discovery does the rest.",
+    "The NeoRacer is its own Wi-Fi access point. Join neoracer-[Car ID], reach the car at the static IP 192.168.1.[100 + Car ID] as user racecar, and ROS 2 DDS discovery does the rest.",
 };
 
 export default function NetworkingPage() {
@@ -56,7 +56,7 @@ export default function NetworkingPage() {
               down campus.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="red">SSID neoracer_[Car ID]</ChromeBadge>
+              <ChromeBadge variant="red">SSID neoracer-[Car ID]</ChromeBadge>
               <ChromeBadge variant="outline">static 192.168.1.[100 + Car ID]</ChromeBadge>
               <ChromeBadge variant="outline">user racecar</ChromeBadge>
               <ChromeBadge variant="outline">ROS 2 DDS discovery</ChromeBadge>
@@ -84,16 +84,16 @@ export default function NetworkingPage() {
               }}
             >
               Join the car's Wi-Fi from your laptop, the network named{' '}
-              <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>neoracer_[Car ID]</code>{' '}
+              <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>neoracer-[Car ID]</code>{' '}
               with the password <code style={{ fontFamily: NB.monoFont }}>neobotics</code>.
               Car ID is the number on your unit, so Car 1 broadcasts{' '}
-              <code style={{ fontFamily: NB.monoFont }}>neoracer_1</code> and answers at{' '}
+              <code style={{ fontFamily: NB.monoFont }}>neoracer-1</code> and answers at{' '}
               <code style={{ fontFamily: NB.monoFont }}>192.168.1.101</code>. Then{' '}
               <InfoNote term="SSH" title="SSH">SSH (Secure Shell) is a way to log into another computer over the network and run commands in its terminal. Here it gives you a shell on the car.</InfoNote>{' '}
               in as <code style={{ fontFamily: NB.monoFont }}>racecar</code>:
             </p>
 
-            <Code lang="bash">{`# After joining the car's Wi-Fi (neoracer_[Car ID]).
+            <Code lang="bash">{`# After joining the car's Wi-Fi (neoracer-[Car ID]).
 ssh racecar@neoracer            # by hostname
 ssh racecar@192.168.1.101       # or the static IP (Car 1)
 # password: neobotics`}</Code>
@@ -106,9 +106,9 @@ ssh racecar@192.168.1.101       # or the static IP (Car 1)
                   { key: 'ip', label: 'Static IP', mono: true },
                 ]}
                 rows={[
-                  { car: '1', ssid: 'neoracer_1', ip: '192.168.1.101' },
-                  { car: '2', ssid: 'neoracer_2', ip: '192.168.1.102' },
-                  { car: 'N', ssid: 'neoracer_[N]', ip: '192.168.1.[100 + N]' },
+                  { car: '1', ssid: 'neoracer-1', ip: '192.168.1.101' },
+                  { car: '2', ssid: 'neoracer-2', ip: '192.168.1.102' },
+                  { car: 'N', ssid: 'neoracer-[N]', ip: '192.168.1.[100 + N]' },
                 ]}
               />
             </div>
@@ -220,7 +220,7 @@ ros2 topic echo /scan --once     # a single scan, straight off the car`}</Code>
                 n={1}
                 title="Same subnet"
                 lede="You get this by joining the car's Wi-Fi."
-                body="DDS discovery reaches the car nodes when both sides are on the same subnet. Joining neoracer_[Car ID] puts you on 192.168.1.x with the car, so the graph comes together on its own."
+                body="DDS discovery reaches the car nodes when both sides are on the same subnet. Joining neoracer-[Car ID] puts you on 192.168.1.x with the car, so the graph comes together on its own."
                 codeChip="ros2 topic list"
               />
               <NumberedFeatureCard
@@ -261,7 +261,7 @@ ros2 topic echo /scan --once     # a single scan, straight off the car`}</Code>
                   { key: 'needs', label: 'What it needs', mono: true },
                 ]}
                 rows={[
-                  { path: 'Get on the car', how: "Join the car's own Wi-Fi access point.", needs: 'SSID neoracer_[Car ID]' },
+                  { path: 'Get on the car', how: "Join the car's own Wi-Fi access point.", needs: 'SSID neoracer-[Car ID]' },
                   { path: 'SSH in', how: 'Connect as racecar at the hostname or static IP.', needs: 'racecar@192.168.1.10X' },
                   { path: 'Headless', how: 'Open the auto-started JupyterLab in a browser.', needs: ':8888' },
                   { path: 'See the car nodes', how: 'ROS 2 DDS discovery over the shared subnet.', needs: 'same subnet + ROS_DOMAIN_ID' },
@@ -269,12 +269,30 @@ ros2 topic echo /scan --once     # a single scan, straight off the car`}</Code>
               />
             </div>
 
+            <Callout type="note" title="Reconfiguring the network from scratch">
+              On a freshly imaged card, the driver's setup script lays the
+              networking down for you. Run{' '}
+              <code style={{ fontFamily: NB.monoFont }}>racecar setup networking</code>{' '}
+              and it brings up the access point ({' '}
+              <code style={{ fontFamily: NB.monoFont }}>neoracer-1</code> on{' '}
+              <code style={{ fontFamily: NB.monoFont }}>10.42.0.1/24</code>, channel 6),
+              the static Ethernet on{' '}
+              <code style={{ fontFamily: NB.monoFont }}>192.168.1.101/24</code> with
+              DHCP, and the Lakibeam lidar subnet on{' '}
+              <code style={{ fontFamily: NB.monoFont }}>192.168.8.1/24</code> (the
+              sensor itself sits at{' '}
+              <code style={{ fontFamily: NB.monoFont }}>192.168.8.2</code>). It
+              reconfigures Wi-Fi, run it from a wired session or the console.
+            </Callout>
             <Callout type="tip" title="Can't reach the car?">
               If the Wi-Fi won't connect or the address won't answer, the{' '}
               <a href="/docs/troubleshooting/wifi-cant-connect" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
                 Wi-Fi can&apos;t connect
               </a>{' '}
-              page walks the rest of the path. You can also reach a person at{' '}
+              page walks the rest of the path. The web dashboard at{' '}
+              <code style={{ fontFamily: NB.monoFont }}>http://neoracer.local:8080</code>{' '}
+              also reports per-node liveness, topic rates, and Jetson temperature
+              when the driver is up. You can reach a person at{' '}
               <a href="mailto:support@neobotics.org" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
                 support@neobotics.org
               </a>

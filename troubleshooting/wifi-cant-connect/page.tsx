@@ -185,7 +185,7 @@ ping 192.168.1.101
               body={
                 <>
                   The <InfoNote term="SSID" title="SSID">The name of a Wi-Fi network, the text you pick from the list when joining. Here it is neoracer_N.</InfoNote> and the IP both encode the Car ID, so they have to
-                  match. If you joined <code style={{ fontFamily: NB.monoFont }}>neoracer_2</code>{' '}
+                  match. If you joined <code style={{ fontFamily: NB.monoFont }}>neoracer-2</code>{' '}
                   but ping <code style={{ fontFamily: NB.monoFont }}>192.168.1.101</code>,
                   nothing answers. Use the ID printed on the car: SSID{' '}
                   <code style={{ fontFamily: NB.monoFont }}>neoracer_N</code>, IP{' '}

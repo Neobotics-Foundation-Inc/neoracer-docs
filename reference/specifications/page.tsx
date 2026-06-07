@@ -124,7 +124,7 @@ export default function SpecificationsPage() {
             >
               <SpecNumeral value="Orin" unit="Nano" label="Jetson host" source={{ label: 'Compute', href: '/docs/hardware/compute' }} />
               <SpecNumeral value={<AnimatedNumeral value={67} />} unit="TOPS" label="AI accelerator" />
-              <SpecNumeral value="22.04" unit="LTS" label="Ubuntu rootfs" source={{ label: 'OS & image', href: '/docs/software/os-and-image' }} />
+              <SpecNumeral value="22.04.5" unit="LTS jammy" label="Ubuntu rootfs" source={{ label: 'OS & image', href: '/docs/software/os-and-image' }} />
               <SpecNumeral value="Humble" label="ROS 2 distro" source={{ label: 'ROS 2 driver', href: '/docs/software/ros2-driver' }} />
             </div>
           </div>

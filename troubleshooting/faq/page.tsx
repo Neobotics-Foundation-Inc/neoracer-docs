@@ -134,8 +134,8 @@ const FAQS: Faq[] = [
     a: (
       <>
         Each car is its own Wi-Fi access point, broadcasting a network named{' '}
-        <code style={{ fontFamily: NB.monoFont }}>neoracer_[Car ID]</code> (Car 1
-        is <code style={{ fontFamily: NB.monoFont }}>neoracer_1</code>, password{' '}
+        <code style={{ fontFamily: NB.monoFont }}>neoracer-[Car ID]</code> (Car 1
+        is <code style={{ fontFamily: NB.monoFont }}>neoracer-1</code>, password{' '}
         <code style={{ fontFamily: NB.monoFont }}>neobotics</code>). Each student
         joins the network for their own car and reaches it at the static IP{' '}
         <code style={{ fontFamily: NB.monoFont }}>192.168.1.[100 + Car ID]</code>{' '}

@@ -70,7 +70,7 @@ export default function ROS2DriverPage() {
                       them up.
                     </>,
                     <>
-                      NeoRacer's <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>teleop</code> starts four nodes.
+                      NeoRacer's <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>teleop</code> brings up the full stack: controller, gamepad_node, mux_node, throttle_node, camera, led_matrix, and the Lakibeam LiDAR.
                     </>,
                   ]}
                 />
@@ -214,17 +214,19 @@ export default function ROS2DriverPage() {
               <div style={{ color: NB.neoboticsRed, fontWeight: 700, marginBottom: 10 }}>
                 // ros2 topic list
               </div>
-              /camera<span style={{ color: NB.textDimBlue }}>&nbsp;&nbsp;&nbsp;# sensor_msgs/Image, 1080p @ 30 Hz</span>
+              /camera<span style={{ color: NB.textDimBlue }}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# sensor_msgs/Image, JPEG-in-Image from the USB webcam</span>
               <br />
-              /scan<span style={{ color: NB.textDimBlue }}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# sensor_msgs/LaserScan, 30 Hz, 720 samples</span>
+              /scan<span style={{ color: NB.textDimBlue }}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# sensor_msgs/LaserScan, Lakibeam LiDAR over UDP</span>
               <br />
-              /imu<span style={{ color: NB.textDimBlue }}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# sensor_msgs/Imu, 100 Hz, ESP32 fused</span>
+              /imu<span style={{ color: NB.textDimBlue }}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# sensor_msgs/Imu, QMI8658A on the OSCORE board</span>
               <br />
-              /odom<span style={{ color: NB.textDimBlue }}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# nav_msgs/Odometry, wheel-encoder integration</span>
+              /odom<span style={{ color: NB.textDimBlue }}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# nav_msgs/Odometry, integrated from wheel encoders</span>
               <br />
-              /joy<span style={{ color: NB.textDimBlue }}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# sensor_msgs/Joy, controller state</span>
+              /joy<span style={{ color: NB.textDimBlue }}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# sensor_msgs/Joy, Flysky RC via the controller node</span>
               <br />
-              /drive<span style={{ color: NB.textDimBlue }}>&nbsp;&nbsp;&nbsp;&nbsp;# ackermann_msgs/AckermannDriveStamped, SUBSCRIBE here</span>
+              /drive<span style={{ color: NB.textDimBlue }}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# ackermann_msgs/AckermannDriveStamped, PUBLISH here</span>
+              <br />
+              /led_matrix/command<span style={{ color: NB.textDimBlue }}>&nbsp;# std_msgs/String, text to the 8x8 dot-matrix display</span>
             </div>
           </div>
         </section>

@@ -331,12 +331,19 @@ export default function OscoreBoardPage() {
 
       <ScrollReveal>
         <Callout type="note" title="This is the board the ROS 2 driver talks to">
-          The OSCORE ESP32-S3 is the controller the{' '}
+          The OSCORE ESP32-S3 is the board the{' '}
           <Link href="/docs/getting-started/install-driver" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>ROS 2 driver</Link>{' '}
-          reaches over USB: its controller node reads this board's IMU and
-          encoder and turns{' '}
-          <code style={{ fontFamily: NB.monoFont }}>/drive</code> commands into the
-          ESC and servo PWM you see here.
+          reaches over USB-CDC. A udev rule pins it as{' '}
+          <code style={{ fontFamily: NB.monoFont }}>/dev/osrbot_base</code>, and a
+          single <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>controller</code> node owns
+          that link. It reads the IMU, the wheel encoder, and the Flysky RC
+          receiver, publishes them as{' '}
+          <code style={{ fontFamily: NB.monoFont }}>/imu</code>,{' '}
+          <code style={{ fontFamily: NB.monoFont }}>/odom</code>, and{' '}
+          <code style={{ fontFamily: NB.monoFont }}>/joy</code>, and writes{' '}
+          <code style={{ fontFamily: NB.monoFont }}>v &lt;m/s&gt; &lt;deg&gt;</code> back to the
+          ESP32 to drive the ESC and steering servo. No separate IMU, PWM, or
+          joystick driver, this one board and one node.
         </Callout>
       </ScrollReveal>
 

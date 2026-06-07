@@ -28,7 +28,7 @@ const SYS = [
   ['Username', 'racecar'],
   ['Hostname', 'neoracer'],
   ['Static IP', '192.168.1.[100 + Car ID]'],
-  ['Wi-Fi SSID', 'neoracer_[Car ID]'],
+  ['Wi-Fi SSID', 'neoracer-[Car ID]'],
 ];
 
 export default function InstallDriverPage() {
@@ -77,13 +77,32 @@ export default function InstallDriverPage() {
 
       <ScrollReveal>
         <Callout type="note" title="The car does not come with the driver installed">
-          This is deliberate: the driver is open source (
+          This is intentional. The driver is open source (
           <a href="https://github.com/Neobotics-Foundation-Inc/neoracer_ros2_driver" target="_blank" rel="noopener noreferrer" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
             neoracer_ros2_driver
           </a>
           , GPLv3), so you build it on the car and own every line. You do this
-          once. After that, <code style={{ fontFamily: NB.monoFont }}>teleop</code>{' '}
+          once. After that, <code style={{ fontFamily: NB.monoFont }}>racecar teleop</code>{' '}
           brings the whole stack up.
+        </Callout>
+      </ScrollReveal>
+      <ScrollReveal>
+        <Callout type="tip" title="The fast path: one script for everything">
+          The driver ships with a single idempotent orchestrator that does the
+          whole install in seven phases (ROS 2 Humble, dev tools, user env,
+          udev rules, workspace build with the Lakibeam driver, JupyterLab,
+          systemd services). Clone the driver into{' '}
+          <code style={{ fontFamily: NB.monoFont }}>~/ros2_ws/src</code> and run it:
+          <Code lang="bash">{`cd ~/ros2_ws/src
+git clone https://github.com/Neobotics-Foundation-Inc/neoracer_ros2_driver.git
+bash neoracer_ros2_driver/scripts/setup_all.sh
+# log out, log back in (group changes apply), then:
+racecar teleop`}</Code>
+          The sections below explain each piece, so you know what the script
+          set up. If something fails you can re-run{' '}
+          <code style={{ fontFamily: NB.monoFont }}>setup_all.sh</code>, it
+          skips completed phases. Or run a single phase with{' '}
+          <code style={{ fontFamily: NB.monoFont }}>racecar setup &lt;phase&gt;</code>.
         </Callout>
       </ScrollReveal>
 
@@ -98,7 +117,7 @@ export default function InstallDriverPage() {
             Every NeoRacer follows the same naming so scripts and instructions
             line up. Car ID is the number on your unit, so Car 1 is at{' '}
             <code style={{ fontFamily: NB.monoFont }}>192.168.1.101</code> on the{' '}
-            <code style={{ fontFamily: NB.monoFont }}>neoracer_1</code> network.
+            <code style={{ fontFamily: NB.monoFont }}>neoracer-1</code> network.
           </p>
           <div
             style={{
@@ -116,7 +135,7 @@ export default function InstallDriverPage() {
             ))}
           </div>
           <Callout type="tip" title="Get onto the car first">
-            The car broadcasts its own Wi-Fi, <code style={{ fontFamily: NB.monoFont }}>neoracer_[Car ID]</code>.
+            The car broadcasts its own Wi-Fi, <code style={{ fontFamily: NB.monoFont }}>neoracer-[Car ID]</code>.
             Join it from your laptop (password{' '}
             <code style={{ fontFamily: NB.monoFont }}>neobotics</code>), then SSH in:
             {' '}<code style={{ fontFamily: NB.monoFont }}>ssh racecar@neoracer</code> (or the
@@ -278,13 +297,13 @@ source ~/.bashrc   # should see no errors now`}</Code>
             The driver is not auto-started, you bring it up when you want it, in
             any terminal:
           </p>
-          <Code lang="bash">{`teleop   # = ros2 launch neoracer_ros2_driver teleop.launch.py`}</Code>
+          <Code lang="bash">{`racecar teleop   # wraps: ros2 launch neoracer_ros2_driver teleop.launch.py`}</Code>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-            That single launch starts the four pieces of the car:
+            That single launch starts the whole stack:
           </p>
           <DashList
             items={[
-              <><strong>controller_node</strong>: the ESP32 bridge. Reads the{' '}
+              <><strong>controller</strong>: the ESP32 bridge. Owns the serial link to the OSCORE board, reads the{' '}
                 <InfoNote term="IMU" title="IMU">
                   Inertial measurement unit. A sensor that reports the car's
                   acceleration and rotation, used to track how it is moving and
@@ -296,16 +315,21 @@ source ~/.bashrc   # should see no errors now`}</Code>
                   drifts over time, which is why other sensors are used to
                   correct it.
                 </InfoNote>
-                , and turns{' '}
-                <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>/drive</code>{' '}
+                , forwards the Flysky RC, and turns{' '}
+                <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>/motor</code>{' '}
                 commands into motor and servo motion. Publishes{' '}
-                <code style={{ fontFamily: NB.monoFont }}>/imu</code> and{' '}
-                <code style={{ fontFamily: NB.monoFont }}>/odom</code>.</>,
-              <><strong>joy_node</strong>: the Xbox controller, on{' '}
+                <code style={{ fontFamily: NB.monoFont }}>/imu</code>,{' '}
+                <code style={{ fontFamily: NB.monoFont }}>/odom</code>, and{' '}
                 <code style={{ fontFamily: NB.monoFont }}>/joy</code>.</>,
-              <><strong>camera_node</strong>: the colour camera, on{' '}
+              <><strong>gamepad_node, mux_node, throttle_node</strong>: the drive pipeline. Take{' '}
+                <code style={{ fontFamily: NB.monoFont }}>/drive</code> (autonomy) or{' '}
+                <code style={{ fontFamily: NB.monoFont }}>/gamepad_drive</code> (manual), arbitrate, scale to speed caps, send through to{' '}
+                <code style={{ fontFamily: NB.monoFont }}>/motor</code>.</>,
+              <><strong>camera</strong>: the USB webcam, MJPG frames out as JPEG-in-Image on{' '}
                 <code style={{ fontFamily: NB.monoFont }}>/camera</code>.</>,
-              <><strong>LakiBeam LiDAR</strong>: the scanner, on{' '}
+              <><strong>led_matrix</strong>: the 8x8 dot-matrix display on the back of the car, takes text on{' '}
+                <code style={{ fontFamily: NB.monoFont }}>/led_matrix/command</code>.</>,
+              <><strong>lakibeam1</strong>: the Lakibeam scanner over UDP, publishes{' '}
                 <code style={{ fontFamily: NB.monoFont }}>/scan</code>.</>,
             ]}
           />

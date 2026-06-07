@@ -113,18 +113,23 @@ export default function LidarEmptyScanPage() {
               still get zeros, the data path is broken further up.
             </p>
 
-            <Code lang="bash">{`# 1. Is the bringup unit up?
+            <Code lang="bash">{`# 1. Is the teleop driver running?
 ssh racecar@neoracer
-systemctl is-active neoracer-lidar    # active
+racecar status              # shows running nodes + /dev/osrbot_* symlinks
+ros2 topic list             # should include /scan
 
-# 2. If "inactive" or "failed", read the logs.
-journalctl -u neoracer-lidar -n 30 --no-pager
+# 2. Can you reach the Lakibeam over the lidar subnet?
+ping -c 3 192.168.8.2        # the sensor sits at .2, host at .1
 
-# 3. Force a restart.
-sudo systemctl restart neoracer-lidar
+# 3. If the ping fails, the USB-C lidar link is down.
+ip a | grep 192.168.8        # there should be a usb* interface at .1
+racecar setup networking     # rebuilds AP + Ethernet + lidar subnet
 
-# 4. Confirm the topic publishes again.
-ros2 topic hz /scan                    # ~30 Hz expected`}</Code>
+# 4. If the ping succeeds, restart the teleop launch.
+racecar teleop               # bring the whole stack back up
+
+# 5. Confirm the topic publishes again.
+ros2 topic hz /scan          # the rate the Lakibeam is configured for`}</Code>
           </div>
         </section>
       </ScrollReveal>
@@ -149,31 +154,34 @@ ros2 topic hz /scan                    # ~30 Hz expected`}</Code>
             >
               <NumberedFeatureCard
                 n={1}
-                title="Driver crashed"
-                lede="The systemd unit is down."
+                title="Lakibeam unreachable"
+                lede="ping 192.168.8.2 fails."
                 body={
                   <>
-                    The most common one. A bad firmware build or an OS update
-                    can leave the driver in a failed state.{' '}
-                    <code style={{ fontFamily: NB.monoFont }}>systemctl restart neoracer-lidar</code>{' '}
-                    brings it back nine times out of ten.
+                    The Lakibeam is a UDP sensor on its own subnet. If the host
+                    side (the <code style={{ fontFamily: NB.monoFont }}>usb*</code> interface
+                    at <code style={{ fontFamily: NB.monoFont }}>192.168.8.1</code>) is
+                    down, the driver gets no packets and{' '}
+                    <code style={{ fontFamily: NB.monoFont }}>/scan</code> stays
+                    empty. <code style={{ fontFamily: NB.monoFont }}>racecar setup networking</code>{' '}
+                    re-lays the subnet.
                   </>
                 }
-                codeChip="systemctl restart neoracer-lidar"
+                codeChip="ping 192.168.8.2"
               />
               <NumberedFeatureCard
                 n={2}
-                title="Loose connector"
-                lede="The cable from the scanner to the carrier board."
+                title="Loose USB-C connector"
+                lede="The link between the sensor and the carrier board."
                 body={
                   <>
-                    The connector under the LiDAR is small and easy to vibrate
-                    loose after a hard crash, so reseating both ends is the first
-                    thing worth trying. A driver restart afterward clears the
-                    stale state.
+                    The USB-C link is small and easy to vibrate loose after a
+                    hard crash. Reseat both ends, then re-run{' '}
+                    <code style={{ fontFamily: NB.monoFont }}>racecar teleop</code>{' '}
+                    so the lakibeam1 node sees the sensor again.
                   </>
                 }
-                codeChip="reseat both ends · restart"
+                codeChip="reseat USB-C · racecar teleop"
               />
               <NumberedFeatureCard
                 n={3}
@@ -217,8 +225,9 @@ ros2 topic echo /scan --once \\
             support@neobotics.org
           </a>{' '}
           with the output of{' '}
-          <code style={{ fontFamily: NB.monoFont }}>journalctl -u neoracer-lidar -n 60</code>{' '}
-          and your order number lets us send a replacement. The spinning
+          <code style={{ fontFamily: NB.monoFont }}>racecar status</code>,{' '}
+          <code style={{ fontFamily: NB.monoFont }}>ping 192.168.8.2</code>, and your order
+          number lets us send a replacement. The spinning
           head is calibrated at the factory, so it's easier for everyone if we
           handle the swap rather than have you open the unit at home.
         </Callout>

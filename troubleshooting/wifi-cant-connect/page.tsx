@@ -50,7 +50,7 @@ export default function WifiCantConnectPage() {
             }}
           >
             The car is its own access point. It broadcasts a network named{' '}
-            <code style={{ fontFamily: NB.monoFont }}>neoracer_[Car ID]</code> that you
+            <code style={{ fontFamily: NB.monoFont }}>neoracer-[Car ID]</code> that you
             join from your laptop, then reach the car at{' '}
             <code style={{ fontFamily: NB.monoFont }}>racecar@neoracer</code>. When that
             fails it's almost always one of three things, and there's a wired
@@ -71,7 +71,7 @@ export default function WifiCantConnectPage() {
       <SymptomBanner
         seeing={
           <>
-            The <code style={{ fontFamily: NB.monoFont }}>neoracer_[Car ID]</code>{' '}
+            The <code style={{ fontFamily: NB.monoFont }}>neoracer-[Car ID]</code>{' '}
             network never shows up in your Wi-Fi list, joining it fails, or{' '}
             <code style={{ fontFamily: NB.monoFont }}>ssh racecar@neoracer</code>{' '}
             hangs once you're on it.
@@ -79,7 +79,7 @@ export default function WifiCantConnectPage() {
         }
         expected={
           <>
-            You join <code style={{ fontFamily: NB.monoFont }}>neoracer_[Car ID]</code>{' '}
+            You join <code style={{ fontFamily: NB.monoFont }}>neoracer-[Car ID]</code>{' '}
             with password <code style={{ fontFamily: NB.monoFont }}>neobotics</code>,
             then{' '}
             <InfoNote term="SSH" title="SSH">A way to log into another computer's command line over the network. You type commands on your laptop and they run on the car.</InfoNote>{' '}
@@ -116,7 +116,7 @@ export default function WifiCantConnectPage() {
           </p>
 
           <Code lang="bash">{`# Test 1: is the car broadcasting and did you join it?
-# Look for "neoracer_[Car ID]" in your Wi-Fi list (Car 1 = neoracer_1)
+# Look for "neoracer-[Car ID]" in your Wi-Fi list (Car 1 = neoracer-1)
 # and join it with password "neobotics".
 
 # Test 2: once joined, can you reach the car's static IP?
@@ -150,18 +150,18 @@ ping 192.168.1.101
             <NumberedFeatureCard
               n={1}
               title="Can't see or join the Wi-Fi"
-              lede="The neoracer_[Car ID] network never appears."
+              lede="The neoracer-[Car ID] network never appears."
               body={
                 <>
                   The car broadcasts its own access point only once it's powered
                   and booted, which takes a minute or so. If{' '}
-                  <code style={{ fontFamily: NB.monoFont }}>neoracer_[Car ID]</code> still
+                  <code style={{ fontFamily: NB.monoFont }}>neoracer-[Car ID]</code> still
                   isn't in your Wi-Fi list after that, confirm the car is on, then
                   re-scan. Join it with password{' '}
                   <code style={{ fontFamily: NB.monoFont }}>neobotics</code>.
                 </>
               }
-              codeChip="ssid: neoracer_1 · pw: neobotics"
+              codeChip="ssid: neoracer-1 · pw: neobotics"
             />
             <NumberedFeatureCard
               n={2}
@@ -185,7 +185,7 @@ ping 192.168.1.101
               body={
                 <>
                   The <InfoNote term="SSID" title="SSID">The name of a Wi-Fi network, the text you pick from the list when joining. Here it is neoracer_N.</InfoNote> and the IP both encode the Car ID, so they have to
-                  match. If you joined <code style={{ fontFamily: NB.monoFont }}>neoracer_2</code>{' '}
+                  match. If you joined <code style={{ fontFamily: NB.monoFont }}>neoracer-2</code>{' '}
                   but ping <code style={{ fontFamily: NB.monoFont }}>192.168.1.101</code>,
                   nothing answers. Use the ID printed on the car: SSID{' '}
                   <code style={{ fontFamily: NB.monoFont }}>neoracer_N</code>, IP{' '}

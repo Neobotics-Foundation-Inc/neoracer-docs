@@ -48,9 +48,10 @@ export default function CameraNoFeedPage() {
                 maxWidth: 680,
               }}
             >
-              Either the camera_node didn't start, the ribbon cable is loose,
-              or the lens has a sticker on it. Three checks, in the order the
-              data takes to reach your code.
+              Either the camera node didn't start, the USB cable is loose,
+              or the webcam doesn't advertise the MJPG format the driver
+              expects. Three checks, in the order the data takes to reach
+              your code.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="red">
@@ -93,16 +94,20 @@ export default function CameraNoFeedPage() {
             <DisplayHeading size="lg">
               IS THE NODE <Red>RUNNING?</Red>
             </DisplayHeading>
-            <Code lang="bash">{`# 1. Is the camera service alive?
+            <Code lang="bash">{`# 1. Is the teleop driver running?
 ssh racecar@neoracer
-systemctl is-active neoracer-camera   # active
+racecar status                                       # shows running nodes
+ros2 topic list | grep camera                        # /camera should be there
 
-# 2. If "inactive" or "failed":
-journalctl -u neoracer-camera -n 30 --no-pager
-sudo systemctl restart neoracer-camera
+# 2. Does the kernel see the webcam, and does it advertise MJPG?
+ls -l /dev/osrbot_usb_cam                            # udev symlink
+v4l2-ctl --list-formats-ext -d /dev/osrbot_usb_cam   # MJPG format must appear
 
-# 3. Confirm the topic publishes.
-ros2 topic hz /camera                 # ~30 Hz expected at default settings`}</Code>
+# 3. If teleop is up but /camera publishes nothing, bring the stack back up.
+racecar teleop
+
+# 4. Confirm the topic publishes.
+ros2 topic hz /camera`}</Code>
           </div>
         </section>
       </ScrollReveal>

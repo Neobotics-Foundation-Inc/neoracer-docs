@@ -16,7 +16,7 @@ import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 export const metadata: Metadata = {
   title: 'Compatibility matrix · Reference · NeoRacer Docs',
   description:
-    'What the NeoRacer is built on and interoperates with: Jetson Orin Nano, Ubuntu 22.04, ROS 2 Humble, the racecar_neo teaching driver, the osracer autonomy stack, the LakiBeam1 LiDAR, and the F1TENTH ecosystem.',
+    'What the NeoRacer is built on and interoperates with: Jetson Orin Nano on JetPack 6.2, Ubuntu 22.04.5 LTS, ROS 2 Humble, the neoracer_ros2_driver, the osracer autonomy stack, the Richbeam LakiBeam1 LiDAR, and the F1TENTH ecosystem.',
 };
 
 const PLATFORM_COLUMNS = [
@@ -29,12 +29,17 @@ const PLATFORM_ROWS = [
   {
     layer: 'Compute',
     value: 'NVIDIA Jetson Orin Nano',
-    notes: 'The onboard MCU (microcontroller unit) handles low-level signals, while the Jetson Orin Nano runs the stack and delivers 67 TOPS for perception and planning.',
+    notes: 'The OSCORE ESP32-S3 handles the real-time motor, servo, IMU, and Flysky RC loops, while the Jetson Orin Nano runs the stack and delivers 67 TOPS for perception and planning.',
+  },
+  {
+    layer: 'NVIDIA SDK',
+    value: 'JetPack 6.2',
+    notes: 'The Linux kernel, GPU drivers, CUDA, and the AI runtime that come pre-flashed on the Jetson. Re-flashing follows Seeed\'s JetPack guide for the reComputer J4012.',
   },
   {
     layer: 'Operating system',
-    value: 'Ubuntu 22.04 LTS',
-    notes: 'The long-term support release ROS 2 Humble is built and tested against, so packages from the wider ecosystem install without surprises.',
+    value: 'Ubuntu 22.04.5 LTS (jammy)',
+    notes: 'The long-term support release ROS 2 Humble is built and tested against, so packages from the wider ecosystem install without surprises. Python 3.10.12.',
   },
   {
     layer: 'Middleware',
@@ -42,14 +47,19 @@ const PLATFORM_ROWS = [
     notes: 'The robotics layer every topic, node, and message on the car is published through. Code you write against Humble targets standard ROS 2 interfaces.',
   },
   {
-    layer: 'Teaching driver',
-    value: 'racecar_neo',
-    notes: 'The MIT teaching driver the rc.* API sits on. It wraps the sensor and drive topics so a first program is a few lines of Python rather than a node graph.',
+    layer: 'NeoRacer driver',
+    value: 'neoracer_ros2_driver 0.1.0',
+    notes: 'The ROS 2 backend that ships on every NeoRacer. Migrated from the MIT RACECAR Neo driver, retargeted for the OSCORE ESP32, the Lakibeam over UDP, and a USB MJPG camera. GPLv3.',
+  },
+  {
+    layer: 'Student library',
+    value: 'racecar-neo-library',
+    notes: 'The Python module student code is written against. The rc.* namespace it exposes is identical on the browser sim and the physical car, and it consumes the topic contract above.',
   },
   {
     layer: 'Autonomy stack',
     value: 'osracer',
-    notes: 'The general ROS 2 autonomy stack: SLAM through gmapping or Cartographer, and navigation through Nav2. It runs alongside racecar_neo or on its own.',
+    notes: 'The general ROS 2 autonomy stack: SLAM through gmapping or Cartographer, and navigation through Nav2. Runs alongside the driver or on its own.',
   },
 ];
 

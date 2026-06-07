@@ -60,8 +60,9 @@ export default function OsAndImagePage() {
                 maxWidth: 680,
               }}
             >
-              Every NeoRacer ships with an SD card that boots straight to a tuned
-              Ubuntu 22.04, ROS 2 Humble, and JupyterLab running as a{' '}
+              Every NeoRacer ships with a card that boots straight to JetPack 6.2,
+              Ubuntu 22.04.5 LTS, Python 3.10.12, ROS 2 Humble, and JupyterLab
+              running as a{' '}
               <InfoNote term="systemd service" title="systemd service">
                 A background program that Linux starts and supervises automatically. Running JupyterLab this way means it comes up on its own at boot and restarts if it crashes.
               </InfoNote>. So you can power on, SSH in, install the{' '}
@@ -71,12 +72,11 @@ export default function OsAndImagePage() {
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="red">Pre-flashed at the factory</ChromeBadge>
-              <ChromeBadge variant="outline">Ubuntu 22.04 LTS</ChromeBadge>
+              <ChromeBadge variant="outline">JetPack 6.2</ChromeBadge>
+              <ChromeBadge variant="outline">Ubuntu 22.04.5 LTS</ChromeBadge>
               <ChromeBadge variant="outline">ROS 2 Humble</ChromeBadge>
+              <ChromeBadge variant="outline">Python 3.10.12</ChromeBadge>
               <ChromeBadge variant="outline">Jetson Orin Nano</ChromeBadge>
-              <ChromeBadge variant="outline">
-                <AnimatedNumeral value={30} prefix="~" suffix=" s cold boot" />
-              </ChromeBadge>
             </div>
           </div>
         </section>
@@ -138,38 +138,41 @@ export default function OsAndImagePage() {
             }}
           >
             <div style={{ color: NB.neoboticsRed, fontWeight: 700, marginBottom: 10 }}>
-              // systemctl is-active jupyterlab
+              // systemctl is-active neoracer-jupyter
             </div>
-            jupyterlab.service
+            neoracer-jupyter.service
             <span style={{ color: NB.textDimBlue }}>&nbsp;&nbsp;# headless JupyterLab on :8888, auto-start</span>
             <br />
             <br />
             <div style={{ color: NB.neoboticsRed, fontWeight: 700, marginBottom: 10 }}>
               // then bring up the robot yourself
             </div>
-            ros2 launch neoracer_ros2_driver teleop.launch.py
-            <span style={{ color: NB.textDimBlue }}>&nbsp;&nbsp;# aliased as: teleop</span>
+            racecar teleop
+            <span style={{ color: NB.textDimBlue }}>&nbsp;&nbsp;# wraps: ros2 launch neoracer_ros2_driver teleop.launch.py</span>
             <br />
-            <span style={{ color: NB.textDimBlue }}>&nbsp;&nbsp;# starts controller_node, joy_node, camera_node, LiDAR</span>
+            <span style={{ color: NB.textDimBlue }}>&nbsp;&nbsp;# brings up controller, gamepad_node, mux_node,</span>
+            <br />
+            <span style={{ color: NB.textDimBlue }}>&nbsp;&nbsp;# throttle_node, camera, led_matrix, lakibeam1</span>
           </div>
 
           <DashList
             items={[
               <>
-                <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>teleop</code> starts the
-                ESP32 <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>controller_node</code> (publishes /imu and /odom, drives motors from /drive),
-                <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>joy_node</code>, <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>camera_node</code>, and the LakiBeam{' '}
+                <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>racecar teleop</code> brings up the full driver stack: the{' '}
+                <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>controller</code> node owns the ESP32 serial link (publishes /imu, /odom, /joy and subscribes to /motor), plus{' '}
+                <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>gamepad_node</code>, <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>mux_node</code>, <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>throttle_node</code>, <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>camera</code>, <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>led_matrix</code>, and the Lakibeam{' '}
                 <InfoNote term="LiDAR" title="LiDAR">
                   A sensor that sweeps a laser around the car and measures how long each pulse takes to bounce back, giving a ring of distance readings it uses to map walls and obstacles.
                 </InfoNote>.
               </>,
               <>
-                JupyterLab logs route through <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>journalctl -u jupyterlab -f</code>
-                , so there's no separate log directory to keep track of.
+                The watchdog supervises every node and restarts a dead one. The web dashboard at{' '}
+                <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>http://neoracer.local:8080</code>{' '}
+                shows per-node liveness, topic rates, and Jetson temperature.
               </>,
               <>
-                The image is built reproducibly. <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>/etc/neoracer-image-version</code>
-                {' '}tells you exactly what shipped on your card.
+                JupyterLab logs route through{' '}
+                <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>journalctl -u neoracer-jupyter -f</code>, no separate log directory to track.
               </>,
             ]}
           />
@@ -295,15 +298,15 @@ sha256sum neoracer-os-latest.img.xz
             <NumberedFeatureCard
               n={4}
               title="Wi-Fi access point"
-              lede="neoracer_[Car ID]"
+              lede="neoracer-[Car ID]"
               body={
                 <>
                   The car is its own access point. Join its network from your
-                  laptop (Car 1 broadcasts neoracer_1), then SSH in or open
+                  laptop (Car 1 broadcasts neoracer-1), then SSH in or open
                   JupyterLab. See <a href="/docs/software/networking" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Networking</a>.
                 </>
               }
-              codeChip="ssid: neoracer_1 · pw: neobotics"
+              codeChip="ssid: neoracer-1 · pw: neobotics"
             />
           </div>
         </div>
@@ -314,7 +317,7 @@ sha256sum neoracer-os-latest.img.xz
       <ScrollReveal>
         <Fig
           label="FIG. C / FINDING THE CAR ON THE NETWORK"
-          caption="The car is its own Wi-Fi access point. Join neoracer_[Car ID] (password neobotics), then reach it at its static IP 192.168.1.[100 + Car ID], hostname neoracer. Car 1 is 192.168.1.101."
+          caption="The car is its own Wi-Fi access point. Join neoracer-[Car ID] (password neobotics), then reach it at its static IP 192.168.1.[100 + Car ID], hostname neoracer. Car 1 is 192.168.1.101."
         >
           <NetworkDiscoveryDiagram />
         </Fig>
@@ -330,7 +333,7 @@ sha256sum neoracer-os-latest.img.xz
             SSH IN AND <Red>VERIFY.</Red>
           </DisplayHeading>
 
-          <Code lang="bash">{`# 1. Confirm you're in (after joining the car's neoracer_[Car ID] network).
+          <Code lang="bash">{`# 1. Confirm you're in (after joining the car's neoracer-[Car ID] network).
 ssh racecar@neoracer                     # or: ssh racecar@192.168.1.101
 # racecar@neoracer:~$
 

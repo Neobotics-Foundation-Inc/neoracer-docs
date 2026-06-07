@@ -101,7 +101,7 @@ const TERMS: Term[] = [
   {
     term: 'Static IP',
     short: 'Fixed access address',
-    def: 'The car is its own Wi-Fi access point, broadcasting the network neoracer_[Car ID] (password neobotics). Once you join it, the car answers at the fixed address 192.168.1.[100 + Car ID] (Car 1 = 192.168.1.101), hostname neoracer, as user racecar. There is no DNS server and no name to resolve.',
+    def: 'The car is its own Wi-Fi access point, broadcasting the network neoracer-[Car ID] (password neobotics). Once you join it, the car answers at the fixed address 192.168.1.[100 + Car ID] (Car 1 = 192.168.1.101), hostname neoracer, as user racecar. There is no DNS server and no name to resolve.',
     see: { label: "Wi-Fi can't connect", href: '/docs/troubleshooting/wifi-cant-connect' },
   },
   {
@@ -111,7 +111,7 @@ const TERMS: Term[] = [
   },
   {
     term: 'Motor trim',
-    def: 'The calibrated PWM value that produces no movement at zero speed. Without it, set_speed_angle(0, 0) creeps.',
+    def: 'In practice, the top-speed cap (max_speed_mps + max_forward) you set in the driver YAML so set_speed_angle scales to a speed you chose. The motor neutral itself lives in the ESP32 firmware, so a creep at zero is usually the ESC neutral or drivetrain drag, not a value you tune here.',
     see: { label: 'Motor trim', href: '/docs/calibration/motor-trim' },
   },
   {
@@ -140,7 +140,7 @@ const TERMS: Term[] = [
   },
   {
     term: 'Servo center',
-    def: 'The calibrated PWM that points the front wheels dead ahead. Pinned per car because the steering linkage has a few hundredths of a degree of slop.',
+    def: 'A few degrees of trim, set as steering_trim_deg in config/controller.yaml, that points the front wheels dead ahead when your steering command is zero. Pinned per car because the steering linkage has a little slop.',
     see: { label: 'Servo center', href: '/docs/calibration/servo-center' },
   },
   {
@@ -155,7 +155,34 @@ const TERMS: Term[] = [
   },
   {
     term: 'Watchdog',
-    def: 'A safety timer on the MCU. If no drive command arrives within ~150 ms, it cuts power. Crashed Python scripts can\'t leave the car running into a wall.',
+    def: 'A node supervisor in the driver. It tracks every node teleop brings up (controller, throttle, mux, gamepad, lidar, camera), restarts a dead one, and flags /imu or /scan if they go stale. The web dashboard at http://neoracer.local:8080 surfaces what it sees.',
+  },
+  {
+    term: 'OSCORE',
+    def: 'The custom Neobotics board in the chassis. ESP32-S3 robot controller that takes the LiPo in, fans out 5 V and 3.3 V rails, reads the onboard IMU, and runs the ESC + servo PWM. It is the board the driver talks to over USB-CDC.',
+    see: { label: 'OSCORE board', href: '/docs/hardware/oscore-board' },
+  },
+  {
+    term: 'OSRbot',
+    def: 'The Seeed Studio robot platform the NeoRacer chassis builds on, and the name the udev rules pin to. The Jetson sees the OSCORE board as /dev/osrbot_base, the USB webcam as /dev/osrbot_usb_cam, and the dot-matrix display as /dev/osrbot_led_matrix.',
+  },
+  {
+    term: 'Lakibeam',
+    def: 'The Richbeam LakiBeam1, the 2D lidar mounted up front. It talks to the Jetson as a UDP sensor on its own subnet (host 192.168.8.1, sensor 192.168.8.2), and the lakibeam1 node publishes scans to /scan.',
+    see: { label: 'LiDAR', href: '/docs/hardware/sensors/lidar' },
+  },
+  {
+    term: 'JetPack',
+    def: 'NVIDIA\'s software bundle for the Jetson family (Linux kernel, drivers, CUDA, the AI runtime). The NeoRacer image ships JetPack 6.2 on Ubuntu 22.04.5 with ROS 2 Humble on top.',
+    see: { label: 'OS & image', href: '/docs/software/os-and-image' },
+  },
+  {
+    term: 'Mux (arbiter)',
+    def: 'The mux_node in the driver, the arbiter that decides whether the autonomy channel (/drive) or the teleop channel (/gamepad_drive) reaches the motor. The Flysky switch arms manual or autonomy; mux only forwards when one of the two modes is armed.',
+  },
+  {
+    term: 'racecar (tool)',
+    def: 'A shell wrapper the driver installs into the racecar user\'s bashrc. Common entry points: racecar teleop (full stack), racecar status (USB symlinks + running nodes), racecar setup networking (AP + Ethernet + lidar subnet), racecar service install/start, racecar selftest.',
   },
 ];
 

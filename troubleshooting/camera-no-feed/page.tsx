@@ -92,7 +92,7 @@ export default function CameraNoFeedPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>01 / IS THE NODE EVEN UP?</Eyebrow>
             <DisplayHeading size="lg">
-              IS THE NODE <Red>RUNNING?</Red>
+              NODE <Red>STATUS.</Red>
             </DisplayHeading>
             <Code lang="bash">{`# 1. Is the teleop driver running?
 ssh racecar@neoracer
@@ -137,7 +137,7 @@ ros2 topic hz /camera`}</Code>
                 body={
                   <>
                     The factory applies a clear protective film to the lens,
-                    and it is the quickest thing to rule out, so it is worth a
+                    and it's the quickest thing to rule out, so it's worth a
                     peek before anything else. A frame that's uniformly dim but
                     not pure black is usually this.
                   </>

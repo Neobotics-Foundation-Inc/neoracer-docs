@@ -80,7 +80,7 @@ export default function LidarEmptyScanPage() {
               <InfoNote term="coordinate frame" title="Coordinate frame">
                 The reference point and axes that a sensor's measurements are
                 relative to. The LiDAR reports distances from its own frame, so
-                you need to know where that frame sits on the car to place a
+                once you know where that frame sits on the car, you can place a
                 detected wall in the world.
               </InfoNote>{' '}
               and sample layout are on the{' '}

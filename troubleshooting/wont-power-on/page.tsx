@@ -38,7 +38,7 @@ export default function WontPowerOnPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>TROUBLESHOOTING / POWER</Eyebrow>
             <DisplayHeading size="xl">
-              WON'T <Red>POWER ON.</Red>
+              WON'T POWER <Red>ON.</Red>
             </DisplayHeading>
             <p
               style={{

@@ -8,36 +8,29 @@ import {
   Red,
   GhostNumeral,
   TickMargin,
-  MonoLabel,
-  NumberedFeatureCard,
   ChromeBadge,
   DashList,
 } from '@/components/docs/Editorial';
 import {
-  DataFlowDiagram,
-  FirstHourTimeline,
-  Icons,
-} from '@/components/docs/Diagrams';
-import {
   ScrollReveal,
-  MouseFollowGlow,
+  AnimatedDataFlowDiagram,
 } from '@/components/docs/Interactive';
 import IntentHoverCard from '@/components/docs/IntentHoverCard';
-import TopicHoverCard from '@/components/docs/TopicHoverCard';
 import PopularRow from '@/components/docs/PopularRow';
+import PitLaneNav, { PitLaneSection } from '@/components/docs/PitLaneNav';
 
 export const metadata: Metadata = {
-  title: 'NeoRacer Docs, Build, race, teach.',
+  title: 'NeoRacer Docs, from sealed box to autonomous lap',
   description:
-    'Comprehensive documentation for the NeoRacer V1 autonomous racing kit. Sequential learning paths for students and educators, plus a complete API and ROS 2 reference for researchers.',
+    'Documentation for the NeoRacer V1 autonomous racing kit. A five-page getting started path, plus the full Python API and ROS 2 reference for researchers.',
 };
 
 /* ─────────────────────────────────────────────────────────────────────────
  * /docs landing page
  *
- * Editorial layout heavily inspired by the NeoRacer reference diagrams:
- * massive Kernel headlines, ghost numerals behind sections, tick-mark
- * margins, FIG-labelled diagrams, numbered feature cards.
+ * Editorial layout: massive Kernel headlines, ghost numerals, tick-mark
+ * margins, FIG-labelled diagrams. The section nav is staged as a pit lane
+ * with the CarSprite parking in front of wherever the reader is headed.
  * ─────────────────────────────────────────────────────────────────────── */
 
 const intentCards: {
@@ -50,18 +43,18 @@ const intentCards: {
   variant: 'red' | 'blue';
 }[] = [
   {
-    badge: 'For students',
-    title: 'Box → first lap',
-    body: 'Five short pages and you\'re driving. Unbox, charge, pair, drive, write your first Python.',
+    badge: 'Just unboxed?',
+    title: 'Getting started',
+    body: "Five short pages and you're driving. Unbox, charge, install the driver, first drive, first program.",
     href: '/docs/getting-started/unbox',
     accent: NB.neoboticsRed,
-    pad: '60 minutes',
+    pad: '5 pages',
     variant: 'red',
   },
   {
-    badge: 'For researchers',
+    badge: 'Know what you need?',
     title: 'Python + ROS 2 reference',
-    body: 'The full racecar-neo-library API, every ROS 2 topic, and the F1TENTH parity matrix, all laid out so you can go straight to what you need.',
+    body: 'The full racecar-neo-library API, every ROS 2 topic, and the F1TENTH parity matrix.',
     href: '/docs/api-reference/python/lidar',
     accent: NB.tarmacBlue,
     pad: 'API · ROS 2',
@@ -69,50 +62,23 @@ const intentCards: {
   },
 ];
 
-const topicGrid = [
-  { label: 'Hardware', href: '/docs/hardware/overview', n: '12 pages' },
-  { label: 'Software', href: '/docs/software/os-and-image', n: '6 pages' },
-  { label: 'API Reference', href: '/docs/api-reference/python/lidar', n: 'Python + ROS 2' },
-  { label: 'Calibration', href: '/docs/calibration/motor-trim', n: '5 cookbooks' },
-  { label: 'Troubleshooting', href: '/docs/troubleshooting/faq', n: 'When things break' },
-  { label: 'Reference', href: '/docs/reference/specifications', n: 'Specs + glossary' },
-];
-
-const buildCards = [
-  {
-    n: 1,
-    title: 'Wall follow',
-    lede: 'A single LiDAR call. A proportional controller. One loop of the corridor.',
-    body: 'Your first hands-on with closed-loop control. Goal: keep 30 cm from the right wall, no collisions.',
-    codeChip: 'rc.lidar.get_average_distance(scan, 90, 8)',
-  },
-  {
-    n: 2,
-    title: 'Lane keeping',
-    lede: 'Camera + colour threshold + steering. The same loop F1 teams run.',
-    body: 'Move from LiDAR to vision. Find a coloured tape line in the frame and steer to keep it centred.',
-    codeChip: 'cv2.findContours(mask, RETR_EXTERNAL, …)',
-  },
-  {
-    n: 3,
-    title: 'Gap follower',
-    lede: 'Find the largest free arc in the LiDAR scan and aim for it.',
-    body: 'No prior map needed. Works in arbitrary corridors. Foundation algorithm of the F1TENTH community.',
-    codeChip: 'biggest_gap(scan, threshold=2.0)',
-  },
-  {
-    n: 4,
-    title: 'End-to-end RL',
-    lede: 'PPO in the Playground sim, deploy unchanged to the car.',
-    body: 'When you\'re ready to push further, you can train a neural network policy in the browser sim and run it on the car with the same Python API.',
-    codeChip: 'policy.forward(obs).action',
-  },
+/* Bay order mirrors the sidebar. Counts are the real page counts in nav.ts;
+   update both together when a page ships. */
+const pitLane: PitLaneSection[] = [
+  { title: 'Getting Started', href: '/docs/getting-started/unbox', pages: 5 },
+  { title: 'Hardware', href: '/docs/hardware/overview', pages: 13 },
+  { title: 'Build', href: '/docs/build/overview', pages: 1 },
+  { title: 'Software', href: '/docs/software/os-and-image', pages: 6 },
+  { title: 'API Reference', href: '/docs/api-reference/python/drive', pages: 9 },
+  { title: 'Calibration', href: '/docs/calibration/motor-trim', pages: 5 },
+  { title: 'Troubleshooting', href: '/docs/troubleshooting/faq', pages: 6 },
+  { title: 'Reference', href: '/docs/reference/specifications', pages: 4 },
 ];
 
 const popular = [
-  { label: "Why is my LiDAR scan empty?", href: '/docs/troubleshooting/lidar-empty-scan' },
+  { label: 'Why is my LiDAR scan empty?', href: '/docs/troubleshooting/lidar-empty-scan' },
   { label: 'Motor trim, fix creep at zero speed', href: '/docs/calibration/motor-trim' },
-  { label: 'Recording a ROS 2 bag for replay', href: '/docs/software/telemetry-and-logs' },
+  { label: "Connecting to the car's Wi-Fi", href: '/docs/software/networking' },
   { label: 'Installing the ROS 2 driver', href: '/docs/getting-started/install-driver' },
 ];
 
@@ -120,9 +86,8 @@ export default function DocsLandingPage() {
   return (
     <DocsShell>
       {/* ── Section 1 · HERO ───────────────────────────────────────────── */}
-      <MouseFollowGlow>
-        <section style={{ position: 'relative', paddingTop: 8, paddingBottom: 56 }}>
-          <GhostNumeral n="01" top={-30} right={-30} size={460} />
+      <section style={{ position: 'relative', paddingTop: 8, paddingBottom: 44 }}>
+        <GhostNumeral n="01" top={-30} right={-30} size={460} />
         <div style={{ position: 'relative', zIndex: 1 }}>
           <TickMargin count={10} />
           <Link
@@ -156,424 +121,421 @@ export default function DocsLandingPage() {
               fontSize: 19,
               lineHeight: 1.55,
               color: NB.textMutedBeige,
-              maxWidth: 640,
+              maxWidth: 660,
               marginBottom: 8,
             }}
           >
-            Everything you need to take a NeoRacer from a sealed box to a full
-            autonomous lap, and everything you need to teach the next thirty
-            students how to do the same.
+            Your NeoRacer arrives fully built, so these pages skip the
+            screwdriver and go straight to making it drive itself. The Getting
+            Started path takes you from a sealed box to a first autonomous lap,
+            and once you are racing it stays open as the full Python and ROS 2
+            reference, deep enough to teach the next thirty students how to do
+            the same.
           </p>
         </div>
-        </section>
-      </MouseFollowGlow>
+      </section>
 
       {/* ── Section 2 · INTENT CARDS ──────────────────────────────────── */}
       <ScrollReveal>
-        <section style={{ position: 'relative', paddingBottom: 72 }}>
+        <section style={{ position: 'relative', paddingBottom: 64 }}>
           <Eyebrow>WHERE WILL YOU GO FIRST?</Eyebrow>
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-            gap: 18,
-            marginTop: 6,
-          }}
-        >
-          {intentCards.map((c) => (
-            <IntentHoverCard
-              key={c.title}
-              badge={c.badge}
-              title={c.title}
-              body={c.body}
-              href={c.href}
-              pad={c.pad}
-              accent={c.accent}
-              variant={c.variant}
-            />
-          ))}
-        </div>
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+              gap: 18,
+              marginTop: 6,
+            }}
+          >
+            {intentCards.map((c) => (
+              <IntentHoverCard
+                key={c.title}
+                badge={c.badge}
+                title={c.title}
+                body={c.body}
+                href={c.href}
+                pad={c.pad}
+                accent={c.accent}
+                variant={c.variant}
+              />
+            ))}
+          </div>
         </section>
       </ScrollReveal>
 
-      {/* ── Section 3 · FIG. A, DATA FLOW ────────────────────────────── */}
+      {/* ── Section 3 · THE PIT LANE ──────────────────────────────────── */}
       <ScrollReveal>
-        <section style={{ position: 'relative', paddingBottom: 72 }}>
-          <GhostNumeral n="A" top={-40} right={-20} size={420} />
-        <div style={{ position: 'relative', zIndex: 1 }}>
-          <Eyebrow>01 / HARDWARE → SOFTWARE → HARDWARE</Eyebrow>
-          <DisplayHeading size="lg">
-            THE DATA <Red>FLOW</Red>
-          </DisplayHeading>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 32, alignItems: 'start' }}>
+        <section style={{ position: 'relative', paddingBottom: 64 }}>
+          <GhostNumeral n="02" top={-40} right={-20} size={400} />
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <Eyebrow>01 / EIGHT SECTIONS</Eyebrow>
+            <DisplayHeading size="lg">
+              THE PIT <Red>LANE.</Red>
+            </DisplayHeading>
             <p
               style={{
                 fontFamily: NB.bodyFont,
                 fontSize: 16,
-                lineHeight: 1.7,
+                lineHeight: 1.6,
                 color: NB.textMutedBeige,
+                maxWidth: 680,
+                marginBottom: 18,
               }}
             >
-              Every NeoRacer behaviour, from a teleop drive to a full racing
-              stack, is the same shape: sensors publish, your code subscribes,
-              your code publishes, actuators subscribe. ROS 2 just provides the
-              cables.
+              Every section of the docs has a bay, and the car pulls up to
+              whichever one you are about to open.
             </p>
-            <DashList
-              items={[
-                <>Each part of the car runs as a separate program, ROS 2 calls these <strong>nodes</strong>.</>,
-                <>Nodes don't call each other directly.</>,
-                <>They publish on named channels (<strong>topics</strong>). Anyone listening picks them up.</>,
-                <>NeoRacer's teleop starts <strong>four nodes</strong>.</>,
-              ]}
-            />
-          </div>
-          <div style={{ marginTop: 24, position: 'relative' }}>
-            <div
+            <PitLaneNav sections={pitLane} />
+            <Link
+              href="/docs/legal/warranty"
               style={{
-                position: 'relative',
-                border: `1px solid ${NB.tarmacBlue}`,
-                borderRadius: 16,
-                padding: '40px 22px 28px',
-                background: NB.beige,
-                boxShadow: NB.shadowCard,
+                display: 'inline-block',
+                marginTop: 14,
+                fontFamily: NB.monoFont,
+                fontSize: 11,
+                fontWeight: 700,
+                letterSpacing: '0.14em',
+                textTransform: 'uppercase',
+                color: NB.textMutedBeige,
+                textDecoration: 'none',
               }}
             >
-              <div
+              Legal · 5 pages →
+            </Link>
+          </div>
+        </section>
+      </ScrollReveal>
+
+      {/* ── Section 4 · FIG. A, DATA FLOW ────────────────────────────── */}
+      <ScrollReveal>
+        <section style={{ position: 'relative', paddingBottom: 64 }}>
+          <GhostNumeral n="A" top={-40} right={-20} size={420} />
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <Eyebrow>02 / HARDWARE → SOFTWARE → HARDWARE</Eyebrow>
+            <DisplayHeading size="lg">
+              THE DATA <Red>FLOW.</Red>
+            </DisplayHeading>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 32, alignItems: 'start' }}>
+              <p
                 style={{
-                  position: 'absolute',
-                  top: -14,
-                  left: 24,
-                  background: NB.tarmacBlue,
-                  color: NB.haloWhite,
-                  fontFamily: NB.monoFont,
-                  fontSize: 11,
-                  fontWeight: 700,
-                  letterSpacing: '0.14em',
-                  padding: '5px 12px',
-                  borderRadius: 4,
-                  textTransform: 'uppercase',
+                  fontFamily: NB.bodyFont,
+                  fontSize: 16,
+                  lineHeight: 1.7,
+                  color: NB.textMutedBeige,
                 }}
               >
-                FIG. A / DATA FLOW, HARDWARE TO SOFTWARE TO HARDWARE
-              </div>
-              <DataFlowDiagram />
+                Every NeoRacer behaviour, from a teleop drive to a full racing
+                stack, is the same shape: sensors publish, your code subscribes,
+                your code publishes, actuators subscribe. ROS 2 just provides the
+                cables.
+              </p>
+              <DashList
+                items={[
+                  <>Each part of the car runs as a separate program, ROS 2 calls these <strong>nodes</strong>.</>,
+                  <>Nodes don&apos;t call each other directly.</>,
+                  <>They publish on named channels (<strong>topics</strong>). Anyone listening picks them up.</>,
+                  <>NeoRacer&apos;s teleop starts <strong>four nodes</strong>.</>,
+                ]}
+              />
             </div>
-            <figcaption
-              style={{
-                fontFamily: NB.bodyFont,
-                fontStyle: 'italic',
-                fontSize: 13,
-                color: NB.textMutedBeige,
-                marginTop: 12,
-                textAlign: 'center',
-              }}
-            >
-              The four nodes that ship in <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>neoracer-teleop</code>.
-              Your code lives in the red panel.
-            </figcaption>
+            <div style={{ marginTop: 24, position: 'relative' }}>
+              <div
+                style={{
+                  position: 'relative',
+                  border: `1px solid ${NB.tarmacBlue}`,
+                  borderRadius: 16,
+                  padding: '40px 22px 28px',
+                  background: NB.beige,
+                  boxShadow: NB.shadowCard,
+                }}
+              >
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: -14,
+                    left: 24,
+                    background: NB.tarmacBlue,
+                    color: NB.haloWhite,
+                    fontFamily: NB.monoFont,
+                    fontSize: 11,
+                    fontWeight: 700,
+                    letterSpacing: '0.14em',
+                    padding: '5px 12px',
+                    borderRadius: 4,
+                    textTransform: 'uppercase',
+                  }}
+                >
+                  FIG. A / DATA FLOW, HARDWARE TO SOFTWARE TO HARDWARE
+                </div>
+                <AnimatedDataFlowDiagram />
+              </div>
+              <figcaption
+                style={{
+                  fontFamily: NB.bodyFont,
+                  fontStyle: 'italic',
+                  fontSize: 13,
+                  color: NB.textMutedBeige,
+                  marginTop: 12,
+                  textAlign: 'center',
+                }}
+              >
+                The four nodes <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>teleop.launch.py</code> starts
+                once you have built <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>neoracer_ros2_driver</code>.
+                Your code lives in the red panel.
+              </figcaption>
+            </div>
           </div>
-        </div>
         </section>
       </ScrollReveal>
 
-      {/* ── Section 4 · QUICK NAVIGATION ──────────────────────────────── */}
-      <ScrollReveal>
-        <section style={{ position: 'relative', paddingBottom: 72 }}>
-          <Eyebrow>02 / OR BROWSE BY TOPIC</Eyebrow>
-        <DisplayHeading size="lg">
-          BROWSE BY <Red>TOPIC.</Red>
-        </DisplayHeading>
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
-            gap: 12,
-            marginTop: 12,
-          }}
-        >
-          {topicGrid.map((t) => (
-            <TopicHoverCard key={t.label} label={t.label} href={t.href} meta={t.n} />
-          ))}
-        </div>
-        </section>
-      </ScrollReveal>
-
-      {/* ── Section 5 · BOX-TO-FIRST-LAP TIMELINE ─────────────────────── */}
-      <ScrollReveal>
-        <section style={{ position: 'relative', paddingBottom: 72 }}>
-          <GhostNumeral n="03" top={-50} right={-10} size={440} />
-        <div style={{ position: 'relative', zIndex: 1 }}>
-          <Eyebrow>03 / YOUR FIRST HOUR</Eyebrow>
-          <DisplayHeading size="lg">
-            BOX TO <Red>FIRST LAP.</Red>
-          </DisplayHeading>
-          <p
-            style={{
-              fontFamily: NB.bodyFont,
-              fontSize: 16,
-              lineHeight: 1.65,
-              color: NB.textMutedBeige,
-              maxWidth: 720,
-            }}
-          >
-            The Getting Started spine is five pages, each under ten minutes.
-            The whole thing fits inside a single classroom period.
-          </p>
-          <div
-            style={{
-              marginTop: 24,
-              background: NB.haloWhite,
-              border: `1px solid ${NB.borderOnBeige}`,
-              borderRadius: 14,
-              padding: '8px 12px 18px',
-              boxShadow: NB.shadowCard,
-            }}
-          >
-            <FirstHourTimeline />
-          </div>
-        </div>
-        </section>
-      </ScrollReveal>
-
-      {/* ── Section 6 · WHAT YOU CAN BUILD ─────────────────────────────── */}
-      <ScrollReveal>
-        <section style={{ position: 'relative', paddingBottom: 80 }}>
-          <Eyebrow>04 / WHAT YOU'LL BUILD ALONG THE WAY</Eyebrow>
-        <DisplayHeading size="lg">
-          WHAT YOU'LL <Red>BUILD.</Red>
-        </DisplayHeading>
-        <p
-          style={{
-            fontFamily: NB.bodyFont,
-            fontSize: 16,
-            lineHeight: 1.65,
-            color: NB.textMutedBeige,
-            maxWidth: 720,
-            marginBottom: 28,
-          }}
-        >
-          These four are the foundation. The rest of autonomous racing, SLAM,
-          MPC, RL, just builds on them.
-        </p>
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: 22,
-            marginTop: 16,
-          }}
-        >
-          {buildCards.map((b) => (
-            <NumberedFeatureCard
-              key={b.n}
-              n={b.n}
-              title={b.title}
-              lede={b.lede}
-              body={b.body}
-              codeChip={b.codeChip}
-            />
-          ))}
-        </div>
-        </section>
-      </ScrollReveal>
-
-      {/* ── Section 7 · POPULAR / NEW ─────────────────────────────────── */}
+      {/* ── Section 5 · POPULAR / NEW ─────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 32 }}>
-          <div>
-            <Eyebrow>05 / POPULAR</Eyebrow>
-            <h3
-              style={{
-                fontFamily: NB.headingFont,
-                fontSize: 28,
-                fontWeight: 900,
-                letterSpacing: '0.005em',
-                margin: '0 0 14px',
-                textTransform: 'uppercase',
-              }}
-            >
-              What everyone else is reading.
-            </h3>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-              {popular.map((p, i) => (
-                <PopularRow
-                  key={p.href}
-                  index={i + 1}
-                  label={p.label}
-                  href={p.href}
-                  isLast={i === popular.length - 1}
-                />
-              ))}
-            </ul>
-          </div>
-          <div>
-            <Eyebrow>06 / NEW</Eyebrow>
-            <h3
-              style={{
-                fontFamily: NB.headingFont,
-                fontSize: 28,
-                fontWeight: 900,
-                letterSpacing: '0.005em',
-                margin: '0 0 14px',
-                textTransform: 'uppercase',
-              }}
-            >
-              Recently shipped.
-            </h3>
-            <div
-              style={{
-                background: NB.haloWhite,
-                border: `1.5px solid ${NB.tarmacBlue}`,
-                borderRadius: 14,
-                padding: 22,
-                boxShadow: NB.shadowCard,
-              }}
-            >
-              <ChromeBadge variant="red">May 2026</ChromeBadge>
-              <h4
+            <div>
+              <Eyebrow>03 / POPULAR</Eyebrow>
+              <h3
                 style={{
                   fontFamily: NB.headingFont,
-                  fontSize: 22,
+                  fontSize: 28,
                   fontWeight: 900,
                   letterSpacing: '0.005em',
+                  margin: '0 0 14px',
                   textTransform: 'uppercase',
-                  margin: '12px 0 8px',
                 }}
               >
-                v1.0, First shipping customer release.
-              </h4>
+                What everyone else is reading.
+              </h3>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                {popular.map((p, i) => (
+                  <PopularRow
+                    key={p.href}
+                    index={i + 1}
+                    label={p.label}
+                    href={p.href}
+                    isLast={i === popular.length - 1}
+                  />
+                ))}
+              </ul>
+            </div>
+            <div>
+              <Eyebrow>04 / NEW</Eyebrow>
+              <h3
+                style={{
+                  fontFamily: NB.headingFont,
+                  fontSize: 28,
+                  fontWeight: 900,
+                  letterSpacing: '0.005em',
+                  margin: '0 0 14px',
+                  textTransform: 'uppercase',
+                }}
+              >
+                Recently shipped.
+              </h3>
+              <div
+                style={{
+                  background: NB.haloWhite,
+                  border: `1.5px solid ${NB.tarmacBlue}`,
+                  borderRadius: 14,
+                  padding: 22,
+                  boxShadow: NB.shadowCard,
+                }}
+              >
+                <ChromeBadge variant="red">June 2026</ChromeBadge>
+                <h4
+                  style={{
+                    fontFamily: NB.headingFont,
+                    fontSize: 22,
+                    fontWeight: 900,
+                    letterSpacing: '0.005em',
+                    textTransform: 'uppercase',
+                    margin: '12px 0 8px',
+                  }}
+                >
+                  The 3D robot model.
+                </h4>
+                <p
+                  style={{
+                    fontFamily: NB.bodyFont,
+                    fontSize: 14.5,
+                    lineHeight: 1.6,
+                    color: NB.textMutedBeige,
+                    margin: 0,
+                  }}
+                >
+                  The newest page renders the car&apos;s real URDF in your
+                  browser. Drag to orbit, spin the wheels, steer the front
+                  axle. It joins v1.0, the first customer release.
+                </p>
+                <div style={{ display: 'flex', gap: 18, flexWrap: 'wrap', marginTop: 12 }}>
+                  <Link
+                    href="/docs/hardware/robot-model"
+                    style={{
+                      fontFamily: NB.monoFont,
+                      fontSize: 12,
+                      letterSpacing: '0.14em',
+                      textTransform: 'uppercase',
+                      fontWeight: 700,
+                      color: NB.neoboticsRed,
+                      textDecoration: 'none',
+                    }}
+                  >
+                    See the model →
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </ScrollReveal>
+
+      {/* ── Section 6 · SIMULATION TEASE ──────────────────────────────────
+           The Playground strip, blurred until launch. The content is real but
+           unreadable and non-interactive (plain spans, no live URL in the
+           DOM); a scan line and a COMING SOON plate sit on top. */}
+      <ScrollReveal>
+        <section
+          style={{
+            position: 'relative',
+            marginTop: 24,
+            marginBottom: 24,
+            borderRadius: 16,
+            overflow: 'hidden',
+            boxShadow: '0 12px 36px -8px rgba(27,32,54,0.4)',
+          }}
+        >
+          <div
+            aria-hidden
+            style={{
+              background: NB.tarmacBlue,
+              color: NB.haloWhite,
+              padding: '32px 28px',
+              display: 'grid',
+              gridTemplateColumns: '1fr auto',
+              gap: 20,
+              alignItems: 'center',
+              filter: 'blur(9px)',
+              opacity: 0.9,
+              pointerEvents: 'none',
+              userSelect: 'none',
+            }}
+          >
+            <div>
+              <div
+                style={{
+                  fontFamily: NB.monoFont,
+                  fontSize: 11,
+                  letterSpacing: '0.18em',
+                  textTransform: 'uppercase',
+                  color: NB.neoboticsRed,
+                  fontWeight: 700,
+                  marginBottom: 10,
+                }}
+              >
+                // NO CAR NEARBY · SAME API IN THE BROWSER
+              </div>
+              <div
+                style={{
+                  fontFamily: NB.headingFont,
+                  fontSize: 26,
+                  fontWeight: 900,
+                  letterSpacing: '0.01em',
+                  textTransform: 'uppercase',
+                  lineHeight: 1.1,
+                }}
+              >
+                The NeoRacer <span style={{ color: NB.neoboticsRed }}>Playground.</span>
+              </div>
               <p
                 style={{
                   fontFamily: NB.bodyFont,
                   fontSize: 14.5,
                   lineHeight: 1.6,
-                  color: NB.textMutedBeige,
-                  margin: 0,
+                  color: NB.textMutedBlue,
+                  marginTop: 8,
+                  maxWidth: 520,
                 }}
               >
-                The full Getting Started spine, the sensor reference, and the
-                motor and servo calibration cookbook are live.
+                An in-browser simulator, nothing to install. Every line of code
+                you write there runs unchanged on the physical car.
               </p>
-              <Link
-                href="/docs/reference/changelog"
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+              <span
                 style={{
-                  display: 'inline-block',
-                  marginTop: 12,
-                  fontFamily: NB.monoFont,
-                  fontSize: 12,
-                  letterSpacing: '0.14em',
-                  textTransform: 'uppercase',
+                  background: NB.haloWhite,
+                  color: NB.tarmacBlue,
+                  fontFamily: NB.bodyFont,
+                  fontSize: 14,
                   fontWeight: 700,
-                  color: NB.neoboticsRed,
-                  textDecoration: 'none',
+                  padding: '11px 18px',
+                  borderRadius: 8,
+                  textAlign: 'center',
+                  whiteSpace: 'nowrap',
                 }}
               >
-                Read the changelog →
-              </Link>
+                Open ↗
+              </span>
+              <span
+                style={{
+                  background: NB.neoboticsRed,
+                  color: NB.haloWhite,
+                  fontFamily: NB.bodyFont,
+                  fontSize: 14,
+                  fontWeight: 700,
+                  padding: '11px 18px',
+                  borderRadius: 8,
+                  textAlign: 'center',
+                  whiteSpace: 'nowrap',
+                  boxShadow: NB.shadowAccent,
+                }}
+              >
+                Race ↗
+              </span>
             </div>
           </div>
-        </div>
-        </section>
-      </ScrollReveal>
 
-      {/* ── Section 8 · BOTTOM CTA STRIP ──────────────────────────────── */}
-      <ScrollReveal>
-        <section
-        style={{
-          marginTop: 24,
-          marginBottom: 24,
-          background: NB.tarmacBlue,
-          color: NB.haloWhite,
-          borderRadius: 16,
-          padding: '32px 28px',
-          display: 'grid',
-          gridTemplateColumns: '1fr auto',
-          gap: 20,
-          alignItems: 'center',
-          boxShadow: '0 12px 36px -8px rgba(27,32,54,0.4)',
-        }}
-      >
-        <div>
+          {/* the reveal plate */}
           <div
             style={{
-              fontFamily: NB.monoFont,
-              fontSize: 11,
-              letterSpacing: '0.18em',
-              textTransform: 'uppercase',
-              color: NB.neoboticsRed,
-              fontWeight: 700,
-              marginBottom: 10,
+              position: 'absolute',
+              inset: 0,
+              display: 'grid',
+              placeItems: 'center',
+              background: 'rgba(27,32,54,0.35)',
             }}
           >
-            // BEFORE YOU BUY · TRY IT IN THE BROWSER
+            <div style={{ textAlign: 'center', padding: '0 16px' }}>
+              <div
+                style={{
+                  fontFamily: NB.monoFont,
+                  fontSize: 11,
+                  letterSpacing: '0.22em',
+                  textTransform: 'uppercase',
+                  color: NB.haloWhite,
+                  fontWeight: 700,
+                  marginBottom: 8,
+                  opacity: 0.85,
+                }}
+              >
+                // SIMULATION · IN THE WORKS
+              </div>
+              <div
+                style={{
+                  fontFamily: NB.headingFont,
+                  fontSize: 34,
+                  fontWeight: 900,
+                  letterSpacing: '0.01em',
+                  textTransform: 'uppercase',
+                  lineHeight: 1.05,
+                  color: NB.haloWhite,
+                }}
+              >
+                Coming <span style={{ color: NB.neoboticsRed }}>soon.</span>
+              </div>
+            </div>
           </div>
-          <div
-            style={{
-              fontFamily: NB.headingFont,
-              fontSize: 26,
-              fontWeight: 900,
-              letterSpacing: '0.01em',
-              textTransform: 'uppercase',
-              lineHeight: 1.1,
-            }}
-          >
-            Same Python API. <span style={{ color: NB.neoboticsRed }}>Zero install.</span>
-          </div>
-          <p
-            style={{
-              fontFamily: NB.bodyFont,
-              fontSize: 14.5,
-              lineHeight: 1.6,
-              color: NB.textMutedBlue,
-              marginTop: 8,
-              maxWidth: 520,
-            }}
-          >
-            NeoRacer Playground is the in-browser simulator. Every line of code
-            you write there runs unchanged on the physical car.
-          </p>
-        </div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-          <a
-            href="https://playground.neobotics.org"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              background: NB.haloWhite,
-              color: NB.tarmacBlue,
-              fontFamily: NB.bodyFont,
-              fontSize: 14,
-              fontWeight: 700,
-              padding: '11px 18px',
-              borderRadius: 8,
-              textDecoration: 'none',
-              textAlign: 'center',
-              whiteSpace: 'nowrap',
-            }}
-          >
-            Open Playground ↗
-          </a>
-          <Link
-            href="/kits/preorder"
-            style={{
-              background: NB.neoboticsRed,
-              color: NB.haloWhite,
-              fontFamily: NB.bodyFont,
-              fontSize: 14,
-              fontWeight: 700,
-              padding: '11px 18px',
-              borderRadius: 8,
-              textDecoration: 'none',
-              textAlign: 'center',
-              whiteSpace: 'nowrap',
-              boxShadow: NB.shadowAccent,
-            }}
-          >
-            Order a car
-          </Link>
-        </div>
+
         </section>
       </ScrollReveal>
     </DocsShell>

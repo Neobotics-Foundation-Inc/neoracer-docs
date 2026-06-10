@@ -47,7 +47,7 @@ export default function WarrantyPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>LEGAL / WARRANTY</Eyebrow>
             <DisplayHeading size="xl">
-              NEORACER LIMITED <Red>HARDWARE WARRANTY.</Red>
+              NEORACER LIMITED HARDWARE <Red>WARRANTY.</Red>
             </DisplayHeading>
             <p
               style={{
@@ -185,7 +185,7 @@ export default function WarrantyPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>04 / EXCLUSIONS AND LIMITATIONS</Eyebrow>
             <DisplayHeading size="lg">
-              WHAT THE WARRANTY <Red>DOES NOT COVER.</Red>
+              EXCLUSIONS AND <Red>LIMITATIONS.</Red>
             </DisplayHeading>
             <p style={bodyStyle}>
               Neobotics shall not be liable under this warranty if the defect is

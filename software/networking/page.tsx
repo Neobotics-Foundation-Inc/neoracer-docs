@@ -52,8 +52,7 @@ export default function NetworkingPage() {
               The NeoRacer is its own access point. It broadcasts a Wi-Fi network
               named for its Car ID, and once your laptop joins it the car sits at
               a fixed address every time. No home router, no hunting for an IP,
-              and the same steps whether you're on a kitchen table or a locked
-              down campus.
+              and the same steps on a kitchen table or a locked down campus.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="red">SSID neoracer-[Car ID]</ChromeBadge>

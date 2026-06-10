@@ -99,7 +99,7 @@ export default function OscoreBoardPage() {
         <section style={{ position: 'relative', paddingBottom: 40 }}>
           <Eyebrow>01 / WHAT IT IS</Eyebrow>
           <DisplayHeading size="lg">
-            A ROBOT <Red>CONTROL BOARD.</Red>
+            A ROBOT CONTROL <Red>BOARD.</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
             OSCORE is built around the ESP32-S3-WROOM-1U module and pulls the
@@ -313,7 +313,7 @@ export default function OscoreBoardPage() {
         <section style={{ paddingBottom: 36 }}>
           <MonoLabel>Open hardware, full electrical package</MonoLabel>
           <DisplayHeading size="lg">
-            THE <Red>SOURCE FILES.</Red>
+            THE SOURCE <Red>FILES.</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
             OSCORE is open hardware. The complete electrical documentation is

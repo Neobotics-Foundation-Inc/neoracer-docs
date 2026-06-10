@@ -206,8 +206,8 @@ rc.go()`}</Code>
                 <>
                   A high-mileage car can develop a flat spot on the small
                   pinion gear. Symptoms: a regular click every full motor
-                  rev, jitter only at high speed. A new pinion is a five-
-                  minute replacement.
+                  rev, jitter only at high speed. A new pinion is a
+                  five-minute replacement.
                 </>
               }
               codeChip="click freq ∝ motor rpm"

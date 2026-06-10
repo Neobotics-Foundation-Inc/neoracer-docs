@@ -184,7 +184,7 @@ export default function OsAndImagePage() {
       <ScrollReveal>
         <Fig
           label="FIG. B / RE-FLASH FROM SCRATCH"
-          caption="A spare SD card and balenaEtcher. Five steps. The whole thing takes about 12 minutes on a fresh laptop."
+          caption="A spare SD card, balenaEtcher, and five steps. The whole thing takes about 12 minutes on a fresh laptop."
         >
           <div style={{ paddingTop: 6 }}>
             <FlashStripDiagram />
@@ -210,8 +210,8 @@ export default function OsAndImagePage() {
               maxWidth: 720,
             }}
           >
-            You only need this if you broke something unrecoverable, or you
-            want a clean classroom set. The car ships flashed.
+            The car ships flashed. You'll only flash a card yourself to bring
+            one back to a known-good state, or to set up a clean classroom set.
           </p>
 
           <Callout type="note" title="Hardware you need">
@@ -381,9 +381,9 @@ ros2 topic echo /scan --once | head -20`}</Code>
           <DashList
             items={[
               <>
-                <strong>Boot loops</strong> usually point at a corrupt SD card,
-                so a re-flash is the first thing to try, and it clears them up far
-                more often than a Jetson fault does.
+                <strong>Boot loops</strong> usually point at a corrupt SD card
+                rather than a Jetson fault, so a re-flash is the first thing to
+                try.
               </>,
               <>
                 <strong>AP not coming up after re-flash?</strong> Connect

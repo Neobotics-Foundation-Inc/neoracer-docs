@@ -226,7 +226,7 @@ python3 ~/racecar_ws/src/racecar_neo/scripts/calibrate_imu.py
 # The mean is the bias: what the sensor reports when nothing is moving.
 # When it finishes, it writes imu_cal.yaml.`}</Code>
 
-            <Callout type="warn" title="Do not breathe on it">
+            <Callout type="warn" title="Motion reads as bias">
               Any motion during the still pass shows up as bias. Set the car down,
               take your hands off, and let the script run untouched. If a wheel was
               bumped, run it again.

@@ -27,8 +27,6 @@ const SYS = [
   ['ROS 2', 'Humble'],
   ['Username', 'racecar'],
   ['Hostname', 'neoracer'],
-  ['Static IP', '192.168.1.[100 + Car ID]'],
-  ['Wi-Fi SSID', 'neoracer-[Car ID]'],
 ];
 
 export default function InstallDriverPage() {
@@ -262,7 +260,7 @@ sudo dkms install -m xpad -v 0.4`}</Code>
         <section style={{ paddingBottom: 36 }}>
           <Eyebrow>06 / CLONE + BUILD</Eyebrow>
           <DisplayHeading size="lg">
-            THE <Red>COLCON BUILD.</Red>
+            THE COLCON <Red>BUILD.</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             Clone the driver and the Richbeam LakiBeam LiDAR driver into your

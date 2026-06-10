@@ -28,7 +28,7 @@ const METHODS: ApiMethod[] = [
     sig: 'rc.camera.get_color_image_no_copy()',
     returns: 'NDArray[480, 640, 3]',
     summary:
-      'The same frame, but a direct reference rather than a copy. Faster when you only read pixels. Do not modify it in place, since the library reuses the buffer next frame.',
+      'The same frame, but a direct reference rather than a copy. Faster when you only read pixels. The library reuses the buffer next frame, so do not modify it in place.',
   },
   {
     sig: 'rc.camera.get_depth_image()',

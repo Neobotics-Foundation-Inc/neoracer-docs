@@ -104,7 +104,7 @@ export default function ChassisAndCadPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>HARDWARE / CHASSIS &amp; CAD</Eyebrow>
             <DisplayHeading size="xl">
-              THE CHASSIS <Red>AND CAD.</Red>
+              THE CHASSIS AND <Red>CAD.</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
               The NeoRacer is a 1:12 scale autonomous racing platform, and its full
@@ -298,7 +298,7 @@ cd neoracer-hardware-files`}</Code>
           <Link href="/docs/hardware/overview" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
             hardware overview
           </Link>{' '}
-          has a top-down anatomy of the whole vehicle. If anything in the repo looks off,
+          has a top-down anatomy of the whole vehicle. For questions about the repo,
           reach us at{' '}
           <a href="mailto:support@neobotics.org" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
             support@neobotics.org

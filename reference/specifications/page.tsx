@@ -189,8 +189,9 @@ export default function SpecificationsPage() {
                 maxWidth: 720,
               }}
             >
-              Real Ackermann steering geometry, single rear-drive motor through
-              a sealed gearbox, hobby-grade ESC. Detailed motor / servo /
+              The drivetrain pairs real Ackermann steering geometry with a
+              single rear-drive motor through a sealed gearbox and a
+              hobby-grade ESC. Detailed motor / servo /
               gearing values live on the{' '}
               <a href="/docs/hardware/drivetrain" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Drivetrain page</a>.
             </p>

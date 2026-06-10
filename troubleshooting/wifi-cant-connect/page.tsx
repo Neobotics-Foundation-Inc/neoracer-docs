@@ -38,7 +38,7 @@ export default function WifiCantConnectPage() {
         <div style={{ position: 'relative', zIndex: 1 }}>
           <Eyebrow>TROUBLESHOOTING / NETWORK</Eyebrow>
           <DisplayHeading size="xl">
-            CONNECTING TO THE <Red>CAR'S WI-FI.</Red>
+            THE CAR'S <Red>WI-FI.</Red>
           </DisplayHeading>
           <p
             style={{

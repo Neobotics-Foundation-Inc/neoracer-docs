@@ -166,7 +166,7 @@ export default function PrivacyPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>SECTION 03</Eyebrow>
             <DisplayHeading size="lg">
-              HOW WE <Red>USE IT.</Red>
+              HOW WE USE <Red>IT.</Red>
             </DisplayHeading>
             <DashList
               items={[

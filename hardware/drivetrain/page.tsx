@@ -48,7 +48,7 @@ export default function DrivetrainPage() {
               </InfoNote>{' '}
               geometry with rear-wheel drive,
               independent suspension, and 80 mm all-terrain tyres. Identical
-              kinematics to the F1TENTH reference car, the same control law
+              kinematics to the F1TENTH reference car, so the same control law
               transfers without changes.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>

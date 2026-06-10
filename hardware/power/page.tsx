@@ -122,8 +122,7 @@ export default function PowerPage() {
               ships in the box. Because of international
               shipping rules around lithium packs, Neobotics doesn't include the
               battery itself, so you'll bring your own. The recommended specs and
-              the safe charging routine live one page deeper to help you pick the
-              right one.
+              the safe charging routine live one page deeper.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="outline">11.1 V · 3S</ChromeBadge>
@@ -143,7 +142,7 @@ export default function PowerPage() {
             Charge &amp; power
           </Link>{' '}
           page, and it's the one worth reading start to finish. The summary here
-          is quick reference, so the full page is where the real routine lives.
+          is a quick reference.
         </Callout>
       </ScrollReveal>
 

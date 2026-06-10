@@ -131,7 +131,7 @@ export default function TermsOfSalePage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>SECTION 02</Eyebrow>
             <DisplayHeading size="lg">
-              PRODUCT NATURE AND <Red>INTENDED USE.</Red>
+              PRODUCT NATURE AND INTENDED <Red>USE.</Red>
             </DisplayHeading>
             <p style={para}>
               The NeoRacer is an autonomous vehicle kit intended for educational,
@@ -206,7 +206,7 @@ export default function TermsOfSalePage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>SECTION 05</Eyebrow>
             <DisplayHeading size="lg">
-              INITIAL INSPECTION; SHORTAGES AND <Red>VISIBLE DEFECTS.</Red>
+              INITIAL INSPECTION; SHORTAGES AND VISIBLE <Red>DEFECTS.</Red>
             </DisplayHeading>
             <p style={para}>
               Upon receipt of the product, Buyer shall promptly inspect all
@@ -327,7 +327,7 @@ export default function TermsOfSalePage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>SECTION 07</Eyebrow>
             <DisplayHeading size="lg">
-              WARRANTY EXCLUSIONS AND <Red>IMPROPER USAGE.</Red>
+              WARRANTY EXCLUSIONS AND IMPROPER <Red>USAGE.</Red>
             </DisplayHeading>
             <p style={para}>
               Neobotics shall not be liable under the limited hardware warranty if
@@ -382,7 +382,7 @@ export default function TermsOfSalePage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>SECTION 08</Eyebrow>
             <DisplayHeading size="lg">
-              SOFTWARE AND <Red>DIGITAL MATERIALS.</Red>
+              SOFTWARE AND DIGITAL <Red>MATERIALS.</Red>
             </DisplayHeading>
             <p style={para}>
               Unless expressly stated otherwise in writing, software, firmware,
@@ -431,7 +431,7 @@ export default function TermsOfSalePage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>SECTION 10</Eyebrow>
             <DisplayHeading size="lg">
-              DISCLAIMER OF <Red>NON-WARRANTY STATEMENTS.</Red>
+              DISCLAIMER OF NON-WARRANTY <Red>STATEMENTS.</Red>
             </DisplayHeading>
             <p style={para}>
               Except as expressly stated in these Terms of Sale or in a separate
@@ -455,8 +455,8 @@ export default function TermsOfSalePage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>SECTION 11</Eyebrow>
             <DisplayHeading size="lg">
-              BUYER RESPONSIBILITIES AND ASSUMPTION OF{' '}
-              <Red>OPERATIONAL RISK.</Red>
+              BUYER RESPONSIBILITIES AND ASSUMPTION OF OPERATIONAL{' '}
+              <Red>RISK.</Red>
             </DisplayHeading>
             <p style={para}>
               Buyer acknowledges that the NeoRacer requires assembly,
@@ -531,8 +531,8 @@ export default function TermsOfSalePage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>SECTION 13</Eyebrow>
             <DisplayHeading size="lg">
-              NO LIABILITY FOR IMPROPER USE OR{' '}
-              <Red>UNAUTHORIZED MODIFICATION.</Red>
+              NO LIABILITY FOR IMPROPER USE OR UNAUTHORIZED{' '}
+              <Red>MODIFICATION.</Red>
             </DisplayHeading>
             <p style={para}>
               To the maximum extent permitted by law, Neobotics is not responsible

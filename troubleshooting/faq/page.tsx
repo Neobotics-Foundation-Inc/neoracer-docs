@@ -149,7 +149,7 @@ const FAQS: Faq[] = [
     q: 'Can students run the car without supervision?',
     a: (
       <>
-        Above the LiPo charging step, the car is no more dangerous than an
+        Aside from the LiPo charging step, the car is no more dangerous than an
         RC car of the same size. We recommend the educator be in the room
         during the first session so they can demo the{' '}
         <InfoNote term="e-stop" title="E-Stop">

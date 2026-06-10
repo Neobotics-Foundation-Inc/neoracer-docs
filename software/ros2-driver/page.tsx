@@ -180,7 +180,7 @@ export default function ROS2DriverPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>03 / WHAT TELEOP BRINGS UP</Eyebrow>
             <DisplayHeading size="lg">
-              WHAT TELEOP <Red>BRINGS UP.</Red>
+              WHAT <Red>TELEOP</Red> BRINGS UP.
             </DisplayHeading>
             <p
               style={{

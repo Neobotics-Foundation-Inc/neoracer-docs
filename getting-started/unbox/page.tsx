@@ -20,7 +20,7 @@ import { Crumbs, Callout, PrevNext } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
   title: 'Unbox · NeoRacer Docs',
-  description: 'What\'s in the box, what to set aside, and what NOT to plug in until you read the safety page.',
+  description: 'What\'s in the box, what to set aside, and why the LiPo stays sealed until the Charge and Power page.',
 };
 
 export default function UnboxPage() {
@@ -112,7 +112,7 @@ export default function UnboxPage() {
           },
           {
             t: 'Get a 3S LiPo battery ready.',
-            d: 'Due to various international shipping regulations, Neobotics does not directly sell LiPo batteries but we have the full specifications in the next page to help you find the right fit.',
+            d: 'International shipping regulations stop us from selling LiPo batteries directly, so the next page has the full specifications for finding the right pack.',
           },
         ].map((s, i) => (
           <div

@@ -134,7 +134,7 @@ export default function DocsCatchAllPage({ params }: { params: { slug: string[] 
             NEIGHBOURING <Red>PAGES</Red>.
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-            Other pages in this section, some may already be written.
+            Other pages in this section. Some may already be written.
           </p>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 12, marginTop: 18 }}>
             {siblings.map((s) => (
@@ -178,7 +178,7 @@ export default function DocsCatchAllPage({ params }: { params: { slug: string[] 
               textDecoration: 'none',
             }}
           >
-            Documentation home
+            Docs home
           </Link>
           <Link
             href="/docs/getting-started/unbox"

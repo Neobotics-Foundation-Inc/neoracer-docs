@@ -37,10 +37,10 @@ export default function SensorsIndexPage() {
               THE SENSOR <Red>SUITE.</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
-              One scanner that sees the room. One camera that sees colour. One
-              IMU that knows which way is up. And encoders that count exactly how
-              far the wheels turned. Between them, you have everything a basic
-              racing stack needs.
+              The scanner sees the room, the camera sees colour, the IMU knows
+              which way is up, and the encoders count exactly how far the wheels
+              turned. Between them, you have everything a basic racing stack
+              needs.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="red">Sim ↔ car parity on all four</ChromeBadge>

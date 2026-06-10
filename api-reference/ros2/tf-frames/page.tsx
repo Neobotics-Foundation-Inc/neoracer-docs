@@ -255,8 +255,8 @@ export default function Ros2TfFramesPage() {
           <code style={{ fontFamily: NB.monoFont }}>imu_link</code> exist as labels
           on messages, but ROS 2 does not know where they sit relative to each
           other. If you are running only this stack, anything that needs that
-          geometry, RViz, a costmap, sensor fusion, needs you to publish the
-          transforms below first.
+          geometry, RViz, a costmap, sensor fusion, starts with the
+          transforms below.
         </Callout>
       </ScrollReveal>
 

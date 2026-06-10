@@ -46,7 +46,7 @@ const MODULES: ApiModule[] = [
     badge: '720 samples · 0.5°',
     methods: [
       { sig: 'rc.lidar.get_samples()', what: 'The latest 720-float scan, centimetres, 0.5° apart. Index 0 is dead ahead.' },
-      { sig: 'rc_utils.get_lidar_average_distance(scan, angle)', what: 'In racecar_utils. Mean range over a small angle window, for noise-robust gap finding.' },
+      { sig: 'rc_utils.get_lidar_average_distance(scan, angle)', what: 'In racecar_utils. Mean range over a small angle window, for gap finding that holds up against noisy samples.' },
       { sig: 'rc_utils.get_lidar_closest_point(scan)', what: 'In racecar_utils. The (angle, distance) of the nearest return.' },
     ],
     icon: (
@@ -448,7 +448,7 @@ export default function RacecarNeoLibraryPage() {
             <DashList
               items={[
                 <>
-                  <strong>In the sim:</strong> the flow is to open{' '}
+                  <strong>In the sim:</strong> open{' '}
                   <a
                     href="https://playground.neobotics.org"
                     target="_blank"

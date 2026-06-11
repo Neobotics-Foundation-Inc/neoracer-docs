@@ -67,7 +67,7 @@ const intentCards: {
 const pitLane: PitLaneSection[] = [
   { title: 'Getting Started', href: '/docs/getting-started/unbox', pages: 5 },
   { title: 'Hardware', href: '/docs/hardware/overview', pages: 13 },
-  { title: 'Build', href: '/docs/build/overview', pages: 1 },
+  { title: 'Build', href: '/docs/build/overview', pages: 2 },
   { title: 'Software', href: '/docs/software/os-and-image', pages: 6 },
   { title: 'API Reference', href: '/docs/api-reference/python/drive', pages: 9 },
   { title: 'Calibration', href: '/docs/calibration/motor-trim', pages: 5 },

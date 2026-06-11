@@ -219,7 +219,7 @@ export default function BuildOverviewPage() {
 
       <PrevNext
         prev={{ label: 'Hardware · Safety', href: '/docs/hardware/safety' }}
-        next={{ label: 'Software · OS & image', href: '/docs/software/os-and-image' }}
+        next={{ label: 'Build · Reassembly', href: '/docs/build/reassembly' }}
       />
     </DocsShell>
   );

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Metadata } from 'next';
 import DocsShell from '@/components/docs/DocsShell';
 import { NB } from '@/lib/nb-tokens';
@@ -13,7 +14,6 @@ import {
   Fig,
   NumberedFeatureCard,
 } from '@/components/docs/Editorial';
-import { CarSprite } from '@/components/docs/Diagrams';
 import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext, Callout } from '@/components/docs/DocsPrimitives';
 
@@ -22,56 +22,87 @@ export const metadata: Metadata = {
   description: 'A single-page anatomy of the NeoRacer V1: compute, sensors, drivetrain, power, and chassis at a glance.',
 };
 
-/* One distinct colour per callout, so each part reads on its own. Shared by
- * the diagram dots and the legend below so the numbers match by colour. */
-const ANATOMY_COLORS: Record<string, string> = {
-  '01': '#FF0033', // Camera   — red
-  '02': '#1E7FB5', // Servo    — blue
-  '03': '#0E8A4F', // Jetson   — green
-  '04': '#E08A00', // LiPo     — amber
-  '05': '#7A3FB0', // PCB      — purple
-  '06': '#0E9594', // LiDAR    — teal
-};
+/* The real car, torn down and knolled. One source of truth for the figure
+ * AND the part list below it: label positions are percentages of the photo
+ * (placed by hand with the click-to-label tool), each part has its own
+ * colour, and every part links to its page. `flip` puts the pill on the
+ * left of its dot (right-edge parts, and the LiPo so it stays clear of the
+ * chassis label beside it). */
+const ANATOMY_PARTS: {
+  name: string;
+  x: number;
+  y: number;
+  color: string;
+  href: string;
+  sub: string;
+  flip?: boolean;
+}[] = [
+  { name: 'Front bumper', x: 47.6, y: 2.9, color: '#64748B', href: '/docs/build/overview', sub: 'Printed crash protection for the nose' },
+  { name: 'Camera', x: 48.9, y: 8.6, color: '#FF0033', href: '/docs/hardware/sensors/camera', sub: '1080p · 120 fps' },
+  { name: 'Jetson Orin Nano', x: 26.8, y: 19.9, color: '#0E8A4F', href: '/docs/hardware/compute', sub: 'AI accelerator + Linux host' },
+  { name: 'Side cover', x: 95.6, y: 22.7, color: '#1B2036', href: '/docs/build/overview', sub: 'Closes the electronics bay' },
+  { name: 'OSCORE PCB', x: 81.4, y: 25.9, color: '#7A3FB0', href: '/docs/hardware/oscore-board', sub: 'Power + control board, ESP32-S3' },
+  { name: '1:12 chassis', x: 54.9, y: 52.4, color: '#B45309', href: '/docs/hardware/drivetrain', sub: 'Motor, servo, and suspension on the rolling base' },
+  { name: 'LiPo compartment', x: 46.6, y: 51.9, color: '#C2185B', href: '/docs/hardware/power', sub: '11.1 V · 3S · battery NOT included', flip: true },
+  { name: 'LiDAR', x: 37.1, y: 78.2, color: '#0E9594', href: '/docs/hardware/sensors/lidar', sub: '30 Hz · 25 m · 720 samples' },
+  { name: 'Dot matrix display', x: 54.1, y: 80.6, color: '#4F46E5', href: '/docs/build/overview', sub: '8 × 8 LEDs, the car’s face' },
+  { name: 'Cudy router', x: 70.9, y: 74.9, color: '#EA580C', href: '/docs/software/networking', sub: 'The car-to-laptop network' },
+  { name: 'Rear wing', x: 53.3, y: 95.3, color: '#0284C7', href: '/docs/build/overview', sub: 'Printed, swappable tail' },
+];
 
-/* Exploded anatomy diagram, labelled callouts over a top-down car silhouette. */
 function AnatomyDiagram() {
   return (
-    <svg viewBox="0 0 540 282" width="100%" style={{ display: 'block', maxWidth: 620, margin: '0 auto' }}>
-      <rect x="20" y="24" width="500" height="244" rx="6" fill={NB.haloWhite} stroke={NB.tarmacBlue} strokeWidth="1.5" />
-      <text x="270" y="16" fontFamily={NB.monoFont} fontSize="11" fill={NB.tarmacBlue} fontWeight="700" letterSpacing="2" textAnchor="middle">
-        TOP-DOWN ANATOMY · 380 × 300 mm
-      </text>
-
-      {/* The real NeoRacer, top down, nose up. Centred where the chassis was. */}
-      <CarSprite cx={270} cy={158} size={188} heading={0} />
-
-      {/* Callouts. Each label sits at its part's height with a short straight
-          horizontal leader, so the lines never cross and never run through the
-          text. Numbers match the subsystem list below (the legend). */}
-      {[
-        { n: '01', name: 'Camera', side: 'L', tx: 269, ty: 96 },
-        { n: '02', name: 'Servo', side: 'R', tx: 291, ty: 115 },
-        { n: '03', name: 'Jetson Orin Nano', side: 'L', tx: 271, ty: 142 },
-        { n: '04', name: 'LiPo bay', side: 'R', tx: 246, ty: 153 },
-        { n: '05', name: 'PCB', side: 'L', tx: 274, ty: 156 },
-        { n: '06', name: 'LiDAR', side: 'L', tx: 270, ty: 174 },
-      ].map((c) => {
-        const left = c.side === 'L';
-        const textX = left ? 184 : 356;
-        const leadStart = left ? 190 : 350;
-        const leadEnd = left ? c.tx - 7 : c.tx + 7;
-        const color = ANATOMY_COLORS[c.n];
+    <div style={{ position: 'relative', maxWidth: 560, margin: '0 auto', borderRadius: 8, overflow: 'hidden' }}>
+      <Image
+        src="/images/build/exploded-topdown.jpg"
+        alt="The NeoRacer torn down: every component laid out around the bare chassis, photographed from above"
+        width={902}
+        height={1800}
+        sizes="(max-width: 640px) 100vw, 560px"
+        style={{ width: '100%', height: 'auto', display: 'block' }}
+      />
+      {ANATOMY_PARTS.map((p, i) => {
+        const flip = p.flip || p.x > 72;
+        const nn = String(i + 1).padStart(2, '0');
         return (
-          <g key={c.n}>
-            <line x1={leadStart} y1={c.ty} x2={leadEnd} y2={c.ty} stroke={color} strokeWidth="1.2" opacity="0.6" />
-            <circle cx={c.tx} cy={c.ty} r="4.5" fill={color} stroke={NB.haloWhite} strokeWidth="1.5" />
-            <text x={textX} y={c.ty + 3.5} textAnchor={left ? 'end' : 'start'} fontFamily={NB.monoFont} fontSize="11" fontWeight="700" fill={color}>
-              <tspan fontWeight="900">{c.n}</tspan>{`  ${c.name}`}
-            </text>
-          </g>
+          <div
+            key={p.name}
+            style={{ position: 'absolute', left: `${p.x}%`, top: `${p.y}%`, transform: 'translate(-50%, -50%)' }}
+          >
+            <span
+              style={{
+                display: 'block',
+                width: 11,
+                height: 11,
+                borderRadius: '50%',
+                background: p.color,
+                border: '2px solid #fff',
+                boxShadow: `0 0 0 1.5px ${p.color}B3`,
+              }}
+            />
+            <span
+              style={{
+                position: 'absolute',
+                top: -4,
+                ...(flip ? { right: 16 } : { left: 16 }),
+                fontFamily: NB.monoFont,
+                fontSize: 'clamp(8.5px, 1.9vw, 11px)',
+                fontWeight: 700,
+                letterSpacing: '0.04em',
+                color: p.color,
+                background: 'rgba(255,255,255,0.93)',
+                border: `1px solid ${p.color}59`,
+                borderRadius: 4,
+                padding: '1.5px 6px',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              <span style={{ fontWeight: 900 }}>{nn}</span> {p.name}
+            </span>
+          </div>
         );
       })}
-    </svg>
+    </div>
   );
 }
 
@@ -123,8 +154,8 @@ export default function HardwareOverviewPage() {
 
       <ScrollReveal>
         <Fig
-          label="FIG. A / TOP-DOWN ANATOMY"
-          caption="Six major subsystems. Each numbered part has its own page in the list below."
+          label="FIG. A / THE CAR, LAID OUT"
+          caption="A real NeoRacer, torn down and photographed from above. The list below links the major subsystems to their pages."
         >
           <AnatomyDiagram />
         </Fig>
@@ -132,19 +163,20 @@ export default function HardwareOverviewPage() {
 
       <ScrollReveal>
         <section style={{ paddingBottom: 32 }}>
-          <Eyebrow>01 / THE SEVEN SUBSYSTEMS</Eyebrow>
+          <Eyebrow>01 / EVERY PART IN FIG. A</Eyebrow>
           <DisplayHeading size="lg">
-            THE <Red>SUBSYSTEMS.</Red>
+            THE <Red>PARTS.</Red>
           </DisplayHeading>
           <div style={{ marginTop: 16 }}>
-            {[
-              { n: '01', name: 'Camera', href: '/docs/hardware/sensors/camera', sub: '1080p · 120 fps' },
-              { n: '02', name: 'Servo', href: '/docs/hardware/drivetrain', sub: '20 kg steering servo' },
-              { n: '03', name: 'Jetson Orin Nano', href: '/docs/hardware/compute', sub: 'AI accelerator + Linux host' },
-              { n: '04', name: 'LiPo power', href: '/docs/hardware/power', sub: '11.1 V · 3S · battery NOT included' },
-              { n: '05', name: 'OSCORE board', href: '/docs/hardware/oscore-board', sub: 'Power + control PCB, inside the chassis' },
-              { n: '06', name: 'LiDAR', href: '/docs/hardware/sensors/lidar', sub: '30 Hz · 25 m · 720 samples' },
-            ].map((row) => (
+            {ANATOMY_PARTS.map((part, i) => {
+              const row = {
+                n: String(i + 1).padStart(2, '0'),
+                color: part.color,
+                name: part.name,
+                href: part.href,
+                sub: part.sub,
+              };
+              return (
               <Link
                 key={row.n}
                 href={row.href}
@@ -159,7 +191,7 @@ export default function HardwareOverviewPage() {
                   alignItems: 'center',
                 }}
               >
-                <div style={{ fontFamily: NB.headingFont, fontSize: 28, fontWeight: 900, color: ANATOMY_COLORS[row.n], lineHeight: 1 }}>
+                <div style={{ fontFamily: NB.headingFont, fontSize: 28, fontWeight: 900, color: row.color, lineHeight: 1 }}>
                   {row.n}
                 </div>
                 <div>
@@ -174,7 +206,8 @@ export default function HardwareOverviewPage() {
                   READ →
                 </div>
               </Link>
-            ))}
+              );
+            })}
           </div>
         </section>
       </ScrollReveal>

@@ -127,7 +127,37 @@ export default function SafetyPage() {
 
       <ScrollReveal>
         <section style={{ paddingBottom: 32 }}>
-          <Eyebrow>02 / FOR EDUCATORS</Eyebrow>
+          <Eyebrow>02 / OPERATING SAFELY</Eyebrow>
+          <DisplayHeading size="lg">
+            BEFORE AND DURING A <Red>RUN.</Red>
+          </DisplayHeading>
+          <DashList
+            items={[
+              <>Keep hands and loose objects clear of the moving parts, the tires, servo, encoder, and drivetrain, while the car is powered, and ask bystanders to keep back too.</>,
+              <>Switch the power off before you plug or unplug anything. Hot-plugging a connector can damage the board or whatever is on the other end.</>,
+              <>Keep metal out of the interfaces, and don&apos;t charge or run during a thunderstorm.</>,
+              <>The car&apos;s autonomous behaviour is uncertain by design, so someone should always be watching with the transmitter in reach. A flick of <code style={{ fontFamily: NB.monoFont }}>CH7</code> back to RC takes the wheel.</>,
+              <>Avoid a stalled motor left under power (a locked rotor) and continuous running above 40&nbsp;°C, both of which build heat fast.</>,
+            ]}
+          />
+          <Callout type="warn" title="If a LiPo misbehaves">
+            On any swelling, smoke, or odd smell, disconnect the pack from the power
+            module and move it to a ventilated, fire-safe area. Keep a Class D
+            extinguisher, a fire blanket, or a sand bucket within reach wherever you
+            charge or run.
+          </Callout>
+          <Callout type="note" title="When you contact support">
+            Email{' '}
+            <a href="mailto:support@neobotics.org" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>support@neobotics.org</a>{' '}
+            with your serial number, what happened, the steps and conditions at the
+            time, and any photos or video. It gets you a faster answer.
+          </Callout>
+        </section>
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <section style={{ paddingBottom: 32 }}>
+          <Eyebrow>03 / FOR EDUCATORS</Eyebrow>
           <DisplayHeading size="lg">
             CLASSROOM <Red>SUPPLEMENTS.</Red>
           </DisplayHeading>

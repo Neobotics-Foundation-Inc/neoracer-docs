@@ -136,19 +136,26 @@ export default function DrivetrainPage() {
           Steering follows simple bicycle geometry: steering angle{' '}
           <code style={{ fontFamily: NB.monoFont }}>δ</code> and wheelbase{' '}
           <code style={{ fontFamily: NB.monoFont }}>L = 280 mm</code> give path
-          curvature κ = tan(δ) / L. The Playground simulator models the car as a{' '}
-          <InfoNote term="kinematic bicycle" title="Kinematic bicycle model">
-            A simplified model that treats the four-wheeled car as a two-wheeled
-            bicycle, with one front wheel for steering and one rear wheel for
-            drive. It ignores tyre slip, which keeps the path math simple.
-          </InfoNote>. Pure-pursuit or{' '}
+          curvature κ = tan(δ) / L. That kinematic relation is the low-speed
+          baseline, and the Playground&apos;s 2D hub runs on it directly. The 3D
+          challenge sim now goes further and models the car as a{' '}
+          <InfoNote term="dynamic bicycle" title="Dynamic bicycle model">
+            A bicycle model with real tyre behaviour: each tyre makes force from
+            its slip angle, bounded by a friction circle, with weight shifting
+            fore-aft and side to side under throttle and cornering, plus a light
+            sprung mass that pitches and rolls. It captures the slide and
+            understeer a kinematic model can&apos;t.
+          </InfoNote>, tuned to the real RC car&apos;s mildly understeering feel.
+          Pure-pursuit or{' '}
           <InfoNote term="MPC" title="MPC">
             Model Predictive Control. A controller that predicts the car's
             motion a short way into the future and picks the steering and
             throttle that best follow the planned path. It runs that prediction
             again every cycle as new sensor data arrives.
           </InfoNote>{' '}controllers
-          written for F1TENTH carry over directly.
+          written for F1TENTH still carry over directly; the dynamic model just
+          means tyre slip and weight transfer show up at the limit, the way they
+          do on the real car.
         </p>
         </section>
       </ScrollReveal>

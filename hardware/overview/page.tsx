@@ -16,6 +16,7 @@ import {
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext, Callout } from '@/components/docs/DocsPrimitives';
+import { HardwareConnectionDiagram } from '@/components/docs/ManualDiagrams';
 
 export const metadata: Metadata = {
   title: 'Hardware overview · NeoRacer Docs',
@@ -210,6 +211,15 @@ export default function HardwareOverviewPage() {
             })}
           </div>
         </section>
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <Fig
+          label="FIG. B / HOW IT ALL CONNECTS"
+          caption="The signal architecture: the Jetson host fans out over USB 3.2 to the LiDAR, camera, and lower controller; the controller in turn drives the ESC and servo and reads the encoder and RF receiver. Power wiring lives on the Electrical page."
+        >
+          <HardwareConnectionDiagram />
+        </Fig>
       </ScrollReveal>
 
       <ScrollReveal>

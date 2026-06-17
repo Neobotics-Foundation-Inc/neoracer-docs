@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Metadata } from 'next';
 import DocsShell from '@/components/docs/DocsShell';
 import { NB } from '@/lib/nb-tokens';
@@ -153,11 +154,24 @@ export default function FirstDrivePage() {
       </ScrollReveal>
 
       <ScrollReveal>
+        <Callout type="note" title="Drive in RC mode">
+          For this first drive you want manual control, so keep the transmitter&apos;s{' '}
+          <code style={{ fontFamily: NB.monoFont }}>CH7</code> switch centred in RC
+          mode. That position keeps you on the sticks; flipping it hands the car to
+          your code. The{' '}
+          <Link href="/docs/hardware/remote-control" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
+            Remote control
+          </Link>{' '}
+          page is the full reference for every control.
+        </Callout>
+      </ScrollReveal>
+
+      <ScrollReveal>
         <section style={{ paddingBottom: 24 }}>
           <MonoLabel>You'll need</MonoLabel>
           <DashList
             items={[
-              <>The Flysky transmitter that came with the car.</>,
+              <>The <Link href="/docs/hardware/remote-control" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Flysky FS-i6S transmitter</Link> that came with the car, with the CH7 switch centred for RC mode.</>,
               <>A 4 × 4 m clear indoor area with at least 1 m of clearance from walls.</>,
               <>A hard floor works best. Hardwood, tile, concrete, or thin carpet all give the throttle a clean feel; plush carpet tends to absorb the response and make the first drive feel sluggish.</>,
               <>

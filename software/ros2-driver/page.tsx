@@ -218,7 +218,7 @@ export default function ROS2DriverPage() {
               <br />
               /scan<span style={{ color: NB.textDimBlue }}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# sensor_msgs/LaserScan, Lakibeam LiDAR over UDP</span>
               <br />
-              /imu<span style={{ color: NB.textDimBlue }}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# sensor_msgs/Imu, ICM-45686 on the OSCORE board</span>
+              /imu<span style={{ color: NB.textDimBlue }}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# sensor_msgs/Imu, QMI8658A on the OSCORE board</span>
               <br />
               /odom<span style={{ color: NB.textDimBlue }}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# nav_msgs/Odometry, integrated from wheel encoders</span>
               <br />

@@ -20,45 +20,61 @@ import { ScrollReveal, MouseFollowGlow, AnimatedNumeral, InfoNote } from '@/comp
 
 export const metadata: Metadata = {
   title: 'First program · NeoRacer Docs',
-  description: 'Write a hello-world Python that drives a square. Identical code runs in the Playground simulator and on the physical car.',
+  description: 'Write a basic wall follower: read the LiDAR every frame and steer to hold a fixed gap from the wall. The same Python runs in the Playground simulator and on the car, so it doubles as a LiDAR test.',
 };
 
-/* Square-pattern figure, the path your hello-world will draw. */
-function SquarePathDiagram() {
+/* Wall-follow figure: the car holds a fixed gap from the right wall, reading the
+ * LiDAR straight ahead (0 deg) and to the right (90 deg). An inside corner ahead
+ * shows why the front beam matters. */
+function WallFollowDiagram() {
+  const RED = NB.neoboticsRed;
+  const BLUE = NB.tarmacBlue;
   return (
-    <svg viewBox="0 0 480 280" width="100%" style={{ display: 'block', maxWidth: 560, margin: '0 auto' }}>
-      <rect x="40" y="30" width="400" height="220" rx="6" fill={NB.haloWhite} stroke={NB.tarmacBlue} strokeWidth="1.5" />
-      <text x="240" y="22" fontFamily={NB.monoFont} fontSize="11" fill={NB.tarmacBlue} fontWeight="700" letterSpacing="2" textAnchor="middle">
-        DRIVING PATH · ~1 m PER SIDE
+    <svg viewBox="0 0 500 300" width="100%" style={{ display: 'block', maxWidth: 560, margin: '0 auto' }}>
+      <defs>
+        <marker id="wf-arrow" markerWidth="9" markerHeight="9" refX="6" refY="4.5" orient="auto">
+          <path d="M0 0l8 4.5L0 9z" fill={RED} />
+        </marker>
+      </defs>
+
+      <text x="250" y="20" fontFamily={NB.monoFont} fontSize="11" fill={BLUE} fontWeight="700" letterSpacing="2" textAnchor="middle">
+        FOLLOW THE RIGHT WALL
       </text>
 
-      {/* Square path */}
-      <rect x="120" y="80" width="240" height="140" rx="4" stroke={NB.neoboticsRed} strokeWidth="2.4" strokeDasharray="4 4" fill="none" />
+      {/* L-shaped wall: vertical on the right, turning left across the top (an inside corner) */}
+      <path d="M150 70 H400 V270" fill="none" stroke={BLUE} strokeWidth="6" strokeLinecap="square" />
+      {/* wall hatching */}
+      {Array.from({ length: 10 }).map((_, i) => (
+        <line key={`v${i}`} x1="400" y1={78 + i * 20} x2="412" y2={70 + i * 20} stroke={BLUE} strokeWidth="1" opacity="0.4" />
+      ))}
+      {Array.from({ length: 11 }).map((_, i) => (
+        <line key={`h${i}`} x1={158 + i * 22} y1="70" x2={150 + i * 22} y2="58" stroke={BLUE} strokeWidth="1" opacity="0.4" />
+      ))}
 
-      {/* Direction arrows on path */}
-      <polygon points="245,80 235,75 235,85" fill={NB.neoboticsRed} />
-      <polygon points="360,150 355,140 365,140" fill={NB.neoboticsRed} />
-      <polygon points="245,220 235,215 235,225" fill={NB.neoboticsRed} transform="rotate(180 240 220)" />
-      <polygon points="120,150 115,140 125,140" fill={NB.neoboticsRed} transform="rotate(180 120 150)" />
-
-      {/* Car at start, nose right (it drives along the top edge first) */}
-      <CarSprite cx={120} cy={80} size={34} heading={90} />
-      <text x="120" y="64" fontFamily={NB.monoFont} fontSize="10" fill={NB.tarmacBlue} fontWeight="700" textAnchor="middle">
-        START / END
+      {/* Target-gap line: where the car tries to stay, ~50 cm off the wall */}
+      <line x1="350" y1="95" x2="350" y2="262" stroke={RED} strokeWidth="1.4" strokeDasharray="5 5" opacity="0.7" />
+      <text x="350" y="282" fontFamily={NB.monoFont} fontSize="9" fill={RED} fontWeight="700" textAnchor="middle">
+        TARGET GAP ≈ 50 cm
       </text>
 
-      {/* Corner labels */}
-      <text x="240" y="74" fontFamily={NB.monoFont} fontSize="9" fill={NB.textMutedBeige} textAnchor="middle">
-        1 s forward
-      </text>
-      <text x="372" y="154" fontFamily={NB.monoFont} fontSize="9" fill={NB.textMutedBeige}>
-        turn 90°
-      </text>
-      <text x="240" y="236" fontFamily={NB.monoFont} fontSize="9" fill={NB.textMutedBeige} textAnchor="middle">
-        1 s forward
-      </text>
-      <text x="60" y="154" fontFamily={NB.monoFont} fontSize="9" fill={NB.textMutedBeige}>
-        turn 90°
+      {/* Car on the target line, nose up, right side toward the wall */}
+      <CarSprite cx={350} cy={196} size={38} heading={0} />
+
+      {/* Right beam (90 deg) to the wall */}
+      <line x1="350" y1="196" x2="397" y2="196" stroke={RED} strokeWidth="1.8" markerEnd="url(#wf-arrow)" />
+      <text x="372" y="189" fontFamily={NB.monoFont} fontSize="9" fill={RED} fontWeight="700" textAnchor="middle">90°</text>
+
+      {/* Front beam (0 deg) toward the corner */}
+      <line x1="350" y1="178" x2="350" y2="76" stroke={RED} strokeWidth="1.6" strokeDasharray="4 4" markerEnd="url(#wf-arrow)" />
+      <text x="364" y="120" fontFamily={NB.monoFont} fontSize="9" fill={RED} fontWeight="700">0°</text>
+
+      {/* Travel direction */}
+      <line x1="320" y1="230" x2="320" y2="200" stroke={BLUE} strokeWidth="2" markerEnd="url(#wf-arrow)" />
+      <text x="320" y="248" fontFamily={NB.monoFont} fontSize="9" fill={BLUE} fontWeight="700" textAnchor="middle">DRIVE</text>
+
+      {/* Corner note */}
+      <text x="250" y="100" fontFamily={NB.monoFont} fontSize="9" fill={NB.textMutedBeige} textAnchor="middle">
+        wall ahead → steer left
       </text>
     </svg>
   );
@@ -81,17 +97,19 @@ export default function FirstProgramPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>STEP 05 / GETTING STARTED · THE FINAL ONE</Eyebrow>
             <DisplayHeading size="xl">
-              HELLO, <Red>RACECAR.</Red>
+              FOLLOW THE <Red>WALL.</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
-              Twenty lines of Python that drive a one-metre square. The exact
-              same script runs in the NeoRacer Playground simulator and on the
-              car, your choice where to try it first.
+              Your first program that actually reads a sensor. Twenty lines of
+              Python that watch the LiDAR and steer to hold a fixed gap from the
+              wall. The same script runs in the NeoRacer Playground simulator and
+              on the car, so it doubles as a quick way to prove the LiDAR works.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="outline" icon={<ClockGlyph />}><AnimatedNumeral value={15} suffix=" minutes" /></ChromeBadge>
               <ChromeBadge variant="outline" icon={<LevelGlyph level={1} />}>Beginner</ChromeBadge>
-              <ChromeBadge variant="red">Sim ↔ Car parity</ChromeBadge>
+              <ChromeBadge variant="red">Reads the LiDAR</ChromeBadge>
+              <ChromeBadge variant="outline">Sim ↔ Car parity</ChromeBadge>
             </div>
           </div>
         </section>
@@ -100,9 +118,9 @@ export default function FirstProgramPage() {
       <ScrollReveal>
         <Fig
           label="FIG. A / WHAT YOUR PROGRAM WILL DO"
-          caption="Forward one second, turn 90°, repeat four times. The simplest possible closed-loop program, open-loop in this case, since we don't check sensors yet."
+          caption="Each frame the car reads two LiDAR distances, straight ahead (0°) and to the right (90°), and steers to keep the right reading near a target gap. When the front reading drops at a corner, it turns away. That read-decide-steer loop is the whole job."
         >
-          <SquarePathDiagram />
+          <WallFollowDiagram />
         </Fig>
       </ScrollReveal>
 
@@ -116,10 +134,10 @@ export default function FirstProgramPage() {
                 <Link href="https://playground.neobotics.org" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
                   playground.neobotics.org
                 </Link>{' '}
-                in your browser, paste the code, and you're one click from Run.
+                in your browser, paste the code, drop the car next to a wall, and click Run.
               </>,
               <>
-                <strong>Car</strong>: <InfoNote term="SSH" title="SSH">A way to log into another computer over the network and run commands in its terminal from yours. Here you use it to control the car's onboard computer.</InfoNote> into the Jetson (covered in <Link href="/docs/software/networking" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Networking</Link>) and run the script over <code style={{ fontFamily: NB.monoFont }}>ros2 run</code> with the racecar-neo-library installed.
+                <strong>Car</strong>: <InfoNote term="SSH" title="SSH">A way to log into another computer over the network and run commands in its terminal from yours. Here you use it to control the car's onboard computer.</InfoNote> into the Jetson (covered in <Link href="/docs/software/networking" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Networking</Link>) and run the script with the racecar-neo-library installed. If the car hugs a wall, the LiDAR is alive and aligned.
               </>,
             ]}
           />
@@ -134,36 +152,32 @@ export default function FirstProgramPage() {
           </DisplayHeading>
           <Code lang="python">
 {`import racecar_core
+import racecar_utils as rc_utils
 
 rc = racecar_core.create_racecar()
 
-SIDE_TIME = 1.0   # seconds per straight leg
-TURN_TIME = 0.7   # seconds per 90-degree turn
-SPEED = 0.25      # 25% throttle
-TURN = 1.0        # full lock
-
-timer = 0.0
-leg = 0           # 8 legs: even legs drive straight, odd legs turn
+SPEED = 0.2        # gentle, steady throttle
+TARGET = 50        # cm: the gap we want to hold from the right wall
+KP = 0.01          # how hard to steer per cm of error
+FRONT_STOP = 50    # cm: a wall this close ahead means turn away
 
 def start():
-    global timer, leg
-    timer, leg = 0.0, 0
     rc.drive.stop()
+    print(">> Wall follower running. Watching the LiDAR.")
 
 def update():
-    global timer, leg
-    if leg >= 8:                     # four straights + four turns
-        rc.drive.stop()
-        return
-    timer += rc.get_delta_time()     # seconds since the last frame
-    if leg % 2 == 0:                 # straight leg
-        rc.drive.set_speed_angle(SPEED, 0)
-        if timer > SIDE_TIME:
-            leg, timer = leg + 1, 0.0
-    else:                            # turn leg
-        rc.drive.set_speed_angle(SPEED, TURN)
-        if timer > TURN_TIME:
-            leg, timer = leg + 1, 0.0
+    scan = rc.lidar.get_samples()                    # 720 distances, cm
+
+    # Distance straight ahead (0 deg) and to the right wall (90 deg).
+    front = rc_utils.get_lidar_average_distance(scan, 0)
+    right = rc_utils.get_lidar_average_distance(scan, 90)
+
+    if front < FRONT_STOP:                            # corner ahead
+        rc.drive.set_speed_angle(SPEED, -1)           # turn full left
+    else:
+        error = right - TARGET                        # +: too far from wall
+        angle = rc_utils.clamp(KP * error, -1, 1)     # steer toward the wall
+        rc.drive.set_speed_angle(SPEED, angle)
 
 rc.set_start_update(start, update)
 rc.go()`}
@@ -173,13 +187,17 @@ rc.go()`}
 
       <ScrollReveal>
         <section style={{ paddingBottom: 24 }}>
-          <Callout type="note" title="Why no sleep()?">
-            <code style={{ fontFamily: NB.monoFont }}>update()</code> is called once per frame,
-            many times a second, so you never loop or sleep inside it. Instead you
-            keep a little state between frames and add{' '}
-            <code style={{ fontFamily: NB.monoFont }}>rc.get_delta_time()</code> (the seconds
-            since the last frame) to a timer. That is the whole rhythm of a
-            racecar program: read sensors, decide, set the drive, return, repeat.
+          <Callout type="note" title="Read, decide, steer, repeat">
+            <code style={{ fontFamily: NB.monoFont }}>update()</code> runs once per frame,
+            many times a second, so you never loop or sleep inside it. Each call you
+            read the <Link href="/docs/api-reference/python/lidar" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>LiDAR</Link>,
+            work out one steering angle, set the drive, and return. The{' '}
+            <code style={{ fontFamily: NB.monoFont }}>error = right - TARGET</code> line is the
+            whole controller: when the car drifts too far from the wall the error
+            grows positive and it steers back toward it. That is a{' '}
+            <InfoNote term="proportional controller" title="Proportional (P) control">
+              The simplest closed-loop controller: the correction is proportional to the error. Bigger gap from the target, bigger steering input. KP sets how aggressive that is.
+            </InfoNote>.
           </Callout>
         </section>
       </ScrollReveal>
@@ -191,15 +209,15 @@ rc.go()`}
             WHAT TO <Red>EXPECT.</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-            The car traces something roughly square and lands near, but not
-            exactly on, its start. That gap is the whole reason sensors exist,
-            and feeling it for yourself here makes that click into place.
+            Drop the car alongside a wall on its right and run it. It should track
+            the wall and peel away at corners. If it weaves or scrapes, that is the
+            LiDAR and your gains talking, which is exactly what you came to feel.
           </p>
           <div style={{ marginTop: 18, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 16 }}>
             {[
-              { title: 'Sim run', body: 'Path looks geometric. Corners are sharp. Final position drifts about 10 cm.' },
-              { title: 'Car run (carpet)', body: 'Path skews. Final position can drift 50 cm or more. Carpet wheel slip is the dominant error.' },
-              { title: 'Car run (hardwood)', body: 'Closer to the sim. Drift comes from un-trimmed servo and motor torque ripple.' },
+              { title: 'Sim run', body: 'Clean LiDAR, so it hugs the wall smoothly and turns crisply at corners. The baseline to tune against.' },
+              { title: 'Car run', body: 'Same code, real LiDAR. A little weave from sensor noise is normal. If the data is empty or frozen, that is a LiDAR fault, not your code.' },
+              { title: 'Tuning', body: 'KP too high oscillates, too low drifts into the wall. Keep SPEED low while you tune, then raise it once it tracks.' },
             ].map((c, i) => (
               <div key={i} style={{ background: NB.haloWhite, border: `1px solid ${NB.borderOnBeige}`, borderRadius: 10, padding: 16, boxShadow: NB.shadowCard }}>
                 <div style={{ fontFamily: NB.headingFont, fontSize: 14, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: NB.textOnBeige, marginBottom: 6 }}>
@@ -209,6 +227,13 @@ rc.go()`}
               </div>
             ))}
           </div>
+          <Callout type="tip" title="LiDAR comes up empty?">
+            If <code style={{ fontFamily: NB.monoFont }}>get_samples()</code> is all
+            zeros, the scan never reached your code. The{' '}
+            <Link href="/docs/troubleshooting/lidar-empty-scan" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>LiDAR empty scan</Link>{' '}
+            and <Link href="/docs/troubleshooting/diagnostics" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Diagnostics</Link> pages
+            walk the fix.
+          </Callout>
         </section>
       </ScrollReveal>
 
@@ -218,11 +243,11 @@ rc.go()`}
           <Link href="/docs/api-reference/python/lidar" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
             LiDAR API
           </Link>{' '}
-          and try a sensor-driven program, or skim the{' '}
+          to go past two beams into the full scan, or skim the{' '}
           <Link href="/docs/hardware/overview" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
             Hardware overview
           </Link>{' '}
-          to understand what's actually in the box you just unboxed.
+          to see what's actually in the box you just unboxed.
         </Callout>
       </ScrollReveal>
 

@@ -51,8 +51,9 @@ export default function CameraPage() {
               }}
             >
               The forward-facing colour camera mounted on the front of the
-              chassis. Your code reads it as a steady stream of 640 x 480 frames,
-              colour as BGR plus a matching depth array. The same frame size the
+              chassis. Your code reads it as a steady stream of 640 x 480 BGR
+              colour frames. It is an RGB camera, not a depth camera, so reach for
+              the LiDAR when you need distance. The same frame size the
               racecar-neo-library hands you in the Playground sim and on the car,
               so what you tune in simulation is what runs on the track.
             </p>
@@ -60,7 +61,7 @@ export default function CameraPage() {
               <ChromeBadge variant="red">Runs unchanged in Playground (sim)</ChromeBadge>
               <ChromeBadge variant="outline"><AnimatedNumeral value={640} suffix=" px wide" /></ChromeBadge>
               <ChromeBadge variant="outline"><AnimatedNumeral value={480} suffix=" px tall" /></ChromeBadge>
-              <ChromeBadge variant="outline">BGR colour + depth</ChromeBadge>
+              <ChromeBadge variant="outline">RGB, no depth</ChromeBadge>
               <ChromeBadge variant="outline">JPEG on /camera</ChromeBadge>
             </div>
           </div>
@@ -84,25 +85,39 @@ export default function CameraPage() {
             }}
           >
             The colour image arrives as a NumPy array shaped (480, 640, 3): 480
-            rows, 640 columns, three colour channels in BGR order. The depth
-            image is the same grid without the colour channels, shaped (480, 640).
-            The physical sensor can capture up to 1080p, but the library
-            normalises every frame to 640 x 480 so that the sim and the car
-            return the exact same shape. That is why the helpers below report a
-            width of 640 and a height of 480 in both places.
+            rows, 640 columns, three colour channels in BGR order. The physical
+            sensor can capture up to 1080p, but the library normalises every frame
+            to 640 x 480 so that the sim and the car return the exact same shape.
+            That is why the helpers below report a width of 640 and a height of
+            480 in both places.
           </p>
           <Code lang="python">
 {`color = rc.camera.get_color_image()    # NDArray (480, 640, 3), uint8, BGR
-depth = rc.camera.get_depth_image()    # NDArray (480, 640)
 
 print(color.shape)                     # (480, 640, 3)
 print(rc.camera.get_width())           # 640
 print(rc.camera.get_height())          # 480
 
 # BGR, not RGB: the blue channel comes first.
-b, g, r = color[240, 320]              # centre pixel, one per channel`}
+b, g, r = color[240, 320]              # centre pixel, one per channel
+
+# The NeoRacer is RGB-only: get_depth_image() returns all zeros here.
+# Use rc.lidar for distance.`}
           </Code>
         </section>
+      </ScrollReveal>
+
+      {/* ── Section · No depth ───────────────────────────────────────── */}
+      <ScrollReveal>
+        <Callout type="warn" title="No depth camera on the NeoRacer">
+          The racecar-neo-library is generic, so it runs across the MIT RACECAR
+          family. Some of those cars carry a depth (RGB-D) camera, which is why the
+          API keeps <code style={{ fontFamily: NB.monoFont }}>get_depth_image()</code>{' '}
+          and <code style={{ fontFamily: NB.monoFont }}>get_max_range()</code>. The
+          NeoRacer&apos;s camera is RGB-only, so those return an all-zero frame here
+          and in the sim. For distance, use the{' '}
+          <Link href="/docs/hardware/sensors/lidar" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>LiDAR</Link>.
+        </Callout>
       </ScrollReveal>
 
       {/* ── Section · Spec grid ──────────────────────────────────────── */}
@@ -123,7 +138,7 @@ b, g, r = color[240, 320]              # centre pixel, one per channel`}
             {[
               ['API resolution', '640 x 480'],
               ['Colour format', 'BGR (uint8)'],
-              ['Depth output', '(480, 640) array'],
+              ['Sensor type', 'RGB (no depth)'],
               ['ROS 2 topic', '/camera (JPEG)'],
             ].map(([k, v]) => (
               <div
@@ -183,7 +198,7 @@ b, g, r = color[240, 320]              # centre pixel, one per channel`}
                 <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed, fontSize: 14 }}>
                   rc.camera.get_depth_image() → NDArray (480, 640)
                 </code>{' '}
-                · the depth frame on the same grid.
+                · for depth-camera cars; all zeros on the NeoRacer (RGB-only), so use rc.lidar for distance.
               </>,
               <>
                 <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed, fontSize: 14 }}>
@@ -291,7 +306,7 @@ b, g, r = color[240, 320]              # centre pixel, one per channel`}
               n={2}
               title="Sign and colour recognition"
               lede="BGR pixels make it straightforward to match against known colours."
-              body="Because the frame is plain BGR, masking for a particular colour cone or sign is a few lines. The depth array tells you how far away the match is, which is handy for deciding when to act on it."
+              body="Because the frame is plain BGR, masking for a particular colour cone or sign is a few lines. Pair it with the LiDAR when you need how far away the match is, since the NeoRacer's camera has no depth."
             />
             <NumberedFeatureCard
               n={3}

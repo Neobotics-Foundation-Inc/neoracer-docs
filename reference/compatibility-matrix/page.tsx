@@ -85,9 +85,9 @@ const SENSOR_ROWS = [
   },
   {
     component: 'IMU',
-    part: 'QMI8658A + QMC6309 (9-axis)',
+    part: 'ICM-45686 (6-axis) + magnetometer',
     api: 'rc.physics',
-    notes: 'Linear acceleration and angular velocity from the QMI8658A, plus a magnetometer vector from the QMC6309, read through rc.physics.',
+    notes: 'Linear acceleration and angular velocity from the ICM-45686, plus a magnetometer vector, read through rc.physics.',
   },
   {
     component: 'Drive',

@@ -214,9 +214,10 @@ export default function OscoreBoardPage() {
             THE ONBOARD <Red>IMU.</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
-            The IMU lives on this board, two parts on a shared I2C bus. A QMI8658A
-            gives the 6-axis accelerometer and gyroscope; a QMC6309 adds the
-            3-axis magnetometer, so together they support a 9-axis heading. The
+            The IMU lives on this board, two parts on a shared I2C bus. The
+            ICM-45686 (a TDK InvenSense 6-axis IMU) gives the accelerometer and
+            gyroscope; a 3-axis magnetometer adds heading, so together they
+            support a 9-axis solution. The
             ESP32-S3 reads them and publishes on{' '}
             <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>/imu</code>{' '}
             once the{' '}
@@ -231,8 +232,8 @@ export default function OscoreBoardPage() {
               { key: 'range', label: 'Range', mono: true },
             ]}
             rows={[
-              { part: 'QMI8658A', type: '6-axis gyro + accelerometer', addr: '0x6B', range: 'gyro ±16 to 2048 dps, accel ±2 to 16 g' },
-              { part: 'QMC6309', type: '3-axis magnetometer', addr: '0x7C', range: '±30 Gauss' },
+              { part: 'ICM-45686', type: '6-axis gyro + accel (TDK InvenSense)', addr: '0x68', range: 'gyro ±4000 dps, accel ±32 g' },
+              { part: 'Magnetometer', type: '3-axis magnetometer', addr: '—', range: '—' },
             ]}
           />
         </section>

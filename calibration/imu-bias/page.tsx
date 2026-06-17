@@ -21,7 +21,7 @@ import { Crumbs, PrevNext, Callout, Code } from '@/components/docs/DocsPrimitive
 export const metadata: Metadata = {
   title: 'IMU bias · Calibration · NeoRacer Docs',
   description:
-    'Zero the QMI8658A accelerometer and gyroscope, and fit the QMC6309 magnetometer, with the calibrate_imu and calibrate_mag scripts. They write the YAML the driver loads at launch.',
+    'Zero the ICM-45686 accelerometer and gyroscope, and fit the magnetometer, with the calibrate_imu and calibrate_mag scripts. They write the YAML the driver loads at launch.',
 };
 
 const STEPS: CalibrationStep[] = [
@@ -61,8 +61,8 @@ export default function ImuBiasPage() {
                 maxWidth: 680,
               }}
             >
-              A raw QMI8658A reads a small, steady offset even when the car is dead
-              still, and the QMC6309 magnetometer reads a field warped by the metal
+              A raw ICM-45686 reads a small, steady offset even when the car is dead
+              still, and the magnetometer reads a field warped by the metal
               around it. Two scripts measure those once and write the corrections to a
               pair of YAML files the driver loads at launch, so{' '}
               <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>rc.physics</code>{' '}

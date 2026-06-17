@@ -65,7 +65,7 @@ const MODULES: ApiModule[] = [
     badge: '640 × 480 · BGR',
     methods: [
       { sig: 'rc.camera.get_color_image()', what: 'Latest frame as a NumPy array, (480, 640, 3) uint8, blue-green-red. Same shape on car and in sim.' },
-      { sig: 'rc.camera.get_depth_image()', what: 'Depth frame the same size, each pixel a distance in centimetres.' },
+      { sig: 'rc.camera.get_depth_image()', what: 'Depth-camera method (generic library); all zeros on the NeoRacer, which is RGB-only. Use rc.lidar for distance.' },
     ],
     icon: (
       <svg width="40" height="40" viewBox="0 0 64 64" fill="none">
@@ -248,7 +248,7 @@ export default function RacecarNeoLibraryPage() {
               <MeterCard label="LiDAR scan rate" value={30} suffix=" Hz" />
               <MeterCard label="get_samples() length" value={720} />
               <MeterCard label="IMU sample rate" value={100} suffix=" Hz" />
-              <MeterCard label="Camera frame width" value={640} sub="× 480, colour + depth" />
+              <MeterCard label="Camera frame width" value={640} sub="× 480, RGB (no depth)" />
             </div>
           </div>
         </section>

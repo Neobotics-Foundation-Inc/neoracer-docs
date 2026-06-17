@@ -36,7 +36,7 @@ const ROWS = [
     topic: '/imu',
     type: 'sensor_msgs/Imu',
     role: 'Read it',
-    notes: 'Linear acceleration (m/s²) and angular velocity (rad/s), frame_id imu_link. Published by the controller node from the QMI8658A on the OSCORE board.',
+    notes: 'Linear acceleration (m/s²) and angular velocity (rad/s), frame_id imu_link. Published by the controller node from the ICM-45686 on the OSCORE board.',
   },
   {
     topic: '/mag',

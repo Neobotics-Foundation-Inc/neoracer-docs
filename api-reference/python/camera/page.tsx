@@ -14,7 +14,7 @@ import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Inter
 export const metadata: Metadata = {
   title: 'rc.camera · Python API · NeoRacer Docs',
   description:
-    'The Camera module: get_color_image and get_depth_image return fixed 640x480 frames. Same API in the Playground sim and on the car.',
+    "The Camera module: 640x480 colour frames from the NeoRacer's RGB camera, identical in the Playground sim and on the car. racecar_core also exposes depth methods, but the NeoRacer has no depth camera, so use the LiDAR for distance.",
 };
 
 const METHODS: ApiMethod[] = [
@@ -33,22 +33,24 @@ const METHODS: ApiMethod[] = [
   {
     sig: 'rc.camera.get_depth_image()',
     returns: 'NDArray[480, 640]',
-    summary: 'A depth frame the same size as the colour image. Each pixel is the distance to that point in centimetres.',
+    summary:
+      'Not available on the NeoRacer: its camera is RGB-only, so this returns an all-zero frame. The method exists because racecar_core is generic and also serves cars with a depth camera (like the RealSense on the MIT RACECAR). For distance, use rc.lidar.',
   },
   {
     sig: 'rc.camera.get_width()',
     returns: 'int',
-    summary: 'The pixel width of both the colour and depth frames. 640 on the NeoRacer.',
+    summary: 'The pixel width of the colour frame. 640 on the NeoRacer.',
   },
   {
     sig: 'rc.camera.get_height()',
     returns: 'int',
-    summary: 'The pixel height of both frames. 480 on the NeoRacer.',
+    summary: 'The pixel height of the colour frame. 480 on the NeoRacer.',
   },
   {
     sig: 'rc.camera.get_max_range()',
     returns: 'float',
-    summary: 'The farthest distance in centimetres the depth camera can report. Anything beyond it comes back as the max.',
+    summary:
+      'A depth-camera method, not meaningful on the NeoRacer (no depth camera). On a car that has one, it returns the farthest distance the depth sensor can report.',
   },
 ];
 
@@ -72,9 +74,8 @@ export default function CameraApiPage() {
               RC.<Red>CAMERA.</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
-              The Camera module gives you what the car sees: a colour frame and a
-              matching depth frame, both as plain NumPy arrays you can hand
-              straight to{' '}
+              The Camera module gives you what the car sees: a 640 by 480 colour
+              frame as a plain NumPy array you can hand straight to{' '}
               <InfoNote term="OpenCV" title="OpenCV">
                 An open-source computer vision library for processing images. It
                 reads NumPy arrays directly, so frames from the camera go
@@ -87,7 +88,7 @@ export default function CameraApiPage() {
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="red">Sim ↔ car identical</ChromeBadge>
               <ChromeBadge variant="outline">640 × 480</ChromeBadge>
-              <ChromeBadge variant="outline">colour + depth</ChromeBadge>
+              <ChromeBadge variant="outline">RGB, no depth</ChromeBadge>
               <ChromeBadge variant="outline">NumPy / OpenCV</ChromeBadge>
             </div>
           </div>
@@ -111,6 +112,29 @@ export default function CameraApiPage() {
             ROS 2 driver
           </a>{' '}
           page.
+        </Callout>
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <Callout type="warn" title="The NeoRacer has no depth camera">
+          <code style={{ fontFamily: NB.monoFont }}>racecar_core</code> is a generic
+          library shared across the MIT RACECAR family, and some of those cars carry
+          a depth camera, so the API includes{' '}
+          <code style={{ fontFamily: NB.monoFont }}>get_depth_image()</code> and{' '}
+          <code style={{ fontFamily: NB.monoFont }}>get_max_range()</code>. The
+          NeoRacer ships an{' '}
+          <InfoNote term="RGB-only camera" title="RGB vs depth camera">
+            An RGB camera records colour only. A depth (RGB-D) camera, like the Intel
+            RealSense on the MIT RACECAR, also measures the distance to each pixel.
+            The NeoRacer has the former, so there is no depth source behind the depth
+            methods.
+          </InfoNote>{' '}
+          camera, so those depth methods have no sensor behind them and hand back an
+          all-zero frame on both the car and the sim. For distance, use the{' '}
+          <a href="/docs/api-reference/python/lidar" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
+            LiDAR
+          </a>{' '}
+          instead.
         </Callout>
       </ScrollReveal>
 
@@ -140,12 +164,15 @@ def start():
 
 def update():
     image = rc.camera.get_color_image()      # (480, 640, 3), BGR, 0-255
-    depth = rc.camera.get_depth_image()      # (480, 640), cm
 
     # average brightness of the colour frame
     print("brightness:", np.mean(image))
-    # distance straight ahead, at the centre pixel
-    print("centre depth:", depth[240, 320])
+
+    # the centre pixel as blue, green, red. The NeoRacer is RGB-only,
+    # so reach for the LiDAR (rc.lidar), not a depth frame, for distance.
+    h, w = image.shape[0], image.shape[1]
+    b, g, r = image[h // 2, w // 2]
+    print("centre BGR:", b, g, r)
 
 rc.set_start_update(start, update)
 rc.go()`}</Code>

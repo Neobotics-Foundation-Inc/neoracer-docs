@@ -27,15 +27,15 @@ import { Crumbs, PrevNext, Callout, Code } from '@/components/docs/DocsPrimitive
 export const metadata: Metadata = {
   title: 'Servo center · Calibration · NeoRacer Docs',
   description:
-    'Center the steering so a 0.0 angle is straight ahead. On the neoracer_ros2_driver the trim is steering_trim_deg in config/controller.yaml. Edit, re-launch teleop, done.',
+    'Center the steering so a 0.0 angle is straight ahead. The car measures its own trim: run lab_trim_cal.py, paste the two commands it prints, rerun until it says CALIBRATED.',
 };
 
 const STEPS: CalibrationStep[] = [
-  { n: 1, title: 'SSH in',        sub: 'to the Jetson',          iconKey: 'ssh' },
-  { n: 2, title: 'Roll test',     sub: 'push 1 m on tape',       iconKey: 'stopwatch' },
-  { n: 3, title: 'Edit trim',     sub: 'controller.yaml',         iconKey: 'cli' },
-  { n: 4, title: 'colcon build',  sub: 'apply the change',       iconKey: 'save' },
-  { n: 5, title: 'Re-test',       sub: 'until it holds a line',  iconKey: 'wheel' },
+  { n: 1, title: 'SSH in',        sub: 'to the Jetson',            iconKey: 'ssh' },
+  { n: 2, title: 'Park it',       sub: 'facing a wall, 2 to 6 m',  iconKey: 'wheel' },
+  { n: 3, title: 'Run the lab',   sub: 'lab_trim_cal.py',          iconKey: 'cli' },
+  { n: 4, title: 'Paste two lines', sub: 'it prints the commands', iconKey: 'save' },
+  { n: 5, title: 'Rerun',         sub: 'until it says CALIBRATED', iconKey: 'stopwatch' },
 ];
 
 export default function ServoCenterPage() {
@@ -71,8 +71,9 @@ export default function ServoCenterPage() {
               <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>rc.drive.set_speed_angle(speed, 0)</code>{' '}
               the wheels should point dead ahead. Out of the box they usually lean
               a touch, because the steering linkage sits a few counts off true
-              center. Unlike the motor, this one has a real software trim: a single
-              constant you nudge and rebuild.
+              center. The fix is a single software trim, and you do not have to
+              guess it: the car measures its own drift with the gyro and lidar,
+              then prints the exact value to set.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="red"><AnimatedNumeral value={2} prefix="~" suffix=" minutes" /></ChromeBadge>
@@ -190,7 +191,7 @@ export default function ServoCenterPage() {
       <ScrollReveal>
         <Fig
           label="FIG. B / FIVE STEPS, START TO FINISH"
-          caption="Roll to find the drift, nudge the offset a few counts the other way, rebuild, and roll again. Two or three passes usually settles it."
+          caption="Run the calibration lab, paste the two commands it prints, and run it again. Two or three passes lands within a degree, and the lab tells you when to stop."
         >
           <div style={{ paddingTop: 8, overflowX: 'auto', WebkitOverflowScrolling: 'touch' }}>
             <div style={{ minWidth: 480 }}>
@@ -210,27 +211,33 @@ export default function ServoCenterPage() {
               THE <Red>PROCEDURE.</Red>
             </DisplayHeading>
 
-            <Code lang="bash">{`# 1. SSH into the Jetson.
+            <Code lang="bash">{`# 1. SSH into the Jetson and park the car facing a wall, 2 to 6 m of clear floor.
 ssh racecar@neoracer
 
-# 2. Open the controller YAML and find the trim line.
-$EDITOR ~/ros2_ws/src/neoracer_ros2_driver/config/controller.yaml
-#   controller:
-#     ros__parameters:
-#       steering_trim_deg: 0.0   # degrees added to the servo angle
+# 2. Run the calibration lab. Flip the transmitter to autonomy when it says so.
+cd ~/jupyter_ws/neobotics/labs
+python3 lab_trim_cal.py
 
-# 3. Roll-test first (Section 04) to see which way it drifts, then nudge:
-#      drifts LEFT  at angle 0  ->  steer it right: lower the trim
-#      drifts RIGHT at angle 0  ->  steer it left:  raise the trim
-#    Step a degree at a time. Half a degree is usually enough at the end.
+# The car drives straight for up to three seconds, measures its heading drift
+# with the gyro and the distance with the front lidar, then prints:
+#
+#   current steering_trim_deg: +1.0   measured correction: -2.6
+#
+#   === RUN THESE TWO COMMANDS, THEN RERUN ME ===
+#
+#   sed -i -E 's/steering_trim_deg: *-?[0-9.]+/steering_trim_deg: -1.6/' \
+#     ~/ros2_ws/install/neoracer_ros2_driver/share/neoracer_ros2_driver/config/controller.yaml \
+#     ~/ros2_ws/src/neoracer_ros2_driver/config/controller.yaml
+#   sudo systemctl restart neoracer-teleop
 
-# 4. Re-launch teleop so the new trim is picked up.
-racecar teleop`}</Code>
+# 3. Paste those two commands, then run the lab again.
+#    Repeat until it prints === CALIBRATED ===  (usually two or three passes).`}</Code>
 
-            <Callout type="note" title="Degrees, not counts">
-              The trim is in degrees of servo angle, which lines up with what
-              you see at the wheel. One degree is a small, visible change.
-              Start with one and halve your step as you close in.
+            <Callout type="note" title="Boot the car still">
+              The measurement leans on the gyro, and the gyro calibrates its
+              bias in the first seconds after power-on. Power the car up flat
+              and still, hands off, before calibrating. The lab checks this and
+              refuses to drive if the gyro has not settled.
             </Callout>
           </div>
         </section>
@@ -254,8 +261,9 @@ racecar teleop`}</Code>
                 maxWidth: 720,
               }}
             >
-              This holds the servo at center and the motor at zero so you can roll
-              the car by hand along the tape and watch the drift:
+              No tools handy, or want a second opinion? This holds the servo at
+              center and the motor at zero so you can roll the car by hand along
+              a metre of tape and watch the drift:
             </p>
 
             <Code lang="python">{`import racecar_core
@@ -319,28 +327,29 @@ rc.go()`}</Code>
               }}
             >
               The trim is a YAML value the controller node reads on launch, so a
-              re-launch is what applies it. There is no colcon build to wait on.
-              Keep your edited{' '}
-              <code style={{ fontFamily: NB.monoFont }}>controller.yaml</code> in
-              your own copy of the workspace so a re-image does not reset it to
-              zero.
+              teleop restart is what applies it. There is no colcon build to wait
+              on. The commands the lab prints edit both copies of{' '}
+              <code style={{ fontFamily: NB.monoFont }}>controller.yaml</code>, the
+              installed one the car runs and the source one, so the value survives
+              a rebuild.
             </p>
 
             <Code lang="yaml">{`# ~/ros2_ws/src/neoracer_ros2_driver/config/controller.yaml
-controller:
+controller_node:
   ros__parameters:
-    port:               /dev/osrbot_base
-    max_speed_mps:      2.0
-    steering_trim_deg:  0.0    # your trim, in degrees
-    throttle_channel:   2
-    steering_channel:   0
-    mode_channel:       4`}</Code>
+    port_name:              /dev/osrbot_base
+    max_speed_mps:          6.0
+    max_steering_angle_deg: 30.0
+    steering_trim_deg:      0.0   # your trim, in degrees; positive steers left
+    throttle_channel:       2
+    steering_channel:       0
+    mode_channel:           4`}</Code>
 
             <DashList
               items={[
                 <>A positive{' '}
                   <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>steering_trim_deg</code>{' '}
-                  steers the zero-angle wheels one way, negative the other. Worth confirming the direction on your own car with a roll test.</>,
+                  steers the zero-angle wheels left, a negative one right. The calibration lab handles the sign for you.</>,
                 <>The top-speed cap is{' '}
                   <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>max_speed_mps</code>{' '}
                   on the same file; leave it alone if you only meant to trim the steering.</>,

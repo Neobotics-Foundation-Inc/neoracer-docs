@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Metadata } from 'next';
 import DocsShell from '@/components/docs/DocsShell';
 import { NB } from '@/lib/nb-tokens';
@@ -23,67 +24,54 @@ export const metadata: Metadata = {
   description: 'Write a basic wall follower: read the LiDAR every frame and steer to hold a fixed gap from the wall. The same Python runs in the Playground simulator and on the car, so it doubles as a LiDAR test.',
 };
 
-/* Flysky transmitter, front view: the two switches this page uses. SWB hands
- * control between manual and autonomy; SWA picks slow or fast manual mode. */
-function FlyskySwitchesDiagram() {
+/* Flysky FS-i6S photo with the two switches this page uses called out. SWB
+ * hands control between manual and autonomy; SWA picks slow or fast manual
+ * mode. Overlay coordinates are percentages of the square photo. */
+function FlyskySwitchesFigure() {
   const RED = NB.neoboticsRed;
   const BLUE = NB.tarmacBlue;
+  const chip: React.CSSProperties = {
+    position: 'absolute',
+    background: BLUE,
+    color: NB.haloWhite,
+    fontFamily: NB.monoFont,
+    fontSize: 10,
+    fontWeight: 700,
+    letterSpacing: '0.06em',
+    padding: '6px 9px',
+    lineHeight: 1.45,
+    whiteSpace: 'nowrap',
+  };
   return (
-    <svg viewBox="0 0 540 330" width="100%" style={{ display: 'block', maxWidth: 560, margin: '0 auto' }}>
-      <defs>
-        <marker id="fs-arrow" markerWidth="9" markerHeight="9" refX="6" refY="4.5" orient="auto">
-          <path d="M0 0l8 4.5L0 9z" fill={RED} />
-        </marker>
-      </defs>
-
-      <text x="270" y="24" fontFamily={NB.monoFont} fontSize="11" fill={BLUE} fontWeight="700" letterSpacing="2" textAnchor="middle">
-        FLYSKY TRANSMITTER · TOP SWITCHES
-      </text>
-
-      {/* antennas */}
-      <line x1="215" y1="88" x2="185" y2="44" stroke={BLUE} strokeWidth="4" strokeLinecap="round" />
-      <line x1="325" y1="88" x2="355" y2="44" stroke={BLUE} strokeWidth="4" strokeLinecap="round" />
-
-      {/* body */}
-      <rect x="140" y="88" width="260" height="200" rx="22" fill={NB.haloWhite} stroke={BLUE} strokeWidth="2.5" />
-
-      {/* the four toggle switches along the top edge */}
-      {[
-        { x: 172, label: 'SWA', hot: true },
-        { x: 232, label: 'SWB', hot: true },
-        { x: 292, label: 'SWC', hot: false },
-        { x: 352, label: 'SWD', hot: false },
-      ].map((s) => (
-        <g key={s.label}>
-          <rect x={s.x} y={72} width="16" height="26" rx="4" fill={s.hot ? RED : NB.beige} stroke={BLUE} strokeWidth="1.6" />
-          <line x1={s.x + 8} y1={62} x2={s.x + 8} y2={72} stroke={BLUE} strokeWidth="3" strokeLinecap="round" />
-          <text x={s.x + 8} y={114} fontFamily={NB.monoFont} fontSize="9.5" fontWeight="700" fill={s.hot ? RED : BLUE} textAnchor="middle">
-            {s.label}
-          </text>
-        </g>
-      ))}
-
-      {/* sticks */}
-      <circle cx="205" cy="196" r="34" fill={NB.beige} stroke={BLUE} strokeWidth="2" />
-      <circle cx="205" cy="196" r="9" fill={BLUE} />
-      <circle cx="335" cy="196" r="34" fill={NB.beige} stroke={BLUE} strokeWidth="2" />
-      <circle cx="335" cy="196" r="9" fill={BLUE} />
-      <text x="270" y="262" fontFamily={NB.monoFont} fontSize="9" fill={BLUE} textAnchor="middle" opacity="0.7">
-        THROTTLE · STEERING
-      </text>
-
-      {/* SWA callout, left */}
-      <rect x="8" y="130" width="128" height="44" fill={BLUE} />
-      <text x="72" y="148" fontFamily={NB.monoFont} fontSize="9.5" fontWeight="700" fill={NB.haloWhite} textAnchor="middle">SWA · MANUAL SPEED</text>
-      <text x="72" y="163" fontFamily={NB.monoFont} fontSize="9.5" fontWeight="700" fill={NB.haloWhite} textAnchor="middle">SLOW ↔ FAST</text>
-      <line x1="136" y1="146" x2="172" y2="94" stroke={RED} strokeWidth="2" markerEnd="url(#fs-arrow)" />
-
-      {/* SWB callout, right */}
-      <rect x="398" y="130" width="134" height="44" fill={BLUE} />
-      <text x="465" y="148" fontFamily={NB.monoFont} fontSize="9.5" fontWeight="700" fill={NB.haloWhite} textAnchor="middle">SWB · WHO DRIVES</text>
-      <text x="465" y="163" fontFamily={NB.monoFont} fontSize="9.5" fontWeight="700" fill={NB.haloWhite} textAnchor="middle">MANUAL ↔ AUTONOMY</text>
-      <line x1="398" y1="146" x2="248" y2="94" stroke={RED} strokeWidth="2" markerEnd="url(#fs-arrow)" />
-    </svg>
+    <div style={{ position: 'relative', maxWidth: 560, margin: '0 auto' }}>
+      <Image
+        src="/images/flysky-i6s.jpg"
+        alt="The Flysky FS-i6S transmitter. SWA and SWB are the two toggle switches on the top-left shoulder."
+        width={1000}
+        height={1000}
+        sizes="(max-width: 640px) 100vw, 560px"
+        style={{ width: '100%', height: 'auto', display: 'block' }}
+      />
+      <svg
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none' }}
+      >
+        <defs>
+          <marker id="fsp-arrow" markerWidth="8" markerHeight="8" refX="5" refY="4" orient="auto">
+            <path d="M0 0l7 4L0 8z" fill={RED} />
+          </marker>
+        </defs>
+        <line x1="18" y1="34" x2="41" y2="22.5" stroke={RED} strokeWidth="0.7" markerEnd="url(#fsp-arrow)" />
+        <line x1="72" y1="9" x2="50" y2="17" stroke={RED} strokeWidth="0.7" markerEnd="url(#fsp-arrow)" />
+      </svg>
+      <div style={{ ...chip, left: '2%', top: '33%' }}>
+        SWA · MANUAL SPEED<br />SLOW ↔ FAST
+      </div>
+      <div style={{ ...chip, left: '66%', top: '3%' }}>
+        SWB · WHO DRIVES<br />MANUAL ↔ AUTONOMY
+      </div>
+    </div>
   );
 }
 
@@ -183,14 +171,14 @@ export default function FirstProgramPage() {
           label="FIG. A / THE TWO SWITCHES THIS PAGE USES"
           caption="On the Flysky transmitter, SWB decides who is driving: flip it to hand the car to your program, flip it back to take over with the sticks. SWA applies only while you drive manually, switching the car between slow mode and fast mode."
         >
-          <FlyskySwitchesDiagram />
+          <FlyskySwitchesFigure />
         </Fig>
       </ScrollReveal>
 
       <ScrollReveal>
         <Fig
           label="FIG. B / WHAT YOUR PROGRAM WILL DO"
-          caption="Each frame the car reads two LiDAR distances, straight ahead (0°) and to the right (90°), and steers to keep the right reading near a target gap. When the front reading drops at a corner, it turns away. That read-decide-steer loop is the whole job."
+          caption="Each frame the car reads two LiDAR distances, straight ahead (0°) and to the right (90°), and steers to keep the right reading near a target gap. When the front reading drops at a corner, it turns away."
         >
           <WallFollowDiagram />
         </Fig>
@@ -301,8 +289,8 @@ rc.go()`}
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             Drop the car alongside a wall on its right and run it. It should track
-            the wall and peel away at corners. If it weaves or scrapes, that is the
-            LiDAR and your gains talking, which is exactly what you came to feel.
+            the wall and peel away at corners. If it weaves or scrapes, tune KP
+            and SPEED and run it again.
           </p>
           <div style={{ marginTop: 18, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 16 }}>
             {[

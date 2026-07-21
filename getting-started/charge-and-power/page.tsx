@@ -44,9 +44,9 @@ export default function ChargeAndPowerPage() {
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
               LiPo packs give a racecar the energy density it needs, and that
-              same chemistry is the reason this page exists. Fifteen minutes of
-              attention here goes a long way: a pack that lasts for years and a
-              workspace that stays safe.
+              same chemistry is why they are charged with care. This page covers
+              charging the pack, what the charger shows along the way, and how
+              to store it between sessions.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="outline" icon={<ClockGlyph />}><AnimatedNumeral value={15} suffix=" minutes" /> (first charge)</ChromeBadge>

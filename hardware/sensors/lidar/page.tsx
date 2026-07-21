@@ -19,7 +19,7 @@ import { Crumbs, Callout, PrevNext, Code } from '@/components/docs/DocsPrimitive
 
 export const metadata: Metadata = {
   title: 'LiDAR · Hardware · NeoRacer Docs',
-  description: '30 Hz, 25 m planar scanner. Coordinate frame, sample layout, Python and ROS 2 access.',
+  description: '30 Hz planar scanner, ~1440 samples over a 270° live window. Coordinate frame, sample layout, Python and ROS 2 access.',
 };
 
 export default function LidarPage() {
@@ -52,18 +52,18 @@ export default function LidarPage() {
                 maxWidth: 680,
               }}
             >
-              A Richbeam LakiBeam1 planar laser scanner mounted in front of the
-              chassis. Your code reads it as 720 distances in centimetres, 0.5°
-              apart, index 0 straight ahead. The same 720-float buffer the
-              racecar-neo-library hands you in the Playground sim and on the car.
+              A Richbeam LakiBeam1 planar laser scanner on top of the car. Your
+              code reads it as ~1440 distances in centimetres, 0.25° apart,
+              index 0 straight ahead. The array covers the full circle; the
+              sensor&apos;s live window is 270°, so the rear wedge reads 0.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="red">Runs unchanged in Playground (sim)</ChromeBadge>
+              <ChromeBadge variant="red">Same degrees in Playground (sim)</ChromeBadge>
               <ChromeBadge variant="outline"><AnimatedNumeral value={30} suffix=" Hz" /></ChromeBadge>
               <ChromeBadge variant="outline"><AnimatedNumeral value={25} suffix=" m range" /></ChromeBadge>
-              <ChromeBadge variant="outline"><AnimatedNumeral value={720} suffix=" samples" /></ChromeBadge>
-              <ChromeBadge variant="outline">270° FOV</ChromeBadge>
-              <ChromeBadge variant="outline">frame_id: lidar_link</ChromeBadge>
+              <ChromeBadge variant="outline"><AnimatedNumeral value={1440} prefix="~" suffix=" samples" /></ChromeBadge>
+              <ChromeBadge variant="outline">270° live window</ChromeBadge>
+              <ChromeBadge variant="outline">frame_id: laser</ChromeBadge>
             </div>
           </div>
         </section>
@@ -104,10 +104,10 @@ export default function LidarPage() {
             and let it do the maths for you.
           </p>
           <Code lang="python">
-{`scan = rc.lidar.get_samples()          # NDArray[720, Float], len == 720
-print(len(scan))                       # 720
+{`scan = rc.lidar.get_samples()          # ~1440 floats on the car, 720 in the sim
+print(len(scan))                       # use this, never a hardcoded count
 print(scan[0])                         # cm, straight forward
-print(scan[180])                       # cm, 90° right (0.5° per index)
+print(scan[len(scan) // 4])            # cm, 90° right on any platform
 
 # For any other direction, let the helper do the index math:
 left  = rc_utils.get_lidar_average_distance(scan, 270, window_angle=8)  # 90° left
@@ -134,7 +134,7 @@ front = rc_utils.get_lidar_average_distance(scan, 0,   window_angle=4)`}
             <NumberedFeatureCard
               n={1}
               title="The rear is blind"
-              lede="Samples roughly 160° to 200° (around the back) return zero."
+              lede="Samples roughly 135° to 225° (around the back) return zero."
               body="The chassis occludes the scanner there, so any control loop that divides by a sample without checking it will blow up at the rear. The helpers already skip the zero samples for you, which is the easy way to stay clear of this."
             />
             <NumberedFeatureCard
@@ -164,9 +164,9 @@ front = rc_utils.get_lidar_average_distance(scan, 0,   window_angle=4)`}
             items={[
               <>
                 <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed, fontSize: 14 }}>
-                  rc.lidar.get_samples() → NDArray[720, Float]
+                  rc.lidar.get_samples() → NDArray[Float]
                 </code>{' '}
-                · the raw 720-sample scan in cm.
+                · the raw scan in cm, ~1440 samples on the car.
               </>,
               <>
                 <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed, fontSize: 14 }}>
@@ -211,7 +211,7 @@ front = rc_utils.get_lidar_average_distance(scan, 0,   window_angle=4)`}
             <br />
             Rate:&nbsp;&nbsp;&nbsp;30 Hz
             <br />
-            Frame:&nbsp;&nbsp;<span style={{ color: NB.neoboticsRed }}>lidar_link</span>
+            Frame:&nbsp;&nbsp;<span style={{ color: NB.neoboticsRed }}>laser</span>
             <br />
             QoS:&nbsp;&nbsp;&nbsp;&nbsp;Reliable, Volatile, depth 10
           </div>
@@ -245,9 +245,9 @@ front = rc_utils.get_lidar_average_distance(scan, 0,   window_angle=4)`}
               Richbeam LakiBeam product page
             </a>{' '}
             is the place to go. These are the sensor's native numbers: it spins
-            at 0.25° resolution, about 1080 points across the arc. The
-            racecar-neo-library resamples that to the fixed 720-float, 0.5° scan
-            your code actually reads, which is why every example above says 720.
+            at 0.25° resolution, ~1440 samples per revolution, and the library
+            hands you that scan as-is. Nothing is resampled; the 270° live
+            window is a sensor setting, and the rear wedge outside it reads 0.
           </p>
           <div
             style={{
@@ -258,14 +258,14 @@ front = rc_utils.get_lidar_average_distance(scan, 0,   window_angle=4)`}
             }}
           >
             {[
-              ['Field of view', '270°'],
+              ['Live window', '270° (rear wedge reads 0)'],
               ['Angular resolution', '0.25° native'],
-              ['Samples per scan', '1080 raw / 720 API'],
+              ['Samples per scan', '~1440 per revolution'],
               ['Scan rate', '30 Hz'],
               ['Range', '≥25 m @ 90%, ≥15 m @ 10%'],
               ['Range accuracy', '±2 cm'],
               ['Laser wavelength', '940 nm (Class 1, eye-safe)'],
-              ['Interface', '100 Mbps Ethernet (UDP)'],
+              ['Interface', 'USB-C bridge (UDP/IP, sensor at 192.168.8.2)'],
             ].map(([k, v]) => (
               <div
                 key={k}

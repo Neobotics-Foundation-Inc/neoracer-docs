@@ -15,9 +15,9 @@ import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 import { Crumbs, Callout, PrevNext, DataTable } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
-  title: 'Encoders · Hardware · NeoRacer Docs',
+  title: 'Encoder · Hardware · NeoRacer Docs',
   description:
-    'Quadrature motor-shaft encoders read per wheel and integrated into a velocity estimate on /odom. Dead reckoning between LiDAR scans.',
+    'A Hall-effect encoder on the motor shaft, counted in hardware on the MCU and integrated into the odometry published on /odom at ~200 Hz. Dead reckoning between LiDAR scans.',
 };
 
 export default function EncodersPage() {
@@ -28,7 +28,7 @@ export default function EncodersPage() {
           { label: 'Docs', href: '/docs' },
           { label: 'Hardware', href: '/docs/hardware/overview' },
           { label: 'Sensors', href: '/docs/hardware/sensors/lidar' },
-          { label: 'Encoders' },
+          { label: 'Encoder' },
         ]}
       />
 
@@ -39,7 +39,7 @@ export default function EncodersPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>HARDWARE / SENSORS</Eyebrow>
             <DisplayHeading size="xl">
-              MOTOR-SHAFT <Red>ENCODERS.</Red>
+              THE MOTOR <Red>ENCODER.</Red>
             </DisplayHeading>
             <p
               style={{
@@ -50,18 +50,17 @@ export default function EncodersPage() {
                 maxWidth: 680,
               }}
             >
-              Quadrature motor-shaft encoders sit on the drivetrain and report
-              how far each wheel has turned. The MCU (microcontroller unit) reads
-              them per wheel and integrates the counts into a velocity estimate,
-              which it publishes on{' '}
-              <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>/odom</code>.
-              That is the car telling you, between LiDAR scans, how far and how
-              fast it has travelled.
+              A Hall-effect encoder on the motor shaft reports how far the
+              drivetrain has turned. The MCU (microcontroller unit) counts its
+              pulses in hardware, folds in the gear ratio and the car&apos;s
+              steering geometry, and publishes the result on{' '}
+              <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>/odom</code>{' '}
+              at ~200 Hz. That is the car telling you, between LiDAR scans, how
+              far and how fast it has travelled.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="red">Dead reckoning between scans</ChromeBadge>
-              <ChromeBadge variant="outline">Quadrature A/B</ChromeBadge>
-              <ChromeBadge variant="outline">Per-wheel read</ChromeBadge>
+              <ChromeBadge variant="outline">Hall effect · motor shaft</ChromeBadge>
               <ChromeBadge variant="outline">MCU integrated</ChromeBadge>
               <ChromeBadge variant="outline">/odom · nav_msgs/Odometry</ChromeBadge>
             </div>
@@ -69,12 +68,12 @@ export default function EncodersPage() {
         </section>
       </MouseFollowGlow>
 
-      {/* ── Section · What quadrature buys you ───────────────────────────── */}
+      {/* ── Section · One encoder, counted in hardware ───────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 32 }}>
-          <Eyebrow>01 / WHY QUADRATURE</Eyebrow>
+          <Eyebrow>01 / ONE ENCODER, COUNTED IN HARDWARE</Eyebrow>
           <DisplayHeading size="lg">
-            QUADRATURE <Red>ENCODING.</Red>
+            SHAFT-SIDE <Red>COUNTING.</Red>
           </DisplayHeading>
           <p
             style={{
@@ -85,17 +84,17 @@ export default function EncodersPage() {
               maxWidth: 720,
             }}
           >
-            A single-channel encoder only counts ticks, so it can tell you the
-            wheel moved but not which way. Quadrature uses two channels (A and B)
-            that are physically offset, and the order in which their edges arrive
-            recovers direction as well as speed. That is what lets the odometry
-            distinguish rolling forward from rolling backward, which matters the
-            moment the car reverses out of a wall.
+            The encoder sits on the motor shaft, before the gearbox, which is
+            the right side to measure from: one wheel turn is many shaft turns,
+            so every centimetre of travel produces plenty of pulses. The
+            MCU&apos;s hardware pulse counter tallies them without interrupting
+            the processor, which is how the count stays honest even at full
+            speed.
           </p>
         </section>
       </ScrollReveal>
 
-      {/* ── Section · How the MCU turns ticks into /odom ─────────────────── */}
+      {/* ── Section · How the MCU turns ticks into /odom ─────────────── */}
       <ScrollReveal>
         <section style={{ paddingBottom: 32 }}>
           <Eyebrow>02 / TICKS TO ODOMETRY</Eyebrow>
@@ -112,32 +111,32 @@ export default function EncodersPage() {
           >
             <NumberedFeatureCard
               n={1}
-              title="Read per wheel"
-              lede="Each wheel has its own count, sampled on the MCU."
-              body="The MCU watches the A/B edges from each motor shaft and keeps a running tick count per wheel. Reading the wheels separately is what makes left-versus-right motion observable, not just the average speed of the car."
+              title="Counted on the shaft"
+              lede="Pulses accumulate in a hardware counter."
+              body="Each shaft revolution produces a fixed number of Hall pulses. The gear ratio and wheel diameter turn that count into distance along the ground."
             />
             <NumberedFeatureCard
               n={2}
-              title="Integrated to velocity"
-              lede="The MCU turns the change in counts into a speed."
-              body="Between samples the MCU looks at how many ticks each wheel gained, divides by the time elapsed, and forms a velocity estimate. That estimate is the useful product, the raw counts mostly stay on the microcontroller."
+              title="Fused on the MCU"
+              lede="Distance plus heading becomes a position."
+              body="The MCU combines the travelled distance with the IMU's sense of rotation and the steering geometry, tracking position, velocity, and yaw in one place. That fused state streams to the Jetson at ~200 Hz."
             />
             <NumberedFeatureCard
               n={3}
               title="Published on /odom"
               lede="The estimate leaves the car as nav_msgs/Odometry."
-              body="The velocity estimate is wrapped in a standard nav_msgs/Odometry message and published on /odom, where the rest of the stack can subscribe to it the same way it subscribes to any other topic."
+              body="The driver publishes the estimate on /odom, where the rest of the stack subscribes to it the same way it subscribes to any other topic."
             />
           </div>
         </section>
       </ScrollReveal>
 
-      {/* ── Section · CPR tradeoff ───────────────────────────────────────── */}
+      {/* ── Section · Resolution ─────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ paddingBottom: 32 }}>
-          <Eyebrow>03 / RESOLUTION TRADEOFF</Eyebrow>
+          <Eyebrow>03 / RESOLUTION</Eyebrow>
           <DisplayHeading size="lg">
-            THE RESOLUTION <Red>TRADEOFF.</Red>
+            WHAT SETS THE <Red>PRECISION.</Red>
           </DisplayHeading>
           <p
             style={{
@@ -148,17 +147,16 @@ export default function EncodersPage() {
               maxWidth: 720,
             }}
           >
-            Counts per revolution (CPR) is the knob that sets how finely the
-            encoder resolves motion. A higher CPR means each tick covers a
-            smaller slice of wheel travel, so the odometry is finer. The cost is
-            that every edge is an interrupt the MCU has to service, so a higher
-            count puts more load on the microcontroller. The two pull against
-            each other, which is the tension worth keeping in mind when you read
-            an odometry value and wonder how precise it really is.
+            Three numbers decide how finely the odometry resolves motion: the
+            pulses per shaft revolution, the gear ratio, and the wheel diameter.
+            Together they set how much ground one pulse represents. Measuring on
+            the shaft side of the gearbox multiplies the resolution by the gear
+            ratio, which is why a simple Hall sensor is enough for clean
+            odometry.
           </p>
           <Callout type="note" title="Where the numbers live">
-            The exact CPR, wheel diameter, and gear ratio for your car are
-            drivetrain figures, not encoder figures. The{' '}
+            The exact pulse count, wheel diameter, and gear ratio for your car
+            are drivetrain figures, not encoder figures. The{' '}
             <Link href="/docs/hardware/drivetrain" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
               Drivetrain page
             </Link>{' '}
@@ -168,7 +166,7 @@ export default function EncodersPage() {
         </section>
       </ScrollReveal>
 
-      {/* ── Section · Why it matters to SLAM/Nav2 ───────────────────────── */}
+      {/* ── Section · Why it matters to SLAM/Nav2 ───────────────────── */}
       <ScrollReveal>
         <section style={{ paddingBottom: 32 }}>
           <Eyebrow>04 / WHY THE STACK CARES</Eyebrow>
@@ -186,17 +184,17 @@ export default function EncodersPage() {
           >
             On its own, odometry drifts. Run long enough and the dead-reckoning
             position wanders away from the truth. That is fine, because the
-            osracer SLAM and Nav2 stack does not trust it alone. It fuses the
-            odometry from{' '}
+            SLAM and Nav2 stack does not trust it alone. It fuses the odometry
+            from{' '}
             <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>/odom</code>{' '}
-            with the LiDAR scans, using the encoders to fill in the motion
+            with the LiDAR scans, using the encoder to fill in the motion
             between scans and the LiDAR to correct the drift. Together they let
             the car map and localise, which neither signal does well by itself.
           </p>
           <DashList
             items={[
               <>
-                <strong style={{ color: NB.textOnBeige }}>Encoders</strong> give
+                <strong style={{ color: NB.textOnBeige }}>The encoder</strong> gives
                 continuous, high-rate motion between LiDAR frames.
               </>,
               <>
@@ -208,7 +206,7 @@ export default function EncodersPage() {
                 <Link href="/docs/api-reference/ros2/topics" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
                   /odom topic
                 </Link>{' '}
-                is where the fused estimate starts, listed alongside every other
+                is where the estimate starts, listed alongside every other
                 ROS 2 topic.
               </>,
             ]}
@@ -216,7 +214,7 @@ export default function EncodersPage() {
         </section>
       </ScrollReveal>
 
-      {/* ── Section · Spec grid ─────────────────────────────────────────── */}
+      {/* ── Section · Spec grid ─────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ paddingBottom: 32 }}>
           <Eyebrow>05 / AT A GLANCE</Eyebrow>
@@ -229,10 +227,10 @@ export default function EncodersPage() {
               { key: 'value', label: 'Value', mono: true, accent: true },
             ]}
             rows={[
-              { field: 'Encoder type', value: 'Quadrature (A/B channels)' },
-              { field: 'Read', value: 'Per wheel' },
-              { field: 'Integration', value: 'MCU (microcontroller unit)' },
-              { field: 'Topic', value: '/odom' },
+              { field: 'Encoder type', value: 'Hall effect' },
+              { field: 'Location', value: 'Motor shaft (one encoder)' },
+              { field: 'Counting', value: 'MCU hardware pulse counter' },
+              { field: 'Topic', value: '/odom at ~200 Hz' },
               { field: 'Message', value: 'nav_msgs/Odometry' },
             ]}
           />
@@ -241,9 +239,9 @@ export default function EncodersPage() {
 
       <ScrollReveal>
         <Callout type="tip" title="Odometry reading high or low?">
-          Encoder counts are honest, the conversion from ticks to metres is where
-          a stale CPR or wheel diameter shows up. Check the drivetrain figures
-          first, then reach out at{' '}
+          Pulse counts are honest, the conversion from pulses to metres is where
+          a stale gear ratio or wheel diameter shows up. Check the drivetrain
+          figures first, then reach out at{' '}
           <a href="mailto:support@neobotics.org" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
             support@neobotics.org
           </a>{' '}

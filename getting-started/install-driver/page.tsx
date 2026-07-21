@@ -297,8 +297,8 @@ http://192.168.10.100:8080     # cudy router`}</Code>
             <code style={{ fontFamily: NB.monoFont }}>ssh racecar@10.42.0.1</code>,
             or join the cudy router&apos;s Wi-Fi and use{' '}
             <code style={{ fontFamily: NB.monoFont }}>192.168.10.100</code>. The
-            monitor and keyboard retire here. Day-to-day connections, RustDesk,
-            and the router details live on{' '}
+            monitor and keyboard are no longer needed. Day-to-day connections,
+            RustDesk, and the router details live on{' '}
             <Link href="/docs/software/networking" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Networking</Link>.
           </p>
         </section>
@@ -306,7 +306,7 @@ http://192.168.10.100:8080     # cudy router`}</Code>
 
       <PrevNext
         prev={{ label: 'Get on the car', href: '/docs/getting-started/connect-to-car' }}
-        next={{ label: 'First program', href: '/docs/getting-started/first-program' }}
+        next={{ label: 'Remote desktop', href: '/docs/getting-started/remote-desktop' }}
       />
     </DocsShell>
   );

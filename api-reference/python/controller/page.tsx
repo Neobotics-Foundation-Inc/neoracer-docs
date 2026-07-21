@@ -15,7 +15,7 @@ import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 export const metadata: Metadata = {
   title: 'rc.controller · Python API · NeoRacer Docs',
   description:
-    'The Controller module: read the Xbox controller buttons, triggers, and joysticks. is_down, was_pressed, was_released, get_trigger, get_joystick.',
+    'The Controller module: read the manual controls through an Xbox-style mapping fed by the FlySky remote. is_down, was_pressed, was_released, get_trigger, get_joystick.',
 };
 
 const METHODS: ApiMethod[] = [
@@ -77,16 +77,17 @@ export default function ControllerApiPage() {
               RC.<Red>CONTROLLER.</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
-              The Controller module reads the Xbox controller: buttons, the two
-              analog triggers, and the two joysticks. It is also where your
-              safety lives, since most programs watch a button here for a manual
-              stop. The same calls work against the on-screen controls in the
+              The Controller module reads the manual controls through an
+              Xbox-style mapping: buttons, triggers, and joysticks. On the car
+              the physical remote is the FlySky transmitter, whose sticks and
+              switches feed those same axes and buttons, so code written against
+              this API runs unchanged against the on-screen controls in the
               Playground sim.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="red">Sim ↔ car identical</ChromeBadge>
-              <ChromeBadge variant="outline">8 buttons</ChromeBadge>
-              <ChromeBadge variant="outline">2 sticks · 2 triggers</ChromeBadge>
+              <ChromeBadge variant="red">Same API, sim and car</ChromeBadge>
+              <ChromeBadge variant="outline">FlySky on the car</ChromeBadge>
+              <ChromeBadge variant="outline">Xbox-style mapping</ChromeBadge>
             </div>
           </div>
         </section>

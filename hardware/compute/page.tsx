@@ -68,7 +68,7 @@ export default function ComputePage() {
               <>Hosts the ROS 2 graph, every node from FIG. A on the{' '}
                 <a href="/docs/software/ros2-driver" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>ROS 2 driver</a>{' '}
                 page lives here.</>,
-              <>Drives the camera pipeline at 1080p / 120 fps.</>,
+              <>Drives the camera pipeline at 640×480 / 60 fps.</>,
               <>Provides the AI accelerator for any TensorRT, ONNX, or PyTorch model you deploy.</>,
               <>Bridges Wi-Fi for SSH, ROS 2 topics, and OTA updates.</>,
             ]}

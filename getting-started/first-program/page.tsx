@@ -145,9 +145,9 @@ export default function FirstProgramPage() {
 
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="05" top={-30} right={-20} size={400} />
+          <GhostNumeral n="06" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>STEP 05 / GETTING STARTED · THE FINAL ONE</Eyebrow>
+            <Eyebrow>STEP 06 / GETTING STARTED · THE FINAL ONE</Eyebrow>
             <DisplayHeading size="xl">
               WALL <Red>FOLLOWING.</Red>
             </DisplayHeading>
@@ -331,7 +331,7 @@ rc.go()`}
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'Install the driver', href: '/docs/getting-started/install-driver' }}
+        prev={{ label: 'Remote desktop', href: '/docs/getting-started/remote-desktop' }}
         next={{ label: 'Hardware overview', href: '/docs/hardware/overview' }}
       />
     </DocsShell>

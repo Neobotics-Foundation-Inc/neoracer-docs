@@ -39,13 +39,13 @@ const ANATOMY_PARTS: {
   flip?: boolean;
 }[] = [
   { name: 'Front bumper', x: 47.6, y: 2.9, color: '#64748B', href: '/docs/build/overview', sub: 'Printed crash protection for the nose' },
-  { name: 'Camera', x: 48.9, y: 8.6, color: '#FF0033', href: '/docs/hardware/sensors/camera', sub: '1080p · 120 fps' },
+  { name: 'Camera', x: 48.9, y: 8.6, color: '#FF0033', href: '/docs/hardware/sensors/camera', sub: '640×480 · 60 fps' },
   { name: 'Jetson Orin Nano', x: 26.8, y: 19.9, color: '#0E8A4F', href: '/docs/hardware/compute', sub: 'AI accelerator + Linux host' },
   { name: 'Side cover', x: 95.6, y: 22.7, color: '#1B2036', href: '/docs/build/overview', sub: 'Closes the electronics bay' },
   { name: 'OSCORE PCB', x: 81.4, y: 25.9, color: '#7A3FB0', href: '/docs/hardware/oscore-board', sub: 'Power + control board, ESP32-S3' },
   { name: '1:12 chassis', x: 54.9, y: 52.4, color: '#B45309', href: '/docs/hardware/drivetrain', sub: 'Motor, servo, and suspension on the rolling base' },
   { name: 'LiPo compartment', x: 46.6, y: 51.9, color: '#C2185B', href: '/docs/hardware/power', sub: '11.1 V · 3S · battery NOT included', flip: true },
-  { name: 'LiDAR', x: 37.1, y: 78.2, color: '#0E9594', href: '/docs/hardware/sensors/lidar', sub: '30 Hz · 25 m · 720 samples' },
+  { name: 'LiDAR', x: 37.1, y: 78.2, color: '#0E9594', href: '/docs/hardware/sensors/lidar', sub: '30 Hz · ~1440 samples · 270° window' },
   { name: 'Dot matrix display', x: 54.1, y: 80.6, color: '#4F46E5', href: '/docs/build/overview', sub: '8 × 8 LEDs, the car’s face' },
   { name: 'Cudy router', x: 70.9, y: 74.9, color: '#EA580C', href: '/docs/software/networking', sub: 'The car-to-laptop network' },
   { name: 'Rear wing', x: 53.3, y: 95.3, color: '#0284C7', href: '/docs/build/overview', sub: 'Printed, swappable tail' },
@@ -132,7 +132,7 @@ export default function HardwareOverviewPage() {
               <InfoNote term="LiDAR" title="LiDAR">
                 A sensor that spins a laser around and times how long each pulse takes to bounce back, building a 2D map of the walls and obstacles around the car.
               </InfoNote>{' '}
-              up front, a 1080p camera, an{' '}
+              on top of the car, an RGB camera at the nose, an{' '}
               <InfoNote term="IMU" title="IMU">
                 Inertial measurement unit. It combines an accelerometer and a gyroscope to report how the car is accelerating and rotating, which helps track its motion.
               </InfoNote>+encoder MCU (microcontroller unit) stack,
@@ -146,7 +146,7 @@ export default function HardwareOverviewPage() {
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="outline">380 × 300 × 220 mm</ChromeBadge>
               <ChromeBadge variant="outline">Wheelbase 280 mm</ChromeBadge>
-              <ChromeBadge variant="outline">≤ 25 km/h</ChromeBadge>
+              <ChromeBadge variant="outline">6 m/s capped</ChromeBadge>
               <ChromeBadge variant="outline">6061 aluminium / composite</ChromeBadge>
             </div>
           </div>

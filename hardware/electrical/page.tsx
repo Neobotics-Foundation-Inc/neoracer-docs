@@ -295,7 +295,7 @@ sudo shutdown -h now`}</Code>
                   { key: 'note', label: 'Notes' },
                 ]}
                 rows={[
-                  { name: 'Pack voltage', value: '11.1 V (3S)', note: 'Three Li-ion cells, 3.7 V each.' },
+                  { name: 'Pack voltage', value: '11.1 V (3S)', note: 'Three LiPo cells, 3.7 V nominal each.' },
                   { name: 'Pack capacity', value: '5200 mAh', note: <>Reference pack. Any 4000 to 5500 mAh 3S works (battery <Link href="/docs/getting-started/charge-and-power" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>not included</Link>).</> },
                   { name: 'Discharge rating', value: '≥ 25C', note: <>Minimum. The reference pack is 50C. See <Link href="/docs/hardware/power" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Power</Link>.</> },
                   { name: 'Battery connector', value: 'XT60', note: 'Keyed pair, polarity-protected.' },

@@ -15,132 +15,104 @@ import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Inter
 export const metadata: Metadata = {
   title: 'ROS 2 parameters · API Reference · NeoRacer Docs',
   description:
-    'The parameters the racecar_neo nodes declare: IMU calibration biases loaded from YAML, the LiDAR driver settings, and the drive tuning constants that scale every /drive command.',
+    'The parameters the neoracer_ros2_driver nodes declare: the throttle caps every /drive command is scaled by, the controller node speed and steering mapping, the camera settings, and the LiDAR launch arguments.',
 };
 
-const IMU_COLUMNS = [
-  { key: 'param', label: 'Parameter', mono: true, accent: true, width: '260px' },
-  { key: 'type', label: 'Type', mono: true, width: '100px' },
-  { key: 'default', label: 'Default', mono: true, width: '90px' },
+const COLUMNS = [
+  { key: 'param', label: 'Parameter', mono: true, accent: true, width: '240px' },
+  { key: 'value', label: 'Shipped value', mono: true, width: '130px' },
   { key: 'notes', label: 'Meaning' },
 ];
 
-const IMU_ROWS = [
+const THROTTLE_ROWS = [
   {
-    param: 'accelerometer.bias',
-    type: 'double[3]',
-    default: '0, 0, 0',
-    notes: 'Per-axis offset subtracted from every acceleration reading, in m/s². The number a flat, still car should read as zero.',
+    param: 'max_speed_forward',
+    value: '0.5',
+    notes: 'Scales every forward /drive command before it reaches the controller. At 0.5, a full-speed command becomes half of the firmware ceiling.',
   },
   {
-    param: 'gyroscope.bias',
-    type: 'double[3]',
-    default: '0, 0, 0',
-    notes: 'Per-axis offset subtracted from angular velocity, in rad/s. Removes the slow drift you see when the car is not moving.',
+    param: 'max_speed_backward',
+    value: '0.6',
+    notes: 'The reverse scale. Slightly higher than forward so the car breaks static friction backing up.',
   },
   {
-    param: 'magnetometer.hard_iron_bias',
-    type: 'double[3]',
-    default: '0, 0, 0',
-    notes: 'Hard-iron offset removed from the raw magnetometer vector, in teslas, before any scaling.',
-  },
-  {
-    param: 'magnetometer.soft_iron_matrix.data',
-    type: 'double[9]',
-    default: 'identity',
-    notes: 'A row-major 3×3 soft-iron correction applied after the hard-iron shift, to round out a skewed field into a sphere.',
+    param: 'max_steering',
+    value: '0.625',
+    notes: 'Scales the commanded steering angle before the servo mapping.',
   },
 ];
 
-const LIDAR_COLUMNS = [
-  { key: 'param', label: 'Parameter', mono: true, accent: true, width: '180px' },
-  { key: 'type', label: 'Type', mono: true, width: '90px' },
-  { key: 'ref', label: 'Reference default', mono: true, width: '150px' },
-  { key: 'notes', label: 'Meaning' },
+const CONTROLLER_ROWS = [
+  {
+    param: 'max_speed_mps',
+    value: '6.0',
+    notes: 'The physical speed a full-scale command maps to, in m/s. Matches the firmware’s closed-loop ceiling; raising it past 6.0 needs a firmware change, not a parameter.',
+  },
+  {
+    param: 'max_steering_angle_deg',
+    value: '30.0',
+    notes: 'The steering angle a full-scale command maps to, in degrees.',
+  },
+  {
+    param: 'steering_trim_deg',
+    value: '0.0',
+    notes: 'Added to every steering command so a 0.0 angle drives straight. Set through the servo-center calibration.',
+  },
+  {
+    param: 'rc_min / rc_center / rc_max',
+    value: '1000 / 1500 / 2000',
+    notes: 'The FlySky channel calibration, in microseconds. Readings below rc_failsafe_below (500) mean no signal and read as neutral.',
+  },
+  {
+    param: 'port_name',
+    value: '/dev/osrbot_base',
+    notes: 'The ESP32 serial device, held stable by the udev rules the setup installs.',
+  },
+  {
+    param: 'publish_mag',
+    value: 'false',
+    notes: 'The magnetometer topic is off by default; the fused orientation already comes from the MCU state frame.',
+  },
+];
+
+const CAMERA_ROWS = [
+  {
+    param: 'image_width × image_height',
+    value: '640 × 480',
+    notes: 'The capture resolution requested from the camera.',
+  },
+  {
+    param: 'framerate',
+    value: '60.0',
+    notes: 'Frames per second on /camera. The node passes the camera’s native MJPG through, so this is real throughput, not a target.',
+  },
+  {
+    param: 'video_device',
+    value: '/dev/osrbot_usb_cam',
+    notes: 'The stable udev name for the USB camera; the node falls back to scanning /dev/video* if it moves.',
+  },
 ];
 
 const LIDAR_ROWS = [
   {
     param: 'frame_id',
-    type: 'string',
-    ref: 'lidar_link',
-    notes: 'The TF frame stamped on every /scan. Your car uses lidar_link; the reference RPLIDAR build defaults this to laser_frame.',
+    value: 'laser',
+    notes: 'The TF frame stamped on every /scan.',
   },
   {
-    param: 'channel_type',
-    type: 'string',
-    ref: 'serial',
-    notes: 'Transport to the scanner: serial, tcp, or udp. The LakiBeam1 is an Ethernet unit, so on your car this is the udp path.',
+    param: 'sensorip',
+    value: '192.168.8.2',
+    notes: 'The LakiBeam1’s address on the USB-C bridge (the host side is 192.168.8.1). The driver pushes configuration to the sensor here at startup.',
   },
   {
-    param: 'serial_port',
-    type: 'string',
-    ref: '/dev/ttyUSB0',
-    notes: 'The device file for a serial scanner. Not used on the Ethernet LakiBeam1.',
+    param: 'scanfreq',
+    value: '30',
+    notes: 'Revolutions per second the sensor is configured to spin, which is the /scan publish rate.',
   },
   {
-    param: 'serial_baudrate',
-    type: 'int',
-    ref: '115200',
-    notes: 'Link speed for a serial scanner. Not used on the Ethernet LakiBeam1.',
-  },
-  {
-    param: 'angle_compensate',
-    type: 'bool',
-    ref: 'true',
-    notes: 'Evens out the angular spacing of samples so each index maps to a fixed angle.',
-  },
-  {
-    param: 'inverted',
-    type: 'bool',
-    ref: 'false',
-    notes: 'Flips the scan direction, for a scanner mounted upside down.',
-  },
-];
-
-const DRIVE_COLUMNS = [
-  { key: 'name', label: 'Constant', mono: true, accent: true, width: '210px' },
-  { key: 'file', label: 'File', mono: true, width: '130px' },
-  { key: 'value', label: 'Value', mono: true, width: '80px' },
-  { key: 'notes', label: 'Effect' },
-];
-
-const DRIVE_ROWS = [
-  {
-    name: 'DRIVE_MAX_SPEED',
-    file: 'throttle.py',
-    value: '0.25',
-    notes: 'The speed your /drive command is measured against. A speed of 0.25 is treated as full before throttle scaling.',
-  },
-  {
-    name: 'CAR_THROTTLE_FORWARD',
-    file: 'throttle.py',
-    value: '0.0425',
-    notes: 'The forward duty actually sent to the ESC at full command. This is the real speed cap that keeps a classroom car sane.',
-  },
-  {
-    name: 'CAR_THROTTLE_BACKWARD',
-    file: 'throttle.py',
-    value: '0.06',
-    notes: 'The reverse duty at full command. Higher than forward because the ESC needs more to break static friction backward.',
-  },
-  {
-    name: 'CAR_THROTTLE_TURN',
-    file: 'throttle.py',
-    value: '0.25',
-    notes: 'Scales the steering angle before it reaches the servo, trading lock for smoothness.',
-  },
-  {
-    name: 'GAMEPAD_THROTTLE_AXIS',
-    file: 'gamepad.py',
-    value: '1',
-    notes: 'Which Joy axis the teleop node reads as throttle.',
-  },
-  {
-    name: 'GAMEPAD_STEER_AXIS',
-    file: 'gamepad.py',
-    value: '3',
-    notes: 'Which Joy axis the teleop node reads as steering.',
+    param: 'scan_range_start / stop',
+    value: '45 / 315',
+    notes: 'The sensor’s live window in its own frame: 270 degrees of returns. This is why the rear wedge of a scan carries no data.',
   },
 ];
 
@@ -165,96 +137,85 @@ export default function Ros2ParamsPage() {
               ROS 2 <Red>PARAMETERS.</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
-              Three groups of settings shape how the car behaves. The{' '}
-              <InfoNote term="IMU" title="IMU">
-                Inertial measurement unit. A small sensor package, usually an accelerometer plus a gyroscope and sometimes a magnetometer, that reports how the car is accelerating and rotating. Its raw readings carry a fixed offset, which is what the calibration biases remove.
-              </InfoNote>{' '}
-              node loads its calibration from YAML at launch, the LiDAR driver takes
-              its transport and framing settings, and a handful of drive
-              constants decide how a{' '}
-              <code style={{ fontFamily: NB.monoFont }}>/drive</code> command maps
-              to actual motion.
+              Every node in the driver declares real, live ROS 2 parameters, and
+              the ones below are the ones you will actually reach for: the
+              throttle caps that scale every{' '}
+              <code style={{ fontFamily: NB.monoFont }}>/drive</code> command, the
+              controller mapping from commands to physical speed and angle, the
+              camera settings, and the LiDAR launch arguments.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="red">IMU calibration</ChromeBadge>
-              <ChromeBadge variant="outline">LiDAR driver</ChromeBadge>
-              <ChromeBadge variant="outline">Drive tuning</ChromeBadge>
+              <ChromeBadge variant="red">Live via ros2 param</ChromeBadge>
+              <ChromeBadge variant="outline">Persisted in config/*.yaml</ChromeBadge>
+              <ChromeBadge variant="outline">neoracer_ros2_driver</ChromeBadge>
             </div>
           </div>
         </section>
       </MouseFollowGlow>
 
       <ScrollReveal>
-        <Callout type="note" title="What this reference is built from">
-          These come from the open-source{' '}
-          <a href="https://github.com/MITRacecarNeo/racecar-neo-ros2-backend" target="_blank" rel="noopener noreferrer" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-            racecar_neo ROS 2 backend
-          </a>
-          . The IMU and drive parameters carry across builds unchanged. The LiDAR
-          parameters belong to whichever scanner driver is running, so the
-          serial settings below describe the reference RPLIDAR; your LakiBeam1
-          uses the Ethernet path. A{' '}
-          <code style={{ fontFamily: NB.monoFont }}>ros2 param list</code> on your
-          own car is always the final word. The{' '}
-          <a href="https://github.com/osrbot/osracer" target="_blank" rel="noopener noreferrer" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-            osracer
-          </a>{' '}
-          <InfoNote term="SLAM" title="SLAM">
-            Simultaneous localization and mapping. The car builds a map of an unknown space while at the same time tracking where it is within that map, mostly from LiDAR scans.
-          </InfoNote>{' '}
-          and Nav2 stack, which ships alongside this one, carries its own,
-          much larger set of parameters in its launch and YAML files.
+        <Callout type="note" title="Two ways to change a value">
+          Set a parameter at runtime with{' '}
+          <code style={{ fontFamily: NB.monoFont }}>ros2 param set</code> and it
+          applies immediately but lasts until the node restarts. Edit the
+          matching YAML under{' '}
+          <code style={{ fontFamily: NB.monoFont }}>neoracer_ros2_driver/config/</code>{' '}
+          and restart (<code style={{ fontFamily: NB.monoFont }}>racecar service restart</code>)
+          and it persists. The workspace builds with symlinks, so a YAML edit
+          needs no rebuild. <code style={{ fontFamily: NB.monoFont }}>ros2 param list</code>{' '}
+          on the running car is always the final word.
         </Callout>
       </ScrollReveal>
 
       <ScrollReveal>
         <section style={{ paddingBottom: 8 }}>
-          <Eyebrow>IMU CALIBRATION</Eyebrow>
+          <Eyebrow>THROTTLE_NODE · config/throttle.yaml</Eyebrow>
           <DisplayHeading size="lg">
-            IMU CALIBRATION <Red>BIASES.</Red>
+            THE SPEED <Red>CAPS.</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
-            The IMU node declares these and reads them from{' '}
-            <code style={{ fontFamily: NB.monoFont }}>config/imu_cal.yaml</code>{' '}
-            and{' '}
-            <code style={{ fontFamily: NB.monoFont }}>config/mag_cal.yaml</code>{' '}
-            when the launch file starts it. The calibration scripts in the repo
-            generate those files; the{' '}
-            <a href="/docs/calibration/imu-bias" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-              IMU bias
-            </a>{' '}
-            page walks through running them.
+            The most-tuned three values on the car. Full chain: your command
+            [-1, 1] × these caps × the controller&apos;s{' '}
+            <code style={{ fontFamily: NB.monoFont }}>max_speed_mps</code> = what
+            the motor is asked to do.
           </p>
-          <DataTable columns={IMU_COLUMNS} rows={IMU_ROWS} />
+          <DataTable columns={COLUMNS} rows={THROTTLE_ROWS} />
         </section>
       </ScrollReveal>
 
       <ScrollReveal>
         <section style={{ paddingTop: 28, paddingBottom: 8 }}>
-          <Eyebrow>LIDAR DRIVER</Eyebrow>
+          <Eyebrow>CONTROLLER_NODE · config/controller.yaml</Eyebrow>
+          <DisplayHeading size="lg">
+            THE ESP32 <Red>BRIDGE.</Red>
+          </DisplayHeading>
+          <DataTable columns={COLUMNS} rows={CONTROLLER_ROWS} />
+        </section>
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <section style={{ paddingTop: 28, paddingBottom: 8 }}>
+          <Eyebrow>CAMERA_NODE · config/camera.yaml</Eyebrow>
+          <DisplayHeading size="lg">
+            THE <Red>CAMERA.</Red>
+          </DisplayHeading>
+          <DataTable columns={COLUMNS} rows={CAMERA_ROWS} />
+        </section>
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <section style={{ paddingTop: 28, paddingBottom: 8 }}>
+          <Eyebrow>LIDAR · launch arguments</Eyebrow>
           <DisplayHeading size="lg">
             THE LIDAR <Red>DRIVER.</Red>
           </DisplayHeading>
-          <DataTable columns={LIDAR_COLUMNS} rows={LIDAR_ROWS} />
-        </section>
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <section style={{ paddingTop: 28, paddingBottom: 8 }}>
-          <Eyebrow>DRIVE TUNING</Eyebrow>
-          <DisplayHeading size="lg">
-            DRIVE TUNING <Red>CONSTANTS.</Red>
-          </DisplayHeading>
-          <Callout type="warn" title="These are source constants, not live parameters">
-            In the current backend these live as plain Python values in the node
-            files, with the parameter versions commented out. You change them by
-            editing the file and rebuilding, not with{' '}
-            <code style={{ fontFamily: NB.monoFont }}>ros2 param set</code>. They
-            are documented here because they decide how your command becomes
-            motion, and because raising the speed cap is the single most common
-            tuning step.
-          </Callout>
-          <DataTable columns={DRIVE_COLUMNS} rows={DRIVE_ROWS} />
+          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
+            The LakiBeam1 driver takes these as launch arguments in{' '}
+            <code style={{ fontFamily: NB.monoFont }}>lidar.launch.py</code>{' '}
+            rather than runtime parameters; the driver pushes them to the
+            sensor&apos;s own configuration at startup.
+          </p>
+          <DataTable columns={COLUMNS} rows={LIDAR_ROWS} />
         </section>
       </ScrollReveal>
 
@@ -262,13 +223,16 @@ export default function Ros2ParamsPage() {
         <section style={{ paddingTop: 28, paddingBottom: 24 }}>
           <MonoLabel>Reading and setting parameters at runtime</MonoLabel>
           <Code lang="bash">{`# What does a node expose?
-ros2 param list /imu_node
+ros2 param list /throttle_node
 
 # Read one
-ros2 param get /imu_node gyroscope.bias
+ros2 param get /throttle_node max_speed_forward
 
-# Change one while the node runs (declared params only)
-ros2 param set /imu_node accelerometer.bias "[0.01, -0.02, 0.0]"`}</Code>
+# Change one while the node runs (until the next restart)
+ros2 param set /throttle_node max_speed_forward 0.3
+
+# Make it permanent instead: edit config/throttle.yaml, then
+racecar service restart`}</Code>
         </section>
       </ScrollReveal>
 

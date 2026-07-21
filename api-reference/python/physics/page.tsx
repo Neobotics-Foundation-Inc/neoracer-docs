@@ -34,7 +34,7 @@ const METHODS: ApiMethod[] = [
     sig: 'rc.physics.get_magnetic_field()',
     returns: 'NDArray[3, Float]',
     summary:
-      'The magnetic field as an (x, y, z) vector in teslas, useful as a rough compass. Available on the physical car only, since the simulator has no magnetometer.',
+      'The magnetic field as an (x, y, z) vector in teslas. Off by default: the driver ships with magnetometer publishing disabled (publish_mag), so this returns zeros until you enable it in config/controller.yaml.',
   },
 ];
 

@@ -17,7 +17,7 @@ import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Inter
 export const metadata: Metadata = {
   title: 'ROS 2 TF frames · API Reference · NeoRacer Docs',
   description:
-    'The racecar_neo stack stamps frame_ids (lidar_link, imu_link) on its messages but does not broadcast a TF tree. This page lists the frames and shows the static transforms you set up to relate them.',
+    'The driver stamps frame_ids (laser, imu_link, camera_link) on its messages. This page lists the frames and shows the static transforms you set up to relate them.',
 };
 
 const COLUMNS = [
@@ -28,14 +28,14 @@ const COLUMNS = [
 
 const ROWS = [
   {
-    frame: 'lidar_link',
+    frame: 'laser',
     source: '/scan',
-    notes: 'The scanner at the front of the chassis. Every LaserScan message carries this in its header.',
+    notes: 'The scanner on top of the car. Every LaserScan message carries this in its header.',
   },
   {
     frame: 'imu_link',
-    source: '/imu, /mag',
-    notes: 'The IMU board near the middle of the car. Both the Imu and MagneticField messages stamp it.',
+    source: '/imu',
+    notes: 'The IMU on the OSCORE board. Every Imu message stamps it.',
   },
   {
     frame: 'base_link',
@@ -44,8 +44,8 @@ const ROWS = [
   },
   {
     frame: 'camera_link',
-    source: 'you add it',
-    notes: 'The camera, just behind the LiDAR. The base /camera image leaves its frame blank, so you assign one if you need it in TF.',
+    source: '/camera',
+    notes: 'The camera at the front of the car. Every image message stamps it.',
   },
 ];
 
@@ -96,15 +96,15 @@ function FrameLayoutDiagram() {
 
       <CarSprite cx={cx} cy={160} size={150} heading={0} />
 
-      {/* lidar_link, front */}
+      {/* camera_link, at the nose */}
       <Leader y={104} toRight />
       <Dot x={cx} y={104} />
-      <Label y={104} toRight name="lidar_link" tag="front" />
+      <Label y={104} toRight name="camera_link" tag="front" />
 
-      {/* camera_link, just behind the nose */}
+      {/* laser, on top of the car */}
       <Leader y={132} toRight />
       <Dot x={cx} y={132} />
-      <Label y={132} toRight name="camera_link" tag="behind LiDAR" />
+      <Label y={132} toRight name="laser" tag="top" />
 
       {/* imu_link, center */}
       <Leader y={160} toRight={false} />
@@ -237,7 +237,7 @@ export default function Ros2TfFramesPage() {
               staring at an empty RViz.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="red">lidar_link · imu_link</ChromeBadge>
+              <ChromeBadge variant="red">laser · imu_link · camera_link</ChromeBadge>
               <ChromeBadge variant="outline">racecar_neo: no /tf</ChromeBadge>
               <ChromeBadge variant="outline">osracer: full tree</ChromeBadge>
             </div>
@@ -251,7 +251,7 @@ export default function Ros2TfFramesPage() {
           <code style={{ fontFamily: NB.monoFont }}>robot_state_publisher</code> or
           any{' '}
           <code style={{ fontFamily: NB.monoFont }}>static_transform_publisher</code>.
-          So <code style={{ fontFamily: NB.monoFont }}>lidar_link</code> and{' '}
+          So <code style={{ fontFamily: NB.monoFont }}>laser</code> and{' '}
           <code style={{ fontFamily: NB.monoFont }}>imu_link</code> exist as labels
           on messages, but ROS 2 does not know where they sit relative to each
           other. If you are running only this stack, anything that needs that
@@ -328,14 +328,14 @@ export default function Ros2TfFramesPage() {
             in metres and radians. Measure the offsets on your own car; the numbers
             below are an example, not a spec.
           </p>
-          <Code lang="bash">{`# base_link sits at the rear axle. LiDAR is forward and a little up.
-ros2 run tf2_ros static_transform_publisher 0.17 0 0.10 0 0 0 base_link lidar_link
+          <Code lang="bash">{`# base_link sits at the rear axle. The LiDAR is on top of the car.
+ros2 run tf2_ros static_transform_publisher 0.10 0 0.12 0 0 0 base_link laser
 
-# IMU is near the center, low.
+# IMU on the OSCORE board.
 ros2 run tf2_ros static_transform_publisher 0.05 0 0.05 0 0 0 base_link imu_link
 
-# Camera, just behind the LiDAR, angled slightly down if yours is.
-ros2 run tf2_ros static_transform_publisher 0.15 0 0.09 0 0 0 base_link camera_link`}</Code>
+# Camera at the front of the car, angled slightly down if yours is.
+ros2 run tf2_ros static_transform_publisher 0.22 0 0.08 0 0 0 base_link camera_link`}</Code>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 15, lineHeight: 1.6, color: NB.textMutedBeige, maxWidth: 740, marginTop: 14 }}>
             For anything beyond a quick test, move these into a{' '}
             <code style={{ fontFamily: NB.monoFont }}>robot_state_publisher</code>{' '}

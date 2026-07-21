@@ -79,7 +79,7 @@ export default function ServoCenterPage() {
               <ChromeBadge variant="red"><AnimatedNumeral value={2} prefix="~" suffix=" minutes" /></ChromeBadge>
               <ChromeBadge variant="outline">Beginner</ChromeBadge>
               <ChromeBadge variant="outline">config/controller.yaml</ChromeBadge>
-              <ChromeBadge variant="outline">Edit + colcon build</ChromeBadge>
+              <ChromeBadge variant="outline">Edit + restart</ChromeBadge>
             </div>
           </div>
         </section>
@@ -215,7 +215,7 @@ export default function ServoCenterPage() {
 ssh racecar@neoracer
 
 # 2. Run the calibration lab. Flip the transmitter to autonomy when it says so.
-cd ~/jupyter_ws/neobotics/labs
+cd ~/jupyter_ws/neoracer-os/labs
 python3 lab_trim_cal.py
 
 # The car drives straight for up to three seconds, measures its heading drift

@@ -144,10 +144,10 @@ export default function BuildOverviewPage() {
             href="/docs/hardware/sensors/camera"
             linkLabel="Camera"
           >
-            The camera looks forward from a printed housing just behind the LiDAR.
-            It is the car's eyes for lane following, colour and object detection,
-            and anything else you want to teach it to see. A single ribbon runs it
-            straight to the Jetson.
+            The camera looks forward from a printed housing at the front of the
+            car. It is the car's eyes for lane following, colour and object
+            detection, and anything else you want to teach it to see. A single
+            USB cable runs it straight to the Jetson.
           </StepCard>
 
           <StepCard

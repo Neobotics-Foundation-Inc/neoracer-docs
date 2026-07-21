@@ -22,7 +22,7 @@ import PitLaneNav, { PitLaneSection } from '@/components/docs/PitLaneNav';
 export const metadata: Metadata = {
   title: 'NeoRacer Docs, from sealed box to autonomous lap',
   description:
-    'Documentation for the NeoRacer V1 autonomous racing kit. A five-page getting started path, plus the full Python API and ROS 2 reference for researchers.',
+    'Documentation for the NeoRacer V1 autonomous racing kit. A six-page getting started path, plus the full Python API and ROS 2 reference for researchers.',
 };
 
 /* ─────────────────────────────────────────────────────────────────────────
@@ -45,10 +45,10 @@ const intentCards: {
   {
     badge: 'Just unboxed?',
     title: 'Getting started',
-    body: "Five short pages and you're driving. Unbox, charge, get on the car, install the driver, first program.",
+    body: "Six short pages and you're driving. Unbox, charge, get on the car, install the driver, remote desktop, first program.",
     href: '/docs/getting-started/unbox',
     accent: NB.neoboticsRed,
-    pad: '5 pages',
+    pad: '6 pages',
     variant: 'red',
   },
   {
@@ -65,10 +65,10 @@ const intentCards: {
 /* Bay order mirrors the sidebar. Counts are the real page counts in nav.ts;
    update both together when a page ships. */
 const pitLane: PitLaneSection[] = [
-  { title: 'Getting Started', href: '/docs/getting-started/unbox', pages: 5 },
-  { title: 'Hardware', href: '/docs/hardware/overview', pages: 13 },
+  { title: 'Getting Started', href: '/docs/getting-started/unbox', pages: 6 },
+  { title: 'Hardware', href: '/docs/hardware/overview', pages: 14 },
   { title: 'Build', href: '/docs/build/overview', pages: 2 },
-  { title: 'Software', href: '/docs/software/os-and-image', pages: 6 },
+  { title: 'Software', href: '/docs/software/os-and-image', pages: 7 },
   { title: 'API Reference', href: '/docs/api-reference/python/drive', pages: 9 },
   { title: 'Calibration', href: '/docs/calibration/motor-trim', pages: 5 },
   // Soft hyphen so narrow phone bays break it as TROUBLE-SHOOTING.

@@ -15,7 +15,7 @@ import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Inter
 export const metadata: Metadata = {
   title: 'ROS 2 topics · API Reference · NeoRacer Docs',
   description:
-    'Every topic the racecar_neo stack publishes and subscribes: /scan, /imu, /mag, /camera, /drive. Which ones you read, which one you publish, and the drive pipeline that connects them.',
+    'Every topic the racecar_neo stack publishes and subscribes: /scan, /imu, /odom, /battery, /camera, /drive. Which ones you read, which one you publish, and the drive pipeline that connects them.',
 };
 
 const COLUMNS = [
@@ -30,37 +30,31 @@ const ROWS = [
     topic: '/scan',
     type: 'sensor_msgs/LaserScan',
     role: 'Read it',
-    notes: 'One planar sweep from the Lakibeam LiDAR over UDP, frame_id lidar_link. The depth source for wall follow, gap follow, and mapping.',
+    notes: 'One planar sweep from the Lakibeam LiDAR, ~1440 samples, frame_id laser. The depth source for wall follow, gap follow, and mapping. Publisher is RELIABLE.',
   },
   {
     topic: '/imu',
     type: 'sensor_msgs/Imu',
     role: 'Read it',
-    notes: 'Linear acceleration (m/s²) and angular velocity (rad/s), frame_id imu_link. Published by the controller node from the QMI8658A on the OSCORE board.',
-  },
-  {
-    topic: '/mag',
-    type: 'sensor_msgs/MagneticField',
-    role: 'Read it',
-    notes: 'The magnetometer vector in teslas, frame_id imu_link. A rough compass, on the physical car only.',
+    notes: 'Orientation, linear acceleration (m/s²), and angular velocity (rad/s) at ~200 Hz, frame_id imu_link. Published by the controller node from the MCU state frame.',
   },
   {
     topic: '/odom',
     type: 'nav_msgs/Odometry',
     role: 'Read it',
-    notes: 'Wheel odometry integrated by the controller node from the encoder counts on the ESP32. Useful for short-horizon dead reckoning between LiDAR scans.',
+    notes: 'Wheel odometry at ~200 Hz, integrated on the MCU from the motor encoder. Useful for short-horizon dead reckoning between LiDAR scans.',
+  },
+  {
+    topic: '/battery',
+    type: 'sensor_msgs/BatteryState',
+    role: 'Read it',
+    notes: 'Pack voltage and a 3S charge fraction at ~0.5 Hz. The dashboard shows the same reading as a battery card.',
   },
   {
     topic: '/camera',
     type: 'sensor_msgs/Image',
     role: 'Read it',
-    notes: 'A JPEG-compressed colour frame from the camera node (USB webcam in MJPG). The bytes are raw JPEG with encoding="jpeg", decode with cv2.imdecode before display.',
-  },
-  {
-    topic: '/camera/decoded',
-    type: 'sensor_msgs/Image',
-    role: 'Optional',
-    notes: 'A plain RViz-friendly image, published only when the decode_camera node is enabled in the launch file.',
+    notes: 'A JPEG-compressed colour frame at 60 fps from the camera node (USB webcam in MJPG). The bytes are raw JPEG with encoding="jpeg", decode with cv2.imdecode before display. Publisher is best-effort: subscribe with sensor-data QoS or you receive nothing.',
   },
   {
     topic: '/drive',
@@ -152,7 +146,7 @@ function PipelineBlock() {
         <Arrow />
         <Hop text="mux_node" kind="node" />
         <span style={{ color: NB.textDimBlue, fontFamily: NB.monoFont, fontSize: 12 }}>
-          {' '}joins the same arbiter. LB arms teleop, RB arms autonomy.
+          {' '}joins the same arbiter. SWB picks the winner: middle is teleop, the autonomy end is /drive.
         </span>
       </div>
     </div>
@@ -181,7 +175,7 @@ export default function Ros2TopicsPage() {
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
               The whole stack is sensors publishing and actuators subscribing.
-              You read four sensor topics, you publish one drive topic, and the
+              You read five sensor topics, you publish one drive topic, and the
               nodes in between do the arbitration and scaling. Below is the exact
               list the default launch brings up, with the message type on each.
             </p>
@@ -226,7 +220,7 @@ export default function Ros2TopicsPage() {
           <code style={{ fontFamily: NB.monoFont }}>/map</code>,{' '}
           <code style={{ fontFamily: NB.monoFont }}>/tf</code>, and the Nav2 graph,
           so a <code style={{ fontFamily: NB.monoFont }}>ros2 topic list</code> on a
-          fully loaded car shows more than the ten here. Those follow the standard
+          fully loaded car shows more than the eleven here. Those follow the standard
           Nav2 names; your own <code style={{ fontFamily: NB.monoFont }}>ros2 topic list</code>{' '}
           is the final word.
         </Callout>

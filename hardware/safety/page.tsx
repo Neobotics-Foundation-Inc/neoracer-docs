@@ -107,7 +107,7 @@ export default function SafetyPage() {
               n={3}
               title="Clear safe zone"
               lede="A driving area free of people, pets, and breakables runs smoothest."
-              body="The car can hit 25 km/h, and at indoor distances that's faster than your reaction time. About 1 m of clearance from anything you care about, yourself included, gives everyone room to stay out of the way."
+              body="The car is capped at 6 m/s, over 20 km/h, and at indoor distances that's faster than your reaction time. About 1 m of clearance from anything you care about, yourself included, gives everyone room to stay out of the way."
             />
             <NumberedFeatureCard
               n={4}

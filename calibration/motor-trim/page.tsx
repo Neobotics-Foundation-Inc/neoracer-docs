@@ -34,7 +34,7 @@ const STEPS: CalibrationStep[] = [
   { n: 1, title: 'SSH in',        sub: 'to the Jetson',          iconKey: 'ssh' },
   { n: 2, title: 'Hold zero',     sub: 'watch for creep',        iconKey: 'wheel' },
   { n: 3, title: 'Tune caps',     sub: 'throttle.yaml + controller.yaml', iconKey: 'cli' },
-  { n: 4, title: 'colcon build',  sub: 'apply the change',       iconKey: 'save' },
+  { n: 4, title: 'Restart teleop', sub: 'apply the change',       iconKey: 'save' },
   { n: 5, title: 'Verify',        sub: '5 s stationary check',   iconKey: 'stopwatch' },
 ];
 
@@ -203,8 +203,8 @@ export default function MotorTrimPage() {
               <NumberedFeatureCard
                 n={4}
                 title="A way to stop"
-                lede="Release the bumpers."
-                body="The drive mux only forwards commands while a bumper is held. Let go and it publishes a stop, which is your fastest manual halt during a verify run."
+                lede="Flip SWB back to the middle."
+                body="The middle of the transmitter's SWB switch is manual mode, so flipping it there takes the car away from your code instantly. That is your fastest manual halt during a verify run."
               />
             </div>
           </div>
@@ -359,19 +359,19 @@ rc.go()`}</Code>
             <Code lang="yaml">{`# ~/ros2_ws/src/neoracer_ros2_driver/config/throttle.yaml
 # Single source of truth for the top speed and steering caps.
 # All values are normalized to [-1, 1] across the pipeline.
-throttle:
+throttle_node:
   ros__parameters:
-    max_forward: 0.25    # the speed /drive is measured against
-    max_reverse: 0.25
-    max_steer:   1.00`}</Code>
+    max_speed_forward: 0.5     # the scale every forward /drive command gets
+    max_speed_backward: 0.6
+    max_steering: 0.625`}</Code>
 
             <Code lang="yaml">{`# ~/ros2_ws/src/neoracer_ros2_driver/config/controller.yaml
 # ESP32 serial port, the normalized -> m/s drive mapping, the
 # steering trim, and the Flysky RC channel map.
-controller:
+controller_node:
   ros__parameters:
-    port:               /dev/osrbot_base
-    max_speed_mps:      2.0
+    port_name:          /dev/osrbot_base
+    max_speed_mps:      6.0
     steering_trim_deg:  0.0
     throttle_channel:   2
     steering_channel:   0
@@ -380,7 +380,7 @@ controller:
             <DashList
               items={[
                 <>A higher{' '}
-                  <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>max_forward</code>{' '}
+                  <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>max_speed_forward</code>{' '}
                   in throttle.yaml means more top speed for the same command.</>,
                 <>Neutral is owned by the ESP32 firmware, not the YAML, so a
                   creep at zero is the ESC neutral or drivetrain drag, not a value
@@ -412,11 +412,11 @@ controller:
               .
             </li>
             <li>
-              <strong>Change didn't take.</strong> The node was not rebuilt or
-              re-sourced. Re-run{' '}
-              <code style={{ fontFamily: NB.monoFont }}>colcon build</code> and{' '}
-              <code style={{ fontFamily: NB.monoFont }}>source install/setup.bash</code>,
-              then restart the driver.
+              <strong>Change didn't take.</strong> Configs are read at launch, so
+              the running node is still on the old values. Restart the stack with{' '}
+              <code style={{ fontFamily: NB.monoFont }}>racecar service restart</code>{' '}
+              and confirm with{' '}
+              <code style={{ fontFamily: NB.monoFont }}>ros2 param get /throttle_node max_speed_forward</code>.
             </li>
             <li>
               <strong>Steering also off?</strong> Run{' '}

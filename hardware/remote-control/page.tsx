@@ -19,7 +19,7 @@ import { TransmitterControlsDiagram, TransmitterChannelSetup } from '@/component
 export const metadata: Metadata = {
   title: 'Remote control · Hardware · NeoRacer Docs',
   description:
-    'The Flysky FS-i6S transmitter: the sticks and switches, the CH7 toggle between manual (RC) and autonomous (ROS) control, and how to remap the auxiliary channels to S.BUS output.',
+    'The Flysky FS-i6S transmitter: the sticks and switches, SWB to hand control between manual and autonomy, SWA for slow or fast manual driving, and how to remap the auxiliary channels to S.BUS output.',
 };
 
 export default function RemoteControlPage() {
@@ -47,15 +47,16 @@ export default function RemoteControlPage() {
               <InfoNote term="Flysky FS-i6S" title="Flysky FS-i6S">
                 The handheld radio transmitter included with the car. Two sticks for throttle and steering, plus top switches mapped to auxiliary channels.
               </InfoNote>{' '}
-              transmitter. Two sticks drive it, and the{' '}
-              <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>CH7</code>{' '}
-              switch is the one that matters most: it hands control between you and
-              the host computer. Keep it centred and you drive; flip it and your
-              code does.
+              transmitter. Two sticks drive it, and{' '}
+              <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>SWB</code>{' '}
+              is the switch that matters most: it hands control between you and
+              the host computer. In the middle you drive; at the autonomy end
+              your code does.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="red">Flysky FS-i6S</ChromeBadge>
-              <ChromeBadge variant="outline">CH7 = RC ↔ autonomous</ChromeBadge>
+              <ChromeBadge variant="outline">SWB = manual ↔ autonomy</ChromeBadge>
+              <ChromeBadge variant="outline">SWA = slow ↔ fast</ChromeBadge>
               <ChromeBadge variant="outline">S.BUS output</ChromeBadge>
             </div>
           </div>
@@ -83,8 +84,8 @@ export default function RemoteControlPage() {
             items={[
               <><strong>Left stick, throttle.</strong> Push up to go forward, pull down to reverse. Releasing it to centre is the everyday way to stop.</>,
               <><strong>Right stick, steering.</strong> Left turns left, right turns right. Steering only bites while the car is rolling.</>,
-              <><strong>2-position switch, speed.</strong> Up for low speed, down for high. Start low while you find the feel of it.</>,
-              <><strong>3-position switch (CH7), mode.</strong> The manual-vs-autonomous toggle, covered below.</>,
+              <><strong>SWA, manual speed.</strong> A 2-position switch for manual driving: slow mode caps the throttle at 15% of full power, fast mode opens it up. Start slow while you find the feel of it.</>,
+              <><strong>SWB, mode.</strong> The 3-position switch that decides who is driving, covered below.</>,
               <><strong>Power.</strong> Hold both side buttons together until it beeps to turn the transmitter on or off.</>,
             ]}
           />
@@ -99,36 +100,39 @@ export default function RemoteControlPage() {
       {/* ── 02 · modes ──────────────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 40 }}>
-          <GhostNumeral n="7" top={-30} right={-20} size={420} />
+          <GhostNumeral n="B" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>02 / THE CH7 TOGGLE</Eyebrow>
+            <Eyebrow>02 / THE MODE SWITCH</Eyebrow>
             <DisplayHeading size="lg">
-              RC OR <Red>AUTONOMOUS.</Red>
+              WHO IS <Red>DRIVING.</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-              CH7 is the 3-position switch, mapped to the receiver&apos;s SWB. Its
-              position decides who is driving: you, on the sticks, or the host
-              computer running your code.
+              SWB has three positions and each one answers the same question:
+              who is driving. The middle is you, on the sticks. One end parks
+              the car in idle, where neither the sticks nor code move it. The
+              other end hands the car to the host computer and your code.
             </p>
             <div style={{ marginTop: 18 }}>
               <DataTable
                 columns={[
                   { key: 'mode', label: 'Mode', accent: true },
-                  { key: 'ch7', label: 'CH7 position', mono: true },
+                  { key: 'pos', label: 'SWB position', mono: true },
                   { key: 'who', label: 'Who drives' },
                 ]}
                 rows={[
-                  { mode: 'Manual (RC)', ch7: 'Up / middle', who: 'You, on the sticks. The safe default.' },
-                  { mode: 'Autonomous (ROS)', ch7: 'Down', who: 'The host computer: teleop, SLAM, Nav2, your code.' },
+                  { mode: 'Idle', pos: 'Up', who: 'Nobody. The car holds still regardless of sticks or code.' },
+                  { mode: 'Manual (RC)', pos: 'Middle', who: 'You, on the sticks. The safe default.' },
+                  { mode: 'Autonomous', pos: 'Down', who: 'The host computer: teleop, SLAM, Nav2, your code.' },
                 ]}
               />
             </div>
-            <Callout type="warn" title="Start and end in RC">
-              Centre CH7 before you power on, and again before you shut down. Coming
-              up in RC means the car can&apos;t drive itself off the bench, and
-              dropping back to RC cuts autonomous control cleanly when you&apos;re
-              done. Whenever something looks wrong, flipping back to RC is the
-              fastest way to take the wheel.
+            <Callout type="warn" title="Start and end in manual">
+              Set SWB to the middle before you power on, and again before you
+              shut down. Coming up in manual means the car can&apos;t drive
+              itself off the bench, and dropping back to manual cuts autonomous
+              control cleanly when you&apos;re done. Whenever something looks
+              wrong, flipping SWB back to the middle is the fastest way to take
+              the wheel.
             </Callout>
           </div>
         </section>

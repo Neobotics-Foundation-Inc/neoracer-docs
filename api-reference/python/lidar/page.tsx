@@ -8,32 +8,32 @@ import {
   GhostNumeral,
   ChromeBadge,
 } from '@/components/docs/Editorial';
-import { Crumbs, PrevNext, Callout, Code, ApiMethods, type ApiMethod } from '@/components/docs/DocsPrimitives';
+import { Crumbs, PrevNext, Callout, Code, DataTable, ApiMethods, type ApiMethod } from '@/components/docs/DocsPrimitives';
 import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
 
 export const metadata: Metadata = {
   title: 'rc.lidar · Python API · NeoRacer Docs',
   description:
-    'The Lidar module: get_samples returns a fixed 720-float scan in centimetres, 0.5° apart, index 0 forward. Same API in the Playground sim and on the car.',
+    'The Lidar module: get_samples returns the scan in centimetres, ~1440 samples at 0.25° on the car and 720 at 0.5° in the simulator. Index 0 is forward, the sensor sees a 270° window, and no-return samples read 0.',
 };
 
 const METHODS: ApiMethod[] = [
   {
     sig: 'rc.lidar.get_samples()',
-    returns: 'NDArray[720, Float]',
+    returns: 'NDArray[Float]',
     summary:
-      'The current scan as a flat array of 720 distances in centimetres. Index 0 is directly ahead and the samples run clockwise, so each index is 0.5° from the next.',
+      'The current scan as a flat array of distances in centimetres. Index 0 is directly ahead and the samples run clockwise at equal angles. On the car a scan holds ~1440 samples (0.25° apart); in the simulator it holds 720 (0.5° apart), so index with len(scan), never a fixed number. A sample with no return reads 0.',
   },
   {
     sig: 'rc.lidar.get_num_samples()',
     returns: 'int',
-    summary: 'How many samples a full scan contains. Always 720 on the NeoRacer, so you rarely need it, but it keeps a loop honest if you index relative to the length.',
+    summary: 'How many samples a full scan contains: 1440 on the NeoRacer, 720 in the simulator. Use it (or len(scan)) whenever you index relative to the whole circle, for example scan[rc.lidar.get_num_samples() // 4] for 90° right.',
   },
   {
     sig: 'rc.lidar.get_samples_async()',
-    returns: 'NDArray[720, Float]',
+    returns: 'NDArray[Float]',
     summary:
-      'The same 720-float scan, but readable outside the start/update loop. Use it in a one-off script or a notebook cell when the car is not in go mode.',
+      'The same scan, readable outside the start/update loop. Use it in a one-off script or a notebook cell when the car is not in go mode. Before the first scan arrives it returns an empty array, so check len() when polling it directly.',
   },
 ];
 
@@ -41,7 +41,7 @@ const UTILS: ApiMethod[] = [
   {
     sig: 'rc_utils.get_lidar_average_distance(scan, angle, window_angle=4)',
     returns: 'float',
-    summary: 'Average distance to whatever sits at a given angle, smoothed over a small window so one noisy ray does not throw you off.',
+    summary: 'Average distance to whatever sits at a given angle, smoothed over a small window so one noisy ray does not throw you off. Works in degrees, so the same call is correct on the car and in the sim regardless of sample count.',
     params: [
       { name: 'scan: NDArray', detail: <>The array from <code style={{ fontFamily: NB.monoFont }}>rc.lidar.get_samples()</code>.</> },
       { name: 'angle: float', detail: <>Degrees clockwise from straight ahead. 0 is forward, 90 is right, 270 is left.</> },
@@ -51,7 +51,7 @@ const UTILS: ApiMethod[] = [
   {
     sig: 'rc_utils.get_lidar_closest_point(scan, window=(0, 360))',
     returns: 'tuple[float, float]',
-    summary: 'The (angle, distance) of the nearest return, optionally restricted to an angular window. Handy for "how close is the nearest wall, and where is it".',
+    summary: 'The (angle, distance) of the nearest return, optionally restricted to an angular window. Handy for "how close is the nearest wall, and where is it". Zero samples (no return) are ignored.',
     params: [
       { name: 'scan: NDArray', detail: <>The array from <code style={{ fontFamily: NB.monoFont }}>rc.lidar.get_samples()</code>.</> },
       { name: 'window: tuple', detail: <>(start, end) degrees to search within. Defaults to the full circle.</> },
@@ -83,32 +83,88 @@ export default function LidarApiPage() {
               <InfoNote term="Lidar" title="LiDAR">
                 A sensor that spins a laser around and times how long each pulse takes to bounce back, turning that into a distance for every direction. That is how the car senses walls and obstacles.
               </InfoNote>{' '}
-              module is your 360° sense of distance. One call hands you
-              a flat array of 720 distances in centimetres, and the library gives
-              you the exact same array in the Playground sim and on the car, so a
-              wall-follower you write in the browser runs unchanged on the
-              NeoRacer.
+              module is your sense of distance. One call hands you the current
+              scan in centimetres: ~1440 samples on the car, 720 in the
+              Playground sim. Work in degrees through the{' '}
+              <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>rc_utils</code>{' '}
+              helpers or index relative to{' '}
+              <code style={{ fontFamily: NB.monoFont }}>len(scan)</code>, and the
+              same program runs unchanged on both.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="red">Sim ↔ car identical</ChromeBadge>
-              <ChromeBadge variant="outline">720 samples</ChromeBadge>
-              <ChromeBadge variant="outline">0.5° apart</ChromeBadge>
+              <ChromeBadge variant="red">~1440 samples · 0.25°</ChromeBadge>
+              <ChromeBadge variant="outline">270° live window</ChromeBadge>
               <ChromeBadge variant="outline">index 0 = forward</ChromeBadge>
+              <ChromeBadge variant="outline">no return = 0</ChromeBadge>
             </div>
           </div>
         </section>
       </MouseFollowGlow>
 
       <ScrollReveal>
-        <Callout type="note" title="The API gives 720, the sensor gives more">
-          The physical scanner is a{' '}
+        <Callout type="note" title="The 270° window and the rear wedge">
+          The scanner is a{' '}
           <a href="/docs/hardware/sensors/lidar" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
             Richbeam LakiBeam1
           </a>{' '}
-          running at 0.25° (about 1080 points across its 270° arc). The library
-          resamples that down to a fixed 720-float, full-circle array so your
-          code never has to care which sensor is underneath it. When you call{' '}
-          <code style={{ fontFamily: NB.monoFont }}>get_samples()</code> you always get 720.
+          spinning a full circle at 0.25° per sample, and the scan array covers
+          all 360°. The sensor itself reads a 270° window of that circle, so the
+          ~90° wedge behind the car never carries a return and reads 0. Any
+          sample with no return reads 0 the same way, and the{' '}
+          <code style={{ fontFamily: NB.monoFont }}>rc_utils</code> helpers skip
+          zeros for you. If you index the raw array rearward, expect zeros
+          there, by design, not by fault.
+        </Callout>
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <section style={{ paddingBottom: 24 }}>
+          <Eyebrow>SIM AND CAR</Eyebrow>
+          <DisplayHeading size="lg">
+            SAME DEGREES, DIFFERENT <Red>COUNTS.</Red>
+          </DisplayHeading>
+          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
+            The API and the angle conventions are identical everywhere: index 0
+            forward, clockwise, centimetres. The sample count is not, so a
+            program that hardcodes an index breaks the moment it changes
+            platform. Work in degrees, or divide{' '}
+            <code style={{ fontFamily: NB.monoFont }}>len(scan)</code>.
+          </p>
+          <div style={{ marginTop: 16 }}>
+            <DataTable
+              columns={[
+                { key: 'k', label: '', accent: true },
+                { key: 'car', label: 'NeoRacer', mono: true },
+                { key: 'sim', label: 'Playground sim', mono: true },
+              ]}
+              rows={[
+                { k: 'Samples per scan', car: '~1440', sim: '720' },
+                { k: 'Angle per sample', car: '0.25°', sim: '0.5°' },
+                { k: 'Coverage', car: '360° array · 270° live', sim: '360°' },
+                { k: '90° right', car: 'scan[len(scan) // 4]', sim: 'scan[len(scan) // 4]' },
+              ]}
+            />
+          </div>
+          <Code lang="python">{`scan = rc.lidar.get_samples()
+
+right = scan[len(scan) // 4]       # 90° right on any platform
+rear  = scan[len(scan) // 2]       # directly behind (0 on the car: rear wedge)
+
+# or skip indexing entirely and work in degrees:
+right = rc_utils.get_lidar_average_distance(scan, 90)`}</Code>
+        </section>
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <Callout type="tip" title="The first scan is waited for">
+          On the car, <code style={{ fontFamily: NB.monoFont }}>rc.go()</code>{' '}
+          waits for the first scan before your{' '}
+          <code style={{ fontFamily: NB.monoFont }}>update()</code> runs, so the
+          array is never empty inside the loop. Outside the loop,{' '}
+          <code style={{ fontFamily: NB.monoFont }}>get_samples_async()</code>{' '}
+          can still return an empty array in the first moments after the driver
+          starts; check <code style={{ fontFamily: NB.monoFont }}>len()</code>{' '}
+          when polling it directly.
         </Callout>
       </ScrollReveal>
 
@@ -144,16 +200,19 @@ export default function LidarApiPage() {
           <DisplayHeading size="lg">
             A WALL-STOP <Red>EXAMPLE.</Red>
           </DisplayHeading>
-          <Code lang="python">{`import racecar_core
+          <Code lang="python">{`import sys
+sys.path.insert(0, "../library")   # the racecar-neo library on the car
+
+import racecar_core
 import racecar_utils as rc_utils
 
 rc = racecar_core.create_racecar()
 
 def start():
-    rc.drive.set_max_speed(0.4)
+    rc.drive.set_max_speed(0.4)    # a calmer scale for close-quarters work
 
 def update():
-    scan = rc.lidar.get_samples()                  # 720 distances, cm
+    scan = rc.lidar.get_samples()  # ~1440 distances on the car, cm
     # average distance in a 10-degree window straight ahead
     front = rc_utils.get_lidar_average_distance(scan, 0, 10)
     rc.drive.set_speed_angle(0.0 if front < 50 else 0.3, 0)

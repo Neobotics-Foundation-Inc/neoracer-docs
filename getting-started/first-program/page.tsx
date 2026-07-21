@@ -97,13 +97,12 @@ export default function FirstProgramPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>STEP 05 / GETTING STARTED · THE FINAL ONE</Eyebrow>
             <DisplayHeading size="xl">
-              FOLLOW THE <Red>WALL.</Red>
+              WALL <Red>FOLLOWING.</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
-              Your first program that actually reads a sensor. Twenty lines of
-              Python that watch the LiDAR and steer to hold a fixed gap from the
-              wall. The same script runs in the NeoRacer Playground simulator and
-              on the car, so it doubles as a quick way to prove the LiDAR works.
+              To ensure all sensors are running well, try executing your first
+              program on the car. This same script runs both on the real car as
+              well as the Neobotics Playground twin simulator.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="outline" icon={<ClockGlyph />}><AnimatedNumeral value={15} suffix=" minutes" /></ChromeBadge>

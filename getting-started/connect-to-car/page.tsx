@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { Metadata } from 'next';
 import DocsShell from '@/components/docs/DocsShell';
 import { NB } from '@/lib/nb-tokens';
@@ -8,10 +7,9 @@ import {
   Red,
   GhostNumeral,
   ChromeBadge,
-  MonoLabel,
   DashList,
 } from '@/components/docs/Editorial';
-import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
+import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 import { Crumbs, Callout, Code, PrevNext } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
@@ -184,32 +182,6 @@ git clone https://github.com/Neobotics-Foundation-Inc/neoracer_ros2_driver.git`}
               before that point calls the repository&apos;s scripts directly
               with <code style={{ fontFamily: NB.monoFont }}>bash</code>.
             </Callout>
-          </div>
-        </section>
-      </ScrollReveal>
-
-      {/* ── 05 · What's next ─────────────────────────────────────────── */}
-      <ScrollReveal>
-        <section style={{ position: 'relative', paddingBottom: 44 }}>
-          <GhostNumeral n="05" top={-30} right={-20} size={420} />
-          <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>05 / FROM HERE</Eyebrow>
-            <DisplayHeading size="lg">
-              INSTALL, THEN CUT THE <Red>CORD.</Red>
-            </DisplayHeading>
-            <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-              Stay at the console for the next page: one script installs the
-              whole car. At the end of that install, a single command gives the
-              car its own permanent networks, the{' '}
-              <InfoNote term="access point" title="Access point">A device that broadcasts its own Wi-Fi network for others to join, the way a home router does. After setup, the car itself becomes the network.</InfoNote>{' '}
-              (<code style={{ fontFamily: NB.monoFont }}>neoracer-1</code> at{' '}
-              <code style={{ fontFamily: NB.monoFont }}>10.42.0.1</code>) and the
-              fixed cudy address
-              (<code style={{ fontFamily: NB.monoFont }}>192.168.10.100</code>).
-              From then on you connect from your laptop and the monitor retires.
-              The full day-to-day reference is{' '}
-              <Link href="/docs/software/networking" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Networking</Link>.
-            </p>
           </div>
         </section>
       </ScrollReveal>

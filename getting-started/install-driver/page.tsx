@@ -273,7 +273,7 @@ http://192.168.10.100:8080     # cudy router`}</Code>
         <section style={{ paddingBottom: 36 }}>
           <Eyebrow>06 / GIVE IT ITS OWN NETWORK</Eyebrow>
           <DisplayHeading size="lg">
-            CUT THE <Red>CORD.</Red>
+            THE CAR'S OWN <Red>NETWORK.</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             So far the car has been borrowing your network. One command, run at

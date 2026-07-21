@@ -135,11 +135,6 @@ export default function ConnectToCarPage() {
                   internet into the Jetson&apos;s RJ45 port connects it with no
                   further steps.
                 </>,
-                <>
-                  <strong>Or use the cudy router.</strong> Every kit ships with
-                  one. Connect its uplink to the internet and plug the car into
-                  it, and this step is covered.
-                </>,
               ]}
             />
             <Callout type="tip" title="Check it took">

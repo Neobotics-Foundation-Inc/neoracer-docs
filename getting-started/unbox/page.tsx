@@ -52,12 +52,12 @@ export default function UnboxPage() {
                 maxWidth: 680,
               }}
             >
-              Give yourself about eight minutes to lay everything out and confirm
+              Give yourself roughly 10 minutes to lay everything out and confirm
               nothing is missing. The LiPo waits until the next page, so there's
               nothing to plug in just yet.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="outline" icon={<ClockGlyph />}><AnimatedNumeral value={8} suffix=" minutes" /></ChromeBadge>
+              <ChromeBadge variant="outline" icon={<ClockGlyph />}><AnimatedNumeral value={10} prefix="~" suffix=" minutes" /></ChromeBadge>
               <ChromeBadge variant="outline" icon={<LevelGlyph level={1} />}>Beginner</ChromeBadge>
               <ChromeBadge variant="outline">No tools required</ChromeBadge>
             </div>
@@ -71,7 +71,6 @@ export default function UnboxPage() {
           <MonoLabel>You'll need</MonoLabel>
           <DashList
             items={[
-              <>A flat surface, roughly 1 metre by 1 metre.</>,
               <>The NeoRacer shipping box, sealed.</>,
               <>A phone or laptop nearby for the rest of Getting Started.</>,
             ]}

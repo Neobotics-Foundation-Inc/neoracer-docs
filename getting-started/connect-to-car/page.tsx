@@ -10,12 +10,12 @@ import {
   DashList,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
-import { Crumbs, Callout, Code, PrevNext } from '@/components/docs/DocsPrimitives';
+import { Crumbs, Callout, PrevNext } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
   title: 'Get on the car · Getting Started · NeoRacer Docs',
   description:
-    'The one-time first setup, done at the car: attach the Wi-Fi antennas, plug in a monitor and keyboard, get the car onto the internet (join your Wi-Fi or plug in Ethernet), and pull the neoracer_ros2_driver repository. Then install.',
+    'The one-time first setup, done at the car: attach the Wi-Fi antennas, plug in a monitor and keyboard, and get the car onto the internet (join your Wi-Fi, plug in Ethernet, or use the cudy router). Then install the driver.',
 };
 
 export default function ConnectToCarPage() {
@@ -146,41 +146,6 @@ export default function ConnectToCarPage() {
               Open a browser on the car, or run{' '}
               <code style={{ fontFamily: NB.monoFont }}>ping github.com</code> in a
               terminal. Either answering means you are online.
-            </Callout>
-          </div>
-        </section>
-      </ScrollReveal>
-
-      {/* ── 04 · The driver repo ─────────────────────────────────────── */}
-      <ScrollReveal>
-        <section style={{ position: 'relative', paddingBottom: 44 }}>
-          <GhostNumeral n="04" top={-30} right={-20} size={420} />
-          <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>04 / GET THE DRIVER ONTO THE CAR</Eyebrow>
-            <DisplayHeading size="lg">
-              THE NEORACER <Red>DRIVER.</Red>
-            </DisplayHeading>
-            <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-              The car&apos;s tooling, including the script that later creates its
-              own network, lives in one repository:{' '}
-              <a href="https://github.com/Neobotics-Foundation-Inc/neoracer_ros2_driver" target="_blank" rel="noopener noreferrer" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-                neoracer_ros2_driver
-              </a>. Cars from the factory ship with it at{' '}
-              <code style={{ fontFamily: NB.monoFont }}>~/ros2_ws/src/neoracer_ros2_driver</code>;
-              pull it in a terminal so it is current. If your car doesn&apos;t
-              have it, clone it.
-            </p>
-            <Code lang="bash">{`cd ~/ros2_ws/src/neoracer_ros2_driver && git pull
-
-# or, if the repository is not on the car yet:
-mkdir -p ~/ros2_ws/src && cd ~/ros2_ws/src
-git clone https://github.com/Neobotics-Foundation-Inc/neoracer_ros2_driver.git`}</Code>
-            <Callout type="note" title="Where the racecar command comes from">
-              The <code style={{ fontFamily: NB.monoFont }}>racecar</code> shorthand
-              used across these docs is part of this repository, and it lands in
-              your shell during the driver install on the next page. Anything
-              before that point calls the repository&apos;s scripts directly
-              with <code style={{ fontFamily: NB.monoFont }}>bash</code>.
             </Callout>
           </div>
         </section>

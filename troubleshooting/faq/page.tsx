@@ -153,22 +153,6 @@ const FAQS: Faq[] = [
     ),
   },
   {
-    group: 'classroom',
-    q: 'Can students run the car without supervision?',
-    a: (
-      <>
-        Aside from the LiPo charging step, the car is no more dangerous than an
-        RC car of the same size. We recommend the educator be in the room
-        during the first session so they can demo the{' '}
-        <InfoNote term="e-stop" title="E-Stop">
-          Short for emergency stop, a control that immediately cuts power to
-          the motor so the car halts at once.
-        </InfoNote>{' '}
-        and the safe zero-speed routine.
-      </>
-    ),
-  },
-  {
     group: 'support',
     q: 'Where do I file a bug?',
     a: (

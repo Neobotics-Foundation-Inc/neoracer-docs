@@ -10,7 +10,6 @@ import {
   MonoLabel,
   ChromeBadge,
   ClockGlyph,
-  CautionGlyph,
   DashList,
   Fig,
   NumberedFeatureCard,
@@ -50,7 +49,6 @@ export default function ChargeAndPowerPage() {
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="outline" icon={<ClockGlyph />}><AnimatedNumeral value={15} suffix=" minutes" /> (first charge)</ChromeBadge>
-              <ChromeBadge variant="red" icon={<CautionGlyph />}>Adult supervision required</ChromeBadge>
               <ChromeBadge variant="outline">Charger included</ChromeBadge>
             </div>
           </div>
@@ -77,7 +75,6 @@ export default function ChargeAndPowerPage() {
               <>An 11.1 V (3S) LiPo pack, <strong>you supply this</strong>. See "Recommended packs" below.</>,
               <>A hard surface (concrete, tile, or a LiPo charging bag), not a bed or carpet.</>,
               <>An AC outlet within reach.</>,
-              <>If you are under 16, an adult in the room with you while it charges.</>,
             ]}
           />
         </section>

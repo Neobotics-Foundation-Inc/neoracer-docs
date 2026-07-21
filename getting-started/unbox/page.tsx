@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Image from 'next/image';
 import { Metadata } from 'next';
 import DocsShell from '@/components/docs/DocsShell';
 import { NB } from '@/lib/nb-tokens';
@@ -15,13 +15,41 @@ import {
   Fig,
 } from '@/components/docs/Editorial';
 import { BoxContentsDiagram } from '@/components/docs/Diagrams';
-import { ScrollReveal, MouseFollowGlow, AnimatedNumeral, InfoNote } from '@/components/docs/Interactive';
-import { Crumbs, Callout, PrevNext } from '@/components/docs/DocsPrimitives';
+import { ScrollReveal, MouseFollowGlow, AnimatedNumeral } from '@/components/docs/Interactive';
+import { Crumbs, PrevNext } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
   title: 'Unbox · NeoRacer Docs',
-  description: 'What\'s in the box, what to set aside, and why the LiPo stays sealed until the Charge and Power page.',
+  description: 'What\'s in the box: the car, controller, charger, router, and antenna, plus the small accessories that ship alongside them.',
 };
+
+const ACCESSORIES = [
+  {
+    src: '/images/unbox-antenna-kit.jpeg',
+    name: 'Wi-Fi antenna kit',
+    d: 'The antenna, its U.FL-to-SMA lead, and the washers that mount the lead through the chassis. These go on in Get on the car.',
+  },
+  {
+    src: '/images/unbox-zip-ties.jpeg',
+    name: 'Zip ties',
+    d: 'For routing the antenna leads and cables clear of the wheels and belt.',
+  },
+  {
+    src: '/images/unbox-cover-screws.jpeg',
+    name: 'Side-cover screws',
+    d: 'Spares for the 3D-printed side covers.',
+  },
+  {
+    src: '/images/unbox-flysky-cable.jpeg',
+    name: 'Controller data cable',
+    d: "USB-A to micro-USB, for updating the Flysky's firmware from a computer.",
+  },
+  {
+    src: '/images/unbox-flysky-bracket.jpeg',
+    name: 'Controller bracket',
+    d: "The Flysky's metal bracket and its two screws.",
+  },
+];
 
 export default function UnboxPage() {
   return (
@@ -88,10 +116,87 @@ export default function UnboxPage() {
         </Fig>
       </ScrollReveal>
 
+      {/* ── Accessories ───────────────────────────────────────────────── */}
+      <ScrollReveal>
+        <section style={{ paddingBottom: 32 }}>
+          <Eyebrow>02 / ALSO IN THE BOX</Eyebrow>
+          <DisplayHeading size="lg">
+            THE <Red>ACCESSORIES.</Red>
+          </DisplayHeading>
+          <p
+            style={{
+              fontFamily: NB.bodyFont,
+              fontSize: 16,
+              lineHeight: 1.65,
+              color: NB.textMutedBeige,
+              maxWidth: 720,
+            }}
+          >
+            A few small parts ship alongside the main pieces. Keep them with the
+            box; each one has its moment later in the setup.
+          </p>
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))',
+              gap: 18,
+              marginTop: 20,
+            }}
+          >
+            {ACCESSORIES.map((a) => (
+              <div
+                key={a.name}
+                style={{
+                  background: NB.haloWhite,
+                  border: `1px solid ${NB.borderOnBeige}`,
+                  borderRadius: 12,
+                  overflow: 'hidden',
+                }}
+              >
+                <Image
+                  src={a.src}
+                  alt={a.name}
+                  width={4032}
+                  height={3024}
+                  sizes="(max-width: 640px) 100vw, 300px"
+                  style={{ width: '100%', height: 'auto', display: 'block' }}
+                />
+                <div style={{ padding: '12px 14px 14px' }}>
+                  <div
+                    style={{
+                      fontFamily: NB.monoFont,
+                      fontSize: 12,
+                      fontWeight: 700,
+                      letterSpacing: '0.08em',
+                      textTransform: 'uppercase',
+                      color: NB.neoboticsRed,
+                      marginBottom: 6,
+                    }}
+                  >
+                    {a.name}
+                  </div>
+                  <p
+                    style={{
+                      fontFamily: NB.bodyFont,
+                      fontSize: 13.5,
+                      lineHeight: 1.6,
+                      color: NB.textMutedBeige,
+                      margin: 0,
+                    }}
+                  >
+                    {a.d}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      </ScrollReveal>
+
       {/* ── Steps ─────────────────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ paddingBottom: 32 }}>
-          <Eyebrow>02 / WORK THROUGH IT</Eyebrow>
+          <Eyebrow>03 / WORK THROUGH IT</Eyebrow>
           <DisplayHeading size="lg">
             THE UNBOXING <Red>STEPS.</Red>
           </DisplayHeading>
@@ -166,22 +271,10 @@ export default function UnboxPage() {
         </section>
       </ScrollReveal>
 
-      {/* ── Safety callout ────────────────────────────────────────────── */}
-      <ScrollReveal>
-        <Callout type="danger" title="The LiPo can wait a little longer">
-          LiPo packs can catch fire if they are mishandled, so it is safest to keep
-          your{' '}<InfoNote term="3S" title="3S LiPo">A LiPo battery built from three cells wired in series. The 3S configuration sets the pack's voltage, which is why the car needs that specific type.</InfoNote>{' '}pack sealed in its bag for now. It stays there until the{' '}
-          <Link href="/docs/getting-started/charge-and-power" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-            Charge and Power
-          </Link>{' '}
-          page walks you through the safe routine.
-        </Callout>
-      </ScrollReveal>
-
       {/* ── What's next ───────────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ marginTop: 40 }}>
-          <Eyebrow>03 / NEXT</Eyebrow>
+          <Eyebrow>04 / NEXT</Eyebrow>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, color: NB.textMutedBeige, marginTop: 6 }}>
             Everything is laid out. The next page covers charging the LiPo.
           </p>

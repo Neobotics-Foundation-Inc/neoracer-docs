@@ -106,7 +106,7 @@ export default function NetworkingPage() {
                   { k: 'The car', cudy: '192.168.10.100', ap: '10.42.0.1' },
                   { k: 'Gateway', cudy: '192.168.10.1 (router)', ap: '10.42.0.1 (the car)' },
                   { k: 'Internet', cudy: 'via the router uplink', ap: 'none' },
-                  { k: 'Extra hardware', cudy: 'the cudy router', ap: 'none' },
+                  { k: 'Extra hardware', cudy: 'the included cudy router', ap: 'none' },
                 ]}
               />
             </div>

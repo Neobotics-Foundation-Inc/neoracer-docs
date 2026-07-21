@@ -138,9 +138,9 @@ export default function ConnectToCarPage() {
                   further steps.
                 </>,
                 <>
-                  <strong>Or use the cudy router.</strong> If your kit includes
-                  the cudy router and its uplink is connected to the internet,
-                  plugging the car into it covers this step too.
+                  <strong>Or use the cudy router.</strong> Every kit ships with
+                  one. Connect its uplink to the internet and plug the car into
+                  it, and this step is covered.
                 </>,
               ]}
             />

@@ -99,14 +99,14 @@ export default function UnboxPage() {
           {[
           {
             t: 'Open the box.',
-            d: 'Once the seal is cut, you will find the car cradled in foam, with the Flysky controller, the LiPo charger, and the Wi-Fi antenna packed alongside.',
+            d: 'Once the seal is cut, you will find the car cradled in foam, with the Flysky controller, the LiPo charger, the cudy router, and the Wi-Fi antenna packed alongside.',
           },
           {
             t: 'Lift the car out by the chassis rails.',
             d: 'The rails give you a firm hold, so it settles nicely on the flat surface with the wheels down.',
           },
           {
-            t: 'Gather the controller, charger, and antenna.',
+            t: 'Gather the controller, charger, router, and antenna.',
             d: 'It helps to set them next to FIG. A above and check everything is accounted for. If a piece did not make it into your box, send a note to support@neobotics.org with your order number and we will sort it out.',
           },
           {

@@ -73,12 +73,11 @@ export default function InstallDriverPage() {
 
       <ScrollReveal>
         <Callout type="note" title="This step needs internet on the car">
-          The script downloads packages and clones two repositories, so the car
-          needs an internet connection for this one step. The car&apos;s own
-          access point does not provide internet. Either plug an Ethernet cable
-          with internet into the Jetson&apos;s RJ45 port, or use the cudy router
-          with its internet uplink connected. Once the install is done, the car
-          runs fully offline.
+          The script downloads packages and clones two repositories. The car is
+          online from{' '}
+          <Link href="/docs/getting-started/connect-to-car" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Get on the car</Link>,
+          step 03; if you skipped that, go back and do it now. Once the install
+          is done, the car runs fully offline.
         </Callout>
       </ScrollReveal>
 
@@ -90,11 +89,11 @@ export default function InstallDriverPage() {
             THE SYSTEM <Red>SPECS.</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-            You are SSH&apos;d into the car from{' '}
-            <Link href="/docs/getting-started/connect-to-car" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Get on the car</Link>{' '}
-            as <code style={{ fontFamily: NB.monoFont }}>racecar</code>. Every
-            NeoRacer ships the same system, so the commands here match your car
-            exactly.
+            You are at the car&apos;s console from{' '}
+            <Link href="/docs/getting-started/connect-to-car" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Get on the car</Link>,
+            logged in as <code style={{ fontFamily: NB.monoFont }}>racecar</code>,
+            with the car online and the repository pulled. Every NeoRacer ships
+            the same system, so the commands here match your car exactly.
           </p>
           <div
             style={{
@@ -206,9 +205,9 @@ bash neoracer_ros2_driver/scripts/setup_all.sh`}</Code>
             one; from now on the whole stack comes up on its own every time the
             car powers on.
           </p>
-          <Code lang="bash">{`exit                    # this session predates the setup; leave it
-ssh racecar@10.42.0.1   # a fresh login has the racecar command + hardware access
-racecar service start   # (use 192.168.10.100 on the cudy router)`}</Code>
+          <Code lang="bash">{`# log out of the session and back in (desktop: log out and back in;
+# SSH: exit and reconnect), then:
+racecar service start`}</Code>
           <Callout type="note" title="What just started">
             The ESP32 bridge (motors, IMU, odometry, the FlySky receiver), the
             LiDAR, the camera, the LED matrix, the drive pipeline that arbitrates
@@ -263,9 +262,45 @@ http://192.168.10.100:8080     # cudy router`}</Code>
           <Callout type="tip" title="The install is done">
             If the LiDAR takes a minute to appear after a cold boot, that is
             normal: the sensor boots its own controller before it starts
-            streaming. When all three checks pass, the car is fully set up. Next
-            you write your first program.
+            streaming. When all three checks pass, one step remains: give the
+            car its own network.
           </Callout>
+        </section>
+      </ScrollReveal>
+
+      {/* ── The car's own network ────────────────────────────────────── */}
+      <ScrollReveal>
+        <section style={{ paddingBottom: 36 }}>
+          <Eyebrow>06 / GIVE IT ITS OWN NETWORK</Eyebrow>
+          <DisplayHeading size="lg">
+            CUT THE <Red>CORD.</Red>
+          </DisplayHeading>
+          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
+            So far the car has been borrowing your network. One command, run at
+            the console, sets up both of its permanent ones in one pass: its own
+            access point (<code style={{ fontFamily: NB.monoFont }}>neoracer-1</code>{' '}
+            at <code style={{ fontFamily: NB.monoFont }}>10.42.0.1</code>) and the
+            fixed address for the cudy router
+            (<code style={{ fontFamily: NB.monoFont }}>192.168.10.100</code>).
+          </p>
+          <Code lang="bash">{`racecar setup networking     # at the console`}</Code>
+          <Callout type="warn" title="This takes the car off your Wi-Fi">
+            The command claims the Wi-Fi radio for the access point, so the
+            car&apos;s connection to your network (and any Wi-Fi SSH session)
+            drops the moment it runs. That is the point: from here the car makes
+            its own network. Run it at the console, not over Wi-Fi.
+          </Callout>
+          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
+            Then connect from your laptop: join{' '}
+            <code style={{ fontFamily: NB.monoFont }}>neoracer-1</code> (password{' '}
+            <code style={{ fontFamily: NB.monoFont }}>neobotics</code>) and{' '}
+            <code style={{ fontFamily: NB.monoFont }}>ssh racecar@10.42.0.1</code>,
+            or join the cudy router&apos;s Wi-Fi and use{' '}
+            <code style={{ fontFamily: NB.monoFont }}>192.168.10.100</code>. The
+            monitor and keyboard retire here. Day-to-day connections, RustDesk,
+            and the router details live on{' '}
+            <Link href="/docs/software/networking" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Networking</Link>.
+          </p>
         </section>
       </ScrollReveal>
 

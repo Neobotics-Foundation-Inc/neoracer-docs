@@ -90,16 +90,16 @@ export default function SpecificationsPage() {
             source={{ label: 'LiDAR', href: '/docs/hardware/sensors/lidar' }}
           />
           <SpecNumeral
-            value={<AnimatedNumeral value={100} />}
+            value={<AnimatedNumeral value={200} />}
             unit="Hz"
             label="IMU sample rate"
-            source={{ label: 'Compute', href: '/docs/hardware/compute' }}
+            source={{ label: 'IMU', href: '/docs/hardware/sensors/imu' }}
           />
           <SpecNumeral
-            value={<AnimatedNumeral value={120} />}
+            value={<AnimatedNumeral value={60} />}
             unit="fps"
-            label="Camera at 1080p"
-            source={{ label: 'Compute', href: '/docs/hardware/compute' }}
+            label="Camera at 640×480"
+            source={{ label: 'Camera', href: '/docs/hardware/sensors/camera' }}
           />
         </div>
         </section>
@@ -160,11 +160,12 @@ export default function SpecificationsPage() {
                 marginTop: 16,
               }}
             >
-              <SpecNumeral value={<AnimatedNumeral value={720} />} unit="samples" label="LiDAR per revolution" source={{ label: 'LiDAR', href: '/docs/hardware/sensors/lidar' }} />
+              <SpecNumeral value={<AnimatedNumeral value={1440} prefix="~" />} unit="samples" label="LiDAR per revolution" source={{ label: 'LiDAR', href: '/docs/hardware/sensors/lidar' }} />
+              <SpecNumeral value={<AnimatedNumeral value={270} />} unit="° live window" label="LiDAR coverage (rear reads 0)" source={{ label: 'rc.lidar', href: '/docs/api-reference/python/lidar' }} />
               <SpecNumeral value={<AnimatedNumeral value={25} />} unit="m" label="LiDAR max range" source={{ label: 'LiDAR', href: '/docs/hardware/sensors/lidar' }} />
-              <SpecNumeral value={<AnimatedNumeral value={0.5} decimals={1} />} unit="° / sample" label="LiDAR resolution" />
-              <SpecNumeral value={<AnimatedNumeral value={1080} suffix="p" />} unit="120 fps" label="Camera capture" />
-              <SpecNumeral value={<AnimatedNumeral value={100} />} unit="Hz" label="IMU, MCU-fused" />
+              <SpecNumeral value={<AnimatedNumeral value={0.25} decimals={2} />} unit="° / sample" label="LiDAR resolution" />
+              <SpecNumeral value="640×480" unit="60 fps JPEG" label="Camera capture (RGB)" source={{ label: 'Camera', href: '/docs/hardware/sensors/camera' }} />
+              <SpecNumeral value={<AnimatedNumeral value={200} />} unit="Hz" label="IMU, MCU-fused" />
               <SpecNumeral value={<AnimatedNumeral value={6} />} unit="DoF" label="IMU axes" />
             </div>
           </div>
@@ -281,7 +282,7 @@ export default function SpecificationsPage() {
             >
               <SpecNumeral value={<AnimatedNumeral value={6} />} label="Wi-Fi generation" source={{ label: 'Compute', href: '/docs/hardware/compute' }} />
               <SpecNumeral value="mDNS" label="Name resolution" source={{ label: 'OS & image', href: '/docs/software/os-and-image' }} />
-              <SpecNumeral value="eth0" label="Gigabit ethernet fallback" source={{ label: "Wi-Fi can't connect", href: '/docs/troubleshooting/wifi-cant-connect' }} />
+              <SpecNumeral value="RJ45" label="Gigabit Ethernet port" source={{ label: 'Networking', href: '/docs/software/networking' }} />
               <SpecNumeral value="SSH" label="Default access" />
             </div>
           </div>

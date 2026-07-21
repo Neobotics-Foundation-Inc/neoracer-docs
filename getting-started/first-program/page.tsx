@@ -23,6 +23,70 @@ export const metadata: Metadata = {
   description: 'Write a basic wall follower: read the LiDAR every frame and steer to hold a fixed gap from the wall. The same Python runs in the Playground simulator and on the car, so it doubles as a LiDAR test.',
 };
 
+/* Flysky transmitter, front view: the two switches this page uses. SWB hands
+ * control between manual and autonomy; SWA picks slow or fast manual mode. */
+function FlyskySwitchesDiagram() {
+  const RED = NB.neoboticsRed;
+  const BLUE = NB.tarmacBlue;
+  return (
+    <svg viewBox="0 0 540 330" width="100%" style={{ display: 'block', maxWidth: 560, margin: '0 auto' }}>
+      <defs>
+        <marker id="fs-arrow" markerWidth="9" markerHeight="9" refX="6" refY="4.5" orient="auto">
+          <path d="M0 0l8 4.5L0 9z" fill={RED} />
+        </marker>
+      </defs>
+
+      <text x="270" y="24" fontFamily={NB.monoFont} fontSize="11" fill={BLUE} fontWeight="700" letterSpacing="2" textAnchor="middle">
+        FLYSKY TRANSMITTER · TOP SWITCHES
+      </text>
+
+      {/* antennas */}
+      <line x1="215" y1="88" x2="185" y2="44" stroke={BLUE} strokeWidth="4" strokeLinecap="round" />
+      <line x1="325" y1="88" x2="355" y2="44" stroke={BLUE} strokeWidth="4" strokeLinecap="round" />
+
+      {/* body */}
+      <rect x="140" y="88" width="260" height="200" rx="22" fill={NB.haloWhite} stroke={BLUE} strokeWidth="2.5" />
+
+      {/* the four toggle switches along the top edge */}
+      {[
+        { x: 172, label: 'SWA', hot: true },
+        { x: 232, label: 'SWB', hot: true },
+        { x: 292, label: 'SWC', hot: false },
+        { x: 352, label: 'SWD', hot: false },
+      ].map((s) => (
+        <g key={s.label}>
+          <rect x={s.x} y={72} width="16" height="26" rx="4" fill={s.hot ? RED : NB.beige} stroke={BLUE} strokeWidth="1.6" />
+          <line x1={s.x + 8} y1={62} x2={s.x + 8} y2={72} stroke={BLUE} strokeWidth="3" strokeLinecap="round" />
+          <text x={s.x + 8} y={114} fontFamily={NB.monoFont} fontSize="9.5" fontWeight="700" fill={s.hot ? RED : BLUE} textAnchor="middle">
+            {s.label}
+          </text>
+        </g>
+      ))}
+
+      {/* sticks */}
+      <circle cx="205" cy="196" r="34" fill={NB.beige} stroke={BLUE} strokeWidth="2" />
+      <circle cx="205" cy="196" r="9" fill={BLUE} />
+      <circle cx="335" cy="196" r="34" fill={NB.beige} stroke={BLUE} strokeWidth="2" />
+      <circle cx="335" cy="196" r="9" fill={BLUE} />
+      <text x="270" y="262" fontFamily={NB.monoFont} fontSize="9" fill={BLUE} textAnchor="middle" opacity="0.7">
+        THROTTLE · STEERING
+      </text>
+
+      {/* SWA callout, left */}
+      <rect x="8" y="130" width="128" height="44" fill={BLUE} />
+      <text x="72" y="148" fontFamily={NB.monoFont} fontSize="9.5" fontWeight="700" fill={NB.haloWhite} textAnchor="middle">SWA · MANUAL SPEED</text>
+      <text x="72" y="163" fontFamily={NB.monoFont} fontSize="9.5" fontWeight="700" fill={NB.haloWhite} textAnchor="middle">SLOW ↔ FAST</text>
+      <line x1="136" y1="146" x2="172" y2="94" stroke={RED} strokeWidth="2" markerEnd="url(#fs-arrow)" />
+
+      {/* SWB callout, right */}
+      <rect x="398" y="130" width="134" height="44" fill={BLUE} />
+      <text x="465" y="148" fontFamily={NB.monoFont} fontSize="9.5" fontWeight="700" fill={NB.haloWhite} textAnchor="middle">SWB · WHO DRIVES</text>
+      <text x="465" y="163" fontFamily={NB.monoFont} fontSize="9.5" fontWeight="700" fill={NB.haloWhite} textAnchor="middle">MANUAL ↔ AUTONOMY</text>
+      <line x1="398" y1="146" x2="248" y2="94" stroke={RED} strokeWidth="2" markerEnd="url(#fs-arrow)" />
+    </svg>
+  );
+}
+
 /* Wall-follow figure: the car holds a fixed gap from the right wall, reading the
  * LiDAR straight ahead (0 deg) and to the right (90 deg). An inside corner ahead
  * shows why the front beam matters. */
@@ -116,7 +180,16 @@ export default function FirstProgramPage() {
 
       <ScrollReveal>
         <Fig
-          label="FIG. A / WHAT YOUR PROGRAM WILL DO"
+          label="FIG. A / THE TWO SWITCHES THIS PAGE USES"
+          caption="On the Flysky transmitter, SWB decides who is driving: flip it to hand the car to your program, flip it back to take over with the sticks. SWA applies only while you drive manually, switching the car between slow mode and fast mode."
+        >
+          <FlyskySwitchesDiagram />
+        </Fig>
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <Fig
+          label="FIG. B / WHAT YOUR PROGRAM WILL DO"
           caption="Each frame the car reads two LiDAR distances, straight ahead (0°) and to the right (90°), and steers to keep the right reading near a target gap. When the front reading drops at a corner, it turns away. That read-decide-steer loop is the whole job."
         >
           <WallFollowDiagram />
@@ -146,10 +219,11 @@ export default function FirstProgramPage() {
                 Then run it from that folder:
                 <Code lang="bash">{`cd ~/jupyter_ws/neoracer-os/labs
 python3 wall_follow.py`}</Code>
-                The program starts immediately, and the car drives once you flip
-                the transmitter&apos;s three-position switch to autonomy. Flipping it
-                back to the middle returns the sticks to you, which is also how
-                you take over if it heads somewhere you didn&apos;t plan.
+                The program starts immediately, and the car drives once you flip{' '}
+                <code style={{ fontFamily: NB.monoFont }}>SWB</code> to autonomy.
+                Flipping <code style={{ fontFamily: NB.monoFont }}>SWB</code> back
+                returns the sticks to you, which is also how you take over if it
+                heads somewhere you didn&apos;t plan.
               </>,
             ]}
           />

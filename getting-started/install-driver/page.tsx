@@ -12,21 +12,21 @@ import {
   DashList,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow, AnimatedNumeral, InfoNote } from '@/components/docs/Interactive';
-import { Crumbs, Callout, PrevNext, Code } from '@/components/docs/DocsPrimitives';
+import { Crumbs, Callout, PrevNext, Code, DataTable } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
-  title: 'Install the ROS 2 driver · Getting Started · NeoRacer Docs',
+  title: 'Install the driver · Getting Started · NeoRacer Docs',
   description:
-    'The NeoRacer ships without the ROS 2 driver installed. Clone the neoracer_ros2_driver and the LakiBeam LiDAR driver into a workspace, colcon build, and run teleop.',
+    'One script sets up the whole car: clone neoracer_ros2_driver, run setup_all.sh, and the sensors, motors, JupyterLab, and the racecar-neo library come up as services that start on every boot.',
 };
 
 const SYS = [
-  ['Compute', 'Jetson Orin Nano (JetPack 6.2)'],
-  ['OS', 'Ubuntu 22.04.5 LTS (jammy)'],
-  ['Python', '3.10.12'],
+  ['Compute', 'Jetson Orin Nano 8GB (J401 carrier)'],
+  ['OS', 'Ubuntu 22.04.5 · JetPack 6.2.1'],
   ['ROS 2', 'Humble'],
   ['Username', 'racecar'],
   ['Hostname', 'neoracer'],
+  ['Workspace', '~/ros2_ws'],
 ];
 
 export default function InstallDriverPage() {
@@ -36,7 +36,7 @@ export default function InstallDriverPage() {
         items={[
           { label: 'Docs', href: '/docs' },
           { label: 'Getting Started', href: '/docs/getting-started/unbox' },
-          { label: 'Install the ROS 2 driver' },
+          { label: 'Install the driver' },
         ]}
       />
 
@@ -45,62 +45,40 @@ export default function InstallDriverPage() {
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
           <GhostNumeral n="ws" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>GETTING STARTED / INSTALL THE ROS 2 DRIVER</Eyebrow>
+            <Eyebrow>GETTING STARTED / INSTALL THE DRIVER</Eyebrow>
             <DisplayHeading size="xl">
-              INSTALL THE ROS 2 <Red>DRIVER.</Red>
+              INSTALL THE <Red>DRIVER.</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
-              The NeoRacer ships with the Jetson, ROS 2 Humble, and the sensors
-              wired, but not the driver that ties them together. This is the
-              one-time setup that clones the driver into a workspace, builds it
-              with{' '}
-              <InfoNote term="colcon" title="colcon">
-                The standard build tool for ROS 2. It compiles every package in a
-                workspace and sets up the paths so you can run them.
-              </InfoNote>
-              , and gets the sensors and motors live behind a single{' '}
-              <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>teleop</code>{' '}
-              command.
+              The driver is the software that ties the Jetson to the sensors and
+              motors. One script installs all of it: you clone the repository, run{' '}
+              <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>setup_all.sh</code>,
+              and the car comes up as a set of{' '}
+              <InfoNote term="services" title="systemd services">
+                Programs the operating system starts and supervises on its own.
+                Once installed, the car&apos;s driver starts on every boot with no
+                terminal or command needed.
+              </InfoNote>{' '}
+              that start on every boot from then on.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="red"><AnimatedNumeral value={30} prefix="~" suffix=" minutes" /></ChromeBadge>
               <ChromeBadge variant="outline">One-time</ChromeBadge>
-              <ChromeBadge variant="outline">Jetson Orin Nano</ChromeBadge>
-              <ChromeBadge variant="outline">ROS 2 Humble</ChromeBadge>
-              <ChromeBadge variant="outline">colcon build</ChromeBadge>
+              <ChromeBadge variant="outline">One script</ChromeBadge>
+              <ChromeBadge variant="outline">Auto-starts after</ChromeBadge>
             </div>
           </div>
         </section>
       </MouseFollowGlow>
 
       <ScrollReveal>
-        <Callout type="note" title="The car does not come with the driver installed">
-          This is intentional. The driver is open source (
-          <a href="https://github.com/Neobotics-Foundation-Inc/neoracer_ros2_driver" target="_blank" rel="noopener noreferrer" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-            neoracer_ros2_driver
-          </a>
-          , GPLv3), so you build it on the car and own every line. You do this
-          once. After that, <code style={{ fontFamily: NB.monoFont }}>racecar teleop</code>{' '}
-          brings the whole stack up.
-        </Callout>
-      </ScrollReveal>
-      <ScrollReveal>
-        <Callout type="tip" title="The fast path: one script for everything">
-          The driver ships with a single idempotent orchestrator that does the
-          whole install in seven phases (ROS 2 Humble, dev tools, user env,
-          udev rules, workspace build with the Lakibeam driver, JupyterLab,
-          systemd services). Clone the driver into{' '}
-          <code style={{ fontFamily: NB.monoFont }}>~/ros2_ws/src</code> and run it:
-          <Code lang="bash">{`cd ~/ros2_ws/src
-git clone https://github.com/Neobotics-Foundation-Inc/neoracer_ros2_driver.git
-bash neoracer_ros2_driver/scripts/setup_all.sh
-# log out, log back in (group changes apply), then:
-racecar teleop`}</Code>
-          The sections below explain each piece, so you know what the script
-          set up. If something fails you can re-run{' '}
-          <code style={{ fontFamily: NB.monoFont }}>setup_all.sh</code>, it
-          skips completed phases. Or run a single phase with{' '}
-          <code style={{ fontFamily: NB.monoFont }}>racecar setup &lt;phase&gt;</code>.
+        <Callout type="note" title="This step needs internet on the car">
+          The script downloads packages and clones two repositories, so the car
+          needs an internet connection for this one step. The car&apos;s own
+          access point does not provide internet. Either plug an Ethernet cable
+          with internet into the Jetson&apos;s RJ45 port, or use the cudy router
+          with its internet uplink connected. Once the install is done, the car
+          runs fully offline.
         </Callout>
       </ScrollReveal>
 
@@ -112,10 +90,11 @@ racecar teleop`}</Code>
             THE SYSTEM <Red>SPECS.</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-            Every NeoRacer follows the same naming so scripts and instructions
-            line up. Car ID is the number on your unit, so Car 1 is at{' '}
-            <code style={{ fontFamily: NB.monoFont }}>192.168.1.101</code> on the{' '}
-            <code style={{ fontFamily: NB.monoFont }}>neoracer-1</code> network.
+            You are SSH&apos;d into the car from{' '}
+            <Link href="/docs/getting-started/connect-to-car" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Get on the car</Link>{' '}
+            as <code style={{ fontFamily: NB.monoFont }}>racecar</code>. Every
+            NeoRacer ships the same system, so the commands here match your car
+            exactly.
           </p>
           <div
             style={{
@@ -132,254 +111,167 @@ racecar teleop`}</Code>
               </div>
             ))}
           </div>
-          <Callout type="tip" title="Get onto the car first">
-            The car broadcasts its own Wi-Fi, <code style={{ fontFamily: NB.monoFont }}>neoracer-[Car ID]</code>.
-            Join it from your laptop (password{' '}
-            <code style={{ fontFamily: NB.monoFont }}>neobotics</code>), then SSH in:
-            {' '}<code style={{ fontFamily: NB.monoFont }}>ssh racecar@neoracer</code> (or the
-            static IP). The full access walkthrough is on{' '}
-            <Link href="/docs/software/networking" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Networking</Link>.
-          </Callout>
         </section>
       </ScrollReveal>
 
-      {/* ── Step 1 apt ───────────────────────────────────────────────── */}
+      {/* ── Run setup ────────────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ paddingBottom: 36 }}>
-          <Eyebrow>02 / SYSTEM DEPENDENCIES</Eyebrow>
+          <Eyebrow>02 / RUN THE SETUP</Eyebrow>
           <DisplayHeading size="lg">
-            SYSTEM <Red>DEPENDENCIES.</Red>
+            ONE <Red>SCRIPT.</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-            On the car, install the system packages the driver and its tooling
-            need (ROS 2 joystick stack, rqt, build tools, the Jetson kernel
-            headers for the joystick driver), then the Python libraries.
+            The driver lives in one open-source repository,{' '}
+            <a href="https://github.com/Neobotics-Foundation-Inc/neoracer_ros2_driver" target="_blank" rel="noopener noreferrer" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
+              neoracer_ros2_driver
+            </a>
+            . Cars from the factory already have it cloned at{' '}
+            <code style={{ fontFamily: NB.monoFont }}>~/ros2_ws/src/neoracer_ros2_driver</code>,
+            so you pull the latest and run the setup script. It asks for your
+            password once (<code style={{ fontFamily: NB.monoFont }}>neobotics</code>)
+            and takes care of the rest.
           </p>
-          <Code lang="bash">{`sudo apt update && sudo apt upgrade -y
-sudo apt install ros-humble-rqt-common-plugins -y
-sudo apt install ros-humble-joy ros-humble-joy-linux ros-humble-teleop-twist-joy -y
-sudo apt install vim tmux screen terminator -y
-sudo apt install ufw -y
-sudo apt install joystick -y
-sudo apt install dkms git build-essential nvidia-l4t-kernel-headers -y
-sudo apt install python3-pip -y`}</Code>
-          <Code lang="bash">{`pip3 install opencv-python==4.8.1.78
-pip3 install numpy==1.26.2
-pip3 install nptyping==1.4.4
-pip3 install jupyterlab`}</Code>
-        </section>
-      </ScrollReveal>
-
-      {/* ── Step 2 aliases + dirs ────────────────────────────────────── */}
-      <ScrollReveal>
-        <section style={{ paddingBottom: 36 }}>
-          <Eyebrow>03 / ALIASES + DIRECTORIES</Eyebrow>
-          <DisplayHeading size="lg">
-            ALIASES AND <Red>DIRECTORIES.</Red>
-          </DisplayHeading>
-          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-            Add these to <code style={{ fontFamily: NB.monoFont }}>~/.bashrc</code> so the
-            workspace is sourced in every shell and{' '}
-            <code style={{ fontFamily: NB.monoFont }}>teleop</code> launches the whole
-            stack. Then make the two working directories the tooling expects.
+          <Code lang="bash">{`cd ~/ros2_ws/src/neoracer_ros2_driver
+git pull
+bash scripts/setup_all.sh`}</Code>
+          <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
+            If your car does not have the repository yet, clone it first, then run
+            the same script:
           </p>
-          <Code lang="bash">{`# in ~/.bashrc
-source ~/osracer_ws/install/setup.bash   # or ros2_ws, depending on your stack
-alias teleop="ros2 launch neoracer_ros2_driver teleop.launch.py"
-alias rqt_image_view="ros2 run rqt_image_view rqt_image_view"
-alias rqt_runtime_monitor="ros2 run rqt_runtime_monitor rqt_runtime_monitor"`}</Code>
-          <Code lang="bash">{`mkdir ~/data
-mkdir ~/jupyter_ws`}</Code>
-        </section>
-      </ScrollReveal>
-
-      {/* ── Step 3 jupyter service ───────────────────────────────────── */}
-      <ScrollReveal>
-        <section style={{ paddingBottom: 36 }}>
-          <Eyebrow>04 / HEADLESS ACCESS</Eyebrow>
-          <DisplayHeading size="lg">
-            THE JUPYTERLAB <Red>SERVICE.</Red>
-          </DisplayHeading>
-          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-            JupyterLab is the one thing that does auto-start, so you can reach the
-            car from a browser with no SSH. Open the firewall port, then create
-            the service.
-          </p>
-          <Code lang="bash">{`sudo ufw allow 8888
-export PATH="$HOME/.local/bin:$PATH"
-sudo vim /etc/systemd/system/jupyterlab.service`}</Code>
-          <Code lang="bash">{`[Unit]
-Description=Jupyter Lab
-After=network.target
-
-[Service]
-Environment=PATH=/home/nvidia/.local/bin:/usr/local/bin:/user/bin:/bin
-Type=simple
-User=nvidia
-ExecStart=/bin/bash -c "source /home/nvidia/osracer_ws/install/setup.bash && source /opt/ros/humble/setup.bash && /home/nvidia/.local/bin/jupyter lab --no-browser --ip=0.0.0.0 --port=8888 --NotebookApp.token=''"
-WorkingDirectory=/home/nvidia/jupyter_ws
-Restart=always
-
-[Install]
-WantedBy=multi-user.target`}</Code>
-          <Callout type="warn" title="Match the user and home path to yours">
-            The unit above uses <code style={{ fontFamily: NB.monoFont }}>nvidia</code> and{' '}
-            <code style={{ fontFamily: NB.monoFont }}>/home/nvidia</code>. If your account
-            is <code style={{ fontFamily: NB.monoFont }}>racecar</code>, set{' '}
-            <code style={{ fontFamily: NB.monoFont }}>User=racecar</code> and the home
-            paths to <code style={{ fontFamily: NB.monoFont }}>/home/racecar</code> so the
-            service finds your workspace.
-          </Callout>
-          <Code lang="bash">{`sudo loginctl enable-linger $USER
-sudo systemctl daemon-reload
-sudo systemctl enable jupyterlab.service
-sudo systemctl start jupyterlab.service
-sudo journalctl -u jupyterlab.service -f   # to debug`}</Code>
-        </section>
-      </ScrollReveal>
-
-      {/* ── Step 4 joystick ──────────────────────────────────────────── */}
-      <ScrollReveal>
-        <section style={{ paddingBottom: 36 }}>
-          <Eyebrow>05 / JOYSTICK DRIVER</Eyebrow>
-          <DisplayHeading size="lg">
-            THE JOYSTICK <Red>DRIVER.</Red>
-          </DisplayHeading>
-          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-            The controller uses the xpad kernel module, built against your kernel
-            with DKMS so it survives kernel updates. This is why the kernel
-            headers went in back in step 02.
-          </p>
-          <Code lang="bash">{`sudo git clone https://github.com/paroj/xpad.git /usr/src/xpad-0.4
-sudo dkms install -m xpad -v 0.4`}</Code>
-        </section>
-      </ScrollReveal>
-
-      {/* ── Step 5 clone + build (the main event) ────────────────────── */}
-      <ScrollReveal>
-        <section style={{ paddingBottom: 36 }}>
-          <Eyebrow>06 / CLONE + BUILD</Eyebrow>
-          <DisplayHeading size="lg">
-            THE COLCON <Red>BUILD.</Red>
-          </DisplayHeading>
-          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-            Clone the driver and the Richbeam LakiBeam LiDAR driver into your
-            workspace's <code style={{ fontFamily: NB.monoFont }}>src</code>, then build
-            the whole stack with colcon. The{' '}
-            <code style={{ fontFamily: NB.monoFont }}>--symlink-install</code> flag lets
-            you edit Python files without rebuilding every time.
-          </p>
-          <Code lang="bash">{`cd ~/osracer_ws/src   # or ~/ros2_ws, depending on your stack
+          <Code lang="bash">{`mkdir -p ~/ros2_ws/src && cd ~/ros2_ws/src
 git clone https://github.com/Neobotics-Foundation-Inc/neoracer_ros2_driver.git
-git clone https://github.com/RichbeamTechnology/Lakibeam_ROS2_Driver.git
-cd ..
-colcon build --symlink-install
-source install/setup.bash
-source ~/.bashrc   # should see no errors now`}</Code>
-          <Callout type="tip" title="That's the install done">
-            Once colcon finishes with no errors and the new shell sources clean,
-            the driver is built and the <code style={{ fontFamily: NB.monoFont }}>teleop</code>{' '}
-            alias is live.
+bash neoracer_ros2_driver/scripts/setup_all.sh`}</Code>
+          <Callout type="tip" title="Safe to re-run">
+            The script is idempotent: it skips anything already done. If it stops
+            partway (a dropped connection, a typo&apos;d password), run it again
+            and it picks up where it left off.
           </Callout>
         </section>
       </ScrollReveal>
 
-      {/* ── Run it ───────────────────────────────────────────────────── */}
+      {/* ── What it set up ───────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ paddingBottom: 36 }}>
-          <Eyebrow>07 / RUN THE STACK</Eyebrow>
+          <Eyebrow>03 / WHAT THE SCRIPT SET UP</Eyebrow>
           <DisplayHeading size="lg">
-            RUN THE <Red>STACK.</Red>
+            SEVEN PHASES, <Red>EXPLAINED.</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-            The driver is not auto-started, you bring it up when you want it, in
-            any terminal:
-          </p>
-          <Code lang="bash">{`racecar teleop   # wraps: ros2 launch neoracer_ros2_driver teleop.launch.py`}</Code>
-          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-            That single launch starts the whole stack:
+            The script prints each phase as it goes. Here is what each one did to
+            your car, so none of it is a mystery:
           </p>
           <DashList
             items={[
-              <><strong>controller</strong>: the ESP32 bridge. Owns the serial link to the OSCORE board, reads the{' '}
-                <InfoNote term="IMU" title="IMU">
-                  Inertial measurement unit. A sensor that reports the car's
-                  acceleration and rotation, used to track how it is moving and
-                  which way it is facing.
-                </InfoNote>{' '}
-                and wheel{' '}
-                <InfoNote term="odometry" title="Odometry">
-                  Position estimated from how far the wheels have turned. It
-                  drifts over time, which is why other sensors are used to
-                  correct it.
-                </InfoNote>
-                , forwards the Flysky RC, and turns{' '}
-                <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>/motor</code>{' '}
-                commands into motor and servo motion. Publishes{' '}
-                <code style={{ fontFamily: NB.monoFont }}>/imu</code>,{' '}
-                <code style={{ fontFamily: NB.monoFont }}>/odom</code>, and{' '}
-                <code style={{ fontFamily: NB.monoFont }}>/joy</code>.</>,
-              <><strong>gamepad_node, mux_node, throttle_node</strong>: the drive pipeline. Take{' '}
-                <code style={{ fontFamily: NB.monoFont }}>/drive</code> (autonomy) or{' '}
-                <code style={{ fontFamily: NB.monoFont }}>/gamepad_drive</code> (manual), arbitrate, scale to speed caps, send through to{' '}
-                <code style={{ fontFamily: NB.monoFont }}>/motor</code>.</>,
-              <><strong>camera</strong>: the USB webcam, MJPG frames out as JPEG-in-Image on{' '}
-                <code style={{ fontFamily: NB.monoFont }}>/camera</code>.</>,
-              <><strong>led_matrix</strong>: the 8x8 dot-matrix display on the back of the car, takes text on{' '}
-                <code style={{ fontFamily: NB.monoFont }}>/led_matrix/command</code>.</>,
-              <><strong>lakibeam1</strong>: the Lakibeam scanner over UDP, publishes{' '}
-                <code style={{ fontFamily: NB.monoFont }}>/scan</code>.</>,
+              <><strong>ROS 2 + dependencies.</strong> Installs ROS 2 Humble and the packages the driver builds against.</>,
+              <><strong>Dev tools.</strong> The build and debugging tools used throughout these docs.</>,
+              <><strong>User environment.</strong> Adds <code style={{ fontFamily: NB.monoFont }}>racecar</code> to the hardware groups and wires the{' '}
+                <code style={{ fontFamily: NB.monoFont }}>racecar</code> command into your shell. That one command manages the whole car from here on.</>,
+              <><strong>udev rules.</strong> Gives the car&apos;s boards fixed device names (
+                <code style={{ fontFamily: NB.monoFont }}>/dev/osrbot_base</code>,{' '}
+                <code style={{ fontFamily: NB.monoFont }}>/dev/osrbot_usb_cam</code>,{' '}
+                <code style={{ fontFamily: NB.monoFont }}>/dev/osrbot_led_matrix</code>) so they never shuffle between boots.</>,
+              <><strong>Workspace build.</strong> Compiles the driver and the LakiBeam LiDAR driver with{' '}
+                <InfoNote term="colcon" title="colcon">
+                  The standard build tool for ROS 2. It compiles every package in a
+                  workspace and sets up the paths so you can run them.
+                </InfoNote>. There is exactly one LiDAR driver source, shared with the vendor workspace, so a LiDAR fix lands everywhere at once.</>,
+              <><strong>JupyterLab + the student library.</strong> Installs the browser coding environment and the{' '}
+                <Link href="/docs/software/racecar-neo-library" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>racecar-neo library</Link>{' '}
+                with its labs into <code style={{ fontFamily: NB.monoFont }}>~/jupyter_ws</code>. The library is ready to import, and{' '}
+                <code style={{ fontFamily: NB.monoFont }}>rc.go()</code> starts your program directly, tuned for the FlySky remote.</>,
+              <><strong>Services.</strong> Installs the four services and enables them on boot: the driver (
+                <code style={{ fontFamily: NB.monoFont }}>neoracer-teleop</code>), a watchdog that restarts anything that fails, the health dashboard on port{' '}
+                <code style={{ fontFamily: NB.monoFont }}>8080</code>, and JupyterLab on port{' '}
+                <code style={{ fontFamily: NB.monoFont }}>8888</code>.</>,
             ]}
           />
-          <p style={{ fontFamily: NB.bodyFont, fontSize: 15, lineHeight: 1.6, color: NB.textMutedBeige, maxWidth: 720, marginTop: 12 }}>
-            For headless work, JupyterLab is already serving at{' '}
-            <code style={{ fontFamily: NB.monoFont }}>http://192.168.1.[100 + Car ID]:8888</code>{' '}
-            over the car's Wi-Fi, so a browser on the car's network reaches it
-            with no SSH.
-          </p>
         </section>
       </ScrollReveal>
 
-      {/* ── Frontend library ─────────────────────────────────────────── */}
+      {/* ── Start it ─────────────────────────────────────────────────── */}
       <ScrollReveal>
-        <section style={{ paddingBottom: 32 }}>
-          <MonoLabel>The rc.* library on top</MonoLabel>
-          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 8 }}>
-            The driver publishes the topics; the{' '}
-            <Link href="/docs/software/racecar-neo-library" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>racecar-neo-library</Link>{' '}
-            (the <code style={{ fontFamily: NB.monoFont }}>rc.*</code> Python API you write
-            programs against) wraps them. Install it with the{' '}
-            <a href="https://github.com/MITRacecarNeo/racecar-neo-installer" target="_blank" rel="noopener noreferrer" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-              racecar-neo-installer
-            </a>
-            , then your code talks to the same{' '}
-            <code style={{ fontFamily: NB.monoFont }}>/drive</code>,{' '}
-            <code style={{ fontFamily: NB.monoFont }}>/scan</code>, and{' '}
-            <code style={{ fontFamily: NB.monoFont }}>/camera</code> that{' '}
-            <code style={{ fontFamily: NB.monoFont }}>teleop</code> spawns.
+        <section style={{ paddingBottom: 36 }}>
+          <Eyebrow>04 / BRING THE CAR UP</Eyebrow>
+          <DisplayHeading size="lg">
+            START THE <Red>STACK.</Red>
+          </DisplayHeading>
+          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
+            The setup just changed two things about your login: it added the{' '}
+            <code style={{ fontFamily: NB.monoFont }}>racecar</code> command to your
+            shell, and it added your user to the hardware groups that own the
+            car&apos;s serial ports. Linux applies both at login, so your current
+            session doesn&apos;t have them yet. Log out and back in once, and both
+            are live. Then start the services. This first start is the only manual
+            one; from now on the whole stack comes up on its own every time the
+            car powers on.
           </p>
+          <Code lang="bash">{`exit                    # this session predates the setup; leave it
+ssh racecar@10.42.0.1   # a fresh login has the racecar command + hardware access
+racecar service start   # (use 192.168.10.100 on the cudy router)`}</Code>
+          <Callout type="note" title="What just started">
+            The ESP32 bridge (motors, IMU, odometry, the FlySky receiver), the
+            LiDAR, the camera, the LED matrix, the drive pipeline that arbitrates
+            between the remote and your code, the watchdog, the dashboard, and
+            JupyterLab. The full picture of these nodes and their topics is on{' '}
+            <Link href="/docs/software/ros2-driver" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>The ROS 2 driver</Link>.
+          </Callout>
         </section>
       </ScrollReveal>
 
+      {/* ── Verify ───────────────────────────────────────────────────── */}
       <ScrollReveal>
-        <Callout type="tip" title="apt errors about nvidia-l4t-kernel during install?">
-          If apt fails on{' '}
-          <code style={{ fontFamily: NB.monoFont }}>nvidia-l4t-bootloader</code> /{' '}
-          <code style={{ fontFamily: NB.monoFont }}>nvidia-l4t-kernel-headers</code>, the
-          dpkg info directory needs a reset:
-          <Code lang="bash">{`sudo mv /var/lib/dpkg/info/ /var/lib/dpkg/backup/
-sudo mkdir /var/lib/dpkg/info/
-sudo apt-get update
-sudo apt-get -f install
-sudo mv /var/lib/dpkg/backup/* /var/lib/dpkg/info/
-sudo rm -rf /var/lib/dpkg/backup/
-sudo apt update && sudo apt upgrade -y`}</Code>
-        </Callout>
+        <section style={{ paddingBottom: 36 }}>
+          <Eyebrow>05 / CHECK IT'S ALIVE</Eyebrow>
+          <DisplayHeading size="lg">
+            THREE QUICK <Red>CHECKS.</Red>
+          </DisplayHeading>
+          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
+            Each check confirms a different layer: the services are running, the
+            sensors are streaming, and you can see it all from a browser.
+          </p>
+          <MonoLabel>1 · The services</MonoLabel>
+          <Code lang="bash">{`racecar service status
+#   neoracer-teleop      active   enabled
+#   neoracer-watchdog    active   enabled
+#   neoracer-dashboard   active   enabled
+#   neoracer-jupyter     active   enabled`}</Code>
+          <MonoLabel>2 · The sensors</MonoLabel>
+          <Code lang="bash">{`source /opt/ros/humble/setup.bash && source ~/ros2_ws/install/setup.bash
+ros2 topic hz /scan     # LiDAR, about 30 Hz
+ros2 topic hz /camera   # camera, about 60 Hz`}</Code>
+          <MonoLabel>3 · The dashboard</MonoLabel>
+          <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 6 }}>
+            Open the health dashboard in a browser on the car&apos;s network. Every
+            card should be green: sensors, drive pipeline, temperature.
+          </p>
+          <Code lang="bash">{`http://10.42.0.1:8080          # access point
+http://192.168.10.100:8080     # cudy router`}</Code>
+          <div style={{ marginTop: 18 }}>
+            <DataTable
+              columns={[
+                { key: 'what', label: 'Where things live', accent: true },
+                { key: 'where', label: 'Address', mono: true },
+              ]}
+              rows={[
+                { what: 'Health dashboard', where: ':8080' },
+                { what: 'JupyterLab (write code here next)', where: ':8888' },
+                { what: 'Driver logs', where: 'racecar service logs' },
+              ]}
+            />
+          </div>
+          <Callout type="tip" title="The install is done">
+            If the LiDAR takes a minute to appear after a cold boot, that is
+            normal: the sensor boots its own controller before it starts
+            streaming. When all three checks pass, the car is fully set up. Next
+            you write your first program.
+          </Callout>
+        </section>
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'Charge & power', href: '/docs/getting-started/charge-and-power' }}
-        next={{ label: 'First drive', href: '/docs/getting-started/first-drive' }}
+        prev={{ label: 'Get on the car', href: '/docs/getting-started/connect-to-car' }}
+        next={{ label: 'First program', href: '/docs/getting-started/first-program' }}
       />
     </DocsShell>
   );

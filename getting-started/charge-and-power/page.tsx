@@ -169,7 +169,7 @@ export default function ChargeAndPowerPage() {
 
       <PrevNext
         prev={{ label: 'Unbox', href: '/docs/getting-started/unbox' }}
-        next={{ label: 'First drive', href: '/docs/getting-started/first-drive' }}
+        next={{ label: 'Get on the car', href: '/docs/getting-started/connect-to-car' }}
       />
     </DocsShell>
   );

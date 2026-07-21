@@ -45,7 +45,7 @@ const intentCards: {
   {
     badge: 'Just unboxed?',
     title: 'Getting started',
-    body: "Five short pages and you're driving. Unbox, charge, install the driver, first drive, first program.",
+    body: "Five short pages and you're driving. Unbox, charge, get on the car, install the driver, first program.",
     href: '/docs/getting-started/unbox',
     accent: NB.neoboticsRed,
     pad: '5 pages',
@@ -139,7 +139,6 @@ export default function DocsLandingPage() {
       {/* ── Section 2 · INTENT CARDS ──────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 64 }}>
-          <Eyebrow>WHERE WILL YOU GO FIRST?</Eyebrow>
           <div
             style={{
               display: 'grid',

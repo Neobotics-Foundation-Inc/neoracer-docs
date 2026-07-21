@@ -137,7 +137,20 @@ export default function FirstProgramPage() {
                 in your browser, paste the code, drop the car next to a wall, and click Run.
               </>,
               <>
-                <strong>Car</strong>: <InfoNote term="SSH" title="SSH">A way to log into another computer over the network and run commands in its terminal from yours. Here you use it to control the car's onboard computer.</InfoNote> into the Jetson (covered in <Link href="/docs/software/networking" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Networking</Link>) and run the script with the racecar-neo-library installed. If the car hugs a wall, the LiDAR is alive and aligned.
+                <strong>Car</strong>: save the file as{' '}
+                <code style={{ fontFamily: NB.monoFont }}>wall_follow.py</code> in{' '}
+                <code style={{ fontFamily: NB.monoFont }}>~/jupyter_ws/neoracer-os/labs/</code>,
+                next to the labs that ship on the car. Easiest from JupyterLab in
+                your browser (port <code style={{ fontFamily: NB.monoFont }}>8888</code>),
+                or over SSH from{' '}
+                <Link href="/docs/getting-started/connect-to-car" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Get on the car</Link>.
+                Then run it from that folder:
+                <Code lang="bash">{`cd ~/jupyter_ws/neoracer-os/labs
+python3 wall_follow.py`}</Code>
+                The program starts immediately, and the car drives once you flip
+                the transmitter&apos;s three-position switch to autonomy. Flipping it
+                back to the middle returns the sticks to you, which is also how
+                you take over if it heads somewhere you didn&apos;t plan.
               </>,
             ]}
           />
@@ -151,7 +164,10 @@ export default function FirstProgramPage() {
             THE <Red>PROGRAM.</Red>
           </DisplayHeading>
           <Code lang="python">
-{`import racecar_core
+{`import sys
+sys.path.insert(0, "../library")   # the racecar-neo library on the car
+
+import racecar_core
 import racecar_utils as rc_utils
 
 rc = racecar_core.create_racecar()
@@ -166,7 +182,9 @@ def start():
     print(">> Wall follower running. Watching the LiDAR.")
 
 def update():
-    scan = rc.lidar.get_samples()                    # 720 distances, cm
+    scan = rc.lidar.get_samples()                    # ~1440 distances, cm
+    if len(scan) == 0:                               # no scan yet, right at start-up
+        return
 
     # Distance straight ahead (0 deg) and to the right wall (90 deg).
     front = rc_utils.get_lidar_average_distance(scan, 0)
@@ -228,8 +246,8 @@ rc.go()`}
             ))}
           </div>
           <Callout type="tip" title="LiDAR comes up empty?">
-            If <code style={{ fontFamily: NB.monoFont }}>get_samples()</code> is all
-            zeros, the scan never reached your code. The{' '}
+            If <code style={{ fontFamily: NB.monoFont }}>get_samples()</code> reads
+            as all zeros or infinities, the scan never reached your code. The{' '}
             <Link href="/docs/troubleshooting/lidar-empty-scan" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>LiDAR empty scan</Link>{' '}
             and <Link href="/docs/troubleshooting/diagnostics" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Diagnostics</Link> pages
             walk the fix.
@@ -252,7 +270,7 @@ rc.go()`}
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'First drive', href: '/docs/getting-started/first-drive' }}
+        prev={{ label: 'Install the driver', href: '/docs/getting-started/install-driver' }}
         next={{ label: 'Hardware overview', href: '/docs/hardware/overview' }}
       />
     </DocsShell>

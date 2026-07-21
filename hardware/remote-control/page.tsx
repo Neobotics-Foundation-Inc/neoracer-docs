@@ -163,7 +163,7 @@ export default function RemoteControlPage() {
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'First drive', href: '/docs/getting-started/first-drive' }}
+        prev={{ label: 'Hardware overview', href: '/docs/hardware/overview' }}
         next={{ label: 'Drivetrain', href: '/docs/hardware/drivetrain' }}
       />
     </DocsShell>

@@ -7,11 +7,9 @@ import {
   DisplayHeading,
   Red,
   GhostNumeral,
-  MonoLabel,
   ChromeBadge,
   ClockGlyph,
   LevelGlyph,
-  DashList,
   Fig,
 } from '@/components/docs/Editorial';
 import { BoxContentsDiagram } from '@/components/docs/Diagrams';
@@ -93,24 +91,11 @@ export default function UnboxPage() {
         </section>
       </MouseFollowGlow>
 
-      {/* ── What you'll need ──────────────────────────────────────────── */}
-      <ScrollReveal>
-        <section style={{ paddingBottom: 32 }}>
-          <MonoLabel>You'll need</MonoLabel>
-          <DashList
-            items={[
-              <>The NeoRacer shipping box, sealed.</>,
-              <>A phone or laptop nearby for the rest of Getting Started.</>,
-            ]}
-          />
-        </section>
-      </ScrollReveal>
-
       {/* ── FIG. A / Box contents ────────────────────────────────────── */}
       <ScrollReveal>
         <Fig
           label="FIG. A / WHAT'S IN THE BOX"
-          caption="Four pieces come in the box. The 3S LiPo is the one you bring yourself, since international shipping rules keep us from sending batteries, and the Charge and Power page walks through exactly what to look for."
+          caption="What comes in the box. The accessories are itemized below. The 3S LiPo is the one you bring yourself, since international shipping rules keep us from sending batteries, and the Charge and Power page walks through exactly what to look for."
         >
           <BoxContentsDiagram />
         </Fig>

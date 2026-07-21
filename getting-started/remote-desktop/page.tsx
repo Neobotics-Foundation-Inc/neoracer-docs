@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Metadata } from 'next';
 import DocsShell from '@/components/docs/DocsShell';
 import { NB } from '@/lib/nb-tokens';
@@ -9,6 +10,7 @@ import {
   GhostNumeral,
   ChromeBadge,
   DashList,
+  Fig,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
 import { Crumbs, Callout, Code, PrevNext } from '@/components/docs/DocsPrimitives';
@@ -81,6 +83,32 @@ export default function RemoteDesktopPage() {
                 <>Click <strong>Set permanent password</strong>, pick one, and keep it somewhere sensible.</>,
               ]}
             />
+            <Fig
+              label="FIG. A / RUSTDESK ON THE CAR"
+              caption='The main window. "Your Desktop" is this car; the ID and one-time password on the left are the pair the permanent password replaces.'
+            >
+              <Image
+                src="/images/rustdesk-main.png"
+                alt="RustDesk main window on the Jetson desktop, showing the Your Desktop ID and one-time password"
+                width={1926}
+                height={1082}
+                sizes="(max-width: 760px) 100vw, 720px"
+                style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 8 }}
+              />
+            </Fig>
+            <Fig
+              label="FIG. B / SETTINGS → SECURITY → PASSWORD"
+              caption='Select "Use permanent password", then "Set permanent password". The dropdown above it can stay on "Accept sessions via both".'
+            >
+              <Image
+                src="/images/rustdesk-security.png"
+                alt="RustDesk Security settings with the Password section: Use permanent password selected, Set permanent password button"
+                width={1951}
+                height={1093}
+                sizes="(max-width: 760px) 100vw, 720px"
+                style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 8 }}
+              />
+            </Fig>
             <Callout type="note" title="If Security asks to unlock">
               Some settings pages need unlocking with the car&apos;s login
               password (<code style={{ fontFamily: NB.monoFont }}>neobotics</code>)

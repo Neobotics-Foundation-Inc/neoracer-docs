@@ -71,7 +71,7 @@ export default function LidarMountPage() {
               <ChromeBadge variant="red"><AnimatedNumeral value={5} prefix="~" suffix=" minutes" /></ChromeBadge>
               <ChromeBadge variant="outline">Beginner</ChromeBadge>
               <ChromeBadge variant="outline">Mechanical</ChromeBadge>
-              <ChromeBadge variant="outline">frame_id: lidar_link</ChromeBadge>
+              <ChromeBadge variant="outline">frame_id: laser</ChromeBadge>
             </div>
           </div>
         </section>
@@ -231,10 +231,11 @@ def start():
 
 
 def update():
-    scan = rc.lidar.get_samples()   # 720 floats, cm
-    forward = scan[0]               # index 0   = straight ahead
-    right   = scan[180]             # index 180 = 90 deg right (0.5 deg/index)
-    left    = scan[540]             # index 540 = 90 deg left
+    scan = rc.lidar.get_samples()   # ~1440 floats on the car, cm
+    n = len(scan)
+    forward = scan[0]               # index 0 = straight ahead
+    right   = scan[n // 4]          # a quarter turn = 90 deg right
+    left    = scan[3 * n // 4]      # three quarters = 90 deg left
     print(f"forward {forward:5.0f} cm   right {right:5.0f}   left {left:5.0f}")
 
 
@@ -277,7 +278,7 @@ rc.go()`}</Code>
               <InfoNote term="SLAM" title="SLAM">Simultaneous Localization and Mapping. The robot builds a map of an unknown space while tracking its own position within that map, usually from LiDAR or camera data.</InfoNote>{' '}
               and navigation, the mount pose is also encoded as the{' '}
               <code style={{ fontFamily: NB.monoFont }}>base_link</code> to{' '}
-              <code style={{ fontFamily: NB.monoFont }}>lidar_link</code> transform in
+              <code style={{ fontFamily: NB.monoFont }}>laser</code> transform in
               its{' '}
               <InfoNote term="URDF" title="URDF">Unified Robot Description Format. An XML file that describes a robot's links and joints, including where each sensor sits relative to the body.</InfoNote>, covered on the{' '}
               <a href="/docs/api-reference/ros2/tf-frames" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>

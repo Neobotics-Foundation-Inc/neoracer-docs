@@ -16,7 +16,7 @@ import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 export const metadata: Metadata = {
   title: 'Compatibility matrix · Reference · NeoRacer Docs',
   description:
-    'What the NeoRacer is built on and interoperates with: Jetson Orin Nano on JetPack 6.2, Ubuntu 22.04.5 LTS, ROS 2 Humble, the neoracer_ros2_driver, the osracer autonomy stack, the Richbeam LakiBeam1 LiDAR, and the F1TENTH ecosystem.',
+    'What the NeoRacer is built on and interoperates with: Jetson Orin Nano on JetPack 6.2.1, Ubuntu 22.04.5 LTS, ROS 2 Humble, the neoracer_ros2_driver, the osracer autonomy stack, the Richbeam LakiBeam1 LiDAR, and the F1TENTH ecosystem.',
 };
 
 const PLATFORM_COLUMNS = [
@@ -33,7 +33,7 @@ const PLATFORM_ROWS = [
   },
   {
     layer: 'NVIDIA SDK',
-    value: 'JetPack 6.2',
+    value: 'JetPack 6.2.1',
     notes: 'The Linux kernel, GPU drivers, CUDA, and the AI runtime that come pre-flashed on the Jetson. Re-flashing follows Seeed\'s JetPack guide for the reComputer J4012.',
   },
   {
@@ -49,7 +49,7 @@ const PLATFORM_ROWS = [
   {
     layer: 'NeoRacer driver',
     value: 'neoracer_ros2_driver 0.1.0',
-    notes: 'The ROS 2 backend that ships on every NeoRacer. Migrated from the MIT RACECAR Neo driver, retargeted for the OSCORE ESP32, the Lakibeam over UDP, and a USB MJPG camera. GPLv3.',
+    notes: 'The ROS 2 backend that ships on every NeoRacer. Migrated from the MIT RACECAR Neo driver, retargeted for the OSCORE ESP32, the Lakibeam over its USB-C bridge (UDP/IP), and a USB MJPG camera. GPLv3.',
   },
   {
     layer: 'Student library',
@@ -75,13 +75,13 @@ const SENSOR_ROWS = [
     component: 'LiDAR',
     part: 'Richbeam LakiBeam1',
     api: 'rc.lidar',
-    notes: 'A planar scan exposed as 720 samples at 0.5 degree spacing through rc.lidar. The sensor scans at 0.25 degree natively, so the raw cloud is finer than the teaching view.',
+    notes: 'A planar scan exposed as ~1440 samples at 0.25 degree spacing through rc.lidar, exactly as the sensor produces it. The live window is 270 degrees; the rear wedge reads 0.',
   },
   {
     component: 'Camera',
     part: 'Color camera',
     api: 'rc.camera',
-    notes: 'A 640 by 480 color frame per read. The depth source for color tracking, line following, and any vision your own code adds.',
+    notes: 'A 640 by 480 color frame per read at 60 fps. The colour source for tracking, line following, and any vision your own code adds; depth comes from the LiDAR.',
   },
   {
     component: 'IMU',

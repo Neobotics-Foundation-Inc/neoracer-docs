@@ -67,10 +67,13 @@ const FAQS: Faq[] = [
     q: "What's the top speed?",
     a: (
       <>
-        Full throttle from a fresh pack is genuinely fast, fast enough that
-        running wide open indoors with people around isn't worth the risk.
-        That's why most student programs keep themselves around 30 % of full
-        speed.
+        The firmware caps the drivetrain at 6 m/s, and the driver ships with
+        autonomy scaled to half of that. Both caps are real parameters you can
+        read and change; the{' '}
+        <a href="/docs/calibration/motor-trim" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
+          Motor trim
+        </a>{' '}
+        page shows where they live.
       </>
     ),
   },
@@ -109,12 +112,14 @@ const FAQS: Faq[] = [
     q: 'How do I update the on-car software?',
     a: (
       <>
-        OTA updates are described on the{' '}
-        <a href="/docs/software/ota-updates" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-          OTA updates
-        </a>{' '}
-        page. Short version: a single command on the car pulls the latest
-        stable image and applies it on next reboot.
+        Pull the driver repository and re-run the setup script, which is safe
+        to run repeatedly:{' '}
+        <code style={{ fontFamily: NB.monoFont }}>cd ~/ros2_ws/src/neoracer_ros2_driver && git pull && bash scripts/setup_all.sh</code>,
+        then <code style={{ fontFamily: NB.monoFont }}>racecar service restart</code>.
+        The car needs internet for the pull, the same way as during{' '}
+        <a href="/docs/getting-started/connect-to-car" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
+          Get on the car
+        </a>.
       </>
     ),
   },
@@ -133,14 +138,17 @@ const FAQS: Faq[] = [
     q: 'How do multiple cars share one classroom?',
     a: (
       <>
-        Each car is its own Wi-Fi access point, broadcasting a network named{' '}
-        <code style={{ fontFamily: NB.monoFont }}>neoracer-[Car ID]</code> (Car 1
-        is <code style={{ fontFamily: NB.monoFont }}>neoracer-1</code>, password{' '}
-        <code style={{ fontFamily: NB.monoFont }}>neobotics</code>). Each student
-        joins the network for their own car and reaches it at the static IP{' '}
-        <code style={{ fontFamily: NB.monoFont }}>192.168.1.[100 + Car ID]</code>{' '}
-        (Car 1 is <code style={{ fontFamily: NB.monoFont }}>192.168.1.101</code>),
-        so there is no shared access point to overload.
+        The clean classroom setup is one cudy router per car: each car plugs
+        into its own router (Wi-Fi{' '}
+        <code style={{ fontFamily: NB.monoFont }}>neoracer-[Car ID]</code>,
+        password <code style={{ fontFamily: NB.monoFont }}>neobotics</code>) and
+        each student reaches their car at{' '}
+        <code style={{ fontFamily: NB.monoFont }}>192.168.10.100</code> on their
+        own network, so there is no shared access point to overload. A car can
+        also broadcast its own Wi-Fi
+        (<code style={{ fontFamily: NB.monoFont }}>neoracer-1</code>, car at{' '}
+        <code style={{ fontFamily: NB.monoFont }}>10.42.0.1</code>) when a router
+        isn&apos;t around.
       </>
     ),
   },
@@ -173,7 +181,7 @@ const FAQS: Faq[] = [
           support@neobotics.org
         </a>{' '}
         with the car's serial number and, if relevant, the output of{' '}
-        <code style={{ fontFamily: NB.monoFont }}>journalctl -u jupyterlab -n 60</code>
+        <code style={{ fontFamily: NB.monoFont }}>journalctl -u neoracer-jupyter -n 60</code>
         . Most cases get diagnosed inside an hour.
       </>
     ),

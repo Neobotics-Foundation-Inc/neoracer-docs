@@ -55,7 +55,7 @@ const TERMS: Term[] = [
   {
     term: 'e-stop',
     short: 'Emergency stop',
-    def: 'The big red button on the chassis. A press cuts power instantly, and a twist brings it back. Every student program also treats the left bumper on the controller as a software e-stop.',
+    def: 'The big red button on the chassis. A press cuts power instantly, and a twist brings it back. Flipping the transmitter’s SWB switch back to the middle (manual) is the everyday software e-stop.',
   },
   {
     term: 'ESC',
@@ -68,7 +68,7 @@ const TERMS: Term[] = [
   },
   {
     term: 'frame_id',
-    def: 'The ROS 2 string that names a coordinate frame. Every sensor message carries one. The LiDAR frame is lidar_link, the IMU is imu_link, the car body is base_link.',
+    def: 'The ROS 2 string that names a coordinate frame. Every sensor message carries one. The LiDAR frame is laser, the IMU is imu_link, the car body is base_link.',
     see: { label: 'LiDAR', href: '/docs/hardware/sensors/lidar' },
   },
   {
@@ -78,7 +78,7 @@ const TERMS: Term[] = [
   {
     term: 'IMU',
     short: 'Inertial measurement unit',
-    def: 'A chip that fuses an accelerometer and a gyroscope so you get linear acceleration plus angular velocity. The NeoRacer IMU also publishes a fused orientation estimate.',
+    def: 'A chip that fuses an accelerometer and a gyroscope so you get linear acceleration plus angular velocity. The NeoRacer IMU streams a fused orientation from the MCU at ~200 Hz.',
     see: { label: 'Compute', href: '/docs/hardware/compute' },
   },
   {
@@ -89,7 +89,7 @@ const TERMS: Term[] = [
   {
     term: 'LiDAR',
     short: 'Light detection and ranging',
-    def: 'A spinning laser scanner that measures distance to whatever the beam hits. The NeoRacer LiDAR gives your code 720 samples per revolution at 30 Hz.',
+    def: 'A spinning laser scanner that measures distance to whatever the beam hits. The NeoRacer LiDAR gives your code ~1440 samples per revolution at 30 Hz, with a 270° live window.',
     see: { label: 'LiDAR', href: '/docs/hardware/sensors/lidar' },
   },
   {
@@ -101,7 +101,7 @@ const TERMS: Term[] = [
   {
     term: 'Static IP',
     short: 'Fixed access address',
-    def: 'The car is its own Wi-Fi access point, broadcasting the network neoracer-[Car ID] (password neobotics). Once you join it, the car answers at the fixed address 192.168.1.[100 + Car ID] (Car 1 = 192.168.1.101), hostname neoracer, as user racecar. There is no DNS server and no name to resolve.',
+    def: 'The car answers at a fixed address on either of its networks: 192.168.10.100 on the cudy router, 10.42.0.1 on its own access point (SSID neoracer-1, password neobotics). Log in as user racecar at whichever matches the Wi-Fi you joined.',
     see: { label: "Wi-Fi can't connect", href: '/docs/troubleshooting/wifi-cant-connect' },
   },
   {
@@ -168,7 +168,7 @@ const TERMS: Term[] = [
   },
   {
     term: 'Lakibeam',
-    def: 'The Richbeam LakiBeam1, the 2D lidar mounted up front. It talks to the Jetson as a UDP sensor on its own subnet (host 192.168.8.1, sensor 192.168.8.2), and the lakibeam1 node publishes scans to /scan.',
+    def: 'The Richbeam LakiBeam1, the 2D lidar on top of the car. It talks to the Jetson as a UDP sensor on its own subnet (host 192.168.8.1, sensor 192.168.8.2), and the lidar node (richbeam_lidar_node0) publishes scans to /scan.',
     see: { label: 'LiDAR', href: '/docs/hardware/sensors/lidar' },
   },
   {
@@ -182,7 +182,7 @@ const TERMS: Term[] = [
   },
   {
     term: 'racecar (tool)',
-    def: 'A shell wrapper the driver installs into the racecar user\'s bashrc. Common entry points: racecar teleop (full stack), racecar status (USB symlinks + running nodes), racecar setup networking (AP + Ethernet + lidar subnet), racecar service install/start, racecar selftest.',
+    def: 'A shell wrapper the driver installs into the racecar user\'s bashrc. Common entry points: racecar teleop (full stack), racecar status (USB symlinks + running nodes), racecar setup networking (AP + Ethernet + lidar subnet), racecar service start/stop/status/logs, racecar library --select, racecar ws.',
   },
 ];
 

@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 };
 
 const STEPS: CalibrationStep[] = [
-  { n: 1, title: 'Decoded image', sub: '/camera/decoded',     iconKey: 'cli' },
+  { n: 1, title: 'Decode /camera', sub: 'JPEG -> pixels',      iconKey: 'cli' },
   { n: 2, title: 'Run calibrator', sub: 'camera_calibration', iconKey: 'ssh' },
   { n: 3, title: 'Wave the board', sub: 'fill the bars',      iconKey: 'wheel' },
   { n: 4, title: 'Calibrate',     sub: 'let it solve',        iconKey: 'stopwatch' },
@@ -193,10 +193,11 @@ export default function CameraIntrinsicsPage() {
                   <>
                     The raw{' '}
                     <code style={{ fontFamily: NB.monoFont }}>/camera</code> topic
-                    carries JPEG bytes, not a plain image, so enable the{' '}
-                    <code style={{ fontFamily: NB.monoFont }}>decode_camera</code>{' '}
-                    node and calibrate against{' '}
-                    <code style={{ fontFamily: NB.monoFont }}>/camera/decoded</code>.
+                    carries JPEG bytes, not a plain image, so the calibrator
+                    needs a decoded republish in front of it. A ten-line relay
+                    node (below) subscribes with sensor-data QoS, runs{' '}
+                    <code style={{ fontFamily: NB.monoFont }}>cv2.imdecode</code>,
+                    and republishes plain frames.
                   </>
                 }
               />
@@ -235,8 +236,28 @@ export default function CameraIntrinsicsPage() {
               THE <Red>PROCEDURE.</Red>
             </DisplayHeading>
 
-            <Code lang="bash">{`# 1. Make sure the decoded image is publishing (decode_camera enabled).
-ros2 topic echo /camera/decoded --no-arr
+            <Code lang="python">{`# 1. Save as decode_relay.py on the car and run: python3 decode_relay.py
+#    It turns the JPEG /camera stream into plain frames on /camera/decoded.
+import rclpy, cv2, numpy as np
+from rclpy.node import Node
+from rclpy.qos import qos_profile_sensor_data
+from sensor_msgs.msg import Image
+
+class Relay(Node):
+    def __init__(self):
+        super().__init__('decode_relay')
+        self.pub = self.create_publisher(Image, '/camera/decoded', 10)
+        self.create_subscription(Image, '/camera', self.cb, qos_profile_sensor_data)
+    def cb(self, msg):
+        frame = cv2.imdecode(np.frombuffer(msg.data, np.uint8), cv2.IMREAD_COLOR)
+        out = Image(header=msg.header, height=frame.shape[0], width=frame.shape[1],
+                    encoding='bgr8', step=frame.shape[1] * 3, data=frame.tobytes())
+        self.pub.publish(out)
+
+rclpy.init(); rclpy.spin(Relay())`}</Code>
+
+            <Code lang="bash">{`# Confirm the decoded stream is flowing:
+ros2 topic hz /camera/decoded
 
 # 2. Run the calibrator against it. Match --size to the INNER corners of
 #    your board and --square to one square edge in metres.

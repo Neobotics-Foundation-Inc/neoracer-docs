@@ -72,7 +72,7 @@ const pitLane: PitLaneSection[] = [
   { title: 'API Reference', href: '/docs/api-reference/python/drive', pages: 9 },
   { title: 'Calibration', href: '/docs/calibration/motor-trim', pages: 5 },
   // Soft hyphen so narrow phone bays break it as TROUBLE-SHOOTING.
-  { title: 'Trouble­shooting', href: '/docs/troubleshooting/faq', pages: 6 },
+  { title: 'Trouble­shooting', href: '/docs/troubleshooting/faq', pages: 7 },
   { title: 'Reference', href: '/docs/reference/specifications', pages: 4 },
 ];
 

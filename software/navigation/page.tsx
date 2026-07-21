@@ -107,11 +107,13 @@ export default function NavigationPage() {
             </div>
             <div style={{ marginTop: 18 }}>
               <MonoLabel>DWB</MonoLabel>
-              <Code lang="bash">{`ros2 launch osracer_navigation nav2.launch.py planner:=dwb`}</Code>
+              <Code lang="bash">{`racecar ws osracer      # switch this shell to the vendor workspace
+ros2 launch osracer_navigation nav2.launch.py planner:=dwb`}</Code>
             </div>
             <div style={{ marginTop: 14 }}>
               <MonoLabel>TEB</MonoLabel>
-              <Code lang="bash">{`ros2 launch osracer_navigation nav2.launch.py planner:=teb`}</Code>
+              <Code lang="bash">{`racecar ws osracer      # switch this shell to the vendor workspace
+ros2 launch osracer_navigation nav2.launch.py planner:=teb`}</Code>
             </div>
           </div>
         </section>

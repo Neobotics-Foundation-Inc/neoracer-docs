@@ -28,7 +28,7 @@ import { Crumbs, PrevNext, Callout, Code } from '@/components/docs/DocsPrimitive
 export const metadata: Metadata = {
   title: 'OS & image · Software · NeoRacer Docs',
   description:
-    'NeoRacer ships with a pre-flashed Ubuntu + ROS 2 Humble image, so it boots ready to log in and write code. Here is what is on it and how to flash a new card from scratch.',
+    'NeoRacer ships with a pre-flashed Ubuntu + ROS 2 Humble image, so it boots ready to log in and write code. Here is what is on it and how to re-flash from scratch.',
 };
 
 export default function OsAndImagePage() {
@@ -60,7 +60,7 @@ export default function OsAndImagePage() {
                 maxWidth: 680,
               }}
             >
-              Every NeoRacer ships with a card that boots straight to JetPack 6.2,
+              Every NeoRacer ships with an image on its SSD that boots straight to JetPack 6.2.1,
               Ubuntu 22.04.5 LTS, Python 3.10.12, ROS 2 Humble, and JupyterLab
               running as a{' '}
               <InfoNote term="systemd service" title="systemd service">
@@ -72,7 +72,7 @@ export default function OsAndImagePage() {
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="red">Pre-flashed at the factory</ChromeBadge>
-              <ChromeBadge variant="outline">JetPack 6.2</ChromeBadge>
+              <ChromeBadge variant="outline">JetPack 6.2.1</ChromeBadge>
               <ChromeBadge variant="outline">Ubuntu 22.04.5 LTS</ChromeBadge>
               <ChromeBadge variant="outline">ROS 2 Humble</ChromeBadge>
               <ChromeBadge variant="outline">Python 3.10.12</ChromeBadge>
@@ -86,7 +86,7 @@ export default function OsAndImagePage() {
       <ScrollReveal>
         <Fig
           label="FIG. A / WHAT'S ON THE IMAGE"
-          caption="Bottom to top. Everything below your code is read-only by default. Your scripts live in /home/racecar/scripts."
+          caption="Bottom to top. Everything below your code is read-only by default. Your code lives in /home/racecar/jupyter_ws."
         >
           <ImageStackDiagram />
         </Fig>
@@ -110,18 +110,23 @@ export default function OsAndImagePage() {
               maxWidth: 720,
             }}
           >
-            The only thing that auto-starts at boot is JupyterLab. The robot
-            stack is not a systemd service: once you have installed the{' '}
+            Four services auto-start at boot once the{' '}
             <a href="/docs/getting-started/install-driver" style={{ color: NB.neoboticsRed, fontWeight: 700, textDecoration: 'none' }}>
               neoracer_ros2_driver
-            </a>, you bring every{' '}
+            </a>{' '}
+            is installed: the robot stack itself
+            (<code style={{ fontFamily: NB.monoFont }}>neoracer-teleop</code>),
+            the watchdog that restarts failed nodes, the health dashboard on
+            port <code style={{ fontFamily: NB.monoFont }}>8080</code>, and
+            JupyterLab on port <code style={{ fontFamily: NB.monoFont }}>8888</code>.
+            Every{' '}
             <InfoNote term="topic" title="ROS 2 topic">
               A named channel that ROS 2 nodes use to pass messages, such as sensor readings or drive commands. One node publishes to a topic and any number of others subscribe to read it.
             </InfoNote>{' '}on the{' '}
             <a href="/docs/software/ros2-driver" style={{ color: NB.neoboticsRed, fontWeight: 700, textDecoration: 'none' }}>
               ROS 2 driver
             </a>{' '}
-            page up by running <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>teleop</code> yourself.
+            page is live from power-on, with no terminal involved.
           </p>
 
           <div
@@ -138,17 +143,17 @@ export default function OsAndImagePage() {
             }}
           >
             <div style={{ color: NB.neoboticsRed, fontWeight: 700, marginBottom: 10 }}>
-              // systemctl is-active neoracer-jupyter
+              // racecar service status
             </div>
-            neoracer-jupyter.service
-            <span style={{ color: NB.textDimBlue }}>&nbsp;&nbsp;# headless JupyterLab on :8888, auto-start</span>
+            neoracer-teleop · neoracer-watchdog · neoracer-dashboard · neoracer-jupyter
+            <span style={{ color: NB.textDimBlue }}>&nbsp;&nbsp;# all active, all enabled at boot</span>
             <br />
             <br />
             <div style={{ color: NB.neoboticsRed, fontWeight: 700, marginBottom: 10 }}>
-              // then bring up the robot yourself
+              // for interactive debugging, the same stack in the foreground
             </div>
             racecar teleop
-            <span style={{ color: NB.textDimBlue }}>&nbsp;&nbsp;# wraps: ros2 launch neoracer_ros2_driver teleop.launch.py</span>
+            <span style={{ color: NB.textDimBlue }}>&nbsp;&nbsp;# wraps: ros2 launch neoracer_ros2_driver teleop.launch.py (stop the service first)</span>
             <br />
             <span style={{ color: NB.textDimBlue }}>&nbsp;&nbsp;# brings up controller, gamepad_node, mux_node,</span>
             <br />
@@ -210,30 +215,21 @@ export default function OsAndImagePage() {
               maxWidth: 720,
             }}
           >
-            The car ships flashed. You'll only flash a card yourself to bring
-            one back to a known-good state, or to set up a clean classroom set.
+            The car ships flashed. You&apos;ll only re-flash to bring one back
+            to a known-good state, and it is a two-stage job: the base system
+            image first, then the driver setup on top.
           </p>
 
-          <Callout type="note" title="Hardware you need">
-            <ul style={{ margin: 0, paddingLeft: 18 }}>
-              <li>A <strong>microSD card</strong>, 64 GB or larger, UHS-I U3 or better.</li>
-              <li>A microSD reader on your laptop.</li>
-              <li><a href="https://etcher.balena.io" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>balenaEtcher</a> installed (free, Mac / Windows / Linux).</li>
-              <li>Roughly 12 minutes and a strong Wi-Fi connection to download the image.</li>
-            </ul>
-          </Callout>
+          <Code lang="bash">{`# 1. Flash the base system. The car boots from its NVMe SSD, and the base
+#    image is Seeed's reComputer J401 build of JetPack 6 (Ubuntu 22.04).
+#    Follow Seeed's reComputer J401 flashing guide, which runs from a Linux
+#    host over the Jetson's USB-C recovery port.
 
-          <Code lang="bash">{`# 1. Download the latest image (verify the SHA-256 against the release page).
-curl -LO https://images.neobotics.org/neoracer/neoracer-os-latest.img.xz
-sha256sum neoracer-os-latest.img.xz
+# 2. On first boot, follow Getting Started from the top:
+#    console + internet, clone neoracer_ros2_driver, bash scripts/setup_all.sh
+#    That installs ROS 2, the services, JupyterLab, and the student library.
 
-# 2. Open balenaEtcher.
-#    Flash from file → pick the .img.xz (Etcher will decompress on the fly).
-#    Insert the microSD. Pick it as the target. Flash.
-
-# 3. Eject the card, slide it into the Jetson SD slot under the chassis.
-# 4. Plug the battery in, flip the master switch.
-# 5. Wait ~30 s for first boot. The status LED ladder will turn solid red→green.`}</Code>
+# 3. racecar setup networking gives the fresh car its networks back.`}</Code>
         </div>
         </section>
       </ScrollReveal>
@@ -262,12 +258,14 @@ sha256sum neoracer-os-latest.img.xz
               lede="neoracer"
               body={
                 <>
-                  The car has a static IP of 192.168.1.[100 + Car ID] on its
-                  own network (Car 1 is 192.168.1.101). Reach it by hostname
-                  or by that address.
+                  The car answers at{' '}
+                  <code style={{ fontFamily: NB.monoFont }}>192.168.10.100</code> on
+                  the cudy router, or{' '}
+                  <code style={{ fontFamily: NB.monoFont }}>10.42.0.1</code> on its
+                  own access point.
                 </>
               }
-              codeChip="ssh racecar@neoracer"
+              codeChip="ssh racecar@192.168.10.100"
             />
             <NumberedFeatureCard
               n={2}
@@ -317,7 +315,7 @@ sha256sum neoracer-os-latest.img.xz
       <ScrollReveal>
         <Fig
           label="FIG. C / FINDING THE CAR ON THE NETWORK"
-          caption="The car is its own Wi-Fi access point. Join neoracer-[Car ID] (password neobotics), then reach it at its static IP 192.168.1.[100 + Car ID], hostname neoracer. Car 1 is 192.168.1.101."
+          caption="Two ways to the car: join the cudy router’s Wi-Fi and reach it at 192.168.10.100, or join the car’s own access point (neoracer-1) and reach it at 10.42.0.1. Password neobotics on both."
         >
           <NetworkDiscoveryDiagram />
         </Fig>
@@ -334,11 +332,11 @@ sha256sum neoracer-os-latest.img.xz
           </DisplayHeading>
 
           <Code lang="bash">{`# 1. Confirm you're in (after joining the car's neoracer-[Car ID] network).
-ssh racecar@neoracer                     # or: ssh racecar@192.168.1.101
+ssh racecar@192.168.10.100               # or: 10.42.0.1 on the access point
 # racecar@neoracer:~$
 
 # 2. JupyterLab service is healthy?
-systemctl is-active jupyterlab           # active
+racecar service status                   # all four active
 
 # 3. ROS 2 graph is up? (run "teleop" first)
 ros2 topic list                          # /camera /scan /imu /odom /joy /drive
@@ -347,7 +345,7 @@ ros2 topic list                          # /camera /scan /imu /odom /joy /drive
 ros2 topic echo /scan --once | head -20`}</Code>
 
           <Callout type="tip" title="Pin a known good image">
-            On classroom carts, a nice habit is to mark the image version (<code style={{ fontFamily: NB.monoFont }}>cat /etc/neoracer-image-version</code>) on the chassis with a paint pen.
+            On classroom carts, a nice habit is to mark the image version (<code style={{ fontFamily: NB.monoFont }}>cat /etc/nv_tegra_release</code>) on the chassis with a paint pen.
             Then if a car starts acting up two weeks into the semester, you already know which build to compare against.
           </Callout>
         </div>
@@ -388,7 +386,7 @@ ros2 topic echo /scan --once | head -20`}</Code>
               <>
                 <strong>AP not coming up after re-flash?</strong> Connect
                 an ethernet cable, SSH via <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>racecar@neoracer</code>, run{' '}
-                <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>sudo nmtui</code> to rebuild the access point.
+                <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>racecar setup networking</code> to rebuild the access point.
               </>,
               <>
                 <strong>Lost the password?</strong> A re-flash is the way back

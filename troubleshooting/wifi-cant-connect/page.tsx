@@ -120,10 +120,10 @@ export default function WifiCantConnectPage() {
 # and join it with password "neobotics".
 
 # Test 2: once joined, can you reach the car's static IP?
-# Car ID 1 = 192.168.1.101, Car ID 2 = 192.168.1.102, etc.
-ping 192.168.1.101
+# Cudy path: the car is 192.168.10.100. Access point: it is 10.42.0.1.
+ping 192.168.10.100        # or 10.42.0.1 on the access point
 
-# Reachable IP == you're in; ssh racecar@neoracer (or racecar@192.168.1.101).
+# Reachable IP == you're in; ssh racecar@<that address>.
 # No IP after joining == wrong Car ID or the car hasn't finished booting.`}</Code>
         </div>
       </section>
@@ -169,30 +169,33 @@ ping 192.168.1.101
               lede="You're on the network but SSH hangs."
               body={
                 <>
-                  Each car has a static IP at{' '}
-                  <code style={{ fontFamily: NB.monoFont }}>192.168.1.[100 + Car ID]</code>{' '}
-                  (Car 1 = 192.168.1.101). If a ping to that address times out, the
-                  car may still be finishing its boot. Wait, re-ping, then{' '}
-                  <code style={{ fontFamily: NB.monoFont }}>ssh racecar@neoracer</code>.
+                  The car&apos;s address depends on the network you joined: on
+                  the cudy router it is{' '}
+                  <code style={{ fontFamily: NB.monoFont }}>192.168.10.100</code>,
+                  on its own access point it is{' '}
+                  <code style={{ fontFamily: NB.monoFont }}>10.42.0.1</code>. If a
+                  ping to the right one times out, the car may still be finishing
+                  its boot. Wait a minute and re-ping.
                 </>
               }
-              codeChip="ssh racecar@192.168.1.101"
+              codeChip="ssh racecar@192.168.10.100"
             />
             <NumberedFeatureCard
               n={3}
-              title="Wrong Car ID"
-              lede="You joined a different car's network."
+              title="Wrong network"
+              lede="You joined a different Wi-Fi than the car's."
               body={
                 <>
-                  The <InfoNote term="SSID" title="SSID">The name of a Wi-Fi network, the text you pick from the list when joining. Here it is neoracer_N.</InfoNote> and the IP both encode the Car ID, so they have to
-                  match. If you joined <code style={{ fontFamily: NB.monoFont }}>neoracer-2</code>{' '}
-                  but ping <code style={{ fontFamily: NB.monoFont }}>192.168.1.101</code>,
-                  nothing answers. Use the ID printed on the car: SSID{' '}
-                  <code style={{ fontFamily: NB.monoFont }}>neoracer_N</code>, IP{' '}
-                  <code style={{ fontFamily: NB.monoFont }}>192.168.1.(100+N)</code>.
+                  The address only answers on its own network: joining the cudy
+                  Wi-Fi and pinging <code style={{ fontFamily: NB.monoFont }}>10.42.0.1</code>{' '}
+                  (or the reverse) times out every time. Match the pair:{' '}
+                  <code style={{ fontFamily: NB.monoFont }}>neoracer-[ID]</code> →{' '}
+                  <code style={{ fontFamily: NB.monoFont }}>192.168.10.100</code>,{' '}
+                  <code style={{ fontFamily: NB.monoFont }}>neoracer-1</code> →{' '}
+                  <code style={{ fontFamily: NB.monoFont }}>10.42.0.1</code>.
                 </>
               }
-              codeChip="neoracer_N → 192.168.1.(100+N)"
+              codeChip="network → address, matched"
             />
           </div>
         </div>
@@ -229,12 +232,13 @@ sudo nmap -sn 169.254.0.0/16          # find the car's link-local IP
 ssh racecar@<link-local-ip>           # then SSH straight to it`}</Code>
 
           <Callout type="tip" title="Confirming the car's identity once you're in">
-            Once you can SSH in, check the hostname and Car ID so you know which
-            IP and SSID to use next time:
+            Once you can SSH in, confirm you are on the right machine:
             <Code lang="bash">{`hostname                              # expect "neoracer"
 whoami                                # expect "racecar"`}</Code>
-            The Car ID printed on the chassis tells you the SSID (<code style={{ fontFamily: NB.monoFont }}>neoracer_N</code>)
-            and static IP (<code style={{ fontFamily: NB.monoFont }}>192.168.1.(100+N)</code>).
+            From there, the addresses to use next time are the usual pair:{' '}
+            <code style={{ fontFamily: NB.monoFont }}>192.168.10.100</code> on the
+            cudy router, <code style={{ fontFamily: NB.monoFont }}>10.42.0.1</code>{' '}
+            on the car&apos;s own access point.
           </Callout>
         </div>
       </section>

@@ -8,28 +8,23 @@ import {
   GhostNumeral,
   ChromeBadge,
   DashList,
-  Fig,
-  NumberedFeatureCard,
 } from '@/components/docs/Editorial';
-import {
-  CalibrationStepStrip,
-  type CalibrationStep,
-} from '@/components/docs/Diagrams';
+import { CalibrationStepStrip, type CalibrationStep } from '@/components/docs/Diagrams';
 import { ScrollReveal, MouseFollowGlow, AnimatedNumeral, InfoNote } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext, Callout, Code } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
   title: 'IMU bias · Calibration · NeoRacer Docs',
   description:
-    'Zero the QMI8658A accelerometer and gyroscope, and fit the QMC6309 magnetometer, with the calibrate_imu and calibrate_mag scripts. They write the YAML the driver loads at launch.',
+    'Bias correction for the IMU lives in the MCU firmware, so there is nothing to calibrate by hand. This page shows how to verify the readings at rest and what to do if they are off.',
 };
 
 const STEPS: CalibrationStep[] = [
-  { n: 1, title: 'SSH in',       sub: 'to the Jetson',        iconKey: 'ssh' },
-  { n: 2, title: 'Driver up',    sub: '/imu, /mag publishing', iconKey: 'cli' },
-  { n: 3, title: 'Still + level', sub: 'accel + gyro bias',    iconKey: 'stopwatch' },
-  { n: 4, title: 'Rotate',       sub: 'magnetometer fit',      iconKey: 'wheel' },
-  { n: 5, title: 'Save YAML',    sub: 'config/imu_cal · mag_cal', iconKey: 'save' },
+  { n: 1, title: 'Car still',     sub: 'flat and level',          iconKey: 'wheel' },
+  { n: 2, title: 'SSH in',        sub: 'to the Jetson',           iconKey: 'ssh' },
+  { n: 3, title: 'Read /imu',     sub: 'one message',             iconKey: 'cli' },
+  { n: 4, title: 'Check accel',   sub: '~9.8 down, ~0 elsewhere', iconKey: 'stopwatch' },
+  { n: 5, title: 'Check gyro',    sub: 'all axes near 0',         iconKey: 'save' },
 ];
 
 export default function ImuBiasPage() {
@@ -50,7 +45,7 @@ export default function ImuBiasPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>CALIBRATION / IMU BIAS</Eyebrow>
             <DisplayHeading size="xl">
-              IMU BIAS <Red>CALIBRATION.</Red>
+              THE IMU CORRECTS <Red>ITSELF.</Red>
             </DisplayHeading>
             <p
               style={{
@@ -61,31 +56,35 @@ export default function ImuBiasPage() {
                 maxWidth: 680,
               }}
             >
-              A raw QMI8658A reads a small, steady offset even when the car is dead
-              still, and the QMC6309 magnetometer reads a field warped by the metal
-              around it. Two scripts measure those once and write the corrections to a
-              pair of YAML files the driver loads at launch, so{' '}
-              <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>rc.physics</code>{' '}
-              gives you honest numbers.
+              A raw accelerometer reads a small, steady offset even when the car
+              is dead still. On the NeoRacer that correction happens on the MCU
+              (microcontroller unit): the firmware zeroes the offsets and fuses
+              the orientation before the data ever reaches ROS, so there are no
+              calibration scripts or YAML files to manage. Your job is a
+              two-minute check that the numbers look right.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="red"><AnimatedNumeral value={10} prefix="~" suffix=" minutes" /></ChromeBadge>
-              <ChromeBadge variant="outline">Intermediate</ChromeBadge>
-              <ChromeBadge variant="outline">Writes real YAML</ChromeBadge>
-              <ChromeBadge variant="outline">Loaded at launch</ChromeBadge>
+              <ChromeBadge variant="red"><AnimatedNumeral value={2} prefix="~" suffix=" minutes" /></ChromeBadge>
+              <ChromeBadge variant="outline">Beginner</ChromeBadge>
+              <ChromeBadge variant="outline">Verify, not tune</ChromeBadge>
+              <ChromeBadge variant="outline">Firmware-fused, ~200 Hz</ChromeBadge>
             </div>
           </div>
         </section>
       </MouseFollowGlow>
 
-      {/* ── Section 01 · Two calibrations ─────────────────────────── */}
+      <ScrollReveal>
+        <CalibrationStepStrip steps={STEPS} />
+      </ScrollReveal>
+
+      {/* ── 01 · What bias is ─────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
           <GhostNumeral n="01" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>01 / TWO CALIBRATIONS</Eyebrow>
+            <Eyebrow>01 / WHAT BIAS IS</Eyebrow>
             <DisplayHeading size="lg">
-              THE TWO <Red>CALIBRATIONS.</Red>
+              THE OFFSET AT <Red>REST.</Red>
             </DisplayHeading>
             <p
               style={{
@@ -96,262 +95,88 @@ export default function ImuBiasPage() {
                 maxWidth: 740,
               }}
             >
-              The IMU node reads three sensors off one chip: accelerometer,
-              gyroscope, and magnetometer. The first two are corrected by sitting
-              still; the third needs you to turn the car through every direction so
-              the script can map the field. They are two separate scripts and two
-              separate YAML files.
+              Every{' '}
+              <InfoNote term="IMU" title="IMU">
+                Inertial measurement unit: an accelerometer plus a gyroscope on
+                one chip, reporting how the car accelerates and rotates.
+              </InfoNote>{' '}
+              chip has manufacturing offsets: a gyroscope that reports a tiny
+              rotation while sitting still, an accelerometer a hair off on one
+              axis. Left uncorrected, those errors integrate into drift, which
+              is why every serious robot removes them. The NeoRacer removes them
+              in firmware, at the source, and streams the corrected state at
+              ~200 Hz.
             </p>
-
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-                gap: 18,
-                marginTop: 20,
-              }}
-            >
-              <NumberedFeatureCard
-                n={1}
-                title="Accel + gyro bias"
-                lede="calibrate_imu.py, car still."
-                body={
-                  <>
-                    Held flat and motionless, the script averages the readings and
-                    stores the offset as{' '}
-                    <code style={{ fontFamily: NB.monoFont }}>accelerometer.bias</code>{' '}
-                    and{' '}
-                    <code style={{ fontFamily: NB.monoFont }}>gyroscope.bias</code>.
-                  </>
-                }
-                codeChip="imu_cal.yaml"
-              />
-              <NumberedFeatureCard
-                n={2}
-                title="Magnetometer fit"
-                lede="calibrate_mag.py, car rotating."
-                body={
-                  <>
-                    Turning the car through all orientations, it fits a{' '}
-                    <InfoNote term="hard-iron offset" title="Hard-iron offset">Steady magnetic bias from magnetized metal on the car. It shifts every reading by a fixed amount, so the calibration subtracts it back out.</InfoNote>{' '}
-                    and a{' '}
-                    <InfoNote term="soft-iron matrix" title="Soft-iron matrix">A correction for nearby metal that distorts the magnetic field unevenly by direction. It stretches the readings back into a sphere instead of a squashed shape.</InfoNote>{' '}
-                    so the field reads as a clean
-                    sphere, not a tilted egg.
-                  </>
-                }
-                codeChip="mag_cal.yaml"
-              />
-            </div>
           </div>
         </section>
       </ScrollReveal>
 
-      {/* ── Section 02 · You'll need ─────────────────────────────── */}
+      {/* ── 02 · Verify at rest ───────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
           <GhostNumeral n="02" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>02 / YOU'LL NEED</Eyebrow>
+            <Eyebrow>02 / VERIFY AT REST</Eyebrow>
             <DisplayHeading size="lg">
-              WHAT YOU'LL <Red>NEED.</Red>
+              READ IT <Red>STILL.</Red>
             </DisplayHeading>
-
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-                gap: 18,
-                marginTop: 20,
-              }}
-            >
-              <NumberedFeatureCard
-                n={1}
-                title="The driver running"
-                lede="So /imu and /mag publish."
-                body={
-                  <>
-                    Both scripts subscribe to the live topics, so the IMU node has
-                    to be up first. Launch the{' '}
-                    <a href="/docs/software/ros2-driver" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>driver</a>{' '}
-                    before you start either one.
-                  </>
-                }
-              />
-              <NumberedFeatureCard
-                n={2}
-                title="A level surface"
-                lede="For the accel and gyro pass."
-                body="A flat, vibration-free spot for the still pass. The accelerometer learns which way is down from it, so a tilted table bakes the tilt into the bias."
-              />
-              <NumberedFeatureCard
-                n={3}
-                title="Space to rotate"
-                lede="For the magnetometer pass."
-                body="Clear room to slowly turn the car through pitch, roll, and yaw. Away from motors, laptops, and steel desks, which warp the very field you are measuring."
-              />
-            </div>
-          </div>
-        </section>
-      </ScrollReveal>
-
-      {/* ── FIG · step strip ─────────────────────────────────────── */}
-      <ScrollReveal>
-        <Fig
-          label="FIG. A / FIVE STEPS, START TO FINISH"
-          caption="Bring the driver up, run the still pass, run the rotating pass, and the two YAML files are written for the IMU node to load next launch."
-        >
-          <div style={{ paddingTop: 8, overflowX: 'auto', WebkitOverflowScrolling: 'touch' }}>
-            <div style={{ minWidth: 480 }}>
-              <CalibrationStepStrip steps={STEPS} />
-            </div>
-          </div>
-        </Fig>
-      </ScrollReveal>
-
-      {/* ── Section 03 · Accel + gyro ────────────────────────────── */}
-      <ScrollReveal>
-        <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="03" top={-30} right={-20} size={400} />
-          <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>03 / ACCEL + GYRO</Eyebrow>
-            <DisplayHeading size="lg">
-              THE ACCEL + GYRO <Red>PASS.</Red>
-            </DisplayHeading>
-
-            <Code lang="bash">{`# Driver running (teleop), car flat and motionless on a level surface.
-python3 ~/racecar_ws/src/racecar_neo/scripts/calibrate_imu.py
-
-# It connects to /imu, collects a window of samples, and averages them.
-# The mean is the bias: what the sensor reports when nothing is moving.
-# When it finishes, it writes imu_cal.yaml.`}</Code>
-
-            <Callout type="warn" title="Motion reads as bias">
-              Any motion during the still pass shows up as bias. Set the car down,
-              take your hands off, and let the script run untouched. If a wheel was
-              bumped, run it again.
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
+              Put the car on a flat, level surface and leave it alone while you
+              read one message:
+            </p>
+            <Code lang="bash">{`ssh racecar@192.168.10.100        # or 10.42.0.1 on the access point
+ros2 topic echo /imu --once`}</Code>
+            <DashList
+              items={[
+                <><code style={{ fontFamily: NB.monoFont }}>linear_acceleration</code>: roughly 9.8 on the axis pointing down (gravity counts), near 0 on the other two.</>,
+                <><code style={{ fontFamily: NB.monoFont }}>angular_velocity</code>: all three axes near 0 while nothing moves.</>,
+                <><code style={{ fontFamily: NB.monoFont }}>orientation</code>: a steady quaternion that stops changing once the car settles.</>,
+              ]}
+            />
+            <Callout type="tip" title="The same check from Python">
+              <code style={{ fontFamily: NB.monoFont }}>rc.physics.get_linear_acceleration()</code>{' '}
+              and{' '}
+              <code style={{ fontFamily: NB.monoFont }}>rc.physics.get_angular_velocity()</code>{' '}
+              read the same stream, so a two-line script printing both is an
+              equally good verify.
             </Callout>
           </div>
         </section>
       </ScrollReveal>
 
-      {/* ── Section 04 · Magnetometer ────────────────────────────── */}
+      {/* ── 03 · If it's off ──────────────────────────────────────────── */}
       <ScrollReveal>
-        <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="04" top={-30} right={-20} size={400} />
+        <section style={{ position: 'relative', paddingBottom: 40 }}>
+          <GhostNumeral n="03" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>04 / MAGNETOMETER</Eyebrow>
+            <Eyebrow>03 / IF THE NUMBERS ARE OFF</Eyebrow>
             <DisplayHeading size="lg">
-              THE MAGNETOMETER <Red>FIT.</Red>
+              WHEN IT <Red>DRIFTS.</Red>
             </DisplayHeading>
-
-            <Code lang="bash">{`# Driver running. Pick the car up and be ready to rotate it.
-python3 ~/racecar_ws/src/racecar_neo/scripts/calibrate_mag.py
-
-# While it collects, slowly tumble the car through every orientation:
-# nose up and down, roll left and right, spin through a full yaw.
-# It fits a hard-iron offset and a soft-iron matrix to the cloud of
-# points, plots them as a sphere so you can see the coverage, and
-# writes mag_cal.yaml.`}</Code>
-
-            <p
-              style={{
-                fontFamily: NB.bodyFont,
-                fontSize: 16,
-                lineHeight: 1.65,
-                color: NB.textMutedBeige,
-                maxWidth: 720,
-              }}
-            >
-              The goal is even coverage of the sphere. Gaps mean a direction the
-              field was never sampled, which leaves the fit guessing there. Keep
-              turning until the plotted points wrap the whole ball.
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
+              A large offset at rest, or a yaw that keeps creeping while the car
+              sits still, points at the firmware&apos;s stored correction rather
+              than anything on the Jetson. Re-flashing the firmware (covered in{' '}
+              <a href="/docs/software/firmware-flashing" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
+                Firmware flashing
+              </a>) restores it, and{' '}
+              <a href="mailto:support@neobotics.org" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
+                support@neobotics.org
+              </a>{' '}
+              can confirm whether a reading you are seeing is in the normal
+              range.
             </p>
+            <Callout type="note" title="About the magnetometer">
+              The chip also carries a magnetometer, but the driver ships with it
+              disabled (<code style={{ fontFamily: NB.monoFont }}>publish_mag</code>{' '}
+              in <code style={{ fontFamily: NB.monoFont }}>config/controller.yaml</code>):
+              the fused orientation already comes from the firmware, and the raw
+              magnetic field indoors is warped by the car&apos;s own motor and
+              frame. Enable it only if you want the raw vector, and expect it
+              uncalibrated.
+            </Callout>
           </div>
         </section>
-      </ScrollReveal>
-
-      {/* ── Section 05 · Where it lives ──────────────────────────── */}
-      <ScrollReveal>
-        <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="05" top={-30} right={-20} size={400} />
-          <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>05 / WHERE IT LIVES</Eyebrow>
-            <DisplayHeading size="lg">
-              THE OUTPUT <Red>YAML.</Red>
-            </DisplayHeading>
-            <p
-              style={{
-                fontFamily: NB.bodyFont,
-                fontSize: 16,
-                lineHeight: 1.65,
-                color: NB.textMutedBeige,
-                maxWidth: 720,
-              }}
-            >
-              This is the one calibration that is a real config file, not a source
-              constant. The launch file hands both YAMLs to the IMU node as
-              parameters, so the corrections apply the next time you bring the
-              driver up. The parameter names are documented on the{' '}
-              <a href="/docs/api-reference/ros2/params" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-                ROS 2 parameters
-              </a>{' '}
-              page.
-            </p>
-
-            <Code lang="yaml">{`# config/imu_cal.yaml, written by calibrate_imu.py
-imu_node:
-  ros__parameters:
-    accelerometer:
-      bias: [0.013, -0.021, 0.004]     # m/s^2, per axis
-    gyroscope:
-      bias: [0.0011, 0.0006, -0.0009]  # rad/s, per axis
-
-# config/mag_cal.yaml, written by calibrate_mag.py
-imu_node:
-  ros__parameters:
-    magnetometer:
-      hard_iron_bias: [1.2e-5, -8.0e-6, 3.1e-6]   # T, offset
-      soft_iron_matrix:
-        data: [1.02, 0.01, 0.0,  0.01, 0.98, 0.0,  0.0, 0.0, 1.0]  # row-major 3x3`}</Code>
-
-            <DashList
-              items={[
-                <>Relaunch the driver after calibrating so the IMU node reloads the files.</>,
-                <>The values above are an illustration; yours come out of the two scripts.</>,
-                <>Keep the YAMLs with your workspace so a re-image does not drop them back to identity.</>,
-              ]}
-            />
-          </div>
-        </section>
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <Callout type="tip" title="Troubleshooting">
-          <ul style={{ margin: 0, paddingLeft: 18 }}>
-            <li>
-              <strong>Script never connects.</strong> The IMU node is not
-              publishing. Confirm with{' '}
-              <code style={{ fontFamily: NB.monoFont }}>ros2 topic echo /imu</code>{' '}
-              and check the{' '}
-              <a href="/docs/hardware/sensors/imu" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-                IMU hardware
-              </a>{' '}
-              page.
-            </li>
-            <li>
-              <strong>Heading still drifts after calibrating.</strong> The
-              magnetometer pass missed part of the sphere, or you were near metal.
-              Re-run it in open space and cover every orientation.
-            </li>
-            <li>
-              <strong>Numbers look fused or filtered.</strong> They are not. The
-              node publishes raw, bias-corrected readings under{' '}
-              <code style={{ fontFamily: NB.monoFont }}>rc.physics</code>; any
-              smoothing is yours to add.
-            </li>
-          </ul>
-        </Callout>
       </ScrollReveal>
 
       <PrevNext

@@ -75,7 +75,7 @@ ros2 topic list     # /scan /drive /imu /odom /camera /joy`}</Code>
                 { key: 'fix', label: 'Fix', mono: true },
               ]}
               rows={[
-                { sym: 'Empty node/topic list', cause: "Workspace not sourced in this shell.", fix: 'source ~/osracer_ws/install/setup.bash' },
+                { sym: 'Empty node/topic list', cause: "Workspace not sourced in this shell, or the services are down.", fix: 'source ~/ros2_ws/install/setup.bash + racecar service status' },
                 { sym: 'Missing ROS package', cause: 'Dependencies not installed.', fix: 'rosdep install --from-paths src --ignore-src -r -y' },
                 { sym: 'Port / process in use', cause: 'A launch was started twice.', fix: 'pkill -f ros2  # then relaunch' },
               ]}
@@ -110,14 +110,14 @@ ls -l /dev/serial/by-id/         # is the device node present?`}</Code>
               <MonoLabel>Camera</MonoLabel>
               <Code lang="bash">{`ls /dev/video*                   # device node exists?
 ros2 topic list | grep image     # image topics live?
-ros2 topic echo /camera/color/image_raw --once
-ros2 topic bw /rgb/image_raw/compressed   # bandwidth, ~10 MB/s when healthy`}</Code>
+ros2 topic echo /camera --once   # JPEG bytes; best-effort QoS
+ros2 topic bw /camera              # bandwidth, ~3-4 MB/s when healthy`}</Code>
             </div>
             <div style={{ marginTop: 14 }}>
               <MonoLabel>IMU + odometry</MonoLabel>
-              <Code lang="bash">{`ros2 topic list | grep imu       # /imu_filter present?
-ros2 topic echo /imu_filter      # moving when you move the car?
-ros2 topic echo /odometry/filtered  # odometry updating as it drives?`}</Code>
+              <Code lang="bash">{`ros2 topic list | grep imu       # /imu present?
+ros2 topic hz /imu               # ~200 Hz when streaming
+ros2 topic hz /odom              # ~200 Hz, moves when the wheels do`}</Code>
             </div>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 15, lineHeight: 1.6, color: NB.textMutedBeige, maxWidth: 720, marginTop: 16 }}>
               No data from a sensor usually means a loose USB lead or no power
@@ -165,7 +165,7 @@ ros2 launch osracer_debug debug_image.launch.py  # image pipeline`}</Code>
                   { key: 'fix', label: 'Fix' },
                 ]}
                 rows={[
-                  { cause: 'Wrong mode', fix: <>CH7 not centred. Set it to the middle for RC. See <Link href="/docs/hardware/remote-control" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Remote control</Link>.</> },
+                  { cause: 'Wrong mode', fix: <>SWB not in the middle. The middle is manual. See <Link href="/docs/hardware/remote-control" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Remote control</Link>.</> },
                   { cause: 'Controller link', fix: 'Reseat or replace the USB cable from the hub to the controller.' },
                 ]}
               />

@@ -76,7 +76,7 @@ export default function CameraNoFeedPage() {
           }
           expected={
             <>
-              A 1080p frame at up to 120 fps on{' '}
+              A 640×480 JPEG frame at 60 fps on{' '}
               <code style={{ fontFamily: NB.monoFont }}>/camera</code>. In
               Python, a NumPy array shaped <code style={{ fontFamily: NB.monoFont }}>(H, W, 3)</code> with
               real pixel values.
@@ -150,24 +150,25 @@ ros2 topic hz /camera`}</Code>
                 lede="systemd thinks it's up but it isn't producing."
                 body={
                   <>
-                    <code style={{ fontFamily: NB.monoFont }}>systemctl restart neoracer-camera</code>{' '}
+                    <code style={{ fontFamily: NB.monoFont }}>racecar service restart</code>{' '}
                     clears most stuck states. If the log shows a permissions
-                    error on <code style={{ fontFamily: NB.monoFont }}>/dev/video0</code>, re-flashing
-                    the SD card is the cleanest fix.
+                    error on <code style={{ fontFamily: NB.monoFont }}>/dev/video0</code>,
+                    re-run <code style={{ fontFamily: NB.monoFont }}>bash scripts/setup_udev.sh</code>{' '}
+                    and log out and back in so the group applies.
                   </>
                 }
-                codeChip="systemctl restart neoracer-camera"
+                codeChip="racecar service restart"
               />
               <NumberedFeatureCard
                 n={3}
-                title="Loose ribbon"
-                lede="The flex cable behind the camera module."
+                title="Loose USB cable"
+                lede="The camera is a USB device at the front of the car."
                 body={
                   <>
-                    Behind the camera there's a small cover you can lift off to
-                    reach the ribbon, which should click fully into its socket.
-                    Once it's re-seated, restarting the camera service lets the
-                    driver re-enumerate the bus.
+                    Follow the camera&apos;s USB cable to the hub and reseat both
+                    ends. Once it&apos;s re-seated,{' '}
+                    <code style={{ fontFamily: NB.monoFont }}>racecar service restart</code>{' '}
+                    lets the driver re-enumerate the bus.
                   </>
                 }
                 codeChip="reseat · restart"

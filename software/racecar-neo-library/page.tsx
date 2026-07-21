@@ -42,10 +42,10 @@ const MODULES: ApiModule[] = [
   {
     id: 'lidar',
     mono: 'rc.lidar',
-    lede: 'The 270° world map you steer by.',
-    badge: '720 samples · 0.5°',
+    lede: 'The distance map you steer by.',
+    badge: '~1440 samples · 0.25°',
     methods: [
-      { sig: 'rc.lidar.get_samples()', what: 'The latest 720-float scan, centimetres, 0.5° apart. Index 0 is dead ahead.' },
+      { sig: 'rc.lidar.get_samples()', what: 'The latest scan in centimetres: ~1440 samples on the car, 720 in the sim. Index 0 is dead ahead; the rear wedge reads 0.' },
       { sig: 'rc_utils.get_lidar_average_distance(scan, angle)', what: 'In racecar_utils. Mean range over a small angle window, for gap finding that holds up against noisy samples.' },
       { sig: 'rc_utils.get_lidar_closest_point(scan)', what: 'In racecar_utils. The (angle, distance) of the nearest return.' },
     ],
@@ -181,12 +181,12 @@ const HELLO_BASH_PLAYGROUND = `# In the browser sim, paste the Python into the e
 open https://playground.neobotics.org`;
 
 const HELLO_BASH_CAR = `# On the car. Copy the script over, then run it.
-scp drive_square.py racecar@neoracer:scripts/
-ssh racecar@neoracer
-python3 ~/scripts/drive_square.py
+scp drive_square.py racecar@10.42.0.1:jupyter_ws/neoracer-os/labs/
+ssh racecar@10.42.0.1
+python3 ~/jupyter_ws/neoracer-os/labs/drive_square.py
 
-# The left bumper on the Flysky is your e-stop. Release the throttle and
-# the car halts within a tick.`;
+# SWB down hands the car to the program; SWB back to the middle takes it
+# away again. That flip back is your e-stop.`;
 
 export default function RacecarNeoLibraryPage() {
   return (
@@ -246,8 +246,8 @@ export default function RacecarNeoLibraryPage() {
               }}
             >
               <MeterCard label="LiDAR scan rate" value={30} suffix=" Hz" />
-              <MeterCard label="get_samples() length" value={720} />
-              <MeterCard label="IMU sample rate" value={100} suffix=" Hz" />
+              <MeterCard label="get_samples() length" value={1440} sub="~, on the car (720 in sim)" />
+              <MeterCard label="IMU sample rate" value={200} suffix=" Hz" />
               <MeterCard label="Camera frame width" value={640} sub="× 480, RGB (no depth)" />
             </div>
           </div>
@@ -327,7 +327,7 @@ export default function RacecarNeoLibraryPage() {
                   }}
                 >
                   The sweep on the left is what the scanner is doing while you
-                  read this. Each tick mark is one of the 720 samples{' '}
+                  read this. Each tick mark is one of the samples{' '}
                   <code style={{ fontFamily: NB.monoFont }}>get_samples()</code> hands you. The full
                   coordinate frame and array layout live on the{' '}
                   <a

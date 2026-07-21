@@ -117,17 +117,20 @@ export default function MappingPage() {
 
             <div style={{ marginTop: 24 }}>
               <MonoLabel>slam_toolbox</MonoLabel>
-              <Code lang="bash">{`ros2 launch osracer_slam slam_toolbox.launch.py      # terminal 1
+              <Code lang="bash">{`racecar ws osracer      # switch this shell to the vendor workspace
+ros2 launch osracer_slam slam_toolbox.launch.py      # terminal 1
 ros2 launch osracer_debug debug_mapping.launch.py    # terminal 2 (RViz)`}</Code>
             </div>
             <div style={{ marginTop: 16 }}>
               <MonoLabel>gmapping</MonoLabel>
-              <Code lang="bash">{`ros2 launch osracer_slam gmapping.launch.py          # terminal 1
+              <Code lang="bash">{`racecar ws osracer      # switch this shell to the vendor workspace
+ros2 launch osracer_slam gmapping.launch.py          # terminal 1
 ros2 launch osracer_debug debug_mapping.launch.py    # terminal 2 (RViz)`}</Code>
             </div>
             <div style={{ marginTop: 16 }}>
               <MonoLabel>Cartographer</MonoLabel>
-              <Code lang="bash">{`ros2 launch osracer_slam cartographer.launch.py        # terminal 1
+              <Code lang="bash">{`racecar ws osracer      # switch this shell to the vendor workspace
+ros2 launch osracer_slam cartographer.launch.py        # terminal 1
 ros2 launch osracer_debug debug_cartographer.launch.py # terminal 2 (RViz)`}</Code>
             </div>
           </div>
@@ -177,11 +180,13 @@ ros2 launch osracer_debug debug_cartographer.launch.py # terminal 2 (RViz)`}</Co
             </p>
             <div style={{ marginTop: 14 }}>
               <MonoLabel>slam_toolbox / gmapping</MonoLabel>
-              <Code lang="bash">{`ros2 launch osracer_slam map_save.launch.xml`}</Code>
+              <Code lang="bash">{`racecar ws osracer      # switch this shell to the vendor workspace
+ros2 launch osracer_slam map_save.launch.xml`}</Code>
             </div>
             <div style={{ marginTop: 14 }}>
               <MonoLabel>Cartographer</MonoLabel>
-              <Code lang="bash">{`ros2 launch osracer_slam map_save_cartographer.launch.xml`}</Code>
+              <Code lang="bash">{`racecar ws osracer      # switch this shell to the vendor workspace
+ros2 launch osracer_slam map_save_cartographer.launch.xml`}</Code>
             </div>
             <Callout type="note" title="Save before you stop the mapper">
               The map only exists in the running node until you save it. Save

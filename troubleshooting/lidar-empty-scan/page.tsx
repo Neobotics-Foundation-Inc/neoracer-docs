@@ -17,7 +17,7 @@ import { Crumbs, PrevNext, Callout, Code } from '@/components/docs/DocsPrimitive
 export const metadata: Metadata = {
   title: 'LiDAR empty scan · Troubleshooting · NeoRacer Docs',
   description:
-    'rc.lidar.get_samples returns 720 zeros. Three quick checks isolate whether it is the driver, the cable, or the unit.',
+    'The scan reads empty: all zeros through the library, or all inf on /scan. Three quick checks isolate whether it is the driver, the link, or the sensor.',
 };
 
 export default function LidarEmptyScanPage() {
@@ -69,8 +69,9 @@ export default function LidarEmptyScanPage() {
           seeing={
             <>
               <code style={{ fontFamily: NB.monoFont }}>rc.lidar.get_samples()</code>{' '}
-              returns a list of 720 zeros. Same answer from{' '}
-              <code style={{ fontFamily: NB.monoFont }}>ros2 topic echo /scan</code>.
+              reads all zeros far beyond the normal rear wedge, or{' '}
+              <code style={{ fontFamily: NB.monoFont }}>/scan</code> streams with
+              every range <code style={{ fontFamily: NB.monoFont }}>inf</code>.
             </>
           }
           expected={
@@ -178,7 +179,7 @@ ros2 topic hz /scan          # the rate the Lakibeam is configured for`}</Code>
                     The USB-C link is small and easy to vibrate loose after a
                     hard crash. Reseat both ends, then re-run{' '}
                     <code style={{ fontFamily: NB.monoFont }}>racecar teleop</code>{' '}
-                    so the lakibeam1 node sees the sensor again.
+                    so the lidar node (richbeam_lidar_node0) sees the sensor again.
                   </>
                 }
                 codeChip="reseat USB-C · racecar teleop"
@@ -205,17 +206,24 @@ ros2 topic hz /scan          # the rate the Lakibeam is configured for`}</Code>
 
       <ScrollReveal>
         <Callout type="tip" title="Sanity check the driver output">
-          Even one good sample tells you the data path is alive. Run this from
-          an SSH session and the unit should bounce a wall return within a metre
-          of the car.
-          <Code lang="bash">{`# Pipe a single scan into Python and find any non-zero sample.
-ros2 topic echo /scan --once \\
-  | python3 -c "import sys, re; vals=re.findall(r'-?\\d+\\.?\\d*', sys.stdin.read()); print('non-zero:', sum(1 for v in vals if float(v) > 0))"`}</Code>
+          Even one good sample tells you the data path is alive. Count finite
+          returns across a full scan; a healthy car indoors reads several
+          hundred. A bare{' '}
+          <code style={{ fontFamily: NB.monoFont }}>ros2 topic echo /scan</code>{' '}
+          is misleading here: it truncates the array to its first values, which
+          sit in the always-blank rear wedge, so a healthy scan still prints a
+          wall of <code style={{ fontFamily: NB.monoFont }}>inf</code>.
+          <Code lang="bash">{`# Count finite returns across one full scan.
+ros2 topic echo /scan --once --field ranges \\
+  | tr -d '[] ' | tr ',' '\\n' | grep -vcE 'inf|^0\\.0*$|^$'
+
+# The driver also watches itself: a blind scan logs [scan-watchdog].
+journalctl -u neoracer-teleop -b | grep scan-watchdog`}</Code>
         </Callout>
       </ScrollReveal>
 
       <ScrollReveal>
-        <Callout type="note" title="Still 720 zeros after all three?">
+        <Callout type="note" title="Still empty after all three?">
           That points at the scanner itself, and we're happy to take it from
           here. A quick email to{' '}
           <a

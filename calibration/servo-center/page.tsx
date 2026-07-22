@@ -77,7 +77,6 @@ export default function ServoCenterPage() {
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="red"><AnimatedNumeral value={2} prefix="~" suffix=" minutes" /></ChromeBadge>
-              <ChromeBadge variant="outline">Beginner</ChromeBadge>
               <ChromeBadge variant="outline">config/controller.yaml</ChromeBadge>
               <ChromeBadge variant="outline">Edit + restart</ChromeBadge>
             </div>

@@ -65,7 +65,6 @@ export default function ImuBiasPage() {
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="red"><AnimatedNumeral value={2} prefix="~" suffix=" minutes" /></ChromeBadge>
-              <ChromeBadge variant="outline">Beginner</ChromeBadge>
               <ChromeBadge variant="outline">Verify, not tune</ChromeBadge>
               <ChromeBadge variant="outline">Firmware-fused, ~200 Hz</ChromeBadge>
             </div>

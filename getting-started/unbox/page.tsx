@@ -9,7 +9,6 @@ import {
   GhostNumeral,
   ChromeBadge,
   ClockGlyph,
-  LevelGlyph,
   Fig,
 } from '@/components/docs/Editorial';
 import { BoxContentsDiagram } from '@/components/docs/Diagrams';
@@ -84,8 +83,6 @@ export default function UnboxPage() {
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="outline" icon={<ClockGlyph />}><AnimatedNumeral value={10} prefix="~" suffix=" minutes" /></ChromeBadge>
-              <ChromeBadge variant="outline" icon={<LevelGlyph level={1} />}>Beginner</ChromeBadge>
-              <ChromeBadge variant="outline">No tools required</ChromeBadge>
             </div>
           </div>
         </section>

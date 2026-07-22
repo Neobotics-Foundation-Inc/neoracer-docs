@@ -56,7 +56,6 @@ export default function WontPowerOnPage() {
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="red"><AnimatedNumeral prefix="~" value={1} suffix=" minute" /></ChromeBadge>
               <ChromeBadge variant="outline">Common cause: battery</ChromeBadge>
-              <ChromeBadge variant="outline">No tools required</ChromeBadge>
             </div>
           </div>
         </section>

@@ -112,7 +112,6 @@ export default function CameraIntrinsicsPage() {
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="red"><AnimatedNumeral value={10} prefix="~" suffix=" minutes" /></ChromeBadge>
-              <ChromeBadge variant="outline">Intermediate</ChromeBadge>
               <ChromeBadge variant="outline">Only for metric vision</ChromeBadge>
               <ChromeBadge variant="outline">640 × 480</ChromeBadge>
             </div>

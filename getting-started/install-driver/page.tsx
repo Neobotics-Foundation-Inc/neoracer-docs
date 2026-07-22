@@ -9,7 +9,6 @@ import {
   GhostNumeral,
   ChromeBadge,
   MonoLabel,
-  DashList,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow, AnimatedNumeral, InfoNote } from '@/components/docs/Interactive';
 import { Crumbs, Callout, PrevNext, Code, DataTable } from '@/components/docs/DocsPrimitives';
@@ -160,8 +159,8 @@ bash neoracer_ros2_driver/scripts/setup_all.sh`}</Code>
             The script prints each phase as it goes. Here is what each one did to
             your car, so none of it is a mystery:
           </p>
-          <DashList
-            items={[
+          <div>
+            {[
               <><strong>ROS 2 + dependencies.</strong> Installs ROS 2 Humble and the packages the driver builds against.</>,
               <><strong>Dev tools.</strong> The build and debugging tools used throughout these docs.</>,
               <><strong>User environment.</strong> Adds <code style={{ fontFamily: NB.monoFont }}>racecar</code> to the hardware groups and wires the{' '}
@@ -183,8 +182,42 @@ bash neoracer_ros2_driver/scripts/setup_all.sh`}</Code>
                 <code style={{ fontFamily: NB.monoFont }}>neoracer-teleop</code>), a watchdog that restarts anything that fails, the health dashboard on port{' '}
                 <code style={{ fontFamily: NB.monoFont }}>8080</code>, and JupyterLab on port{' '}
                 <code style={{ fontFamily: NB.monoFont }}>8888</code>.</>,
-            ]}
-          />
+            ].map((phase, i) => (
+              <div
+                key={i}
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: '34px 1fr',
+                  gap: 12,
+                  padding: '12px 0',
+                  borderBottom: `1px solid ${NB.borderOnBeige}`,
+                }}
+              >
+                <div
+                  style={{
+                    fontFamily: NB.headingFont,
+                    fontSize: 22,
+                    fontWeight: 900,
+                    lineHeight: 1.3,
+                    color: NB.neoboticsRed,
+                  }}
+                >
+                  {i + 1}
+                </div>
+                <p
+                  style={{
+                    fontFamily: NB.bodyFont,
+                    fontSize: 15,
+                    lineHeight: 1.65,
+                    color: NB.textMutedBeige,
+                    margin: 0,
+                  }}
+                >
+                  {phase}
+                </p>
+              </div>
+            ))}
+          </div>
         </section>
       </ScrollReveal>
 

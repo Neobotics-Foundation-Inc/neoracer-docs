@@ -81,7 +81,6 @@ export default function MotorTrimPage() {
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="red"><AnimatedNumeral value={5} prefix="~" suffix=" minutes" /></ChromeBadge>
-              <ChromeBadge variant="outline">Beginner</ChromeBadge>
               <ChromeBadge variant="outline">neoracer_ros2_driver</ChromeBadge>
               <ChromeBadge variant="outline">config/throttle.yaml + config/controller.yaml</ChromeBadge>
             </div>

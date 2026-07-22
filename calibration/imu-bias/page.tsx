@@ -45,7 +45,7 @@ export default function ImuBiasPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>CALIBRATION / IMU BIAS</Eyebrow>
             <DisplayHeading size="xl">
-              THE IMU CORRECTS <Red>ITSELF.</Red>
+              IMU <Red>BIAS.</Red>
             </DisplayHeading>
             <p
               style={{

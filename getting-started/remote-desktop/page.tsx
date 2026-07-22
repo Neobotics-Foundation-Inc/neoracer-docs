@@ -39,7 +39,7 @@ export default function RemoteDesktopPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>GETTING STARTED / REMOTE DESKTOP</Eyebrow>
             <DisplayHeading size="xl">
-              THE FULL DESKTOP, <Red>REMOTELY.</Red>
+              REMOTE DESKTOP <Red>SETUP.</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
               The car ships with{' '}

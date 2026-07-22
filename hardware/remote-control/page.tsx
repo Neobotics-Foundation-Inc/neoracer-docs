@@ -40,7 +40,7 @@ export default function RemoteControlPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>HARDWARE / REMOTE CONTROL</Eyebrow>
             <DisplayHeading size="xl">
-              TWO MODES, <Red>ONE SWITCH.</Red>
+              THE REMOTE <Red>CONTROL.</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
               The car ships with a{' '}

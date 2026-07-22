@@ -37,7 +37,7 @@ export default function DiagnosticsPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>TROUBLESHOOTING / DIAGNOSTICS</Eyebrow>
             <DisplayHeading size="xl">
-              WHAT'S THE CAR <Red>SEEING?</Red>
+              SENSOR <Red>DIAGNOSTICS.</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
               Before you swap a part, ask the car. These ROS 2 commands show

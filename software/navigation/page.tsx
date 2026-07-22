@@ -39,7 +39,7 @@ export default function NavigationPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>SOFTWARE / NAVIGATION</Eyebrow>
             <DisplayHeading size="xl">
-              POINT, THEN <Red>GO.</Red>
+              AUTONOMOUS <Red>NAVIGATION.</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
               With a saved map, <InfoNote term="Nav2" title="Nav2">The ROS 2 navigation stack. It plans a route across a known map, then drives the car along it while dodging what the LiDAR sees.</InfoNote>{' '}

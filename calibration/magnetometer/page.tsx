@@ -38,7 +38,7 @@ export default function MagnetometerPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>CALIBRATION / MAGNETOMETER</Eyebrow>
             <DisplayHeading size="xl">
-              FIND TRUE <Red>NORTH.</Red>
+              THE <Red>MAGNETOMETER.</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
               Metal and current on the chassis bend the magnetic field the car

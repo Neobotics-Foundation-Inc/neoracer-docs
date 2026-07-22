@@ -41,7 +41,7 @@ export default function ElectricalPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>HARDWARE / ELECTRICAL</Eyebrow>
             <DisplayHeading size="xl">
-              ONE BATTERY, <Red>EVERYWHERE.</Red>
+              THE ELECTRICAL <Red>SYSTEM.</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
               The NeoRacer runs a single hierarchical power path. One 3S LiPo

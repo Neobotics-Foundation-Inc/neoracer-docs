@@ -38,7 +38,7 @@ export default function MaintenancePage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>REFERENCE / MAINTENANCE</Eyebrow>
             <DisplayHeading size="xl">
-              KEEP IT <Red>RUNNING.</Red>
+              ROUTINE <Red>MAINTENANCE.</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
               Treated well, the NeoRacer has a multi-year service life. A short

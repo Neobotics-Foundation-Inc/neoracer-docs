@@ -3,18 +3,15 @@ import { Metadata } from 'next';
 import DocsShell from '@/components/docs/DocsShell';
 import { NB } from '@/lib/nb-tokens';
 import {
-  Eyebrow,
   DisplayHeading,
   Red,
   TickMargin,
-  ChromeBadge,
   DashList,
 } from '@/components/docs/Editorial';
 import {
   ScrollReveal,
   AnimatedDataFlowDiagram,
 } from '@/components/docs/Interactive';
-import PopularRow from '@/components/docs/PopularRow';
 import PitLaneNav, { PitLaneSection } from '@/components/docs/PitLaneNav';
 
 export const metadata: Metadata = {
@@ -44,13 +41,6 @@ const pitLane: PitLaneSection[] = [
   { title: 'Trouble­shooting', href: '/docs/troubleshooting/faq', pages: 7 },
   { title: 'Reference', href: '/docs/reference/specifications', pages: 4 },
   { title: 'Legal', href: '/docs/legal/warranty', pages: 5 },
-];
-
-const popular = [
-  { label: 'Why is my LiDAR scan empty?', href: '/docs/troubleshooting/lidar-empty-scan' },
-  { label: 'Motor trim, fix creep at zero speed', href: '/docs/calibration/motor-trim' },
-  { label: "Connecting to the car's Wi-Fi", href: '/docs/software/networking' },
-  { label: 'Installing the ROS 2 driver', href: '/docs/getting-started/install-driver' },
 ];
 
 export default function DocsLandingPage() {
@@ -185,108 +175,7 @@ export default function DocsLandingPage() {
         </section>
       </ScrollReveal>
 
-      {/* ── Section 5 · POPULAR / NEW ─────────────────────────────────── */}
-      <ScrollReveal>
-        <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 32 }}>
-            <div>
-              <Eyebrow>POPULAR</Eyebrow>
-              <h3
-                style={{
-                  fontFamily: NB.headingFont,
-                  fontSize: 28,
-                  fontWeight: 900,
-                  letterSpacing: '0.005em',
-                  margin: '0 0 14px',
-                  textTransform: 'uppercase',
-                }}
-              >
-                What everyone else is reading.
-              </h3>
-              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                {popular.map((p, i) => (
-                  <PopularRow
-                    key={p.href}
-                    index={i + 1}
-                    label={p.label}
-                    href={p.href}
-                    isLast={i === popular.length - 1}
-                  />
-                ))}
-              </ul>
-            </div>
-            <div>
-              <Eyebrow>NEW</Eyebrow>
-              <h3
-                style={{
-                  fontFamily: NB.headingFont,
-                  fontSize: 28,
-                  fontWeight: 900,
-                  letterSpacing: '0.005em',
-                  margin: '0 0 14px',
-                  textTransform: 'uppercase',
-                }}
-              >
-                Recently shipped.
-              </h3>
-              <div
-                style={{
-                  background: NB.haloWhite,
-                  border: `1.5px solid ${NB.tarmacBlue}`,
-                  borderRadius: 14,
-                  padding: 22,
-                  boxShadow: NB.shadowCard,
-                }}
-              >
-                <ChromeBadge variant="red">June 2026</ChromeBadge>
-                <h4
-                  style={{
-                    fontFamily: NB.headingFont,
-                    fontSize: 22,
-                    fontWeight: 900,
-                    letterSpacing: '0.005em',
-                    textTransform: 'uppercase',
-                    margin: '12px 0 8px',
-                  }}
-                >
-                  The 3D robot model.
-                </h4>
-                <p
-                  style={{
-                    fontFamily: NB.bodyFont,
-                    fontSize: 14.5,
-                    lineHeight: 1.6,
-                    color: NB.textMutedBeige,
-                    margin: 0,
-                  }}
-                >
-                  The newest page renders the car&apos;s real URDF in your
-                  browser. Drag to orbit, spin the wheels, steer the front
-                  axle. It joins v1.0, the first customer release.
-                </p>
-                <div style={{ display: 'flex', gap: 18, flexWrap: 'wrap', marginTop: 12 }}>
-                  <Link
-                    href="/docs/hardware/robot-model"
-                    style={{
-                      fontFamily: NB.monoFont,
-                      fontSize: 12,
-                      letterSpacing: '0.14em',
-                      textTransform: 'uppercase',
-                      fontWeight: 700,
-                      color: NB.neoboticsRed,
-                      textDecoration: 'none',
-                    }}
-                  >
-                    See the model →
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </ScrollReveal>
-
-      {/* ── Section 6 · SIMULATION TEASE ──────────────────────────────────
+      {/* ── Section 4 · SIMULATION TEASE ──────────────────────────────────
            The Playground strip, blurred until launch. The content is real but
            unreadable and non-interactive (plain spans, no live URL in the
            DOM); a scan line and a COMING SOON plate sit on top. */}

@@ -157,8 +157,6 @@ export default function FirstProgramPage() {
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="outline" icon={<ClockGlyph />}><AnimatedNumeral value={15} suffix=" minutes" /></ChromeBadge>
-              <ChromeBadge variant="red">Reads the LiDAR</ChromeBadge>
-              <ChromeBadge variant="outline">Sim ↔ Car parity</ChromeBadge>
             </div>
           </div>
         </section>

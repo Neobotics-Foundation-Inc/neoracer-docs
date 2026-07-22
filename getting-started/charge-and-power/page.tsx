@@ -47,7 +47,6 @@ export default function ChargeAndPowerPage() {
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="outline" icon={<ClockGlyph />}>1–2 hours (first charge)</ChromeBadge>
-              <ChromeBadge variant="outline">Charger included</ChromeBadge>
             </div>
           </div>
         </section>

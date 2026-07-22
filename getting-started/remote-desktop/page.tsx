@@ -8,7 +8,6 @@ import {
   DisplayHeading,
   Red,
   GhostNumeral,
-  ChromeBadge,
   DashList,
   Fig,
 } from '@/components/docs/Editorial';
@@ -50,11 +49,6 @@ export default function RemoteDesktopPage() {
               the network. Set a password once, while the monitor is still
               plugged in, and you never need that monitor again.
             </p>
-            <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="red">One-time setup</ChromeBadge>
-              <ChromeBadge variant="outline">Connect by IP</ChromeBadge>
-              <ChromeBadge variant="outline">No monitor after this</ChromeBadge>
-            </div>
           </div>
         </section>
       </MouseFollowGlow>

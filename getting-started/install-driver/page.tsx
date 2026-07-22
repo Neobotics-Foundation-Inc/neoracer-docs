@@ -62,9 +62,6 @@ export default function InstallDriverPage() {
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="red"><AnimatedNumeral value={30} prefix="~" suffix=" minutes" /></ChromeBadge>
-              <ChromeBadge variant="outline">One-time</ChromeBadge>
-              <ChromeBadge variant="outline">One script</ChromeBadge>
-              <ChromeBadge variant="outline">Auto-starts after</ChromeBadge>
             </div>
           </div>
         </section>

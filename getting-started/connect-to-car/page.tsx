@@ -6,7 +6,6 @@ import {
   DisplayHeading,
   Red,
   GhostNumeral,
-  ChromeBadge,
   DashList,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
@@ -42,11 +41,6 @@ export default function ConnectToCarPage() {
               A brand new NeoRacer needs a network setup first. Here&apos;s how
               you do it, step by step.
             </p>
-            <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="red">One-time, in person</ChromeBadge>
-              <ChromeBadge variant="outline">internet first</ChromeBadge>
-              <ChromeBadge variant="outline">user racecar</ChromeBadge>
-            </div>
           </div>
         </section>
       </MouseFollowGlow>

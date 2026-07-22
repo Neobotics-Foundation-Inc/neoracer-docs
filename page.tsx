@@ -86,7 +86,7 @@ export default function DocsLandingPage() {
         <section style={{ position: 'relative', paddingBottom: 64 }}>
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              THE PIT <Red>LANE.</Red>
+              CHOOSE A <Red>SECTION.</Red>
             </DisplayHeading>
             <p
               style={{

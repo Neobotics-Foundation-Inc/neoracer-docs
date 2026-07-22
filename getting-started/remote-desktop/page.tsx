@@ -64,9 +64,9 @@ export default function RemoteDesktopPage() {
         <section style={{ position: 'relative', paddingBottom: 44 }}>
           <GhostNumeral n="01" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>01 / ON THE CAR, SET A PERMANENT PASSWORD</Eyebrow>
+            <Eyebrow>01 / ON THE CAR</Eyebrow>
             <DisplayHeading size="lg">
-              A PASSWORD THAT <Red>STAYS.</Red>
+              SET A PERMANENT <Red>PASSWORD.</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
               Out of the box, RustDesk shows a one-time password that changes

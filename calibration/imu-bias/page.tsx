@@ -117,7 +117,7 @@ export default function ImuBiasPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>02 / VERIFY AT REST</Eyebrow>
             <DisplayHeading size="lg">
-              READ IT <Red>STILL.</Red>
+              VERIFY AT <Red>REST.</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
               Put the car on a flat, level surface and leave it alone while you

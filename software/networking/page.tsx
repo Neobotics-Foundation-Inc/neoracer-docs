@@ -362,7 +362,7 @@ ros2 topic echo /scan --once     # a single scan, straight off the car`}</Code>
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'ROS2 driver', href: '/docs/software/ros2-driver' }}
+        prev={{ label: 'Workspaces', href: '/docs/software/workspaces' }}
         next={{ label: 'Firmware flashing', href: '/docs/software/firmware-flashing' }}
       />
     </DocsShell>

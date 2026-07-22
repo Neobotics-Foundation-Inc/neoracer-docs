@@ -6,7 +6,6 @@ import {
   Eyebrow,
   DisplayHeading,
   Red,
-  GhostNumeral,
   TickMargin,
   ChromeBadge,
   DashList,
@@ -15,7 +14,6 @@ import {
   ScrollReveal,
   AnimatedDataFlowDiagram,
 } from '@/components/docs/Interactive';
-import IntentHoverCard from '@/components/docs/IntentHoverCard';
 import PopularRow from '@/components/docs/PopularRow';
 import PitLaneNav, { PitLaneSection } from '@/components/docs/PitLaneNav';
 
@@ -33,35 +31,6 @@ export const metadata: Metadata = {
  * with the CarSprite parking in front of wherever the reader is headed.
  * ─────────────────────────────────────────────────────────────────────── */
 
-const intentCards: {
-  badge: string;
-  title: string;
-  body: string;
-  href: string;
-  accent: string;
-  pad: string;
-  variant: 'red' | 'blue';
-}[] = [
-  {
-    badge: 'Just unboxed?',
-    title: 'Getting started',
-    body: "Six short pages and you're driving. Unbox, charge, get on the car, install the driver, remote desktop, first program.",
-    href: '/docs/getting-started/unbox',
-    accent: NB.neoboticsRed,
-    pad: '6 pages',
-    variant: 'red',
-  },
-  {
-    badge: 'Know what you need?',
-    title: 'Python + ROS 2 reference',
-    body: 'The full racecar-neo-library API, every ROS 2 topic, and the F1TENTH parity matrix.',
-    href: '/docs/api-reference/python/lidar',
-    accent: NB.tarmacBlue,
-    pad: 'API · ROS 2',
-    variant: 'blue',
-  },
-];
-
 /* Bay order mirrors the sidebar. Counts are the real page counts in nav.ts;
    update both together when a page ships. */
 const pitLane: PitLaneSection[] = [
@@ -74,6 +43,7 @@ const pitLane: PitLaneSection[] = [
   // Soft hyphen so narrow phone bays break it as TROUBLE-SHOOTING.
   { title: 'Trouble­shooting', href: '/docs/troubleshooting/faq', pages: 7 },
   { title: 'Reference', href: '/docs/reference/specifications', pages: 4 },
+  { title: 'Legal', href: '/docs/legal/warranty', pages: 5 },
 ];
 
 const popular = [
@@ -87,32 +57,9 @@ export default function DocsLandingPage() {
   return (
     <DocsShell>
       {/* ── Section 1 · HERO ───────────────────────────────────────────── */}
-      <section style={{ position: 'relative', paddingTop: 8, paddingBottom: 44 }}>
-        <GhostNumeral n="01" top={-30} right={-30} size={460} />
+      <section style={{ position: 'relative', paddingTop: 24, paddingBottom: 44 }}>
         <div style={{ position: 'relative', zIndex: 1 }}>
           <TickMargin count={10} />
-          <Link
-            href="/"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: 8,
-              fontFamily: NB.monoFont,
-              fontSize: 11,
-              fontWeight: 700,
-              letterSpacing: '0.16em',
-              textTransform: 'uppercase',
-              color: NB.textMutedBeige,
-              textDecoration: 'none',
-              padding: '6px 10px 6px 0',
-              marginBottom: 14,
-              transition: 'color 160ms ease',
-            }}
-          >
-            <span style={{ color: NB.neoboticsRed, fontSize: 13 }}>←</span>
-            Back to neobotics.org
-          </Link>
-          <Eyebrow>00 / NEORACER DOCS · V1.0 · MAY 2026</Eyebrow>
           <DisplayHeading size="2xl">
             NEORACER <Red>DOCS.</Red>
           </DisplayHeading>
@@ -126,49 +73,18 @@ export default function DocsLandingPage() {
               marginBottom: 8,
             }}
           >
-            Your NeoRacer arrives fully built, so these pages skip the
-            screwdriver and go straight to making it drive itself. The Getting
-            Started path takes you from a sealed box to a first autonomous lap,
-            and once you are racing it stays open as the full Python and ROS 2
-            reference, deep enough to teach the next thirty students how to do
-            the same.
+            The documentation for the NeoRacer V1. Getting Started takes a new
+            car from the box to its first program; the rest is the reference
+            you come back to: hardware, software, calibration, troubleshooting,
+            and the full Python and ROS 2 APIs.
           </p>
         </div>
       </section>
 
-      {/* ── Section 2 · INTENT CARDS ──────────────────────────────────── */}
+      {/* ── Section 2 · THE PIT LANE ──────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 64 }}>
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-              gap: 18,
-              marginTop: 6,
-            }}
-          >
-            {intentCards.map((c) => (
-              <IntentHoverCard
-                key={c.title}
-                badge={c.badge}
-                title={c.title}
-                body={c.body}
-                href={c.href}
-                pad={c.pad}
-                accent={c.accent}
-                variant={c.variant}
-              />
-            ))}
-          </div>
-        </section>
-      </ScrollReveal>
-
-      {/* ── Section 3 · THE PIT LANE ──────────────────────────────────── */}
-      <ScrollReveal>
-        <section style={{ position: 'relative', paddingBottom: 64 }}>
-          <GhostNumeral n="02" top={-40} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>01 / EIGHT SECTIONS</Eyebrow>
             <DisplayHeading size="lg">
               THE PIT <Red>LANE.</Red>
             </DisplayHeading>
@@ -186,32 +102,14 @@ export default function DocsLandingPage() {
               whichever one you are about to open.
             </p>
             <PitLaneNav sections={pitLane} />
-            <Link
-              href="/docs/legal/warranty"
-              style={{
-                display: 'inline-block',
-                marginTop: 14,
-                fontFamily: NB.monoFont,
-                fontSize: 11,
-                fontWeight: 700,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: NB.textMutedBeige,
-                textDecoration: 'none',
-              }}
-            >
-              Legal · 5 pages →
-            </Link>
           </div>
         </section>
       </ScrollReveal>
 
-      {/* ── Section 4 · FIG. A, DATA FLOW ────────────────────────────── */}
+      {/* ── Section 3 · FIG. A, DATA FLOW ────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 64 }}>
-          <GhostNumeral n="A" top={-40} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>02 / HARDWARE → SOFTWARE → HARDWARE</Eyebrow>
             <DisplayHeading size="lg">
               THE DATA <Red>FLOW.</Red>
             </DisplayHeading>
@@ -226,8 +124,8 @@ export default function DocsLandingPage() {
               >
                 Every NeoRacer behaviour, from a teleop drive to a full racing
                 stack, is the same shape: sensors publish, your code subscribes,
-                your code publishes, actuators subscribe. ROS 2 just provides the
-                cables.
+                your code publishes, actuators subscribe. ROS 2 carries the
+                messages between them.
               </p>
               <DashList
                 items={[
@@ -281,7 +179,6 @@ export default function DocsLandingPage() {
               >
                 The four nodes <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>teleop.launch.py</code> starts
                 once you have built <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>neoracer_ros2_driver</code>.
-                Your code lives in the red panel.
               </figcaption>
             </div>
           </div>
@@ -293,7 +190,7 @@ export default function DocsLandingPage() {
         <section style={{ position: 'relative', paddingBottom: 56 }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 32 }}>
             <div>
-              <Eyebrow>03 / POPULAR</Eyebrow>
+              <Eyebrow>POPULAR</Eyebrow>
               <h3
                 style={{
                   fontFamily: NB.headingFont,
@@ -319,7 +216,7 @@ export default function DocsLandingPage() {
               </ul>
             </div>
             <div>
-              <Eyebrow>04 / NEW</Eyebrow>
+              <Eyebrow>NEW</Eyebrow>
               <h3
                 style={{
                   fontFamily: NB.headingFont,

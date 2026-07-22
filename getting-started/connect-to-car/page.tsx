@@ -52,10 +52,9 @@ export default function ConnectToCarPage() {
       </MouseFollowGlow>
 
       <ScrollReveal>
-        <Callout type="note" title="Why this step is done at the car, not over SSH">
-          On a fresh car there is no network to log in over yet, so the first
-          setup is done with a monitor and keyboard plugged straight into the
-          car. Once it is set up, you never need the monitor again.
+        <Callout type="note" title="Why this step is done at the car">
+          A fresh car has no network to log in over yet, so the first setup is
+          done with a monitor and keyboard plugged straight into the car.
         </Callout>
       </ScrollReveal>
 
@@ -69,10 +68,8 @@ export default function ConnectToCarPage() {
               THE WI-FI <Red>ANTENNAS.</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-              The Jetson&apos;s Wi-Fi card sits on its underside, so the two antenna
-              leads are reached from below. Unscrew the Jetson from its 3D-printed
-              mount, connect each antenna to the card, and screw it back in place.
-              Every network step after this one uses that card, so do this first.
+              The Jetson&apos;s Wi-Fi card sits on its underside, so the two
+              antenna leads are reached from below.
             </p>
             <DashList
               items={[
@@ -96,12 +93,10 @@ export default function ConnectToCarPage() {
               MONITOR AND <Red>KEYBOARD.</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-              Connect a monitor to the Jetson&apos;s DisplayPort or HDMI output and a
-              USB keyboard and mouse. This is your way onto the car for the first
-              setup, since there is no network to reach it over yet. Power the car
-              on and log in as <code style={{ fontFamily: NB.monoFont }}>racecar</code>{' '}
-              (password <code style={{ fontFamily: NB.monoFont }}>neobotics</code>).
-              You land on a normal Ubuntu desktop.
+              Connect a monitor to the Jetson&apos;s DisplayPort or HDMI output
+              and a USB keyboard and mouse. Power the car on and log in as{' '}
+              <code style={{ fontFamily: NB.monoFont }}>racecar</code> (password{' '}
+              <code style={{ fontFamily: NB.monoFont }}>neobotics</code>).
             </p>
           </div>
         </section>
@@ -117,30 +112,23 @@ export default function ConnectToCarPage() {
               INTERNET <Red>FIRST.</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-              Everything the next pages install downloads from the internet, so
-              the car needs a connection before anything else. The car&apos;s own
-              network comes later and carries no internet; this step uses a
-              network you already have. Any one of these works:
+              The install on the next page needs internet. Either works:
             </p>
             <DashList
               items={[
                 <>
-                  <strong>Join your Wi-Fi.</strong> On the desktop, open the
-                  network menu in the top-right corner and join your home,
-                  school, or phone-hotspot Wi-Fi, the same way you would on any
-                  laptop. This is the usual path.
+                  <strong>Join your Wi-Fi.</strong> Open the network menu in the
+                  top-right of the desktop and join any Wi-Fi with internet.
                 </>,
                 <>
                   <strong>Or plug in Ethernet.</strong> An Ethernet cable with
-                  internet into the Jetson&apos;s RJ45 port connects it with no
-                  further steps.
+                  internet into the Jetson&apos;s RJ45 port.
                 </>,
               ]}
             />
             <Callout type="tip" title="Check it took">
-              Open a browser on the car, or run{' '}
-              <code style={{ fontFamily: NB.monoFont }}>ping github.com</code> in a
-              terminal. Either answering means you are online.
+              Run <code style={{ fontFamily: NB.monoFont }}>ping github.com</code>{' '}
+              in a terminal. Replies mean you are online.
             </Callout>
           </div>
         </section>

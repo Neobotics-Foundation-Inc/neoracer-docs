@@ -185,8 +185,8 @@ scp drive_square.py racecar@10.42.0.1:jupyter_ws/neoracer-os/labs/
 ssh racecar@10.42.0.1
 python3 ~/jupyter_ws/neoracer-os/labs/drive_square.py
 
-# SWB down hands the car to the program; SWB back to the middle takes it
-# away again. That flip back is your e-stop.`;
+# SWB down hands the car to the program; SWB back up takes it away
+# again. That flip is your e-stop.`;
 
 export default function RacecarNeoLibraryPage() {
   return (
@@ -341,8 +341,11 @@ export default function RacecarNeoLibraryPage() {
                 <DashList
                   items={[
                     <>
-                      Index 0 is dead ahead. Index 360 is directly behind. The
-                      array sweeps clockwise.
+                      Index 0 is dead ahead;{' '}
+                      <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>get_num_samples() // 2</code>{' '}
+                      is directly behind. The array sweeps clockwise: 720
+                      samples in the sim, ~1440 on the car, so always index
+                      relative to the length.
                     </>,
                     <>Samples come back in centimetres. A 0 means no return inside the range gate.</>,
                     <>
@@ -462,9 +465,9 @@ export default function RacecarNeoLibraryPage() {
                 </>,
                 <>
                   <strong>On the car:</strong> SSH in, the file lands in{' '}
-                  <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>~/scripts/</code>,
+                  <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>~/jupyter_ws/neoracer-os/labs/</code>,
                   and{' '}
-                  <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>python3 ~/scripts/drive_square.py</code>{' '}
+                  <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>python3 ~/jupyter_ws/neoracer-os/labs/drive_square.py</code>{' '}
                   runs it.
                 </>,
               ]}

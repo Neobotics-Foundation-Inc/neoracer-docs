@@ -193,8 +193,8 @@ unzip osrcore-firmware-v1.0.5.zip   # -> osrcore-firmware-v1.0.5.bin`}</Code>
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'OTA updates', href: '/docs/software/ota-updates' }}
-        next={{ label: 'Troubleshooting', href: '/docs/troubleshooting/wont-power-on' }}
+        prev={{ label: 'Networking', href: '/docs/software/networking' }}
+        next={{ label: 'Mapping (SLAM)', href: '/docs/software/mapping' }}
       />
     </DocsShell>
   );

@@ -82,12 +82,10 @@ export default function ChargeAndPowerPage() {
             RECOMMENDED <Red>PACKS.</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-            The car runs on a standard 3-cell (3S) LiPo at 11.1 V nominal. Capacity
-            between 4000 and 5500 mAh tends to be the sweet spot: longer runtime than
-            smaller packs, lighter than larger ones. A{' '}
+            The car runs on a standard 3-cell (3S) LiPo at 11.1 V nominal. Use a
+            capacity between 4000 and 5500 mAh and a{' '}
             <InfoNote term="C-rating" title="C-rating">A rating of how fast a battery can safely deliver its energy. A higher number means the pack can supply more current without strain, which the car needs during hard acceleration.</InfoNote>{' '}
-            of 25 or higher gives
-            you the headroom the car wants.
+            of 25 or higher.
           </p>
           <div style={{ marginTop: 18, background: NB.haloWhite, border: `1px solid ${NB.borderOnBeige}`, borderRadius: 10, padding: '16px 18px', boxShadow: NB.shadowCard }}>
             <div style={{ fontFamily: NB.monoFont, fontSize: 12, letterSpacing: '0.14em', textTransform: 'uppercase', color: NB.textMutedBeige }}>
@@ -119,7 +117,7 @@ export default function ChargeAndPowerPage() {
             { t: 'Connect the balance lead (white plug) to the charger\'s balance port.', d: 'The plug only fits one way, so if it resists, turn it around rather than pushing harder.' },
             { t: 'Connect the main XT60 lead.', d: <>You may see a brief spark, this is the <InfoNote term="inrush current" title="Inrush current">The sudden surge of current that flows the instant a circuit is connected, before it settles to a steady level. Here it briefly charges the capacitors inside the charger, which is why you see a small spark.</InfoNote> on the charger&apos;s capacitors and is normal.</> },
             { t: 'Confirm the charger is in 3S balance-charge mode at ≤ 1C.', d: 'For a 5000 mAh pack, that is 5 A or lower. 1 A is fine too if you have the time, and a slower charge is gentler on the pack.' },
-            { t: 'Keep the pack company until it reaches full.', d: 'A 5000 mAh pack at 1C takes roughly one hour. The charger signals complete with a solid LED or an audible tone, so you will know when it is done.' },
+            { t: 'Stay nearby until it reaches full.', d: 'A 5000 mAh pack at 1C takes roughly one hour. The charger signals complete with a solid LED or an audible tone.' },
           ].map((s, i) => (
             <div key={i} style={{ display: 'grid', gridTemplateColumns: '52px 1fr', gap: 16, padding: '20px 0', borderBottom: `1px solid ${NB.borderOnBeige}` }}>
               <div style={{ fontFamily: NB.headingFont, fontSize: 36, fontWeight: 900, lineHeight: 1, color: NB.neoboticsRed, letterSpacing: '-0.02em' }}>
@@ -152,8 +150,8 @@ export default function ChargeAndPowerPage() {
       <ScrollReveal>
         <Callout type="tip" title="Storage between sessions">
           If the car will sit for more than a week, the charger's "storage" mode
-          settles the pack to ~3.85 V/cell (about 11.55 V total), which is the
-          happiest place for it to rest. A LiPo left fully charged or fully drained
+          settles the pack to ~3.85 V/cell (about 11.55 V total), the correct
+          state for storage. A LiPo left fully charged or fully drained
           ages a lot faster.
         </Callout>
       </ScrollReveal>

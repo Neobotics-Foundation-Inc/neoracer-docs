@@ -166,7 +166,7 @@ export default function SpecificationsPage() {
               <SpecNumeral value={<AnimatedNumeral value={0.25} decimals={2} />} unit="° / sample" label="LiDAR resolution" />
               <SpecNumeral value="640×480" unit="60 fps JPEG" label="Camera capture (RGB)" source={{ label: 'Camera', href: '/docs/hardware/sensors/camera' }} />
               <SpecNumeral value={<AnimatedNumeral value={200} />} unit="Hz" label="IMU, MCU-fused" />
-              <SpecNumeral value={<AnimatedNumeral value={6} />} unit="DoF" label="IMU axes" />
+              <SpecNumeral value={<AnimatedNumeral value={9} />} unit="axis" label="IMU (accel + gyro + mag)" />
             </div>
           </div>
         </section>

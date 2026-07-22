@@ -111,7 +111,7 @@ const TERMS: Term[] = [
   },
   {
     term: 'Motor trim',
-    def: 'In practice, the top-speed cap (max_speed_mps + max_forward) you set in the driver YAML so set_speed_angle scales to a speed you chose. The motor neutral itself lives in the ESP32 firmware, so a creep at zero is usually the ESC neutral or drivetrain drag, not a value you tune here.',
+    def: 'In practice, the top-speed cap (max_speed_mps + max_speed_forward) you set in the driver YAML so set_speed_angle scales to a speed you chose. The motor neutral itself lives in the ESP32 firmware, so a creep at zero is usually the ESC neutral or drivetrain drag, not a value you tune here.',
     see: { label: 'Motor trim', href: '/docs/calibration/motor-trim' },
   },
   {
@@ -173,7 +173,7 @@ const TERMS: Term[] = [
   },
   {
     term: 'JetPack',
-    def: 'NVIDIA\'s software bundle for the Jetson family (Linux kernel, drivers, CUDA, the AI runtime). The NeoRacer image ships JetPack 6.2 on Ubuntu 22.04.5 with ROS 2 Humble on top.',
+    def: 'NVIDIA\'s software bundle for the Jetson family (Linux kernel, drivers, CUDA, the AI runtime). The NeoRacer image ships JetPack 6.2.1 on Ubuntu 22.04.5 with ROS 2 Humble on top.',
     see: { label: 'OS & image', href: '/docs/software/os-and-image' },
   },
   {

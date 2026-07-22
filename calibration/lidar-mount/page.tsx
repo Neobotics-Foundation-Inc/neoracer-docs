@@ -80,7 +80,7 @@ export default function LidarMountPage() {
       <ScrollReveal>
         <Fig
           label="FIG. A / WHAT THE INDEX MEANS"
-          caption="Index 0 is forward, index 180 is 90° right, index 540 is 90° left, at 0.5° per index. A yawed mount slides this whole dial off true, so forward no longer reads at 0."
+          caption="Index 0 is forward, index 360 is 90° right, index 1080 is 90° left, at 0.25° per index. A yawed mount slides this whole dial off true, so forward no longer reads at 0."
         >
           <LidarFrameDiagram />
         </Fig>
@@ -287,7 +287,7 @@ rc.go()`}</Code>
             </p>
 
             <Callout type="note" title="The rear arc is supposed to be empty">
-              Samples around the back of the car, roughly index 320 to 400, read
+              Samples around the back of the car, roughly index 540 to 900, read
               zero because the chassis blocks the beam. That is not a mount error.
               The helpers skip those zeros for you.
             </Callout>

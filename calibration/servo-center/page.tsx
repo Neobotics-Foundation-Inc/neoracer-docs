@@ -226,7 +226,7 @@ python3 lab_trim_cal.py
 #
 #   sed -i -E 's/steering_trim_deg: *-?[0-9.]+/steering_trim_deg: -1.6/' \
 #     ~/ros2_ws/install/neoracer_ros2_driver/share/neoracer_ros2_driver/config/controller.yaml \
-#     ~/ros2_ws/src/neoracer_ros2_driver/config/controller.yaml
+#     ~/ros2_ws/src/neoracer_ros2_driver/neoracer_ros2_driver/config/controller.yaml
 #   sudo systemctl restart neoracer-teleop
 
 # 3. Paste those two commands, then run the lab again.
@@ -333,7 +333,7 @@ rc.go()`}</Code>
               a rebuild.
             </p>
 
-            <Code lang="yaml">{`# ~/ros2_ws/src/neoracer_ros2_driver/config/controller.yaml
+            <Code lang="yaml">{`# ~/ros2_ws/src/neoracer_ros2_driver/neoracer_ros2_driver/config/controller.yaml
 controller_node:
   ros__parameters:
     port_name:              /dev/osrbot_base

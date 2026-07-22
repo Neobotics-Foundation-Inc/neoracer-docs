@@ -218,9 +218,11 @@ export default function ROS2DriverPage() {
               <br />
               /scan<span style={{ color: NB.textDimBlue }}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# sensor_msgs/LaserScan, Lakibeam LiDAR over UDP</span>
               <br />
-              /imu<span style={{ color: NB.textDimBlue }}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# sensor_msgs/Imu, QMI8658A on the OSCORE board</span>
+              /imu<span style={{ color: NB.textDimBlue }}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# sensor_msgs/Imu, QMI8658A + QMC6309 on the OSCORE board</span>
               <br />
               /odom<span style={{ color: NB.textDimBlue }}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# nav_msgs/Odometry, integrated from wheel encoders</span>
+              <br />
+              /battery<span style={{ color: NB.textDimBlue }}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# sensor_msgs/BatteryState, pack voltage at ~0.5 Hz</span>
               <br />
               /joy<span style={{ color: NB.textDimBlue }}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# sensor_msgs/Joy, Flysky RC via the controller node</span>
               <br />
@@ -247,7 +249,7 @@ export default function ROS2DriverPage() {
 
       <PrevNext
         prev={{ label: 'racecar-neo-library', href: '/docs/software/racecar-neo-library' }}
-        next={{ label: 'Networking', href: '/docs/software/networking' }}
+        next={{ label: 'Workspaces', href: '/docs/software/workspaces' }}
       />
     </DocsShell>
   );

@@ -189,7 +189,7 @@ export default function OsAndImagePage() {
       <ScrollReveal>
         <Fig
           label="FIG. B / RE-FLASH FROM SCRATCH"
-          caption="A spare SD card, balenaEtcher, and five steps. The whole thing takes about 12 minutes on a fresh laptop."
+          caption="An x86 Linux host, the Jetson's USB-C recovery port, and five steps: base image, then driver setup on top."
         >
           <div style={{ paddingTop: 6 }}>
             <FlashStripDiagram />
@@ -339,7 +339,7 @@ ssh racecar@192.168.10.100               # or: 10.42.0.1 on the access point
 racecar service status                   # all four active
 
 # 3. ROS 2 graph is up? (run "teleop" first)
-ros2 topic list                          # /camera /scan /imu /odom /joy /drive
+ros2 topic list                          # /camera /scan /imu /odom /battery /joy /drive
 
 # 4. Try a single LiDAR scan.
 ros2 topic echo /scan --once | head -20`}</Code>
@@ -370,18 +370,19 @@ ros2 topic echo /scan --once | head -20`}</Code>
               maxWidth: 720,
             }}
           >
-            Recovery here is just three steps: pull the SD card, re-flash it
-            with balenaEtcher, and slide it back. There's no Recovery Mode UI to
-            learn. Your calibration files live on the MCU (microcontroller unit)'s flash, not on the SD
-            card, so the car is ready to drive the moment it boots.
+            Recovery is a re-flash of the NVMe over the Jetson&apos;s USB-C
+            recovery port, the same two-stage flow as section 02: base image
+            first, then the driver setup on top. Your calibration files live on
+            the MCU (microcontroller unit)&apos;s flash, not on the SSD, so the
+            car is ready to drive the moment it boots.
           </p>
 
           <DashList
             items={[
               <>
-                <strong>Boot loops</strong> usually point at a corrupt SD card
-                rather than a Jetson fault, so a re-flash is the first thing to
-                try.
+                <strong>Boot loops</strong> usually point at a corrupted image
+                on the NVMe rather than a Jetson fault, so a re-flash is the
+                first thing to try.
               </>,
               <>
                 <strong>AP not coming up after re-flash?</strong> Connect
@@ -390,12 +391,12 @@ ros2 topic echo /scan --once | head -20`}</Code>
               </>,
               <>
                 <strong>Lost the password?</strong> A re-flash is the way back
-                in. The password lives in shadow on the SD card, so a fresh image
-                gives you the default again.
+                in. The password lives on the NVMe, so a fresh image gives you
+                the default again.
               </>,
               <>
                 <strong>Calibration gone?</strong> It's not. The motor trim
-                and servo center live on the MCU. Re-flashing the SD does
+                and servo center live on the MCU. Re-flashing the NVMe does
                 not touch them. See <a href="/docs/calibration/motor-trim" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Motor trim</a>.
               </>,
             ]}
@@ -406,7 +407,7 @@ ros2 topic echo /scan --once | head -20`}</Code>
 
       <ScrollReveal>
         <Callout type="note" title="Shut down cleanly">
-        Cutting power while the SD card is mid-write can corrupt the rootfs,
+        Cutting power while the SSD is mid-write can corrupt the rootfs,
         so it's worth getting into the habit of shutting down cleanly at the
         end of a session. Either run{' '}
         <code style={{ fontFamily: NB.monoFont, fontWeight: 700 }}>sudo shutdown now</code>

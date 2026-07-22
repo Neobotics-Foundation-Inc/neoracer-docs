@@ -79,14 +79,14 @@ ros2 launch osracer_bringup bringup.launch.py`}</Code>
             items={[
               <>A saved <code style={{ fontFamily: NB.monoFont }}>map.pgm</code> + <code style={{ fontFamily: NB.monoFont }}>map.yaml</code> from <Link href="/docs/software/mapping" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Mapping</Link>.</>,
               <>The driver running on the car (<code style={{ fontFamily: NB.monoFont }}>teleop</code>).</>,
-              <>RC ready as your override: keep the transmitter in reach and flip <code style={{ fontFamily: NB.monoFont }}>CH7</code> to RC the instant you need to take over.</>,
+              <>RC ready as your override: keep the transmitter in reach and flip <code style={{ fontFamily: NB.monoFont }}>SWB</code> up (manual) the instant you need to take over.</>,
             ]}
           />
           <Callout type="warn" title="Autonomous means hands near the switch">
             Once Nav2 has control the car drives itself. Give it room, keep people
             and pets clear, and stay ready on the{' '}
             <Link href="/docs/hardware/remote-control" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>transmitter</Link>{' '}
-            so a flick of CH7 puts you back in command.
+            so flipping SWB up puts you back in manual control.
           </Callout>
         </section>
       </ScrollReveal>
@@ -168,7 +168,7 @@ ros2 launch osracer_navigation nav2.launch.py planner:=teb`}</Code>
 
       <PrevNext
         prev={{ label: 'Mapping (SLAM)', href: '/docs/software/mapping' }}
-        next={{ label: 'Networking', href: '/docs/software/networking' }}
+        next={{ label: 'API reference', href: '/docs/api-reference/python/drive' }}
       />
     </DocsShell>
   );

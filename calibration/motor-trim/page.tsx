@@ -241,8 +241,8 @@ ssh racecar@neoracer
 #    config/throttle.yaml is the single source of truth for the speed
 #    and steering caps. config/controller.yaml holds the ESP32 m/s
 #    mapping and the steering trim in degrees.
-$EDITOR ~/ros2_ws/src/neoracer_ros2_driver/config/throttle.yaml
-$EDITOR ~/ros2_ws/src/neoracer_ros2_driver/config/controller.yaml
+$EDITOR ~/ros2_ws/src/neoracer_ros2_driver/neoracer_ros2_driver/config/throttle.yaml
+$EDITOR ~/ros2_ws/src/neoracer_ros2_driver/neoracer_ros2_driver/config/controller.yaml
 
 # 3. Bump the top-speed cap a little if you want more headroom.
 #    Small steps. The ESC response is not linear near the bottom of the
@@ -352,19 +352,19 @@ rc.go()`}</Code>
               <code style={{ fontFamily: NB.monoFont }}>racecar teleop</code>, and the
               new caps are live. No colcon build, no firmware reflash. They live
               under the driver workspace at{' '}
-              <code style={{ fontFamily: NB.monoFont }}>~/ros2_ws/src/neoracer_ros2_driver/config/</code>.
+              <code style={{ fontFamily: NB.monoFont }}>~/ros2_ws/src/neoracer_ros2_driver/neoracer_ros2_driver/config/</code>.
             </p>
 
-            <Code lang="yaml">{`# ~/ros2_ws/src/neoracer_ros2_driver/config/throttle.yaml
+            <Code lang="yaml">{`# ~/ros2_ws/src/neoracer_ros2_driver/neoracer_ros2_driver/config/throttle.yaml
 # Single source of truth for the top speed and steering caps.
 # All values are normalized to [-1, 1] across the pipeline.
 throttle_node:
   ros__parameters:
-    max_speed_forward: 0.5     # the scale every forward /drive command gets
-    max_speed_backward: 0.6
-    max_steering: 0.625`}</Code>
+    max_speed_forward: 1.0     # the scale every forward /drive command gets
+    max_speed_backward: 1.0
+    max_steering: 0.625        # full servo lock; higher stalls the servo`}</Code>
 
-            <Code lang="yaml">{`# ~/ros2_ws/src/neoracer_ros2_driver/config/controller.yaml
+            <Code lang="yaml">{`# ~/ros2_ws/src/neoracer_ros2_driver/neoracer_ros2_driver/config/controller.yaml
 # ESP32 serial port, the normalized -> m/s drive mapping, the
 # steering trim, and the Flysky RC channel map.
 controller_node:
@@ -378,9 +378,10 @@ controller_node:
 
             <DashList
               items={[
-                <>A higher{' '}
+                <>The car ships with{' '}
                   <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>max_speed_forward</code>{' '}
-                  in throttle.yaml means more top speed for the same command.</>,
+                  at 1.0, the full range. Lower it in throttle.yaml to derate
+                  the car for a classroom or a small room.</>,
                 <>Neutral is owned by the ESP32 firmware, not the YAML, so a
                   creep at zero is the ESC neutral or drivetrain drag, not a value
                   you set here.</>,

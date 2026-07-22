@@ -27,7 +27,7 @@ export default function ImuPage() {
         items={[
           { label: 'Docs', href: '/docs' },
           { label: 'Hardware', href: '/docs/hardware/overview' },
-          { label: 'Sensors', href: '/docs/hardware/sensors/lidar' },
+          { label: 'Sensors', href: '/docs/hardware/sensors' },
           { label: 'IMU' },
         ]}
       />
@@ -54,11 +54,11 @@ export default function ImuPage() {
               3-axis gyroscope) and a QMC6309 (3-axis magnetometer), nine axes
               between them. They report how the car is accelerating, how fast it
               is turning, and where magnetic north sits, all in the imu_link
-              frame at 100 Hz.
+              frame at 200 Hz.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="red">QMI8658A + QMC6309</ChromeBadge>
-              <ChromeBadge variant="outline"><AnimatedNumeral value={100} suffix=" Hz" /></ChromeBadge>
+              <ChromeBadge variant="outline"><AnimatedNumeral value={200} suffix=" Hz" /></ChromeBadge>
               <ChromeBadge variant="outline">accel m/s^2</ChromeBadge>
               <ChromeBadge variant="outline">gyro rad/s</ChromeBadge>
               <ChromeBadge variant="outline">mag teslas</ChromeBadge>
@@ -196,19 +196,21 @@ print(mag)     # magnetic field vector`}
               maxWidth: 720,
             }}
           >
-            The readings come through raw and bias-corrected. They are not run
-            through an orientation filter, so there is no fused roll, pitch, or
-            yaw waiting for you. That is by design: the smoothing and sensor
-            fusion are yours to write, so you stay in control of the trade-off
-            between responsiveness and noise rather than inheriting one. A light
-            moving average over the accelerometer, or a complementary filter that
-            blends the gyro with the magnetometer, is a reasonable place to start.
+            The firmware does two jobs before the data reaches ROS: it
+            subtracts each sensor&apos;s steady bias, and it fuses the
+            accelerometer and gyro into an orientation quaternion. Both arrive
+            on <code style={{ fontFamily: NB.monoFont }}>/imu</code> together:
+            the fused orientation, plus the bias-corrected raw acceleration and
+            turn rates. Use the quaternion for a ready-made heading; use the
+            raw fields to run your own filter and control the trade-off
+            between responsiveness and noise.
           </p>
-          <Callout type="note" title="Bias correction is not the same as fusion">
-            Bias correction removes the steady offset each sensor carries, so a
-            still car reads close to zero turn rate. It does not combine the three
-            sensors into a single orientation. If you want a heading, that step is
-            yours to add.
+          <Callout type="note" title="The magnetometer is off by default">
+            The QMC6309 is not part of the fused orientation and its{' '}
+            <code style={{ fontFamily: NB.monoFont }}>/mag</code> topic ships
+            disabled (<code style={{ fontFamily: NB.monoFont }}>publish_mag: false</code>{' '}
+            in controller.yaml). Turn it on when you want a compass heading or
+            your own nine-axis fusion.
           </Callout>
         </section>
       </ScrollReveal>

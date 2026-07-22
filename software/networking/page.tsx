@@ -232,7 +232,7 @@ http://192.168.10.100:8888     # JupyterLab        (10.42.0.1 on the AP)`}</Code
             </p>
 
             <Code lang="bash">{`# From your laptop, on the car's network.
-ros2 topic list                  # /scan /camera /imu /odom /drive ...
+ros2 topic list                  # /scan /camera /imu /odom /battery /drive ...
 ros2 topic echo /scan --once     # a single scan, straight off the car`}</Code>
 
             <div

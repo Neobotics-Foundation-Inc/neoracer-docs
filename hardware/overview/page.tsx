@@ -46,7 +46,7 @@ const ANATOMY_PARTS: {
   { name: '1:12 chassis', x: 54.9, y: 52.4, color: '#B45309', href: '/docs/hardware/drivetrain', sub: 'Motor, servo, and suspension on the rolling base' },
   { name: 'LiPo compartment', x: 46.6, y: 51.9, color: '#C2185B', href: '/docs/hardware/power', sub: '11.1 V · 3S · battery NOT included', flip: true },
   { name: 'LiDAR', x: 37.1, y: 78.2, color: '#0E9594', href: '/docs/hardware/sensors/lidar', sub: '30 Hz · ~1440 samples · 270° window' },
-  { name: 'Dot matrix display', x: 54.1, y: 80.6, color: '#4F46E5', href: '/docs/build/overview', sub: '8 × 8 LEDs, the car’s face' },
+  { name: 'Dot matrix display', x: 54.1, y: 80.6, color: '#4F46E5', href: '/docs/build/overview', sub: '8 × 8 LED matrix display' },
   { name: 'Cudy router', x: 70.9, y: 74.9, color: '#EA580C', href: '/docs/software/networking', sub: 'The car-to-laptop network' },
   { name: 'Rear wing', x: 53.3, y: 95.3, color: '#0284C7', href: '/docs/build/overview', sub: 'Printed, swappable tail' },
 ];
@@ -228,7 +228,7 @@ export default function HardwareOverviewPage() {
           <Link href="/kits/visualize" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
             /kits/visualize
           </Link>
-          , where you can rotate any component, look inside it, and read its marketing-grade specs.
+          , where you can rotate any component, look inside it, and read its full specs.
         </Callout>
       </ScrollReveal>
 

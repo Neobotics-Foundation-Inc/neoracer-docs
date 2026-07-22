@@ -96,11 +96,10 @@ export default function CameraApiPage() {
       </MouseFollowGlow>
 
       <ScrollReveal>
-        <Callout type="note" title="The API gives 640×480, the sensor is sharper">
-          The physical camera captures up to 1080p, but the library hands every
-          program a fixed 640 by 480 frame so the same code runs in the sim and
-          on the car. If you need the raw full-resolution stream for something
-          special, it is on the{' '}
+        <Callout type="note" title="One resolution everywhere: 640×480">
+          The camera node captures 640 by 480 at 60 fps and passes the frames
+          through unchanged, so the sim and the car hand your program the same
+          shape of image. The stream your code reads is the{' '}
           <code style={{ fontFamily: NB.monoFont }}>/camera</code>{' '}
           <InfoNote term="ROS 2 topic" title="ROS 2 Topic">
             ROS 2 is the robotics framework the car runs on. A topic is a named

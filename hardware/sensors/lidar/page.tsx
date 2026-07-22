@@ -29,7 +29,7 @@ export default function LidarPage() {
         items={[
           { label: 'Docs', href: '/docs' },
           { label: 'Hardware', href: '/docs/hardware/overview' },
-          { label: 'Sensors', href: '/docs/hardware/sensors/lidar' },
+          { label: 'Sensors', href: '/docs/hardware/sensors' },
           { label: 'LiDAR' },
         ]}
       />

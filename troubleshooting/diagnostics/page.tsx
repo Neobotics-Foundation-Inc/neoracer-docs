@@ -165,7 +165,7 @@ ros2 launch osracer_debug debug_image.launch.py  # image pipeline`}</Code>
                   { key: 'fix', label: 'Fix' },
                 ]}
                 rows={[
-                  { cause: 'Wrong mode', fix: <>SWB not in the middle. The middle is manual. See <Link href="/docs/hardware/remote-control" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Remote control</Link>.</> },
+                  { cause: 'Wrong mode', fix: <>SWB not up. Up is manual. See <Link href="/docs/hardware/remote-control" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Remote control</Link>.</> },
                   { cause: 'Controller link', fix: 'Reseat or replace the USB cable from the hub to the controller.' },
                 ]}
               />

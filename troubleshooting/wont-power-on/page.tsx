@@ -86,7 +86,7 @@ export default function WontPowerOnPage() {
             <DashList
               items={[
                 <>
-                  <strong>Is the battery plugged in?</strong> The deans connector
+                  <strong>Is the battery plugged in?</strong> The XT60 connector
                   on the chassis underside should click in firmly. A loose plug
                   will read zero volts at the switch.
                 </>,
@@ -153,7 +153,7 @@ export default function WontPowerOnPage() {
               />
               <NumberedFeatureCard
                 n={2}
-                title="Loose deans plug"
+                title="Loose XT60 plug"
                 lede="The pack connects but the connector is sloppy."
                 body={
                   <>
@@ -210,7 +210,7 @@ export default function WontPowerOnPage() {
       <ScrollReveal>
         <Callout type="tip" title="Still stuck after all this?">
           We're happy to take it from here. A photo of the chassis underside
-          (deans plug + master switch + e-stop visible) plus your order number,
+          (XT60 plug + master switch + e-stop visible) plus your order number,
           sent to{' '}
           <a
             href="mailto:support@neobotics.org"

@@ -27,18 +27,18 @@ const COLUMNS = [
 const THROTTLE_ROWS = [
   {
     param: 'max_speed_forward',
-    value: '0.5',
-    notes: 'Scales every forward /drive command before it reaches the controller. At 0.5, a full-speed command becomes half of the firmware ceiling.',
+    value: '1.0',
+    notes: 'Scales every forward /drive command before it reaches the controller. At 1.0 a full-speed command uses the whole firmware ceiling; lower it to derate the car.',
   },
   {
     param: 'max_speed_backward',
-    value: '0.6',
-    notes: 'The reverse scale. Slightly higher than forward so the car breaks static friction backing up.',
+    value: '1.0',
+    notes: 'The reverse scale, same idea in the other direction.',
   },
   {
     param: 'max_steering',
     value: '0.625',
-    notes: 'Scales the commanded steering angle before the servo mapping.',
+    notes: 'Scales the commanded steering angle before the servo mapping. 0.625 is full servo lock; a higher value stalls the servo against the linkage.',
   },
 ];
 

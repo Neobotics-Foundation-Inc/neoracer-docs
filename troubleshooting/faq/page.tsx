@@ -68,8 +68,8 @@ const FAQS: Faq[] = [
     a: (
       <>
         The firmware caps the drivetrain at 6 m/s, and the driver ships with
-        autonomy scaled to half of that. Both caps are real parameters you can
-        read and change; the{' '}
+        the full range unlocked. The caps are real parameters you can read and
+        lower to derate the car for a classroom; the{' '}
         <a href="/docs/calibration/motor-trim" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
           Motor trim
         </a>{' '}

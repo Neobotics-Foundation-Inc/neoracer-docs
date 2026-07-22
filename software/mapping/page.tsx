@@ -93,7 +93,7 @@ ros2 launch osracer_bringup bringup.launch.py`}</Code>
                 <>The driver is up on the car (start it with <code style={{ fontFamily: NB.monoFont }}>teleop</code>, see <Link href="/docs/software/ros2-driver" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>ROS 2 driver</Link>).</>,
                 <>You can reach the car&apos;s ROS graph from your laptop (see <Link href="/docs/software/networking" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Networking</Link>).</>,
                 <>A bounded indoor space with walls the LiDAR can see. Glass and mirrors read as gaps, so keep them out of the run.</>,
-                <>CH7 centred (RC), so you stay on the sticks while SLAM runs.</>,
+                <>SWB up (manual), so you stay on the sticks while SLAM runs.</>,
               ]}
             />
           </div>
@@ -210,7 +210,7 @@ ros2 launch osracer_slam map_save_cartographer.launch.xml`}</Code>
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'ROS 2 driver', href: '/docs/software/ros2-driver' }}
+        prev={{ label: 'Firmware flashing', href: '/docs/software/firmware-flashing' }}
         next={{ label: 'Navigation (Nav2)', href: '/docs/software/navigation' }}
       />
     </DocsShell>

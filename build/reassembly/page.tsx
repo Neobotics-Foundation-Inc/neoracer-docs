@@ -16,7 +16,7 @@ import { Crumbs, PrevNext, Callout } from '@/components/docs/DocsPrimitives';
 export const metadata: Metadata = {
   title: 'Reassembly · Build · NeoRacer Docs',
   description:
-    'The step-by-step guide for putting a NeoRacer back together after a teardown. In progress, with the full sequence landing by the end of July.',
+    'The step-by-step guide for putting a NeoRacer back together after a teardown. In progress; the photo sequence below already covers the full reassembly order.',
 };
 
 const STEPS: {
@@ -179,7 +179,7 @@ export default function ReassemblyPage() {
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="red">In progress</ChromeBadge>
               <ChromeBadge variant="outline">Photo per step</ChromeBadge>
-              <ChromeBadge variant="outline">Full guide by end of July</ChromeBadge>
+              <ChromeBadge variant="outline">Full guide in progress</ChromeBadge>
             </div>
           </div>
         </section>
@@ -188,7 +188,7 @@ export default function ReassemblyPage() {
       <ScrollReveal>
         <Callout type="note" title="This guide is still being finalized">
           The photo sequence below is live, and the finished guide, with the
-          exact fastener details for every step, lands here by the end of July.
+          exact fastener details for every step, lands here as it is written.
           The{' '}
           <Link href="/docs/build/overview" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
             Build overview

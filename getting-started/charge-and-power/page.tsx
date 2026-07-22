@@ -15,7 +15,7 @@ import {
   NumberedFeatureCard,
 } from '@/components/docs/Editorial';
 import { Crumbs, Callout, PrevNext, Code } from '@/components/docs/DocsPrimitives';
-import { ScrollReveal, MouseFollowGlow, AnimatedNumeral, InfoNote } from '@/components/docs/Interactive';
+import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
 
 export const metadata: Metadata = {
   title: 'Charge & power · NeoRacer Docs',
@@ -46,7 +46,7 @@ export default function ChargeAndPowerPage() {
               along the way, and how to store it between sessions.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="outline" icon={<ClockGlyph />}><AnimatedNumeral value={15} suffix=" minutes" /> (first charge)</ChromeBadge>
+              <ChromeBadge variant="outline" icon={<ClockGlyph />}>1–2 hours (first charge)</ChromeBadge>
               <ChromeBadge variant="outline">Charger included</ChromeBadge>
             </div>
           </div>

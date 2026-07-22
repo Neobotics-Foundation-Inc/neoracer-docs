@@ -54,12 +54,9 @@ export default function ChargeAndPowerPage() {
       </MouseFollowGlow>
 
       <ScrollReveal>
-        <Callout type="danger" title="Two things keep charging safe">
-          <strong>1.</strong> A charging LiPo can fail fast, so staying in the
-          room while it charges is the safe move.{' '}
-          <strong>2.</strong> A hard, non-flammable surface (a LiPo charging bag
-          is ideal) keeps any heat away from anything that can catch. The rest of
-          this page assumes both are in place.
+        <Callout type="danger" title="Charging safety">
+          Charge on a hard, non-flammable surface (a LiPo bag is ideal) and stay
+          in the room while it charges.
         </Callout>
       </ScrollReveal>
 

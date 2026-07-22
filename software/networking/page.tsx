@@ -309,22 +309,78 @@ ros2 topic echo /scan --once     # a single scan, straight off the car`}</Code>
               before you expect to reach the car again.
             </Callout>
             <Callout type="note" title="Rebuilding the access point">
-              The access point is configured on the car, not the router. To
-              rebuild or rename it, run{' '}
-              <code style={{ fontFamily: NB.monoFont }}>racecar setup networking</code>{' '}
-              from a console session at the car; the command takes over the Wi-Fi
-              radio, so a Wi-Fi SSH session drops the moment it runs.
+              The access point is configured on the car, not the router. It is
+              built and renamed with{' '}
+              <code style={{ fontFamily: NB.monoFont }}>racecar setup networking</code>,
+              covered in the next section.
             </Callout>
           </div>
         </section>
       </ScrollReveal>
 
-      {/* ── Section 06 · Quick reference ───────────────────────────────── */}
+      {/* ── Section 06 · racecar setup networking ──────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
           <GhostNumeral n="06" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>06 / NETWORKING AT A GLANCE</Eyebrow>
+            <Eyebrow>06 / RACECAR SETUP NETWORKING</Eyebrow>
+            <DisplayHeading size="lg">
+              THE SETUP <Red>COMMAND.</Red>
+            </DisplayHeading>
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
+              <code style={{ fontFamily: NB.monoFont }}>racecar setup networking</code>{' '}
+              configures the car&apos;s side of everything on this page: the
+              access point, the fixed Ethernet address, and the lidar link. Run
+              with no flags it applies the defaults. Flags change a setting, and
+              every flag value is saved to{' '}
+              <code style={{ fontFamily: NB.monoFont }}>~/.config/racecar/networking.env</code>{' '}
+              on the car, so the setting survives reboots and later runs.
+            </p>
+            <Code lang="bash">{`racecar setup networking --ssid=neoracer-2   # rename the access point
+racecar setup networking --psk=mypassword    # change the AP password
+racecar setup networking --show              # print the saved settings
+racecar setup networking --reset             # back to the defaults`}</Code>
+            <div style={{ marginTop: 18 }}>
+              <DataTable
+                columns={[
+                  { key: 'flag', label: 'Flag', accent: true, mono: true },
+                  { key: 'sets', label: 'Sets' },
+                  { key: 'def', label: 'Default', mono: true },
+                ]}
+                rows={[
+                  { flag: '--ssid', sets: 'Access point name', def: 'neoracer-1' },
+                  { flag: '--psk', sets: 'Access point password', def: 'neobotics' },
+                  { flag: '--channel', sets: 'Access point 2.4 GHz channel', def: '6' },
+                  { flag: '--ap-addr', sets: "The car's address on the access point", def: '10.42.0.1/24' },
+                  { flag: '--eth-static', sets: "The car's fixed address on the cudy", def: '192.168.10.100/24' },
+                  { flag: '--lidar-host', sets: 'Host address on the lidar link', def: '192.168.8.1/24' },
+                  { flag: '--wifi-iface', sets: 'Wi-Fi interface name', def: 'wlP1p1s0' },
+                  { flag: '--eth-iface', sets: 'Ethernet interface name', def: 'nr_eth0' },
+                ]}
+              />
+            </div>
+            <Callout type="tip" title="Several cars in one room">
+              Every car ships as <code style={{ fontFamily: NB.monoFont }}>neoracer-1</code>.
+              With more than one car powered up, give each its own name once,{' '}
+              <code style={{ fontFamily: NB.monoFont }}>--ssid=neoracer-2</code>,{' '}
+              <code style={{ fontFamily: NB.monoFont }}>--ssid=neoracer-3</code>,
+              and so on. The name sticks.
+            </Callout>
+            <Callout type="warn" title="Run it from a wired session">
+              The command takes over the Wi-Fi radio, so an SSH session over
+              Wi-Fi drops the moment it runs. Use a monitor and keyboard at the
+              car, the USB cable link, or SSH over the cudy&apos;s wired side.
+            </Callout>
+          </div>
+        </section>
+      </ScrollReveal>
+
+      {/* ── Section 07 · Quick reference ───────────────────────────────── */}
+      <ScrollReveal>
+        <section style={{ position: 'relative', paddingBottom: 56 }}>
+          <GhostNumeral n="07" top={-30} right={-20} size={460} />
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <Eyebrow>07 / NETWORKING AT A GLANCE</Eyebrow>
             <DisplayHeading size="lg">
               QUICK <Red>REFERENCE.</Red>
             </DisplayHeading>
@@ -341,6 +397,7 @@ ros2 topic echo /scan --once     # a single scan, straight off the car`}</Code>
                   { path: 'Terminal', how: 'SSH in as racecar.', needs: 'racecar@<car address>' },
                   { path: 'Full desktop', how: 'RustDesk by direct IP.', needs: '<car address>' },
                   { path: 'No Wi-Fi', how: 'Wired USB-C, RNDIS link.', needs: 'racecar@192.168.55.1' },
+                  { path: 'Rename the AP', how: 'racecar setup networking.', needs: '--ssid=neoracer-N' },
                   { path: 'Health dashboard', how: 'Browser, auto-started.', needs: ':8080' },
                   { path: 'Write code', how: 'JupyterLab, auto-started.', needs: ':8888' },
                   { path: 'See the car nodes', how: 'ROS 2 DDS discovery.', needs: 'same subnet + ROS_DOMAIN_ID' },

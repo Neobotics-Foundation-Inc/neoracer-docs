@@ -42,10 +42,8 @@ export default function ChargeAndPowerPage() {
               CHARGE THE <Red>BATTERY.</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
-              LiPo packs give a racecar the energy density it needs, and that
-              same chemistry is why they are charged with care. This page covers
-              charging the pack, what the charger shows along the way, and how
-              to store it between sessions.
+              This page covers charging the 3S LiPo pack, what the charger shows
+              along the way, and how to store it between sessions.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="outline" icon={<ClockGlyph />}><AnimatedNumeral value={15} suffix=" minutes" /> (first charge)</ChromeBadge>

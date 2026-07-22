@@ -56,6 +56,18 @@ export default function NavigationPage() {
         </section>
       </MouseFollowGlow>
 
+      <ScrollReveal>
+        <Callout type="note" title="The osracer base runs underneath this">
+          Navigation runs on the osracer stack, so its bringup comes first:
+          stop the services, switch workspaces, and leave the bringup running
+          in its own terminal. The full sequence is on{' '}
+          <a href="/docs/software/workspaces" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Workspaces</a>.
+          <Code lang="bash">{`racecar service stop
+racecar ws osracer
+ros2 launch osracer_bringup bringup.launch.py`}</Code>
+        </Callout>
+      </ScrollReveal>
+
       {/* ── 01 · prerequisites ──────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ paddingBottom: 40 }}>

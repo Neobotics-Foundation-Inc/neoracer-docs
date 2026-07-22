@@ -100,14 +100,23 @@ racecar ws neoracer     # back to the default`}</Code>
               ONE STACK AT A <Red>TIME.</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-              Both stacks talk to the same hardware, so stop the services before
-              launching osracer, and start them again when you are done.
+              Both stacks talk to the same hardware, so stop the services first.
+              Then launch the osracer bringup, which starts the base the stack
+              needs (chassis, LiDAR, robot description) and stays running while
+              you use it. Mapping and Navigation launches run in a second
+              terminal on top of it.
             </p>
-            <Code lang="bash">{`racecar service stop     # free the hardware
+            <Code lang="bash">{`# terminal 1: the base. Leave this running.
+racecar service stop
 racecar ws osracer
-# ... run the osracer launches from Mapping or Navigation ...
+ros2 launch osracer_bringup bringup.launch.py
 
-racecar service start    # back to the normal stack`}</Code>
+# terminal 2: mapping or navigation, from those pages
+racecar ws osracer
+ros2 launch osracer_slam slam_toolbox.launch.py
+
+# when you are done: Ctrl-C both, then
+racecar service start`}</Code>
             <Callout type="note" title="The LiDAR driver is shared">
               Both workspaces build from one LiDAR driver source, so a fix there
               lands in both.

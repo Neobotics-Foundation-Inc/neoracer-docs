@@ -78,19 +78,7 @@ export default function DocsLandingPage() {
             <DisplayHeading size="lg">
               CHOOSE A <Red>SECTION.</Red>
             </DisplayHeading>
-            <p
-              style={{
-                fontFamily: NB.bodyFont,
-                fontSize: 16,
-                lineHeight: 1.6,
-                color: NB.textMutedBeige,
-                maxWidth: 680,
-                marginBottom: 18,
-              }}
-            >
-              Every section of the docs has a bay, and the car pulls up to
-              whichever one you are about to open.
-            </p>
+            <div style={{ marginBottom: 18 }} />
             <PitLaneNav sections={pitLane} />
           </div>
         </section>

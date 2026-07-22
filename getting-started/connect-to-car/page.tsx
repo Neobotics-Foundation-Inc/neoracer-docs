@@ -126,7 +126,7 @@ export default function ConnectToCarPage() {
                 </>,
               ]}
             />
-            <Callout type="tip" title="Check it took">
+            <Callout type="tip" title="Verify the internet connection">
               Run <code style={{ fontFamily: NB.monoFont }}>ping github.com</code>{' '}
               in a terminal. Replies mean you are online.
             </Callout>

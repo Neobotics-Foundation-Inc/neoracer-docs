@@ -48,8 +48,8 @@ const TERMS: Term[] = [
     def: 'The encoder\'s resolution. One full wheel turn produces this many tick edges. Higher CPR means finer odometry but more interrupts on the MCU (microcontroller unit).',
   },
   {
-    term: 'Deans connector',
-    def: 'The flat T-shaped power plug on the battery. If the car won\'t power on, a firm reseat is usually the first thing to try. When the two halves rotate freely against each other, the connector is worn and worth replacing.',
+    term: 'XT60 connector',
+    def: 'The yellow two-pin power plug on the battery. If the car won\'t power on, a firm reseat is usually the first thing to try. When the halves seat loosely, the connector is worn and worth replacing.',
     see: { label: "Won't power on", href: '/docs/troubleshooting/wont-power-on' },
   },
   {

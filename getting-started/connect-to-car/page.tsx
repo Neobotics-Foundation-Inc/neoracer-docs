@@ -115,8 +115,9 @@ export default function ConnectToCarPage() {
                   top-right of the desktop and join any Wi-Fi with internet.
                 </>,
                 <>
-                  <strong>Or plug in Ethernet.</strong> An Ethernet cable with
-                  internet into the Jetson&apos;s RJ45 port.
+                  <strong>Or plug in Ethernet.</strong> Connect a cable with
+                  internet to the Jetson&apos;s RJ45 port, then switch Wired on
+                  in the same network menu.
                 </>,
               ]}
             />

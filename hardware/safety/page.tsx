@@ -55,9 +55,8 @@ export default function SafetyPage() {
 
       <ScrollReveal>
         <Callout type="danger" title="The short version">
-          <strong>1.</strong> The car is happiest indoors.{' '}
-          <strong>2.</strong> Humans, pets, and toddlers do best outside the
-          safe zone.{' '}
+          <strong>1.</strong> Drive indoors.{' '}
+          <strong>2.</strong> Keep people and pets outside the safe zone.{' '}
           <strong>3.</strong> Disconnecting the LiPo when you stop saves the
           pack.{' '}
           <strong>4.</strong> A smell, some smoke, or any swelling is the cue to

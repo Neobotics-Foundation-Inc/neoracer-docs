@@ -435,7 +435,7 @@ export default function RacecarNeoLibraryPage() {
                 maxWidth: 720,
               }}
             >
-              The Playground is the comfortable place to iterate until you
+              Iterate in the Playground until you
               trust the behaviour, and the same file then runs on the car
               without a single change. The runtime swaps the Pyodide-backed
               sensor sources for the{' '}

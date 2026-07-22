@@ -146,7 +146,7 @@ export default function FirstProgramPage() {
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
           <GhostNumeral n="06" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>STEP 06 / GETTING STARTED · THE FINAL ONE</Eyebrow>
+            <Eyebrow>STEP 06 / GETTING STARTED</Eyebrow>
             <DisplayHeading size="xl">
               WALL <Red>FOLLOWING.</Red>
             </DisplayHeading>
@@ -182,15 +182,17 @@ export default function FirstProgramPage() {
 
       <ScrollReveal>
         <section style={{ paddingBottom: 24 }}>
-          <MonoLabel>Pick your launch pad</MonoLabel>
+          <MonoLabel>Where to run it</MonoLabel>
           <DashList
             items={[
               <>
-                <strong>Playground (recommended for the first run)</strong>: zero install. Open{' '}
+                <strong>Playground</strong>: open{' '}
                 <Link href="https://playground.neobotics.org" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
                   playground.neobotics.org
                 </Link>{' '}
-                in your browser, paste the code, drop the car next to a wall, and click Run.
+                in your browser, paste the code, place the car next to a wall,
+                and click Run. There is nothing to install, so this is the
+                easiest place for the first run.
               </>,
               <>
                 <strong>Car</strong>: save the file as{' '}
@@ -229,9 +231,9 @@ import racecar_utils as rc_utils
 
 rc = racecar_core.create_racecar()
 
-SPEED = 0.2        # gentle, steady throttle
+SPEED = 0.2        # low throttle while tuning
 TARGET = 50        # cm: the gap we want to hold from the right wall
-KP = 0.01          # how hard to steer per cm of error
+KP = 0.01          # steering per cm of error
 FRONT_STOP = 50    # cm: a wall this close ahead means turn away
 
 def start():
@@ -262,7 +264,7 @@ rc.go()`}
 
       <ScrollReveal>
         <section style={{ paddingBottom: 24 }}>
-          <Callout type="note" title="Read, decide, steer, repeat">
+          <Callout type="note" title="One decision per frame">
             <code style={{ fontFamily: NB.monoFont }}>update()</code> runs once per frame,
             many times a second, so you never loop or sleep inside it. Each call you
             read the <Link href="/docs/api-reference/python/lidar" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>LiDAR</Link>,
@@ -284,15 +286,15 @@ rc.go()`}
             WHAT TO <Red>EXPECT.</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-            Drop the car alongside a wall on its right and run it. It should track
-            the wall and peel away at corners. If it weaves or scrapes, tune KP
-            and SPEED and run it again.
+            Place the car with a wall on its right and run it. It should hold a
+            steady distance from the wall and turn at corners. If it
+            oscillates or hits the wall, tune KP and SPEED and run it again.
           </p>
           <div style={{ marginTop: 18, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 16 }}>
             {[
-              { title: 'Sim run', body: 'Clean LiDAR, so it hugs the wall smoothly and turns crisply at corners. The baseline to tune against.' },
-              { title: 'Car run', body: 'Same code, real LiDAR. A little weave from sensor noise is normal. If the data is empty or frozen, that is a LiDAR fault, not your code.' },
-              { title: 'Tuning', body: 'KP too high oscillates, too low drifts into the wall. Keep SPEED low while you tune, then raise it once it tracks.' },
+              { title: 'Sim run', body: 'The simulator has no sensor noise, so the car holds its distance and turns without weaving. Use this run as the baseline to tune against.' },
+              { title: 'Car run', body: 'Same code, real LiDAR. Small steering oscillations from sensor noise are normal. If the data is empty or frozen, that is a LiDAR fault, not your code.' },
+              { title: 'Tuning', body: 'If KP is too high the car oscillates; too low and it drifts into the wall. Keep SPEED low while you tune, then raise it once the car holds the target distance.' },
             ].map((c, i) => (
               <div key={i} style={{ background: NB.haloWhite, border: `1px solid ${NB.borderOnBeige}`, borderRadius: 10, padding: 16, boxShadow: NB.shadowCard }}>
                 <div style={{ fontFamily: NB.headingFont, fontSize: 14, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: NB.textOnBeige, marginBottom: 6 }}>
@@ -307,7 +309,7 @@ rc.go()`}
             as all zeros or infinities, the scan never reached your code. The{' '}
             <Link href="/docs/troubleshooting/lidar-empty-scan" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>LiDAR empty scan</Link>{' '}
             and <Link href="/docs/troubleshooting/diagnostics" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Diagnostics</Link> pages
-            walk the fix.
+            cover the fix.
           </Callout>
         </section>
       </ScrollReveal>
@@ -322,7 +324,7 @@ rc.go()`}
           <Link href="/docs/hardware/overview" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
             Hardware overview
           </Link>{' '}
-          to see what's actually in the box you just unboxed.
+          for the full parts breakdown.
         </Callout>
       </ScrollReveal>
 

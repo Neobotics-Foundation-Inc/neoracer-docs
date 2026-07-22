@@ -231,7 +231,7 @@ print(mag)     # magnetic field vector`}
               maxWidth: 720,
             }}
           >
-            Under the hood, imu_node publishes the inertial data and the magnetic
+            The controller node publishes the inertial data and the magnetic
             field on two separate topics, both stamped in the imu_link frame.
           </p>
           <DataTable

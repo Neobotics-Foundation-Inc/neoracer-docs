@@ -55,7 +55,7 @@ const TERMS: Term[] = [
   {
     term: 'e-stop',
     short: 'Emergency stop',
-    def: 'The big red button on the chassis. A press cuts power instantly, and a twist brings it back. Flipping the transmitter’s SWB switch back to the middle (manual) is the everyday software e-stop.',
+    def: 'The big red button on the chassis. A press cuts power instantly, and a twist brings it back. Flipping the transmitter’s SWB switch back up (manual) is the everyday software e-stop.',
   },
   {
     term: 'ESC',

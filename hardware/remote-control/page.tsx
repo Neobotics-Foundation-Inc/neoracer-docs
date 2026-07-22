@@ -50,8 +50,7 @@ export default function RemoteControlPage() {
               transmitter. Two sticks drive it, and{' '}
               <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>SWB</code>{' '}
               is the switch that matters most: it hands control between you and
-              the host computer. In the middle you drive; at the autonomy end
-              your code does.
+              the host computer. Up you drive; down your code does.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="red">Flysky FS-i6S</ChromeBadge>
@@ -84,8 +83,8 @@ export default function RemoteControlPage() {
             items={[
               <><strong>Left stick, throttle.</strong> Push up to go forward, pull down to reverse. Releasing it to centre is the everyday way to stop.</>,
               <><strong>Right stick, steering.</strong> Left turns left, right turns right. Steering only bites while the car is rolling.</>,
-              <><strong>SWA, manual speed.</strong> A 2-position switch for manual driving: slow mode caps the throttle at 15% of full power, fast mode opens it up. Start slow while you find the feel of it.</>,
-              <><strong>SWB, mode.</strong> The 3-position switch that decides who is driving, covered below.</>,
+              <><strong>SWA, manual speed.</strong> Up is slow mode (throttle capped at 15% of full power), down is fast. Start slow while you find the feel of it.</>,
+              <><strong>SWB, mode.</strong> Decides who is driving, covered below.</>,
               <><strong>Power.</strong> Hold both side buttons together until it beeps to turn the transmitter on or off.</>,
             ]}
           />
@@ -107,10 +106,8 @@ export default function RemoteControlPage() {
               WHO IS <Red>DRIVING.</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-              SWB has three positions and each one answers the same question:
-              who is driving. The middle is you, on the sticks. One end parks
-              the car in idle, where neither the sticks nor code move it. The
-              other end hands the car to the host computer and your code.
+              SWB answers one question: who is driving. Up is you, on the
+              sticks. Down hands the car to the host computer and your code.
             </p>
             <div style={{ marginTop: 18 }}>
               <DataTable
@@ -120,19 +117,17 @@ export default function RemoteControlPage() {
                   { key: 'who', label: 'Who drives' },
                 ]}
                 rows={[
-                  { mode: 'Idle', pos: 'Up', who: 'Nobody. The car holds still regardless of sticks or code.' },
-                  { mode: 'Manual (RC)', pos: 'Middle', who: 'You, on the sticks. The safe default.' },
+                  { mode: 'Manual (RC)', pos: 'Up', who: 'You, on the sticks. The safe default.' },
                   { mode: 'Autonomous', pos: 'Down', who: 'The host computer: teleop, SLAM, Nav2, your code.' },
                 ]}
               />
             </div>
             <Callout type="warn" title="Start and end in manual">
-              Set SWB to the middle before you power on, and again before you
-              shut down. Coming up in manual means the car can&apos;t drive
-              itself off the bench, and dropping back to manual cuts autonomous
-              control cleanly when you&apos;re done. Whenever something looks
-              wrong, flipping SWB back to the middle is the fastest way to take
-              the wheel.
+              Set SWB up before you power on, and again before you shut down.
+              Coming up in manual means the car can&apos;t drive itself off the
+              bench, and dropping back to manual cuts autonomous control cleanly
+              when you&apos;re done. Whenever something looks wrong, flipping
+              SWB back up is the fastest way to take the wheel.
             </Callout>
           </div>
         </section>

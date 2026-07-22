@@ -146,7 +146,7 @@ function PipelineBlock() {
         <Arrow />
         <Hop text="mux_node" kind="node" />
         <span style={{ color: NB.textDimBlue, fontFamily: NB.monoFont, fontSize: 12 }}>
-          {' '}joins the same arbiter. SWB picks the winner: middle is teleop, the autonomy end is /drive.
+          {' '}joins the same arbiter. SWB picks the winner: up is teleop, down is /drive.
         </span>
       </div>
     </div>

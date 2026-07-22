@@ -65,10 +65,10 @@ function FlyskySwitchesFigure() {
         <line x1="72" y1="9" x2="50" y2="17" stroke={RED} strokeWidth="0.7" markerEnd="url(#fsp-arrow)" />
       </svg>
       <div style={{ ...chip, left: '2%', top: '33%' }}>
-        SWA · MANUAL SPEED<br />SLOW ↔ FAST
+        SWA · MANUAL SPEED<br />UP SLOW · DOWN FAST
       </div>
       <div style={{ ...chip, left: '66%', top: '3%' }}>
-        SWB · WHO DRIVES<br />MANUAL ↔ AUTONOMY
+        SWB · WHO DRIVES<br />UP MANUAL · DOWN AUTONOMY
       </div>
     </div>
   );
@@ -165,7 +165,7 @@ export default function FirstProgramPage() {
       <ScrollReveal>
         <Fig
           label="FIG. A / THE TWO SWITCHES THIS PAGE USES"
-          caption="On the Flysky transmitter, SWB decides who is driving: flip it to hand the car to your program, flip it back to take over with the sticks. SWA applies only while you drive manually, switching the car between slow mode and fast mode."
+          caption="On the Flysky transmitter, SWB decides who is driving: down hands the car to your program, up takes over with the sticks. SWA applies only while you drive manually: up is slow mode, down is fast."
         >
           <FlyskySwitchesFigure />
         </Fig>

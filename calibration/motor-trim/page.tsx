@@ -202,8 +202,8 @@ export default function MotorTrimPage() {
               <NumberedFeatureCard
                 n={4}
                 title="A way to stop"
-                lede="Flip SWB back to the middle."
-                body="The middle of the transmitter's SWB switch is manual mode, so flipping it there takes the car away from your code instantly. That is your fastest manual halt during a verify run."
+                lede="Flip SWB back up."
+                body="Up on the transmitter's SWB switch is manual mode, so flipping it there takes the car away from your code instantly. That is your fastest manual halt during a verify run."
               />
             </div>
           </div>

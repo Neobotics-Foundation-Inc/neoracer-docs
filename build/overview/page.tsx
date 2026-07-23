@@ -115,11 +115,10 @@ export default function BuildOverviewPage() {
             href="/docs/hardware/oscore-board"
             linkLabel="OSCORE board"
           >
-            The OSCORE board is the bridge between the brain and the moving parts.
+            The OSCORE board sits between the Jetson and the moving parts.
             Built around an ESP32-S3, it takes the Jetson's commands and turns them
             into the signals that drive the motor and steer the servo, and it
-            sends the IMU and wheel data back the other way. The harness you see
-            here carries power in and every control line out.
+            sends the IMU and wheel data back the other way.
           </StepCard>
 
           <StepCard
@@ -130,10 +129,10 @@ export default function BuildOverviewPage() {
             href="/docs/hardware/sensors/lidar"
             linkLabel="LiDAR"
           >
-            The LakiBeam L1 rides up at the nose and spins a laser around to map the
-            walls and obstacles near the car. It is what lets the NeoRacer follow a
-            wall, find a gap, and race a track it has never seen before. It sits on
-            a short tower and connects back to the Jetson over USB.
+            The LakiBeam L1 mounts on a short tower at the nose and spins a laser
+            to measure the distance to walls and obstacles around the car. Wall
+            following, gap finding, and mapping all read from this scan. It
+            connects to the Jetson through the OSCORE board.
           </StepCard>
 
           <StepCard

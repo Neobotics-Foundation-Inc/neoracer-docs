@@ -15,7 +15,6 @@ import {
 import {
   ImageStackDiagram,
   FlashStripDiagram,
-  NetworkDiscoveryDiagram,
 } from '@/components/docs/Diagrams';
 import {
   ScrollReveal,
@@ -309,16 +308,6 @@ export default function OsAndImagePage() {
           </div>
         </div>
         </section>
-      </ScrollReveal>
-
-      {/* ── FIG. C · Network discovery ──────────────────────────────── */}
-      <ScrollReveal>
-        <Fig
-          label="FIG. C / FINDING THE CAR ON THE NETWORK"
-          caption="Two ways to the car: join the cudy router’s Wi-Fi and reach it at 192.168.10.100, or join the car’s own access point (neoracer-1) and reach it at 10.42.0.1. Password neobotics on both."
-        >
-          <NetworkDiscoveryDiagram />
-        </Fig>
       </ScrollReveal>
 
       {/* ── Section 04 · SSH cheat sheet ───────────────────────────── */}

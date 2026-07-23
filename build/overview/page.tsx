@@ -15,7 +15,7 @@ import { StepCard } from '@/components/docs/StepCard';
 export const metadata: Metadata = {
   title: 'Build overview · NeoRacer Docs',
   description:
-    'Your NeoRacer arrives fully built, but it is modular. This is a friendly tour of the major components and how they fit together, for when you want to swap, repair, or customize your car.',
+    'Your NeoRacer arrives fully built, but it is modular. The major components and how they fit together, for when you want to swap, repair, or customize your car.',
 };
 
 export default function BuildOverviewPage() {
@@ -38,18 +38,16 @@ export default function BuildOverviewPage() {
               THE <Red>BUILD.</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
-              Your NeoRacer arrives fully built and ready to drive, so you never
-              have to assemble one to get going. We put this walkthrough together
-              for the curious, and for anyone who wants to make the car their own.
-              Every major part is{' '}
+              Your NeoRacer arrives fully built and ready to drive; no assembly
+              is needed. This page covers the major components for when you want
+              to swap, repair, or customize something. Every major part is{' '}
               <InfoNote term="modular" title="Modular">
                 Each component is its own unit that connects through a standard
                 mount and connector, so you can take one off and put another on
                 without touching the rest of the car.
               </InfoNote>{' '}
-              which means that once you can see how it all fits together, swapping
-              a sensor, repairing a part, or rebuilding the whole thing from the
-              chassis up becomes something you can actually do.
+              so you can swap a sensor, repair a part, or rebuild the whole car
+              from the chassis up.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="outline">Ships assembled</ChromeBadge>
@@ -63,8 +61,8 @@ export default function BuildOverviewPage() {
       <ScrollReveal>
         <Callout type="tip" title="You don't have to build anything">
           The car ships assembled and calibrated, so nothing on this page is
-          needed before your first drive. Think of it as a map of what is inside
-          and how it connects, handy for the day you want to change something.
+          needed before your first drive. It is a map of what is inside and how
+          it connects, for when you want to change something.
         </Callout>
       </ScrollReveal>
 
@@ -102,9 +100,9 @@ export default function BuildOverviewPage() {
             href="/docs/hardware/compute"
             linkLabel="Compute"
           >
-            The NVIDIA Jetson Orin Nano is the brain. It runs Linux, your Python,
-            and the heavier vision and learning work, and it talks to the rest of
-            the car over USB.
+            The NVIDIA Jetson Orin Nano is the car's main computer. It runs Linux,
+            your Python, and the heavier vision and learning work, and it talks
+            to the rest of the car over USB.
           </StepCard>
 
           <StepCard
@@ -143,10 +141,10 @@ export default function BuildOverviewPage() {
             href="/docs/hardware/sensors/camera"
             linkLabel="Camera"
           >
-            The camera looks forward from a printed housing at the front of the
-            car. It is the car's eyes for lane following, colour and object
-            detection, and anything else you want to teach it to see. A single
-            USB cable runs it straight to the Jetson.
+            The camera faces forward from a printed housing at the front of the
+            car. Lane following, colour and object detection, and any other
+            vision work read from it. A single USB cable connects it directly
+            to the Jetson.
           </StepCard>
 
           <StepCard
@@ -168,10 +166,10 @@ export default function BuildOverviewPage() {
             image="/images/build/front-bumper-2.jpg"
             alt="The NeoRacer front bumper with its four mounting screws"
           >
-            The front bumper takes the hits. It bolts onto the nose with four
-            screws and shields the camera, the LiDAR tower, and the front
-            suspension when an early lap meets a wall. It is also one of the
-            simplest parts to print again if you ever fancy a different shape.
+            The front bumper bolts onto the nose with four screws and shields the
+            camera, the LiDAR tower, and the front suspension in a crash. It is
+            a 3D-printed part, so a replacement or a modified shape is easy to
+            print.
           </StepCard>
 
           <StepCard
@@ -180,11 +178,10 @@ export default function BuildOverviewPage() {
             image="/images/build/rear-wing-2.jpg"
             alt="The 3D-printed rear wing with its mounting arms and screws"
           >
-            The rear wing bolts onto the tail with its two mounting arms. It
-            finishes the racing silhouette and shields the back of the car the
-            same way the bumper covers the front. Like the bumper, it is a
-            printed part, so a custom wing is a fun first CAD project for your
-            car.
+            The rear wing bolts onto the tail with its two mounting arms and
+            shields the back of the car the same way the bumper covers the
+            front. Like the bumper, it is a printed part, so a custom wing is a
+            simple first CAD project.
           </StepCard>
 
           <StepCard
@@ -194,8 +191,8 @@ export default function BuildOverviewPage() {
             alt="A NeoRacer-branded side cover panel"
           >
             The side covers close up the electronics bay and carry the NeoRacer
-            name. They keep dust and stray fingers out of the wiring, and they make
-            an easy first canvas when you want to give your car its own look.
+            name. They keep dust out of the wiring, and they are flat printed
+            panels, so they are the simplest part to customize.
           </StepCard>
 
           <StepCard

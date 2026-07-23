@@ -157,10 +157,9 @@ export default function BuildOverviewPage() {
             href="/docs/getting-started/first-program"
             linkLabel="First program"
           >
-            The 8 by 8 LED dot matrix is the car's face. It is the friendliest
-            thing to program on day one, a little grid you can light up with
-            patterns, numbers, or whatever status you want the car to show while it
-            drives.
+            The 8 by 8 LED dot matrix mounts at the back of the car. Programs
+            write patterns, numbers, or status text to it while the car drives,
+            over the /led_matrix/command topic.
           </StepCard>
 
           <StepCard

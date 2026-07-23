@@ -137,11 +137,11 @@ export default function BuildOverviewPage() {
             n="05"
             title="The camera"
             image="/images/build/camera-2.jpg"
-            alt="The NeoRacer camera in its printed front housing"
+            alt="The NeoRacer camera in its front housing"
             href="/docs/hardware/sensors/camera"
             linkLabel="Camera"
           >
-            The camera faces forward from a printed housing at the front of the
+            The camera faces forward from its housing at the front of the
             car. Lane following, colour and object detection, and any other
             vision work read from it. A single USB cable connects it directly
             to the Jetson.
@@ -167,21 +167,18 @@ export default function BuildOverviewPage() {
             alt="The NeoRacer front bumper with its four mounting screws"
           >
             The front bumper bolts onto the nose with four screws and shields the
-            camera, the LiDAR tower, and the front suspension in a crash. It is
-            a 3D-printed part, so a replacement or a modified shape is easy to
-            print.
+            camera, the LiDAR tower, and the front suspension in a crash.
           </StepCard>
 
           <StepCard
             n="08"
             title="The rear wing"
             image="/images/build/rear-wing-2.jpg"
-            alt="The 3D-printed rear wing with its mounting arms and screws"
+            alt="The rear wing with its mounting arms and screws"
           >
             The rear wing bolts onto the tail with its two mounting arms and
             shields the back of the car the same way the bumper covers the
-            front. Like the bumper, it is a printed part, so a custom wing is a
-            simple first CAD project.
+            front. Both the wing and the bumper are stock factory parts.
           </StepCard>
 
           <StepCard
@@ -191,8 +188,8 @@ export default function BuildOverviewPage() {
             alt="A NeoRacer-branded side cover panel"
           >
             The side covers close up the electronics bay and carry the NeoRacer
-            name. They keep dust out of the wiring, and they are flat printed
-            panels, so they are the simplest part to customize.
+            name. They keep dust out of the wiring, and they are the simplest
+            part to customize.
           </StepCard>
 
           <StepCard

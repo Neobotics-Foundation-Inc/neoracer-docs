@@ -52,8 +52,10 @@ export default function CameraPage() {
             >
               The forward-facing colour camera mounted on the front of the
               chassis. Your code reads it as a steady stream of 640 x 480 BGR
-              colour frames. It is an RGB camera, not a depth camera, so reach for
-              the LiDAR when you need distance. The same frame size the
+              colour frames at 60 fps. The sensor can capture up to 120 fps;
+              the driver runs it at 60, which is the recommended rate. It is an
+              RGB camera, not a depth camera, so use the LiDAR when you need
+              distance. The same frame size the
               racecar-neo-library hands you in the Playground sim and on the car,
               so what you tune in simulation is what runs on the track.
             </p>
@@ -61,6 +63,7 @@ export default function CameraPage() {
               <ChromeBadge variant="red">Runs unchanged in Playground (sim)</ChromeBadge>
               <ChromeBadge variant="outline"><AnimatedNumeral value={640} suffix=" px wide" /></ChromeBadge>
               <ChromeBadge variant="outline"><AnimatedNumeral value={480} suffix=" px tall" /></ChromeBadge>
+              <ChromeBadge variant="outline">60 fps (120 max)</ChromeBadge>
               <ChromeBadge variant="outline">RGB, no depth</ChromeBadge>
               <ChromeBadge variant="outline">JPEG on /camera</ChromeBadge>
             </div>

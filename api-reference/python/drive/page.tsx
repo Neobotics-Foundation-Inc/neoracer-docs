@@ -14,14 +14,14 @@ import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 export const metadata: Metadata = {
   title: 'rc.drive · Python API · NeoRacer Docs',
   description:
-    'The Drive module: set the rear-wheel speed and front-wheel angle. set_speed_angle, stop, set_max_speed. Same API in the Playground sim and on the car.',
+    'The Drive module: set the wheel speed and front-wheel steering angle. set_speed_angle, stop, set_max_speed. Same API in the Playground sim and on the car.',
 };
 
 const METHODS: ApiMethod[] = [
   {
     sig: 'rc.drive.set_speed_angle(speed, angle)',
     returns: 'None',
-    summary: 'The one write you have. Sets the rear-wheel speed and the front-wheel steering angle for this frame.',
+    summary: 'The one write you have. Sets the wheel speed and the front-wheel steering angle for this frame.',
     params: [
       { name: 'speed: float', detail: <>Throttle in <code style={{ fontFamily: NB.monoFont }}>[-1.0, 1.0]</code>. 1.0 is full forward, -1.0 full reverse, 0 is stopped.</> },
       { name: 'angle: float', detail: <>Steering in <code style={{ fontFamily: NB.monoFont }}>[-1.0, 1.0]</code>. -1.0 is full left, 1.0 full right, 0 is straight.</> },
@@ -72,7 +72,7 @@ export default function DriveApiPage() {
               }}
             >
               The Drive module is how your code moves the car: one call sets the
-              rear-wheel speed and the front-wheel steering angle. It is the
+              wheel speed and the front-wheel steering angle. It is the
               only part of the car your program writes to, and the same three
               methods run unchanged in the Playground sim and on the physical
               NeoRacer.

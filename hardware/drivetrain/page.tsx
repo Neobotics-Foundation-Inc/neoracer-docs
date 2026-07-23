@@ -16,7 +16,7 @@ import { Crumbs, PrevNext, Callout } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
   title: 'Drivetrain · Hardware · NeoRacer Docs',
-  description: 'Ackermann steering, rear-wheel drive, brushed motor at 11,000 RPM no-load, and a 20 kg waterproof high-torque servo.',
+  description: 'Ackermann steering, four-wheel drive, brushed motor at 11,000 RPM no-load, and a 20 kg waterproof high-torque servo.',
 };
 
 export default function DrivetrainPage() {
@@ -46,14 +46,14 @@ export default function DrivetrainPage() {
                 center, the way a real car steers. It avoids the tyre scrub you
                 get when both front wheels point the same way.
               </InfoNote>{' '}
-              geometry with rear-wheel drive,
+              geometry with four-wheel drive,
               independent suspension, and 80 mm all-terrain tyres. The same
               Ackermann kinematics as the F1TENTH reference car, so the same
               control laws carry over.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="outline">Ackermann steering</ChromeBadge>
-              <ChromeBadge variant="outline">Rear-wheel drive</ChromeBadge>
+              <ChromeBadge variant="outline">Four-wheel drive</ChromeBadge>
               <ChromeBadge variant="outline">
                 <AnimatedNumeral value={280} prefix="Wheelbase " suffix=" mm" />
               </ChromeBadge>
@@ -89,7 +89,7 @@ export default function DrivetrainPage() {
             <br />
             No-load:&nbsp;<span style={{ color: NB.neoboticsRed }}>~11,000 RPM</span>
             <br />
-            Drive:&nbsp;&nbsp;&nbsp;Rear axle, fixed reduction
+            Drive:&nbsp;&nbsp;&nbsp;All four wheels, fixed reduction
             <br />
             Closed loop: MCU (microcontroller unit) velocity controller (see <a href="/docs/hardware/compute" style={{ color: NB.neoboticsRed }}>Compute</a>)
           </div>

@@ -68,7 +68,7 @@ export default function ChargeAndPowerPage() {
 
       {/* Battery specs */}
       <ScrollReveal>
-        <section style={{ paddingBottom: 24 }}>
+        <section style={{ paddingTop: 20, paddingBottom: 24 }}>
           <DisplayHeading size="lg">
             BATTERY <Red>SPECS.</Red>
           </DisplayHeading>

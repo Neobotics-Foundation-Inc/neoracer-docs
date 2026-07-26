@@ -79,12 +79,9 @@ export default function UnboxPage() {
           caption="The NeoRacer ships in a single cardboard box holding two smaller boxes: the NeoRacer box and the FlySky controller box. The NeoRacer box contains the car itself, the Cudy router, the ToolkitRC charger, and accessories such as screws, sidepods, antennas, and zip ties. The Cudy router box contains an Ethernet cable and a USB-C cable, and the FlySky box contains the controller, a USB-A to micro-USB cable, and its metal bracket. Everything is shown below."
         >
           <BoxContentsDiagram />
-        </Fig>
-      </ScrollReveal>
 
-      {/* ── Not in the box: the battery you bring yourself ────────────── */}
-      <ScrollReveal>
-        <section style={{ paddingBottom: 32 }}>
+          {/* Not in the box: the battery you bring yourself */}
+          <div style={{ marginTop: 18 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, margin: '0 2px 12px' }}>
             <span aria-hidden style={{ flex: '0 0 auto', width: 18, height: 2, background: NB.neoboticsRed }} />
             <span
@@ -139,7 +136,8 @@ export default function UnboxPage() {
               Sourced separately · a 3S LiPo of your choosing
             </div>
           </div>
-        </section>
+          </div>
+        </Fig>
       </ScrollReveal>
 
       {/* ── Accessories ───────────────────────────────────────────────── */}

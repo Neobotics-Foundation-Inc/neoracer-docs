@@ -25,7 +25,6 @@ export default function DiagnosticsPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Docs', href: '/docs' },
           { label: 'Troubleshooting', href: '/docs/troubleshooting/wont-power-on' },
           { label: 'Diagnostics' },
         ]}

@@ -26,7 +26,6 @@ export default function MagnetometerPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Docs', href: '/docs' },
           { label: 'Calibration', href: '/docs/calibration/motor-trim' },
           { label: 'Magnetometer' },
         ]}

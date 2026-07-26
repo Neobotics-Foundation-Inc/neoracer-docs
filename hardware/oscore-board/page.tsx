@@ -47,7 +47,6 @@ export default function OscoreBoardPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Docs', href: '/docs' },
           { label: 'Hardware', href: '/docs/hardware/overview' },
           { label: 'OSCORE board' },
         ]}

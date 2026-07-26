@@ -137,7 +137,6 @@ export default function FirstProgramPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Docs', href: '/docs' },
           { label: 'Getting Started', href: '/docs/getting-started/unbox' },
           { label: 'First program' },
         ]}

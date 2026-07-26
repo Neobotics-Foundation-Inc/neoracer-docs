@@ -34,7 +34,6 @@ export default function InstallDriverPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Docs', href: '/docs' },
           { label: 'Getting Started', href: '/docs/getting-started/unbox' },
           { label: 'Install the driver' },
         ]}

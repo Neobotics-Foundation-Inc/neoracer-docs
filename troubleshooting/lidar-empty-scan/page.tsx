@@ -26,7 +26,6 @@ export default function LidarEmptyScanPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Docs', href: '/docs' },
           { label: 'Troubleshooting', href: '/docs/troubleshooting/wont-power-on' },
           { label: 'LiDAR empty scan' },
         ]}

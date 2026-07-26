@@ -33,7 +33,6 @@ export default function ImuBiasPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Docs', href: '/docs' },
           { label: 'Calibration', href: '/docs/calibration/motor-trim' },
           { label: 'IMU bias' },
         ]}

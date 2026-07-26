@@ -22,7 +22,6 @@ export default function WorkspacesPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Docs', href: '/docs' },
           { label: 'Software', href: '/docs/software/os-and-image' },
           { label: 'Workspaces' },
         ]}

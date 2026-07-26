@@ -94,7 +94,7 @@ export default function DocsCatchAllPage({ params }: { params: { slug: string[] 
   const trail = match?.groupTrail ?? [];
   const siblings = (match?.siblings ?? []).filter((s) => s.href !== href);
 
-  const crumbItems = [{ label: 'Docs', href: '/docs' }];
+  const crumbItems: { label: string; href: string }[] = [];
   trail.forEach((t) => crumbItems.push({ label: t, href: '' as string }));
   crumbItems.push({ label: title, href: '' as string });
 

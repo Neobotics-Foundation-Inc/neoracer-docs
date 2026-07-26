@@ -26,7 +26,6 @@ export default function WontPowerOnPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Docs', href: '/docs' },
           { label: 'Troubleshooting', href: '/docs/troubleshooting/wont-power-on' },
           { label: "Won't power on" },
         ]}

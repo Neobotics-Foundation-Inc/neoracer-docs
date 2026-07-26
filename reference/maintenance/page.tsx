@@ -25,7 +25,6 @@ export default function MaintenancePage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Docs', href: '/docs' },
           { label: 'Reference', href: '/docs/reference/specifications' },
           { label: 'Maintenance' },
         ]}

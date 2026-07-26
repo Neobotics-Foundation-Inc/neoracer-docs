@@ -23,7 +23,6 @@ export default function BuildOverviewPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Docs', href: '/docs' },
           { label: 'Build', href: '/docs/build/overview' },
           { label: 'Overview' },
         ]}

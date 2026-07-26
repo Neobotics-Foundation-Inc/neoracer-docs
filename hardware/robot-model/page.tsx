@@ -34,7 +34,6 @@ export default function RobotModelPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Docs', href: '/docs' },
           { label: 'Hardware', href: '/docs/hardware/overview' },
           { label: 'Robot model' },
         ]}

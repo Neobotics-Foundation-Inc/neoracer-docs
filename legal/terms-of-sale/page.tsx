@@ -40,7 +40,6 @@ export default function TermsOfSalePage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Docs', href: '/docs' },
           { label: 'Legal', href: '/docs/legal/warranty' },
           { label: 'Terms of sale' },
         ]}

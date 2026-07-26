@@ -34,7 +34,6 @@ export default function ShippingPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Docs', href: '/docs' },
           { label: 'Legal', href: '/docs/legal/warranty' },
           { label: 'Shipping' },
         ]}

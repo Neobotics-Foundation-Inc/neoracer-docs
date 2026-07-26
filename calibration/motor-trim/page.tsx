@@ -44,7 +44,6 @@ export default function MotorTrimPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Docs', href: '/docs' },
           { label: 'Calibration', href: '/docs/calibration/motor-trim' },
           { label: 'Motor trim' },
         ]}

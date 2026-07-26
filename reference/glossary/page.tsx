@@ -273,7 +273,6 @@ export default function GlossaryPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Docs', href: '/docs' },
           { label: 'Reference', href: '/docs/reference/specifications' },
           { label: 'Glossary' },
         ]}

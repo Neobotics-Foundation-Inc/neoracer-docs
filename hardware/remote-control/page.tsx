@@ -27,7 +27,6 @@ export default function RemoteControlPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Docs', href: '/docs' },
           { label: 'Hardware', href: '/docs/hardware/overview' },
           { label: 'Remote control' },
         ]}

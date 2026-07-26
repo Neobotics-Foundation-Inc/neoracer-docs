@@ -36,7 +36,6 @@ export default function OsAndImagePage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Docs', href: '/docs' },
           { label: 'Software', href: '/docs/software/os-and-image' },
           { label: 'OS & image' },
         ]}

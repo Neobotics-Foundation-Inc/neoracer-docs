@@ -116,7 +116,6 @@ export default function CompatibilityMatrixPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Docs', href: '/docs' },
           { label: 'Reference', href: '/docs/reference/specifications' },
           { label: 'Compatibility matrix' },
         ]}

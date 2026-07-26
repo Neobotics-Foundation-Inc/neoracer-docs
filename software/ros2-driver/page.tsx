@@ -32,7 +32,6 @@ export default function ROS2DriverPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Docs', href: '/docs' },
           { label: 'Software', href: '/docs/software/os-and-image' },
           { label: 'ROS 2 driver' },
         ]}

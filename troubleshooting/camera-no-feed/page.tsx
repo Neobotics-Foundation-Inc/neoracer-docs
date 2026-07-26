@@ -25,7 +25,6 @@ export default function CameraNoFeedPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Docs', href: '/docs' },
           { label: 'Troubleshooting', href: '/docs/troubleshooting/wont-power-on' },
           { label: 'Camera no feed' },
         ]}

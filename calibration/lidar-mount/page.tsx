@@ -39,7 +39,6 @@ export default function LidarMountPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Docs', href: '/docs' },
           { label: 'Calibration', href: '/docs/calibration/motor-trim' },
           { label: 'LiDAR mount' },
         ]}

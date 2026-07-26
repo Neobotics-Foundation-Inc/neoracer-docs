@@ -26,7 +26,6 @@ export default function WifiCantConnectPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Docs', href: '/docs' },
           { label: 'Troubleshooting', href: '/docs/troubleshooting/wont-power-on' },
           { label: "Wi-Fi can't connect" },
         ]}

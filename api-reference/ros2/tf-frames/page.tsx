@@ -204,7 +204,6 @@ export default function Ros2TfFramesPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Docs', href: '/docs' },
           { label: 'API Reference', href: '/docs/api-reference/python/drive' },
           { label: 'ROS 2' },
           { label: 'TF frames' },

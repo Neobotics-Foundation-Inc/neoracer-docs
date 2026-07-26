@@ -26,7 +26,6 @@ export default function RemoteDesktopPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Docs', href: '/docs' },
           { label: 'Getting Started', href: '/docs/getting-started/unbox' },
           { label: 'Remote desktop' },
         ]}

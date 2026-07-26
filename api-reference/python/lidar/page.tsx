@@ -64,7 +64,6 @@ export default function LidarApiPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Docs', href: '/docs' },
           { label: 'API Reference', href: '/docs/api-reference/python/drive' },
           { label: 'rc.lidar' },
         ]}

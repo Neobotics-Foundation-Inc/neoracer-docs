@@ -28,7 +28,6 @@ export default function ElectricalPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Docs', href: '/docs' },
           { label: 'Hardware', href: '/docs/hardware/overview' },
           { label: 'Electrical' },
         ]}

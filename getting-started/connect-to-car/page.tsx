@@ -23,7 +23,6 @@ export default function ConnectToCarPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Docs', href: '/docs' },
           { label: 'Getting Started', href: '/docs/getting-started/unbox' },
           { label: 'Get on the car' },
         ]}

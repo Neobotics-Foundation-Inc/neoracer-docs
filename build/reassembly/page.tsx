@@ -151,7 +151,6 @@ export default function ReassemblyPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Docs', href: '/docs' },
           { label: 'Build', href: '/docs/build/overview' },
           { label: 'Reassembly' },
         ]}

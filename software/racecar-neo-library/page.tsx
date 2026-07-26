@@ -194,7 +194,6 @@ export default function RacecarNeoLibraryPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Docs', href: '/docs' },
           { label: 'Software', href: '/docs/software/os-and-image' },
           { label: 'racecar-neo-library' },
         ]}

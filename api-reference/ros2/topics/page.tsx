@@ -158,7 +158,6 @@ export default function Ros2TopicsPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Docs', href: '/docs' },
           { label: 'API Reference', href: '/docs/api-reference/python/drive' },
           { label: 'ROS 2' },
           { label: 'Topics' },

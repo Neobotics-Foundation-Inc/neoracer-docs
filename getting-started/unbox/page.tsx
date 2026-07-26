@@ -60,7 +60,7 @@ export default function UnboxPage() {
       {/* ── Hero ──────────────────────────────────────────────────────── */}
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="01" top={-30} right={-20} size={360} />
+          <GhostNumeral n="01" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               UNBOX THE <Red>NEORACER.</Red>

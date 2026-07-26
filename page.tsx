@@ -80,10 +80,6 @@ export default function DocsLandingPage() {
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 64 }}>
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <DisplayHeading size="lg">
-              CHOOSE A <Red>SECTION.</Red>
-            </DisplayHeading>
-            <div style={{ marginBottom: 18 }} />
             <PitLaneNav sections={pitLane} />
           </div>
         </section>

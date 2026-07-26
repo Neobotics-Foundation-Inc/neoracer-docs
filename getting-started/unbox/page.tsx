@@ -146,18 +146,6 @@ export default function UnboxPage() {
           <DisplayHeading size="lg">
             THE <Red>ACCESSORIES.</Red>
           </DisplayHeading>
-          <p
-            style={{
-              fontFamily: NB.bodyFont,
-              fontSize: 16,
-              lineHeight: 1.65,
-              color: NB.textMutedBeige,
-              maxWidth: 720,
-            }}
-          >
-            A few small parts ship alongside the main pieces. Keep them with the
-            box; each one has its moment later in the setup.
-          </p>
           <div
             style={{
               display: 'grid',

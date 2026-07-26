@@ -52,7 +52,7 @@ export default function ChargeAndPowerPage() {
           <DashList
             items={[
               <>The LiPo charger that shipped with your kit.</>,
-              <>An 11.1 V (3S) LiPo pack, <strong>you will need your own</strong>. See "Recommended packs" below.</>,
+              <>An 11.1 V (3S) LiPo pack, <strong>you will need your own</strong>. See "Battery specs" below.</>,
               <>An AC outlet within reach.</>,
             ]}
           />
@@ -66,11 +66,11 @@ export default function ChargeAndPowerPage() {
         </Callout>
       </ScrollReveal>
 
-      {/* Recommended packs */}
+      {/* Battery specs */}
       <ScrollReveal>
         <section style={{ paddingBottom: 24 }}>
           <DisplayHeading size="lg">
-            RECOMMENDED <Red>PACKS.</Red>
+            BATTERY <Red>SPECS.</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             The car runs on a standard 3-cell (3S) LiPo at 11.1 V nominal. Use a

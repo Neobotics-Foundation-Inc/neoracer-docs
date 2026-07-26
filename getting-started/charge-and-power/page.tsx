@@ -85,7 +85,7 @@ export default function ChargeAndPowerPage() {
       <ScrollReveal>
         <section style={{ paddingBottom: 32 }}>
           <DisplayHeading size="lg">
-            CHARGING THE <Red>BATTERY.</Red>
+            CHARGE &amp; <Red>POWER.</Red>
           </DisplayHeading>
           {[
             { t: 'Place the LiPo on a non-flammable surface.', d: 'A concrete floor or a LiPo charging bag is ideal. Carpet, bedding, and wood can catch if a pack overheats.' },

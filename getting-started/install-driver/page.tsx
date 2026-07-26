@@ -177,8 +177,8 @@ bash scripts/setup_all.sh`}</Code>
                 BUILDING YOUR <span style={{ color: NB.neoboticsRed }}>OWN.</span>
               </div>
               <p style={{ fontFamily: NB.bodyFont, fontSize: 14.5, lineHeight: 1.6, color: NB.textMutedBeige, margin: '0 0 12px' }}>
-                A stock Jetson Orin Nano starts empty. Clone the repository
-                first, then run the same script.
+                Since you&apos;re probably working with a stock Jetson Orin
+                Nano, clone the repository first, then run the same script.
               </p>
               <Code lang="bash">{`mkdir -p ~/ros2_ws/src && cd ~/ros2_ws/src
 git clone https://github.com/Neobotics-Foundation-Inc/neoracer_ros2_driver.git

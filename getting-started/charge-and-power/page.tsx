@@ -47,7 +47,7 @@ export default function ChargeAndPowerPage() {
 
       {/* You'll need */}
       <ScrollReveal>
-        <section style={{ paddingBottom: 24 }}>
+        <section>
           <MonoLabel>You'll need</MonoLabel>
           <DashList
             items={[

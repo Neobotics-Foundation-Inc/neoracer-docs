@@ -75,7 +75,7 @@ export default function UnboxPage() {
       {/* ── FIG. A / Box contents ────────────────────────────────────── */}
       <ScrollReveal>
         <Fig
-          label="FIG. A / WHAT'S IN THE BOX"
+          label="FIG. A"
           caption="What comes in the box. The accessories are itemized below. The 3S LiPo is the one you bring yourself, since international shipping rules keep us from sending batteries, and the Charge and Power page walks through exactly what to look for."
         >
           <BoxContentsDiagram />

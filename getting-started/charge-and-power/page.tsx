@@ -46,13 +46,6 @@ export default function ChargeAndPowerPage() {
         </section>
       </MouseFollowGlow>
 
-      <ScrollReveal>
-        <Callout type="danger" title="Charging safety">
-          Charge on a non-flammable surface (a LiPo bag is ideal) and stay
-          in the room while it charges.
-        </Callout>
-      </ScrollReveal>
-
       {/* You'll need */}
       <ScrollReveal>
         <section style={{ paddingBottom: 24 }}>
@@ -65,6 +58,13 @@ export default function ChargeAndPowerPage() {
             ]}
           />
         </section>
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <Callout type="danger" title="Charging safety">
+          Charge on a non-flammable surface (a LiPo bag is ideal) and stay
+          in the room while it charges.
+        </Callout>
       </ScrollReveal>
 
       {/* Recommended packs */}

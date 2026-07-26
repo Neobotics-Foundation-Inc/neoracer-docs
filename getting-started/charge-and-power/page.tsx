@@ -39,7 +39,7 @@ export default function ChargeAndPowerPage() {
               CHARGE THE <Red>BATTERY.</Red>
             </DisplayHeading>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="outline" icon={<ClockGlyph />}>1–2 hours (first charge)</ChromeBadge>
+              <ChromeBadge variant="outline" icon={<ClockGlyph />}>~2-3 hours</ChromeBadge>
             </div>
           </div>
         </section>

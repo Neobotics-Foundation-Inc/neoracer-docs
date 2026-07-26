@@ -30,7 +30,7 @@ export default function ConnectToCarPage() {
       {/* ── Hero ─────────────────────────────────────────────────────── */}
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="NET" top={-30} right={-20} size={420} />
+          <GhostNumeral n="03" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               GET ON THE <Red>CAR.</Red>
@@ -53,7 +53,6 @@ export default function ConnectToCarPage() {
       {/* ── 01 · Antennas ────────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 44 }}>
-          <GhostNumeral n="01" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <StepMarker n={1} label="ATTACH THE ANTENNAS" />
             <DisplayHeading size="lg">
@@ -78,7 +77,6 @@ export default function ConnectToCarPage() {
       {/* ── 02 · Console ─────────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 44 }}>
-          <GhostNumeral n="02" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <StepMarker n={2} label="PLUG IN A CONSOLE" />
             <DisplayHeading size="lg">
@@ -97,7 +95,6 @@ export default function ConnectToCarPage() {
       {/* ── 03 · Internet ────────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 44 }}>
-          <GhostNumeral n="03" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <StepMarker n={3} label="GET THE CAR ONLINE" />
             <DisplayHeading size="lg">

@@ -39,10 +39,6 @@ export default function ChargeAndPowerPage() {
             <DisplayHeading size="xl">
               CHARGE THE <Red>BATTERY.</Red>
             </DisplayHeading>
-            <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
-              This page covers charging the 3S LiPo pack, what the charger shows
-              along the way, and how to store it between sessions.
-            </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="outline" icon={<ClockGlyph />}>1–2 hours (first charge)</ChromeBadge>
             </div>
@@ -65,7 +61,6 @@ export default function ChargeAndPowerPage() {
             items={[
               <>The LiPo charger that shipped with your kit.</>,
               <>An 11.1 V (3S) LiPo pack, <strong>you will need your own</strong>. See "Recommended packs" below.</>,
-              <>A hard surface (concrete, tile, or a LiPo charging bag), not a bed or carpet.</>,
               <>An AC outlet within reach.</>,
             ]}
           />

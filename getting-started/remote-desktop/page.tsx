@@ -33,7 +33,7 @@ export default function RemoteDesktopPage() {
       {/* ── Hero ─────────────────────────────────────────────────────── */}
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="RD" top={-30} right={-20} size={420} />
+          <GhostNumeral n="05" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               REMOTE DESKTOP <Red>SETUP.</Red>
@@ -54,7 +54,6 @@ export default function RemoteDesktopPage() {
       {/* ── 01 · Permanent password ──────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 44 }}>
-          <GhostNumeral n="01" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <StepMarker n={1} label="ON THE CAR" />
             <DisplayHeading size="lg">
@@ -113,7 +112,6 @@ export default function RemoteDesktopPage() {
       {/* ── 02 · Connect from the laptop ─────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 44 }}>
-          <GhostNumeral n="02" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <StepMarker n={2} label="FROM YOUR LAPTOP, CONNECT BY IP" />
             <DisplayHeading size="lg">
@@ -142,7 +140,6 @@ export default function RemoteDesktopPage() {
       {/* ── 03 · The monitor retires ─────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 44 }}>
-          <GhostNumeral n="03" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <StepMarker n={3} label="AFTER THIS SETUP" />
             <DisplayHeading size="lg">

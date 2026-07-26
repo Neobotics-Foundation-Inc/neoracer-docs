@@ -85,10 +85,10 @@ export default function ChargeAndPowerPage() {
       <ScrollReveal>
         <section style={{ paddingBottom: 32 }}>
           <DisplayHeading size="lg">
-            THE FIRST <Red>CHARGE.</Red>
+            CHARGING THE <Red>BATTERY.</Red>
           </DisplayHeading>
           {[
-            { t: 'Place the LiPo on a non-flammable surface.', d: 'A concrete floor or a LiPo charging bag is ideal. Carpet, bedding, and wood can catch if a pack overheats, so steer clear of those.' },
+            { t: 'Place the LiPo on a non-flammable surface.', d: 'A concrete floor or a LiPo charging bag is ideal. Carpet, bedding, and wood can catch if a pack overheats.' },
             { t: 'Plug the AC side of the charger into the wall first.', d: 'You should see a power LED. If nothing lights up, double-check the outlet before continuing.' },
             { t: 'Connect the balance lead (white plug) to the charger\'s balance port.', d: 'The plug only fits one way, so if it resists, turn it around rather than pushing harder.' },
             { t: 'Connect the main XT60 lead.', d: <>You may see a brief spark, this is the <InfoNote term="inrush current" title="Inrush current">The sudden surge of current that flows the instant a circuit is connected, before it settles to a steady level. Here it briefly charges the capacitors inside the charger, which is why you see a small spark.</InfoNote> on the charger&apos;s capacitors and is normal.</> },

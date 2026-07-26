@@ -160,7 +160,6 @@ export default function ReassemblyPage() {
         <section style={{ position: 'relative', paddingBottom: 28, paddingTop: 24 }}>
           <GhostNumeral n="R" top={-40} right={-20} size={440} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>BUILD / REASSEMBLY</Eyebrow>
             <DisplayHeading size="xl">
               THE <Red>REASSEMBLY.</Red>
             </DisplayHeading>

@@ -2,7 +2,6 @@ import { Metadata } from 'next';
 import DocsShell from '@/components/docs/DocsShell';
 import { NB } from '@/lib/nb-tokens';
 import {
-  Eyebrow,
   DisplayHeading,
   Red,
   GhostNumeral,
@@ -262,7 +261,6 @@ export default function FaqPage() {
       <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
         <GhostNumeral n="?" top={-50} right={-20} size={440} />
         <div style={{ position: 'relative', zIndex: 1 }}>
-          <Eyebrow>TROUBLESHOOTING / FAQ</Eyebrow>
           <DisplayHeading size="xl">
             FREQUENTLY ASKED <Red>QUESTIONS.</Red>
           </DisplayHeading>

@@ -57,7 +57,6 @@ export default function OscoreBoardPage() {
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
           <GhostNumeral n="PCB" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>HARDWARE / OSCORE BOARD</Eyebrow>
             <DisplayHeading size="xl">
               THE OSCORE <Red>BOARD.</Red>
             </DisplayHeading>

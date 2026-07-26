@@ -2,7 +2,6 @@ import { Metadata } from 'next';
 import DocsShell from '@/components/docs/DocsShell';
 import { NB } from '@/lib/nb-tokens';
 import {
-  Eyebrow,
   DisplayHeading,
   Red,
   GhostNumeral,
@@ -36,7 +35,6 @@ export default function WontPowerOnPage() {
         <section style={{ position: 'relative', paddingBottom: 24, paddingTop: 24 }}>
           <GhostNumeral n="01" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>TROUBLESHOOTING / POWER</Eyebrow>
             <DisplayHeading size="xl">
               WON'T POWER <Red>ON.</Red>
             </DisplayHeading>

@@ -37,7 +37,6 @@ export default function RemoteControlPage() {
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
           <GhostNumeral n="RC" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>HARDWARE / REMOTE CONTROL</Eyebrow>
             <DisplayHeading size="xl">
               THE REMOTE <Red>CONTROL.</Red>
             </DisplayHeading>

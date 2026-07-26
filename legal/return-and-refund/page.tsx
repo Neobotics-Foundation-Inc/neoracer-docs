@@ -44,7 +44,6 @@ export default function ReturnAndRefundPage() {
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
           <GhostNumeral n="R&R" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>LEGAL / RETURNS &amp; REFUNDS</Eyebrow>
             <DisplayHeading size="xl">
               RETURN AND REFUND <Red>POLICY.</Red>
             </DisplayHeading>

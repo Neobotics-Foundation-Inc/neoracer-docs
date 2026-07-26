@@ -32,7 +32,6 @@ export default function BuildOverviewPage() {
         <section style={{ position: 'relative', paddingBottom: 28, paddingTop: 24 }}>
           <GhostNumeral n="B" top={-40} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>BUILD / OVERVIEW</Eyebrow>
             <DisplayHeading size="xl">
               THE <Red>BUILD.</Red>
             </DisplayHeading>

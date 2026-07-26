@@ -3,7 +3,6 @@ import { Metadata } from 'next';
 import DocsShell from '@/components/docs/DocsShell';
 import { NB } from '@/lib/nb-tokens';
 import {
-  Eyebrow,
   DisplayHeading,
   Red,
   GhostNumeral,
@@ -39,7 +38,6 @@ export default function FirmwareFlashingPage() {
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
           <GhostNumeral n="FW" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>SOFTWARE / FIRMWARE FLASHING</Eyebrow>
             <DisplayHeading size="xl">
               FLASH THE <Red>BOARD.</Red>
             </DisplayHeading>

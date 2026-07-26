@@ -33,7 +33,6 @@ export default function DrivetrainPage() {
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
           <GhostNumeral n="D" top={-40} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>HARDWARE / DRIVETRAIN</Eyebrow>
             <DisplayHeading size="xl">
               THE <Red>DRIVETRAIN.</Red>
             </DisplayHeading>

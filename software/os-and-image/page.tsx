@@ -2,7 +2,6 @@ import { Metadata } from 'next';
 import DocsShell from '@/components/docs/DocsShell';
 import { NB } from '@/lib/nb-tokens';
 import {
-  Eyebrow,
   DisplayHeading,
   Red,
   GhostNumeral,
@@ -46,7 +45,6 @@ export default function OsAndImagePage() {
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
           <GhostNumeral n="OS" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>SOFTWARE / OS & IMAGE</Eyebrow>
             <DisplayHeading size="xl">
               THE PRE-FLASHED <Red>IMAGE.</Red>
             </DisplayHeading>

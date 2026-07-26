@@ -107,7 +107,6 @@ export default function DocsCatchAllPage({ params }: { params: { slug: string[] 
       <section style={{ position: 'relative', paddingBottom: 32 }}>
         <GhostNumeral n="?" top={-40} right={-20} size={420} />
         <div style={{ position: 'relative', zIndex: 1 }}>
-          <Eyebrow>{trail.length > 0 ? trail.join(' / ').toUpperCase() : 'DOCS ROADMAP'}</Eyebrow>
           <DisplayHeading size="xl">
             {title.toUpperCase().split(' ').slice(0, -1).join(' ')}{' '}
             <Red>{title.toUpperCase().split(' ').slice(-1).join(' ')}.</Red>

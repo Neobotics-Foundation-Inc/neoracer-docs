@@ -4,7 +4,6 @@ import { Metadata } from 'next';
 import DocsShell from '@/components/docs/DocsShell';
 import { NB } from '@/lib/nb-tokens';
 import {
-  Eyebrow,
   DisplayHeading,
   Red,
   GhostNumeral,
@@ -36,7 +35,6 @@ export default function RemoteDesktopPage() {
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
           <GhostNumeral n="RD" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>SETUP / REMOTE DESKTOP</Eyebrow>
             <DisplayHeading size="xl">
               REMOTE DESKTOP <Red>SETUP.</Red>
             </DisplayHeading>

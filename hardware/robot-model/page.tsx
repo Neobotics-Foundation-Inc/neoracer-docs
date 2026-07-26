@@ -43,7 +43,6 @@ export default function RobotModelPage() {
         <section style={{ position: 'relative', paddingBottom: 28, paddingTop: 24 }}>
           <GhostNumeral n="3D" top={-40} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>HARDWARE / ROBOT MODEL</Eyebrow>
             <DisplayHeading size="xl">
               THE ROBOT <Red>MODEL.</Red>
             </DisplayHeading>

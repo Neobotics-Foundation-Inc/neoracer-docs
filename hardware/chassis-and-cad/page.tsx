@@ -101,7 +101,6 @@ export default function ChassisAndCadPage() {
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
           <GhostNumeral n="C" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>HARDWARE / CHASSIS &amp; CAD</Eyebrow>
             <DisplayHeading size="xl">
               THE CHASSIS AND <Red>CAD.</Red>
             </DisplayHeading>

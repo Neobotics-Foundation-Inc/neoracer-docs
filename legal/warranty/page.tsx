@@ -44,7 +44,6 @@ export default function WarrantyPage() {
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
           <GhostNumeral n="9mo" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>LEGAL / WARRANTY</Eyebrow>
             <DisplayHeading size="xl">
               NEORACER LIMITED HARDWARE <Red>WARRANTY.</Red>
             </DisplayHeading>

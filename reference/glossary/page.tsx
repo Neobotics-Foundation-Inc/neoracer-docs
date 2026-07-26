@@ -3,7 +3,6 @@ import { Metadata } from 'next';
 import DocsShell from '@/components/docs/DocsShell';
 import { NB } from '@/lib/nb-tokens';
 import {
-  Eyebrow,
   DisplayHeading,
   Red,
   GhostNumeral,
@@ -283,7 +282,6 @@ export default function GlossaryPage() {
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
           <GhostNumeral n="A-Z" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>REFERENCE / GLOSSARY</Eyebrow>
             <DisplayHeading size="xl">
               THE <Red>GLOSSARY.</Red>
             </DisplayHeading>

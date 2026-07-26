@@ -33,7 +33,6 @@ export default function ComputePage() {
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
           <GhostNumeral n="03" top={-40} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>HARDWARE / COMPUTE</Eyebrow>
             <DisplayHeading size="xl">
               THE COMPUTE <Red>STACK.</Red>
             </DisplayHeading>

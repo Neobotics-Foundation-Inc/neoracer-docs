@@ -33,7 +33,6 @@ export default function SafetyPage() {
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
           <GhostNumeral n="!" top={-40} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>HARDWARE / SAFETY · START HERE</Eyebrow>
             <DisplayHeading size="xl">
               SAFETY <Red>RULES.</Red>
             </DisplayHeading>

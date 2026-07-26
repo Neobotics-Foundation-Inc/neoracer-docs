@@ -3,7 +3,6 @@ import { Metadata } from 'next';
 import DocsShell from '@/components/docs/DocsShell';
 import { NB } from '@/lib/nb-tokens';
 import {
-  Eyebrow,
   DisplayHeading,
   Red,
   GhostNumeral,
@@ -35,7 +34,6 @@ export default function DiagnosticsPage() {
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
           <GhostNumeral n="?" top={-40} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>TROUBLESHOOTING / DIAGNOSTICS</Eyebrow>
             <DisplayHeading size="xl">
               SENSOR <Red>DIAGNOSTICS.</Red>
             </DisplayHeading>

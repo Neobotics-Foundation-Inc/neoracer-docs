@@ -38,7 +38,6 @@ export default function LidarPage() {
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
           <GhostNumeral n="L" top={-40} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>HARDWARE / SENSORS</Eyebrow>
             <DisplayHeading size="xl">
               THE PLANAR <Red>LIDAR.</Red>
             </DisplayHeading>

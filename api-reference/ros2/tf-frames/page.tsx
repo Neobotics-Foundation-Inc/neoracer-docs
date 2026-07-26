@@ -214,7 +214,6 @@ export default function Ros2TfFramesPage() {
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
           <GhostNumeral n="//" top={-40} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>API REFERENCE / ROS 2</Eyebrow>
             <DisplayHeading size="xl">
               ROS 2 TF <Red>FRAMES.</Red>
             </DisplayHeading>

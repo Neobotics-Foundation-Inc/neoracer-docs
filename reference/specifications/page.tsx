@@ -35,7 +35,6 @@ export default function SpecificationsPage() {
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
           <GhostNumeral n="V1" top={-30} right={-20} size={460} />
         <div style={{ position: 'relative', zIndex: 1 }}>
-          <Eyebrow>REFERENCE / SPECIFICATIONS</Eyebrow>
           <DisplayHeading size="xl">
             THE NEORACER V1 <Red>SPECIFICATIONS.</Red>
           </DisplayHeading>

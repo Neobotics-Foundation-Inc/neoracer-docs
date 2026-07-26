@@ -73,7 +73,6 @@ export default function LidarApiPage() {
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
           <GhostNumeral n="rc" top={-40} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>API REFERENCE / PYTHON</Eyebrow>
             <DisplayHeading size="xl">
               RC.<Red>LIDAR.</Red>
             </DisplayHeading>

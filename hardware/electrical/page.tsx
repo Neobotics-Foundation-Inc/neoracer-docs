@@ -38,7 +38,6 @@ export default function ElectricalPage() {
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
           <GhostNumeral n="V" top={-40} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>HARDWARE / ELECTRICAL</Eyebrow>
             <DisplayHeading size="xl">
               THE ELECTRICAL <Red>SYSTEM.</Red>
             </DisplayHeading>

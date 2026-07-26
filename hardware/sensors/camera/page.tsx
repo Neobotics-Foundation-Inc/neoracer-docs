@@ -36,7 +36,6 @@ export default function CameraPage() {
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
           <GhostNumeral n="C" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>HARDWARE / SENSORS</Eyebrow>
             <DisplayHeading size="xl">
               THE <Red>CAMERA.</Red>
             </DisplayHeading>

@@ -44,7 +44,6 @@ export default function ShippingPage() {
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
           <GhostNumeral n="SHIP" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>LEGAL / SHIPPING</Eyebrow>
             <DisplayHeading size="xl">
               THE SHIPPING <Red>POLICY.</Red>
             </DisplayHeading>

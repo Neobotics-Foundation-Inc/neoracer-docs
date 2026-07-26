@@ -50,7 +50,6 @@ export default function PrivacyPage() {
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
           <GhostNumeral n="P" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>LEGAL / PRIVACY</Eyebrow>
             <DisplayHeading size="xl">
               THE PRIVACY <Red>POLICY.</Red>
             </DisplayHeading>

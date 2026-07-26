@@ -2,7 +2,6 @@ import { Metadata } from 'next';
 import DocsShell from '@/components/docs/DocsShell';
 import { NB } from '@/lib/nb-tokens';
 import {
-  Eyebrow,
   DisplayHeading,
   Red,
   GhostNumeral,
@@ -84,7 +83,6 @@ export default function CameraIntrinsicsPage() {
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
           <GhostNumeral n="04" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>CALIBRATION / CAMERA INTRINSICS</Eyebrow>
             <DisplayHeading size="xl">
               CAMERA <Red>INTRINSICS.</Red>
             </DisplayHeading>

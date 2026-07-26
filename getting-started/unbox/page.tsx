@@ -54,7 +54,7 @@ export default function UnboxPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Getting Started', href: '/docs/getting-started/unbox' },
+          { label: 'Setup', href: '/docs/getting-started/unbox' },
           { label: 'Unbox' },
         ]}
       />
@@ -64,7 +64,7 @@ export default function UnboxPage() {
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
           <GhostNumeral n="01" top={-30} right={-20} size={360} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>GETTING STARTED</Eyebrow>
+            <Eyebrow>SETUP</Eyebrow>
             <DisplayHeading size="xl">
               UNBOX THE <Red>NEORACER.</Red>
             </DisplayHeading>

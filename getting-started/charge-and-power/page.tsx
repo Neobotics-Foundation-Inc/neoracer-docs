@@ -28,7 +28,7 @@ export default function ChargeAndPowerPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Getting Started', href: '/docs/getting-started/unbox' },
+          { label: 'Setup', href: '/docs/getting-started/unbox' },
           { label: 'Charge & power' },
         ]}
       />
@@ -37,7 +37,7 @@ export default function ChargeAndPowerPage() {
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
           <GhostNumeral n="02" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>GETTING STARTED</Eyebrow>
+            <Eyebrow>SETUP</Eyebrow>
             <DisplayHeading size="xl">
               CHARGE THE <Red>BATTERY.</Red>
             </DisplayHeading>

@@ -16,7 +16,7 @@ import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Inter
 import { Crumbs, Callout, Code, PrevNext } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
-  title: 'Remote desktop · Getting Started · NeoRacer Docs',
+  title: 'Remote desktop · Setup · NeoRacer Docs',
   description:
     'Set a permanent RustDesk password on the car, then reach its full desktop from your laptop by IP address. After this page the monitor and keyboard are never needed again.',
 };
@@ -26,7 +26,7 @@ export default function RemoteDesktopPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Getting Started', href: '/docs/getting-started/unbox' },
+          { label: 'Setup', href: '/docs/getting-started/unbox' },
           { label: 'Remote desktop' },
         ]}
       />
@@ -36,7 +36,7 @@ export default function RemoteDesktopPage() {
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
           <GhostNumeral n="RD" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>GETTING STARTED / REMOTE DESKTOP</Eyebrow>
+            <Eyebrow>SETUP / REMOTE DESKTOP</Eyebrow>
             <DisplayHeading size="xl">
               REMOTE DESKTOP <Red>SETUP.</Red>
             </DisplayHeading>

@@ -15,7 +15,7 @@ import { ScrollReveal, MouseFollowGlow, AnimatedNumeral, InfoNote } from '@/comp
 import { Crumbs, Callout, PrevNext, Code, DataTable } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
-  title: 'Install the driver · Getting Started · NeoRacer Docs',
+  title: 'Install the driver · Setup · NeoRacer Docs',
   description:
     'One script sets up the whole car: clone neoracer_ros2_driver, run setup_all.sh, and the sensors, motors, JupyterLab, and the racecar-neo library come up as services that start on every boot.',
 };
@@ -34,7 +34,7 @@ export default function InstallDriverPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Getting Started', href: '/docs/getting-started/unbox' },
+          { label: 'Setup', href: '/docs/getting-started/unbox' },
           { label: 'Install the driver' },
         ]}
       />
@@ -44,7 +44,7 @@ export default function InstallDriverPage() {
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
           <GhostNumeral n="ws" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>GETTING STARTED / INSTALL THE DRIVER</Eyebrow>
+            <Eyebrow>SETUP / INSTALL THE DRIVER</Eyebrow>
             <DisplayHeading size="xl">
               INSTALL THE <Red>DRIVER.</Red>
             </DisplayHeading>

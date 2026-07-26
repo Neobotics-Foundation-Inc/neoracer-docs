@@ -224,7 +224,7 @@ export default function OsAndImagePage() {
 #    Follow Seeed's reComputer J401 flashing guide, which runs from a Linux
 #    host over the Jetson's USB-C recovery port.
 
-# 2. On first boot, follow Getting Started from the top:
+# 2. On first boot, follow Setup from the top:
 #    console + internet, clone neoracer_ros2_driver, bash scripts/setup_all.sh
 #    That installs ROS 2, the services, JupyterLab, and the student library.
 

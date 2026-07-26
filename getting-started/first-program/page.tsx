@@ -137,7 +137,7 @@ export default function FirstProgramPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Getting Started', href: '/docs/getting-started/unbox' },
+          { label: 'Setup', href: '/docs/getting-started/unbox' },
           { label: 'First program' },
         ]}
       />
@@ -146,7 +146,7 @@ export default function FirstProgramPage() {
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
           <GhostNumeral n="06" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>GETTING STARTED</Eyebrow>
+            <Eyebrow>SETUP</Eyebrow>
             <DisplayHeading size="xl">
               WALL <Red>FOLLOWING.</Red>
             </DisplayHeading>
@@ -315,7 +315,7 @@ rc.go()`}
       </ScrollReveal>
 
       <ScrollReveal>
-        <Callout type="tip" title="You finished Getting Started. What now?">
+        <Callout type="tip" title="You finished Setup. What now?">
           Two good next steps: read the{' '}
           <Link href="/docs/api-reference/python/lidar" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
             LiDAR API

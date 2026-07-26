@@ -17,7 +17,7 @@ import PitLaneNav, { PitLaneSection } from '@/components/docs/PitLaneNav';
 export const metadata: Metadata = {
   title: 'NeoRacer Docs, from sealed box to autonomous lap',
   description:
-    'Documentation for the NeoRacer V1 autonomous racing kit. A six-page getting started path, plus the full Python API and ROS 2 reference for researchers.',
+    'Documentation for the NeoRacer V1 autonomous racing kit. A six-page setup path, plus the full Python API and ROS 2 reference for researchers.',
 };
 
 /* ─────────────────────────────────────────────────────────────────────────
@@ -36,7 +36,7 @@ const SHOW_PLAYGROUND_TEASE = false;
 /* Bay order mirrors the sidebar. Counts are the real page counts in nav.ts;
    update both together when a page ships. */
 const pitLane: PitLaneSection[] = [
-  { title: 'Getting Started', href: '/docs/getting-started/unbox', pages: 6 },
+  { title: 'Setup', href: '/docs/getting-started/unbox', pages: 6 },
   { title: 'Hardware', href: '/docs/hardware/overview', pages: 14 },
   { title: 'Build', href: '/docs/build/overview', pages: 2 },
   { title: 'Software', href: '/docs/software/os-and-image', pages: 8 },
@@ -68,7 +68,7 @@ export default function DocsLandingPage() {
               marginBottom: 8,
             }}
           >
-            The documentation for the NeoRacer V1. Getting Started takes a new
+            The documentation for the NeoRacer V1. Setup takes a new
             car from the box to its first program; the rest is the reference
             you come back to: hardware, software, calibration, troubleshooting,
             and the full Python and ROS 2 APIs.

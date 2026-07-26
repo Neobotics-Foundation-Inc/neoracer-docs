@@ -13,7 +13,7 @@ import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 import { Crumbs, Callout, PrevNext } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
-  title: 'Get on the car · Getting Started · NeoRacer Docs',
+  title: 'Get on the car · Setup · NeoRacer Docs',
   description:
     'The one-time first setup, done at the car: attach the Wi-Fi antennas, plug in a monitor and keyboard, and get the car onto the internet (join your Wi-Fi, plug in Ethernet, or use the cudy router). Then install the driver.',
 };
@@ -23,7 +23,7 @@ export default function ConnectToCarPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Getting Started', href: '/docs/getting-started/unbox' },
+          { label: 'Setup', href: '/docs/getting-started/unbox' },
           { label: 'Get on the car' },
         ]}
       />
@@ -33,7 +33,7 @@ export default function ConnectToCarPage() {
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
           <GhostNumeral n="NET" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>GETTING STARTED / GET ON THE CAR</Eyebrow>
+            <Eyebrow>SETUP / GET ON THE CAR</Eyebrow>
             <DisplayHeading size="xl">
               GET ON THE <Red>CAR.</Red>
             </DisplayHeading>

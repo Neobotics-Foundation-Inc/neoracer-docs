@@ -28,6 +28,11 @@ export const metadata: Metadata = {
  * with the CarSprite parking in front of wherever the reader is headed.
  * ─────────────────────────────────────────────────────────────────────── */
 
+/* Hidden sections, kept in the file for reuse elsewhere in the docs later.
+   Flip a flag to render its section again. */
+const SHOW_DATA_FLOW = false;
+const SHOW_PLAYGROUND_TEASE = false;
+
 /* Bay order mirrors the sidebar. Counts are the real page counts in nav.ts;
    update both together when a page ships. */
 const pitLane: PitLaneSection[] = [
@@ -84,7 +89,8 @@ export default function DocsLandingPage() {
         </section>
       </ScrollReveal>
 
-      {/* ── Section 3 · FIG. A, DATA FLOW ────────────────────────────── */}
+      {/* ── Section 3 · FIG. A, DATA FLOW (hidden, see SHOW_DATA_FLOW) ── */}
+      {SHOW_DATA_FLOW && (
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 64 }}>
           <div style={{ position: 'relative', zIndex: 1 }}>
@@ -162,11 +168,13 @@ export default function DocsLandingPage() {
           </div>
         </section>
       </ScrollReveal>
+      )}
 
-      {/* ── Section 4 · SIMULATION TEASE ──────────────────────────────────
+      {/* ── Section 4 · SIMULATION TEASE (hidden, see SHOW_PLAYGROUND_TEASE) ──
            The Playground strip, blurred until launch. The content is real but
            unreadable and non-interactive (plain spans, no live URL in the
            DOM); a scan line and a COMING SOON plate sit on top. */}
+      {SHOW_PLAYGROUND_TEASE && (
       <ScrollReveal>
         <section
           style={{
@@ -312,6 +320,7 @@ export default function DocsLandingPage() {
 
         </section>
       </ScrollReveal>
+      )}
     </DocsShell>
   );
 }

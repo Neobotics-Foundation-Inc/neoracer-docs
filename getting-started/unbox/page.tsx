@@ -94,7 +94,7 @@ export default function UnboxPage() {
                 color: NB.neoboticsRed,
               }}
             >
-              Not in the box · you supply this
+              Not in the box
             </span>
           </div>
           <div
@@ -133,7 +133,7 @@ export default function UnboxPage() {
                 marginTop: 4,
               }}
             >
-              Sourced separately · a 3S LiPo of your choosing
+              Sourced separately
             </div>
           </div>
           </div>

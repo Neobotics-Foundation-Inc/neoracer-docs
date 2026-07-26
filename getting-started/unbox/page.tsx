@@ -45,6 +45,16 @@ const ACCESSORIES = [
     name: 'Controller bracket',
     d: "The Flysky's metal bracket and its two screws.",
   },
+  {
+    src: '/images/unbox-cudy-eth.jpg',
+    name: 'Ethernet cable',
+    d: "From the Cudy router box, for the router's wired uplink.",
+  },
+  {
+    src: '/images/unbox-cudy-usbc.jpeg',
+    name: 'USB-C cable',
+    d: 'From the Cudy router box, powers the router.',
+  },
 ];
 
 export default function UnboxPage() {

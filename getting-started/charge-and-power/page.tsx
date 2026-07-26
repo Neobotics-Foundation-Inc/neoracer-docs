@@ -74,24 +74,10 @@ export default function ChargeAndPowerPage() {
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             The car runs on a standard 3-cell (3S) LiPo at 11.1 V nominal. Use a
-            capacity between 4000 and 5500 mAh and a{' '}
+            capacity between 4000 and 5500 mAh, a{' '}
             <InfoNote term="C-rating" title="C-rating">A rating of how fast a battery can safely deliver its energy. A higher number means the pack can supply more current without strain, which the car needs during hard acceleration.</InfoNote>{' '}
-            of 25 or higher.
+            of 25 or higher, and an XT60 connector to match the car&apos;s lead.
           </p>
-          <div style={{ marginTop: 18, background: NB.haloWhite, border: `1px solid ${NB.borderOnBeige}`, borderRadius: 10, padding: '16px 18px', boxShadow: NB.shadowCard }}>
-            <div style={{ fontFamily: NB.monoFont, fontSize: 12, letterSpacing: '0.14em', textTransform: 'uppercase', color: NB.textMutedBeige }}>
-              Specs to match
-            </div>
-            <div style={{ marginTop: 8, fontFamily: NB.monoFont, fontSize: 14, lineHeight: 1.85, color: NB.textOnBeige }}>
-              Voltage:&nbsp;&nbsp;&nbsp;<span style={{ color: NB.neoboticsRed }}>11.1 V (3S)</span>
-              <br />
-              Capacity:&nbsp;&nbsp;4000 to 5500 mAh
-              <br />
-              C-rating:&nbsp;&nbsp;<span style={{ color: NB.neoboticsRed }}>≥ 25C</span> (discharge)
-              <br />
-              Connector: XT60 (match the car's lead)
-            </div>
-          </div>
         </section>
       </ScrollReveal>
 

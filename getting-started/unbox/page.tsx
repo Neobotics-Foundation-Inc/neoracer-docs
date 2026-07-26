@@ -9,7 +9,6 @@ import {
   ChromeBadge,
   ClockGlyph,
   Fig,
-  StepMarker,
 } from '@/components/docs/Editorial';
 import { BoxContentsDiagram } from '@/components/docs/Diagrams';
 import { ScrollReveal, MouseFollowGlow, AnimatedNumeral } from '@/components/docs/Interactive';
@@ -75,7 +74,6 @@ export default function UnboxPage() {
 
       {/* ── FIG. A / Box contents ────────────────────────────────────── */}
       <ScrollReveal>
-        <StepMarker n={1} label="WHAT'S IN THE BOX" />
         <Fig
           label="FIG. A / WHAT'S IN THE BOX"
           caption="What comes in the box. The accessories are itemized below. The 3S LiPo is the one you bring yourself, since international shipping rules keep us from sending batteries, and the Charge and Power page walks through exactly what to look for."
@@ -147,7 +145,6 @@ export default function UnboxPage() {
       {/* ── Accessories ───────────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ paddingBottom: 32 }}>
-          <StepMarker n={2} label="ALSO IN THE BOX" />
           <DisplayHeading size="lg">
             THE <Red>ACCESSORIES.</Red>
           </DisplayHeading>

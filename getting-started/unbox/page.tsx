@@ -76,7 +76,7 @@ export default function UnboxPage() {
       <ScrollReveal>
         <Fig
           label="FIG. A"
-          caption="What comes in the box. The accessories are itemized below. The 3S LiPo is the one you bring yourself, since international shipping rules keep us from sending batteries, and the Charge and Power page walks through exactly what to look for."
+          caption="The NeoRacer ships in a single cardboard box holding two smaller boxes: the NeoRacer box and the FlySky controller box. The NeoRacer box contains the car itself, the Cudy router, the ToolkitRC charger, and accessories such as screws, sidepods, antennas, and zip ties. The Cudy router box contains an Ethernet cable and a USB-C cable, and the FlySky box contains the controller, a USB-A to micro-USB cable, and its metal bracket. Everything is shown below."
         >
           <BoxContentsDiagram />
         </Fig>

@@ -32,8 +32,8 @@ const ACCESSORIES = [
   },
   {
     src: '/images/unbox-cover-screws.jpeg',
-    name: 'Side-cover screws',
-    d: 'Screws for the 3D-printed side plates, with one spare.',
+    name: 'Sidepods',
+    d: 'Screws for the 3D-printed sidepods, with one spare.',
   },
   {
     src: '/images/unbox-flysky-cable.jpeg',

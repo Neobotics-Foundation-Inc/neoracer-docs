@@ -10,6 +10,7 @@ import {
   DashList,
   NumberedFeatureCard,
   SymptomBanner,
+  StepMarker,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow, AnimatedNumeral, InfoNote } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext, Callout, Code } from '@/components/docs/DocsPrimitives';
@@ -79,7 +80,7 @@ export default function WontPowerOnPage() {
         <section style={{ position: 'relative', paddingBottom: 48 }}>
           <GhostNumeral n="01" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>01 / SIXTY-SECOND TRIAGE</Eyebrow>
+            <StepMarker n={1} label="SIXTY-SECOND TRIAGE" />
             <DisplayHeading size="lg">
               QUICK <Red>TRIAGE.</Red>
             </DisplayHeading>
@@ -123,7 +124,7 @@ export default function WontPowerOnPage() {
         <section style={{ position: 'relative', paddingBottom: 48 }}>
           <GhostNumeral n="02" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>02 / IF TRIAGE DIDN'T FIX IT</Eyebrow>
+            <StepMarker n={2} label="IF TRIAGE DIDN'T FIX IT" />
             <DisplayHeading size="lg">
               LIKELY <Red>CAUSES.</Red>
             </DisplayHeading>

@@ -10,6 +10,7 @@ import {
   ChromeBadge,
   ClockGlyph,
   Fig,
+  StepMarker,
 } from '@/components/docs/Editorial';
 import { BoxContentsDiagram } from '@/components/docs/Diagrams';
 import { ScrollReveal, MouseFollowGlow, AnimatedNumeral } from '@/components/docs/Interactive';
@@ -24,7 +25,7 @@ const ACCESSORIES = [
   {
     src: '/images/unbox-antenna-kit.jpeg',
     name: 'Wi-Fi antenna kit',
-    d: 'The antenna, its U.FL-to-SMA lead, and the washers that mount the lead through the chassis. These go on in Get on the car.',
+    d: 'The antenna, its U.FL-to-SMA lead, and the washers that mount the lead through the chassis.',
   },
   {
     src: '/images/unbox-zip-ties.jpeg',
@@ -34,7 +35,7 @@ const ACCESSORIES = [
   {
     src: '/images/unbox-cover-screws.jpeg',
     name: 'Side-cover screws',
-    d: 'Spares for the 3D-printed side covers.',
+    d: 'Screws for the 3D-printed side plates, with one spare.',
   },
   {
     src: '/images/unbox-flysky-cable.jpeg',
@@ -64,23 +65,10 @@ export default function UnboxPage() {
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
           <GhostNumeral n="01" top={-30} right={-20} size={360} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>STEP 01 / GETTING STARTED</Eyebrow>
+            <Eyebrow>GETTING STARTED</Eyebrow>
             <DisplayHeading size="xl">
               UNBOX THE <Red>NEORACER.</Red>
             </DisplayHeading>
-            <p
-              style={{
-                fontFamily: NB.bodyFont,
-                fontSize: 18,
-                lineHeight: 1.55,
-                color: NB.textMutedBeige,
-                maxWidth: 680,
-              }}
-            >
-              Give yourself roughly 10 minutes to lay everything out and confirm
-              nothing is missing. The LiPo waits until the next page, so there's
-              nothing to plug in just yet.
-            </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="outline" icon={<ClockGlyph />}><AnimatedNumeral value={10} prefix="~" suffix=" minutes" /></ChromeBadge>
             </div>
@@ -90,6 +78,7 @@ export default function UnboxPage() {
 
       {/* ── FIG. A / Box contents ────────────────────────────────────── */}
       <ScrollReveal>
+        <StepMarker n={1} label="WHAT'S IN THE BOX" />
         <Fig
           label="FIG. A / WHAT'S IN THE BOX"
           caption="What comes in the box. The accessories are itemized below. The 3S LiPo is the one you bring yourself, since international shipping rules keep us from sending batteries, and the Charge and Power page walks through exactly what to look for."
@@ -98,10 +87,70 @@ export default function UnboxPage() {
         </Fig>
       </ScrollReveal>
 
+      {/* ── Not in the box: the battery you bring yourself ────────────── */}
+      <ScrollReveal>
+        <section style={{ paddingBottom: 32 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, margin: '0 2px 12px' }}>
+            <span aria-hidden style={{ flex: '0 0 auto', width: 18, height: 2, background: NB.neoboticsRed }} />
+            <span
+              style={{
+                fontFamily: NB.monoFont,
+                fontSize: 10.5,
+                fontWeight: 700,
+                letterSpacing: '0.16em',
+                textTransform: 'uppercase',
+                color: NB.neoboticsRed,
+              }}
+            >
+              Not in the box · you supply this
+            </span>
+          </div>
+          <div
+            style={{
+              border: `1.5px dashed ${NB.neoboticsRed}`,
+              background: '#FFEEF1',
+              borderRadius: 8,
+              padding: '14px 12px',
+              minHeight: 72,
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+              textAlign: 'center',
+            }}
+          >
+            <div
+              style={{
+                fontFamily: NB.headingFont,
+                fontSize: 18,
+                fontWeight: 900,
+                letterSpacing: '0.06em',
+                textTransform: 'uppercase',
+                color: NB.neoboticsRed,
+              }}
+            >
+              BATTERY
+            </div>
+            <div
+              style={{
+                fontFamily: NB.monoFont,
+                fontSize: 10.5,
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase',
+                color: NB.neoboticsRed,
+                marginTop: 4,
+              }}
+            >
+              Sourced separately · a 3S LiPo of your choosing
+            </div>
+          </div>
+        </section>
+      </ScrollReveal>
+
       {/* ── Accessories ───────────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ paddingBottom: 32 }}>
-          <Eyebrow>02 / ALSO IN THE BOX</Eyebrow>
+          <StepMarker n={2} label="ALSO IN THE BOX" />
           <DisplayHeading size="lg">
             THE <Red>ACCESSORIES.</Red>
           </DisplayHeading>

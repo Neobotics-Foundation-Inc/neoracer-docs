@@ -11,6 +11,7 @@ import {
   ChromeBadge,
   DashList,
   NumberedFeatureCard,
+  StepMarker,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext, Callout, Code, DataTable } from '@/components/docs/DocsPrimitives';
@@ -77,7 +78,7 @@ ros2 launch osracer_bringup bringup.launch.py`}</Code>
       {/* ── 01 · before you map ─────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ paddingBottom: 40 }}>
-          <Eyebrow>01 / BEFORE YOU MAP</Eyebrow>
+          <StepMarker n={1} label="BEFORE YOU MAP" />
           <DisplayHeading size="lg">
             DRIVE TO <Red>MAP.</Red>
           </DisplayHeading>
@@ -105,7 +106,7 @@ ros2 launch osracer_bringup bringup.launch.py`}</Code>
         <section style={{ position: 'relative', paddingBottom: 40 }}>
           <GhostNumeral n="02" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>02 / PICK A BACKEND</Eyebrow>
+            <StepMarker n={2} label="PICK A BACKEND" />
             <DisplayHeading size="lg">
               THREE WAYS TO <Red>MAP.</Red>
             </DisplayHeading>
@@ -152,7 +153,7 @@ ros2 launch osracer_debug debug_cartographer.launch.py # terminal 2 (RViz)`}</Co
       {/* ── 03 · watch it build ─────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ paddingBottom: 40 }}>
-          <Eyebrow>03 / IN RVIZ</Eyebrow>
+          <StepMarker n={3} label="IN RVIZ" />
           <DisplayHeading size="lg">
             WATCH IT <Red>BUILD.</Red>
           </DisplayHeading>
@@ -179,7 +180,7 @@ ros2 launch osracer_debug debug_cartographer.launch.py # terminal 2 (RViz)`}</Co
         <section style={{ position: 'relative', paddingBottom: 24 }}>
           <GhostNumeral n="04" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>04 / KEEP IT</Eyebrow>
+            <StepMarker n={4} label="KEEP IT" />
             <DisplayHeading size="lg">
               SAVE THE <Red>MAP.</Red>
             </DisplayHeading>

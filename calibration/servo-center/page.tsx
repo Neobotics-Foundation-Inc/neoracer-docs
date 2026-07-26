@@ -10,6 +10,7 @@ import {
   DashList,
   Fig,
   NumberedFeatureCard,
+  StepMarker,
 } from '@/components/docs/Editorial';
 import {
   CalibrationStepStrip,
@@ -99,7 +100,7 @@ export default function ServoCenterPage() {
         <section style={{ position: 'relative', paddingBottom: 56 }}>
           <GhostNumeral n="01" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>01 / HOW IT WORKS</Eyebrow>
+            <StepMarker n={1} label="HOW IT WORKS" />
             <DisplayHeading size="lg">
               HOW IT <Red>WORKS.</Red>
             </DisplayHeading>
@@ -135,7 +136,7 @@ export default function ServoCenterPage() {
         <section style={{ position: 'relative', paddingBottom: 56 }}>
           <GhostNumeral n="02" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>02 / YOU'LL NEED</Eyebrow>
+            <StepMarker n={2} label="YOU'LL NEED" />
             <DisplayHeading size="lg">
               WHAT YOU <Red>NEED.</Red>
             </DisplayHeading>
@@ -205,7 +206,7 @@ export default function ServoCenterPage() {
         <section style={{ position: 'relative', paddingBottom: 56 }}>
           <GhostNumeral n="03" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>03 / THE PROCEDURE</Eyebrow>
+            <StepMarker n={3} label="THE PROCEDURE" />
             <DisplayHeading size="lg">
               THE <Red>PROCEDURE.</Red>
             </DisplayHeading>
@@ -247,7 +248,7 @@ python3 lab_trim_cal.py
         <section style={{ position: 'relative', paddingBottom: 56 }}>
           <GhostNumeral n="04" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>04 / VERIFY</Eyebrow>
+            <StepMarker n={4} label="VERIFY" />
             <DisplayHeading size="lg">
               VERIFY THE <Red>CENTER.</Red>
             </DisplayHeading>
@@ -312,7 +313,7 @@ rc.go()`}</Code>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
           <GhostNumeral n="05" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>05 / WHERE IT LIVES</Eyebrow>
+            <StepMarker n={5} label="WHERE IT LIVES" />
             <DisplayHeading size="lg">
               WHERE IT <Red>LIVES.</Red>
             </DisplayHeading>

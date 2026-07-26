@@ -2,7 +2,6 @@ import { Metadata } from 'next';
 import DocsShell from '@/components/docs/DocsShell';
 import { NB } from '@/lib/nb-tokens';
 import {
-  Eyebrow,
   DisplayHeading,
   Red,
   GhostNumeral,
@@ -11,6 +10,7 @@ import {
   Fig,
   NumberedFeatureCard,
   ChromeBadge,
+  StepMarker,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow, AnimatedDataFlowDiagram, InfoNote } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext, Callout } from '@/components/docs/DocsPrimitives';
@@ -45,7 +45,7 @@ export default function ROS2DriverPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 40 }}>
               <div>
-                <Eyebrow>01 / QUICK ROS 2 PRIMER</Eyebrow>
+                <StepMarker n={1} label="QUICK ROS 2 PRIMER" />
                 <DisplayHeading size="2xl">
                   THE ROS 2 <Red>DRIVER.</Red>
                 </DisplayHeading>
@@ -97,7 +97,7 @@ export default function ROS2DriverPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 40 }}>
               <div>
-                <Eyebrow>02 / ROS 2 BASICS</Eyebrow>
+                <StepMarker n={2} label="ROS 2 BASICS" />
                 <DisplayHeading size="2xl">
                   QUICK ROS 2 <Red>BASICS.</Red>
                 </DisplayHeading>
@@ -178,7 +178,7 @@ export default function ROS2DriverPage() {
         <section style={{ position: 'relative', paddingBottom: 56 }}>
           <GhostNumeral n="03" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>03 / WHAT TELEOP BRINGS UP</Eyebrow>
+            <StepMarker n={3} label="WHAT TELEOP BRINGS UP" />
             <DisplayHeading size="lg">
               WHAT <Red>TELEOP</Red> BRINGS UP.
             </DisplayHeading>

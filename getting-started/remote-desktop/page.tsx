@@ -10,6 +10,7 @@ import {
   GhostNumeral,
   DashList,
   Fig,
+  StepMarker,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
 import { Crumbs, Callout, Code, PrevNext } from '@/components/docs/DocsPrimitives';
@@ -58,7 +59,7 @@ export default function RemoteDesktopPage() {
         <section style={{ position: 'relative', paddingBottom: 44 }}>
           <GhostNumeral n="01" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>01 / ON THE CAR</Eyebrow>
+            <StepMarker n={1} label="ON THE CAR" />
             <DisplayHeading size="lg">
               SET A PERMANENT <Red>PASSWORD.</Red>
             </DisplayHeading>
@@ -117,7 +118,7 @@ export default function RemoteDesktopPage() {
         <section style={{ position: 'relative', paddingBottom: 44 }}>
           <GhostNumeral n="02" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>02 / FROM YOUR LAPTOP, CONNECT BY IP</Eyebrow>
+            <StepMarker n={2} label="FROM YOUR LAPTOP, CONNECT BY IP" />
             <DisplayHeading size="lg">
               CONNECT BY <Red>ADDRESS.</Red>
             </DisplayHeading>
@@ -146,7 +147,7 @@ export default function RemoteDesktopPage() {
         <section style={{ position: 'relative', paddingBottom: 44 }}>
           <GhostNumeral n="03" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>03 / AFTER THIS SETUP</Eyebrow>
+            <StepMarker n={3} label="AFTER THIS SETUP" />
             <DisplayHeading size="lg">
               RUSTDESK REPLACES THE <Red>MONITOR.</Red>
             </DisplayHeading>

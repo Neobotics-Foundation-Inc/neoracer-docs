@@ -13,6 +13,7 @@ import {
   DashList,
   Fig,
   NumberedFeatureCard,
+  StepMarker,
 } from '@/components/docs/Editorial';
 import { Crumbs, Callout, PrevNext, Code } from '@/components/docs/DocsPrimitives';
 import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
@@ -37,7 +38,7 @@ export default function ChargeAndPowerPage() {
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
           <GhostNumeral n="02" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>STEP 02 / GETTING STARTED</Eyebrow>
+            <Eyebrow>GETTING STARTED</Eyebrow>
             <DisplayHeading size="xl">
               CHARGE THE <Red>BATTERY.</Red>
             </DisplayHeading>
@@ -54,7 +55,7 @@ export default function ChargeAndPowerPage() {
 
       <ScrollReveal>
         <Callout type="danger" title="Charging safety">
-          Charge on a hard, non-flammable surface (a LiPo bag is ideal) and stay
+          Charge on a non-flammable surface (a LiPo bag is ideal) and stay
           in the room while it charges.
         </Callout>
       </ScrollReveal>
@@ -66,7 +67,7 @@ export default function ChargeAndPowerPage() {
           <DashList
             items={[
               <>The LiPo charger that shipped with your kit.</>,
-              <>An 11.1 V (3S) LiPo pack, <strong>you supply this</strong>. See "Recommended packs" below.</>,
+              <>An 11.1 V (3S) LiPo pack, <strong>you will need your own</strong>. See "Recommended packs" below.</>,
               <>A hard surface (concrete, tile, or a LiPo charging bag), not a bed or carpet.</>,
               <>An AC outlet within reach.</>,
             ]}
@@ -77,7 +78,7 @@ export default function ChargeAndPowerPage() {
       {/* Recommended packs */}
       <ScrollReveal>
         <section style={{ paddingBottom: 24 }}>
-          <Eyebrow>01 / RECOMMENDED PACKS</Eyebrow>
+          <StepMarker n={1} label="RECOMMENDED PACKS" />
           <DisplayHeading size="lg">
             RECOMMENDED <Red>PACKS.</Red>
           </DisplayHeading>
@@ -107,17 +108,17 @@ export default function ChargeAndPowerPage() {
       {/* Steps */}
       <ScrollReveal>
         <section style={{ paddingBottom: 32 }}>
-          <Eyebrow>02 / FIRST CHARGE</Eyebrow>
+          <StepMarker n={2} label="FIRST CHARGE" />
           <DisplayHeading size="lg">
             THE FIRST <Red>CHARGE.</Red>
           </DisplayHeading>
           {[
-            { t: 'Place the LiPo on a hard, non-flammable surface.', d: 'A concrete floor or a LiPo charging bag is ideal. Carpet, bedding, and wood can catch if a pack overheats, so steer clear of those.' },
+            { t: 'Place the LiPo on a non-flammable surface.', d: 'A concrete floor or a LiPo charging bag is ideal. Carpet, bedding, and wood can catch if a pack overheats, so steer clear of those.' },
             { t: 'Plug the AC side of the charger into the wall first.', d: 'You should see a power LED. If nothing lights up, double-check the outlet before continuing.' },
             { t: 'Connect the balance lead (white plug) to the charger\'s balance port.', d: 'The plug only fits one way, so if it resists, turn it around rather than pushing harder.' },
             { t: 'Connect the main XT60 lead.', d: <>You may see a brief spark, this is the <InfoNote term="inrush current" title="Inrush current">The sudden surge of current that flows the instant a circuit is connected, before it settles to a steady level. Here it briefly charges the capacitors inside the charger, which is why you see a small spark.</InfoNote> on the charger&apos;s capacitors and is normal.</> },
-            { t: 'Confirm the charger is in 3S balance-charge mode at ≤ 1C.', d: 'For a 5000 mAh pack, that is 5 A or lower. 1 A is fine too if you have the time, and a slower charge is gentler on the pack.' },
-            { t: 'Stay nearby until it reaches full.', d: 'A 5000 mAh pack at 1C takes roughly one hour. The charger signals complete with a solid LED or an audible tone.' },
+            { t: 'Confirm the charger is in 3S LiPo balance-charge mode.', d: 'Set LiPo and 3S on the charger screen. Current is settable up to 2.5 A, about half a C for a 5000 mAh pack, already under the 1C limit, so it cannot overdrive the pack.' },
+            { t: 'Stay nearby until it reaches full.', d: 'The charger tops out at 25 W, which works out to about 2 A into a 3S pack, so a low 5000 mAh pack takes roughly two and a half to three hours.' },
           ].map((s, i) => (
             <div key={i} style={{ display: 'grid', gridTemplateColumns: '52px 1fr', gap: 16, padding: '20px 0', borderBottom: `1px solid ${NB.borderOnBeige}` }}>
               <div style={{ fontFamily: NB.headingFont, fontSize: 36, fontWeight: 900, lineHeight: 1, color: NB.neoboticsRed, letterSpacing: '-0.02em' }}>
@@ -135,7 +136,7 @@ export default function ChargeAndPowerPage() {
       {/* Three things */}
       <ScrollReveal>
         <section style={{ paddingBottom: 32 }}>
-          <Eyebrow>03 / WHAT TO WATCH FOR</Eyebrow>
+          <StepMarker n={3} label="WHAT TO WATCH FOR" />
           <DisplayHeading size="lg">
             WARNING <Red>SIGNS.</Red>
           </DisplayHeading>

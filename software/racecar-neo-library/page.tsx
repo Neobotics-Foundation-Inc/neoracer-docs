@@ -9,6 +9,7 @@ import {
   ChromeBadge,
   DashList,
   Fig,
+  StepMarker,
 } from '@/components/docs/Editorial';
 import {
   SimCarBridgeDiagram,
@@ -269,7 +270,7 @@ export default function RacecarNeoLibraryPage() {
         <section style={{ position: 'relative', paddingBottom: 56 }}>
           <GhostNumeral n="01" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>01 / MODULES AT A GLANCE</Eyebrow>
+            <StepMarker n={1} label="MODULES AT A GLANCE" />
             <DisplayHeading size="lg">
               THE FIVE <Red>MODULES.</Red>
             </DisplayHeading>
@@ -302,7 +303,7 @@ export default function RacecarNeoLibraryPage() {
         <section style={{ position: 'relative', paddingBottom: 56 }}>
           <GhostNumeral n="02" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>02 / WHAT THE SCAN LOOKS LIKE</Eyebrow>
+            <StepMarker n={2} label="WHAT THE SCAN LOOKS LIKE" />
             <DisplayHeading size="lg">
               THE LIDAR <Red>SCAN.</Red>
             </DisplayHeading>
@@ -381,7 +382,7 @@ export default function RacecarNeoLibraryPage() {
         <section style={{ position: 'relative', paddingBottom: 56 }}>
           <GhostNumeral n="03" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>03 / HELLO WORLD, DRIVE A SQUARE</Eyebrow>
+            <StepMarker n={3} label="HELLO WORLD, DRIVE A SQUARE" />
             <DisplayHeading size="lg">
               DRIVE A <Red>SQUARE.</Red>
             </DisplayHeading>
@@ -422,7 +423,7 @@ export default function RacecarNeoLibraryPage() {
         <section style={{ position: 'relative', paddingBottom: 56 }}>
           <GhostNumeral n="04" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>04 / TWO WAYS TO SHIP</Eyebrow>
+            <StepMarker n={4} label="TWO WAYS TO SHIP" />
             <DisplayHeading size="lg">
               TWO WAYS TO <Red>SHIP.</Red>
             </DisplayHeading>

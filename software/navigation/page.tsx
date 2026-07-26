@@ -11,6 +11,7 @@ import {
   ChromeBadge,
   DashList,
   NumberedFeatureCard,
+  StepMarker,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext, Callout, Code, DataTable } from '@/components/docs/DocsPrimitives';
@@ -71,7 +72,7 @@ ros2 launch osracer_bringup bringup.launch.py`}</Code>
       {/* ── 01 · prerequisites ──────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ paddingBottom: 40 }}>
-          <Eyebrow>01 / BEFORE YOU NAVIGATE</Eyebrow>
+          <StepMarker n={1} label="BEFORE YOU NAVIGATE" />
           <DisplayHeading size="lg">
             YOU NEED A <Red>MAP.</Red>
           </DisplayHeading>
@@ -96,7 +97,7 @@ ros2 launch osracer_bringup bringup.launch.py`}</Code>
         <section style={{ position: 'relative', paddingBottom: 40 }}>
           <GhostNumeral n="02" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>02 / LAUNCH NAV2</Eyebrow>
+            <StepMarker n={2} label="LAUNCH NAV2" />
             <DisplayHeading size="lg">
               DWB OR <Red>TEB.</Red>
             </DisplayHeading>
@@ -134,7 +135,7 @@ ros2 launch osracer_navigation nav2.launch.py planner:=teb`}</Code>
       {/* ── 03 · set a goal ─────────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ paddingBottom: 24 }}>
-          <Eyebrow>03 / IN RVIZ</Eyebrow>
+          <StepMarker n={3} label="IN RVIZ" />
           <DisplayHeading size="lg">
             SET A <Red>GOAL.</Red>
           </DisplayHeading>

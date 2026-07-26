@@ -10,6 +10,7 @@ import {
   MonoLabel,
   ChromeBadge,
   DashList,
+  StepMarker,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext, Callout, Code } from '@/components/docs/DocsPrimitives';
@@ -64,7 +65,7 @@ export default function FirmwareFlashingPage() {
       {/* ── 01 · get the firmware ───────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ paddingBottom: 40 }}>
-          <Eyebrow>01 / GET THE FIRMWARE</Eyebrow>
+          <StepMarker n={1} label="GET THE FIRMWARE" />
           <DisplayHeading size="lg">
             THE <Red>.BIN.</Red>
           </DisplayHeading>
@@ -86,7 +87,7 @@ unzip osrcore-firmware-v1.0.5.zip   # -> osrcore-firmware-v1.0.5.bin`}</Code>
         <section style={{ position: 'relative', paddingBottom: 40 }}>
           <GhostNumeral n="02" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>02 / BEFORE YOU CONNECT</Eyebrow>
+            <StepMarker n={2} label="BEFORE YOU CONNECT" />
             <DisplayHeading size="lg">
               POWER AND A <Red>BROWSER.</Red>
             </DisplayHeading>
@@ -109,7 +110,7 @@ unzip osrcore-firmware-v1.0.5.zip   # -> osrcore-firmware-v1.0.5.bin`}</Code>
       {/* ── 03 · download mode ──────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ paddingBottom: 40 }}>
-          <Eyebrow>03 / THE KEY SEQUENCE</Eyebrow>
+          <StepMarker n={3} label="THE KEY SEQUENCE" />
           <DisplayHeading size="lg">
             ENTER DOWNLOAD <Red>MODE.</Red>
           </DisplayHeading>
@@ -146,7 +147,7 @@ unzip osrcore-firmware-v1.0.5.zip   # -> osrcore-firmware-v1.0.5.bin`}</Code>
         <section style={{ position: 'relative', paddingBottom: 40 }}>
           <GhostNumeral n="04" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>04 / FLASH IT</Eyebrow>
+            <StepMarker n={4} label="FLASH IT" />
             <DisplayHeading size="lg">
               CONNECT, THEN <Red>WRITE.</Red>
             </DisplayHeading>
@@ -177,7 +178,7 @@ unzip osrcore-firmware-v1.0.5.zip   # -> osrcore-firmware-v1.0.5.bin`}</Code>
       {/* ── 05 · serial monitor ─────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ paddingBottom: 24 }}>
-          <Eyebrow>05 / AFTER THE FLASH</Eyebrow>
+          <StepMarker n={5} label="AFTER THE FLASH" />
           <DisplayHeading size="lg">
             SERIAL <Red>MONITOR.</Red>
           </DisplayHeading>

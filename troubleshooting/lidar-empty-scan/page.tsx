@@ -10,6 +10,7 @@ import {
   DashList,
   NumberedFeatureCard,
   SymptomBanner,
+  StepMarker,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow, AnimatedNumeral, InfoNote } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext, Callout, Code } from '@/components/docs/DocsPrimitives';
@@ -96,7 +97,7 @@ export default function LidarEmptyScanPage() {
         <section style={{ position: 'relative', paddingBottom: 48 }}>
           <GhostNumeral n="01" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>01 / IS THE SCANNER EVEN RUNNING?</Eyebrow>
+            <StepMarker n={1} label="IS THE SCANNER EVEN RUNNING?" />
             <DisplayHeading size="lg">
               THE SPINNING <Red>HEAD.</Red>
             </DisplayHeading>
@@ -140,7 +141,7 @@ ros2 topic hz /scan          # the rate the Lakibeam is configured for`}</Code>
         <section style={{ position: 'relative', paddingBottom: 48 }}>
           <GhostNumeral n="02" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>02 / THE THREE THAT ACTUALLY BREAK</Eyebrow>
+            <StepMarker n={2} label="THE THREE THAT ACTUALLY BREAK" />
             <DisplayHeading size="lg">
               LIKELY <Red>CAUSES.</Red>
             </DisplayHeading>

@@ -13,6 +13,7 @@ import {
   ClockGlyph,
   DashList,
   Fig,
+  StepMarker,
 } from '@/components/docs/Editorial';
 import { CarSprite } from '@/components/docs/Diagrams';
 import { Crumbs, Callout, PrevNext, Code } from '@/components/docs/DocsPrimitives';
@@ -146,7 +147,7 @@ export default function FirstProgramPage() {
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
           <GhostNumeral n="06" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>STEP 06 / GETTING STARTED</Eyebrow>
+            <Eyebrow>GETTING STARTED</Eyebrow>
             <DisplayHeading size="xl">
               WALL <Red>FOLLOWING.</Red>
             </DisplayHeading>
@@ -218,7 +219,7 @@ python3 wall_follow.py`}</Code>
 
       <ScrollReveal>
         <section style={{ paddingBottom: 24 }}>
-          <Eyebrow>01 / THE PROGRAM</Eyebrow>
+          <StepMarker n={1} label="THE PROGRAM" />
           <DisplayHeading size="lg">
             THE <Red>PROGRAM.</Red>
           </DisplayHeading>
@@ -281,7 +282,7 @@ rc.go()`}
 
       <ScrollReveal>
         <section style={{ paddingBottom: 32 }}>
-          <Eyebrow>02 / WHAT TO EXPECT</Eyebrow>
+          <StepMarker n={2} label="WHAT TO EXPECT" />
           <DisplayHeading size="lg">
             WHAT TO <Red>EXPECT.</Red>
           </DisplayHeading>

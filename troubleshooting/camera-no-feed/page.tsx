@@ -9,6 +9,7 @@ import {
   ChromeBadge,
   NumberedFeatureCard,
   SymptomBanner,
+  StepMarker,
 } from '@/components/docs/Editorial';
 import { Crumbs, PrevNext, Callout, Code } from '@/components/docs/DocsPrimitives';
 import { ScrollReveal, MouseFollowGlow, AnimatedNumeral } from '@/components/docs/Interactive';
@@ -90,7 +91,7 @@ export default function CameraNoFeedPage() {
         <section style={{ position: 'relative', paddingBottom: 48 }}>
           <GhostNumeral n="01" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>01 / IS THE NODE EVEN UP?</Eyebrow>
+            <StepMarker n={1} label="IS THE NODE EVEN UP?" />
             <DisplayHeading size="lg">
               NODE <Red>STATUS.</Red>
             </DisplayHeading>
@@ -117,7 +118,7 @@ ros2 topic hz /camera`}</Code>
         <section style={{ position: 'relative', paddingBottom: 48 }}>
           <GhostNumeral n="02" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>02 / THREE THAT ACTUALLY HAPPEN</Eyebrow>
+            <StepMarker n={2} label="THREE THAT ACTUALLY HAPPEN" />
             <DisplayHeading size="lg">
               LIKELY <Red>CAUSES.</Red>
             </DisplayHeading>

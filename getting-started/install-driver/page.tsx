@@ -89,8 +89,8 @@ export default function InstallDriverPage() {
             You are at the car&apos;s console from{' '}
             <Link href="/docs/getting-started/connect-to-car" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Get on the car</Link>,
             logged in as <code style={{ fontFamily: NB.monoFont }}>racecar</code>,
-            with the car online and the repository pulled. Every NeoRacer ships
-            the same system, so the commands here match your car exactly.
+            with the car online. Every NeoRacer ships the same system, so the
+            commands here match your car exactly.
           </p>
           <div
             style={{
@@ -122,22 +122,69 @@ export default function InstallDriverPage() {
             <a href="https://github.com/Neobotics-Foundation-Inc/neoracer_ros2_driver" target="_blank" rel="noopener noreferrer" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
               neoracer_ros2_driver
             </a>
-            . Cars from the factory already have it cloned at{' '}
-            <code style={{ fontFamily: NB.monoFont }}>~/ros2_ws/src/neoracer_ros2_driver</code>,
-            so you pull the latest and run the setup script. It asks for your
-            password once (<code style={{ fontFamily: NB.monoFont }}>neobotics</code>)
-            and takes care of the rest.
+            . Pick the side that matches your car; both end at the same setup
+            script. It asks for your password once
+            (<code style={{ fontFamily: NB.monoFont }}>neobotics</code>) and
+            takes care of the rest.
           </p>
-          <Code lang="bash">{`cd ~/ros2_ws/src/neoracer_ros2_driver
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(310px, 1fr))',
+              gap: 20,
+              marginTop: 20,
+            }}
+          >
+            <div
+              style={{
+                background: NB.haloWhite,
+                border: `1px solid ${NB.borderOnBeige}`,
+                borderTop: `3px solid ${NB.neoboticsRed}`,
+                borderRadius: 12,
+                padding: '20px 20px 16px',
+                boxShadow: NB.shadowCard,
+              }}
+            >
+              <div style={{ fontFamily: NB.monoFont, fontSize: 10.5, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', color: NB.textMutedBeige, marginBottom: 8 }}>
+                Driver already on the car
+              </div>
+              <div style={{ fontFamily: NB.headingFont, fontSize: 24, fontWeight: 900, letterSpacing: '-0.01em', textTransform: 'uppercase', color: NB.textOnBeige, marginBottom: 10 }}>
+                BOUGHT A <span style={{ color: NB.neoboticsRed }}>NEORACER.</span>
+              </div>
+              <p style={{ fontFamily: NB.bodyFont, fontSize: 14.5, lineHeight: 1.6, color: NB.textMutedBeige, margin: '0 0 12px' }}>
+                Factory cars ship with the repository at{' '}
+                <code style={{ fontFamily: NB.monoFont }}>~/ros2_ws/src/neoracer_ros2_driver</code>.
+                Pull the latest and run the script.
+              </p>
+              <Code lang="bash">{`cd ~/ros2_ws/src/neoracer_ros2_driver
 git pull
 bash scripts/setup_all.sh`}</Code>
-          <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-            If your car does not have the repository yet, clone it first, then run
-            the same script:
-          </p>
-          <Code lang="bash">{`mkdir -p ~/ros2_ws/src && cd ~/ros2_ws/src
+            </div>
+            <div
+              style={{
+                background: NB.haloWhite,
+                border: `1px solid ${NB.borderOnBeige}`,
+                borderTop: `3px solid ${NB.tarmacBlue}`,
+                borderRadius: 12,
+                padding: '20px 20px 16px',
+                boxShadow: NB.shadowCard,
+              }}
+            >
+              <div style={{ fontFamily: NB.monoFont, fontSize: 10.5, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', color: NB.textMutedBeige, marginBottom: 8 }}>
+                No driver on the car yet
+              </div>
+              <div style={{ fontFamily: NB.headingFont, fontSize: 24, fontWeight: 900, letterSpacing: '-0.01em', textTransform: 'uppercase', color: NB.textOnBeige, marginBottom: 10 }}>
+                BUILDING YOUR <span style={{ color: NB.neoboticsRed }}>OWN.</span>
+              </div>
+              <p style={{ fontFamily: NB.bodyFont, fontSize: 14.5, lineHeight: 1.6, color: NB.textMutedBeige, margin: '0 0 12px' }}>
+                A stock Jetson Orin Nano starts empty. Clone the repository
+                first, then run the same script.
+              </p>
+              <Code lang="bash">{`mkdir -p ~/ros2_ws/src && cd ~/ros2_ws/src
 git clone https://github.com/Neobotics-Foundation-Inc/neoracer_ros2_driver.git
 bash neoracer_ros2_driver/scripts/setup_all.sh`}</Code>
+            </div>
+          </div>
           <Callout type="tip" title="Safe to re-run">
             The script is idempotent: it skips anything already done. If it stops
             partway (a dropped connection, a typo&apos;d password), run it again
@@ -266,6 +313,12 @@ racecar service start`}</Code>
 #   neoracer-watchdog    active   enabled
 #   neoracer-dashboard   active   enabled
 #   neoracer-jupyter     active   enabled`}</Code>
+          <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 6 }}>
+            If not all services show active, a quick restart should have
+            everything up and running:
+          </p>
+          <Code lang="bash">{`racecar service stop
+racecar service start`}</Code>
           <MonoLabel>2 · The sensors</MonoLabel>
           <Code lang="bash">{`source /opt/ros/humble/setup.bash && source ~/ros2_ws/install/setup.bash
 ros2 topic hz /scan     # LiDAR, about 30 Hz
@@ -273,7 +326,9 @@ ros2 topic hz /camera   # camera, about 60 Hz`}</Code>
           <MonoLabel>3 · The dashboard</MonoLabel>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 6 }}>
             Open the health dashboard in a browser on the car&apos;s network. Every
-            card should be green: sensors, drive pipeline, temperature.
+            card should be green: sensors, drive pipeline, temperature. The
+            addresses below are examples; yours might be slightly different,
+            but will look similar.
           </p>
           <Code lang="bash">{`http://10.42.0.1:8080          # access point
 http://192.168.10.100:8080     # cudy router`}</Code>

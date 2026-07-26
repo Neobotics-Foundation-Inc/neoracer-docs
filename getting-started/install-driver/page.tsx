@@ -109,7 +109,7 @@ export default function InstallDriverPage() {
       <ScrollReveal>
         <section style={{ paddingBottom: 36 }}>
           <DisplayHeading size="lg">
-            ONE <Red>SCRIPT.</Red>
+            RUN THE <Red>SETUP.</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             The driver lives in one open-source repository,{' '}
@@ -191,7 +191,7 @@ bash neoracer_ros2_driver/scripts/setup_all.sh`}</Code>
       <ScrollReveal>
         <section style={{ paddingBottom: 36 }}>
           <DisplayHeading size="lg">
-            SEVEN PHASES, <Red>EXPLAINED.</Red>
+            THE SEVEN <Red>PHASES.</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             The script prints each phase as it goes. Here is what each one did to
@@ -292,7 +292,7 @@ racecar service start`}</Code>
       <ScrollReveal>
         <section style={{ paddingBottom: 36 }}>
           <DisplayHeading size="lg">
-            THREE QUICK <Red>CHECKS.</Red>
+            QUICK <Red>CHECKS.</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             Each check confirms a different layer: the services are running, the

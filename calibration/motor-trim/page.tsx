@@ -328,7 +328,7 @@ rc.go()`}</Code>
           <GhostNumeral n="05" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              WHERE IT <Red>LIVES.</Red>
+              THE CONFIG <Red>FILE.</Red>
             </DisplayHeading>
             <p
               style={{

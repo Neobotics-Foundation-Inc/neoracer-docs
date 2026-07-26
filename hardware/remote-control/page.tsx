@@ -101,7 +101,7 @@ export default function RemoteControlPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>02 / THE MODE SWITCH</Eyebrow>
             <DisplayHeading size="lg">
-              WHO IS <Red>DRIVING.</Red>
+              THE MODE <Red>SWITCH.</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
               SWB answers one question: who is driving. Up is you, on the

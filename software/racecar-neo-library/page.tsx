@@ -417,7 +417,7 @@ export default function RacecarNeoLibraryPage() {
           <GhostNumeral n="04" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              TWO WAYS TO <Red>SHIP.</Red>
+              SIM OR <Red>CAR.</Red>
             </DisplayHeading>
             <p
               style={{

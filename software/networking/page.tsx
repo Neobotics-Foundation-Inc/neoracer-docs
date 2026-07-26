@@ -131,7 +131,7 @@ export default function NetworkingPage() {
           <GhostNumeral n="02" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              THREE WAYS <Red>IN.</Red>
+              WAYS TO <Red>CONNECT.</Red>
             </DisplayHeading>
 
             <div style={{ marginTop: 18 }}>
@@ -271,7 +271,7 @@ ros2 topic echo /scan --once     # a single scan, straight off the car`}</Code>
           <GhostNumeral n="05" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              FIND IT, RENAME <Red>IT.</Red>
+              ROUTER <Red>ADMIN.</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
               On the cudy path, you rarely touch the router itself. You open it

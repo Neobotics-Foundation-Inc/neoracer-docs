@@ -97,7 +97,7 @@ export default function OscoreBoardPage() {
         <section style={{ position: 'relative', paddingBottom: 40 }}>
           <Eyebrow>01 / WHAT IT IS</Eyebrow>
           <DisplayHeading size="lg">
-            A ROBOT CONTROL <Red>BOARD.</Red>
+            WHAT IT <Red>DOES.</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
             OSCORE is built around the ESP32-S3-WROOM-1U module and pulls the

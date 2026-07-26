@@ -94,7 +94,7 @@ export default function LidarEmptyScanPage() {
           <GhostNumeral n="01" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              THE SPINNING <Red>HEAD.</Red>
+              CHECK THE <Red>SCANNER.</Red>
             </DisplayHeading>
             <p
               style={{

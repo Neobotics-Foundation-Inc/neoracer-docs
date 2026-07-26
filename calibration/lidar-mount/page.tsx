@@ -178,7 +178,7 @@ export default function LidarMountPage() {
           <GhostNumeral n="03" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              FLUSH AND <Red>SQUARE.</Red>
+              SEAT THE <Red>SCANNER.</Red>
             </DisplayHeading>
             <DashList
               items={[
@@ -251,7 +251,7 @@ rc.go()`}</Code>
           <GhostNumeral n="05" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              WHERE IT <Red>LIVES.</Red>
+              SOFTWARE <Red>OFFSETS.</Red>
             </DisplayHeading>
             <p
               style={{

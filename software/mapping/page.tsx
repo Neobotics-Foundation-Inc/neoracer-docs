@@ -102,7 +102,7 @@ ros2 launch osracer_bringup bringup.launch.py`}</Code>
           <GhostNumeral n="02" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              THREE WAYS TO <Red>MAP.</Red>
+              PICK A <Red>BACKEND.</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
               Each backend runs in its own terminal, with a second terminal that
@@ -148,7 +148,7 @@ ros2 launch osracer_debug debug_cartographer.launch.py # terminal 2 (RViz)`}</Co
       <ScrollReveal>
         <section style={{ paddingBottom: 40 }}>
           <DisplayHeading size="lg">
-            WATCH IT <Red>BUILD.</Red>
+            IN <Red>RVIZ.</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             The debug terminal opens RViz with the fixed frame set to{' '}

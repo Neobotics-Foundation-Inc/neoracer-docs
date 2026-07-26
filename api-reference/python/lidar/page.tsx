@@ -119,7 +119,7 @@ export default function LidarApiPage() {
         <section style={{ paddingBottom: 24 }}>
           <Eyebrow>SIM AND CAR</Eyebrow>
           <DisplayHeading size="lg">
-            SAME DEGREES, DIFFERENT <Red>COUNTS.</Red>
+            SIM VS CAR <Red>COUNTS.</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             The API and the angle conventions are identical everywhere: index 0

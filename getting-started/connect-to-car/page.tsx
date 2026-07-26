@@ -94,7 +94,7 @@ export default function ConnectToCarPage() {
         <section style={{ position: 'relative', paddingBottom: 44 }}>
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              INTERNET <Red>FIRST.</Red>
+              GET THE CAR <Red>ONLINE.</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
               The install on the next page needs internet. Either works:

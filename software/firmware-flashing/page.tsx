@@ -62,7 +62,7 @@ export default function FirmwareFlashingPage() {
       <ScrollReveal>
         <section style={{ paddingBottom: 40 }}>
           <DisplayHeading size="lg">
-            THE <Red>.BIN.</Red>
+            GET THE <Red>FIRMWARE.</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             The flasher ships with the chapter example builds, so for those you
@@ -83,7 +83,7 @@ unzip osrcore-firmware-v1.0.5.zip   # -> osrcore-firmware-v1.0.5.bin`}</Code>
           <GhostNumeral n="02" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              POWER AND A <Red>BROWSER.</Red>
+              WHAT YOU <Red>NEED.</Red>
             </DisplayHeading>
             <DashList
               items={[
@@ -141,7 +141,7 @@ unzip osrcore-firmware-v1.0.5.zip   # -> osrcore-firmware-v1.0.5.bin`}</Code>
           <GhostNumeral n="04" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              CONNECT, THEN <Red>WRITE.</Red>
+              FLASH THE <Red>BOARD.</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
               Open the{' '}

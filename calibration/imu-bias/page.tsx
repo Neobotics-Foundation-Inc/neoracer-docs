@@ -7,7 +7,6 @@ import {
   GhostNumeral,
   ChromeBadge,
   DashList,
-  StepMarker,
 } from '@/components/docs/Editorial';
 import { CalibrationStepStrip, type CalibrationStep } from '@/components/docs/Diagrams';
 import { ScrollReveal, MouseFollowGlow, AnimatedNumeral, InfoNote } from '@/components/docs/Interactive';
@@ -79,7 +78,6 @@ export default function ImuBiasPage() {
         <section style={{ position: 'relative', paddingBottom: 56 }}>
           <GhostNumeral n="01" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <StepMarker n={1} label="WHAT BIAS IS" />
             <DisplayHeading size="lg">
               THE OFFSET AT <Red>REST.</Red>
             </DisplayHeading>
@@ -113,7 +111,6 @@ export default function ImuBiasPage() {
         <section style={{ position: 'relative', paddingBottom: 56 }}>
           <GhostNumeral n="02" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <StepMarker n={2} label="VERIFY AT REST" />
             <DisplayHeading size="lg">
               VERIFY AT <Red>REST.</Red>
             </DisplayHeading>
@@ -146,7 +143,6 @@ ros2 topic echo /imu --once`}</Code>
         <section style={{ position: 'relative', paddingBottom: 40 }}>
           <GhostNumeral n="03" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <StepMarker n={3} label="IF THE NUMBERS ARE OFF" />
             <DisplayHeading size="lg">
               WHEN IT <Red>DRIFTS.</Red>
             </DisplayHeading>

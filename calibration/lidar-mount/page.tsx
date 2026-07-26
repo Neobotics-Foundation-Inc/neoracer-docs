@@ -9,7 +9,6 @@ import {
   DashList,
   Fig,
   NumberedFeatureCard,
-  StepMarker,
 } from '@/components/docs/Editorial';
 import {
   CalibrationStepStrip,
@@ -89,7 +88,6 @@ export default function LidarMountPage() {
         <section style={{ position: 'relative', paddingBottom: 56 }}>
           <GhostNumeral n="01" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <StepMarker n={1} label="WHY IT MATTERS" />
             <DisplayHeading size="lg">
               YAW AND <Red>TILT.</Red>
             </DisplayHeading>
@@ -117,7 +115,6 @@ export default function LidarMountPage() {
         <section style={{ position: 'relative', paddingBottom: 56 }}>
           <GhostNumeral n="02" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <StepMarker n={2} label="YOU'LL NEED" />
             <DisplayHeading size="lg">
               WHAT YOU <Red>NEED.</Red>
             </DisplayHeading>
@@ -180,7 +177,6 @@ export default function LidarMountPage() {
         <section style={{ position: 'relative', paddingBottom: 56 }}>
           <GhostNumeral n="03" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <StepMarker n={3} label="SEAT IT" />
             <DisplayHeading size="lg">
               FLUSH AND <Red>SQUARE.</Red>
             </DisplayHeading>
@@ -201,7 +197,6 @@ export default function LidarMountPage() {
         <section style={{ position: 'relative', paddingBottom: 56 }}>
           <GhostNumeral n="04" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <StepMarker n={4} label="VERIFY" />
             <DisplayHeading size="lg">
               THE WALL <Red>TEST.</Red>
             </DisplayHeading>
@@ -255,7 +250,6 @@ rc.go()`}</Code>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
           <GhostNumeral n="05" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <StepMarker n={5} label="WHERE IT LIVES" />
             <DisplayHeading size="lg">
               WHERE IT <Red>LIVES.</Red>
             </DisplayHeading>

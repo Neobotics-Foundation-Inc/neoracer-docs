@@ -8,7 +8,6 @@ import {
   GhostNumeral,
   ChromeBadge,
   MonoLabel,
-  StepMarker,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow, AnimatedNumeral, InfoNote } from '@/components/docs/Interactive';
 import { Crumbs, Callout, PrevNext, Code, DataTable } from '@/components/docs/DocsPrimitives';
@@ -78,7 +77,6 @@ export default function InstallDriverPage() {
       {/* ── System info ──────────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 40 }}>
-          <StepMarker n={1} label="WHAT YOU'RE WORKING ON" />
           <DisplayHeading size="lg">
             THE SYSTEM <Red>SPECS.</Red>
           </DisplayHeading>
@@ -110,7 +108,6 @@ export default function InstallDriverPage() {
       {/* ── Run setup ────────────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ paddingBottom: 36 }}>
-          <StepMarker n={2} label="RUN THE SETUP" />
           <DisplayHeading size="lg">
             ONE <Red>SCRIPT.</Red>
           </DisplayHeading>
@@ -193,7 +190,6 @@ bash neoracer_ros2_driver/scripts/setup_all.sh`}</Code>
       {/* ── What it set up ───────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ paddingBottom: 36 }}>
-          <StepMarker n={3} label="WHAT THE SCRIPT SET UP" />
           <DisplayHeading size="lg">
             SEVEN PHASES, <Red>EXPLAINED.</Red>
           </DisplayHeading>
@@ -266,7 +262,6 @@ bash neoracer_ros2_driver/scripts/setup_all.sh`}</Code>
       {/* ── Start it ─────────────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ paddingBottom: 36 }}>
-          <StepMarker n={4} label="BRING THE CAR UP" />
           <DisplayHeading size="lg">
             START THE <Red>STACK.</Red>
           </DisplayHeading>
@@ -296,7 +291,6 @@ racecar service start`}</Code>
       {/* ── Verify ───────────────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ paddingBottom: 36 }}>
-          <StepMarker n={5} label="CHECK IT'S ALIVE" />
           <DisplayHeading size="lg">
             THREE QUICK <Red>CHECKS.</Red>
           </DisplayHeading>
@@ -354,7 +348,6 @@ http://192.168.10.100:8080     # cudy router`}</Code>
       {/* ── The car's own network ────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ paddingBottom: 36 }}>
-          <StepMarker n={6} label="GIVE IT ITS OWN NETWORK" />
           <DisplayHeading size="lg">
             THE CAR'S OWN <Red>NETWORK.</Red>
           </DisplayHeading>

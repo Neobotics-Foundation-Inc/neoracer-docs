@@ -9,7 +9,6 @@ import {
   DashList,
   Fig,
   NumberedFeatureCard,
-  StepMarker,
 } from '@/components/docs/Editorial';
 import {
   CalibrationStepStrip,
@@ -132,7 +131,6 @@ export default function CameraIntrinsicsPage() {
         <section style={{ position: 'relative', paddingBottom: 56 }}>
           <GhostNumeral n="01" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <StepMarker n={1} label="WHAT YOU MEASURE" />
             <DisplayHeading size="lg">
               WHAT YOU <Red>MEASURE.</Red>
             </DisplayHeading>
@@ -163,7 +161,6 @@ export default function CameraIntrinsicsPage() {
         <section style={{ position: 'relative', paddingBottom: 56 }}>
           <GhostNumeral n="02" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <StepMarker n={2} label="YOU'LL NEED" />
             <DisplayHeading size="lg">
               WHAT YOU'LL <Red>NEED.</Red>
             </DisplayHeading>
@@ -228,7 +225,6 @@ export default function CameraIntrinsicsPage() {
         <section style={{ position: 'relative', paddingBottom: 56 }}>
           <GhostNumeral n="03" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <StepMarker n={3} label="THE PROCEDURE" />
             <DisplayHeading size="lg">
               THE <Red>PROCEDURE.</Red>
             </DisplayHeading>
@@ -281,7 +277,6 @@ ros2 run camera_calibration cameracalibrator \\
         <section style={{ position: 'relative', paddingBottom: 56 }}>
           <GhostNumeral n="04" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <StepMarker n={4} label="THE OUTPUT" />
             <DisplayHeading size="lg">
               A CAMERA_INFO <Red>YAML.</Red>
             </DisplayHeading>
@@ -340,7 +335,6 @@ distortion_coefficients:
         <section style={{ position: 'relative', paddingBottom: 56 }}>
           <GhostNumeral n="05" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <StepMarker n={5} label="USING IT" />
             <DisplayHeading size="lg">
               USING THE <Red>CALIBRATION.</Red>
             </DisplayHeading>

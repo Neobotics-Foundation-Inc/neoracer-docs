@@ -12,7 +12,6 @@ import {
   DashList,
   Fig,
   NumberedFeatureCard,
-  StepMarker,
 } from '@/components/docs/Editorial';
 import { Crumbs, Callout, PrevNext, Code } from '@/components/docs/DocsPrimitives';
 import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
@@ -70,7 +69,6 @@ export default function ChargeAndPowerPage() {
       {/* Recommended packs */}
       <ScrollReveal>
         <section style={{ paddingBottom: 24 }}>
-          <StepMarker n={1} label="RECOMMENDED PACKS" />
           <DisplayHeading size="lg">
             RECOMMENDED <Red>PACKS.</Red>
           </DisplayHeading>
@@ -100,7 +98,6 @@ export default function ChargeAndPowerPage() {
       {/* Steps */}
       <ScrollReveal>
         <section style={{ paddingBottom: 32 }}>
-          <StepMarker n={2} label="FIRST CHARGE" />
           <DisplayHeading size="lg">
             THE FIRST <Red>CHARGE.</Red>
           </DisplayHeading>
@@ -128,7 +125,6 @@ export default function ChargeAndPowerPage() {
       {/* Three things */}
       <ScrollReveal>
         <section style={{ paddingBottom: 32 }}>
-          <StepMarker n={3} label="WHAT TO WATCH FOR" />
           <DisplayHeading size="lg">
             WARNING <Red>SIGNS.</Red>
           </DisplayHeading>

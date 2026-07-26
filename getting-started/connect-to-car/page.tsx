@@ -6,7 +6,6 @@ import {
   Red,
   GhostNumeral,
   DashList,
-  StepMarker,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 import { Crumbs, Callout, PrevNext } from '@/components/docs/DocsPrimitives';
@@ -54,7 +53,6 @@ export default function ConnectToCarPage() {
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 44 }}>
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <StepMarker n={1} label="ATTACH THE ANTENNAS" />
             <DisplayHeading size="lg">
               THE WI-FI <Red>ANTENNAS.</Red>
             </DisplayHeading>
@@ -78,7 +76,6 @@ export default function ConnectToCarPage() {
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 44 }}>
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <StepMarker n={2} label="PLUG IN A CONSOLE" />
             <DisplayHeading size="lg">
               MONITOR AND <Red>KEYBOARD.</Red>
             </DisplayHeading>
@@ -96,7 +93,6 @@ export default function ConnectToCarPage() {
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 44 }}>
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <StepMarker n={3} label="GET THE CAR ONLINE" />
             <DisplayHeading size="lg">
               INTERNET <Red>FIRST.</Red>
             </DisplayHeading>

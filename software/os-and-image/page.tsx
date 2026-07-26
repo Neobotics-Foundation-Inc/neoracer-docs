@@ -10,7 +10,6 @@ import {
   MonoLabel,
   Fig,
   NumberedFeatureCard,
-  StepMarker,
 } from '@/components/docs/Editorial';
 import {
   ImageStackDiagram,
@@ -94,7 +93,6 @@ export default function OsAndImagePage() {
         <section style={{ position: 'relative', paddingBottom: 56 }}>
           <GhostNumeral n="01" top={-30} right={-20} size={460} />
         <div style={{ position: 'relative', zIndex: 1 }}>
-          <StepMarker n={1} label="WHAT'S RUNNING AT BOOT" />
           <DisplayHeading size="lg">
             WHAT RUNS AT <Red>BOOT.</Red>
           </DisplayHeading>
@@ -199,7 +197,6 @@ export default function OsAndImagePage() {
         <section style={{ position: 'relative', paddingBottom: 56 }}>
           <GhostNumeral n="02" top={-30} right={-20} size={460} />
         <div style={{ position: 'relative', zIndex: 1 }}>
-          <StepMarker n={2} label="FLASH A FRESH CARD" />
           <DisplayHeading size="lg">
             FLASH A FRESH <Red>CARD.</Red>
           </DisplayHeading>
@@ -236,7 +233,6 @@ export default function OsAndImagePage() {
         <section style={{ position: 'relative', paddingBottom: 56 }}>
           <GhostNumeral n="03" top={-30} right={-20} size={460} />
         <div style={{ position: 'relative', zIndex: 1 }}>
-          <StepMarker n={3} label="FIRST BOOT, THE DEFAULTS" />
           <DisplayHeading size="lg">
             FIRST-BOOT <Red>DEFAULTS.</Red>
           </DisplayHeading>
@@ -313,7 +309,6 @@ export default function OsAndImagePage() {
         <section style={{ position: 'relative', paddingBottom: 56 }}>
           <GhostNumeral n="04" top={-30} right={-20} size={460} />
         <div style={{ position: 'relative', zIndex: 1 }}>
-          <StepMarker n={4} label="SSH IN, VERIFY EVERYTHING" />
           <DisplayHeading size="lg">
             SSH IN AND <Red>VERIFY.</Red>
           </DisplayHeading>
@@ -344,7 +339,6 @@ ros2 topic echo /scan --once | head -20`}</Code>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
           <GhostNumeral n="05" top={-30} right={-20} size={460} />
         <div style={{ position: 'relative', zIndex: 1 }}>
-          <StepMarker n={5} label="WHEN IT WON'T BOOT" />
           <DisplayHeading size="lg">
             RECOVERY AND <Red>RE-FLASH.</Red>
           </DisplayHeading>

@@ -9,7 +9,6 @@ import {
   MonoLabel,
   ChromeBadge,
   DashList,
-  StepMarker,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext, Callout, Code, DataTable } from '@/components/docs/DocsPrimitives';
@@ -60,7 +59,6 @@ export default function MagnetometerPage() {
       {/* ── 01 · why ────────────────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ paddingBottom: 40 }}>
-          <StepMarker n={1} label="WHAT IT CORRECTS" />
           <DisplayHeading size="lg">
             HARD IRON, SOFT <Red>IRON.</Red>
           </DisplayHeading>
@@ -85,7 +83,6 @@ export default function MagnetometerPage() {
         <section style={{ position: 'relative', paddingBottom: 40 }}>
           <GhostNumeral n="02" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <StepMarker n={2} label="FIT THE ELLIPSOID" />
             <DisplayHeading size="lg">
               ROS <Red>CALIBRATION.</Red>
             </DisplayHeading>
@@ -135,7 +132,6 @@ ros2 service call /mag_calibration_node/stop_calibration std_srvs/srv/Trigger {}
         <section style={{ position: 'relative', paddingBottom: 24 }}>
           <GhostNumeral n="03" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <StepMarker n={3} label="THE SECOND LAYER" />
             <DisplayHeading size="lg">
               PUSH IT TO THE <Red>BOARD.</Red>
             </DisplayHeading>

@@ -5,7 +5,6 @@ import {
   DisplayHeading,
   Red,
   GhostNumeral,
-  StepMarker,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 import { Crumbs, Callout, Code, PrevNext, DataTable } from '@/components/docs/DocsPrimitives';
@@ -47,7 +46,6 @@ export default function WorkspacesPage() {
         <section style={{ position: 'relative', paddingBottom: 44 }}>
           <GhostNumeral n="01" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <StepMarker n={1} label="WHAT THEY ARE" />
             <DisplayHeading size="lg">
               NEORACER AND <Red>OSRACER.</Red>
             </DisplayHeading>
@@ -74,7 +72,6 @@ export default function WorkspacesPage() {
         <section style={{ position: 'relative', paddingBottom: 44 }}>
           <GhostNumeral n="02" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <StepMarker n={2} label="SWITCHING" />
             <DisplayHeading size="lg">
               SWITCH WITH <Red>RACECAR WS.</Red>
             </DisplayHeading>
@@ -93,7 +90,6 @@ racecar ws neoracer     # back to the default`}</Code>
         <section style={{ position: 'relative', paddingBottom: 44 }}>
           <GhostNumeral n="03" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <StepMarker n={3} label="RUNNING THE OSRACER STACK" />
             <DisplayHeading size="lg">
               ONE STACK AT A <Red>TIME.</Red>
             </DisplayHeading>

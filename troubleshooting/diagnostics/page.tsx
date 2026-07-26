@@ -8,7 +8,6 @@ import {
   GhostNumeral,
   MonoLabel,
   ChromeBadge,
-  StepMarker,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext, Callout, Code, DataTable } from '@/components/docs/DocsPrimitives';
@@ -55,7 +54,6 @@ export default function DiagnosticsPage() {
       {/* ── 01 · first checks ───────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ paddingBottom: 40 }}>
-          <StepMarker n={1} label="IS THE STACK UP?" />
           <DisplayHeading size="lg">
             FIRST <Red>CHECKS.</Red>
           </DisplayHeading>
@@ -93,7 +91,6 @@ ros2 topic list     # /scan /drive /imu /odom /camera /joy`}</Code>
         <section style={{ position: 'relative', paddingBottom: 40 }}>
           <GhostNumeral n="02" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <StepMarker n={2} label="PROBE EACH SENSOR" />
             <DisplayHeading size="lg">
               PER-SENSOR <Red>CHECKS.</Red>
             </DisplayHeading>
@@ -130,7 +127,6 @@ ros2 topic hz /odom              # ~200 Hz, moves when the wheels do`}</Code>
       {/* ── 03 · rviz views ─────────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ paddingBottom: 40 }}>
-          <StepMarker n={3} label="SEE IT" />
           <DisplayHeading size="lg">
             VIEWS IN <Red>RVIZ.</Red>
           </DisplayHeading>
@@ -150,7 +146,6 @@ ros2 launch osracer_debug debug_image.launch.py  # image pipeline`}</Code>
         <section style={{ position: 'relative', paddingBottom: 24 }}>
           <GhostNumeral n="04" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <StepMarker n={4} label="IT MOVES WRONG" />
             <DisplayHeading size="lg">
               DRIVE + STEER <Red>FAULTS.</Red>
             </DisplayHeading>

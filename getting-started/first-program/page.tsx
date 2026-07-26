@@ -12,7 +12,6 @@ import {
   ClockGlyph,
   DashList,
   Fig,
-  StepMarker,
 } from '@/components/docs/Editorial';
 import { CarSprite } from '@/components/docs/Diagrams';
 import { Crumbs, Callout, PrevNext, Code } from '@/components/docs/DocsPrimitives';
@@ -216,7 +215,6 @@ python3 wall_follow.py`}</Code>
 
       <ScrollReveal>
         <section style={{ paddingBottom: 24 }}>
-          <StepMarker n={1} label="THE PROGRAM" />
           <DisplayHeading size="lg">
             THE <Red>PROGRAM.</Red>
           </DisplayHeading>
@@ -279,7 +277,6 @@ rc.go()`}
 
       <ScrollReveal>
         <section style={{ paddingBottom: 32 }}>
-          <StepMarker n={2} label="WHAT TO EXPECT" />
           <DisplayHeading size="lg">
             WHAT TO <Red>EXPECT.</Red>
           </DisplayHeading>

@@ -9,7 +9,6 @@ import {
   ChromeBadge,
   NumberedFeatureCard,
   MonoLabel,
-  StepMarker,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext, Callout, Code, DataTable } from '@/components/docs/DocsPrimitives';
@@ -81,7 +80,6 @@ export default function NetworkingPage() {
         <section style={{ position: 'relative', paddingBottom: 56 }}>
           <GhostNumeral n="01" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <StepMarker n={1} label="TWO WAYS ON" />
             <DisplayHeading size="lg">
               PICK YOUR <Red>NETWORK.</Red>
             </DisplayHeading>
@@ -132,7 +130,6 @@ export default function NetworkingPage() {
         <section style={{ position: 'relative', paddingBottom: 56 }}>
           <GhostNumeral n="02" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <StepMarker n={2} label="GET A SESSION" />
             <DisplayHeading size="lg">
               THREE WAYS <Red>IN.</Red>
             </DisplayHeading>
@@ -181,7 +178,6 @@ ssh racecar@10.42.0.1          # access point
         <section style={{ position: 'relative', paddingBottom: 56 }}>
           <GhostNumeral n="03" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <StepMarker n={3} label="NO SSH REQUIRED" />
             <DisplayHeading size="lg">
               IN A <Red>BROWSER.</Red>
             </DisplayHeading>
@@ -211,7 +207,6 @@ http://192.168.10.100:8888     # JupyterLab        (10.42.0.1 on the AP)`}</Code
         <section style={{ position: 'relative', paddingBottom: 56 }}>
           <GhostNumeral n="04" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <StepMarker n={4} label="ROS 2 ACROSS THE LINK" />
             <DisplayHeading size="lg">
               ROS 2 <Red>DISCOVERY.</Red>
             </DisplayHeading>
@@ -275,7 +270,6 @@ ros2 topic echo /scan --once     # a single scan, straight off the car`}</Code>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
           <GhostNumeral n="05" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <StepMarker n={5} label="THE CUDY ROUTER, IF YOU NEED IT" />
             <DisplayHeading size="lg">
               FIND IT, RENAME <Red>IT.</Red>
             </DisplayHeading>
@@ -321,7 +315,6 @@ ros2 topic echo /scan --once     # a single scan, straight off the car`}</Code>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
           <GhostNumeral n="06" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <StepMarker n={6} label="RACECAR SETUP NETWORKING" />
             <DisplayHeading size="lg">
               THE SETUP <Red>COMMAND.</Red>
             </DisplayHeading>
@@ -378,7 +371,6 @@ racecar setup networking --reset             # back to the defaults`}</Code>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
           <GhostNumeral n="07" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <StepMarker n={7} label="NETWORKING AT A GLANCE" />
             <DisplayHeading size="lg">
               QUICK <Red>REFERENCE.</Red>
             </DisplayHeading>

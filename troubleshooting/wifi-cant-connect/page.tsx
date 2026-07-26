@@ -9,7 +9,6 @@ import {
   DashList,
   NumberedFeatureCard,
   SymptomBanner,
-  StepMarker,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow, AnimatedNumeral, InfoNote } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext, Callout, Code } from '@/components/docs/DocsPrimitives';
@@ -95,7 +94,6 @@ export default function WifiCantConnectPage() {
       <section style={{ position: 'relative', paddingBottom: 48 }}>
         <GhostNumeral n="01" top={-30} right={-20} size={400} />
         <div style={{ position: 'relative', zIndex: 1 }}>
-          <StepMarker n={1} label="IS IT JOINING OR ROUTING?" />
           <DisplayHeading size="lg">
             JOINING VS <Red>ROUTING.</Red>
           </DisplayHeading>
@@ -132,7 +130,6 @@ ping 192.168.10.100        # or 10.42.0.1 on the access point
       <section style={{ position: 'relative', paddingBottom: 48 }}>
         <GhostNumeral n="02" top={-30} right={-20} size={400} />
         <div style={{ position: 'relative', zIndex: 1 }}>
-          <StepMarker n={2} label="WHAT ACTUALLY BREAKS" />
           <DisplayHeading size="lg">
             THE FAILURE <Red>MODES.</Red>
           </DisplayHeading>
@@ -205,7 +202,6 @@ ping 192.168.10.100        # or 10.42.0.1 on the access point
       <section style={{ position: 'relative', paddingBottom: 32 }}>
         <GhostNumeral n="03" top={-30} right={-20} size={400} />
         <div style={{ position: 'relative', zIndex: 1 }}>
-          <StepMarker n={3} label="FALLBACK" />
           <DisplayHeading size="lg">
             THE ETHERNET <Red>FALLBACK.</Red>
           </DisplayHeading>

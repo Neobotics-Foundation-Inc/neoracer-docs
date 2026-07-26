@@ -9,7 +9,6 @@ import {
   DashList,
   NumberedFeatureCard,
   SymptomBanner,
-  StepMarker,
 } from '@/components/docs/Editorial';
 import {
   ScrollReveal,
@@ -92,7 +91,6 @@ export default function MotorJitterPage() {
         <section style={{ position: 'relative', paddingBottom: 48 }}>
         <GhostNumeral n="01" top={-30} right={-20} size={400} />
         <div style={{ position: 'relative', zIndex: 1 }}>
-          <StepMarker n={1} label="FIRST, POWER AND SURFACE" />
           <DisplayHeading size="lg">
             POWER AND <Red>SURFACE.</Red>
           </DisplayHeading>
@@ -153,7 +151,6 @@ rc.go()`}</Code>
         <section style={{ position: 'relative', paddingBottom: 48 }}>
         <GhostNumeral n="02" top={-30} right={-20} size={400} />
         <div style={{ position: 'relative', zIndex: 1 }}>
-          <StepMarker n={2} label="IF TRIM DIDN'T FIX IT" />
           <DisplayHeading size="lg">
             PROBABLE <Red>CAUSES.</Red>
           </DisplayHeading>

@@ -19,15 +19,6 @@ export const metadata: Metadata = {
     'One script sets up the whole car: clone neoracer_ros2_driver, run setup_all.sh, and the sensors, motors, JupyterLab, and the racecar-neo library come up as services that start on every boot.',
 };
 
-const SYS = [
-  ['Compute', 'Jetson Orin Nano 8GB (J401 carrier)'],
-  ['OS', 'Ubuntu 22.04.5 · JetPack 6.2.1'],
-  ['ROS 2', 'Humble'],
-  ['Username', 'racecar'],
-  ['Hostname', 'neoracer'],
-  ['Workspace', '~/ros2_ws'],
-];
-
 export default function InstallDriverPage() {
   return (
     <DocsShell>
@@ -57,43 +48,18 @@ export default function InstallDriverPage() {
         </section>
       </MouseFollowGlow>
 
-      {/* ── System info ──────────────────────────────────────────────── */}
-      <ScrollReveal>
-        <section style={{ position: 'relative', paddingBottom: 40 }}>
-          <DisplayHeading size="lg">
-            THE SYSTEM <Red>SPECS</Red>
-          </DisplayHeading>
-          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-            You are at the car&apos;s console from{' '}
-            <Link href="/docs/getting-started/connect-to-car" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Connect to the car</Link>,
-            logged in as <code style={{ fontFamily: NB.monoFont }}>racecar</code>,
-            with the car online. Every NeoRacer ships the same system, so the
-            commands here match your car exactly.
-          </p>
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-              gap: 12,
-              marginTop: 18,
-            }}
-          >
-            {SYS.map(([k, v]) => (
-              <div key={k} style={{ background: NB.haloWhite, border: `1px solid ${NB.borderOnBeige}`, padding: '12px 14px' }}>
-                <div style={{ fontFamily: NB.monoFont, fontSize: 10, letterSpacing: '0.14em', textTransform: 'uppercase', color: NB.textMutedBeige, fontWeight: 700, marginBottom: 4 }}>{k}</div>
-                <div style={{ fontFamily: NB.headingFont, fontSize: 15, fontWeight: 700, color: NB.textOnBeige }}>{v}</div>
-              </div>
-            ))}
-          </div>
-        </section>
-      </ScrollReveal>
-
       {/* ── Run setup ────────────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ paddingBottom: 36 }}>
           <DisplayHeading size="lg">
             RUN THE <Red>SETUP</Red>
           </DisplayHeading>
+          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
+            You are at the car&apos;s console from{' '}
+            <Link href="/docs/getting-started/connect-to-car" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Connect to the car</Link>,
+            logged in as <code style={{ fontFamily: NB.monoFont }}>racecar</code>,
+            with the car online.
+          </p>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             The driver lives in one open-source repository,{' '}
             <a href="https://github.com/Neobotics-Foundation-Inc/neoracer_ros2_driver" target="_blank" rel="noopener noreferrer" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>

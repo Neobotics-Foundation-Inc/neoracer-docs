@@ -10,7 +10,7 @@ import {
   ClockGlyph,
   MonoLabel,
 } from '@/components/docs/Editorial';
-import { ScrollReveal, MouseFollowGlow, AnimatedNumeral, InfoNote } from '@/components/docs/Interactive';
+import { ScrollReveal, MouseFollowGlow, AnimatedNumeral, InfoNote, TabbedPanels } from '@/components/docs/Interactive';
 import { Crumbs, Callout, PrevNext, Code, DataTable } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
@@ -61,72 +61,55 @@ export default function InstallDriverPage() {
             with the car online.
           </p>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-            The driver code is open source in the{' '}
+            The driver code is in the{' '}
             <a href="https://github.com/Neobotics-Foundation-Inc/neoracer_ros2_driver" target="_blank" rel="noopener noreferrer" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
               neoracer_ros2_driver
             </a>{' '}
-            repository. Follow whichever option below matches your car; both run
-            the same setup script. The script asks for your password
+            repository. Check if the driver is already on the car and follow the
+            corresponding instructions. The script asks for your password
             (<code style={{ fontFamily: NB.monoFont }}>neobotics</code>) once.
           </p>
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(310px, 1fr))',
-              gap: 20,
-              marginTop: 20,
-            }}
-          >
-            <div
-              style={{
-                background: NB.haloWhite,
-                border: `1px solid ${NB.borderOnBeige}`,
-                borderTop: `3px solid ${NB.neoboticsRed}`,
-                borderRadius: 12,
-                padding: '20px 20px 16px',
-                boxShadow: NB.shadowCard,
-              }}
-            >
-              <div style={{ fontFamily: NB.monoFont, fontSize: 10.5, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', color: NB.textMutedBeige, marginBottom: 8 }}>
-                Driver already on the car
-              </div>
-              <div style={{ fontFamily: NB.headingFont, fontSize: 24, fontWeight: 900, letterSpacing: '-0.01em', textTransform: 'uppercase', color: NB.textOnBeige, marginBottom: 10 }}>
-                BOUGHT A <span style={{ color: NB.neoboticsRed }}>NEORACER.</span>
-              </div>
-              <p style={{ fontFamily: NB.bodyFont, fontSize: 14.5, lineHeight: 1.6, color: NB.textMutedBeige, margin: '0 0 12px' }}>
-                Factory cars ship with the repository at{' '}
-                <code style={{ fontFamily: NB.monoFont }}>~/ros2_ws/src/neoracer_ros2_driver</code>.
-                Pull the latest and run the script.
-              </p>
-              <Code lang="bash">{`cd ~/ros2_ws/src/neoracer_ros2_driver
+          <TabbedPanels
+            tabs={[
+              {
+                label: 'Bought a NeoRacer',
+                accent: NB.neoboticsRed,
+                content: (
+                  <>
+                    <div style={{ fontFamily: NB.monoFont, fontSize: 10.5, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', color: NB.textMutedBeige, marginBottom: 8 }}>
+                      Driver already on the car
+                    </div>
+                    <p style={{ fontFamily: NB.bodyFont, fontSize: 14.5, lineHeight: 1.6, color: NB.textMutedBeige, margin: '0 0 12px' }}>
+                      Factory cars ship with the repository at{' '}
+                      <code style={{ fontFamily: NB.monoFont }}>~/ros2_ws/src/neoracer_ros2_driver</code>.
+                      Pull the latest and run the script.
+                    </p>
+                    <Code lang="bash">{`cd ~/ros2_ws/src/neoracer_ros2_driver
 git pull
 bash scripts/setup_all.sh`}</Code>
-            </div>
-            <div
-              style={{
-                background: NB.haloWhite,
-                border: `1px solid ${NB.borderOnBeige}`,
-                borderTop: `3px solid ${NB.tarmacBlue}`,
-                borderRadius: 12,
-                padding: '20px 20px 16px',
-                boxShadow: NB.shadowCard,
-              }}
-            >
-              <div style={{ fontFamily: NB.monoFont, fontSize: 10.5, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', color: NB.textMutedBeige, marginBottom: 8 }}>
-                No driver on the car yet
-              </div>
-              <div style={{ fontFamily: NB.headingFont, fontSize: 24, fontWeight: 900, letterSpacing: '-0.01em', textTransform: 'uppercase', color: NB.textOnBeige, marginBottom: 10 }}>
-                BUILDING YOUR <span style={{ color: NB.neoboticsRed }}>OWN.</span>
-              </div>
-              <p style={{ fontFamily: NB.bodyFont, fontSize: 14.5, lineHeight: 1.6, color: NB.textMutedBeige, margin: '0 0 12px' }}>
-                Since you&apos;re probably working with a stock Jetson Orin
-                Nano, clone the repository first, then run the same script.
-              </p>
-              <Code lang="bash">{`mkdir -p ~/ros2_ws/src && cd ~/ros2_ws/src
+                  </>
+                ),
+              },
+              {
+                label: 'Building your own',
+                accent: NB.tarmacBlue,
+                content: (
+                  <>
+                    <div style={{ fontFamily: NB.monoFont, fontSize: 10.5, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', color: NB.textMutedBeige, marginBottom: 8 }}>
+                      No driver on the car yet
+                    </div>
+                    <p style={{ fontFamily: NB.bodyFont, fontSize: 14.5, lineHeight: 1.6, color: NB.textMutedBeige, margin: '0 0 12px' }}>
+                      Since you&apos;re probably working with a stock Jetson Orin
+                      Nano, clone the repository first, then run the same script.
+                    </p>
+                    <Code lang="bash">{`mkdir -p ~/ros2_ws/src && cd ~/ros2_ws/src
 git clone https://github.com/Neobotics-Foundation-Inc/neoracer_ros2_driver.git
 bash neoracer_ros2_driver/scripts/setup_all.sh`}</Code>
-            </div>
-          </div>
+                  </>
+                ),
+              },
+            ]}
+          />
           <Callout type="tip" title="Safe to re-run">
             The script is idempotent: it skips anything already done. If it stops
             partway (a dropped connection, a typo&apos;d password), run it again

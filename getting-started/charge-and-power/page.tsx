@@ -88,12 +88,12 @@ export default function ChargeAndPowerPage() {
             CHARGING THE <Red>BATTERY</Red>
           </DisplayHeading>
           {[
-            { t: 'Place the LiPo on a non-flammable surface.', d: 'A concrete floor or a LiPo charging bag is ideal. Carpet, bedding, and wood can catch if a pack overheats.' },
-            { t: 'Plug the AC side of the charger into the wall first.', d: 'You should see a power LED. If nothing lights up, double-check the outlet before continuing.' },
-            { t: 'Connect the balance lead (white plug) to the charger\'s balance port.', d: 'The plug only fits one way, so if it resists, turn it around rather than pushing harder.' },
-            { t: 'Connect the main XT60 lead.', d: <>You may see a brief spark, this is the <InfoNote term="inrush current" title="Inrush current">The sudden surge of current that flows the instant a circuit is connected, before it settles to a steady level. Here it briefly charges the capacitors inside the charger, which is why you see a small spark.</InfoNote> on the charger&apos;s capacitors and is normal.</> },
-            { t: 'Confirm the charger is in 3S LiPo balance-charge mode.', d: 'Set LiPo and 3S on the charger screen. Current is settable up to 2.5 A, about half a C for a 5000 mAh pack, already under the 1C limit, so it cannot overdrive the pack.' },
-            { t: 'Stay nearby until it reaches full.', d: 'The charger tops out at 25 W, which works out to about 2 A into a 3S pack, so a low 5000 mAh pack takes roughly two and a half to three hours.' },
+            { t: 'Place the LiPo on a non-flammable surface.', d: 'A concrete floor or a LiPo charging bag is ideal.' },
+            { t: 'Plug the AC side of the charger into the wall.', d: 'The screen turns on with a boot screen, then the main interface loads. The home screen shows the per-cell voltage highlighted at the top and the current options in green text on the right.' },
+            { t: 'Set the cut-off voltage and the charging current.', d: 'Hold the button for two seconds to adjust the voltage and select 4.20 V. Press the button to adjust the current and select 2.5 A.' },
+            { t: 'Connect the balance wire to the charger\'s balance port.', d: 'The balance wire is the plug with several small wires, usually one red and one black.' },
+            { t: 'Connect the main XT60 lead.', d: 'The battery begins charging immediately.' },
+            { t: 'Stay nearby until it reaches full.', d: 'At 2.5 A, about half a C for a 5000 mAh pack, a full charge takes roughly two and a half to three hours.' },
           ].map((s, i) => (
             <div key={i} style={{ display: 'grid', gridTemplateColumns: '52px 1fr', gap: 16, padding: '20px 0', borderBottom: `1px solid ${NB.borderOnBeige}` }}>
               <div style={{ fontFamily: NB.headingFont, fontSize: 36, fontWeight: 900, lineHeight: 1, color: NB.neoboticsRed, letterSpacing: '-0.02em' }}>

@@ -34,7 +34,7 @@ export default function CameraNoFeedPage() {
           <GhostNumeral n="04" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              NO CAMERA <Red>FEED.</Red>
+              NO CAMERA <Red>FEED</Red>
             </DisplayHeading>
             <p
               style={{
@@ -88,7 +88,7 @@ export default function CameraNoFeedPage() {
           <GhostNumeral n="01" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              NODE <Red>STATUS.</Red>
+              NODE <Red>STATUS</Red>
             </DisplayHeading>
             <Code lang="bash">{`# 1. Is the teleop driver running?
 ssh racecar@neoracer
@@ -114,7 +114,7 @@ ros2 topic hz /camera`}</Code>
           <GhostNumeral n="02" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              LIKELY <Red>CAUSES.</Red>
+              LIKELY <Red>CAUSES</Red>
             </DisplayHeading>
 
             <div

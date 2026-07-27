@@ -215,7 +215,7 @@ export default function Ros2TfFramesPage() {
           <GhostNumeral n="//" top={-40} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              ROS 2 TF <Red>FRAMES.</Red>
+              ROS 2 TF <Red>FRAMES</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
               The sensor messages stamp a frame name in their header, but the{' '}
@@ -300,7 +300,7 @@ export default function Ros2TfFramesPage() {
         <section style={{ paddingBottom: 8 }}>
           <Eyebrow>THE FRAMES</Eyebrow>
           <DisplayHeading size="lg">
-            THE <Red>FRAMES.</Red>
+            THE <Red>FRAMES</Red>
           </DisplayHeading>
           <DataTable columns={COLUMNS} rows={ROWS} />
         </section>

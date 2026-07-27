@@ -109,7 +109,7 @@ export default function DocsCatchAllPage({ params }: { params: { slug: string[] 
         <div style={{ position: 'relative', zIndex: 1 }}>
           <DisplayHeading size="xl">
             {title.toUpperCase().split(' ').slice(0, -1).join(' ')}{' '}
-            <Red>{title.toUpperCase().split(' ').slice(-1).join(' ')}.</Red>
+            <Red>{title.toUpperCase().split(' ').slice(-1).join(' ')}</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
             This page is part of the v1 NeoRacer documentation roadmap, and
@@ -130,7 +130,7 @@ export default function DocsCatchAllPage({ params }: { params: { slug: string[] 
         <section style={{ paddingBottom: 32 }}>
           <Eyebrow>While you wait</Eyebrow>
           <DisplayHeading size="lg">
-            NEIGHBOURING <Red>PAGES</Red>.
+            NEIGHBOURING <Red>PAGES</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             Other pages in this section. Some may already be written.

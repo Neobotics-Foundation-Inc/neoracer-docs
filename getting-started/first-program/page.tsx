@@ -145,7 +145,7 @@ export default function FirstProgramPage() {
           <GhostNumeral n="06" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              WALL <Red>FOLLOWING.</Red>
+              WALL <Red>FOLLOWING</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
               To ensure all sensors are running well, try executing your first
@@ -216,7 +216,7 @@ python3 wall_follow.py`}</Code>
       <ScrollReveal>
         <section style={{ paddingBottom: 24 }}>
           <DisplayHeading size="lg">
-            THE <Red>PROGRAM.</Red>
+            THE <Red>PROGRAM</Red>
           </DisplayHeading>
           <Code lang="python">
 {`import sys
@@ -278,7 +278,7 @@ rc.go()`}
       <ScrollReveal>
         <section style={{ paddingBottom: 32 }}>
           <DisplayHeading size="lg">
-            WHAT TO <Red>EXPECT.</Red>
+            WHAT TO <Red>EXPECT</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             Place the car with a wall on its right and run it. It should hold a

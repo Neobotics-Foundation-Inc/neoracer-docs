@@ -45,7 +45,7 @@ export default function OsAndImagePage() {
           <GhostNumeral n="OS" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              THE PRE-FLASHED <Red>IMAGE.</Red>
+              THE PRE-FLASHED <Red>IMAGE</Red>
             </DisplayHeading>
             <p
               style={{
@@ -94,7 +94,7 @@ export default function OsAndImagePage() {
           <GhostNumeral n="01" top={-30} right={-20} size={460} />
         <div style={{ position: 'relative', zIndex: 1 }}>
           <DisplayHeading size="lg">
-            WHAT RUNS AT <Red>BOOT.</Red>
+            WHAT RUNS AT <Red>BOOT</Red>
           </DisplayHeading>
           <p
             style={{
@@ -198,7 +198,7 @@ export default function OsAndImagePage() {
           <GhostNumeral n="02" top={-30} right={-20} size={460} />
         <div style={{ position: 'relative', zIndex: 1 }}>
           <DisplayHeading size="lg">
-            FLASH A FRESH <Red>CARD.</Red>
+            FLASH A FRESH <Red>CARD</Red>
           </DisplayHeading>
           <p
             style={{
@@ -234,7 +234,7 @@ export default function OsAndImagePage() {
           <GhostNumeral n="03" top={-30} right={-20} size={460} />
         <div style={{ position: 'relative', zIndex: 1 }}>
           <DisplayHeading size="lg">
-            FIRST-BOOT <Red>DEFAULTS.</Red>
+            FIRST-BOOT <Red>DEFAULTS</Red>
           </DisplayHeading>
 
           <div
@@ -310,7 +310,7 @@ export default function OsAndImagePage() {
           <GhostNumeral n="04" top={-30} right={-20} size={460} />
         <div style={{ position: 'relative', zIndex: 1 }}>
           <DisplayHeading size="lg">
-            SSH IN AND <Red>VERIFY.</Red>
+            SSH IN AND <Red>VERIFY</Red>
           </DisplayHeading>
 
           <Code lang="bash">{`# 1. Confirm you're in (after joining the car's neoracer-[Car ID] network).
@@ -340,7 +340,7 @@ ros2 topic echo /scan --once | head -20`}</Code>
           <GhostNumeral n="05" top={-30} right={-20} size={460} />
         <div style={{ position: 'relative', zIndex: 1 }}>
           <DisplayHeading size="lg">
-            RECOVERY AND <Red>RE-FLASH.</Red>
+            RECOVERY AND <Red>RE-FLASH</Red>
           </DisplayHeading>
           <p
             style={{

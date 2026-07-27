@@ -132,7 +132,7 @@ export default function Ros2ParamsPage() {
           <GhostNumeral n="//" top={-40} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              ROS 2 <Red>PARAMETERS.</Red>
+              ROS 2 <Red>PARAMETERS</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
               Every node in the driver declares real, live ROS 2 parameters, and
@@ -169,7 +169,7 @@ export default function Ros2ParamsPage() {
         <section style={{ paddingBottom: 8 }}>
           <Eyebrow>THROTTLE_NODE · config/throttle.yaml</Eyebrow>
           <DisplayHeading size="lg">
-            THE SPEED <Red>CAPS.</Red>
+            THE SPEED <Red>CAPS</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
             The most-tuned three values on the car. Full chain: your command
@@ -185,7 +185,7 @@ export default function Ros2ParamsPage() {
         <section style={{ paddingTop: 28, paddingBottom: 8 }}>
           <Eyebrow>CONTROLLER_NODE · config/controller.yaml</Eyebrow>
           <DisplayHeading size="lg">
-            THE ESP32 <Red>BRIDGE.</Red>
+            THE ESP32 <Red>BRIDGE</Red>
           </DisplayHeading>
           <DataTable columns={COLUMNS} rows={CONTROLLER_ROWS} />
         </section>
@@ -195,7 +195,7 @@ export default function Ros2ParamsPage() {
         <section style={{ paddingTop: 28, paddingBottom: 8 }}>
           <Eyebrow>CAMERA_NODE · config/camera.yaml</Eyebrow>
           <DisplayHeading size="lg">
-            THE <Red>CAMERA.</Red>
+            THE <Red>CAMERA</Red>
           </DisplayHeading>
           <DataTable columns={COLUMNS} rows={CAMERA_ROWS} />
         </section>
@@ -205,7 +205,7 @@ export default function Ros2ParamsPage() {
         <section style={{ paddingTop: 28, paddingBottom: 8 }}>
           <Eyebrow>LIDAR · launch arguments</Eyebrow>
           <DisplayHeading size="lg">
-            THE LIDAR <Red>DRIVER.</Red>
+            THE LIDAR <Red>DRIVER</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
             The LakiBeam1 driver takes these as launch arguments in{' '}

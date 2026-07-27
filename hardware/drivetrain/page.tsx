@@ -34,7 +34,7 @@ export default function DrivetrainPage() {
           <GhostNumeral n="D" top={-40} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              THE <Red>DRIVETRAIN.</Red>
+              THE <Red>DRIVETRAIN</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
               A traditional{' '}
@@ -70,7 +70,7 @@ export default function DrivetrainPage() {
         <section style={{ paddingBottom: 32 }}>
           <Eyebrow>01 / MOTOR</Eyebrow>
         <DisplayHeading size="lg">
-          THE BRUSHED <Red>MOTOR.</Red>
+          THE BRUSHED <Red>MOTOR</Red>
         </DisplayHeading>
         <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
           A purpose-spec brushed motor with integrated encoder. Brushless
@@ -99,7 +99,7 @@ export default function DrivetrainPage() {
         <section style={{ paddingBottom: 32 }}>
           <Eyebrow>02 / SERVO</Eyebrow>
         <DisplayHeading size="lg">
-          THE STEERING <Red>SERVO.</Red>
+          THE STEERING <Red>SERVO</Red>
         </DisplayHeading>
         <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
           The steering servo is heavily over-specified for a 380 mm car. That
@@ -128,7 +128,7 @@ export default function DrivetrainPage() {
         <section style={{ paddingBottom: 32 }}>
           <Eyebrow>03 / KINEMATICS</Eyebrow>
         <DisplayHeading size="lg">
-          STEERING <Red>KINEMATICS.</Red>
+          STEERING <Red>KINEMATICS</Red>
         </DisplayHeading>
         <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
           Steering follows simple bicycle geometry: steering angle{' '}

@@ -102,7 +102,7 @@ export default function PowerPage() {
           <GhostNumeral n="P" top={-40} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              THE 3S LIPO <Red>PACK.</Red>
+              THE 3S LIPO <Red>PACK</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
               The NeoRacer runs on a standard 3-cell (3S){' '}
@@ -157,7 +157,7 @@ export default function PowerPage() {
         <section style={{ paddingBottom: 32 }}>
           <Eyebrow>01 / WHAT THE PACK POWERS</Eyebrow>
           <DisplayHeading size="lg">
-            WHAT THE PACK <Red>POWERS.</Red>
+            WHAT THE PACK <Red>POWERS</Red>
           </DisplayHeading>
           <DashList
             items={[
@@ -180,7 +180,7 @@ export default function PowerPage() {
         <section style={{ paddingBottom: 32 }}>
           <Eyebrow>02 / STORAGE</Eyebrow>
           <DisplayHeading size="lg">
-            STORAGE <Red>VOLTAGE.</Red>
+            STORAGE <Red>VOLTAGE</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             A 3S pack left at full (12.6 V) ages quickly, and a pack left flat

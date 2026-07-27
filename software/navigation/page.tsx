@@ -36,7 +36,7 @@ export default function NavigationPage() {
           <GhostNumeral n="NAV" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              AUTONOMOUS <Red>NAVIGATION.</Red>
+              AUTONOMOUS <Red>NAVIGATION</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
               With a saved map, <InfoNote term="Nav2" title="Nav2">The ROS 2 navigation stack. It plans a route across a known map, then drives the car along it while dodging what the LiDAR sees.</InfoNote>{' '}
@@ -69,7 +69,7 @@ ros2 launch osracer_bringup bringup.launch.py`}</Code>
       <ScrollReveal>
         <section style={{ paddingBottom: 40 }}>
           <DisplayHeading size="lg">
-            YOU NEED A <Red>MAP.</Red>
+            YOU NEED A <Red>MAP</Red>
           </DisplayHeading>
           <DashList
             items={[
@@ -93,7 +93,7 @@ ros2 launch osracer_bringup bringup.launch.py`}</Code>
           <GhostNumeral n="02" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              DWB OR <Red>TEB.</Red>
+              DWB OR <Red>TEB</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
               One launch brings up the whole stack: map server, AMCL, planner, and
@@ -130,7 +130,7 @@ ros2 launch osracer_navigation nav2.launch.py planner:=teb`}</Code>
       <ScrollReveal>
         <section style={{ paddingBottom: 24 }}>
           <DisplayHeading size="lg">
-            SET A <Red>GOAL.</Red>
+            SET A <Red>GOAL</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             Nav2 opens RViz with the map loaded and a Navigation 2 panel. First

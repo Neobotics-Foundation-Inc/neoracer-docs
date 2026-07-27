@@ -45,7 +45,7 @@ export default function ShippingPage() {
           <GhostNumeral n="SHIP" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              THE SHIPPING <Red>POLICY.</Red>
+              THE SHIPPING <Red>POLICY</Red>
             </DisplayHeading>
             <p
               style={{
@@ -79,7 +79,7 @@ export default function ShippingPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>01 / SHIPPING COVERAGE</Eyebrow>
             <DisplayHeading size="lg">
-              SHIPPING <Red>COVERAGE.</Red>
+              SHIPPING <Red>COVERAGE</Red>
             </DisplayHeading>
             <p style={lede}>
               Neobotics ships to domestic and international destinations that
@@ -120,7 +120,7 @@ export default function ShippingPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>02 / REGIONS WE COMMONLY EXPECT TO SERVE</Eyebrow>
             <DisplayHeading size="lg">
-              REGIONS WE <Red>SERVE.</Red>
+              REGIONS WE <Red>SERVE</Red>
             </DisplayHeading>
             <p style={lede}>
               Subject to the limitations above, Neobotics expects to serve customers
@@ -155,7 +155,7 @@ export default function ShippingPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>03 / ORDER PROCESSING TIME</Eyebrow>
             <DisplayHeading size="lg">
-              ORDER PROCESSING <Red>TIME.</Red>
+              ORDER PROCESSING <Red>TIME</Red>
             </DisplayHeading>
             <p style={lede}>
               Unless otherwise stated on the product page, quote, or order
@@ -196,7 +196,7 @@ export default function ShippingPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>04 / ESTIMATED DELIVERY TIMELINES</Eyebrow>
             <DisplayHeading size="lg">
-              ESTIMATED DELIVERY <Red>TIMELINES.</Red>
+              ESTIMATED DELIVERY <Red>TIMELINES</Red>
             </DisplayHeading>
             <p style={lede}>
               Delivery timelines depend on the destination country, warehouse
@@ -251,7 +251,7 @@ export default function ShippingPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>05 / SHIPPING METHODS</Eyebrow>
             <DisplayHeading size="lg">
-              SHIPPING <Red>METHODS.</Red>
+              SHIPPING <Red>METHODS</Red>
             </DisplayHeading>
             <p style={lede}>
               Neobotics may use one or more of the following shipping methods
@@ -284,7 +284,7 @@ export default function ShippingPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>06 / SHIPPING RATES</Eyebrow>
             <DisplayHeading size="lg">
-              SHIPPING <Red>RATES.</Red>
+              SHIPPING <Red>RATES</Red>
             </DisplayHeading>
             <p style={lede}>Shipping charges are calculated based on factors such as:</p>
             <DashList
@@ -315,7 +315,7 @@ export default function ShippingPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>07 / CUSTOMS, DUTIES, TAXES, AND IMPORT FEES</Eyebrow>
             <DisplayHeading size="lg">
-              CUSTOMS AND IMPORT <Red>FEES.</Red>
+              CUSTOMS AND IMPORT <Red>FEES</Red>
             </DisplayHeading>
             <p style={lede}>
               For international orders, the customer is generally responsible for any
@@ -358,7 +358,7 @@ export default function ShippingPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>08 / SHIPPING ADDRESS ACCURACY</Eyebrow>
             <DisplayHeading size="lg">
-              SHIPPING ADDRESS <Red>ACCURACY.</Red>
+              SHIPPING ADDRESS <Red>ACCURACY</Red>
             </DisplayHeading>
             <p style={lede}>
               Customers are responsible for providing complete and accurate shipping
@@ -399,7 +399,7 @@ export default function ShippingPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>09 / SHIPMENT CONFIRMATION AND TRACKING</Eyebrow>
             <DisplayHeading size="lg">
-              CONFIRMATION AND <Red>TRACKING.</Red>
+              CONFIRMATION AND <Red>TRACKING</Red>
             </DisplayHeading>
             <p style={lede}>
               If tracking is available for your order, Neobotics will provide
@@ -420,7 +420,7 @@ export default function ShippingPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>10 / DELAYS</Eyebrow>
             <DisplayHeading size="lg">
-              SHIPPING <Red>DELAYS.</Red>
+              SHIPPING <Red>DELAYS</Red>
             </DisplayHeading>
             <p style={lede}>
               Delivery dates are estimates only and are not guaranteed unless
@@ -454,7 +454,7 @@ export default function ShippingPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>11 / LOST, STOLEN, OR DAMAGED PACKAGES</Eyebrow>
             <DisplayHeading size="lg">
-              LOST OR DAMAGED <Red>PACKAGES.</Red>
+              LOST OR DAMAGED <Red>PACKAGES</Red>
             </DisplayHeading>
             <p style={lede}>
               If your package is lost, stolen, or arrives damaged, please contact us
@@ -523,7 +523,7 @@ export default function ShippingPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>12 / REFUSED, UNDELIVERABLE, OR UNCLAIMED SHIPMENTS</Eyebrow>
             <DisplayHeading size="lg">
-              UNDELIVERABLE <Red>SHIPMENTS.</Red>
+              UNDELIVERABLE <Red>SHIPMENTS</Red>
             </DisplayHeading>
             <p style={lede}>
               If a shipment is refused, unclaimed, returned to sender, or
@@ -566,7 +566,7 @@ export default function ShippingPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>13 / PARTIAL SHIPMENTS</Eyebrow>
             <DisplayHeading size="lg">
-              PARTIAL <Red>SHIPMENTS.</Red>
+              PARTIAL <Red>SHIPMENTS</Red>
             </DisplayHeading>
             <p style={lede}>
               If your order contains multiple items, Neobotics may ship the items
@@ -585,7 +585,7 @@ export default function ShippingPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>14 / PREORDERS AND BACKORDERS</Eyebrow>
             <DisplayHeading size="lg">
-              PREORDERS AND <Red>BACKORDERS.</Red>
+              PREORDERS AND <Red>BACKORDERS</Red>
             </DisplayHeading>
             <p style={lede}>
               If an item is listed as a preorder or backorder item, estimated ship
@@ -609,7 +609,7 @@ export default function ShippingPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>15 / EXPORT COMPLIANCE AND DESTINATION RESTRICTIONS</Eyebrow>
             <DisplayHeading size="lg">
-              EXPORT <Red>COMPLIANCE.</Red>
+              EXPORT <Red>COMPLIANCE</Red>
             </DisplayHeading>
             <p style={lede}>
               Neobotics may decline or cancel orders to destinations that are
@@ -640,7 +640,7 @@ export default function ShippingPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>16 / INSTITUTIONAL AND SCHOOL DELIVERIES</Eyebrow>
             <DisplayHeading size="lg">
-              INSTITUTIONAL <Red>DELIVERIES.</Red>
+              INSTITUTIONAL <Red>DELIVERIES</Red>
             </DisplayHeading>
             <p style={lede}>
               For shipments to schools, universities, districts, camps, labs, or
@@ -670,7 +670,7 @@ export default function ShippingPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>17 / TITLE AND RISK OF LOSS</Eyebrow>
             <DisplayHeading size="lg">
-              TITLE AND RISK OF <Red>LOSS.</Red>
+              TITLE AND RISK OF <Red>LOSS</Red>
             </DisplayHeading>
             <p style={lede}>
               Unless otherwise required by applicable law or expressly agreed in
@@ -693,7 +693,7 @@ export default function ShippingPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>18 / POLICY CHANGES</Eyebrow>
             <DisplayHeading size="lg">
-              POLICY <Red>CHANGES.</Red>
+              POLICY <Red>CHANGES</Red>
             </DisplayHeading>
             <p style={lede}>
               Neobotics may update this Shipping Policy from time to time to reflect
@@ -712,7 +712,7 @@ export default function ShippingPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>19 / CONTACT US</Eyebrow>
             <DisplayHeading size="lg">
-              CONTACT <Red>US.</Red>
+              CONTACT <Red>US</Red>
             </DisplayHeading>
             <p style={lede}>
               If you have questions about shipping, delivery estimates, customs, or

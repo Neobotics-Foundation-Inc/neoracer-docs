@@ -34,7 +34,7 @@ export default function ConnectToCarPage() {
           <GhostNumeral n="03" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              CONNECT TO THE <Red>CAR.</Red>
+              CONNECT TO THE <Red>CAR</Red>
             </DisplayHeading>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="outline" icon={<ClockGlyph />}>~15 minutes</ChromeBadge>
@@ -55,7 +55,7 @@ export default function ConnectToCarPage() {
         <section style={{ position: 'relative', paddingBottom: 44 }}>
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              THE WI-FI <Red>ANTENNAS.</Red>
+              THE WI-FI <Red>ANTENNAS</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
               The Jetson&apos;s Wi-Fi card sits on its underside, so the two
@@ -78,7 +78,7 @@ export default function ConnectToCarPage() {
         <section style={{ position: 'relative', paddingBottom: 44 }}>
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              MONITOR AND <Red>KEYBOARD.</Red>
+              MONITOR AND <Red>KEYBOARD</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
               Connect a monitor to the Jetson&apos;s DisplayPort or HDMI output
@@ -95,7 +95,7 @@ export default function ConnectToCarPage() {
         <section style={{ position: 'relative', paddingBottom: 44 }}>
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              GET THE CAR <Red>ONLINE.</Red>
+              GET THE CAR <Red>ONLINE</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
               The install on the next page needs internet. Either works:

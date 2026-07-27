@@ -69,7 +69,7 @@ export default function CameraApiPage() {
           <GhostNumeral n="rc" top={-40} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              RC.<Red>CAMERA.</Red>
+              RC.<Red>CAMERA</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
               The Camera module gives you what the car sees: a 640 by 480 colour
@@ -139,7 +139,7 @@ export default function CameraApiPage() {
         <section style={{ paddingBottom: 24 }}>
           <Eyebrow>METHODS</Eyebrow>
           <DisplayHeading size="lg">
-            THE <Red>METHODS.</Red>
+            THE <Red>METHODS</Red>
           </DisplayHeading>
           <ApiMethods methods={METHODS} />
         </section>
@@ -149,7 +149,7 @@ export default function CameraApiPage() {
         <section style={{ paddingBottom: 24 }}>
           <Eyebrow>TYPICAL USE</Eyebrow>
           <DisplayHeading size="lg">
-            READING A <Red>FRAME.</Red>
+            READING A <Red>FRAME</Red>
           </DisplayHeading>
           <Code lang="python">{`import racecar_core
 import numpy as np

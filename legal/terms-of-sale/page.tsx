@@ -51,7 +51,7 @@ export default function TermsOfSalePage() {
           <GhostNumeral n="ToS" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              TERMS OF <Red>SALE.</Red>
+              TERMS OF <Red>SALE</Red>
             </DisplayHeading>
             <p
               style={{
@@ -100,7 +100,7 @@ export default function TermsOfSalePage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>SECTION 01</Eyebrow>
             <DisplayHeading size="lg">
-              SCOPE OF <Red>SALE.</Red>
+              SCOPE OF <Red>SALE</Red>
             </DisplayHeading>
             <p style={para}>
               These Terms of Sale apply to all sales of Neobotics products unless
@@ -129,7 +129,7 @@ export default function TermsOfSalePage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>SECTION 02</Eyebrow>
             <DisplayHeading size="lg">
-              PRODUCT NATURE AND INTENDED <Red>USE.</Red>
+              PRODUCT NATURE AND INTENDED <Red>USE</Red>
             </DisplayHeading>
             <p style={para}>
               The NeoRacer is an autonomous vehicle kit intended for educational,
@@ -160,7 +160,7 @@ export default function TermsOfSalePage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>SECTION 03</Eyebrow>
             <DisplayHeading size="lg">
-              ORDERS AND <Red>ACCEPTANCE.</Red>
+              ORDERS AND <Red>ACCEPTANCE</Red>
             </DisplayHeading>
             <p style={para}>All orders are subject to acceptance by Neobotics.</p>
             <p style={para}>
@@ -181,7 +181,7 @@ export default function TermsOfSalePage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>SECTION 04</Eyebrow>
             <DisplayHeading size="lg">
-              PRICES, PAYMENT, AND <Red>TAXES.</Red>
+              PRICES, PAYMENT, AND <Red>TAXES</Red>
             </DisplayHeading>
             <p style={para}>
               Buyer agrees to pay the purchase price, shipping and handling
@@ -204,7 +204,7 @@ export default function TermsOfSalePage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>SECTION 05</Eyebrow>
             <DisplayHeading size="lg">
-              INITIAL INSPECTION; SHORTAGES AND VISIBLE <Red>DEFECTS.</Red>
+              INITIAL INSPECTION; SHORTAGES AND VISIBLE <Red>DEFECTS</Red>
             </DisplayHeading>
             <p style={para}>
               Upon receipt of the product, Buyer shall promptly inspect all
@@ -235,7 +235,7 @@ export default function TermsOfSalePage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>SECTION 06</Eyebrow>
             <DisplayHeading size="lg">
-              LIMITED HARDWARE <Red>WARRANTY.</Red>
+              LIMITED HARDWARE <Red>WARRANTY</Red>
             </DisplayHeading>
 
             <MonoLabel>6.1 Warranty term</MonoLabel>
@@ -325,7 +325,7 @@ export default function TermsOfSalePage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>SECTION 07</Eyebrow>
             <DisplayHeading size="lg">
-              WARRANTY EXCLUSIONS AND IMPROPER <Red>USAGE.</Red>
+              WARRANTY EXCLUSIONS AND IMPROPER <Red>USAGE</Red>
             </DisplayHeading>
             <p style={para}>
               Neobotics shall not be liable under the limited hardware warranty if
@@ -380,7 +380,7 @@ export default function TermsOfSalePage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>SECTION 08</Eyebrow>
             <DisplayHeading size="lg">
-              SOFTWARE AND DIGITAL <Red>MATERIALS.</Red>
+              SOFTWARE AND DIGITAL <Red>MATERIALS</Red>
             </DisplayHeading>
             <p style={para}>
               Unless expressly stated otherwise in writing, software, firmware,
@@ -400,7 +400,7 @@ export default function TermsOfSalePage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>SECTION 09</Eyebrow>
             <DisplayHeading size="lg">
-              IMPLIED <Red>WARRANTIES.</Red>
+              IMPLIED <Red>WARRANTIES</Red>
             </DisplayHeading>
             <p style={para}>
               To the extent applicable law provides implied warranties, those
@@ -429,7 +429,7 @@ export default function TermsOfSalePage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>SECTION 10</Eyebrow>
             <DisplayHeading size="lg">
-              DISCLAIMER OF NON-WARRANTY <Red>STATEMENTS.</Red>
+              DISCLAIMER OF NON-WARRANTY <Red>STATEMENTS</Red>
             </DisplayHeading>
             <p style={para}>
               Except as expressly stated in these Terms of Sale or in a separate
@@ -454,7 +454,7 @@ export default function TermsOfSalePage() {
             <Eyebrow>SECTION 11</Eyebrow>
             <DisplayHeading size="lg">
               BUYER RESPONSIBILITIES AND ASSUMPTION OF OPERATIONAL{' '}
-              <Red>RISK.</Red>
+              <Red>RISK</Red>
             </DisplayHeading>
             <p style={para}>
               Buyer acknowledges that the NeoRacer requires assembly,
@@ -483,7 +483,7 @@ export default function TermsOfSalePage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>SECTION 12</Eyebrow>
             <DisplayHeading size="lg">
-              LIMITATION OF <Red>LIABILITY.</Red>
+              LIMITATION OF <Red>LIABILITY</Red>
             </DisplayHeading>
             <p style={para}>
               Neobotics&apos; liability under the written hardware warranty is
@@ -530,7 +530,7 @@ export default function TermsOfSalePage() {
             <Eyebrow>SECTION 13</Eyebrow>
             <DisplayHeading size="lg">
               NO LIABILITY FOR IMPROPER USE OR UNAUTHORIZED{' '}
-              <Red>MODIFICATION.</Red>
+              <Red>MODIFICATION</Red>
             </DisplayHeading>
             <p style={para}>
               To the maximum extent permitted by law, Neobotics is not responsible
@@ -558,7 +558,7 @@ export default function TermsOfSalePage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>SECTION 14</Eyebrow>
             <DisplayHeading size="lg">
-              <Red>INDEMNIFICATION.</Red>
+              <Red>INDEMNIFICATION</Red>
             </DisplayHeading>
             <p style={para}>
               To the maximum extent permitted by law, Buyer agrees to indemnify,
@@ -591,7 +591,7 @@ export default function TermsOfSalePage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>SECTION 15</Eyebrow>
             <DisplayHeading size="lg">
-              EXCLUSIVE <Red>REMEDIES.</Red>
+              EXCLUSIVE <Red>REMEDIES</Red>
             </DisplayHeading>
             <p style={para}>
               Except where prohibited by law, the remedies expressly stated in
@@ -614,7 +614,7 @@ export default function TermsOfSalePage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>SECTION 16</Eyebrow>
             <DisplayHeading size="lg">
-              FORCE <Red>MAJEURE.</Red>
+              FORCE <Red>MAJEURE</Red>
             </DisplayHeading>
             <p style={para}>
               Neobotics will not be liable for delay or failure to perform arising
@@ -635,7 +635,7 @@ export default function TermsOfSalePage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>SECTION 17</Eyebrow>
             <DisplayHeading size="lg">
-              GOVERNING <Red>LAW.</Red>
+              GOVERNING <Red>LAW</Red>
             </DisplayHeading>
             <p style={para}>
               These Terms of Sale are governed by the laws of the Commonwealth of
@@ -654,7 +654,7 @@ export default function TermsOfSalePage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>SECTION 18</Eyebrow>
             <DisplayHeading size="lg">
-              DISPUTE <Red>RESOLUTION.</Red>
+              DISPUTE <Red>RESOLUTION</Red>
             </DisplayHeading>
             <p style={para}>
               Any dispute arising out of or relating to these Terms of Sale or the
@@ -673,7 +673,7 @@ export default function TermsOfSalePage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>SECTION 19</Eyebrow>
             <DisplayHeading size="lg">
-              <Red>SEVERABILITY.</Red>
+              <Red>SEVERABILITY</Red>
             </DisplayHeading>
             <p style={para}>
               If any provision of these Terms of Sale is found unenforceable, the
@@ -691,7 +691,7 @@ export default function TermsOfSalePage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>SECTION 20</Eyebrow>
             <DisplayHeading size="lg">
-              ENTIRE <Red>AGREEMENT.</Red>
+              ENTIRE <Red>AGREEMENT</Red>
             </DisplayHeading>
             <p style={para}>
               These Terms of Sale, together with any applicable written warranty
@@ -715,7 +715,7 @@ export default function TermsOfSalePage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>SECTION 21</Eyebrow>
             <DisplayHeading size="lg">
-              CONTACT <Red>INFORMATION.</Red>
+              CONTACT <Red>INFORMATION</Red>
             </DisplayHeading>
             <DataTable
               columns={[

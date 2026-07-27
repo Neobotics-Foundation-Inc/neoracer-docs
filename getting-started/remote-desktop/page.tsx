@@ -35,7 +35,7 @@ export default function RemoteDesktopPage() {
           <GhostNumeral n="05" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              REMOTE DESKTOP <Red>SETUP.</Red>
+              REMOTE DESKTOP <Red>SETUP</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
               The car ships with{' '}
@@ -55,7 +55,7 @@ export default function RemoteDesktopPage() {
         <section style={{ position: 'relative', paddingBottom: 44 }}>
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              SET A PERMANENT <Red>PASSWORD.</Red>
+              SET A PERMANENT <Red>PASSWORD</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
               Out of the box, RustDesk shows a one-time password that changes
@@ -112,7 +112,7 @@ export default function RemoteDesktopPage() {
         <section style={{ position: 'relative', paddingBottom: 44 }}>
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              CONNECT BY <Red>ADDRESS.</Red>
+              CONNECT BY <Red>ADDRESS</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
               Install RustDesk on your laptop from{' '}
@@ -139,7 +139,7 @@ export default function RemoteDesktopPage() {
         <section style={{ position: 'relative', paddingBottom: 44 }}>
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              UNPLUG THE <Red>MONITOR.</Red>
+              UNPLUG THE <Red>MONITOR</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
               Everything on the car is now reachable from your laptop: RustDesk

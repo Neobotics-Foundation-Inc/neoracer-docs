@@ -73,7 +73,7 @@ export default function UnboxPage() {
           <GhostNumeral n="01" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              UNBOX THE <Red>NEORACER.</Red>
+              UNBOX THE <Red>NEORACER</Red>
             </DisplayHeading>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="outline" icon={<ClockGlyph />}><AnimatedNumeral value={10} prefix="~" suffix=" minutes" /></ChromeBadge>
@@ -154,7 +154,7 @@ export default function UnboxPage() {
       <ScrollReveal>
         <section style={{ paddingBottom: 32 }}>
           <DisplayHeading size="lg">
-            THE <Red>ACCESSORIES.</Red>
+            THE <Red>ACCESSORIES</Red>
           </DisplayHeading>
           <div
             style={{

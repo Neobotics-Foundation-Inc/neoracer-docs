@@ -44,7 +44,7 @@ export default function ROS2DriverPage() {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 40 }}>
               <div>
                 <DisplayHeading size="2xl">
-                  THE ROS 2 <Red>DRIVER.</Red>
+                  THE ROS 2 <Red>DRIVER</Red>
                 </DisplayHeading>
               </div>
               <div style={{ paddingTop: 60 }}>
@@ -95,7 +95,7 @@ export default function ROS2DriverPage() {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 40 }}>
               <div>
                 <DisplayHeading size="2xl">
-                  QUICK ROS 2 <Red>BASICS.</Red>
+                  QUICK ROS 2 <Red>BASICS</Red>
                 </DisplayHeading>
               </div>
               <div style={{ paddingTop: 60 }}>
@@ -175,7 +175,7 @@ export default function ROS2DriverPage() {
           <GhostNumeral n="03" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              WHAT <Red>TELEOP</Red> BRINGS UP.
+              WHAT <Red>TELEOP</Red> BRINGS UP
             </DisplayHeading>
             <p
               style={{

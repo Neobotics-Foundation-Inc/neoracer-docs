@@ -36,7 +36,7 @@ export default function MappingPage() {
           <GhostNumeral n="MAP" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              BUILD A <Red>MAP.</Red>
+              BUILD A <Red>MAP</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
               Drive the car slowly around a room and{' '}
@@ -75,7 +75,7 @@ ros2 launch osracer_bringup bringup.launch.py`}</Code>
       <ScrollReveal>
         <section style={{ paddingBottom: 40 }}>
           <DisplayHeading size="lg">
-            DRIVE TO <Red>MAP.</Red>
+            DRIVE TO <Red>MAP</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             Mapping runs on top of the live driver, and you build the map by
@@ -102,7 +102,7 @@ ros2 launch osracer_bringup bringup.launch.py`}</Code>
           <GhostNumeral n="02" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              PICK A <Red>BACKEND.</Red>
+              PICK A <Red>BACKEND</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
               Each backend runs in its own terminal, with a second terminal that
@@ -148,7 +148,7 @@ ros2 launch osracer_debug debug_cartographer.launch.py # terminal 2 (RViz)`}</Co
       <ScrollReveal>
         <section style={{ paddingBottom: 40 }}>
           <DisplayHeading size="lg">
-            IN <Red>RVIZ.</Red>
+            IN <Red>RVIZ</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             The debug terminal opens RViz with the fixed frame set to{' '}
@@ -174,7 +174,7 @@ ros2 launch osracer_debug debug_cartographer.launch.py # terminal 2 (RViz)`}</Co
           <GhostNumeral n="04" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              SAVE THE <Red>MAP.</Red>
+              SAVE THE <Red>MAP</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
               With the mapper still running and the space covered, save. You get a{' '}

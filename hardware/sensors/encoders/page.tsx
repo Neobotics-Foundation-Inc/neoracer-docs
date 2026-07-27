@@ -37,7 +37,7 @@ export default function EncodersPage() {
           <GhostNumeral n="E" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              THE MOTOR <Red>ENCODER.</Red>
+              THE MOTOR <Red>ENCODER</Red>
             </DisplayHeading>
             <p
               style={{
@@ -71,7 +71,7 @@ export default function EncodersPage() {
         <section style={{ position: 'relative', paddingBottom: 32 }}>
           <Eyebrow>01 / ONE ENCODER, COUNTED IN HARDWARE</Eyebrow>
           <DisplayHeading size="lg">
-            SHAFT-SIDE <Red>COUNTING.</Red>
+            SHAFT-SIDE <Red>COUNTING</Red>
           </DisplayHeading>
           <p
             style={{
@@ -97,7 +97,7 @@ export default function EncodersPage() {
         <section style={{ paddingBottom: 32 }}>
           <Eyebrow>02 / TICKS TO ODOMETRY</Eyebrow>
           <DisplayHeading size="lg">
-            FROM COUNTS TO <Red>/odom.</Red>
+            FROM COUNTS TO <Red>/odom</Red>
           </DisplayHeading>
           <div
             style={{
@@ -134,7 +134,7 @@ export default function EncodersPage() {
         <section style={{ paddingBottom: 32 }}>
           <Eyebrow>03 / RESOLUTION</Eyebrow>
           <DisplayHeading size="lg">
-            WHAT SETS THE <Red>PRECISION.</Red>
+            WHAT SETS THE <Red>PRECISION</Red>
           </DisplayHeading>
           <p
             style={{
@@ -169,7 +169,7 @@ export default function EncodersPage() {
         <section style={{ paddingBottom: 32 }}>
           <Eyebrow>04 / WHY THE STACK CARES</Eyebrow>
           <DisplayHeading size="lg">
-            FUSION WITH <Red>LiDAR.</Red>
+            FUSION WITH <Red>LiDAR</Red>
           </DisplayHeading>
           <p
             style={{
@@ -217,7 +217,7 @@ export default function EncodersPage() {
         <section style={{ paddingBottom: 32 }}>
           <Eyebrow>05 / AT A GLANCE</Eyebrow>
           <DisplayHeading size="lg">
-            <Red>SPECIFICATIONS.</Red>
+            <Red>SPECIFICATIONS</Red>
           </DisplayHeading>
           <DataTable
             columns={[

@@ -38,7 +38,7 @@ export default function FirmwareFlashingPage() {
           <GhostNumeral n="FW" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              FLASH THE <Red>BOARD.</Red>
+              FLASH THE <Red>BOARD</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
               The OSCORE controller runs its own firmware, the real-time layer that
@@ -62,7 +62,7 @@ export default function FirmwareFlashingPage() {
       <ScrollReveal>
         <section style={{ paddingBottom: 40 }}>
           <DisplayHeading size="lg">
-            GET THE <Red>FIRMWARE.</Red>
+            GET THE <Red>FIRMWARE</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             The flasher ships with the chapter example builds, so for those you
@@ -83,7 +83,7 @@ unzip osrcore-firmware-v1.0.5.zip   # -> osrcore-firmware-v1.0.5.bin`}</Code>
           <GhostNumeral n="02" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              WHAT YOU <Red>NEED.</Red>
+              WHAT YOU <Red>NEED</Red>
             </DisplayHeading>
             <DashList
               items={[
@@ -105,7 +105,7 @@ unzip osrcore-firmware-v1.0.5.zip   # -> osrcore-firmware-v1.0.5.bin`}</Code>
       <ScrollReveal>
         <section style={{ paddingBottom: 40 }}>
           <DisplayHeading size="lg">
-            ENTER DOWNLOAD <Red>MODE.</Red>
+            ENTER DOWNLOAD <Red>MODE</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             Flashing needs the board in download mode. It&apos;s a four-step press,
@@ -141,7 +141,7 @@ unzip osrcore-firmware-v1.0.5.zip   # -> osrcore-firmware-v1.0.5.bin`}</Code>
           <GhostNumeral n="04" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              FLASH THE <Red>BOARD.</Red>
+              FLASH THE <Red>BOARD</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
               Open the{' '}
@@ -171,7 +171,7 @@ unzip osrcore-firmware-v1.0.5.zip   # -> osrcore-firmware-v1.0.5.bin`}</Code>
       <ScrollReveal>
         <section style={{ paddingBottom: 24 }}>
           <DisplayHeading size="lg">
-            SERIAL <Red>MONITOR.</Red>
+            SERIAL <Red>MONITOR</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             When the flash completes, the board resets and runs the new firmware.

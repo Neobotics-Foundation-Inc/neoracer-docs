@@ -169,7 +169,7 @@ export default function Ros2TopicsPage() {
           <GhostNumeral n="//" top={-40} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              ROS 2 <Red>TOPICS.</Red>
+              ROS 2 <Red>TOPICS</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
               The whole stack is sensors publishing and actuators subscribing.
@@ -228,7 +228,7 @@ export default function Ros2TopicsPage() {
         <section style={{ paddingBottom: 8 }}>
           <Eyebrow>THE FULL LIST</Eyebrow>
           <DisplayHeading size="lg">
-            THE TOPIC <Red>LIST.</Red>
+            THE TOPIC <Red>LIST</Red>
           </DisplayHeading>
           <DataTable columns={COLUMNS} rows={ROWS} />
         </section>
@@ -238,7 +238,7 @@ export default function Ros2TopicsPage() {
         <section style={{ paddingTop: 28, paddingBottom: 8 }}>
           <Eyebrow>THE DRIVE PIPELINE</Eyebrow>
           <DisplayHeading size="lg">
-            THE DRIVE <Red>PIPELINE.</Red>
+            THE DRIVE <Red>PIPELINE</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
             Your message does not go straight to the motor. It passes through an

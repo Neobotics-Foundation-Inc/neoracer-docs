@@ -31,7 +31,7 @@ export default function SensorsIndexPage() {
           <GhostNumeral n="S" top={-40} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              THE SENSOR <Red>SUITE.</Red>
+              THE SENSOR <Red>SUITE</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
               The scanner sees the room, the camera sees colour, the IMU knows

@@ -37,7 +37,7 @@ export default function ImuPage() {
           <GhostNumeral n="9" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              THE ONBOARD <Red>IMU.</Red>
+              THE ONBOARD <Red>IMU</Red>
             </DisplayHeading>
             <p
               style={{
@@ -71,7 +71,7 @@ export default function ImuPage() {
         <section style={{ position: 'relative', paddingBottom: 32 }}>
           <Eyebrow>01 / WHAT IT MEASURES</Eyebrow>
           <DisplayHeading size="lg">
-            WHAT IT <Red>MEASURES.</Red>
+            WHAT IT <Red>MEASURES</Red>
           </DisplayHeading>
           <p
             style={{
@@ -124,7 +124,7 @@ export default function ImuPage() {
         <section style={{ paddingBottom: 32 }}>
           <Eyebrow>02 / PYTHON API</Eyebrow>
           <DisplayHeading size="lg">
-            THE rc.physics <Red>API.</Red>
+            THE rc.physics <Red>API</Red>
           </DisplayHeading>
           <p
             style={{
@@ -183,7 +183,7 @@ print(mag)     # magnetic field vector`}
         <section style={{ paddingBottom: 32 }}>
           <Eyebrow>03 / WHAT TO EXPECT</Eyebrow>
           <DisplayHeading size="lg">
-            WHAT IT <Red>OUTPUTS.</Red>
+            WHAT IT <Red>OUTPUTS</Red>
           </DisplayHeading>
           <p
             style={{
@@ -218,7 +218,7 @@ print(mag)     # magnetic field vector`}
         <section style={{ paddingBottom: 32 }}>
           <Eyebrow>04 / ROS 2 TOPICS</Eyebrow>
           <DisplayHeading size="lg">
-            THE ROS 2 <Red>TOPICS.</Red>
+            THE ROS 2 <Red>TOPICS</Red>
           </DisplayHeading>
           <p
             style={{
@@ -262,7 +262,7 @@ print(mag)     # magnetic field vector`}
         <section style={{ paddingBottom: 32 }}>
           <Eyebrow>05 / ON THE CAR</Eyebrow>
           <DisplayHeading size="lg">
-            ON THE <Red>CAR.</Red>
+            ON THE <Red>CAR</Red>
           </DisplayHeading>
           <p
             style={{
@@ -290,7 +290,7 @@ print(mag)     # magnetic field vector`}
         <section style={{ paddingBottom: 32 }}>
           <Eyebrow>06 / SPEC AT A GLANCE</Eyebrow>
           <DisplayHeading size="lg">
-            THE <Red>SPECIFICATIONS.</Red>
+            THE <Red>SPECIFICATIONS</Red>
           </DisplayHeading>
           <div
             style={{

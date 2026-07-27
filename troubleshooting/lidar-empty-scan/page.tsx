@@ -35,7 +35,7 @@ export default function LidarEmptyScanPage() {
           <GhostNumeral n="02" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              THE EMPTY LIDAR <Red>SCAN.</Red>
+              THE EMPTY LIDAR <Red>SCAN</Red>
             </DisplayHeading>
             <p
               style={{
@@ -94,7 +94,7 @@ export default function LidarEmptyScanPage() {
           <GhostNumeral n="01" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              CHECK THE <Red>SCANNER.</Red>
+              CHECK THE <Red>SCANNER</Red>
             </DisplayHeading>
             <p
               style={{
@@ -137,7 +137,7 @@ ros2 topic hz /scan          # the rate the Lakibeam is configured for`}</Code>
           <GhostNumeral n="02" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              LIKELY <Red>CAUSES.</Red>
+              LIKELY <Red>CAUSES</Red>
             </DisplayHeading>
 
             <div

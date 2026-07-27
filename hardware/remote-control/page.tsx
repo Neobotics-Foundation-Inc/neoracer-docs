@@ -38,7 +38,7 @@ export default function RemoteControlPage() {
           <GhostNumeral n="RC" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              THE REMOTE <Red>CONTROL.</Red>
+              THE REMOTE <Red>CONTROL</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
               The car ships with a{' '}
@@ -75,7 +75,7 @@ export default function RemoteControlPage() {
         <section style={{ paddingBottom: 40 }}>
           <Eyebrow>01 / WHAT EACH CONTROL DOES</Eyebrow>
           <DisplayHeading size="lg">
-            STICKS AND <Red>SWITCHES.</Red>
+            STICKS AND <Red>SWITCHES</Red>
           </DisplayHeading>
           <DashList
             items={[
@@ -101,7 +101,7 @@ export default function RemoteControlPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>02 / THE MODE SWITCH</Eyebrow>
             <DisplayHeading size="lg">
-              THE MODE <Red>SWITCH.</Red>
+              THE MODE <Red>SWITCH</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
               SWB answers one question: who is driving. Up is you, on the
@@ -136,7 +136,7 @@ export default function RemoteControlPage() {
         <section style={{ position: 'relative', paddingBottom: 24 }}>
           <Eyebrow>03 / ADVANCED</Eyebrow>
           <DisplayHeading size="lg">
-            CHANNEL MAPPING + <Red>S.BUS.</Red>
+            CHANNEL MAPPING + <Red>S.BUS</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             The transmitter ships mapped for the car, so most people never open

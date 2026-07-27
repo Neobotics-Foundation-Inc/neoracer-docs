@@ -51,7 +51,7 @@ export default function PrivacyPage() {
           <GhostNumeral n="P" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              THE PRIVACY <Red>POLICY.</Red>
+              THE PRIVACY <Red>POLICY</Red>
             </DisplayHeading>
             <p
               style={{
@@ -97,7 +97,7 @@ export default function PrivacyPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>SECTION 01</Eyebrow>
             <DisplayHeading size="lg">
-              WHO WE <Red>ARE.</Red>
+              WHO WE <Red>ARE</Red>
             </DisplayHeading>
             <p style={para}>
               Neobotics Foundation Inc. (Neobotics, we, our) is a 501(c)(3)
@@ -119,7 +119,7 @@ export default function PrivacyPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>SECTION 02</Eyebrow>
             <DisplayHeading size="lg">
-              INFORMATION WE <Red>COLLECT.</Red>
+              INFORMATION WE <Red>COLLECT</Red>
             </DisplayHeading>
             <DashList
               items={[
@@ -164,7 +164,7 @@ export default function PrivacyPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>SECTION 03</Eyebrow>
             <DisplayHeading size="lg">
-              HOW WE USE <Red>IT.</Red>
+              HOW WE USE <Red>IT</Red>
             </DisplayHeading>
             <DashList
               items={[
@@ -190,7 +190,7 @@ export default function PrivacyPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>SECTION 04</Eyebrow>
             <DisplayHeading size="lg">
-              SERVICE <Red>PROVIDERS.</Red>
+              SERVICE <Red>PROVIDERS</Red>
             </DisplayHeading>
             <p style={para}>
               We rely on a small set of vetted service providers. Each maintains
@@ -261,7 +261,7 @@ export default function PrivacyPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>SECTION 05</Eyebrow>
             <DisplayHeading size="lg">
-              YOUR <Red>RIGHTS.</Red>
+              YOUR <Red>RIGHTS</Red>
             </DisplayHeading>
             <p style={para}>
               You may request access to, correction of, or deletion of your
@@ -289,7 +289,7 @@ export default function PrivacyPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>SECTION 06</Eyebrow>
             <DisplayHeading size="lg">
-              CHILDREN&apos;S <Red>PRIVACY.</Red>
+              CHILDREN&apos;S <Red>PRIVACY</Red>
             </DisplayHeading>
             <p style={para}>
               Our educational content is designed for K-12 and undergraduate
@@ -309,7 +309,7 @@ export default function PrivacyPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>SECTION 07</Eyebrow>
             <DisplayHeading size="lg">
-              DATA RETENTION AND <Red>SECURITY.</Red>
+              DATA RETENTION AND <Red>SECURITY</Red>
             </DisplayHeading>
             <p style={para}>
               We retain personal information for as long as needed to provide the
@@ -329,7 +329,7 @@ export default function PrivacyPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>SECTION 08</Eyebrow>
             <DisplayHeading size="lg">
-              CHANGES TO THIS <Red>POLICY.</Red>
+              CHANGES TO THIS <Red>POLICY</Red>
             </DisplayHeading>
             <p style={para}>
               We may update this policy from time to time. Material changes will
@@ -347,7 +347,7 @@ export default function PrivacyPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>SECTION 09</Eyebrow>
             <DisplayHeading size="lg">
-              <Red>CONTACT.</Red>
+              <Red>CONTACT</Red>
             </DisplayHeading>
             <MonoLabel>Where to reach us</MonoLabel>
             <DataTable

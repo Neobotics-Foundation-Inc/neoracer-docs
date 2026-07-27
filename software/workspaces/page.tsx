@@ -31,7 +31,7 @@ export default function WorkspacesPage() {
           <GhostNumeral n="WS" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              THE TWO <Red>WORKSPACES.</Red>
+              THE TWO <Red>WORKSPACES</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
               The car carries two ROS 2 workspaces, and each terminal uses one
@@ -47,7 +47,7 @@ export default function WorkspacesPage() {
           <GhostNumeral n="01" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              NEORACER AND <Red>OSRACER.</Red>
+              NEORACER AND <Red>OSRACER</Red>
             </DisplayHeading>
             <div style={{ marginTop: 18 }}>
               <DataTable
@@ -73,7 +73,7 @@ export default function WorkspacesPage() {
           <GhostNumeral n="02" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              SWITCH WITH <Red>RACECAR WS.</Red>
+              SWITCH WITH <Red>RACECAR WS</Red>
             </DisplayHeading>
             <Code lang="bash">{`racecar ws osracer      # this terminal now uses the osracer workspace
 racecar ws neoracer     # back to the default`}</Code>
@@ -91,7 +91,7 @@ racecar ws neoracer     # back to the default`}</Code>
           <GhostNumeral n="03" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              ONE STACK AT A <Red>TIME.</Red>
+              ONE STACK AT A <Red>TIME</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
               Both stacks talk to the same hardware, so stop the services first.

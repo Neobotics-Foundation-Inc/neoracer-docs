@@ -56,7 +56,7 @@ export default function DocsLandingPage() {
         <div style={{ position: 'relative', zIndex: 1 }}>
           <TickMargin count={10} />
           <DisplayHeading size="2xl">
-            NEORACER <Red>DOCS.</Red>
+            NEORACER <Red>DOCS</Red>
           </DisplayHeading>
           <p
             style={{
@@ -91,7 +91,7 @@ export default function DocsLandingPage() {
         <section style={{ position: 'relative', paddingBottom: 64 }}>
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              THE DATA <Red>FLOW.</Red>
+              THE DATA <Red>FLOW</Red>
             </DisplayHeading>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 32, alignItems: 'start' }}>
               <p

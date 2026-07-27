@@ -39,7 +39,7 @@ export default function ElectricalPage() {
           <GhostNumeral n="V" top={-40} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              THE ELECTRICAL <Red>SYSTEM.</Red>
+              THE ELECTRICAL <Red>SYSTEM</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
               The NeoRacer runs a single hierarchical power path. One 3S LiPo
@@ -78,7 +78,7 @@ export default function ElectricalPage() {
         <section style={{ position: 'relative', paddingBottom: 48 }}>
           <Eyebrow>01 / WHERE THE POWER GOES</Eyebrow>
           <DisplayHeading size="lg">
-            THE FIVE <Red>RAILS.</Red>
+            THE FIVE <Red>RAILS</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             Everything starts at the LiPo and fans out through the
@@ -112,7 +112,7 @@ export default function ElectricalPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>02 / THE DISTRIBUTION BOARD</Eyebrow>
             <DisplayHeading size="lg">
-              POWER-MANAGEMENT <Red>MODULE.</Red>
+              POWER-MANAGEMENT <Red>MODULE</Red>
             </DisplayHeading>
             <div style={{ marginTop: 18 }}>
               <DataTable
@@ -164,7 +164,7 @@ export default function ElectricalPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>03 / BEFORE THE BATTERY GOES IN</Eyebrow>
             <DisplayHeading size="lg">
-              PRE-POWER-ON <Red>CHECKS.</Red>
+              PRE-POWER-ON <Red>CHECKS</Red>
             </DisplayHeading>
             <Callout type="danger" title="Run these before connecting the battery">
               Powering on with a swollen pack, a chafed lead, or a loose
@@ -223,7 +223,7 @@ export default function ElectricalPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>04 / IN THE RIGHT ORDER</Eyebrow>
             <DisplayHeading size="lg">
-              POWER ON, <Red>POWER OFF.</Red>
+              POWER ON, <Red>POWER OFF</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
               The order matters at both ends. Bringing the rails up cleanly lets
@@ -283,7 +283,7 @@ sudo shutdown -h now`}</Code>
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>05 / THE NUMBERS</Eyebrow>
             <DisplayHeading size="lg">
-              ELECTRICAL <Red>PARAMETERS.</Red>
+              ELECTRICAL <Red>PARAMETERS</Red>
             </DisplayHeading>
             <div style={{ marginTop: 18 }}>
               <DataTable

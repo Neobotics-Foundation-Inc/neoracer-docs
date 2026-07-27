@@ -45,7 +45,7 @@ export default function ReturnAndRefundPage() {
           <GhostNumeral n="R&R" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              RETURN AND REFUND <Red>POLICY.</Red>
+              RETURN AND REFUND <Red>POLICY</Red>
             </DisplayHeading>
             <p
               style={{
@@ -94,7 +94,7 @@ export default function ReturnAndRefundPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>01 / NO RETURNS POLICY</Eyebrow>
             <DisplayHeading size="lg">
-              NO RETURNS <Red>POLICY.</Red>
+              NO RETURNS <Red>POLICY</Red>
             </DisplayHeading>
             <p style={bodyStyle}>
               All sales of the NeoRacer robotic car kit are final. Neobotics does
@@ -112,7 +112,7 @@ export default function ReturnAndRefundPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>02 / REFUND ELIGIBILITY</Eyebrow>
             <DisplayHeading size="lg">
-              REFUND <Red>ELIGIBILITY.</Red>
+              REFUND <Red>ELIGIBILITY</Red>
             </DisplayHeading>
             <p style={bodyStyle}>
               Refunds are not provided for any NeoRacer purchase except under the
@@ -144,7 +144,7 @@ export default function ReturnAndRefundPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>03 / DEFECTIVE PRODUCTS</Eyebrow>
             <DisplayHeading size="lg">
-              DEFECTIVE <Red>PRODUCTS.</Red>
+              DEFECTIVE <Red>PRODUCTS</Red>
             </DisplayHeading>
             <p style={bodyStyle}>
               In accordance with the NeoRacer 9-Month Limited Hardware Warranty,
@@ -181,7 +181,7 @@ export default function ReturnAndRefundPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>04 / DEAD ON ARRIVAL &amp; MISSING PARTS</Eyebrow>
             <DisplayHeading size="lg">
-              DOA AND MISSING <Red>PARTS.</Red>
+              DOA AND MISSING <Red>PARTS</Red>
             </DisplayHeading>
             <p style={bodyStyle}>
               As specified in Section 2 of the Warranty Policy, the steps below
@@ -212,7 +212,7 @@ export default function ReturnAndRefundPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>05 / EXCLUSIONS</Eyebrow>
             <DisplayHeading size="lg">
-              REFUND <Red>EXCLUSIONS.</Red>
+              REFUND <Red>EXCLUSIONS</Red>
             </DisplayHeading>
             <p style={bodyStyle}>
               No refunds, credits, or exchanges will be issued for the following.

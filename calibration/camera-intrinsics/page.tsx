@@ -83,7 +83,7 @@ export default function CameraIntrinsicsPage() {
           <GhostNumeral n="04" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              CAMERA <Red>INTRINSICS.</Red>
+              CAMERA <Red>INTRINSICS</Red>
             </DisplayHeading>
             <p
               style={{
@@ -132,7 +132,7 @@ export default function CameraIntrinsicsPage() {
           <GhostNumeral n="01" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              WHAT YOU <Red>MEASURE.</Red>
+              WHAT YOU <Red>MEASURE</Red>
             </DisplayHeading>
             <p
               style={{
@@ -162,7 +162,7 @@ export default function CameraIntrinsicsPage() {
           <GhostNumeral n="02" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              WHAT YOU'LL <Red>NEED.</Red>
+              WHAT YOU'LL <Red>NEED</Red>
             </DisplayHeading>
 
             <div
@@ -226,7 +226,7 @@ export default function CameraIntrinsicsPage() {
           <GhostNumeral n="03" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              THE <Red>PROCEDURE.</Red>
+              THE <Red>PROCEDURE</Red>
             </DisplayHeading>
 
             <Code lang="python">{`# 1. Save as decode_relay.py on the car and run: python3 decode_relay.py
@@ -278,7 +278,7 @@ ros2 run camera_calibration cameracalibrator \\
           <GhostNumeral n="04" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              A CAMERA_INFO <Red>YAML.</Red>
+              A CAMERA_INFO <Red>YAML</Red>
             </DisplayHeading>
             <p
               style={{
@@ -336,7 +336,7 @@ distortion_coefficients:
           <GhostNumeral n="05" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              USING THE <Red>CALIBRATION.</Red>
+              USING THE <Red>CALIBRATION</Red>
             </DisplayHeading>
             <DashList
               items={[

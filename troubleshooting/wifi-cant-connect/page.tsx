@@ -35,7 +35,7 @@ export default function WifiCantConnectPage() {
         <GhostNumeral n="05" top={-30} right={-20} size={460} />
         <div style={{ position: 'relative', zIndex: 1 }}>
           <DisplayHeading size="xl">
-            THE CAR'S <Red>WI-FI.</Red>
+            THE CAR'S <Red>WI-FI</Red>
           </DisplayHeading>
           <p
             style={{
@@ -95,7 +95,7 @@ export default function WifiCantConnectPage() {
         <GhostNumeral n="01" top={-30} right={-20} size={400} />
         <div style={{ position: 'relative', zIndex: 1 }}>
           <DisplayHeading size="lg">
-            JOINING VS <Red>ROUTING.</Red>
+            JOINING VS <Red>ROUTING</Red>
           </DisplayHeading>
           <p
             style={{
@@ -131,7 +131,7 @@ ping 192.168.10.100        # or 10.42.0.1 on the access point
         <GhostNumeral n="02" top={-30} right={-20} size={400} />
         <div style={{ position: 'relative', zIndex: 1 }}>
           <DisplayHeading size="lg">
-            THE FAILURE <Red>MODES.</Red>
+            THE FAILURE <Red>MODES</Red>
           </DisplayHeading>
 
           <div
@@ -203,7 +203,7 @@ ping 192.168.10.100        # or 10.42.0.1 on the access point
         <GhostNumeral n="03" top={-30} right={-20} size={400} />
         <div style={{ position: 'relative', zIndex: 1 }}>
           <DisplayHeading size="lg">
-            THE ETHERNET <Red>FALLBACK.</Red>
+            THE ETHERNET <Red>FALLBACK</Red>
           </DisplayHeading>
           <p
             style={{

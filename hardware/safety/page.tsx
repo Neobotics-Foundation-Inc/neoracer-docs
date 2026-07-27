@@ -34,7 +34,7 @@ export default function SafetyPage() {
           <GhostNumeral n="!" top={-40} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              SAFETY <Red>RULES.</Red>
+              SAFETY <Red>RULES</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
               The NeoRacer is a small autonomous robot, and treated well it has a
@@ -66,7 +66,7 @@ export default function SafetyPage() {
         <section style={{ paddingBottom: 32 }}>
           <Eyebrow>01 / RULE-BY-RULE</Eyebrow>
           <DisplayHeading size="lg">
-            THE FIVE <Red>RULES.</Red>
+            THE FIVE <Red>RULES</Red>
           </DisplayHeading>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 22, marginTop: 22 }}>
             <NumberedFeatureCard
@@ -123,7 +123,7 @@ export default function SafetyPage() {
         <section style={{ paddingBottom: 32 }}>
           <Eyebrow>02 / OPERATING SAFELY</Eyebrow>
           <DisplayHeading size="lg">
-            BEFORE AND DURING A <Red>RUN.</Red>
+            BEFORE AND DURING A <Red>RUN</Red>
           </DisplayHeading>
           <DashList
             items={[
@@ -153,7 +153,7 @@ export default function SafetyPage() {
         <section style={{ paddingBottom: 32 }}>
           <Eyebrow>03 / FOR EDUCATORS</Eyebrow>
           <DisplayHeading size="lg">
-            CLASSROOM <Red>SUPPLEMENTS.</Red>
+            CLASSROOM <Red>SUPPLEMENTS</Red>
           </DisplayHeading>
           <DashList
             items={[

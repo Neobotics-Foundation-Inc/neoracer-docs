@@ -43,7 +43,7 @@ export default function InstallDriverPage() {
           <GhostNumeral n="04" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              INSTALL THE <Red>DRIVER.</Red>
+              INSTALL THE <Red>DRIVER</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
               The driver is the software that ties the Jetson to the sensors and
@@ -78,7 +78,7 @@ export default function InstallDriverPage() {
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 40 }}>
           <DisplayHeading size="lg">
-            THE SYSTEM <Red>SPECS.</Red>
+            THE SYSTEM <Red>SPECS</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             You are at the car&apos;s console from{' '}
@@ -109,7 +109,7 @@ export default function InstallDriverPage() {
       <ScrollReveal>
         <section style={{ paddingBottom: 36 }}>
           <DisplayHeading size="lg">
-            RUN THE <Red>SETUP.</Red>
+            RUN THE <Red>SETUP</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             The driver lives in one open-source repository,{' '}
@@ -191,7 +191,7 @@ bash neoracer_ros2_driver/scripts/setup_all.sh`}</Code>
       <ScrollReveal>
         <section style={{ paddingBottom: 36 }}>
           <DisplayHeading size="lg">
-            THE SEVEN <Red>PHASES.</Red>
+            THE SEVEN <Red>PHASES</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             The script prints each phase as it goes. Here is what each one did to
@@ -263,7 +263,7 @@ bash neoracer_ros2_driver/scripts/setup_all.sh`}</Code>
       <ScrollReveal>
         <section style={{ paddingBottom: 36 }}>
           <DisplayHeading size="lg">
-            START THE <Red>STACK.</Red>
+            START THE <Red>STACK</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             The setup just changed two things about your login: it added the{' '}
@@ -292,7 +292,7 @@ racecar service start`}</Code>
       <ScrollReveal>
         <section style={{ paddingBottom: 36 }}>
           <DisplayHeading size="lg">
-            QUICK <Red>CHECKS.</Red>
+            QUICK <Red>CHECKS</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             Each check confirms a different layer: the services are running, the
@@ -349,7 +349,7 @@ http://192.168.10.100:8080     # cudy router`}</Code>
       <ScrollReveal>
         <section style={{ paddingBottom: 36 }}>
           <DisplayHeading size="lg">
-            THE CAR'S OWN <Red>NETWORK.</Red>
+            THE CAR'S OWN <Red>NETWORK</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             So far the car has been borrowing your network. One command, run at

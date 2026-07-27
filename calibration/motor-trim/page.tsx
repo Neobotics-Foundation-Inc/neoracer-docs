@@ -53,7 +53,7 @@ export default function MotorTrimPage() {
           <GhostNumeral n="01" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              MOTOR <Red>TRIM.</Red>
+              MOTOR <Red>TRIM</Red>
             </DisplayHeading>
             <p
               style={{
@@ -101,7 +101,7 @@ export default function MotorTrimPage() {
           <GhostNumeral n="01" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              HOW IT <Red>WORKS.</Red>
+              HOW IT <Red>WORKS</Red>
             </DisplayHeading>
             <p
               style={{
@@ -158,7 +158,7 @@ export default function MotorTrimPage() {
           <GhostNumeral n="02" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              WHAT YOU'LL <Red>NEED.</Red>
+              WHAT YOU'LL <Red>NEED</Red>
             </DisplayHeading>
 
             <div
@@ -225,7 +225,7 @@ export default function MotorTrimPage() {
           <GhostNumeral n="03" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              THE <Red>PROCEDURE.</Red>
+              THE <Red>PROCEDURE</Red>
             </DisplayHeading>
 
             <Code lang="bash">{`# 1. SSH into the Jetson (see Networking for the address).
@@ -262,7 +262,7 @@ racecar teleop`}</Code>
           <GhostNumeral n="04" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              VERIFY THE <Red>NEUTRAL.</Red>
+              VERIFY THE <Red>NEUTRAL</Red>
             </DisplayHeading>
             <p
               style={{
@@ -328,7 +328,7 @@ rc.go()`}</Code>
           <GhostNumeral n="05" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              THE CONFIG <Red>FILE.</Red>
+              THE CONFIG <Red>FILE</Red>
             </DisplayHeading>
             <p
               style={{

@@ -203,7 +203,7 @@ export default function RacecarNeoLibraryPage() {
           <GhostNumeral n="rc" top={-50} right={-20} size={440} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              THE PYTHON <Red>LIBRARY.</Red>
+              THE PYTHON <Red>LIBRARY</Red>
             </DisplayHeading>
             <p
               style={{
@@ -267,7 +267,7 @@ export default function RacecarNeoLibraryPage() {
           <GhostNumeral n="01" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              THE FIVE <Red>MODULES.</Red>
+              THE FIVE <Red>MODULES</Red>
             </DisplayHeading>
             <p
               style={{
@@ -299,7 +299,7 @@ export default function RacecarNeoLibraryPage() {
           <GhostNumeral n="02" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              THE LIDAR <Red>SCAN.</Red>
+              THE LIDAR <Red>SCAN</Red>
             </DisplayHeading>
             <div
               style={{
@@ -377,7 +377,7 @@ export default function RacecarNeoLibraryPage() {
           <GhostNumeral n="03" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              DRIVE A <Red>SQUARE.</Red>
+              DRIVE A <Red>SQUARE</Red>
             </DisplayHeading>
             <p
               style={{
@@ -417,7 +417,7 @@ export default function RacecarNeoLibraryPage() {
           <GhostNumeral n="04" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              SIM OR <Red>CAR.</Red>
+              SIM OR <Red>CAR</Red>
             </DisplayHeading>
             <p
               style={{

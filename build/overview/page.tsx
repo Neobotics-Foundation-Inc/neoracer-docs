@@ -33,7 +33,7 @@ export default function BuildOverviewPage() {
           <GhostNumeral n="B" top={-40} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              THE <Red>BUILD.</Red>
+              THE <Red>BUILD</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
               Your NeoRacer arrives fully built and ready to drive; no assembly
@@ -68,7 +68,7 @@ export default function BuildOverviewPage() {
         <section style={{ paddingTop: 26, paddingBottom: 6 }}>
           <Eyebrow>THE WALKTHROUGH</Eyebrow>
           <DisplayHeading size="lg">
-            THE MAJOR <Red>COMPONENTS.</Red>
+            THE MAJOR <Red>COMPONENTS</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.6, color: NB.textMutedBeige, maxWidth: 720, marginBottom: 22 }}>
             Here is the car in the order it comes together, from the rolling

@@ -34,7 +34,7 @@ export default function ComputePage() {
           <GhostNumeral n="03" top={-40} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              THE COMPUTE <Red>STACK.</Red>
+              THE COMPUTE <Red>STACK</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
               One Linux host runs{' '}
@@ -58,7 +58,7 @@ export default function ComputePage() {
         <section style={{ paddingBottom: 32 }}>
           <Eyebrow>01 / WHAT THE JETSON DOES</Eyebrow>
           <DisplayHeading size="lg">
-            THE JETSON <Red>HOST.</Red>
+            THE JETSON <Red>HOST</Red>
           </DisplayHeading>
           <DashList
             items={[
@@ -78,7 +78,7 @@ export default function ComputePage() {
         <section style={{ paddingBottom: 32 }}>
           <Eyebrow>02 / WHAT THE MCU DOES</Eyebrow>
           <DisplayHeading size="lg">
-            THE MICROCONTROLLER <Red>STACK.</Red>
+            THE MICROCONTROLLER <Red>STACK</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             The Jetson shines at perception and planning, but guaranteed
@@ -100,7 +100,7 @@ export default function ComputePage() {
         <section style={{ paddingBottom: 32 }}>
           <Eyebrow>03 / WHO LIVES WHERE</Eyebrow>
           <DisplayHeading size="lg">
-            THE WORK <Red>SPLIT.</Red>
+            THE WORK <Red>SPLIT</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             Anything where timing has to be exact lives on the MCU, and

@@ -262,7 +262,7 @@ export default function FaqPage() {
         <GhostNumeral n="?" top={-50} right={-20} size={440} />
         <div style={{ position: 'relative', zIndex: 1 }}>
           <DisplayHeading size="xl">
-            FREQUENTLY ASKED <Red>QUESTIONS.</Red>
+            FREQUENTLY ASKED <Red>QUESTIONS</Red>
           </DisplayHeading>
           <p
             style={{

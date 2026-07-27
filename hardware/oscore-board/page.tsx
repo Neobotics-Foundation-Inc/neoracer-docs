@@ -58,7 +58,7 @@ export default function OscoreBoardPage() {
           <GhostNumeral n="PCB" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              THE OSCORE <Red>BOARD.</Red>
+              THE OSCORE <Red>BOARD</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
               OSCORE is the NeoRacer's power-distribution and control board, the
@@ -97,7 +97,7 @@ export default function OscoreBoardPage() {
         <section style={{ position: 'relative', paddingBottom: 40 }}>
           <Eyebrow>01 / WHAT IT IS</Eyebrow>
           <DisplayHeading size="lg">
-            WHAT IT <Red>DOES.</Red>
+            WHAT IT <Red>DOES</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
             OSCORE is built around the ESP32-S3-WROOM-1U module and pulls the
@@ -147,7 +147,7 @@ export default function OscoreBoardPage() {
         <section style={{ paddingBottom: 40 }}>
           <Eyebrow>02 / THE MCU</Eyebrow>
           <DisplayHeading size="lg">
-            ESP32-S3, <Red>WROOM-1U.</Red>
+            ESP32-S3, <Red>WROOM-1U</Red>
           </DisplayHeading>
           <DataTable
             columns={[
@@ -172,7 +172,7 @@ export default function OscoreBoardPage() {
         <section style={{ paddingBottom: 40 }}>
           <Eyebrow>03 / POWER SYSTEM</Eyebrow>
           <DisplayHeading size="lg">
-            THE POWER <Red>SYSTEM.</Red>
+            THE POWER <Red>SYSTEM</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
             A single 9 to 26 V input feeds a two-stage conversion: a TPS54540
@@ -209,7 +209,7 @@ export default function OscoreBoardPage() {
         <section style={{ paddingBottom: 40 }}>
           <Eyebrow>04 / ONBOARD IMU</Eyebrow>
           <DisplayHeading size="lg">
-            THE ONBOARD <Red>IMU.</Red>
+            THE ONBOARD <Red>IMU</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
             The IMU lives on this board, two parts on a shared I2C bus. A QMI8658A
@@ -241,7 +241,7 @@ export default function OscoreBoardPage() {
         <section style={{ paddingBottom: 40 }}>
           <Eyebrow>05 / INTERFACES</Eyebrow>
           <DisplayHeading size="lg">
-            INTERFACES AND <Red>CONNECTORS.</Red>
+            INTERFACES AND <Red>CONNECTORS</Red>
           </DisplayHeading>
           <Fig
             label="FIG. B / INTERFACE MAP"
@@ -279,7 +279,7 @@ export default function OscoreBoardPage() {
         <section style={{ paddingBottom: 40 }}>
           <Eyebrow>06 / ELECTRICAL PARAMETERS</Eyebrow>
           <DisplayHeading size="lg">
-            ELECTRICAL <Red>LIMITS.</Red>
+            ELECTRICAL <Red>LIMITS</Red>
           </DisplayHeading>
           <div
             style={{
@@ -311,7 +311,7 @@ export default function OscoreBoardPage() {
         <section style={{ paddingBottom: 36 }}>
           <MonoLabel>Open hardware, full electrical package</MonoLabel>
           <DisplayHeading size="lg">
-            THE SOURCE <Red>FILES.</Red>
+            THE SOURCE <Red>FILES</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
             OSCORE is open hardware. The complete electrical documentation is

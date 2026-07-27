@@ -35,7 +35,7 @@ export default function WontPowerOnPage() {
           <GhostNumeral n="01" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              WON'T POWER <Red>ON.</Red>
+              WON'T POWER <Red>ON</Red>
             </DisplayHeading>
             <p
               style={{
@@ -77,7 +77,7 @@ export default function WontPowerOnPage() {
           <GhostNumeral n="01" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              QUICK <Red>TRIAGE.</Red>
+              QUICK <Red>TRIAGE</Red>
             </DisplayHeading>
             <DashList
               items={[
@@ -120,7 +120,7 @@ export default function WontPowerOnPage() {
           <GhostNumeral n="02" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              LIKELY <Red>CAUSES.</Red>
+              LIKELY <Red>CAUSES</Red>
             </DisplayHeading>
 
             <div

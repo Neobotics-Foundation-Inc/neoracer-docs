@@ -35,7 +35,7 @@ export default function MagnetometerPage() {
           <GhostNumeral n="N" top={-40} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              THE <Red>MAGNETOMETER.</Red>
+              THE <Red>MAGNETOMETER</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
               Metal and current on the chassis bend the magnetic field the car
@@ -60,7 +60,7 @@ export default function MagnetometerPage() {
       <ScrollReveal>
         <section style={{ paddingBottom: 40 }}>
           <DisplayHeading size="lg">
-            HARD IRON, SOFT <Red>IRON.</Red>
+            HARD IRON, SOFT <Red>IRON</Red>
           </DisplayHeading>
           <DashList
             items={[
@@ -84,7 +84,7 @@ export default function MagnetometerPage() {
           <GhostNumeral n="02" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              ROS <Red>CALIBRATION.</Red>
+              ROS <Red>CALIBRATION</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
               Two terminals: one runs the chassis so the magnetometer publishes, the
@@ -133,7 +133,7 @@ ros2 service call /mag_calibration_node/stop_calibration std_srvs/srv/Trigger {}
           <GhostNumeral n="03" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              PUSH IT TO THE <Red>BOARD.</Red>
+              PUSH IT TO THE <Red>BOARD</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
               The ROS fix corrects readings in software. To also correct in the

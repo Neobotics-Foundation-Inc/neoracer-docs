@@ -45,7 +45,7 @@ export default function WarrantyPage() {
           <GhostNumeral n="9mo" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              NEORACER LIMITED HARDWARE <Red>WARRANTY.</Red>
+              NEORACER LIMITED HARDWARE <Red>WARRANTY</Red>
             </DisplayHeading>
             <p
               style={{
@@ -91,7 +91,7 @@ export default function WarrantyPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>01 / WARRANTY TERM</Eyebrow>
             <DisplayHeading size="lg">
-              THE WARRANTY <Red>TERM.</Red>
+              THE WARRANTY <Red>TERM</Red>
             </DisplayHeading>
             <p style={bodyStyle}>
               Neobotics warrants the NeoRacer robotic car kit against defects in
@@ -111,7 +111,7 @@ export default function WarrantyPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>02 / INITIAL INSPECTION AND VISIBLE DEFECTS</Eyebrow>
             <DisplayHeading size="lg">
-              INITIAL <Red>INSPECTION.</Red>
+              INITIAL <Red>INSPECTION</Red>
             </DisplayHeading>
             <p style={bodyStyle}>
               Upon receipt of the Product, the Customer shall inspect all components
@@ -147,7 +147,7 @@ export default function WarrantyPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>03 / WARRANTY COVERAGE</Eyebrow>
             <DisplayHeading size="lg">
-              WARRANTY <Red>COVERAGE.</Red>
+              WARRANTY <Red>COVERAGE</Red>
             </DisplayHeading>
             <p style={bodyStyle}>
               During the Warranty Period, Neobotics warrants that all Products shall
@@ -183,7 +183,7 @@ export default function WarrantyPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>04 / EXCLUSIONS AND LIMITATIONS</Eyebrow>
             <DisplayHeading size="lg">
-              EXCLUSIONS AND <Red>LIMITATIONS.</Red>
+              EXCLUSIONS AND <Red>LIMITATIONS</Red>
             </DisplayHeading>
             <p style={bodyStyle}>
               Neobotics shall not be liable under this warranty if the defect is
@@ -232,7 +232,7 @@ export default function WarrantyPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>05 / FILING A CLAIM</Eyebrow>
             <DisplayHeading size="lg">
-              FILING A <Red>CLAIM.</Red>
+              FILING A <Red>CLAIM</Red>
             </DisplayHeading>
             <p style={bodyStyle}>
               To initiate a warranty claim, the Customer must complete the following.
@@ -270,7 +270,7 @@ export default function WarrantyPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>06 / LIMITATION OF LIABILITY</Eyebrow>
             <DisplayHeading size="lg">
-              LIMITATION OF <Red>LIABILITY.</Red>
+              LIMITATION OF <Red>LIABILITY</Red>
             </DisplayHeading>
             <p style={bodyStyle}>
               Neobotics&rsquo; liability is limited strictly to the repair or

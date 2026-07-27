@@ -40,7 +40,7 @@ export default function MotorJitterPage() {
           <GhostNumeral n="03" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              MOTOR <Red>JITTER.</Red>
+              MOTOR <Red>JITTER</Red>
             </DisplayHeading>
             <p
               style={{
@@ -92,7 +92,7 @@ export default function MotorJitterPage() {
         <GhostNumeral n="01" top={-30} right={-20} size={400} />
         <div style={{ position: 'relative', zIndex: 1 }}>
           <DisplayHeading size="lg">
-            POWER AND <Red>SURFACE.</Red>
+            POWER AND <Red>SURFACE</Red>
           </DisplayHeading>
           <p
             style={{
@@ -152,7 +152,7 @@ rc.go()`}</Code>
         <GhostNumeral n="02" top={-30} right={-20} size={400} />
         <div style={{ position: 'relative', zIndex: 1 }}>
           <DisplayHeading size="lg">
-            PROBABLE <Red>CAUSES.</Red>
+            PROBABLE <Red>CAUSES</Red>
           </DisplayHeading>
 
           <div

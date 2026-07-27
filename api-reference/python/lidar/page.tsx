@@ -74,7 +74,7 @@ export default function LidarApiPage() {
           <GhostNumeral n="rc" top={-40} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              RC.<Red>LIDAR.</Red>
+              RC.<Red>LIDAR</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
               The{' '}
@@ -119,7 +119,7 @@ export default function LidarApiPage() {
         <section style={{ paddingBottom: 24 }}>
           <Eyebrow>SIM AND CAR</Eyebrow>
           <DisplayHeading size="lg">
-            SIM VS CAR <Red>COUNTS.</Red>
+            SIM VS CAR <Red>COUNTS</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             The API and the angle conventions are identical everywhere: index 0
@@ -170,7 +170,7 @@ right = rc_utils.get_lidar_average_distance(scan, 90)`}</Code>
         <section style={{ paddingBottom: 24 }}>
           <Eyebrow>METHODS</Eyebrow>
           <DisplayHeading size="lg">
-            THE LIDAR <Red>METHODS.</Red>
+            THE LIDAR <Red>METHODS</Red>
           </DisplayHeading>
           <ApiMethods methods={METHODS} />
         </section>
@@ -180,7 +180,7 @@ right = rc_utils.get_lidar_average_distance(scan, 90)`}</Code>
         <section style={{ paddingBottom: 24 }}>
           <Eyebrow>HELPERS · RACECAR_UTILS</Eyebrow>
           <DisplayHeading size="lg">
-            LIDAR <Red>HELPERS.</Red>
+            LIDAR <Red>HELPERS</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             Reading a direction by hand means converting an angle to an index and
@@ -196,7 +196,7 @@ right = rc_utils.get_lidar_average_distance(scan, 90)`}</Code>
         <section style={{ paddingBottom: 24 }}>
           <Eyebrow>TYPICAL USE</Eyebrow>
           <DisplayHeading size="lg">
-            A WALL-STOP <Red>EXAMPLE.</Red>
+            A WALL-STOP <Red>EXAMPLE</Red>
           </DisplayHeading>
           <Code lang="python">{`import sys
 sys.path.insert(0, "../library")   # the racecar-neo library on the car

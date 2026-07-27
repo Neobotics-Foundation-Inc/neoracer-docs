@@ -42,7 +42,7 @@ export default function ImuBiasPage() {
           <GhostNumeral n="05" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              IMU <Red>BIAS.</Red>
+              IMU <Red>BIAS</Red>
             </DisplayHeading>
             <p
               style={{
@@ -79,7 +79,7 @@ export default function ImuBiasPage() {
           <GhostNumeral n="01" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              THE OFFSET AT <Red>REST.</Red>
+              THE OFFSET AT <Red>REST</Red>
             </DisplayHeading>
             <p
               style={{
@@ -112,7 +112,7 @@ export default function ImuBiasPage() {
           <GhostNumeral n="02" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              VERIFY AT <Red>REST.</Red>
+              VERIFY AT <Red>REST</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
               Put the car on a flat, level surface and leave it alone while you
@@ -144,7 +144,7 @@ ros2 topic echo /imu --once`}</Code>
           <GhostNumeral n="03" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              WHEN IT <Red>DRIFTS.</Red>
+              WHEN IT <Red>DRIFTS</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
               A large offset at rest, or a yaw that keeps creeping while the car

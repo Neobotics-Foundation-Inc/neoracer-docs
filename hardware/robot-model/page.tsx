@@ -44,7 +44,7 @@ export default function RobotModelPage() {
           <GhostNumeral n="3D" top={-40} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              THE ROBOT <Red>MODEL.</Red>
+              THE ROBOT <Red>MODEL</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
               This is the NeoRacer's own{' '}
@@ -83,7 +83,7 @@ export default function RobotModelPage() {
         <section style={{ paddingTop: 28, paddingBottom: 24 }}>
           <Eyebrow>WHAT YOU ARE LOOKING AT</Eyebrow>
           <DisplayHeading size="lg">
-            THE <Red>LINKS.</Red>
+            THE <Red>LINKS</Red>
           </DisplayHeading>
           <div style={{ marginTop: 12 }}>
             {PARTS.map((p) => (

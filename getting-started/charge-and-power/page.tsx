@@ -36,7 +36,7 @@ export default function ChargeAndPowerPage() {
           <GhostNumeral n="02" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              CHARGE &amp; <Red>POWER.</Red>
+              CHARGE &amp; <Red>POWER</Red>
             </DisplayHeading>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="outline" icon={<ClockGlyph />}>~2-3 hours</ChromeBadge>
@@ -70,7 +70,7 @@ export default function ChargeAndPowerPage() {
       <ScrollReveal>
         <section style={{ paddingTop: 20, paddingBottom: 24 }}>
           <DisplayHeading size="lg">
-            BATTERY <Red>SPECS.</Red>
+            BATTERY <Red>SPECS</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             The car runs on a standard 3-cell (3S) LiPo at 11.1 V nominal. Use a
@@ -85,7 +85,7 @@ export default function ChargeAndPowerPage() {
       <ScrollReveal>
         <section style={{ paddingBottom: 32 }}>
           <DisplayHeading size="lg">
-            CHARGING THE <Red>BATTERY.</Red>
+            CHARGING THE <Red>BATTERY</Red>
           </DisplayHeading>
           {[
             { t: 'Place the LiPo on a non-flammable surface.', d: 'A concrete floor or a LiPo charging bag is ideal. Carpet, bedding, and wood can catch if a pack overheats.' },
@@ -112,7 +112,7 @@ export default function ChargeAndPowerPage() {
       <ScrollReveal>
         <section style={{ paddingBottom: 32 }}>
           <DisplayHeading size="lg">
-            SIGNS OF A BAD <Red>BATTERY.</Red>
+            SIGNS OF A BAD <Red>BATTERY</Red>
           </DisplayHeading>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))', gap: 16, marginTop: 22, alignItems: 'start' }}>
             <ExpandableFeatureCard n={1} title="Swelling" lede="The pack looks puffy or balloon-shaped." body="A swollen pack is no longer safe to use. Disconnect it, move it somewhere fire-safe, like a bucket of sand, and replace it. Do not charge it again." />

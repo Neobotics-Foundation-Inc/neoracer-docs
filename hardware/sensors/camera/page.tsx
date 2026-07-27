@@ -37,7 +37,7 @@ export default function CameraPage() {
           <GhostNumeral n="C" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              THE <Red>CAMERA.</Red>
+              THE <Red>CAMERA</Red>
             </DisplayHeading>
             <p
               style={{
@@ -74,7 +74,7 @@ export default function CameraPage() {
         <section style={{ position: 'relative', paddingBottom: 32 }}>
           <Eyebrow>01 / THE FRAME</Eyebrow>
           <DisplayHeading size="lg">
-            THE <Red>FRAME.</Red>
+            THE <Red>FRAME</Red>
           </DisplayHeading>
           <p
             style={{
@@ -126,7 +126,7 @@ b, g, r = color[240, 320]              # centre pixel, one per channel
         <section style={{ paddingBottom: 32 }}>
           <Eyebrow>02 / AT A GLANCE</Eyebrow>
           <DisplayHeading size="lg">
-            <Red>SPECIFICATIONS.</Red>
+            <Red>SPECIFICATIONS</Red>
           </DisplayHeading>
           <div
             style={{
@@ -185,7 +185,7 @@ b, g, r = color[240, 320]              # centre pixel, one per channel
         <section style={{ paddingBottom: 32 }}>
           <Eyebrow>03 / PYTHON API</Eyebrow>
           <DisplayHeading size="lg">
-            THE <Red>METHODS.</Red>
+            THE <Red>METHODS</Red>
           </DisplayHeading>
           <DashList
             items={[
@@ -242,7 +242,7 @@ b, g, r = color[240, 320]              # centre pixel, one per channel
         <section style={{ paddingBottom: 32 }}>
           <Eyebrow>04 / ROS 2</Eyebrow>
           <DisplayHeading size="lg">
-            THE ROS 2 <Red>TOPIC.</Red>
+            THE ROS 2 <Red>TOPIC</Red>
           </DisplayHeading>
           <p
             style={{
@@ -287,7 +287,7 @@ b, g, r = color[240, 320]              # centre pixel, one per channel
         <section style={{ paddingBottom: 32 }}>
           <Eyebrow>05 / WHAT IT'S FOR</Eyebrow>
           <DisplayHeading size="lg">
-            WHAT IT'S <Red>FOR.</Red>
+            WHAT IT'S <Red>FOR</Red>
           </DisplayHeading>
           <div
             style={{

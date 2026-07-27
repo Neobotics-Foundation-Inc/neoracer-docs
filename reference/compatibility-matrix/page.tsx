@@ -126,7 +126,7 @@ export default function CompatibilityMatrixPage() {
           <GhostNumeral n="//" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              THE COMPATIBILITY <Red>MATRIX.</Red>
+              THE COMPATIBILITY <Red>MATRIX</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
               The NeoRacer runs the same compute, operating system, and middleware
@@ -163,7 +163,7 @@ export default function CompatibilityMatrixPage() {
         <section style={{ paddingBottom: 8 }}>
           <Eyebrow>THE PLATFORM</Eyebrow>
           <DisplayHeading size="lg">
-            COMPUTE, OS, <Red>MIDDLEWARE.</Red>
+            COMPUTE, OS, <Red>MIDDLEWARE</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
             Every layer below is a standard the community already builds on. The
@@ -198,7 +198,7 @@ export default function CompatibilityMatrixPage() {
         <section style={{ paddingTop: 28, paddingBottom: 8 }}>
           <Eyebrow>SENSORS AND DRIVE</Eyebrow>
           <DisplayHeading size="lg">
-            SENSORS AND <Red>DRIVE.</Red>
+            SENSORS AND <Red>DRIVE</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
             Each sensor reaches your code through one rc.* call, so you read the
@@ -215,7 +215,7 @@ export default function CompatibilityMatrixPage() {
         <section style={{ paddingTop: 28, paddingBottom: 8 }}>
           <Eyebrow>THE ECOSYSTEM</Eyebrow>
           <DisplayHeading size="lg">
-            THE RACING <Red>ECOSYSTEM.</Red>
+            THE RACING <Red>ECOSYSTEM</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
             Because the car runs standard ROS 2 on standard topics, it lines up with

@@ -58,7 +58,7 @@ export default function DriveApiPage() {
           <GhostNumeral n="rc" top={-40} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              RC.<Red>DRIVE.</Red>
+              RC.<Red>DRIVE</Red>
             </DisplayHeading>
             <p
               style={{
@@ -89,7 +89,7 @@ export default function DriveApiPage() {
         <section style={{ paddingBottom: 24 }}>
           <Eyebrow>METHODS</Eyebrow>
           <DisplayHeading size="lg">
-            THE <Red>METHODS.</Red>
+            THE <Red>METHODS</Red>
           </DisplayHeading>
           <ApiMethods methods={METHODS} />
         </section>
@@ -100,7 +100,7 @@ export default function DriveApiPage() {
         <section style={{ paddingBottom: 24 }}>
           <Eyebrow>TYPICAL USE</Eyebrow>
           <DisplayHeading size="lg">
-            EXAMPLE <Red>USAGE.</Red>
+            EXAMPLE <Red>USAGE</Red>
           </DisplayHeading>
           <Code lang="python">{`import racecar_core
 

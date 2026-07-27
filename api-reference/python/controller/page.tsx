@@ -72,7 +72,7 @@ export default function ControllerApiPage() {
           <GhostNumeral n="rc" top={-40} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              RC.<Red>CONTROLLER.</Red>
+              RC.<Red>CONTROLLER</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
               The Controller module reads the manual controls through an
@@ -95,7 +95,7 @@ export default function ControllerApiPage() {
         <section style={{ paddingBottom: 24 }}>
           <Eyebrow>METHODS</Eyebrow>
           <DisplayHeading size="lg">
-            THE <Red>METHODS.</Red>
+            THE <Red>METHODS</Red>
           </DisplayHeading>
           <ApiMethods methods={METHODS} />
         </section>
@@ -138,7 +138,7 @@ export default function ControllerApiPage() {
         <section style={{ paddingBottom: 24 }}>
           <Eyebrow>TYPICAL USE</Eyebrow>
           <DisplayHeading size="lg">
-            A TYPICAL <Red>LOOP.</Red>
+            A TYPICAL <Red>LOOP</Red>
           </DisplayHeading>
           <Code lang="python">{`import racecar_core
 

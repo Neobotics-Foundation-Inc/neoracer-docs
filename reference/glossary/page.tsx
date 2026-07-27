@@ -283,7 +283,7 @@ export default function GlossaryPage() {
           <GhostNumeral n="A-Z" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              THE <Red>GLOSSARY.</Red>
+              THE <Red>GLOSSARY</Red>
             </DisplayHeading>
             <p
               style={{

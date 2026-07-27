@@ -36,7 +36,7 @@ export default function SpecificationsPage() {
           <GhostNumeral n="V1" top={-30} right={-20} size={460} />
         <div style={{ position: 'relative', zIndex: 1 }}>
           <DisplayHeading size="xl">
-            THE NEORACER V1 <Red>SPECIFICATIONS.</Red>
+            THE NEORACER V1 <Red>SPECIFICATIONS</Red>
           </DisplayHeading>
           <p
             style={{
@@ -110,7 +110,7 @@ export default function SpecificationsPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>01 / COMPUTE</Eyebrow>
             <DisplayHeading size="lg">
-              THE COMPUTE <Red>STACK.</Red>
+              THE COMPUTE <Red>STACK</Red>
             </DisplayHeading>
             <div
               style={{
@@ -136,7 +136,7 @@ export default function SpecificationsPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>02 / SENSORS</Eyebrow>
             <DisplayHeading size="lg">
-              THE ONBOARD <Red>SENSORS.</Red>
+              THE ONBOARD <Red>SENSORS</Red>
             </DisplayHeading>
             <p
               style={{
@@ -177,7 +177,7 @@ export default function SpecificationsPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>03 / DRIVETRAIN</Eyebrow>
             <DisplayHeading size="lg">
-              THE <Red>DRIVETRAIN.</Red>
+              THE <Red>DRIVETRAIN</Red>
             </DisplayHeading>
             <p
               style={{
@@ -227,7 +227,7 @@ export default function SpecificationsPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>04 / POWER</Eyebrow>
             <DisplayHeading size="lg">
-              THE POWER <Red>SYSTEM.</Red>
+              THE POWER <Red>SYSTEM</Red>
             </DisplayHeading>
             <p
               style={{
@@ -268,7 +268,7 @@ export default function SpecificationsPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>05 / CONNECTIVITY</Eyebrow>
             <DisplayHeading size="lg">
-              NETWORK <Red>CONNECTIVITY.</Red>
+              NETWORK <Red>CONNECTIVITY</Red>
             </DisplayHeading>
             <div
               style={{
@@ -294,7 +294,7 @@ export default function SpecificationsPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>06 / SOFTWARE</Eyebrow>
             <DisplayHeading size="lg">
-              THE SOFTWARE <Red>STACK.</Red>
+              THE SOFTWARE <Red>STACK</Red>
             </DisplayHeading>
             <div
               style={{

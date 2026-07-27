@@ -39,7 +39,7 @@ export default function LidarPage() {
           <GhostNumeral n="L" top={-40} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              THE PLANAR <Red>LIDAR.</Red>
+              THE PLANAR <Red>LIDAR</Red>
             </DisplayHeading>
             <p
               style={{
@@ -82,7 +82,7 @@ export default function LidarPage() {
         <section style={{ position: 'relative', paddingBottom: 32 }}>
           <Eyebrow>01 / SAMPLE LAYOUT</Eyebrow>
           <DisplayHeading size="lg">
-            THE SCAN <Red>LAYOUT.</Red>
+            THE SCAN <Red>LAYOUT</Red>
           </DisplayHeading>
           <p
             style={{
@@ -119,7 +119,7 @@ front = rc_utils.get_lidar_average_distance(scan, 0,   window_angle=4)`}
         <section style={{ paddingBottom: 32 }}>
           <Eyebrow>02 / WHAT TRIPS PEOPLE UP</Eyebrow>
           <DisplayHeading size="lg">
-            COMMON <Red>PITFALLS.</Red>
+            COMMON <Red>PITFALLS</Red>
           </DisplayHeading>
           <div
             style={{
@@ -156,7 +156,7 @@ front = rc_utils.get_lidar_average_distance(scan, 0,   window_angle=4)`}
         <section style={{ paddingBottom: 32 }}>
           <Eyebrow>03 / PYTHON API</Eyebrow>
           <DisplayHeading size="lg">
-            THE PYTHON <Red>API.</Red>
+            THE PYTHON <Red>API</Red>
           </DisplayHeading>
           <DashList
             items={[
@@ -188,7 +188,7 @@ front = rc_utils.get_lidar_average_distance(scan, 0,   window_angle=4)`}
         <section style={{ paddingBottom: 32 }}>
           <Eyebrow>04 / ROS 2</Eyebrow>
           <DisplayHeading size="lg">
-            THE /scan <Red>TOPIC.</Red>
+            THE /scan <Red>TOPIC</Red>
           </DisplayHeading>
           <div
             style={{
@@ -221,7 +221,7 @@ front = rc_utils.get_lidar_average_distance(scan, 0,   window_angle=4)`}
         <section style={{ paddingBottom: 32 }}>
           <Eyebrow>05 / THE SCANNER ITSELF</Eyebrow>
           <DisplayHeading size="lg">
-            RICHBEAM <Red>LAKIBEAM1.</Red>
+            RICHBEAM <Red>LAKIBEAM1</Red>
           </DisplayHeading>
           <p
             style={{

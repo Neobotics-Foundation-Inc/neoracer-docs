@@ -53,7 +53,7 @@ export default function PhysicsApiPage() {
           <GhostNumeral n="rc" top={-40} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              RC.<Red>PHYSICS.</Red>
+              RC.<Red>PHYSICS</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
               The Physics module is the{' '}
@@ -92,7 +92,7 @@ export default function PhysicsApiPage() {
         <section style={{ paddingBottom: 24 }}>
           <Eyebrow>METHODS</Eyebrow>
           <DisplayHeading size="lg">
-            THE <Red>METHODS.</Red>
+            THE <Red>METHODS</Red>
           </DisplayHeading>
           <ApiMethods methods={METHODS} />
         </section>
@@ -114,7 +114,7 @@ export default function PhysicsApiPage() {
         <section style={{ paddingBottom: 24 }}>
           <Eyebrow>TYPICAL USE</Eyebrow>
           <DisplayHeading size="lg">
-            A WORKED <Red>EXAMPLE.</Red>
+            A WORKED <Red>EXAMPLE</Red>
           </DisplayHeading>
           <Code lang="python">{`import racecar_core
 

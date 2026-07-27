@@ -34,7 +34,7 @@ export default function DiagnosticsPage() {
           <GhostNumeral n="?" top={-40} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              SENSOR <Red>DIAGNOSTICS.</Red>
+              SENSOR <Red>DIAGNOSTICS</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
               Before you swap a part, ask the car. These ROS 2 commands show
@@ -55,7 +55,7 @@ export default function DiagnosticsPage() {
       <ScrollReveal>
         <section style={{ paddingBottom: 40 }}>
           <DisplayHeading size="lg">
-            FIRST <Red>CHECKS.</Red>
+            FIRST <Red>CHECKS</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             Start with the graph. If nodes or topics are missing, the driver
@@ -92,7 +92,7 @@ ros2 topic list     # /scan /drive /imu /odom /camera /joy`}</Code>
           <GhostNumeral n="02" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              PER-SENSOR <Red>CHECKS.</Red>
+              PER-SENSOR <Red>CHECKS</Red>
             </DisplayHeading>
 
             <div style={{ marginTop: 14 }}>
@@ -128,7 +128,7 @@ ros2 topic hz /odom              # ~200 Hz, moves when the wheels do`}</Code>
       <ScrollReveal>
         <section style={{ paddingBottom: 40 }}>
           <DisplayHeading size="lg">
-            VIEWS IN <Red>RVIZ.</Red>
+            VIEWS IN <Red>RVIZ</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             When a topic is publishing but the numbers don&apos;t tell you enough,
@@ -147,7 +147,7 @@ ros2 launch osracer_debug debug_image.launch.py  # image pipeline`}</Code>
           <GhostNumeral n="04" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              DRIVE + STEER <Red>FAULTS.</Red>
+              DRIVE + STEER <Red>FAULTS</Red>
             </DisplayHeading>
 
             <div style={{ marginTop: 16 }}>

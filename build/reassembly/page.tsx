@@ -161,7 +161,7 @@ export default function ReassemblyPage() {
           <GhostNumeral n="R" top={-40} right={-20} size={440} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              THE <Red>REASSEMBLY.</Red>
+              THE <Red>REASSEMBLY</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
               Taking the car apart is half the fun of a modular platform, and
@@ -203,7 +203,7 @@ export default function ReassemblyPage() {
         <section style={{ paddingTop: 28, paddingBottom: 40 }}>
           <Eyebrow>THE STEPS</Eyebrow>
           <DisplayHeading size="lg">
-            THE <Red>SEQUENCE.</Red>
+            THE <Red>SEQUENCE</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.6, color: NB.textMutedBeige, maxWidth: 720, marginBottom: 22 }}>
             The build runs nose to tail: chassis, front end, camera, the

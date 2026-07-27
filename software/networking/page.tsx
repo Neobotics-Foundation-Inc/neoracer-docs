@@ -35,7 +35,7 @@ export default function NetworkingPage() {
           <GhostNumeral n="NET" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              THE CAR'S <Red>NETWORK.</Red>
+              THE CAR'S <Red>NETWORK</Red>
             </DisplayHeading>
             <p
               style={{
@@ -81,7 +81,7 @@ export default function NetworkingPage() {
           <GhostNumeral n="01" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              PICK YOUR <Red>NETWORK.</Red>
+              PICK YOUR <Red>NETWORK</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
               With the cudy router, the car plugs into the router and both join
@@ -131,7 +131,7 @@ export default function NetworkingPage() {
           <GhostNumeral n="02" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              WAYS TO <Red>CONNECT.</Red>
+              WAYS TO <Red>CONNECT</Red>
             </DisplayHeading>
 
             <div style={{ marginTop: 18 }}>
@@ -179,7 +179,7 @@ ssh racecar@10.42.0.1          # access point
           <GhostNumeral n="03" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              IN A <Red>BROWSER.</Red>
+              IN A <Red>BROWSER</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
               The car brings up its whole stack at boot: the driver, the
@@ -208,7 +208,7 @@ http://192.168.10.100:8888     # JupyterLab        (10.42.0.1 on the AP)`}</Code
           <GhostNumeral n="04" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              ROS 2 <Red>DISCOVERY.</Red>
+              ROS 2 <Red>DISCOVERY</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
               Once your laptop is on the car&apos;s network, you share its{' '}
@@ -271,7 +271,7 @@ ros2 topic echo /scan --once     # a single scan, straight off the car`}</Code>
           <GhostNumeral n="05" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              ROUTER <Red>ADMIN.</Red>
+              ROUTER <Red>ADMIN</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
               On the cudy path, you rarely touch the router itself. You open it
@@ -316,7 +316,7 @@ ros2 topic echo /scan --once     # a single scan, straight off the car`}</Code>
           <GhostNumeral n="06" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              THE SETUP <Red>COMMAND.</Red>
+              THE SETUP <Red>COMMAND</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
               <code style={{ fontFamily: NB.monoFont }}>racecar setup networking</code>{' '}
@@ -372,7 +372,7 @@ racecar setup networking --reset             # back to the defaults`}</Code>
           <GhostNumeral n="07" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              QUICK <Red>REFERENCE.</Red>
+              QUICK <Red>REFERENCE</Red>
             </DisplayHeading>
             <div style={{ marginTop: 20 }}>
               <DataTable

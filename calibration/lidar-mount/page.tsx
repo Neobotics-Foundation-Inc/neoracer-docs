@@ -48,7 +48,7 @@ export default function LidarMountPage() {
           <GhostNumeral n="03" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              THE LIDAR <Red>MOUNT.</Red>
+              THE LIDAR <Red>MOUNT</Red>
             </DisplayHeading>
             <p
               style={{
@@ -89,7 +89,7 @@ export default function LidarMountPage() {
           <GhostNumeral n="01" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              YAW AND <Red>TILT.</Red>
+              YAW AND <Red>TILT</Red>
             </DisplayHeading>
             <p
               style={{
@@ -116,7 +116,7 @@ export default function LidarMountPage() {
           <GhostNumeral n="02" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              WHAT YOU <Red>NEED.</Red>
+              WHAT YOU <Red>NEED</Red>
             </DisplayHeading>
 
             <div
@@ -178,7 +178,7 @@ export default function LidarMountPage() {
           <GhostNumeral n="03" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              SEAT THE <Red>SCANNER.</Red>
+              SEAT THE <Red>SCANNER</Red>
             </DisplayHeading>
             <DashList
               items={[
@@ -198,7 +198,7 @@ export default function LidarMountPage() {
           <GhostNumeral n="04" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              THE WALL <Red>TEST.</Red>
+              THE WALL <Red>TEST</Red>
             </DisplayHeading>
             <p
               style={{
@@ -251,7 +251,7 @@ rc.go()`}</Code>
           <GhostNumeral n="05" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              SOFTWARE <Red>OFFSETS.</Red>
+              SOFTWARE <Red>OFFSETS</Red>
             </DisplayHeading>
             <p
               style={{

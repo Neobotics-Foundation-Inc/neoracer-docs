@@ -36,7 +36,7 @@ export default function MaintenancePage() {
           <GhostNumeral n="7" top={-40} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              ROUTINE <Red>MAINTENANCE.</Red>
+              ROUTINE <Red>MAINTENANCE</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
               Treated well, the NeoRacer has a multi-year service life. A short
@@ -57,7 +57,7 @@ export default function MaintenancePage() {
         <section style={{ paddingBottom: 40 }}>
           <Eyebrow>01 / THE SCHEDULE</Eyebrow>
           <DisplayHeading size="lg">
-            ROUTINE <Red>CHECKS.</Red>
+            ROUTINE <Red>CHECKS</Red>
           </DisplayHeading>
 
           <div style={{ marginTop: 18 }}>
@@ -126,7 +126,7 @@ export default function MaintenancePage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>02 / THE LIPO</Eyebrow>
             <DisplayHeading size="lg">
-              BATTERY <Red>CARE.</Red>
+              BATTERY <Red>CARE</Red>
             </DisplayHeading>
             <DashList
               items={[
@@ -147,7 +147,7 @@ export default function MaintenancePage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>03 / PUTTING IT AWAY</Eyebrow>
             <DisplayHeading size="lg">
-              STORE + <Red>TRANSPORT.</Red>
+              STORE + <Red>TRANSPORT</Red>
             </DisplayHeading>
             <div style={{ marginTop: 18 }}>
               <MonoLabel>Storage</MonoLabel>
@@ -194,7 +194,7 @@ export default function MaintenancePage() {
         <section style={{ paddingBottom: 24 }}>
           <Eyebrow>04 / AFTER EACH SESSION</Eyebrow>
           <DisplayHeading size="lg">
-            SHUT DOWN <Red>CLEAN.</Red>
+            SHUT DOWN <Red>CLEAN</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             Stop the software before you cut power, then put the car away. The full

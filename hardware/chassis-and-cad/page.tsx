@@ -102,7 +102,7 @@ export default function ChassisAndCadPage() {
           <GhostNumeral n="C" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              THE CHASSIS AND <Red>CAD.</Red>
+              THE CHASSIS AND <Red>CAD</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
               The NeoRacer is a 1:12 scale autonomous racing platform, and its full
@@ -125,7 +125,7 @@ export default function ChassisAndCadPage() {
         <section style={{ paddingBottom: 24 }}>
           <Eyebrow>01 / THE REPOSITORY</Eyebrow>
           <DisplayHeading size="lg">
-            THE HARDWARE <Red>REPOSITORY.</Red>
+            THE HARDWARE <Red>REPOSITORY</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.75, color: NB.textOnBeige, maxWidth: 700 }}>
             The whole mechanical design is tracked in{' '}
@@ -177,7 +177,7 @@ export default function ChassisAndCadPage() {
         <section style={{ paddingBottom: 32 }}>
           <Eyebrow>02 / THE FOUR FORMATS</Eyebrow>
           <DisplayHeading size="lg">
-            THE FOUR <Red>FORMATS.</Red>
+            THE FOUR <Red>FORMATS</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.75, color: NB.textOnBeige, maxWidth: 700, marginBottom: 8 }}>
             Each format does one job well. The reason the repo ships all four is that a
@@ -223,7 +223,7 @@ export default function ChassisAndCadPage() {
         <section style={{ paddingBottom: 24 }}>
           <Eyebrow>03 / TWO WAYS IN</Eyebrow>
           <DisplayHeading size="lg">
-            PRINT OR <Red>MODIFY.</Red>
+            PRINT OR <Red>MODIFY</Red>
           </DisplayHeading>
           <div
             style={{
@@ -264,7 +264,7 @@ export default function ChassisAndCadPage() {
         <section style={{ paddingBottom: 24 }}>
           <Eyebrow>04 / THE LICENSE</Eyebrow>
           <DisplayHeading size="lg">
-            THE <Red>LICENSE.</Red>
+            THE <Red>LICENSE</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.75, color: NB.textOnBeige, maxWidth: 700 }}>
             The design is released under the CERN-OHL-S-2.0 license, the strongly reciprocal

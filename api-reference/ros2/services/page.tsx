@@ -57,7 +57,7 @@ export default function Ros2ServicesPage() {
           <GhostNumeral n="//" top={-40} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              ROS 2 <Red>SERVICES.</Red>
+              ROS 2 <Red>SERVICES</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
               The stack moves almost everything over{' '}
@@ -97,7 +97,7 @@ export default function Ros2ServicesPage() {
         <section style={{ paddingBottom: 8 }}>
           <Eyebrow>APPLICATION SERVICES</Eyebrow>
           <DisplayHeading size="lg">
-            THE MOTOR <Red>SERVICES.</Red>
+            THE MOTOR <Red>SERVICES</Red>
           </DisplayHeading>
           <DataTable columns={COLUMNS} rows={ROWS} />
           <Code lang="bash">{`# Stop the LiDAR motor (sweeps go to zero, useful for a quiet bench)
@@ -112,7 +112,7 @@ ros2 service call /start_motor std_srvs/srv/Empty`}</Code>
         <section style={{ paddingTop: 28, paddingBottom: 8 }}>
           <Eyebrow>THE STANDARD SET</Eyebrow>
           <DisplayHeading size="lg">
-            THE PARAMETER <Red>SERVICES.</Red>
+            THE PARAMETER <Red>SERVICES</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
             When you run{' '}

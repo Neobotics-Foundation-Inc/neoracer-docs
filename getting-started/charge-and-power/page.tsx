@@ -36,7 +36,7 @@ export default function ChargeAndPowerPage() {
           <GhostNumeral n="02" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              CHARGE THE <Red>BATTERY.</Red>
+              CHARGE &amp; <Red>POWER.</Red>
             </DisplayHeading>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="outline" icon={<ClockGlyph />}>~2-3 hours</ChromeBadge>
@@ -85,7 +85,7 @@ export default function ChargeAndPowerPage() {
       <ScrollReveal>
         <section style={{ paddingBottom: 32 }}>
           <DisplayHeading size="lg">
-            CHARGE &amp; <Red>POWER.</Red>
+            CHARGING THE <Red>BATTERY.</Red>
           </DisplayHeading>
           {[
             { t: 'Place the LiPo on a non-flammable surface.', d: 'A concrete floor or a LiPo charging bag is ideal. Carpet, bedding, and wood can catch if a pack overheats.' },

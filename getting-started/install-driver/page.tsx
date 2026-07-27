@@ -7,6 +7,7 @@ import {
   Red,
   GhostNumeral,
   ChromeBadge,
+  ClockGlyph,
   MonoLabel,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow, AnimatedNumeral, InfoNote } from '@/components/docs/Interactive';
@@ -47,32 +48,14 @@ export default function InstallDriverPage() {
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
               The driver is the software that ties the Jetson to the sensors and
-              motors. One script installs all of it: you clone the repository, run{' '}
-              <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>setup_all.sh</code>,
-              and the car comes up as a set of{' '}
-              <InfoNote term="services" title="systemd services">
-                Programs the operating system starts and supervises on its own.
-                Once installed, the car&apos;s driver starts on every boot with no
-                terminal or command needed.
-              </InfoNote>{' '}
-              that start on every boot from then on.
+              motors.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="red"><AnimatedNumeral value={30} prefix="~" suffix=" minutes" /></ChromeBadge>
+              <ChromeBadge variant="outline" icon={<ClockGlyph />}><AnimatedNumeral value={30} prefix="~" suffix=" minutes" /></ChromeBadge>
             </div>
           </div>
         </section>
       </MouseFollowGlow>
-
-      <ScrollReveal>
-        <Callout type="note" title="This step needs internet on the car">
-          The script downloads packages and clones two repositories. The car is
-          online from{' '}
-          <Link href="/docs/getting-started/connect-to-car" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Connect to the car</Link>,
-          step 03; if you skipped that, go back and do it now. Once the install
-          is done, the car runs fully offline.
-        </Callout>
-      </ScrollReveal>
 
       {/* ── System info ──────────────────────────────────────────────── */}
       <ScrollReveal>

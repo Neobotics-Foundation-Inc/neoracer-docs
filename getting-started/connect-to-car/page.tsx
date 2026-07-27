@@ -55,7 +55,7 @@ export default function ConnectToCarPage() {
         <section style={{ position: 'relative', paddingBottom: 44 }}>
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              ATTACH THE <Red>ANTENNAS</Red>
+              ATTACH THE WI-FI <Red>ANTENNAS</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
               The Jetson&apos;s Wi-Fi card sits on its underside, so the two

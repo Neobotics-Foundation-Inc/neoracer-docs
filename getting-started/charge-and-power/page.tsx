@@ -112,7 +112,7 @@ export default function ChargeAndPowerPage() {
       <ScrollReveal>
         <section style={{ paddingBottom: 32 }}>
           <DisplayHeading size="lg">
-            WARNING <Red>SIGNS.</Red>
+            SIGNS OF A BAD <Red>BATTERY.</Red>
           </DisplayHeading>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 22, marginTop: 22 }}>
             <NumberedFeatureCard n={1} title="Swelling" lede="The pack looks puffy or balloon-shaped." body="A swollen pack is done, so disconnect it and move it somewhere fire-safe. It is best replaced rather than recharged." />

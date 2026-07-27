@@ -55,7 +55,7 @@ export default function ConnectToCarPage() {
         <section style={{ position: 'relative', paddingBottom: 44 }}>
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              THE WI-FI <Red>ANTENNAS</Red>
+              ATTACH THE <Red>ANTENNAS</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
               The Jetson&apos;s Wi-Fi card sits on its underside, so the two
@@ -78,7 +78,7 @@ export default function ConnectToCarPage() {
         <section style={{ position: 'relative', paddingBottom: 44 }}>
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              MONITOR AND <Red>KEYBOARD</Red>
+              PLUG IN A MONITOR AND <Red>KEYBOARD</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
               Connect a monitor to the Jetson&apos;s DisplayPort or HDMI output
@@ -95,7 +95,7 @@ export default function ConnectToCarPage() {
         <section style={{ position: 'relative', paddingBottom: 44 }}>
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              GET THE CAR <Red>ONLINE</Red>
+              CONNECT TO THE <Red>INTERNET</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
               The install on the next page needs internet. Either works:

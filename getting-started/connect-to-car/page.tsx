@@ -36,10 +36,6 @@ export default function ConnectToCarPage() {
             <DisplayHeading size="xl">
               CONNECT TO THE <Red>CAR.</Red>
             </DisplayHeading>
-            <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
-              A brand new NeoRacer needs a network setup first. Here&apos;s how
-              you do it, step by step.
-            </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="outline" icon={<ClockGlyph />}>~15 minutes</ChromeBadge>
             </div>

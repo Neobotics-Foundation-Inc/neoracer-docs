@@ -44,7 +44,7 @@ export default function ConnectToCarPage() {
       </MouseFollowGlow>
 
       <ScrollReveal>
-        <Callout type="note" title="Why this setup happens at the car">
+        <Callout type="note" title="Why this setup happens on the car">
           A brand new car is not on any network yet, so there is no way to log
           in remotely. The first setup is done with a monitor and keyboard
           plugged directly into the car.

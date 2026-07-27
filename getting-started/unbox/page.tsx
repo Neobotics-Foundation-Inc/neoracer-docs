@@ -23,7 +23,7 @@ const ACCESSORIES = [
   {
     src: '/images/unbox-antenna-kit.jpeg',
     name: 'Wi-Fi antenna kit',
-    d: 'The antenna, its U.FL-to-SMA lead, and the washers that mount the lead through the chassis.',
+    d: 'The antenna, its U.FL-to-SMA lead, and the washers.',
   },
   {
     src: '/images/unbox-zip-ties.jpeg',

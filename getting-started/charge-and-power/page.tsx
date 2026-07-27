@@ -116,7 +116,7 @@ export default function ChargeAndPowerPage() {
           </DisplayHeading>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 16, marginTop: 22, alignItems: 'start' }}>
             <ExpandableFeatureCard n={1} title="Swelling" lede="The pack looks puffy or balloon-shaped." body="A swollen pack is no longer safe to use. Disconnect it, move it somewhere fire-safe, and replace it. Do not charge it again." />
-            <ExpandableFeatureCard n={2} title="Heat" lede="It's normal for the pack to get warm, but it should never be hot to the touch." body="If you cannot comfortably hold the pack, stop charging and let it cool in a fire-safe location for 30 minutes before deciding to retire it." />
+            <ExpandableFeatureCard n={2} title="Heat" lede="The pack can get warm, but never hot to the touch." body="If you cannot comfortably hold the pack, stop charging and let it cool in a fire-safe location for 30 minutes." />
             <ExpandableFeatureCard n={3} title="Smell or smoke" lede="Sweet chemical smell or any visible smoke." body="Disconnect if you safely can, then leave the room and call your fire service if there is open flame. LiPo fires burn bright white and accelerate fast." />
           </div>
         </section>

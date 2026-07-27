@@ -6,12 +6,14 @@ import {
   Red,
   GhostNumeral,
   DashList,
+  ChromeBadge,
+  ClockGlyph,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 import { Crumbs, Callout, PrevNext } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
-  title: 'Get on the car · Setup · NeoRacer Docs',
+  title: 'Connect to the car · Setup · NeoRacer Docs',
   description:
     'The one-time first setup, done at the car: attach the Wi-Fi antennas, plug in a monitor and keyboard, and get the car onto the internet (join your Wi-Fi, plug in Ethernet, or use the cudy router). Then install the driver.',
 };
@@ -22,7 +24,7 @@ export default function ConnectToCarPage() {
       <Crumbs
         items={[
           { label: 'Setup', href: '/docs/getting-started/unbox' },
-          { label: 'Get on the car' },
+          { label: 'Connect to the car' },
         ]}
       />
 
@@ -32,12 +34,15 @@ export default function ConnectToCarPage() {
           <GhostNumeral n="03" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              GET ON THE <Red>CAR.</Red>
+              CONNECT TO THE <Red>CAR.</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
               A brand new NeoRacer needs a network setup first. Here&apos;s how
               you do it, step by step.
             </p>
+            <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
+              <ChromeBadge variant="outline" icon={<ClockGlyph />}>~15 minutes</ChromeBadge>
+            </div>
           </div>
         </section>
       </MouseFollowGlow>

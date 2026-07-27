@@ -117,7 +117,7 @@ const FAQS: Faq[] = [
         then <code style={{ fontFamily: NB.monoFont }}>racecar service restart</code>.
         The car needs internet for the pull, the same way as during{' '}
         <a href="/docs/getting-started/connect-to-car" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-          Get on the car
+          Connect to the car
         </a>.
       </>
     ),

@@ -198,7 +198,7 @@ export default function FirstProgramPage() {
                 next to the labs that ship on the car. Easiest from JupyterLab in
                 your browser (port <code style={{ fontFamily: NB.monoFont }}>8888</code>),
                 or over SSH from{' '}
-                <Link href="/docs/getting-started/connect-to-car" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Get on the car</Link>.
+                <Link href="/docs/getting-started/connect-to-car" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Connect to the car</Link>.
                 Then run it from that folder:
                 <Code lang="bash">{`cd ~/jupyter_ws/neoracer-os/labs
 python3 wall_follow.py`}</Code>

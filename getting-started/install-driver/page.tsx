@@ -68,7 +68,7 @@ export default function InstallDriverPage() {
         <Callout type="note" title="This step needs internet on the car">
           The script downloads packages and clones two repositories. The car is
           online from{' '}
-          <Link href="/docs/getting-started/connect-to-car" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Get on the car</Link>,
+          <Link href="/docs/getting-started/connect-to-car" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Connect to the car</Link>,
           step 03; if you skipped that, go back and do it now. Once the install
           is done, the car runs fully offline.
         </Callout>
@@ -82,7 +82,7 @@ export default function InstallDriverPage() {
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             You are at the car&apos;s console from{' '}
-            <Link href="/docs/getting-started/connect-to-car" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Get on the car</Link>,
+            <Link href="/docs/getting-started/connect-to-car" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Connect to the car</Link>,
             logged in as <code style={{ fontFamily: NB.monoFont }}>racecar</code>,
             with the car online. Every NeoRacer ships the same system, so the
             commands here match your car exactly.
@@ -381,7 +381,7 @@ http://192.168.10.100:8080     # cudy router`}</Code>
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'Get on the car', href: '/docs/getting-started/connect-to-car' }}
+        prev={{ label: 'Connect to the car', href: '/docs/getting-started/connect-to-car' }}
         next={{ label: 'Remote desktop', href: '/docs/getting-started/remote-desktop' }}
       />
     </DocsShell>

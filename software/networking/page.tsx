@@ -66,7 +66,7 @@ export default function NetworkingPage() {
           A brand new car has not been put on a network yet. That one-time setup
           happens at the car with a monitor and keyboard, and it is covered by{' '}
           <Link href="/docs/getting-started/connect-to-car" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-            Get on the car
+            Connect to the car
           </Link>{' '}
           and the end of{' '}
           <Link href="/docs/getting-started/install-driver" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
@@ -117,7 +117,7 @@ export default function NetworkingPage() {
               console desktop or plug Ethernet into the Jetson&apos;s RJ45,
               exactly as in{' '}
               <Link href="/docs/getting-started/connect-to-car" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-                Get on the car
+                Connect to the car
               </Link>, step 03. On the cudy, connecting the router&apos;s uplink
               does the same job without touching the car.
             </Callout>
@@ -382,8 +382,8 @@ racecar setup networking --reset             # back to the defaults`}</Code>
                   { key: 'needs', label: 'What it needs', mono: true },
                 ]}
                 rows={[
-                  { path: 'Get on the car (cudy)', how: "Join the router's Wi-Fi.", needs: 'neoracer-[ID] · 192.168.10.100' },
-                  { path: 'Get on the car (AP)', how: "Join the car's own Wi-Fi.", needs: 'neoracer-1 · 10.42.0.1' },
+                  { path: 'Connect to the car (cudy)', how: "Join the router's Wi-Fi.", needs: 'neoracer-[ID] · 192.168.10.100' },
+                  { path: 'Connect to the car (AP)', how: "Join the car's own Wi-Fi.", needs: 'neoracer-1 · 10.42.0.1' },
                   { path: 'Terminal', how: 'SSH in as racecar.', needs: 'racecar@<car address>' },
                   { path: 'Full desktop', how: 'RustDesk by direct IP.', needs: '<car address>' },
                   { path: 'No Wi-Fi', how: 'Wired USB-C, RNDIS link.', needs: 'racecar@192.168.55.1' },

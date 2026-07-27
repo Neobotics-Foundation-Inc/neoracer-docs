@@ -61,14 +61,13 @@ export default function InstallDriverPage() {
             with the car online.
           </p>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-            The driver lives in one open-source repository,{' '}
+            The driver code is open source in the{' '}
             <a href="https://github.com/Neobotics-Foundation-Inc/neoracer_ros2_driver" target="_blank" rel="noopener noreferrer" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
               neoracer_ros2_driver
-            </a>
-            . Pick the side that matches your car; both end at the same setup
-            script. It asks for your password once
-            (<code style={{ fontFamily: NB.monoFont }}>neobotics</code>) and
-            takes care of the rest.
+            </a>{' '}
+            repository. Follow whichever option below matches your car; both run
+            the same setup script. The script asks for your password
+            (<code style={{ fontFamily: NB.monoFont }}>neobotics</code>) once.
           </p>
           <div
             style={{

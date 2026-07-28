@@ -55,12 +55,6 @@ export default function InstallDriverPage() {
             RUN THE <Red>SETUP</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-            You are at the car&apos;s console from{' '}
-            <Link href="/docs/getting-started/connect-to-car" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Connect to the car</Link>,
-            logged in as <code style={{ fontFamily: NB.monoFont }}>racecar</code>,
-            with the car online.
-          </p>
-          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             The driver code is in the{' '}
             <a href="https://github.com/Neobotics-Foundation-Inc/neoracer_ros2_driver" target="_blank" rel="noopener noreferrer" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
               neoracer_ros2_driver

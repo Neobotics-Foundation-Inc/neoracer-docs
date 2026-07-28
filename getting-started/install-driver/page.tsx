@@ -110,7 +110,7 @@ bash neoracer_ros2_driver/scripts/setup_all.sh`}</Code>
       <ScrollReveal>
         <section style={{ paddingBottom: 36 }}>
           <DisplayHeading size="lg">
-            THE SEVEN <Red>PHASES</Red>
+            WHAT THE SCRIPT IS <Red>RUNNING</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             The script prints each phase as it goes. Here is what each one did to

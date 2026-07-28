@@ -113,8 +113,8 @@ bash neoracer_ros2_driver/scripts/setup_all.sh`}</Code>
             WHAT THE SCRIPT IS <Red>RUNNING</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-            The script prints each phase as it goes. Here is what each one did to
-            your car, so none of it is a mystery:
+            The script prints each phase as it runs. This is what each phase
+            does:
           </p>
           <div>
             {[

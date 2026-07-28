@@ -200,8 +200,7 @@ bash neoracer_ros2_driver/scripts/setup_all.sh`}</Code>
 #   neoracer-dashboard   active   enabled
 #   neoracer-jupyter     active   enabled`}</Code>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 6 }}>
-            If not all services show active, a quick restart should have
-            everything up and running:
+            If any service is not active, restart them:
           </p>
           <Code lang="bash">{`racecar service stop
 racecar service start`}</Code>

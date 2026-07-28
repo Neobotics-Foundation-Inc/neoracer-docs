@@ -70,9 +70,6 @@ export default function InstallDriverPage() {
                 accent: NB.neoboticsRed,
                 content: (
                   <>
-                    <div style={{ fontFamily: NB.monoFont, fontSize: 10.5, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', color: NB.textMutedBeige, marginBottom: 8 }}>
-                      Driver already on the car
-                    </div>
                     <p style={{ fontFamily: NB.bodyFont, fontSize: 14.5, lineHeight: 1.6, color: NB.textMutedBeige, margin: '0 0 12px' }}>
                       Factory cars ship with the repository at{' '}
                       <code style={{ fontFamily: NB.monoFont }}>~/ros2_ws/src/neoracer_ros2_driver</code>.
@@ -89,9 +86,6 @@ bash scripts/setup_all.sh`}</Code>
                 accent: NB.tarmacBlue,
                 content: (
                   <>
-                    <div style={{ fontFamily: NB.monoFont, fontSize: 10.5, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', color: NB.textMutedBeige, marginBottom: 8 }}>
-                      No driver on the car yet
-                    </div>
                     <p style={{ fontFamily: NB.bodyFont, fontSize: 14.5, lineHeight: 1.6, color: NB.textMutedBeige, margin: '0 0 12px' }}>
                       Since you&apos;re probably working with a stock Jetson Orin
                       Nano, clone the repository first, then run the same script.

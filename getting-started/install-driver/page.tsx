@@ -116,65 +116,39 @@ bash neoracer_ros2_driver/scripts/setup_all.sh`}</Code>
             The script prints each phase as it runs. This is what each phase
             does:
           </p>
-          <div>
-            {[
-              <><strong>ROS 2 + dependencies.</strong> Installs ROS 2 Humble and the packages the driver builds against.</>,
-              <><strong>Dev tools.</strong> The build and debugging tools used throughout these docs.</>,
-              <><strong>User environment.</strong> Adds <code style={{ fontFamily: NB.monoFont }}>racecar</code> to the hardware groups and wires the{' '}
-                <code style={{ fontFamily: NB.monoFont }}>racecar</code> command into your shell. That one command manages the whole car from here on.</>,
-              <><strong>udev rules.</strong> Gives the car&apos;s boards fixed device names (
-                <code style={{ fontFamily: NB.monoFont }}>/dev/osrbot_base</code>,{' '}
-                <code style={{ fontFamily: NB.monoFont }}>/dev/osrbot_usb_cam</code>,{' '}
-                <code style={{ fontFamily: NB.monoFont }}>/dev/osrbot_led_matrix</code>) so they never shuffle between boots.</>,
-              <><strong>Workspace build.</strong> Compiles the driver and the LakiBeam LiDAR driver with{' '}
-                <InfoNote term="colcon" title="colcon">
-                  The standard build tool for ROS 2. It compiles every package in a
-                  workspace and sets up the paths so you can run them.
-                </InfoNote>. There is exactly one LiDAR driver source, shared with the vendor workspace, so a LiDAR fix lands everywhere at once.</>,
-              <><strong>JupyterLab + the student library.</strong> Installs the browser coding environment and the{' '}
-                <Link href="/docs/software/racecar-neo-library" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>racecar-neo library</Link>{' '}
-                with its labs into <code style={{ fontFamily: NB.monoFont }}>~/jupyter_ws</code>. The library is ready to import, and{' '}
-                <code style={{ fontFamily: NB.monoFont }}>rc.go()</code> starts your program directly, tuned for the FlySky remote.</>,
-              <><strong>Services.</strong> Installs the four services and enables them on boot: the driver (
-                <code style={{ fontFamily: NB.monoFont }}>neoracer-teleop</code>), a watchdog that restarts anything that fails, the health dashboard on port{' '}
-                <code style={{ fontFamily: NB.monoFont }}>8080</code>, and JupyterLab on port{' '}
-                <code style={{ fontFamily: NB.monoFont }}>8888</code>.</>,
-            ].map((phase, i) => (
-              <div
-                key={i}
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: '34px 1fr',
-                  gap: 12,
-                  padding: '12px 0',
-                  borderBottom: `1px solid ${NB.borderOnBeige}`,
-                }}
-              >
-                <div
-                  style={{
-                    fontFamily: NB.headingFont,
-                    fontSize: 22,
-                    fontWeight: 900,
-                    lineHeight: 1.3,
-                    color: NB.neoboticsRed,
-                  }}
-                >
-                  {i + 1}
-                </div>
-                <p
-                  style={{
-                    fontFamily: NB.bodyFont,
-                    fontSize: 15,
-                    lineHeight: 1.65,
-                    color: NB.textMutedBeige,
-                    margin: 0,
-                  }}
-                >
-                  {phase}
-                </p>
+          {[
+            { t: 'ROS 2 + dependencies', d: <>Installs ROS 2 Humble and the packages the driver builds against.</> },
+            { t: 'Dev tools', d: <>The build and debugging tools used throughout these docs.</> },
+            { t: 'User environment', d: <>Adds <code style={{ fontFamily: NB.monoFont }}>racecar</code> to the hardware groups and wires the{' '}
+              <code style={{ fontFamily: NB.monoFont }}>racecar</code> command into your shell. That one command manages the whole car from here on.</> },
+            { t: 'udev rules', d: <>Gives the car&apos;s boards fixed device names (
+              <code style={{ fontFamily: NB.monoFont }}>/dev/osrbot_base</code>,{' '}
+              <code style={{ fontFamily: NB.monoFont }}>/dev/osrbot_usb_cam</code>,{' '}
+              <code style={{ fontFamily: NB.monoFont }}>/dev/osrbot_led_matrix</code>) so they never shuffle between boots.</> },
+            { t: 'Workspace build', d: <>Compiles the driver and the LakiBeam LiDAR driver with{' '}
+              <InfoNote term="colcon" title="colcon">
+                The standard build tool for ROS 2. It compiles every package in a
+                workspace and sets up the paths so you can run them.
+              </InfoNote>. There is exactly one LiDAR driver source, shared with the vendor workspace, so a LiDAR fix lands everywhere at once.</> },
+            { t: 'JupyterLab + the student library', d: <>Installs the browser coding environment and the{' '}
+              <Link href="/docs/software/racecar-neo-library" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>racecar-neo library</Link>{' '}
+              with its labs into <code style={{ fontFamily: NB.monoFont }}>~/jupyter_ws</code>. The library is ready to import, and{' '}
+              <code style={{ fontFamily: NB.monoFont }}>rc.go()</code> starts your program directly, tuned for the FlySky remote.</> },
+            { t: 'Services', d: <>Installs the four services and enables them on boot: the driver (
+              <code style={{ fontFamily: NB.monoFont }}>neoracer-teleop</code>), a watchdog that restarts anything that fails, the health dashboard on port{' '}
+              <code style={{ fontFamily: NB.monoFont }}>8080</code>, and JupyterLab on port{' '}
+              <code style={{ fontFamily: NB.monoFont }}>8888</code>.</> },
+          ].map((s, i) => (
+            <div key={i} style={{ display: 'grid', gridTemplateColumns: '52px 1fr', gap: 16, padding: '20px 0', borderBottom: `1px solid ${NB.borderOnBeige}` }}>
+              <div style={{ fontFamily: NB.headingFont, fontSize: 36, fontWeight: 900, lineHeight: 1, color: NB.neoboticsRed, letterSpacing: '-0.02em' }}>
+                {String(i + 1).padStart(2, '0')}
               </div>
-            ))}
-          </div>
+              <div>
+                <div style={{ fontFamily: NB.headingFont, fontSize: 20, fontWeight: 700, color: NB.textOnBeige, marginBottom: 4 }}>{s.t}</div>
+                <p style={{ fontFamily: NB.bodyFont, fontSize: 15, lineHeight: 1.65, color: NB.textMutedBeige, margin: 0 }}>{s.d}</p>
+              </div>
+            </div>
+          ))}
         </section>
       </ScrollReveal>
 

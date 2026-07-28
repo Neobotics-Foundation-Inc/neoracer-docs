@@ -155,21 +155,23 @@ bash neoracer_ros2_driver/scripts/setup_all.sh`}</Code>
       <ScrollReveal>
         <section style={{ paddingBottom: 36 }}>
           <DisplayHeading size="lg">
-            START THE <Red>STACK</Red>
+            START THE <Red>SERVICES</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             The setup just changed two things about your login: it added the{' '}
             <code style={{ fontFamily: NB.monoFont }}>racecar</code> command to your
             shell, and it added your user to the hardware groups that own the
             car&apos;s serial ports. Linux applies both at login, so your current
-            session doesn&apos;t have them yet. Log out and back in once, and both
-            are live. Then start the services. This first start is the only manual
-            one; from now on the whole stack comes up on its own every time the
-            car powers on.
+            session doesn&apos;t have them yet.
           </p>
-          <Code lang="bash">{`# log out of the session and back in (desktop: log out and back in;
-# SSH: exit and reconnect), then:
-racecar service start`}</Code>
+          <MonoLabel>1 · Reboot the car</MonoLabel>
+          <Code lang="bash">{`sudo reboot`}</Code>
+          <MonoLabel>2 · Start the services</MonoLabel>
+          <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 6 }}>
+            This first start is the only manual one; from now on the whole stack
+            comes up on its own every time the car powers on.
+          </p>
+          <Code lang="bash">{`racecar service start`}</Code>
           <Callout type="note" title="What just started">
             The ESP32 bridge (motors, IMU, odometry, the FlySky receiver), the
             LiDAR, the camera, the LED matrix, the drive pipeline that arbitrates

@@ -172,13 +172,14 @@ bash neoracer_ros2_driver/scripts/setup_all.sh`}</Code>
             automatically every time the car powers on.
           </p>
           <Code lang="bash">{`racecar service start`}</Code>
-          <Callout type="note" title="What just started">
-            The ESP32 bridge (motors, IMU, odometry, the FlySky receiver), the
-            LiDAR, the camera, the LED matrix, the drive pipeline that arbitrates
-            between the remote and your code, the watchdog, the dashboard, and
-            JupyterLab. The full picture of these nodes and their topics is on{' '}
+          <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 14 }}>
+            This starts the ESP32 bridge (motors, IMU, odometry, the FlySky
+            receiver), the LiDAR, the camera, the LED matrix, the drive pipeline
+            that arbitrates between the remote and your code, the watchdog, the
+            dashboard, and JupyterLab. The full picture of these nodes and their
+            topics is on{' '}
             <Link href="/docs/software/ros2-driver" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>The ROS 2 driver</Link>.
-          </Callout>
+          </p>
         </section>
       </ScrollReveal>
 

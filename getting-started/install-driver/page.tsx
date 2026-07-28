@@ -168,8 +168,8 @@ bash neoracer_ros2_driver/scripts/setup_all.sh`}</Code>
           <Code lang="bash">{`sudo reboot`}</Code>
           <MonoLabel>Start the services</MonoLabel>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 6 }}>
-            This first start is the only manual one; from now on the whole stack
-            comes up on its own every time the car powers on.
+            You only need to do this once. After this, the services start
+            automatically every time the car powers on.
           </p>
           <Code lang="bash">{`racecar service start`}</Code>
           <Callout type="note" title="What just started">

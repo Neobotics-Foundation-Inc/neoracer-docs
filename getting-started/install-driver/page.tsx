@@ -120,7 +120,7 @@ bash neoracer_ros2_driver/scripts/setup_all.sh`}</Code>
             { t: 'ROS 2 + dependencies', d: <>Installs ROS 2 Humble and the packages the driver builds against.</> },
             { t: 'Dev tools', d: <>The build and debugging tools used throughout these docs.</> },
             { t: 'User environment', d: <>Adds <code style={{ fontFamily: NB.monoFont }}>racecar</code> to the hardware groups and wires the{' '}
-              <code style={{ fontFamily: NB.monoFont }}>racecar</code> command into your shell. That one command manages the whole car from here on.</> },
+              <code style={{ fontFamily: NB.monoFont }}>racecar</code> command into your shell.</> },
             { t: 'udev rules', d: <>Gives the car&apos;s boards fixed device names (
               <code style={{ fontFamily: NB.monoFont }}>/dev/osrbot_base</code>,{' '}
               <code style={{ fontFamily: NB.monoFont }}>/dev/osrbot_usb_cam</code>,{' '}

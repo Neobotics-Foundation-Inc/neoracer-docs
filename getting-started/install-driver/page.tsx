@@ -193,7 +193,7 @@ bash neoracer_ros2_driver/scripts/setup_all.sh`}</Code>
             Each check confirms a different layer: the services are running, the
             sensors are streaming, and you can see it all from a browser.
           </p>
-          <MonoLabel>1 · The services</MonoLabel>
+          <MonoLabel>The services</MonoLabel>
           <Code lang="bash">{`racecar service status
 #   neoracer-teleop      active   enabled
 #   neoracer-watchdog    active   enabled
@@ -204,11 +204,11 @@ bash neoracer_ros2_driver/scripts/setup_all.sh`}</Code>
           </p>
           <Code lang="bash">{`racecar service stop
 racecar service start`}</Code>
-          <MonoLabel>2 · The sensors</MonoLabel>
+          <MonoLabel>The sensors</MonoLabel>
           <Code lang="bash">{`source /opt/ros/humble/setup.bash && source ~/ros2_ws/install/setup.bash
 ros2 topic hz /scan     # LiDAR, about 30 Hz
 ros2 topic hz /camera   # camera, about 60 Hz`}</Code>
-          <MonoLabel>3 · The dashboard</MonoLabel>
+          <MonoLabel>The dashboard</MonoLabel>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 6 }}>
             Open the health dashboard in a browser on the car&apos;s network. Every
             card should be green: sensors, drive pipeline, temperature. The

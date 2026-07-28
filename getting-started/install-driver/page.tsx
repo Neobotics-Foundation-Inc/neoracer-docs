@@ -164,9 +164,9 @@ bash neoracer_ros2_driver/scripts/setup_all.sh`}</Code>
             car&apos;s serial ports. Linux applies both at login, so your current
             session doesn&apos;t have them yet.
           </p>
-          <MonoLabel>1 · Reboot the car</MonoLabel>
+          <MonoLabel>Reboot the car</MonoLabel>
           <Code lang="bash">{`sudo reboot`}</Code>
-          <MonoLabel>2 · Start the services</MonoLabel>
+          <MonoLabel>Start the services</MonoLabel>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 6 }}>
             This first start is the only manual one; from now on the whole stack
             comes up on its own every time the car powers on.

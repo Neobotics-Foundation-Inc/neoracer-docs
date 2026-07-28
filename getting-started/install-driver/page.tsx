@@ -129,11 +129,10 @@ bash neoracer_ros2_driver/scripts/setup_all.sh`}</Code>
               <InfoNote term="colcon" title="colcon">
                 The standard build tool for ROS 2. It compiles every package in a
                 workspace and sets up the paths so you can run them.
-              </InfoNote>. There is exactly one LiDAR driver source, shared with the vendor workspace, so a LiDAR fix lands everywhere at once.</> },
+              </InfoNote>.</> },
             { t: 'JupyterLab + the student library', d: <>Installs the browser coding environment and the{' '}
               <Link href="/docs/software/racecar-neo-library" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>racecar-neo library</Link>{' '}
-              with its labs into <code style={{ fontFamily: NB.monoFont }}>~/jupyter_ws</code>. The library is ready to import, and{' '}
-              <code style={{ fontFamily: NB.monoFont }}>rc.go()</code> starts your program directly, tuned for the FlySky remote.</> },
+              with its labs into <code style={{ fontFamily: NB.monoFont }}>~/jupyter_ws</code>.</> },
             { t: 'Services', d: <>Installs the four services and enables them on boot: the driver (
               <code style={{ fontFamily: NB.monoFont }}>neoracer-teleop</code>), a watchdog that restarts anything that fails, the health dashboard on port{' '}
               <code style={{ fontFamily: NB.monoFont }}>8080</code>, and JupyterLab on port{' '}

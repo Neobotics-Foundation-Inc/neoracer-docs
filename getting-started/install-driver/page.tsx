@@ -233,8 +233,7 @@ http://192.168.10.100:8080     # cudy router`}</Code>
           <Callout type="tip" title="The install is done">
             If the LiDAR takes a minute to appear after a cold boot, that is
             normal: the sensor boots its own controller before it starts
-            streaming. When all three checks pass, one step remains: give the
-            car its own network.
+            streaming.
           </Callout>
         </section>
       </ScrollReveal>

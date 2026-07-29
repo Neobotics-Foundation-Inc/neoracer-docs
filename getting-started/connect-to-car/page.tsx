@@ -9,7 +9,7 @@ import {
   ChromeBadge,
   ClockGlyph,
 } from '@/components/docs/Editorial';
-import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
+import { ScrollReveal, MouseFollowGlow, PhotoSteps } from '@/components/docs/Interactive';
 import { Crumbs, Callout, PrevNext } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
@@ -60,14 +60,45 @@ export default function ConnectToCarPage() {
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
               The Jetson&apos;s Wi-Fi card sits on its underside, so the two
-              antenna leads are reached from below.
+              antenna cables are attached from below. Each antenna comes in two
+              parts: the cable, and the plastic antenna that screws onto its
+              end. Steps with a <strong>photo</strong> chip have a reference
+              picture.
             </p>
-            <DashList
+            <PhotoSteps
               items={[
-                <>Power the car off before you unmount the Jetson.</>,
-                <>Unscrew the Jetson from its 3D-printed chassis mount to reach the Wi-Fi card underneath.</>,
-                <>Press each of the two antenna connectors onto its socket on the card until it clicks.</>,
-                <>Screw the Jetson back onto its mount and route the antennas clear of the wheels and belt.</>,
+                { text: <>Power the car off before you unmount the Jetson.</> },
+                {
+                  text: <>Unscrew the Jetson from its 3D-printed chassis mount to reach the Wi-Fi card underneath. It is held by four hex screws.</>,
+                  photos: [{ src: '/images/jetson-screws.jpeg', alt: 'The four hex screws holding the Jetson to its chassis mount' }],
+                },
+                {
+                  text: <>Flip the Jetson over to find the two antenna sockets on the Wi-Fi card.</>,
+                  photos: [{ src: '/images/jetson-flipped.jpeg', alt: 'The flipped Jetson with the antenna sockets on the Wi-Fi card highlighted' }],
+                },
+                {
+                  text: <>Keep the plastic antennas aside for now; they screw onto the cable ends later.</>,
+                  photos: [{ src: '/images/jetson-antenna.jpeg', alt: 'An antenna cable next to the plastic antenna that screws onto it' }],
+                },
+                {
+                  text: <>Press each cable connector onto its socket on the card until it clicks.</>,
+                  photos: [{ src: '/images/jetson-antenna-attached.jpeg', alt: 'An antenna cable attached to the Wi-Fi card socket' }],
+                },
+                {
+                  text: <>Screw the Jetson back onto its mount and route the cables through the chassis to the sides of the car.</>,
+                  photos: [{ src: '/images/jetson-antennas-hanging.jpeg', alt: 'The antenna cables routed through the chassis to the sides' }],
+                },
+                {
+                  text: <>Screw the plastic antennas onto the cable ends on each side.</>,
+                  photos: [{ src: '/images/jetson-antennas-attached-car.jpeg', alt: 'A plastic antenna screwed onto the cable at the side of the car' }],
+                },
+                {
+                  text: <>Zip-tie the antennas so they stay clear of the wheels and belt. One option is to tie them to the router&apos;s antennas, but any arrangement that keeps them clear works.</>,
+                  photos: [
+                    { src: '/images/jetson-antenna-ziptied-1.jpeg', alt: 'An antenna zip-tied to the router antenna' },
+                    { src: '/images/jetson-antenna-ziptied-2.jpeg', alt: 'Both sides of the car with the antennas zip-tied' },
+                  ],
+                },
               ]}
             />
           </div>

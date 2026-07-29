@@ -62,8 +62,7 @@ export default function ConnectToCarPage() {
               The Jetson&apos;s Wi-Fi card sits on its underside, so the two
               antenna cables are attached from below. Each antenna comes in two
               parts: the cable, and the plastic antenna that screws onto its
-              end. Steps with a <strong>photo</strong> chip have a reference
-              picture.
+              end. Steps with a camera icon have a reference picture.
             </p>
             <PhotoSteps
               items={[
@@ -110,7 +109,7 @@ export default function ConnectToCarPage() {
         <section style={{ position: 'relative', paddingBottom: 44 }}>
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              FIT THE <Red>ROUTER</Red>
+              FIT THE CUDY <Red>ROUTER</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
               The Cudy router sits inside the mid chassis, under the top plate.

@@ -138,6 +138,7 @@ export default function ConnectToCarPage() {
                   text: <>Connect the Ethernet cable and the short USB-C cable in the top chassis. Make sure you use the correct USB-C cable: the shorter one connects to the underside of the PCB, while the LiDAR&apos;s cable connects to the top side.</>,
                   photos: [{ src: '/images/chassis-cudy.jpeg', alt: 'The Cudy router in the chassis with the Ethernet and short USB-C cable connected' }],
                 },
+                { text: <>Fit the router snugly within the top chassis and screw the chassis back in.</> },
               ]}
             />
           </div>

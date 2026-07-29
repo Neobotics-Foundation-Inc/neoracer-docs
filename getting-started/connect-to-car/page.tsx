@@ -151,12 +151,16 @@ export default function ConnectToCarPage() {
             <DisplayHeading size="lg">
               PLUG IN A MONITOR AND <Red>KEYBOARD</Red>
             </DisplayHeading>
-            <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-              Connect a monitor to the Jetson&apos;s DisplayPort or HDMI output
-              and a USB keyboard and mouse. Power the car on and log in as{' '}
-              <code style={{ fontFamily: NB.monoFont }}>racecar</code> (password{' '}
-              <code style={{ fontFamily: NB.monoFont }}>neobotics</code>).
-            </p>
+            <DashList
+              items={[
+                <>Remove the HDMI plug already on the car and keep it somewhere safe. Whenever a monitor is not connected, it needs to be plugged back in.</>,
+                <>Connect a monitor to the Jetson&apos;s DisplayPort or HDMI output.</>,
+                <>Connect a USB keyboard and mouse.</>,
+                <>Power the car on and log in as{' '}
+                  <code style={{ fontFamily: NB.monoFont }}>racecar</code> (password{' '}
+                  <code style={{ fontFamily: NB.monoFont }}>neobotics</code>).</>,
+              ]}
+            />
           </div>
         </section>
       </ScrollReveal>

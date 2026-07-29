@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { Metadata } from 'next';
 import DocsShell from '@/components/docs/DocsShell';
 import { NB } from '@/lib/nb-tokens';
@@ -7,10 +6,10 @@ import {
   DisplayHeading,
   Red,
   GhostNumeral,
-  DashList,
-  Fig,
+  ChromeBadge,
+  ClockGlyph,
 } from '@/components/docs/Editorial';
-import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
+import { ScrollReveal, MouseFollowGlow, InfoNote, PhotoSteps } from '@/components/docs/Interactive';
 import { Crumbs, Callout, Code, PrevNext } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
@@ -46,6 +45,9 @@ export default function RemoteDesktopPage() {
               the network. Set a password once, while the monitor is still
               plugged in, and you never need that monitor again.
             </p>
+            <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
+              <ChromeBadge variant="outline" icon={<ClockGlyph />}>~5 minutes</ChromeBadge>
+            </div>
           </div>
         </section>
       </MouseFollowGlow>
@@ -64,45 +66,20 @@ export default function RemoteDesktopPage() {
               it isn&apos;t, so the fix is a permanent password. This is the last
               thing you do on the monitor:
             </p>
-            <DashList
+            <PhotoSteps
               items={[
-                <>Open RustDesk on the car&apos;s desktop (it starts with the system; its window shows &quot;Your Desktop&quot; with an ID).</>,
-                <>Open <strong>Settings</strong> from the menu, then the <strong>Security</strong> tab.</>,
-                <>Scroll to the <strong>Password</strong> section and select <strong>Use permanent password</strong>.</>,
-                <>Click <strong>Set permanent password</strong>, pick one, and keep it somewhere sensible.</>,
+                {
+                  text: <>Open RustDesk on the car&apos;s desktop (it starts with the system; its window shows &quot;Your Desktop&quot; with an ID).</>,
+                  photos: [{ src: '/images/rustdesk-main.png', alt: 'RustDesk main window on the Jetson desktop, showing the Your Desktop ID and one-time password' }],
+                },
+                { text: <>Open <strong>Settings</strong> from the menu, then the <strong>Security</strong> tab.</> },
+                {
+                  text: <>Scroll to the <strong>Password</strong> section and select <strong>Use permanent password</strong>. The dropdown above it can stay on &quot;Accept sessions via both&quot;.</>,
+                  photos: [{ src: '/images/rustdesk-security.png', alt: 'RustDesk Security settings with the Password section: Use permanent password selected, Set permanent password button' }],
+                },
+                { text: <>Click <strong>Set permanent password</strong>, pick one, and keep it somewhere sensible.</> },
               ]}
             />
-            <Fig
-              label="FIG. A / RUSTDESK ON THE CAR"
-              caption='The main window. "Your Desktop" is this car; the ID and one-time password on the left are the pair the permanent password replaces.'
-            >
-              <Image
-                src="/images/rustdesk-main.png"
-                alt="RustDesk main window on the Jetson desktop, showing the Your Desktop ID and one-time password"
-                width={1926}
-                height={1082}
-                sizes="(max-width: 760px) 100vw, 720px"
-                style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 8 }}
-              />
-            </Fig>
-            <Fig
-              label="FIG. B / SETTINGS → SECURITY → PASSWORD"
-              caption='Select "Use permanent password", then "Set permanent password". The dropdown above it can stay on "Accept sessions via both".'
-            >
-              <Image
-                src="/images/rustdesk-security.png"
-                alt="RustDesk Security settings with the Password section: Use permanent password selected, Set permanent password button"
-                width={1951}
-                height={1093}
-                sizes="(max-width: 760px) 100vw, 720px"
-                style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 8 }}
-              />
-            </Fig>
-            <Callout type="note" title="If Security asks to unlock">
-              Some settings pages need unlocking with the car&apos;s login
-              password (<code style={{ fontFamily: NB.monoFont }}>neobotics</code>)
-              before they let you change anything.
-            </Callout>
           </div>
         </section>
       </ScrollReveal>

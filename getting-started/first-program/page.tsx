@@ -194,13 +194,13 @@ export default function FirstProgramPage() {
               <>
                 <strong>Car</strong>: save the file as{' '}
                 <code style={{ fontFamily: NB.monoFont }}>wall_follow.py</code> in{' '}
-                <code style={{ fontFamily: NB.monoFont }}>~/jupyter_ws/neoracer-os/labs/</code>,
+                <code style={{ fontFamily: NB.monoFont }}>~/jupyter_ws/neoracer-os/labs/ultimate-wall-follower/</code>,
                 next to the labs that ship on the car. Easiest from JupyterLab in
                 your browser (port <code style={{ fontFamily: NB.monoFont }}>8888</code>),
                 or over SSH from{' '}
                 <Link href="/docs/getting-started/connect-to-car" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Connect to the car</Link>.
                 Then run it from that folder:
-                <Code lang="bash">{`cd ~/jupyter_ws/neoracer-os/labs
+                <Code lang="bash">{`cd ~/jupyter_ws/neoracer-os/labs/ultimate-wall-follower
 python3 wall_follow.py`}</Code>
                 The program starts immediately, and the car drives once you flip{' '}
                 <code style={{ fontFamily: NB.monoFont }}>SWB</code> to autonomy.
@@ -220,7 +220,7 @@ python3 wall_follow.py`}</Code>
           </DisplayHeading>
           <Code lang="python">
 {`import sys
-sys.path.insert(0, "../library")   # the racecar-neo library on the car
+sys.path.insert(0, "../../library")   # the racecar-neo library on the car
 
 import racecar_core
 import racecar_utils as rc_utils

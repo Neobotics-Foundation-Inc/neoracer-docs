@@ -9,6 +9,7 @@ import {
   ChromeBadge,
   ClockGlyph,
   MonoLabel,
+  DashList,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow, AnimatedNumeral, InfoNote, TabbedPanels } from '@/components/docs/Interactive';
 import { Crumbs, Callout, PrevNext, Code, DataTable } from '@/components/docs/DocsPrimitives';
@@ -245,12 +246,25 @@ http://192.168.10.100:8080     # cudy router`}</Code>
             THE CAR'S OWN <Red>NETWORK</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-            So far the car has been borrowing your network. One command, run at
-            the console, sets up both of its permanent ones in one pass: its own
-            access point (<code style={{ fontFamily: NB.monoFont }}>neoracer-1</code>{' '}
-            at <code style={{ fontFamily: NB.monoFont }}>10.42.0.1</code>) and the
-            fixed address for the cudy router
-            (<code style={{ fontFamily: NB.monoFont }}>192.168.10.100</code>).
+            Until now the car has been on your Wi-Fi, which was only needed for
+            the install. To use the car anywhere, it gets two permanent networks
+            of its own:
+          </p>
+          <DashList
+            items={[
+              <><strong>Its own Wi-Fi hotspot.</strong> The car broadcasts{' '}
+                <code style={{ fontFamily: NB.monoFont }}>neoracer-1</code>; your
+                laptop joins it directly, and the car is always at{' '}
+                <code style={{ fontFamily: NB.monoFont }}>10.42.0.1</code>. Works
+                anywhere, with no other equipment.</>,
+              <><strong>The Cudy router&apos;s network.</strong> The car is wired
+                to the router you just fitted, and always has the address{' '}
+                <code style={{ fontFamily: NB.monoFont }}>192.168.10.100</code>{' '}
+                on it.</>,
+            ]}
+          />
+          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
+            One command sets up both. Run it at the console:
           </p>
           <Code lang="bash">{`racecar setup networking     # at the console`}</Code>
           <Callout type="warn" title="This takes the car off your Wi-Fi">

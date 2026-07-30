@@ -15,7 +15,7 @@ import { Crumbs, Callout, Code, PrevNext } from '@/components/docs/DocsPrimitive
 export const metadata: Metadata = {
   title: 'Remote desktop · Setup · NeoRacer Docs',
   description:
-    'Set a permanent RustDesk password on the car, then reach its full desktop from your laptop by IP address. After this page the monitor and keyboard are never needed again.',
+    "Reach the car's full desktop from your laptop by IP address with RustDesk. The password ships preset; change it any time. After this page the monitor and keyboard are never needed again.",
 };
 
 export default function RemoteDesktopPage() {
@@ -51,19 +51,17 @@ export default function RemoteDesktopPage() {
         </section>
       </MouseFollowGlow>
 
-      {/* ── 01 · Permanent password ──────────────────────────────────── */}
+      {/* ── 01 · Change the password ─────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 44 }}>
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              SET A PERMANENT <Red>PASSWORD</Red>
+              CHANGE THE <Red>PASSWORD</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-              Out of the box, RustDesk shows a one-time password that changes
-              every session, and it only shows it on the car&apos;s own screen.
-              That works while a monitor is attached and stops working the moment
-              it isn&apos;t, so the fix is a permanent password. This is the last
-              thing you do on the monitor:
+              The NeoRacer ships with the RustDesk password set to{' '}
+              <code style={{ fontFamily: NB.monoFont }}>Neo-2026</code>. You can
+              keep it, or change it here:
             </p>
             <PhotoSteps
               items={[
@@ -94,8 +92,9 @@ export default function RemoteDesktopPage() {
               Install RustDesk on your laptop from{' '}
               <a href="https://rustdesk.com" target="_blank" rel="noopener noreferrer" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>rustdesk.com</a>,
               join the car&apos;s network, and type the car&apos;s address into
-              the <strong>Control Remote Desktop</strong> field. Enter your
-              permanent password and the Jetson&apos;s desktop opens in a window.
+              the <strong>Control Remote Desktop</strong> field. Enter the
+              RustDesk password (<code style={{ fontFamily: NB.monoFont }}>Neo-2026</code>{' '}
+              unless you changed it) and the Jetson&apos;s desktop opens in a window.
             </p>
             <Code lang="bash">{`10.42.0.1          # on the car's access point (neoracer-1)
 192.168.10.100     # on the cudy router`}</Code>

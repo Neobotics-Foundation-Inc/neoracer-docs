@@ -279,9 +279,10 @@ http://192.168.10.100:8080     # cudy router`}</Code>
             <code style={{ fontFamily: NB.monoFont }}>neobotics</code>) and{' '}
             <code style={{ fontFamily: NB.monoFont }}>ssh racecar@10.42.0.1</code>,
             or join the cudy router&apos;s Wi-Fi and use{' '}
-            <code style={{ fontFamily: NB.monoFont }}>192.168.10.100</code>. The
-            monitor and keyboard are no longer needed. Day-to-day connections,
-            RustDesk, and the router details live on{' '}
+            <code style={{ fontFamily: NB.monoFont }}>192.168.10.100</code>.
+            Otherwise, you can use RustDesk in{' '}
+            <Link href="/docs/getting-started/remote-desktop" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Remote desktop</Link>.
+            Other details are in{' '}
             <Link href="/docs/software/networking" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Networking</Link>.
           </p>
         </section>

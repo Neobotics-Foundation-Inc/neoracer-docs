@@ -409,7 +409,7 @@ racecar setup networking --reset             # back to the defaults`}</Code>
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'Workspaces', href: '/docs/software/workspaces' }}
+        prev={{ label: 'Remote desktop', href: '/docs/software/remote-desktop' }}
         next={{ label: 'Firmware flashing', href: '/docs/software/firmware-flashing' }}
       />
     </DocsShell>

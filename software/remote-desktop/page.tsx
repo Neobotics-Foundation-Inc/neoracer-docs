@@ -13,7 +13,7 @@ import { ScrollReveal, MouseFollowGlow, InfoNote, PhotoSteps } from '@/component
 import { Crumbs, Callout, Code, PrevNext } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
-  title: 'Remote desktop · Setup · NeoRacer Docs',
+  title: 'Remote desktop · Software · NeoRacer Docs',
   description:
     "Reach the car's full desktop from your laptop by IP address with RustDesk. The password ships preset; change it any time. After this page the monitor and keyboard are never needed again.",
 };
@@ -23,7 +23,7 @@ export default function RemoteDesktopPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Setup', href: '/docs/getting-started/unbox' },
+          { label: 'Software', href: '/docs/software/os-and-image' },
           { label: 'Remote desktop' },
         ]}
       />
@@ -31,7 +31,7 @@ export default function RemoteDesktopPage() {
       {/* ── Hero ─────────────────────────────────────────────────────── */}
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="05" top={-30} right={-20} size={400} />
+          <GhostNumeral n="RD" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               REMOTE DESKTOP <Red>SETUP</Red>
@@ -131,8 +131,8 @@ export default function RemoteDesktopPage() {
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'Install the driver', href: '/docs/getting-started/install-driver' }}
-        next={{ label: 'First program', href: '/docs/getting-started/first-program' }}
+        prev={{ label: 'Workspaces', href: '/docs/software/workspaces' }}
+        next={{ label: 'Networking', href: '/docs/software/networking' }}
       />
     </DocsShell>
   );

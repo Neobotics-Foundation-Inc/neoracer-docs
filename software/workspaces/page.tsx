@@ -121,7 +121,7 @@ racecar service start`}</Code>
 
       <PrevNext
         prev={{ label: 'ROS2 driver', href: '/docs/software/ros2-driver' }}
-        next={{ label: 'Networking', href: '/docs/software/networking' }}
+        next={{ label: 'Remote desktop', href: '/docs/software/remote-desktop' }}
       />
     </DocsShell>
   );

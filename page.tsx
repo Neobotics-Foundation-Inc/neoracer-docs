@@ -36,10 +36,10 @@ const SHOW_PLAYGROUND_TEASE = false;
 /* Bay order mirrors the sidebar. Counts are the real page counts in nav.ts;
    update both together when a page ships. */
 const pitLane: PitLaneSection[] = [
-  { title: 'Setup', href: '/docs/getting-started/unbox', pages: 6 },
+  { title: 'Setup', href: '/docs/getting-started/unbox', pages: 5 },
   { title: 'Hardware', href: '/docs/hardware/overview', pages: 14 },
   { title: 'Build', href: '/docs/build/overview', pages: 2 },
-  { title: 'Software', href: '/docs/software/os-and-image', pages: 8 },
+  { title: 'Software', href: '/docs/software/os-and-image', pages: 9 },
   { title: 'API Reference', href: '/docs/api-reference/python/drive', pages: 9 },
   { title: 'Calibration', href: '/docs/calibration/motor-trim', pages: 5 },
   // Soft hyphen so narrow phone bays break it as TROUBLE-SHOOTING.

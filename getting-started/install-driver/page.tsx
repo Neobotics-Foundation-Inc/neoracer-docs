@@ -281,7 +281,7 @@ http://192.168.10.100:8080     # cudy router`}</Code>
             or join the cudy router&apos;s Wi-Fi and use{' '}
             <code style={{ fontFamily: NB.monoFont }}>192.168.10.100</code>.
             Otherwise, you can use RustDesk in{' '}
-            <Link href="/docs/getting-started/remote-desktop" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Remote desktop</Link>.
+            <Link href="/docs/software/remote-desktop" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Remote desktop</Link>.
             Other details are in{' '}
             <Link href="/docs/software/networking" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Networking</Link>.
           </p>
@@ -290,7 +290,7 @@ http://192.168.10.100:8080     # cudy router`}</Code>
 
       <PrevNext
         prev={{ label: 'Connect to the car', href: '/docs/getting-started/connect-to-car' }}
-        next={{ label: 'Remote desktop', href: '/docs/getting-started/remote-desktop' }}
+        next={{ label: 'First program', href: '/docs/getting-started/first-program' }}
       />
     </DocsShell>
   );

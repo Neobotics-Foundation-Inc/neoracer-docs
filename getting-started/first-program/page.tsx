@@ -160,7 +160,7 @@ export default function FirstProgramPage() {
 
       <ScrollReveal>
         <Fig
-          label="FIG. A / THE TWO SWITCHES THIS PAGE USES"
+          label="FIG. A / USING THE FLYSKY CONTROLLER FOR PROGRAMS"
           caption="On our controller, SWB switches between manual (up position) and autonomous (down position). When driving manually, SWA switches between slow mode (up position) and fast mode (down position)."
         >
           <FlyskySwitchesFigure />

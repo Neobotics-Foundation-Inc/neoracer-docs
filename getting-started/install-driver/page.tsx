@@ -221,8 +221,8 @@ http://192.168.10.100:8080     # cudy router`}</Code>
           <div style={{ marginTop: 18 }}>
             <DataTable
               columns={[
-                { key: 'what', label: 'Where things live', accent: true },
-                { key: 'where', label: 'Address', mono: true },
+                { key: 'what', label: 'Feature', accent: true },
+                { key: 'where', label: 'Port/Command', mono: true },
               ]}
               rows={[
                 { what: 'Health dashboard', where: ':8080' },

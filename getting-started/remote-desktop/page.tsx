@@ -42,8 +42,7 @@ export default function RemoteDesktopPage() {
                 A remote-desktop tool. It mirrors the Jetson's screen to your laptop over the network so you can use its desktop directly.
               </InfoNote>{' '}
               preinstalled, so your laptop can use the Jetson&apos;s desktop over
-              the network. Set a password once, while the monitor is still
-              plugged in, and you never need that monitor again.
+              the network.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="outline" icon={<ClockGlyph />}>~5 minutes</ChromeBadge>

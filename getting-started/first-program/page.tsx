@@ -257,22 +257,6 @@ rc.go()`}
         </section>
       </ScrollReveal>
 
-      <ScrollReveal>
-        <section style={{ paddingBottom: 24 }}>
-          <Callout type="note" title="One decision per frame">
-            <code style={{ fontFamily: NB.monoFont }}>update()</code> runs once per frame,
-            many times a second, so you never loop or sleep inside it. Each call you
-            read the <Link href="/docs/api-reference/python/lidar" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>LiDAR</Link>,
-            work out one steering angle, set the drive, and return. The{' '}
-            <code style={{ fontFamily: NB.monoFont }}>error = right - TARGET</code> line is the
-            whole controller: when the car drifts too far from the wall the error
-            grows positive and it steers back toward it. That is a{' '}
-            <InfoNote term="proportional controller" title="Proportional (P) control">
-              The simplest closed-loop controller: the correction is proportional to the error. Bigger gap from the target, bigger steering input. KP sets how aggressive that is.
-            </InfoNote>.
-          </Callout>
-        </section>
-      </ScrollReveal>
 
       <ScrollReveal>
         <section style={{ paddingBottom: 32 }}>

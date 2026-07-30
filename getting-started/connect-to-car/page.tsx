@@ -145,7 +145,24 @@ export default function ConnectToCarPage() {
         </section>
       </ScrollReveal>
 
-      {/* ── 03 · Console ─────────────────────────────────────────────── */}
+      {/* ── 03 · Battery + sidepods ──────────────────────────────────── */}
+      <ScrollReveal>
+        <section style={{ position: 'relative', paddingBottom: 44 }}>
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <DisplayHeading size="lg">
+              FIT THE BATTERY AND <Red>SIDEPODS</Red>
+            </DisplayHeading>
+            <DashList
+              items={[
+                <>Place the battery on the left side of the car.</>,
+                <>Screw the sidepods onto the car using the screws from the screws bag.</>,
+              ]}
+            />
+          </div>
+        </section>
+      </ScrollReveal>
+
+      {/* ── 04 · Console ─────────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 44 }}>
           <div style={{ position: 'relative', zIndex: 1 }}>
@@ -166,7 +183,7 @@ export default function ConnectToCarPage() {
         </section>
       </ScrollReveal>
 
-      {/* ── 04 · Internet ───────────────────────────────────────────── */}
+      {/* ── 05 · Internet ───────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 44 }}>
           <div style={{ position: 'relative', zIndex: 1 }}>

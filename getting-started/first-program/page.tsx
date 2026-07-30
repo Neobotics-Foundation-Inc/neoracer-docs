@@ -149,8 +149,7 @@ export default function FirstProgramPage() {
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
               To ensure all sensors are running well, try executing your first
-              program on the car. This same script runs both on the real car as
-              well as the Neobotics Playground twin simulator.
+              program on the car.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="outline" icon={<ClockGlyph />}><AnimatedNumeral value={15} suffix=" minutes" /></ChromeBadge>

@@ -292,19 +292,6 @@ rc.go()`}
         </section>
       </ScrollReveal>
 
-      <ScrollReveal>
-        <Callout type="tip" title="You finished Setup. What now?">
-          Two good next steps: read the{' '}
-          <Link href="/docs/api-reference/python/lidar" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-            LiDAR API
-          </Link>{' '}
-          to go past two beams into the full scan, or skim the{' '}
-          <Link href="/docs/hardware/overview" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-            Hardware overview
-          </Link>{' '}
-          for the full parts breakdown.
-        </Callout>
-      </ScrollReveal>
 
       <PrevNext
         prev={{ label: 'Install the driver', href: '/docs/getting-started/install-driver' }}

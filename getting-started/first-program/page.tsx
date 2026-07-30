@@ -161,7 +161,7 @@ export default function FirstProgramPage() {
       <ScrollReveal>
         <Fig
           label="FIG. A / THE TWO SWITCHES THIS PAGE USES"
-          caption="On the Flysky transmitter, SWB decides who is driving: down hands the car to your program, up takes over with the sticks. SWA applies only while you drive manually: up is slow mode, down is fast."
+          caption="On our controller, SWB switches between manual (up position) and autonomous (down position). When driving manually, SWA switches between slow mode (up position) and fast mode (down position)."
         >
           <FlyskySwitchesFigure />
         </Fig>

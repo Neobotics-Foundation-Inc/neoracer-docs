@@ -38,7 +38,7 @@ const SHOW_PLAYGROUND_TEASE = false;
 const pitLane: PitLaneSection[] = [
   { title: 'Setup', href: '/docs/getting-started/unbox', pages: 5 },
   { title: 'Hardware', href: '/docs/hardware/overview', pages: 14 },
-  { title: 'Build', href: '/docs/build/overview', pages: 2, disabled: true },
+  { title: 'Build', href: '/docs/build/overview', pages: 2 },
   { title: 'Software', href: '/docs/software/os-and-image', pages: 9, disabled: true },
   { title: 'API Reference', href: '/docs/api-reference/python/drive', pages: 9, disabled: true },
   { title: 'Calibration', href: '/docs/calibration/motor-trim', pages: 5, disabled: true },

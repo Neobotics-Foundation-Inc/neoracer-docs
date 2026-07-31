@@ -136,6 +136,41 @@ export default function ChassisAndCadPage() {
       </ScrollReveal>
 
       <ScrollReveal>
+        <StepCard
+          title="The front bumper"
+          image="/images/build/front-bumper-2.jpg"
+          alt="The NeoRacer front bumper with its four mounting screws"
+        >
+          The front bumper bolts onto the nose with four screws and shields the
+          camera, the LiDAR tower, and the front suspension in a crash.
+        </StepCard>
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <StepCard
+          title="The rear wing"
+          image="/images/build/rear-wing-2.jpg"
+          alt="The rear wing with its mounting arms and screws"
+        >
+          The rear wing bolts onto the tail with its two mounting arms and
+          shields the back of the car the same way the bumper covers the
+          front. Both the wing and the bumper are stock factory parts.
+        </StepCard>
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <StepCard
+          title="The side covers"
+          image="/images/build/side-cover-2.jpg"
+          alt="A NeoRacer-branded side cover panel"
+        >
+          The side covers close up the electronics bay and carry the NeoRacer
+          name. They keep dust out of the wiring, and they are the simplest
+          part to customize.
+        </StepCard>
+      </ScrollReveal>
+
+      <ScrollReveal>
         <section style={{ paddingBottom: 24 }}>
           <Eyebrow>01 / THE REPOSITORY</Eyebrow>
           <DisplayHeading size="lg">

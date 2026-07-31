@@ -161,7 +161,7 @@ export default function RemoteControlPage() {
 
       <PrevNext
         prev={{ label: 'Hardware overview', href: '/docs/hardware/overview' }}
-        next={{ label: 'Drivetrain', href: '/docs/hardware/drivetrain' }}
+        next={{ label: 'Dot matrix', href: '/docs/hardware/dot-matrix' }}
       />
     </DocsShell>
   );

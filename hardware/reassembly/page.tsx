@@ -14,7 +14,7 @@ import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext, Callout } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
-  title: 'Reassembly · Build · NeoRacer Docs',
+  title: 'Reassembly · Hardware · NeoRacer Docs',
   description:
     'The step-by-step guide for putting a NeoRacer back together after a teardown. In progress; the photo sequence below already covers the full reassembly order.',
 };
@@ -151,7 +151,7 @@ export default function ReassemblyPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Build', href: '/docs/build/overview' },
+          { label: 'Hardware', href: '/docs/hardware/overview' },
           { label: 'Reassembly' },
         ]}
       />
@@ -168,8 +168,8 @@ export default function ReassemblyPage() {
               this page is the way back. It walks the NeoRacer from a pile of
               parts to a rolling car, one step at a time, with a photo at every
               stage so you always know what done looks like. The{' '}
-              <Link href="/docs/build/overview" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-                component tour
+              <Link href="/docs/hardware/overview" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
+                hardware overview
               </Link>{' '}
               is the companion page if you want to know what each part does
               before you bolt it back on.
@@ -188,8 +188,8 @@ export default function ReassemblyPage() {
           The photo sequence below is live, and the finished guide, with the
           exact fastener details for every step, lands here as it is written.
           The{' '}
-          <Link href="/docs/build/overview" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-            Build overview
+          <Link href="/docs/hardware/overview" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
+            hardware overview
           </Link>{' '}
           covers what each part does, and{' '}
           <a href="mailto:support@neobotics.org" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
@@ -296,8 +296,8 @@ export default function ReassemblyPage() {
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'Build · Overview', href: '/docs/build/overview' }}
-        next={{ label: 'Software · OS & image', href: '/docs/software/os-and-image' }}
+        prev={{ label: 'Safety', href: '/docs/hardware/safety' }}
+        next={{ label: 'OS & image', href: '/docs/software/os-and-image' }}
       />
     </DocsShell>
   );

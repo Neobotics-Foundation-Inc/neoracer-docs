@@ -142,7 +142,7 @@ export default function HardwareOverviewPage() {
       <ScrollReveal>
         <Fig
           label="FIG. B / HOW IT ALL CONNECTS"
-          caption="The signal architecture: the camera connects to the Jetson directly over USB. Everything else routes through the OSCORE board, which reaches the Jetson over one USB link: the LiDAR, the ESC and servo it drives, and the encoder and RF receiver it reads. Power wiring lives on the Electrical page."
+          caption="The power module feeds the Jetson, the OSCORE board, and the ESC. The USB hub links the camera, the LiDAR, and the OSCORE board to the Jetson. The OSCORE board drives the servo and the ESC, and reads the RC receiver and the encoder."
         >
           <HardwareConnectionDiagram />
         </Fig>

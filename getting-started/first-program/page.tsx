@@ -178,42 +178,6 @@ export default function FirstProgramPage() {
 
       <ScrollReveal>
         <section style={{ paddingBottom: 24 }}>
-          <MonoLabel>Where to run it</MonoLabel>
-          <DashList
-            items={[
-              <>
-                <strong>Playground</strong>: open{' '}
-                <Link href="https://playground.neobotics.org" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-                  playground.neobotics.org
-                </Link>{' '}
-                in your browser, paste the code, place the car next to a wall,
-                and click Run. There is nothing to install, so this is the
-                easiest place for the first run.
-              </>,
-              <>
-                <strong>Car</strong>: save the file as{' '}
-                <code style={{ fontFamily: NB.monoFont }}>wall_follow.py</code> in{' '}
-                <code style={{ fontFamily: NB.monoFont }}>~/jupyter_ws/neoracer-os/labs/ultimate-wall-follower/</code>,
-                next to the labs that ship on the car. Easiest from JupyterLab in
-                your browser (port <code style={{ fontFamily: NB.monoFont }}>8888</code>),
-                or over SSH from{' '}
-                <Link href="/docs/getting-started/connect-to-car" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Connect to the car</Link>.
-                Then run it from that folder:
-                <Code lang="bash">{`cd ~/jupyter_ws/neoracer-os/labs/ultimate-wall-follower
-python3 wall_follow.py`}</Code>
-                The program starts immediately, and the car drives once you flip{' '}
-                <code style={{ fontFamily: NB.monoFont }}>SWB</code> to autonomy.
-                Flipping <code style={{ fontFamily: NB.monoFont }}>SWB</code> back
-                returns the sticks to you, which is also how you take over if it
-                heads somewhere you didn&apos;t plan.
-              </>,
-            ]}
-          />
-        </section>
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <section style={{ paddingBottom: 24 }}>
           <DisplayHeading size="lg">
             THE <Red>PROGRAM</Red>
           </DisplayHeading>
@@ -254,6 +218,42 @@ def update():
 rc.set_start_update(start, update)
 rc.go()`}
           </Code>
+        </section>
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <section style={{ paddingBottom: 24 }}>
+          <MonoLabel>Where to run it</MonoLabel>
+          <DashList
+            items={[
+              <>
+                <strong>Playground</strong>: open{' '}
+                <Link href="https://playground.neobotics.org" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
+                  playground.neobotics.org
+                </Link>{' '}
+                in your browser, paste the code, place the car next to a wall,
+                and click Run. There is nothing to install, so this is the
+                easiest place for the first run.
+              </>,
+              <>
+                <strong>Car</strong>: save the file as{' '}
+                <code style={{ fontFamily: NB.monoFont }}>wall_follow.py</code> in{' '}
+                <code style={{ fontFamily: NB.monoFont }}>~/jupyter_ws/neoracer-os/labs/ultimate-wall-follower/</code>,
+                next to the labs that ship on the car. Easiest from JupyterLab in
+                your browser (port <code style={{ fontFamily: NB.monoFont }}>8888</code>),
+                or over SSH from{' '}
+                <Link href="/docs/getting-started/connect-to-car" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Connect to the car</Link>.
+                Then run it from that folder:
+                <Code lang="bash">{`cd ~/jupyter_ws/neoracer-os/labs/ultimate-wall-follower
+python3 wall_follow.py`}</Code>
+                The program starts immediately, and the car drives once you flip{' '}
+                <code style={{ fontFamily: NB.monoFont }}>SWB</code> to autonomy.
+                Flipping <code style={{ fontFamily: NB.monoFont }}>SWB</code> back
+                returns the sticks to you, which is also how you take over if it
+                heads somewhere you didn&apos;t plan.
+              </>,
+            ]}
+          />
         </section>
       </ScrollReveal>
 

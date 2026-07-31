@@ -4,17 +4,13 @@ import { Metadata } from 'next';
 import DocsShell from '@/components/docs/DocsShell';
 import { NB } from '@/lib/nb-tokens';
 import {
-  Eyebrow,
   DisplayHeading,
   Red,
   GhostNumeral,
-  MonoLabel,
   ChromeBadge,
-  DashList,
   Fig,
-  NumberedFeatureCard,
 } from '@/components/docs/Editorial';
-import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
+import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext, Callout } from '@/components/docs/DocsPrimitives';
 import { HardwareConnectionDiagram } from '@/components/docs/ManualDiagrams';
 
@@ -23,32 +19,30 @@ export const metadata: Metadata = {
   description: 'A single-page anatomy of the NeoRacer V1: compute, sensors, drivetrain, power, and chassis at a glance.',
 };
 
-/* The real car, torn down and knolled. One source of truth for the figure
- * AND the part list below it: label positions are percentages of the photo
- * (placed by hand with the click-to-label tool), each part has its own
- * colour, and every part links to its page. `flip` puts the pill on the
- * left of its dot (right-edge parts, and the LiPo so it stays clear of the
- * chassis label beside it). */
+/* The real car, torn down and knolled. Label positions are percentages of
+ * the photo (placed by hand with the click-to-label tool), each part has
+ * its own colour, and every label links to its page. `flip` puts the pill
+ * on the left of its dot (right-edge parts, and the LiPo so it stays clear
+ * of the chassis label beside it). */
 const ANATOMY_PARTS: {
   name: string;
   x: number;
   y: number;
   color: string;
   href: string;
-  sub: string;
   flip?: boolean;
 }[] = [
-  { name: 'Front bumper', x: 47.6, y: 2.9, color: '#64748B', href: '/docs/build/overview', sub: 'Printed crash protection for the nose' },
-  { name: 'Camera', x: 48.9, y: 8.6, color: '#FF0033', href: '/docs/hardware/sensors/camera', sub: '640×480 · 60 fps' },
-  { name: 'Jetson Orin Nano', x: 26.8, y: 19.9, color: '#0E8A4F', href: '/docs/hardware/compute', sub: 'AI accelerator + Linux host' },
-  { name: 'Side cover', x: 95.6, y: 22.7, color: '#1B2036', href: '/docs/build/overview', sub: 'Closes the electronics bay' },
-  { name: 'OSCORE PCB', x: 81.4, y: 25.9, color: '#7A3FB0', href: '/docs/hardware/oscore-board', sub: 'Power + control board, ESP32-S3' },
-  { name: '1:12 chassis', x: 54.9, y: 52.4, color: '#B45309', href: '/docs/hardware/drivetrain', sub: 'Motor, servo, and suspension on the rolling base' },
-  { name: 'LiPo compartment', x: 46.6, y: 51.9, color: '#C2185B', href: '/docs/hardware/power', sub: '11.1 V · 3S · battery NOT included', flip: true },
-  { name: 'LiDAR', x: 37.1, y: 78.2, color: '#0E9594', href: '/docs/hardware/sensors/lidar', sub: '30 Hz · ~1440 samples · 270° window' },
-  { name: 'Dot matrix display', x: 54.1, y: 80.6, color: '#4F46E5', href: '/docs/build/overview', sub: '8 × 8 LED matrix display' },
-  { name: 'Cudy router', x: 70.9, y: 74.9, color: '#EA580C', href: '/docs/software/networking', sub: 'The car-to-laptop network' },
-  { name: 'Rear wing', x: 53.3, y: 95.3, color: '#0284C7', href: '/docs/build/overview', sub: 'Printed, swappable tail' },
+  { name: 'Front bumper', x: 47.6, y: 2.9, color: '#64748B', href: '/docs/build/overview' },
+  { name: 'Camera', x: 48.9, y: 8.6, color: '#FF0033', href: '/docs/hardware/sensors/camera' },
+  { name: 'Jetson Orin Nano', x: 26.8, y: 19.9, color: '#0E8A4F', href: '/docs/hardware/compute' },
+  { name: 'Side cover', x: 95.6, y: 22.7, color: '#1B2036', href: '/docs/build/overview' },
+  { name: 'OSCORE PCB', x: 81.4, y: 25.9, color: '#7A3FB0', href: '/docs/hardware/oscore-board' },
+  { name: '1:12 chassis', x: 54.9, y: 52.4, color: '#B45309', href: '/docs/hardware/drivetrain' },
+  { name: 'LiPo compartment', x: 46.6, y: 51.9, color: '#C2185B', href: '/docs/hardware/power', flip: true },
+  { name: 'LiDAR', x: 37.1, y: 78.2, color: '#0E9594', href: '/docs/hardware/sensors/lidar' },
+  { name: 'Dot matrix display', x: 54.1, y: 80.6, color: '#4F46E5', href: '/docs/build/overview' },
+  { name: 'Cudy router', x: 70.9, y: 74.9, color: '#EA580C', href: '/docs/software/networking' },
+  { name: 'Rear wing', x: 53.3, y: 95.3, color: '#0284C7', href: '/docs/build/overview' },
 ];
 
 function AnatomyDiagram() {
@@ -66,9 +60,12 @@ function AnatomyDiagram() {
         const flip = p.flip || p.x > 72;
         const nn = String(i + 1).padStart(2, '0');
         return (
-          <div
+          <Link
             key={p.name}
-            style={{ position: 'absolute', left: `${p.x}%`, top: `${p.y}%`, transform: 'translate(-50%, -50%)' }}
+            href={p.href}
+            className="anatomy-label"
+            aria-label={`${p.name}, open its page`}
+            style={{ position: 'absolute', left: `${p.x}%`, top: `${p.y}%`, transform: 'translate(-50%, -50%)', textDecoration: 'none' }}
           >
             <span
               style={{
@@ -82,6 +79,7 @@ function AnatomyDiagram() {
               }}
             />
             <span
+              className="anatomy-pill"
               style={{
                 position: 'absolute',
                 top: -4,
@@ -100,7 +98,7 @@ function AnatomyDiagram() {
             >
               <span style={{ fontWeight: 900 }}>{nn}</span> {p.name}
             </span>
-          </div>
+          </Link>
         );
       })}
     </div>
@@ -136,61 +134,10 @@ export default function HardwareOverviewPage() {
       <ScrollReveal>
         <Fig
           label="FIG. A / THE PARTS OF THE NEORACER"
-          caption="A real NeoRacer, torn down and photographed from above. The list below links the major subsystems to their pages."
+          caption="A real NeoRacer, torn down and photographed from above. Click a label to open that part's page."
         >
           <AnatomyDiagram />
         </Fig>
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <section style={{ paddingBottom: 32 }}>
-          <Eyebrow>01 / EVERY PART IN FIG. A</Eyebrow>
-          <DisplayHeading size="lg">
-            THE <Red>PARTS</Red>
-          </DisplayHeading>
-          <div style={{ marginTop: 16 }}>
-            {ANATOMY_PARTS.map((part, i) => {
-              const row = {
-                n: String(i + 1).padStart(2, '0'),
-                color: part.color,
-                name: part.name,
-                href: part.href,
-                sub: part.sub,
-              };
-              return (
-              <Link
-                key={row.n}
-                href={row.href}
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: '52px 1fr auto',
-                  gap: 16,
-                  padding: '18px 0',
-                  borderBottom: `1px solid ${NB.borderOnBeige}`,
-                  textDecoration: 'none',
-                  color: NB.textOnBeige,
-                  alignItems: 'center',
-                }}
-              >
-                <div style={{ fontFamily: NB.headingFont, fontSize: 28, fontWeight: 900, color: row.color, lineHeight: 1 }}>
-                  {row.n}
-                </div>
-                <div>
-                  <div style={{ fontFamily: NB.headingFont, fontSize: 20, fontWeight: 700, color: NB.textOnBeige }}>
-                    {row.name}
-                  </div>
-                  <div style={{ fontFamily: NB.monoFont, fontSize: 12.5, letterSpacing: '0.06em', color: NB.textMutedBeige, marginTop: 4 }}>
-                    {row.sub}
-                  </div>
-                </div>
-                <div style={{ color: NB.neoboticsRed, fontFamily: NB.monoFont, fontSize: 13, fontWeight: 700, letterSpacing: '0.1em' }}>
-                  READ →
-                </div>
-              </Link>
-              );
-            })}
-          </div>
-        </section>
       </ScrollReveal>
 
       <ScrollReveal>

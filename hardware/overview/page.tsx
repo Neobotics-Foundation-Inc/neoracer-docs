@@ -135,7 +135,7 @@ export default function HardwareOverviewPage() {
 
       <ScrollReveal>
         <Fig
-          label="FIG. A / THE CAR, LAID OUT"
+          label="FIG. A / THE PARTS OF THE NEORACER"
           caption="A real NeoRacer, torn down and photographed from above. The list below links the major subsystems to their pages."
         >
           <AnatomyDiagram />

@@ -50,7 +50,7 @@ export default function BuildOverviewPage() {
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="outline">Ships assembled</ChromeBadge>
               <ChromeBadge variant="outline">Modular by design</ChromeBadge>
-              <ChromeBadge variant="outline">10 major components</ChromeBadge>
+              <ChromeBadge variant="outline">4 major components</ChromeBadge>
             </div>
           </div>
         </section>
@@ -78,75 +78,6 @@ export default function BuildOverviewPage() {
 
           <StepCard
             n="01"
-            title="The chassis"
-            image="/images/build/chassis.jpg"
-            alt="The NeoRacer rolling chassis with red oil-filled shocks and off-road wheels"
-            href="/docs/hardware/chassis-and-cad"
-            linkLabel="Chassis & CAD"
-          >
-            Everything starts with the rolling chassis, a 1:12 scale platform with
-            real oil-filled shocks, a brushed motor, an electronic speed
-            controller, and a steering servo already wired in. The bay down the
-            middle is where the battery and the electronics sit.
-          </StepCard>
-
-          <StepCard
-            n="02"
-            title="Jetson Orin Nano"
-            image="/images/build/jetson.jpg"
-            alt="NVIDIA Jetson Orin Nano on its carrier board with cooling fan and USB ports"
-            href="/docs/hardware/compute"
-            linkLabel="Compute"
-          >
-            The NVIDIA Jetson Orin Nano is the car's main computer. It runs Linux,
-            your Python, and the heavier vision and learning work, and it talks
-            to the rest of the car over USB.
-          </StepCard>
-
-          <StepCard
-            n="03"
-            title="The OSCORE control board"
-            image="/images/build/oscore-pcb-2.jpg"
-            alt="The OSCORE ESP32-S3 control board with its wiring harness"
-            href="/docs/hardware/oscore-board"
-            linkLabel="OSCORE board"
-          >
-            The OSCORE board sits between the Jetson and the moving parts.
-            Built around an ESP32-S3, it takes the Jetson's commands and turns them
-            into the signals that drive the motor and steer the servo, and it
-            sends the IMU and wheel data back the other way.
-          </StepCard>
-
-          <StepCard
-            n="04"
-            title="LakiBeam L1 LiDAR"
-            image="/images/build/lidar-2.jpg"
-            alt="The LakiBeam L1 spinning LiDAR unit on its mount"
-            href="/docs/hardware/sensors/lidar"
-            linkLabel="LiDAR"
-          >
-            The LakiBeam L1 mounts on a short tower at the nose and spins a laser
-            to measure the distance to walls and obstacles around the car. Wall
-            following, gap finding, and mapping all read from this scan. It
-            connects to the Jetson through the OSCORE board.
-          </StepCard>
-
-          <StepCard
-            n="05"
-            title="The camera"
-            image="/images/build/camera-2.jpg"
-            alt="The NeoRacer camera in its front housing"
-            href="/docs/hardware/sensors/camera"
-            linkLabel="Camera"
-          >
-            The camera faces forward from its housing at the front of the
-            car. Lane following, colour and object detection, and any other
-            vision work read from it. A single USB cable connects it directly
-            to the Jetson.
-          </StepCard>
-
-          <StepCard
-            n="06"
             title="The LED dot matrix"
             image="/images/build/dot-matrix.jpg"
             alt="The 8 by 8 LED dot matrix display in its housing"
@@ -159,7 +90,7 @@ export default function BuildOverviewPage() {
           </StepCard>
 
           <StepCard
-            n="07"
+            n="02"
             title="The front bumper"
             image="/images/build/front-bumper-2.jpg"
             alt="The NeoRacer front bumper with its four mounting screws"
@@ -169,7 +100,7 @@ export default function BuildOverviewPage() {
           </StepCard>
 
           <StepCard
-            n="08"
+            n="03"
             title="The rear wing"
             image="/images/build/rear-wing-2.jpg"
             alt="The rear wing with its mounting arms and screws"
@@ -180,7 +111,7 @@ export default function BuildOverviewPage() {
           </StepCard>
 
           <StepCard
-            n="09"
+            n="04"
             title="The side covers"
             image="/images/build/side-cover-2.jpg"
             alt="A NeoRacer-branded side cover panel"
@@ -188,21 +119,6 @@ export default function BuildOverviewPage() {
             The side covers close up the electronics bay and carry the NeoRacer
             name. They keep dust out of the wiring, and they are the simplest
             part to customize.
-          </StepCard>
-
-          <StepCard
-            n="10"
-            title="The network"
-            image="/images/build/router-2.jpg"
-            alt="The Cudy travel router that puts the car and laptop on one network"
-            href="/docs/software/networking"
-            linkLabel="Networking"
-          >
-            The kit includes a small travel router so the car and your laptop can
-            share one network straight out of the box, no cables needed. Power it
-            on, join its Wi-Fi, and you can reach the car's notebook interface and
-            start sending it code. The networking page has the exact names and
-            addresses.
           </StepCard>
         </section>
       </ScrollReveal>

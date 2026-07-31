@@ -14,6 +14,7 @@ import {
   NumberedFeatureCard,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
+import { StepCard } from '@/components/docs/StepCard';
 import { Crumbs, PrevNext, Callout, Code, DataTable } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
@@ -120,6 +121,19 @@ export default function ChassisAndCadPage() {
           </div>
         </section>
       </MouseFollowGlow>
+
+      <ScrollReveal>
+        <StepCard
+          title="The chassis"
+          image="/images/build/chassis.jpg"
+          alt="The NeoRacer rolling chassis with red oil-filled shocks and off-road wheels"
+        >
+          Everything starts with the rolling chassis, a 1:12 scale platform with
+          real oil-filled shocks, a brushed motor, an electronic speed
+          controller, and a steering servo already wired in. The bay down the
+          middle is where the battery and the electronics sit.
+        </StepCard>
+      </ScrollReveal>
 
       <ScrollReveal>
         <section style={{ paddingBottom: 24 }}>

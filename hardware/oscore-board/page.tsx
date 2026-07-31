@@ -14,6 +14,7 @@ import {
   NumberedFeatureCard,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow, AnimatedNumeral, InfoNote } from '@/components/docs/Interactive';
+import { StepCard } from '@/components/docs/StepCard';
 import { Crumbs, PrevNext, Callout, DataTable } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
@@ -78,6 +79,19 @@ export default function OscoreBoardPage() {
           </div>
         </section>
       </MouseFollowGlow>
+
+      <ScrollReveal>
+        <StepCard
+          title="The OSCORE control board"
+          image="/images/build/oscore-pcb-2.jpg"
+          alt="The OSCORE ESP32-S3 control board with its wiring harness"
+        >
+          The OSCORE board sits between the Jetson and the moving parts.
+          Built around an ESP32-S3, it takes the Jetson&apos;s commands and turns them
+          into the signals that drive the motor and steer the servo, and it
+          sends the IMU and wheel data back the other way.
+        </StepCard>
+      </ScrollReveal>
 
       {/* ── FIG A · the board ────────────────────────────────────────── */}
       <ScrollReveal>

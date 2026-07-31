@@ -15,6 +15,7 @@ import {
 } from '@/components/docs/Editorial';
 import { LidarFrameDiagram } from '@/components/docs/Diagrams';
 import { ScrollReveal, MouseFollowGlow, AnimatedNumeral } from '@/components/docs/Interactive';
+import { StepCard } from '@/components/docs/StepCard';
 import { Crumbs, Callout, PrevNext, Code } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
@@ -66,6 +67,19 @@ export default function LidarPage() {
           </div>
         </section>
       </MouseFollowGlow>
+
+      <ScrollReveal>
+        <StepCard
+          title="LakiBeam L1 LiDAR"
+          image="/images/build/lidar-2.jpg"
+          alt="The LakiBeam L1 spinning LiDAR unit on its mount"
+        >
+          The LakiBeam L1 mounts on a short tower at the nose and spins a laser
+          to measure the distance to walls and obstacles around the car. Wall
+          following, gap finding, and mapping all read from this scan. It
+          connects to the Jetson through the OSCORE board.
+        </StepCard>
+      </ScrollReveal>
 
       {/* ── FIG, coordinate frame ───────────────────────────────────── */}
       <ScrollReveal>

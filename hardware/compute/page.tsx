@@ -13,6 +13,7 @@ import {
 } from '@/components/docs/Editorial';
 import { Crumbs, PrevNext, Callout } from '@/components/docs/DocsPrimitives';
 import { ScrollReveal, MouseFollowGlow, AnimatedNumeral, InfoNote } from '@/components/docs/Interactive';
+import { StepCard } from '@/components/docs/StepCard';
 
 export const metadata: Metadata = {
   title: 'Compute · Hardware · NeoRacer Docs',
@@ -53,6 +54,18 @@ export default function ComputePage() {
           </div>
         </section>
       </MouseFollowGlow>
+
+      <ScrollReveal>
+        <StepCard
+          title="Jetson Orin Nano"
+          image="/images/build/jetson.jpg"
+          alt="NVIDIA Jetson Orin Nano on its carrier board with cooling fan and USB ports"
+        >
+          The NVIDIA Jetson Orin Nano is the car&apos;s main computer. It runs Linux,
+          your Python, and the heavier vision and learning work, and it talks
+          to the rest of the car over USB.
+        </StepCard>
+      </ScrollReveal>
 
       <ScrollReveal>
         <section style={{ paddingBottom: 32 }}>

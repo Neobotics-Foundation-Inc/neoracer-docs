@@ -11,6 +11,7 @@ import {
   MonoLabel,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
+import { StepCard } from '@/components/docs/StepCard';
 import { Crumbs, PrevNext, Callout, Code, DataTable } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
@@ -60,6 +61,19 @@ export default function NetworkingPage() {
           </div>
         </section>
       </MouseFollowGlow>
+
+      <ScrollReveal>
+        <StepCard
+          title="The network"
+          image="/images/build/router-2.jpg"
+          alt="The Cudy travel router that puts the car and laptop on one network"
+        >
+          The kit includes a small travel router so the car and your laptop can
+          share one network straight out of the box, no cables needed. Power it
+          on, join its Wi-Fi, and you can reach the car&apos;s notebook interface and
+          start sending it code.
+        </StepCard>
+      </ScrollReveal>
 
       <ScrollReveal>
         <Callout type="note" title="First time on a fresh car?">

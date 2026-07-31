@@ -12,6 +12,7 @@ import {
   NumberedFeatureCard,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow, AnimatedNumeral } from '@/components/docs/Interactive';
+import { StepCard } from '@/components/docs/StepCard';
 import { Crumbs, Callout, PrevNext, Code, DataTable } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
@@ -68,6 +69,19 @@ export default function CameraPage() {
           </div>
         </section>
       </MouseFollowGlow>
+
+      <ScrollReveal>
+        <StepCard
+          title="The camera"
+          image="/images/build/camera-2.jpg"
+          alt="The NeoRacer camera in its front housing"
+        >
+          The camera faces forward from its housing at the front of the
+          car. Lane following, colour and object detection, and any other
+          vision work read from it. A single USB cable connects it directly
+          to the Jetson.
+        </StepCard>
+      </ScrollReveal>
 
       {/* ── Section · The frame ──────────────────────────────────────── */}
       <ScrollReveal>

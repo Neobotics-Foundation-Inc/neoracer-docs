@@ -127,8 +127,7 @@ export default function HardwareOverviewPage() {
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="outline">380 × 300 × 220 mm</ChromeBadge>
               <ChromeBadge variant="outline">Wheelbase 280 mm</ChromeBadge>
-              <ChromeBadge variant="outline">6 m/s capped</ChromeBadge>
-              <ChromeBadge variant="outline">6061 aluminium / composite</ChromeBadge>
+              <ChromeBadge variant="outline">6 m/s</ChromeBadge>
             </div>
           </div>
         </section>

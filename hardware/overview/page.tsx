@@ -35,7 +35,7 @@ const ANATOMY_PARTS: {
   { name: 'Front bumper', x: 47.6, y: 2.9, color: '#64748B', href: '/docs/hardware/chassis-and-cad' },
   { name: 'Camera', x: 48.9, y: 8.6, color: '#FF0033', href: '/docs/hardware/sensors/camera' },
   { name: 'Jetson Orin Nano', x: 26.8, y: 19.9, color: '#0E8A4F', href: '/docs/hardware/compute' },
-  { name: 'Side cover', x: 95.6, y: 22.7, color: '#1B2036', href: '/docs/hardware/chassis-and-cad' },
+  { name: 'Sidepod', x: 95.6, y: 22.7, color: '#1B2036', href: '/docs/hardware/chassis-and-cad' },
   { name: 'OSCORE PCB', x: 81.4, y: 25.9, color: '#7A3FB0', href: '/docs/hardware/oscore-board' },
   { name: '1:12 chassis', x: 54.9, y: 52.4, color: '#B45309', href: '/docs/hardware/drivetrain' },
   { name: 'LiPo compartment', x: 46.6, y: 51.9, color: '#C2185B', href: '/docs/hardware/power', flip: true },

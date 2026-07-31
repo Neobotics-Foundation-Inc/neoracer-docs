@@ -124,23 +124,6 @@ export default function HardwareOverviewPage() {
             <DisplayHeading size="xl">
               THE NEORACER <Red>HARDWARE</Red>
             </DisplayHeading>
-            <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
-              The NeoRacer is built around a Jetson Orin Nano compute brain, a
-              planar{' '}
-              <InfoNote term="LiDAR" title="LiDAR">
-                A sensor that spins a laser around and times how long each pulse takes to bounce back, building a 2D map of the walls and obstacles around the car.
-              </InfoNote>{' '}
-              on top of the car, an RGB camera at the nose, an{' '}
-              <InfoNote term="IMU" title="IMU">
-                Inertial measurement unit. It combines an accelerometer and a gyroscope to report how the car is accelerating and rotating, which helps track its motion.
-              </InfoNote>+encoder MCU (microcontroller unit) stack,
-              and a brushed-motor / servo{' '}
-              <InfoNote term="Ackermann" title="Ackermann Steering">
-                A steering geometry where the front wheels turn by different amounts so both trace circles around the same point, the way a real car steers, instead of pivoting like a tank.
-              </InfoNote>{' '}
-              drivetrain. Everything below
-              links to a dedicated page.
-            </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="outline">380 × 300 × 220 mm</ChromeBadge>
               <ChromeBadge variant="outline">Wheelbase 280 mm</ChromeBadge>

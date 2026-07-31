@@ -122,7 +122,7 @@ export default function HardwareOverviewPage() {
           <GhostNumeral n="H" top={-40} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              THE HARDWARE <Red>ANATOMY</Red>
+              THE NEORACER <Red>HARDWARE</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
               The NeoRacer is built around a Jetson Orin Nano compute brain, a

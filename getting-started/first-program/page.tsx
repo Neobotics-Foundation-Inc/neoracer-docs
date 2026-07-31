@@ -293,9 +293,9 @@ python3 wall_follow.py`}</Code>
       </ScrollReveal>
 
 
-      {/* No `next` while every section past Setup is gated. */}
       <PrevNext
         prev={{ label: 'Install the driver', href: '/docs/getting-started/install-driver' }}
+        next={{ label: 'Hardware overview', href: '/docs/hardware/overview' }}
       />
     </DocsShell>
   );

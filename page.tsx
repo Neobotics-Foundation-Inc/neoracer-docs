@@ -37,7 +37,7 @@ const SHOW_PLAYGROUND_TEASE = false;
    update both together when a page ships. */
 const pitLane: PitLaneSection[] = [
   { title: 'Setup', href: '/docs/getting-started/unbox', pages: 5 },
-  { title: 'Hardware', href: '/docs/hardware/overview', pages: 14, disabled: true },
+  { title: 'Hardware', href: '/docs/hardware/overview', pages: 14 },
   { title: 'Build', href: '/docs/build/overview', pages: 2, disabled: true },
   { title: 'Software', href: '/docs/software/os-and-image', pages: 9, disabled: true },
   { title: 'API Reference', href: '/docs/api-reference/python/drive', pages: 9, disabled: true },

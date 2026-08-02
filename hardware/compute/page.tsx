@@ -32,7 +32,7 @@ export default function ComputePage() {
 
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="03" top={-40} right={-20} size={460} />
+          <GhostNumeral n="03" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               THE COMPUTE <Red>STACK</Red>

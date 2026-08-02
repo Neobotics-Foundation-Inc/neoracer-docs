@@ -158,7 +158,7 @@ export default function ReassemblyPage() {
 
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 28, paddingTop: 24 }}>
-          <GhostNumeral n="R" top={-40} right={-20} size={440} />
+          <GhostNumeral n="16" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               THE <Red>REASSEMBLY</Red>

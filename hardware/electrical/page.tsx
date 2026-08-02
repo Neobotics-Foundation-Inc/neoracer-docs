@@ -36,7 +36,7 @@ export default function ElectricalPage() {
       {/* ── Hero ────────────────────────────────────────────────────────── */}
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="V" top={-40} right={-20} size={460} />
+          <GhostNumeral n="14" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               THE ELECTRICAL <Red>SYSTEM</Red>
@@ -108,7 +108,6 @@ export default function ElectricalPage() {
       {/* ── 02 · Power-management module ────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 48 }}>
-          <GhostNumeral n="02" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>02 / THE DISTRIBUTION BOARD</Eyebrow>
             <DisplayHeading size="lg">
@@ -160,7 +159,6 @@ export default function ElectricalPage() {
       {/* ── 03 · Pre-power-on inspection ────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 48 }}>
-          <GhostNumeral n="03" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>03 / BEFORE THE BATTERY GOES IN</Eyebrow>
             <DisplayHeading size="lg">
@@ -219,7 +217,6 @@ export default function ElectricalPage() {
       {/* ── 04 · Power-on / power-off ───────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 48 }}>
-          <GhostNumeral n="04" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>04 / IN THE RIGHT ORDER</Eyebrow>
             <DisplayHeading size="lg">
@@ -279,7 +276,6 @@ sudo shutdown -h now`}</Code>
       {/* ── 05 · Electrical parameters ──────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 48 }}>
-          <GhostNumeral n="05" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>05 / THE NUMBERS</Eyebrow>
             <DisplayHeading size="lg">

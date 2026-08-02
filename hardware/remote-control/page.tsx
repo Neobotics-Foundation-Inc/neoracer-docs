@@ -35,7 +35,7 @@ export default function RemoteControlPage() {
       {/* ── Hero ────────────────────────────────────────────────────────── */}
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="RC" top={-30} right={-20} size={460} />
+          <GhostNumeral n="08" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               THE REMOTE <Red>CONTROL</Red>
@@ -97,7 +97,6 @@ export default function RemoteControlPage() {
       {/* ── 02 · modes ──────────────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 40 }}>
-          <GhostNumeral n="B" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Eyebrow>02 / THE MODE SWITCH</Eyebrow>
             <DisplayHeading size="lg">

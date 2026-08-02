@@ -31,7 +31,7 @@ export default function DrivetrainPage() {
 
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="D" top={-40} right={-20} size={460} />
+          <GhostNumeral n="10" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               THE <Red>DRIVETRAIN</Red>

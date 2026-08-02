@@ -7,7 +7,6 @@ import {
   DisplayHeading,
   Red,
   GhostNumeral,
-  ChromeBadge,
   Fig,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
@@ -60,9 +59,6 @@ export default function RobotModelPage() {
               to broadcast the car's transform tree. Drag to orbit, spin the
               wheels, and steer the front axle through the real continuous joints.
             </p>
-            <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="outline">URDF</ChromeBadge>
-            </div>
           </div>
         </section>
       </MouseFollowGlow>

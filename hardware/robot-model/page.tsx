@@ -3,7 +3,6 @@ import { Metadata } from 'next';
 import DocsShell from '@/components/docs/DocsShell';
 import { NB } from '@/lib/nb-tokens';
 import {
-  Eyebrow,
   DisplayHeading,
   Red,
   GhostNumeral,
@@ -18,14 +17,6 @@ export const metadata: Metadata = {
   description:
     "An interactive 3D model of the NeoRacer, built from the real osracer ROS 2 URDF: rotate it, spin the wheels, and steer the front axle through the actual continuous joints.",
 };
-
-const PARTS: { name: string; frame: string }[] = [
-  { name: 'Camera', frame: 'camera_link' },
-  { name: 'LiDAR', frame: 'laser' },
-  { name: 'IMU', frame: 'imu_link' },
-  { name: 'Chassis & body', frame: 'base_link' },
-  { name: 'Wheels & steering', frame: '4 wheels · 2 hinges' },
-];
 
 export default function RobotModelPage() {
   return (
@@ -81,33 +72,6 @@ export default function RobotModelPage() {
         >
           <UrdfViewer />
         </Fig>
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <section style={{ paddingTop: 28, paddingBottom: 24 }}>
-          <Eyebrow>WHAT YOU ARE LOOKING AT</Eyebrow>
-          <DisplayHeading size="lg">
-            THE <Red>LINKS</Red>
-          </DisplayHeading>
-          <div style={{ marginTop: 12 }}>
-            {PARTS.map((p) => (
-              <div
-                key={p.name}
-                style={{
-                  padding: '13px 0',
-                  borderBottom: `1px solid ${NB.borderOnBeige}`,
-                }}
-              >
-                <span style={{ fontFamily: NB.headingFont, fontSize: 18, fontWeight: 700, color: NB.textOnBeige }}>
-                  {p.name}
-                </span>
-                <code style={{ fontFamily: NB.monoFont, fontSize: 13, color: NB.neoboticsRed, marginLeft: 10 }}>
-                  {p.frame}
-                </code>
-              </div>
-            ))}
-          </div>
-        </section>
       </ScrollReveal>
 
       <ScrollReveal>

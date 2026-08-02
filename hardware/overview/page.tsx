@@ -12,7 +12,7 @@ import {
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext, Callout } from '@/components/docs/DocsPrimitives';
-import { HardwareConnectionDiagram } from '@/components/docs/ManualDiagrams';
+import { WiringDiagram } from '@/components/docs/WiringDiagram';
 
 export const metadata: Metadata = {
   title: 'Hardware overview · NeoRacer Docs',
@@ -142,9 +142,9 @@ export default function HardwareOverviewPage() {
       <ScrollReveal>
         <Fig
           label="FIG. B / HOW IT ALL CONNECTS"
-          caption="The power module feeds the Jetson, the OSCORE board, and the ESC. The USB hub links the camera, the LiDAR, and the OSCORE board to the Jetson. The OSCORE board drives the servo and the ESC, and reads the RC receiver and the encoder."
+          caption="Click a component to see how it connects and how it is powered."
         >
-          <HardwareConnectionDiagram />
+          <WiringDiagram />
         </Fig>
       </ScrollReveal>
 

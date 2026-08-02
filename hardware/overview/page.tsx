@@ -149,8 +149,8 @@ export default function HardwareOverviewPage() {
       </ScrollReveal>
 
       <ScrollReveal>
-        <Callout type="tip" title="Want to see the diagram in 3D?">
-          The same anatomy is interactive at{' '}
+        <Callout type="tip" title="3D visualizer">
+          An interactive NeoRacer is available at{' '}
           <Link href="/kits/visualize" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
             /kits/visualize
           </Link>

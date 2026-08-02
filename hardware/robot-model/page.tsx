@@ -56,7 +56,7 @@ export default function RobotModelPage() {
 
       <ScrollReveal>
         <Fig
-          label="FIG. A / INTERACTIVE 3D"
+          label="FIG. A / NEORACER URDF"
           caption={
             <>
               The model is the open{' '}

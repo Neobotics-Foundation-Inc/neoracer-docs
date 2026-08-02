@@ -2,7 +2,6 @@ import { Metadata } from 'next';
 import DocsShell from '@/components/docs/DocsShell';
 import { NB } from '@/lib/nb-tokens';
 import {
-  Eyebrow,
   DisplayHeading,
   Red,
   GhostNumeral,
@@ -13,7 +12,7 @@ import {
 } from '@/components/docs/Editorial';
 import { Crumbs, PrevNext, Callout } from '@/components/docs/DocsPrimitives';
 import { ScrollReveal, MouseFollowGlow, AnimatedNumeral, InfoNote } from '@/components/docs/Interactive';
-import { StepCard } from '@/components/docs/StepCard';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'Compute · Hardware · NeoRacer Docs',
@@ -53,20 +52,18 @@ export default function ComputePage() {
       </MouseFollowGlow>
 
       <ScrollReveal>
-        <StepCard
-          title="Jetson Orin Nano"
-          image="/images/build/jetson.jpg"
+        <Image
+          src="/images/build/jetson.jpg"
           alt="NVIDIA Jetson Orin Nano on its carrier board with cooling fan and USB ports"
-        >
-          The NVIDIA Jetson Orin Nano is the car&apos;s main computer. It runs Linux,
-          your Python, and the heavier vision and learning work, and it talks
-          to the rest of the car over USB.
-        </StepCard>
+          width={1536}
+          height={1024}
+          sizes="(max-width: 640px) 100vw, 560px"
+          style={{ width: '100%', maxWidth: 560, height: 'auto', display: 'block', margin: '0 auto 18px', borderRadius: 10 }}
+        />
       </ScrollReveal>
 
       <ScrollReveal>
         <section style={{ paddingBottom: 32 }}>
-          <Eyebrow>01 / WHAT THE JETSON DOES</Eyebrow>
           <DisplayHeading size="lg">
             THE JETSON <Red>HOST</Red>
           </DisplayHeading>
@@ -86,7 +83,6 @@ export default function ComputePage() {
 
       <ScrollReveal>
         <section style={{ paddingBottom: 32 }}>
-          <Eyebrow>02 / WHAT THE MCU DOES</Eyebrow>
           <DisplayHeading size="lg">
             THE MICROCONTROLLER <Red>STACK</Red>
           </DisplayHeading>
@@ -108,7 +104,6 @@ export default function ComputePage() {
 
       <ScrollReveal>
         <section style={{ paddingBottom: 32 }}>
-          <Eyebrow>03 / WHO LIVES WHERE</Eyebrow>
           <DisplayHeading size="lg">
             THE WORK <Red>SPLIT</Red>
           </DisplayHeading>

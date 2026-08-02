@@ -38,12 +38,11 @@ export default function ComputePage() {
               THE COMPUTE <Red>STACK</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
-              One Linux host runs{' '}
-              <InfoNote term="ROS 2" title="ROS 2">The Robot Operating System, a framework that lets separate programs on a robot pass messages to each other. It is the standard way most robotics software is built.</InfoNote>, your Python, the camera pipeline, and
-              any neural net you want to deploy. A real-time microcontroller
-              stack handles motor commands and{' '}
-              <InfoNote term="IMU" title="IMU">An inertial measurement unit, a chip that reports acceleration and rotation. It lets the robot sense how it is moving and which way it is pointing.</InfoNote>{' '}so the high-level loop never
-              blocks the wheels.
+              The Jetson is the car&apos;s Linux computer. It runs{' '}
+              <InfoNote term="ROS 2" title="ROS 2">The Robot Operating System, a framework that lets separate programs on a robot pass messages to each other. It is the standard way most robotics software is built.</InfoNote>, your Python code, the camera, and any
+              neural networks you deploy. The motor and the{' '}
+              <InfoNote term="IMU" title="IMU">An inertial measurement unit, a chip that reports acceleration and rotation. It lets the robot sense how it is moving and which way it is pointing.</InfoNote>{' '}are handled by the OSCORE board,
+              so nothing running on the Jetson can slow the car&apos;s response.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="outline">NVIDIA Jetson Orin Nano</ChromeBadge>

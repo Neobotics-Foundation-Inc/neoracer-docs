@@ -62,9 +62,7 @@ export default function RobotModelPage() {
               wheels, and steer the front axle through the real continuous joints.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="outline">11 links</ChromeBadge>
-              <ChromeBadge variant="outline">Ackermann front axle</ChromeBadge>
-              <ChromeBadge variant="outline">live joint articulation</ChromeBadge>
+              <ChromeBadge variant="outline">URDF</ChromeBadge>
             </div>
           </div>
         </section>

@@ -7,7 +7,6 @@ import {
   DisplayHeading,
   Red,
   GhostNumeral,
-  MonoLabel,
   ChromeBadge,
   Fig,
 } from '@/components/docs/Editorial';
@@ -71,7 +70,18 @@ export default function RobotModelPage() {
       <ScrollReveal>
         <Fig
           label="FIG. A / INTERACTIVE 3D"
-          caption="The osracer URDF with its meshes, simplified for the web. Plain aluminium body, dark tyres. Use the controls below the model to drive the wheels and steer the front axle."
+          caption={
+            <>
+              The model is the open{' '}
+              <a href="https://github.com/osrbot/osracer" target="_blank" rel="noopener noreferrer" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
+                osracer
+              </a>{' '}
+              robot description. The CAD meshes are simplified for the web, so
+              the silhouette is faithful while the triangle counts stay light
+              enough to spin at full frame rate. The kinematics, link names, and
+              joint axes are unchanged from the source.
+            </>
+          }
         >
           <UrdfViewer />
         </Fig>
@@ -116,22 +126,6 @@ export default function RobotModelPage() {
           <code style={{ fontFamily: NB.monoFont }}>laser</code> in this stack, not{' '}
           <code style={{ fontFamily: NB.monoFont }}>lidar_link</code>.
         </Callout>
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <section style={{ paddingTop: 8, paddingBottom: 24 }}>
-          <MonoLabel>Where this comes from</MonoLabel>
-          <p style={{ fontFamily: NB.bodyFont, fontSize: 15, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
-            The model is the open{' '}
-            <a href="https://github.com/osrbot/osracer" target="_blank" rel="noopener noreferrer" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-              osracer
-            </a>{' '}
-            robot description. The CAD meshes are simplified for the web, so the
-            silhouette is faithful while the triangle counts stay light enough to
-            spin at full frame rate. The kinematics, link names, and joint axes
-            are unchanged from the source.
-          </p>
-        </section>
       </ScrollReveal>
 
       <PrevNext

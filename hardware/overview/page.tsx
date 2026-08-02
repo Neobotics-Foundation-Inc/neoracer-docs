@@ -142,7 +142,7 @@ export default function HardwareOverviewPage() {
       <ScrollReveal>
         <Fig
           label="FIG. B / HOW IT ALL CONNECTS"
-          caption="Click a component to see how it connects and how it is powered."
+          caption="Click a component to see how it connects and how it is powered, or a signal label to see what the letters stand for."
         >
           <WiringDiagram />
         </Fig>

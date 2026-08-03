@@ -87,12 +87,10 @@ export default function ComputePage() {
             THE MICROCONTROLLER <Red>STACK</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-            The Jetson shines at perception and planning, but guaranteed
-            real-time response is not its strength: a Python garbage-collection
-            pause is longer than one control loop tick. That's where the
-            microcontroller stack comes in. It streams serial frames to the
-            Jetson over USB, the driver node bridges them into ROS 2, and it
-            takes care of the time-critical loops the Jetson can't.
+            The Jetson is built for seeing and planning, not precise timing:
+            even a short pause in Python lasts longer than one control loop
+            tick. The time-critical loops run on the microcontroller instead,
+            which talks to the Jetson over USB through the driver node.
           </p>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 22, marginTop: 22 }}>
             <NumberedFeatureCard n={1} title="Motor control" lede="PWM out to the ESC. Encoder counts in." body="Closed-loop velocity control runs at a fixed kHz tick so you don't see torque ripple from a stalled Python loop." />

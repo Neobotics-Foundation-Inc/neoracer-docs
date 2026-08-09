@@ -35,7 +35,7 @@ export default function RemoteControlPage() {
       {/* ── Hero ────────────────────────────────────────────────────────── */}
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="08" top={-30} right={-20} size={400} />
+          <GhostNumeral n="07" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               THE REMOTE <Red>CONTROL</Red>

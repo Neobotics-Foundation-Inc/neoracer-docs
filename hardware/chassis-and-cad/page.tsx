@@ -100,7 +100,7 @@ export default function ChassisAndCadPage() {
 
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="13" top={-30} right={-20} size={400} />
+          <GhostNumeral n="12" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               THE CHASSIS AND <Red>CAD</Red>

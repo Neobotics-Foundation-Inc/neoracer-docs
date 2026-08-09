@@ -56,7 +56,10 @@ export default function ConnectToCarPage() {
             </p>
             <PhotoSteps
               items={[
-                { text: <>If you haven&apos;t already, plug the longer USB-C cable into the LiDAR. This makes sure you connect the correct cable to the router in the later steps.</> },
+                {
+                  text: <>If you haven&apos;t already, plug the longer USB-C cable into the LiDAR. This makes sure you connect the correct cable to the router in the later steps.</>,
+                  photos: [{ src: '/images/lidar-plugged.jpg', alt: 'The longer USB-C cable plugged into the base of the LiDAR' }],
+                },
                 {
                   text: <>Unscrew the front two screws of the top chassis.</>,
                   photos: [
@@ -114,24 +117,18 @@ export default function ConnectToCarPage() {
                   photos: [{ src: '/images/jetson-antenna.jpeg', alt: 'An antenna cable next to the plastic antenna that screws onto it' }],
                 },
                 {
-                  text: <>Press each cable connector onto its socket on the card until it clicks.</>,
+                  text: <>Keep the Jetson on a steady surface and hold the U.FL connector perfectly vertical over its socket on the card. Remove any tension in the wire so the U.FL does not sit misaligned, then press the connector onto the socket until it clicks. It may take a few attempts, as the connector is very delicate.</>,
                   photos: [{ src: '/images/jetson-antenna-attached.jpeg', alt: 'An antenna cable attached to the Wi-Fi card socket' }],
                 },
                 {
-                  text: <>Screw the Jetson back onto its mount and route the cables through the chassis to the sides of the car.</>,
+                  text: <>Screw the Jetson back onto its mount and route the cables through the chassis to the sides of the car. Make sure all four screw holes line up with the Jetson before screwing it back in.</>,
                   photos: [{ src: '/images/jetson-antennas-hanging.jpeg', alt: 'The antenna cables routed through the chassis to the sides' }],
                 },
                 {
                   text: <>Screw the plastic antennas onto the cable ends on each side.</>,
                   photos: [{ src: '/images/jetson-antennas-attached-car.jpeg', alt: 'A plastic antenna screwed onto the cable at the side of the car' }],
                 },
-                {
-                  text: <>Zip-tie the antennas so they stay clear of the wheels and belt. One option is to tie them to the router&apos;s antennas, but any arrangement that keeps them clear works.</>,
-                  photos: [
-                    { src: '/images/jetson-antenna-ziptied-1.jpeg', alt: 'An antenna zip-tied to the router antenna' },
-                    { src: '/images/jetson-antenna-ziptied-2.jpeg', alt: 'Both sides of the car with the antennas zip-tied' },
-                  ],
-                },
+                { text: <>Zip-tie each antenna to the front of the top chassis, where the on/off switch is. Route the zip tie around the antenna with one side above it and one below. Do the same on the other side.</> },
               ]}
             />
           </div>

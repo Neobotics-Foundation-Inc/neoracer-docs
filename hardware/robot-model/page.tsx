@@ -88,8 +88,8 @@ export default function RobotModelPage() {
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'Overview', href: '/docs/hardware/overview' }}
-        next={{ label: 'Compute', href: '/docs/hardware/compute' }}
+        prev={{ label: 'Safety', href: '/docs/hardware/safety' }}
+        next={{ label: 'Reassembly', href: '/docs/hardware/reassembly' }}
       />
     </DocsShell>
   );

@@ -296,7 +296,7 @@ export default function ReassemblyPage() {
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'Safety', href: '/docs/hardware/safety' }}
+        prev={{ label: '3D model', href: '/docs/hardware/robot-model' }}
         next={{ label: 'OS & image', href: '/docs/software/os-and-image' }}
       />
     </DocsShell>

@@ -38,7 +38,7 @@ export default function ConnectToCarPage() {
               CONNECT TO THE <Red>CAR</Red>
             </DisplayHeading>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="outline" icon={<ClockGlyph />}>~15 minutes</ChromeBadge>
+              <ChromeBadge variant="outline" icon={<ClockGlyph />}>~30 minutes</ChromeBadge>
             </div>
           </div>
         </section>

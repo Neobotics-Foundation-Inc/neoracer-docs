@@ -173,16 +173,13 @@ export default function ConnectToCarPage() {
                   <code style={{ fontFamily: NB.monoFont }}>neobotics</code>).</>,
               ]}
             />
+            <Callout type="note" title="Why this setup happens on the car">
+              A brand new car is not on any network yet, so there is no way to
+              log in remotely. The first setup is done with a monitor and
+              keyboard plugged directly into the car.
+            </Callout>
           </div>
         </section>
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <Callout type="note" title="Why this setup happens on the car">
-          A brand new car is not on any network yet, so there is no way to log
-          in remotely. The first setup is done with a monitor and keyboard
-          plugged directly into the car.
-        </Callout>
       </ScrollReveal>
 
       {/* ── 05 · Internet ───────────────────────────────────────────── */}

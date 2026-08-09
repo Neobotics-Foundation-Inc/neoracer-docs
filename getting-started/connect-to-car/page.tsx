@@ -5,6 +5,7 @@ import {
   DisplayHeading,
   Red,
   GhostNumeral,
+  MonoLabel,
   DashList,
   ChromeBadge,
   ClockGlyph,
@@ -43,6 +44,22 @@ export default function ConnectToCarPage() {
           </div>
         </section>
       </MouseFollowGlow>
+
+      {/* You'll need */}
+      <ScrollReveal>
+        <section style={{ paddingBottom: 24 }}>
+          <MonoLabel>You'll need</MonoLabel>
+          <DashList
+            items={[
+              <>The NeoRacer and its accessories.</>,
+              <>The Cudy router.</>,
+              <>A LiPo battery.</>,
+              <>A monitor and a USB keyboard.</>,
+              <>An internet connection.</>,
+            ]}
+          />
+        </section>
+      </ScrollReveal>
 
       {/* ── The setup, as a timeline of collapsible sections ─────────── */}
       <ScrollReveal>

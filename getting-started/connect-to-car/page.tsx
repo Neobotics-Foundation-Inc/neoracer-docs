@@ -131,6 +131,10 @@ export default function ConnectToCarPage() {
                 { text: <>Zip-tie each antenna to the front of the top chassis, where the on/off switch is. Route the zip tie around the antenna with one side above it and one below. Do the same on the other side.</> },
               ]}
             />
+            <Callout type="tip" title="Keep the connectors seated">
+              If needed, a small dab of hot glue or a strip of electrical tape
+              over each connector keeps it from disconnecting by accident.
+            </Callout>
           </div>
         </section>
       </ScrollReveal>
@@ -159,11 +163,6 @@ export default function ConnectToCarPage() {
             <DisplayHeading size="lg">
               PLUG IN A MONITOR AND <Red>KEYBOARD</Red>
             </DisplayHeading>
-            <Callout type="note" title="Why this setup happens on the car">
-              A brand new car is not on any network yet, so there is no way to
-              log in remotely. The first setup is done with a monitor and
-              keyboard plugged directly into the car.
-            </Callout>
             <DashList
               items={[
                 <>Remove the HDMI plug already on the car and keep it somewhere safe. Whenever a monitor is not connected, it needs to be plugged back in.</>,
@@ -176,6 +175,14 @@ export default function ConnectToCarPage() {
             />
           </div>
         </section>
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <Callout type="note" title="Why this setup happens on the car">
+          A brand new car is not on any network yet, so there is no way to log
+          in remotely. The first setup is done with a monitor and keyboard
+          plugged directly into the car.
+        </Callout>
       </ScrollReveal>
 
       {/* ── 05 · Internet ───────────────────────────────────────────── */}

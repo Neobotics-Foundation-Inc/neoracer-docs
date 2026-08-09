@@ -285,7 +285,6 @@ http://192.168.10.100:8080     # cudy router`}</Code>
 
       <PrevNext
         prev={{ label: 'Connect to the car', href: '/docs/getting-started/connect-to-car' }}
-        next={{ label: 'First program', href: '/docs/getting-started/first-program' }}
       />
     </DocsShell>
   );

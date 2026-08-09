@@ -56,7 +56,7 @@ export default function ConnectToCarPage() {
             </p>
             <PhotoSteps
               items={[
-                { text: <>Before installing the router, note the longer USB-C cable coming out of the left side of the car. It belongs to the LiDAR, not the router.</> },
+                { text: <>Before installing the router, note the longer USB-C cable coming out of the left side of the car. It connects to the LiDAR, not the router.</> },
                 {
                   text: <>Unscrew the front two screws of the top chassis.</>,
                   photos: [

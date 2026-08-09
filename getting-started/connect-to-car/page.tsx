@@ -139,7 +139,37 @@ export default function ConnectToCarPage() {
         </section>
       </ScrollReveal>
 
-      {/* ── 03 · Battery + sidepods ──────────────────────────────────── */}
+      {/* ── 03 · Jetson peripherals ──────────────────────────────────── */}
+      <ScrollReveal>
+        <section style={{ position: 'relative', paddingBottom: 44 }}>
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <DisplayHeading size="lg">
+              CONNECT THE JETSON <Red>PERIPHERALS</Red>
+            </DisplayHeading>
+            <PhotoSteps
+              items={[
+                {
+                  text: <>Find the two cables on the right side of the car: one USB-A and one DC barrel jack.</>,
+                  photos: [{ src: '/images/jetson-cables-unplugged.jpg', alt: 'The USB-A and DC barrel jack cables on the right side of the car' }],
+                },
+                {
+                  text: <>Plug both into the Jetson.</>,
+                  photos: [{ src: '/images/jetson-cables-plugged.jpg', alt: 'The USB-A and DC barrel jack cables plugged into the Jetson' }],
+                },
+                {
+                  text: <>Make sure the camera is plugged into the Jetson. The camera uses a JST-PH connector and connects over USB-A.</>,
+                  photos: [
+                    { src: '/images/camera-plugged.jpg', alt: 'The JST-PH connector plugged into the back of the camera' },
+                    { src: '/images/jetson-camera-plugged.jpg', alt: "The camera's USB-A cable plugged into the Jetson" },
+                  ],
+                },
+              ]}
+            />
+          </div>
+        </section>
+      </ScrollReveal>
+
+      {/* ── 04 · Battery + sidepods ──────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 44 }}>
           <div style={{ position: 'relative', zIndex: 1 }}>
@@ -156,7 +186,7 @@ export default function ConnectToCarPage() {
         </section>
       </ScrollReveal>
 
-      {/* ── 04 · Console ─────────────────────────────────────────────── */}
+      {/* ── 05 · Console ─────────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 44 }}>
           <div style={{ position: 'relative', zIndex: 1 }}>
@@ -182,7 +212,7 @@ export default function ConnectToCarPage() {
         </section>
       </ScrollReveal>
 
-      {/* ── 05 · Internet ───────────────────────────────────────────── */}
+      {/* ── 06 · Internet ───────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 44 }}>
           <div style={{ position: 'relative', zIndex: 1 }}>

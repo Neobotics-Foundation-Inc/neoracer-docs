@@ -54,7 +54,8 @@ export default function ConnectToCarPage() {
               <>The NeoRacer and its accessories.</>,
               <>The Cudy router.</>,
               <>A LiPo battery.</>,
-              <>A monitor and a USB keyboard.</>,
+              <>A USB keyboard and mouse.</>,
+              <>A monitor with an HDMI cable.</>,
               <>An internet connection.</>,
             ]}
           />

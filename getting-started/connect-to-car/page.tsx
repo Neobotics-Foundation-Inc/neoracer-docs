@@ -132,8 +132,8 @@ export default function ConnectToCarPage() {
               ]}
             />
             <Callout type="tip" title="Keep the connectors seated">
-              If needed, a small dab of hot glue or a strip of electrical tape
-              over each connector keeps it from disconnecting by accident.
+              If needed, apply some hot glue or electrical tape over each
+              connector to keep it from disconnecting by accident.
             </Callout>
           </div>
         </section>

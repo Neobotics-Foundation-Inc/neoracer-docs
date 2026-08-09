@@ -125,7 +125,7 @@ export default function ComputePage() {
 
       <PrevNext
         prev={{ label: 'Hardware overview', href: '/docs/hardware/overview' }}
-        next={{ label: 'Sensors', href: '/docs/hardware/sensors' }}
+        next={{ label: 'LiDAR', href: '/docs/hardware/sensors/lidar' }}
       />
     </DocsShell>
   );

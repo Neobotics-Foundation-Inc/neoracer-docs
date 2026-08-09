@@ -43,15 +43,49 @@ export default function ConnectToCarPage() {
         </section>
       </MouseFollowGlow>
 
+      {/* ── 01 · Router ──────────────────────────────────────────────── */}
       <ScrollReveal>
-        <Callout type="note" title="Why this setup happens on the car">
-          A brand new car is not on any network yet, so there is no way to log
-          in remotely. The first setup is done with a monitor and keyboard
-          plugged directly into the car.
-        </Callout>
+        <section style={{ position: 'relative', paddingBottom: 44 }}>
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <DisplayHeading size="lg">
+              FIT THE CUDY <Red>ROUTER</Red>
+            </DisplayHeading>
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
+              The Cudy router sits inside the mid chassis, under the top plate.
+              Steps with a camera icon have a reference picture.
+            </p>
+            <PhotoSteps
+              items={[
+                { text: <>If you haven&apos;t already, plug the longer USB-C cable into the LiDAR. This makes sure you connect the correct cable to the router in the later steps.</> },
+                {
+                  text: <>Unscrew the front two screws of the top chassis.</>,
+                  photos: [
+                    { src: '/images/chassis-screw-fl.jpeg', alt: 'The front-left top chassis screw' },
+                    { src: '/images/chassis-screw-fr.jpeg', alt: 'The front-right top chassis screw' },
+                  ],
+                },
+                {
+                  text: <>Unscrew the dot matrix to access the rear top-chassis screws.</>,
+                  photos: [{ src: '/images/dot-matrix-screws.jpeg', alt: 'The dot matrix screws' }],
+                },
+                {
+                  text: <>Unscrew the rear two screws.</>,
+                  photos: [{ src: '/images/chassis-screws-blr.jpeg', alt: 'The rear two top chassis screws' }],
+                },
+                { text: <>The top chassis can now be removed, or rotated a little out of the way. Be careful with the cables.</> },
+                { text: <>Take the Cudy router on its own, without its cables, and slide it into the rear of the car under the top chassis.</> },
+                {
+                  text: <>Connect the Ethernet cable and the short USB-C cable in the top chassis. Make sure you use the correct USB-C cable: the shorter one connects to the underside of the PCB, while the LiDAR&apos;s cable connects to the top side.</>,
+                  photos: [{ src: '/images/chassis-cudy.jpeg', alt: 'The Cudy router in the chassis with the Ethernet and short USB-C cable connected' }],
+                },
+                { text: <>Fit the router snugly within the top chassis and screw the chassis back in.</> },
+              ]}
+            />
+          </div>
+        </section>
       </ScrollReveal>
 
-      {/* ── 01 · Antennas ────────────────────────────────────────────── */}
+      {/* ── 02 · Antennas ────────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 44 }}>
           <div style={{ position: 'relative', zIndex: 1 }}>
@@ -62,7 +96,7 @@ export default function ConnectToCarPage() {
               The Jetson&apos;s Wi-Fi card sits on its underside, so the two
               antenna cables are attached from below. Each antenna comes in two
               parts: the cable, and the plastic antenna that screws onto its
-              end. Steps with a camera icon have a reference picture.
+              end.
             </p>
             <PhotoSteps
               items={[
@@ -104,47 +138,6 @@ export default function ConnectToCarPage() {
         </section>
       </ScrollReveal>
 
-      {/* ── 02 · Router ──────────────────────────────────────────────── */}
-      <ScrollReveal>
-        <section style={{ position: 'relative', paddingBottom: 44 }}>
-          <div style={{ position: 'relative', zIndex: 1 }}>
-            <DisplayHeading size="lg">
-              FIT THE CUDY <Red>ROUTER</Red>
-            </DisplayHeading>
-            <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-              The Cudy router sits inside the mid chassis, under the top plate.
-            </p>
-            <PhotoSteps
-              items={[
-                { text: <>If you haven&apos;t already, plug the longer USB-C cable into the LiDAR. This makes sure you connect the correct cable to the router in the later steps.</> },
-                {
-                  text: <>Unscrew the front two screws of the top chassis.</>,
-                  photos: [
-                    { src: '/images/chassis-screw-fl.jpeg', alt: 'The front-left top chassis screw' },
-                    { src: '/images/chassis-screw-fr.jpeg', alt: 'The front-right top chassis screw' },
-                  ],
-                },
-                {
-                  text: <>Unscrew the dot matrix to access the rear top-chassis screws.</>,
-                  photos: [{ src: '/images/dot-matrix-screws.jpeg', alt: 'The dot matrix screws' }],
-                },
-                {
-                  text: <>Unscrew the rear two screws.</>,
-                  photos: [{ src: '/images/chassis-screws-blr.jpeg', alt: 'The rear two top chassis screws' }],
-                },
-                { text: <>The top chassis can now be removed, or rotated a little out of the way. Be careful with the cables.</> },
-                { text: <>Take the Cudy router on its own, without its cables, and slide it into the rear of the car under the top chassis.</> },
-                {
-                  text: <>Connect the Ethernet cable and the short USB-C cable in the top chassis. Make sure you use the correct USB-C cable: the shorter one connects to the underside of the PCB, while the LiDAR&apos;s cable connects to the top side.</>,
-                  photos: [{ src: '/images/chassis-cudy.jpeg', alt: 'The Cudy router in the chassis with the Ethernet and short USB-C cable connected' }],
-                },
-                { text: <>Fit the router snugly within the top chassis and screw the chassis back in.</> },
-              ]}
-            />
-          </div>
-        </section>
-      </ScrollReveal>
-
       {/* ── 03 · Battery + sidepods ──────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 44 }}>
@@ -169,6 +162,11 @@ export default function ConnectToCarPage() {
             <DisplayHeading size="lg">
               PLUG IN A MONITOR AND <Red>KEYBOARD</Red>
             </DisplayHeading>
+            <Callout type="note" title="Why this setup happens on the car">
+              A brand new car is not on any network yet, so there is no way to
+              log in remotely. The first setup is done with a monitor and
+              keyboard plugged directly into the car.
+            </Callout>
             <DashList
               items={[
                 <>Remove the HDMI plug already on the car and keep it somewhere safe. Whenever a monitor is not connected, it needs to be plugged back in.</>,

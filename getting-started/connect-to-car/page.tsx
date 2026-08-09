@@ -157,9 +157,9 @@ export default function ConnectToCarPage() {
                   photos: [{ src: '/images/jetson-cables-plugged.jpg', alt: 'The USB-A and DC barrel jack cables plugged into the Jetson' }],
                 },
                 {
-                  text: <>Make sure the camera is plugged into the Jetson. The camera uses a JST-PH connector and connects over USB-A.</>,
+                  text: <>Make sure the camera is plugged into the Jetson. The camera uses a JST connector and connects over USB-A.</>,
                   photos: [
-                    { src: '/images/camera-plugged.jpg', alt: 'The JST-PH connector plugged into the back of the camera' },
+                    { src: '/images/camera-plugged.jpg', alt: 'The JST connector plugged into the back of the camera' },
                     { src: '/images/jetson-camera-plugged.jpg', alt: "The camera's USB-A cable plugged into the Jetson" },
                   ],
                 },

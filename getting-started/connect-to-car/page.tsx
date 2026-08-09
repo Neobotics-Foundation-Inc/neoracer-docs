@@ -56,10 +56,7 @@ export default function ConnectToCarPage() {
             </p>
             <PhotoSteps
               items={[
-                {
-                  text: <>If you haven&apos;t already, plug the longer USB-C cable into the LiDAR. This makes sure you connect the correct cable to the router in the later steps.</>,
-                  photos: [{ src: '/images/lidar-plugged.jpg', alt: 'The longer USB-C cable plugged into the base of the LiDAR' }],
-                },
+                { text: <>Before installing the router, take note of the longer USB-C cable extending out of the left side of the car. That cable is for the LiDAR, not the router, as seen in the later steps. Refer to CONNECT THE JETSON PERIPHERALS to connect the LiDAR.</> },
                 {
                   text: <>Unscrew the front two screws of the top chassis.</>,
                   photos: [
@@ -131,7 +128,7 @@ export default function ConnectToCarPage() {
                 { text: <>Zip-tie each antenna to the front of the top chassis, where the on/off switch is. Route the zip tie around the antenna with one side above it and one below. Do the same on the other side.</> },
               ]}
             />
-            <Callout type="tip" title="Keep the connectors seated">
+            <Callout type="tip" title="Additional help to keep the connectors secure">
               If needed, apply some hot glue or electrical tape over each
               connector to keep it from disconnecting by accident.
             </Callout>
@@ -153,7 +150,7 @@ export default function ConnectToCarPage() {
                   photos: [{ src: '/images/jetson-cables-unplugged.jpg', alt: 'The USB-A and DC barrel jack cables on the right side of the car' }],
                 },
                 {
-                  text: <>Plug both into the Jetson.</>,
+                  text: <>Plug both cables into the Jetson.</>,
                   photos: [{ src: '/images/jetson-cables-plugged.jpg', alt: 'The USB-A and DC barrel jack cables plugged into the Jetson' }],
                 },
                 {
@@ -162,6 +159,10 @@ export default function ConnectToCarPage() {
                     { src: '/images/camera-plugged.jpg', alt: 'The JST connector plugged into the back of the camera' },
                     { src: '/images/jetson-camera-plugged.jpg', alt: "The camera's USB-A cable plugged into the Jetson" },
                   ],
+                },
+                {
+                  text: <>Plug the longer USB-C cable into the LiDAR.</>,
+                  photos: [{ src: '/images/lidar-plugged.jpg', alt: 'The longer USB-C cable plugged into the base of the LiDAR' }],
                 },
               ]}
             />

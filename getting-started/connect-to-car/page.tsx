@@ -190,8 +190,9 @@ export default function ConnectToCarPage() {
               content: (
                 <PhotoSteps
                   items={[
+                    { text: <>Make sure the car power switch is off.</> },
                     {
-                      text: <>Place the battery on the left side of the car.</>,
+                      text: <>Place the battery on the left side of the car. Connect the XT60 cable to the car and tuck the balance lead inside the chassis.</>,
                       photos: [{ src: '/images/battery_placement.jpeg', alt: 'The battery in its tray on the left side of the car, with the XT60 connector and power switch highlighted' }],
                     },
                     {

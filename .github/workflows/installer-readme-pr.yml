@@ -19,7 +19,7 @@ name: Installer README sync
 
 on:
   schedule:
-    - cron: '41 */6 * * *' # every 6 hours, offset minute per GitHub guidance
+    - cron: '41 8 1,15 * *' # twice a month (the 1st and 15th); README changes rarely
   workflow_dispatch: {}
 
 permissions:

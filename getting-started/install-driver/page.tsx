@@ -43,7 +43,7 @@ export default function InstallDriverPage() {
               motors.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="outline" icon={<ClockGlyph />}><AnimatedNumeral value={30} prefix="~" suffix=" minutes" /></ChromeBadge>
+              <ChromeBadge variant="outline" icon={<ClockGlyph />}><AnimatedNumeral value={45} prefix="~" suffix=" minutes" /></ChromeBadge>
             </div>
           </div>
         </section>

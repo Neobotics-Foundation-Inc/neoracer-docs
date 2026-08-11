@@ -1,0 +1,88 @@
+name: Installer README sync
+
+# The install-driver page renders a vendored copy of the neoracer-installer
+# README (getting-started/install-driver/installer-readme.md), so the
+# installer repo stays the single source of truth. This workflow keeps ONE
+# rolling pull request ("installer-readme-sync" branch) that refreshes the
+# vendored copy whenever the upstream README changes. Merging it updates
+# docs main; the website's "Docs deploy PR" workflow then ships it like any
+# other docs change. Nothing lands unreviewed, and no cross-repo token is
+# needed: the schedule polls the public installer repo.
+#
+# The installer-readme-sync branch is bot-owned and force-pushed on every
+# refresh; never do manual work on it. If the vendored copy is already
+# current, any stale sync PR is closed automatically.
+#
+# For an immediate PR after changing the installer README, trigger this
+# manually (Actions tab -> Installer README sync -> Run workflow, or
+# `gh workflow run installer-readme-pr.yml`).
+
+on:
+  schedule:
+    - cron: '41 */6 * * *' # every 6 hours, offset minute per GitHub guidance
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: installer-readme-pr
+  cancel-in-progress: true
+
+env:
+  VENDORED: getting-started/install-driver/installer-readme.md
+  UPSTREAM: https://raw.githubusercontent.com/Neobotics-Foundation-Inc/neoracer-installer/main/README.md
+
+jobs:
+  sync-pr:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - name: Checkout docs
+        uses: actions/checkout@v4
+
+      - name: Compare the vendored copy with the upstream README
+        id: compare
+        run: |
+          curl -fsSL "$UPSTREAM" -o /tmp/upstream-readme.md
+          if cmp -s /tmp/upstream-readme.md "$VENDORED"; then
+            echo "up_to_date=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "up_to_date=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Close a stale sync PR if the copy is already current
+        if: steps.compare.outputs.up_to_date == 'true'
+        run: |
+          PR=$(gh pr list --head installer-readme-sync --state open --json number --jq '.[0].number')
+          if [ -n "$PR" ]; then
+            gh pr close "$PR" --comment "The vendored installer README is already current; closing." --delete-branch
+          fi
+          echo "Nothing to sync."
+
+      - name: Refresh the installer-readme-sync branch
+        if: steps.compare.outputs.up_to_date == 'false'
+        run: |
+          git config user.name "installer-readme-sync[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B installer-readme-sync
+          cp /tmp/upstream-readme.md "$VENDORED"
+          git add "$VENDORED"
+          git commit -m "docs: sync the installer README from neoracer-installer"
+          git push -f origin installer-readme-sync
+
+      - name: Open the sync PR if none is open
+        if: steps.compare.outputs.up_to_date == 'false'
+        run: |
+          PR=$(gh pr list --head installer-readme-sync --state open --json number --jq '.[0].number')
+          if [ -z "$PR" ]; then
+            gh pr create \
+              --base main \
+              --head installer-readme-sync \
+              --title "Sync the installer README" \
+              --body "The neoracer-installer README changed upstream. This refreshes the vendored copy rendered on the install-driver page. Review the diff, then merge with a merge commit; the website's Deploy docs PR ships it."
+          else
+            echo "Sync PR #$PR already open; the branch refresh updated it."
+          fi

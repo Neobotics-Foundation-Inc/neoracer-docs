@@ -1,4 +1,5 @@
-import Link from 'next/link';
+import fs from 'node:fs';
+import path from 'node:path';
 import { Metadata } from 'next';
 import DocsShell from '@/components/docs/DocsShell';
 import { NB } from '@/lib/nb-tokens';
@@ -8,19 +9,28 @@ import {
   GhostNumeral,
   ChromeBadge,
   ClockGlyph,
-  MonoLabel,
-  DashList,
 } from '@/components/docs/Editorial';
-import { ScrollReveal, MouseFollowGlow, AnimatedNumeral, InfoNote, TabbedPanels } from '@/components/docs/Interactive';
-import { Crumbs, Callout, PrevNext, Code, DataTable } from '@/components/docs/DocsPrimitives';
+import { ScrollReveal, MouseFollowGlow, AnimatedNumeral } from '@/components/docs/Interactive';
+import { MarkdownDoc } from '@/components/docs/MarkdownDoc';
+import { Crumbs, PrevNext } from '@/components/docs/DocsPrimitives';
+
+const INSTALLER_REPO = 'https://github.com/Neobotics-Foundation-Inc/neoracer-installer';
 
 export const metadata: Metadata = {
   title: 'Install the driver · Setup · NeoRacer Docs',
   description:
-    'One script sets up the whole car: clone neoracer_ros2_driver, run setup_all.sh, and the sensors, motors, JupyterLab, and the racecar-neo library come up as services that start on every boot.',
+    'One installer sets up the whole car: clone neoracer-installer, run install.sh, and the ROS2 driver, the GPU stack, and every service install and verify themselves.',
 };
 
 export default function InstallDriverPage() {
+  // This page renders the neoracer-installer README so the repo stays the
+  // single source of truth. The vendored copy is kept fresh by the
+  // installer-readme-pr workflow in the docs repo.
+  const readme = fs.readFileSync(
+    path.join(process.cwd(), 'src/app/docs/getting-started/install-driver/installer-readme.md'),
+    'utf8',
+  );
+
   return (
     <DocsShell>
       <Crumbs
@@ -40,7 +50,7 @@ export default function InstallDriverPage() {
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
               The driver is the software that ties the Jetson to the sensors and
-              motors.
+              motors. One script installs all of it.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="outline" icon={<ClockGlyph />}><AnimatedNumeral value={45} prefix="~" suffix=" minutes" /></ChromeBadge>
@@ -49,239 +59,18 @@ export default function InstallDriverPage() {
         </section>
       </MouseFollowGlow>
 
-      {/* ── Run setup ────────────────────────────────────────────────── */}
+      {/* ── The installer README, rendered in the docs style ─────────── */}
       <ScrollReveal>
-        <section style={{ paddingBottom: 36 }}>
-          <DisplayHeading size="lg">
-            RUN THE <Red>SETUP</Red>
-          </DisplayHeading>
-          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-            The driver code is in the{' '}
-            <a href="https://github.com/Neobotics-Foundation-Inc/neoracer_ros2_driver" target="_blank" rel="noopener noreferrer" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-              neoracer_ros2_driver
-            </a>{' '}
-            repository. Check if the driver is already on the car and follow the
-            corresponding instructions. The script asks for your password
-            (<code style={{ fontFamily: NB.monoFont }}>neobotics</code>) once.
-          </p>
-          <TabbedPanels
-            tabs={[
-              {
-                label: 'Bought a NeoRacer',
-                accent: NB.neoboticsRed,
-                content: (
-                  <>
-                    <p style={{ fontFamily: NB.bodyFont, fontSize: 14.5, lineHeight: 1.6, color: NB.textMutedBeige, margin: '0 0 12px' }}>
-                      Factory cars ship with the repository at{' '}
-                      <code style={{ fontFamily: NB.monoFont }}>~/ros2_ws/src/neoracer_ros2_driver</code>.
-                      Pull the latest and run the script.
-                    </p>
-                    <Code lang="bash">{`cd ~/ros2_ws/src/neoracer_ros2_driver
-git pull
-bash scripts/setup_all.sh`}</Code>
-                  </>
-                ),
-              },
-              {
-                label: 'Building your own',
-                accent: NB.tarmacBlue,
-                content: (
-                  <>
-                    <p style={{ fontFamily: NB.bodyFont, fontSize: 14.5, lineHeight: 1.6, color: NB.textMutedBeige, margin: '0 0 12px' }}>
-                      Since you&apos;re probably working with a stock Jetson Orin
-                      Nano, clone the repository first, then run the same script.
-                    </p>
-                    <Code lang="bash">{`mkdir -p ~/ros2_ws/src && cd ~/ros2_ws/src
-git clone https://github.com/Neobotics-Foundation-Inc/neoracer_ros2_driver.git
-bash neoracer_ros2_driver/scripts/setup_all.sh`}</Code>
-                  </>
-                ),
-              },
-            ]}
-          />
-          <Callout type="tip" title="Safe to re-run">
-            The script is idempotent: it skips anything already done. If it stops
-            partway (a dropped connection, a typo&apos;d password), run it again
-            and it picks up where it left off.
-          </Callout>
-        </section>
+        <MarkdownDoc source={readme} repoUrl={INSTALLER_REPO} />
       </ScrollReveal>
 
-      {/* ── What it set up ───────────────────────────────────────────── */}
-      <ScrollReveal>
-        <section style={{ paddingBottom: 36 }}>
-          <DisplayHeading size="lg">
-            WHAT THE SCRIPT IS <Red>RUNNING</Red>
-          </DisplayHeading>
-          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-            The script prints each phase as it runs. This is what each phase
-            does:
-          </p>
-          {[
-            { t: 'ROS 2 + dependencies', d: <>Installs ROS 2 Humble and the packages the driver builds against.</> },
-            { t: 'Dev tools', d: <>The build and debugging tools used throughout these docs.</> },
-            { t: 'User environment', d: <>Adds <code style={{ fontFamily: NB.monoFont }}>racecar</code> to the hardware groups and wires the{' '}
-              <code style={{ fontFamily: NB.monoFont }}>racecar</code> command into your shell.</> },
-            { t: 'udev rules', d: <>Gives the car&apos;s boards fixed device names (
-              <code style={{ fontFamily: NB.monoFont }}>/dev/osrbot_base</code>,{' '}
-              <code style={{ fontFamily: NB.monoFont }}>/dev/osrbot_usb_cam</code>,{' '}
-              <code style={{ fontFamily: NB.monoFont }}>/dev/osrbot_led_matrix</code>) so they never shuffle between boots.</> },
-            { t: 'Workspace build', d: <>Compiles the driver and the LakiBeam LiDAR driver with{' '}
-              <InfoNote term="colcon" title="colcon">
-                The standard build tool for ROS 2. It compiles every package in a
-                workspace and sets up the paths so you can run them.
-              </InfoNote>.</> },
-            { t: 'JupyterLab + the student library', d: <>Installs the browser coding environment and the{' '}
-              <Link href="/docs/software/racecar-neo-library" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>racecar-neo library</Link>{' '}
-              with its labs into <code style={{ fontFamily: NB.monoFont }}>~/jupyter_ws</code>.</> },
-            { t: 'Services', d: <>Installs the four services and enables them on boot: the driver (
-              <code style={{ fontFamily: NB.monoFont }}>neoracer-teleop</code>), a watchdog that restarts anything that fails, the health dashboard on port{' '}
-              <code style={{ fontFamily: NB.monoFont }}>8080</code>, and JupyterLab on port{' '}
-              <code style={{ fontFamily: NB.monoFont }}>8888</code>.</> },
-          ].map((s, i) => (
-            <div key={i} style={{ display: 'grid', gridTemplateColumns: '52px 1fr', gap: 16, padding: '20px 0', borderBottom: `1px solid ${NB.borderOnBeige}` }}>
-              <div style={{ fontFamily: NB.headingFont, fontSize: 36, fontWeight: 900, lineHeight: 1, color: NB.neoboticsRed, letterSpacing: '-0.02em' }}>
-                {String(i + 1).padStart(2, '0')}
-              </div>
-              <div>
-                <div style={{ fontFamily: NB.headingFont, fontSize: 20, fontWeight: 700, color: NB.textOnBeige, marginBottom: 4 }}>{s.t}</div>
-                <p style={{ fontFamily: NB.bodyFont, fontSize: 15, lineHeight: 1.65, color: NB.textMutedBeige, margin: 0 }}>{s.d}</p>
-              </div>
-            </div>
-          ))}
-        </section>
-      </ScrollReveal>
-
-      {/* ── Start it ─────────────────────────────────────────────────── */}
-      <ScrollReveal>
-        <section style={{ paddingBottom: 36 }}>
-          <DisplayHeading size="lg">
-            START THE <Red>SERVICES</Red>
-          </DisplayHeading>
-          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-            The setup just changed two things about your login: it added the{' '}
-            <code style={{ fontFamily: NB.monoFont }}>racecar</code> command to your
-            shell, and it added your user to the hardware groups that own the
-            car&apos;s serial ports. Linux applies both at login, so your current
-            session doesn&apos;t have them yet.
-          </p>
-          <MonoLabel>Reboot the car</MonoLabel>
-          <Code lang="bash">{`sudo reboot`}</Code>
-          <MonoLabel>Start the services</MonoLabel>
-          <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 6 }}>
-            You only need to do this once. After this, the services start
-            automatically every time the car powers on.
-          </p>
-          <Code lang="bash">{`racecar service start`}</Code>
-          <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 14 }}>
-            This starts the ESP32 bridge (motors, IMU, odometry, the FlySky
-            receiver), the LiDAR, the camera, the LED matrix, the drive pipeline
-            that arbitrates between the remote and your code, the watchdog, the
-            dashboard, and JupyterLab. The full picture of these nodes and their
-            topics is on{' '}
-            <Link href="/docs/software/ros2-driver" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>The ROS 2 driver</Link>.
-          </p>
-        </section>
-      </ScrollReveal>
-
-      {/* ── Verify ───────────────────────────────────────────────────── */}
-      <ScrollReveal>
-        <section style={{ paddingBottom: 36 }}>
-          <DisplayHeading size="lg">
-            QUICK <Red>CHECKS</Red>
-          </DisplayHeading>
-          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-            Each check confirms a different layer: the services are running, the
-            sensors are streaming, and you can see it all from a browser.
-          </p>
-          <MonoLabel>The services</MonoLabel>
-          <Code lang="bash">{`racecar service status
-#   neoracer-teleop      active   enabled
-#   neoracer-watchdog    active   enabled
-#   neoracer-dashboard   active   enabled
-#   neoracer-jupyter     active   enabled`}</Code>
-          <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 6 }}>
-            If any service is not active, restart them:
-          </p>
-          <Code lang="bash">{`racecar service stop
-racecar service start`}</Code>
-          <MonoLabel>The sensors</MonoLabel>
-          <Code lang="bash">{`source /opt/ros/humble/setup.bash && source ~/ros2_ws/install/setup.bash
-ros2 topic hz /scan     # LiDAR, about 30 Hz
-ros2 topic hz /camera   # camera, about 60 Hz`}</Code>
-          <MonoLabel>The dashboard</MonoLabel>
-          <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 6 }}>
-            Open the health dashboard in a browser on the car&apos;s network. Every
-            card should be green: sensors, drive pipeline, temperature. The
-            addresses below are examples; yours might be slightly different,
-            but will look similar.
-          </p>
-          <Code lang="bash">{`http://10.42.0.1:8080          # access point
-http://192.168.10.100:8080     # cudy router`}</Code>
-          <div style={{ marginTop: 18 }}>
-            <DataTable
-              columns={[
-                { key: 'what', label: 'Feature', accent: true },
-                { key: 'where', label: 'Port/Command', mono: true },
-              ]}
-              rows={[
-                { what: 'Health dashboard', where: ':8080' },
-                { what: 'JupyterLab (write code here next)', where: ':8888' },
-                { what: 'Driver logs', where: 'racecar service logs' },
-              ]}
-            />
-          </div>
-        </section>
-      </ScrollReveal>
-
-      {/* ── The car's own network ────────────────────────────────────── */}
-      <ScrollReveal>
-        <section style={{ paddingBottom: 36 }}>
-          <DisplayHeading size="lg">
-            THE CAR'S OWN <Red>NETWORK</Red>
-          </DisplayHeading>
-          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-            Until now the car has been on your Wi-Fi, which was only needed for
-            the install. To use the car anywhere, it gets two permanent networks
-            of its own:
-          </p>
-          <DashList
-            items={[
-              <><strong>Its own Wi-Fi hotspot.</strong> The car broadcasts{' '}
-                <code style={{ fontFamily: NB.monoFont }}>neoracer-1</code>; your
-                laptop joins it directly, and the car is always at{' '}
-                <code style={{ fontFamily: NB.monoFont }}>10.42.0.1</code>. Works
-                anywhere, with no other equipment.</>,
-              <><strong>The Cudy router&apos;s network.</strong> The car is wired
-                to the router you just fitted, and always has the address{' '}
-                <code style={{ fontFamily: NB.monoFont }}>192.168.10.100</code>{' '}
-                on it.</>,
-            ]}
-          />
-          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-            One command sets up both. Run it at the console:
-          </p>
-          <Code lang="bash">{`racecar setup networking     # at the console`}</Code>
-          <Callout type="warn" title="This takes the car off your Wi-Fi">
-            The command claims the Wi-Fi radio for the access point, so the
-            car&apos;s connection to your network (and any Wi-Fi SSH session)
-            drops the moment it runs. That is the point: from here the car makes
-            its own network. Run it at the console, not over Wi-Fi.
-          </Callout>
-          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-            Then connect from your laptop: join{' '}
-            <code style={{ fontFamily: NB.monoFont }}>neoracer-1</code> (password{' '}
-            <code style={{ fontFamily: NB.monoFont }}>neobotics</code>) and{' '}
-            <code style={{ fontFamily: NB.monoFont }}>ssh racecar@10.42.0.1</code>,
-            or join the cudy router&apos;s Wi-Fi and use{' '}
-            <code style={{ fontFamily: NB.monoFont }}>192.168.10.100</code>.
-            Otherwise, you can use RustDesk in{' '}
-            <Link href="/docs/software/remote-desktop" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Remote desktop</Link>.
-            Other details are in{' '}
-            <Link href="/docs/software/networking" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Networking</Link>.
-          </p>
-        </section>
-      </ScrollReveal>
+      <p style={{ fontFamily: NB.monoFont, fontSize: 12, letterSpacing: '0.08em', textTransform: 'uppercase', color: NB.textMutedBeige, marginTop: 40 }}>
+        This page mirrors the{' '}
+        <a href={INSTALLER_REPO} target="_blank" rel="noopener noreferrer" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
+          neoracer-installer
+        </a>{' '}
+        README.
+      </p>
 
       <PrevNext
         prev={{ label: 'Connect to the car', href: '/docs/getting-started/connect-to-car' }}

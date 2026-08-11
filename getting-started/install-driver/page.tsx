@@ -50,7 +50,11 @@ export default function InstallDriverPage() {
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
               The driver is the software that ties the Jetson to the sensors and
-              motors. One script installs all of it.
+              motors. This page is taken from the README of the{' '}
+              <a href={INSTALLER_REPO} target="_blank" rel="noopener noreferrer" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
+                neoracer-installer
+              </a>{' '}
+              repository.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="outline" icon={<ClockGlyph />}><AnimatedNumeral value={45} prefix="~" suffix=" minutes" /></ChromeBadge>
@@ -63,14 +67,6 @@ export default function InstallDriverPage() {
       <ScrollReveal>
         <MarkdownDoc source={readme} repoUrl={INSTALLER_REPO} />
       </ScrollReveal>
-
-      <p style={{ fontFamily: NB.monoFont, fontSize: 12, letterSpacing: '0.08em', textTransform: 'uppercase', color: NB.textMutedBeige, marginTop: 40 }}>
-        This page mirrors the{' '}
-        <a href={INSTALLER_REPO} target="_blank" rel="noopener noreferrer" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-          neoracer-installer
-        </a>{' '}
-        README.
-      </p>
 
       <PrevNext
         prev={{ label: 'Connect to the car', href: '/docs/getting-started/connect-to-car' }}

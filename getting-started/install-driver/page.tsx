@@ -50,11 +50,10 @@ export default function InstallDriverPage() {
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
               The driver is the software that ties the Jetson to the sensors and
-              motors. For more information on the installer, visit the{' '}
+              motors. For more information on the installer, see{' '}
               <a href={INSTALLER_REPO} target="_blank" rel="noopener noreferrer" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
                 neoracer-installer
-              </a>{' '}
-              repository.
+              </a>.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="outline" icon={<ClockGlyph />}><AnimatedNumeral value={45} prefix="~" suffix=" minutes" /></ChromeBadge>

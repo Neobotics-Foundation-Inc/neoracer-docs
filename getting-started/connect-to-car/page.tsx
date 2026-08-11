@@ -141,7 +141,13 @@ export default function ConnectToCarPage() {
                         text: <>Screw the plastic antennas onto the cable ends on each side.</>,
                         photos: [{ src: '/images/jetson-antennas-attached-car.jpeg', alt: 'A plastic antenna screwed onto the cable at the side of the car' }],
                       },
-                      { text: <>Zip-tie each antenna to the front of the top chassis, where the on/off switch is. Route the zip tie around the antenna with one side above it and one below. Do the same on the other side.</> },
+                      {
+                        text: <>Zip-tie each antenna to the front of the top chassis, where the on/off switch is. Route the zip tie around the antenna with one side above it and one below. Do the same on the other side.</>,
+                        photos: [
+                          { src: '/images/antenna_left_placement.jpeg', alt: 'The left antenna zip-tied to the front of the top chassis by the on/off switch' },
+                          { src: '/images/antenna_right_placement.jpeg', alt: 'The right antenna zip-tied to the front of the top chassis' },
+                        ],
+                      },
                     ]}
                   />
                   <Callout type="tip" title="Additional help to keep the connectors secure">
@@ -182,10 +188,16 @@ export default function ConnectToCarPage() {
             {
               title: <>FIT THE BATTERY AND <Red>SIDEPODS</Red></>,
               content: (
-                <DashList
+                <PhotoSteps
                   items={[
-                    <>Place the battery on the left side of the car.</>,
-                    <>Screw the sidepods onto the car using the screws from the screws bag.</>,
+                    {
+                      text: <>Place the battery on the left side of the car.</>,
+                      photos: [{ src: '/images/battery_placement.jpeg', alt: 'The battery in its tray on the left side of the car, with the XT60 connector and power switch highlighted' }],
+                    },
+                    {
+                      text: <>Screw the sidepods onto the car using the screws from the screws bag.</>,
+                      photos: [{ src: '/images/sidepod_placement.jpeg', alt: 'A sidepod screwed onto the side of the car' }],
+                    },
                   ]}
                 />
               ),

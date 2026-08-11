@@ -65,7 +65,7 @@ export default function InstallDriverPage() {
 
       {/* ── The installer README, rendered in the docs style ─────────── */}
       <ScrollReveal>
-        <MarkdownDoc source={readme} repoUrl={INSTALLER_REPO} />
+        <MarkdownDoc source={readme} repoUrl={INSTALLER_REPO} skipSections={['Prerequisites']} />
       </ScrollReveal>
 
       <PrevNext

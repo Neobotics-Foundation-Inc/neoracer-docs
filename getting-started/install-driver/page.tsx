@@ -68,7 +68,8 @@ export default function InstallDriverPage() {
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'Connect to the car', href: '/docs/getting-started/connect-to-car' }}
+        prev={{ label: 'Prepare the car', href: '/docs/getting-started/prepare-the-car' }}
+        next={{ label: 'Connect to the car', href: '/docs/getting-started/connect-to-car' }}
       />
     </DocsShell>
   );

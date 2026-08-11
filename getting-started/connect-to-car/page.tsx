@@ -10,14 +10,13 @@ import {
   ChromeBadge,
   ClockGlyph,
 } from '@/components/docs/Editorial';
-import { ScrollReveal, MouseFollowGlow, PhotoSteps } from '@/components/docs/Interactive';
-import { SetupTimeline } from '@/components/docs/SetupTimeline';
-import { Crumbs, Callout, PrevNext } from '@/components/docs/DocsPrimitives';
+import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
+import { Crumbs, Callout, PrevNext, DataTable } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
   title: 'Connect to the car · Setup · NeoRacer Docs',
   description:
-    'The one-time first setup, done at the car: attach the Wi-Fi antennas, plug in a monitor and keyboard, and get the car onto the internet (join your Wi-Fi, plug in Ethernet, or use the cudy router). Then install the driver.',
+    "Join the car's own Wi-Fi. The onboard router broadcasts neoracer-XXXX; connect your laptop to it and every dashboard the car serves is a browser tab away.",
 };
 
 export default function ConnectToCarPage() {
@@ -33,234 +32,84 @@ export default function ConnectToCarPage() {
       {/* ── Hero ─────────────────────────────────────────────────────── */}
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="03" top={-30} right={-20} size={400} />
+          <GhostNumeral n="05" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               CONNECT TO THE <Red>CAR</Red>
             </DisplayHeading>
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
+              The monitor and keyboard were only for the install. From here on,
+              you work from your own device over the car&apos;s Wi-Fi.
+            </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="outline" icon={<ClockGlyph />}>~30 minutes</ChromeBadge>
+              <ChromeBadge variant="outline" icon={<ClockGlyph />}>~5 minutes</ChromeBadge>
             </div>
           </div>
         </section>
       </MouseFollowGlow>
 
-      {/* You'll need */}
+      {/* ── The car's Wi-Fi ──────────────────────────────────────────── */}
       <ScrollReveal>
-        <section style={{ paddingBottom: 24 }}>
-          <MonoLabel>You'll need</MonoLabel>
+        <section style={{ paddingBottom: 36 }}>
+          <DisplayHeading size="lg">
+            THE CAR&apos;S <Red>WI-FI</Red>
+          </DisplayHeading>
+          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
+            The router you fitted earlier comes pre-configured. It broadcasts a
+            Wi-Fi network named{' '}
+            <code style={{ fontFamily: NB.monoFont }}>neoracer-XXXX</code>, where{' '}
+            <code style={{ fontFamily: NB.monoFont }}>XXXX</code> is a set of
+            letters and numbers unique to your car, along with a 5&nbsp;GHz
+            version of the same network. The router is wired to the Jetson, so
+            any device that joins this network can talk to the car.
+          </p>
+          <MonoLabel>Connect</MonoLabel>
           <DashList
             items={[
-              <>The NeoRacer and its accessories.</>,
-              <>The Cudy router.</>,
-              <>A LiPo battery.</>,
-              <>A USB keyboard and mouse.</>,
-              <>A monitor with an HDMI cable.</>,
-              <>An internet connection.</>,
+              <>Power the car on and give the router a minute to boot.</>,
+              <>On your laptop, open the Wi-Fi menu and find{' '}
+                <code style={{ fontFamily: NB.monoFont }}>neoracer-XXXX</code>{' '}
+                (or its 5&nbsp;GHz version).</>,
+              <>Join it with the password{' '}
+                <code style={{ fontFamily: NB.monoFont }}>neobotics</code>.</>,
             ]}
           />
+          <Callout type="note" title="No internet on this network">
+            The car&apos;s Wi-Fi connects you to the car, not to the internet.
+            Your laptop stays on it only while you are working with the car.
+          </Callout>
         </section>
       </ScrollReveal>
 
-      {/* ── The setup, as a timeline of collapsible sections ─────────── */}
+      {/* ── The dashboards ───────────────────────────────────────────── */}
       <ScrollReveal>
-        <SetupTimeline
-          items={[
-            {
-              title: <>FIT THE CUDY <Red>ROUTER</Red></>,
-              content: (
-                <>
-                  <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-                    The Cudy router sits inside the mid chassis, under the top plate.
-                    Steps with a camera icon have a reference picture.
-                  </p>
-                  <PhotoSteps
-                    items={[
-                      { text: <>Before installing the router, note the longer USB-C cable coming out of the left side of the car. It connects to the LiDAR, not the router.</> },
-                      {
-                        text: <>Unscrew the front two screws of the top chassis.</>,
-                        photos: [
-                          { src: '/images/chassis-screw-fl.jpeg', alt: 'The front-left top chassis screw' },
-                          { src: '/images/chassis-screw-fr.jpeg', alt: 'The front-right top chassis screw' },
-                        ],
-                      },
-                      {
-                        text: <>Unscrew the dot matrix to access the rear top-chassis screws.</>,
-                        photos: [{ src: '/images/dot-matrix-screws.jpeg', alt: 'The dot matrix screws' }],
-                      },
-                      {
-                        text: <>Unscrew the rear two screws.</>,
-                        photos: [{ src: '/images/chassis-screws-blr.jpeg', alt: 'The rear two top chassis screws' }],
-                      },
-                      { text: <>The top chassis can now be removed, or rotated a little out of the way. Be careful with the cables.</> },
-                      { text: <>Take the Cudy router on its own, without its cables, and slide it into the rear of the car under the top chassis, with its ports facing the front of the car.</> },
-                      {
-                        text: <>Connect the Ethernet cable and the short USB-C cable in the top chassis. The Ethernet cable plugs into the router&apos;s LAN port. Make sure you use the correct USB-C cable: the shorter one connects to the underside of the PCB, while the LiDAR&apos;s cable connects to the top side.</>,
-                        photos: [{ src: '/images/chassis-cudy.jpeg', alt: 'The Cudy router in the chassis with the Ethernet and short USB-C cable connected' }],
-                      },
-                      { text: <>Fit the router snugly within the top chassis and screw the chassis back in.</> },
-                    ]}
-                  />
-                </>
-              ),
-            },
-            {
-              title: <>ATTACH THE WI-FI <Red>ANTENNAS</Red></>,
-              content: (
-                <>
-                  <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-                    The Jetson&apos;s Wi-Fi card sits on its underside, so the two
-                    antenna cables are attached from below. Each antenna comes in two
-                    parts: the cable, and the plastic antenna that screws onto its
-                    end.
-                  </p>
-                  <PhotoSteps
-                    items={[
-                      { text: <>Power the car off before you unmount the Jetson.</> },
-                      {
-                        text: <>Unscrew the Jetson from its 3D-printed chassis mount to reach the Wi-Fi card underneath. It is held by four hex screws.</>,
-                        photos: [{ src: '/images/jetson-screws.jpeg', alt: 'The four hex screws holding the Jetson to its chassis mount' }],
-                      },
-                      {
-                        text: <>Flip the Jetson over to find the two antenna sockets on the Wi-Fi card.</>,
-                        photos: [{ src: '/images/jetson-flipped.jpeg', alt: 'The flipped Jetson with the antenna sockets on the Wi-Fi card highlighted' }],
-                      },
-                      {
-                        text: <>Keep the plastic antennas aside for now; they screw onto the cable ends later.</>,
-                        photos: [{ src: '/images/jetson-antenna.jpeg', alt: 'An antenna cable next to the plastic antenna that screws onto it' }],
-                      },
-                      {
-                        text: <>Keep the Jetson on a steady surface and hold the U.FL connector perfectly vertical over its socket on the card. Remove any tension in the wire so the U.FL does not sit misaligned, then press the connector onto the socket until it clicks. It may take a few attempts, as the connector is very delicate.</>,
-                        photos: [{ src: '/images/jetson-antenna-attached.jpeg', alt: 'An antenna cable attached to the Wi-Fi card socket' }],
-                      },
-                      {
-                        text: <>Screw the Jetson back onto its mount and route the cables through the chassis to the sides of the car. Make sure all four screw holes line up with the Jetson before screwing it back in.</>,
-                        photos: [{ src: '/images/jetson-antennas-hanging.jpeg', alt: 'The antenna cables routed through the chassis to the sides' }],
-                      },
-                      {
-                        text: <>Screw the plastic antennas onto the cable ends on each side.</>,
-                        photos: [{ src: '/images/jetson-antennas-attached-car.jpeg', alt: 'A plastic antenna screwed onto the cable at the side of the car' }],
-                      },
-                      {
-                        text: <>Zip-tie each antenna to the front of the top chassis, where the on/off switch is. Route the zip tie around the antenna with one side above it and one below. Do the same on the other side.</>,
-                        photos: [
-                          { src: '/images/antenna_left_placement.jpeg', alt: 'The left antenna zip-tied to the front of the top chassis by the on/off switch' },
-                          { src: '/images/antenna_right_placement.jpeg', alt: 'The right antenna zip-tied to the front of the top chassis' },
-                        ],
-                      },
-                    ]}
-                  />
-                  <Callout type="tip" title="Additional help to keep the connectors secure">
-                    If needed, apply some hot glue or electrical tape over each
-                    connector to keep it from disconnecting by accident.
-                  </Callout>
-                </>
-              ),
-            },
-            {
-              title: <>CONNECT THE JETSON <Red>PERIPHERALS</Red></>,
-              content: (
-                <PhotoSteps
-                  items={[
-                    {
-                      text: <>Find the two cables on the right side of the car: one USB-A and one DC barrel jack.</>,
-                      photos: [{ src: '/images/jetson-cables-unplugged.jpg', alt: 'The USB-A and DC barrel jack cables on the right side of the car' }],
-                    },
-                    {
-                      text: <>Plug both cables into the Jetson.</>,
-                      photos: [{ src: '/images/jetson-cables-plugged.jpg', alt: 'The USB-A and DC barrel jack cables plugged into the Jetson' }],
-                    },
-                    {
-                      text: <>Make sure the camera is plugged into the Jetson. The camera uses a JST connector and connects over USB-A.</>,
-                      photos: [
-                        { src: '/images/camera-plugged.jpg', alt: 'The JST connector plugged into the back of the camera' },
-                        { src: '/images/jetson-camera-plugged.jpg', alt: "The camera's USB-A cable plugged into the Jetson" },
-                      ],
-                    },
-                    {
-                      text: <>Plug the longer USB-C cable into the LiDAR.</>,
-                      photos: [{ src: '/images/lidar-plugged.jpg', alt: 'The longer USB-C cable plugged into the base of the LiDAR' }],
-                    },
-                  ]}
-                />
-              ),
-            },
-            {
-              title: <>FIT THE BATTERY AND <Red>SIDEPODS</Red></>,
-              content: (
-                <PhotoSteps
-                  items={[
-                    { text: <>Make sure the car power switch is off.</> },
-                    {
-                      text: <>Place the battery on the left side of the car. Connect the XT60 cable to the car and tuck the balance lead inside the chassis.</>,
-                      photos: [{ src: '/images/battery_placement.jpeg', alt: 'The battery in its tray on the left side of the car, with the XT60 connector and power switch highlighted' }],
-                    },
-                    {
-                      text: <>Screw the sidepods onto the car using the screws from the screws bag.</>,
-                      photos: [{ src: '/images/sidepod_placement.jpeg', alt: 'A sidepod screwed onto the side of the car' }],
-                    },
-                  ]}
-                />
-              ),
-            },
-            {
-              title: <>PLUG IN A MONITOR AND <Red>KEYBOARD</Red></>,
-              content: (
-                <>
-                  <DashList
-                    items={[
-                      <>Remove the HDMI plug already on the car and keep it somewhere safe. Whenever a monitor is not connected, it needs to be plugged back in.</>,
-                      <>Connect a monitor to the Jetson&apos;s HDMI output.</>,
-                      <>Connect a USB keyboard and mouse.</>,
-                      <>Power the car on and log in as{' '}
-                        <code style={{ fontFamily: NB.monoFont }}>racecar</code> (password{' '}
-                        <code style={{ fontFamily: NB.monoFont }}>neobotics</code>).</>,
-                    ]}
-                  />
-                  <Callout type="note" title="Why this setup happens on the car">
-                    A brand new car is not on any network yet, so there is no way to
-                    log in remotely. The first setup is done with a monitor and
-                    keyboard plugged directly into the car.
-                  </Callout>
-                </>
-              ),
-            },
-            {
-              title: <>CONNECT TO THE <Red>INTERNET</Red></>,
-              content: (
-                <>
-                  <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-                    The install on the next page needs internet. Either works:
-                  </p>
-                  <DashList
-                    items={[
-                      <>
-                        <strong>Join your Wi-Fi.</strong> Open the network menu in the
-                        top-right of the desktop and join any Wi-Fi with internet.
-                      </>,
-                      <>
-                        <strong>Or plug in Ethernet.</strong> Connect a cable with
-                        internet to the Jetson&apos;s RJ45 port, then switch Wired on
-                        in the same network menu.
-                      </>,
-                    ]}
-                  />
-                  <Callout type="tip" title="Verify the internet connection">
-                    Run <code style={{ fontFamily: NB.monoFont }}>ping github.com</code>{' '}
-                    in a terminal. Replies mean you are online. Press{' '}
-                    <code style={{ fontFamily: NB.monoFont }}>ctrl+c</code> to exit
-                    back to the terminal.
-                  </Callout>
-                </>
-              ),
-            },
-          ]}
-        />
+        <section style={{ paddingBottom: 36 }}>
+          <DisplayHeading size="lg">
+            THE <Red>DASHBOARDS</Red>
+          </DisplayHeading>
+          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
+            Once you are on the car&apos;s network, everything the driver serves
+            is a browser tab away:
+          </p>
+          <DataTable
+            columns={[
+              { key: 'what', label: 'Dashboard', accent: true },
+              { key: 'where', label: 'Address', mono: true },
+            ]}
+            rows={[
+              { what: 'Health dashboard (live status of the sensors and services)', where: 'http://192.168.10.100:8080' },
+              { what: 'JupyterLab (write and run code on the car)', where: 'http://192.168.10.100:8888' },
+            ]}
+          />
+          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
+            The next page uses JupyterLab to test that everything you installed
+            is working.
+          </p>
+        </section>
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'Charge & power', href: '/docs/getting-started/charge-and-power' }}
-        next={{ label: 'Install the driver', href: '/docs/getting-started/install-driver' }}
+        prev={{ label: 'Install the driver', href: '/docs/getting-started/install-driver' }}
       />
     </DocsShell>
   );

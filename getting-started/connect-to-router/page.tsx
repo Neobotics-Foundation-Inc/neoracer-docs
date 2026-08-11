@@ -113,6 +113,7 @@ export default function ConnectToRouterPage() {
 
       <PrevNext
         prev={{ label: 'Install the driver', href: '/docs/getting-started/install-driver' }}
+        next={{ label: 'Test the system', href: '/docs/getting-started/test-the-system' }}
       />
     </DocsShell>
   );

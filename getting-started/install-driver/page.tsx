@@ -69,7 +69,7 @@ export default function InstallDriverPage() {
 
       <PrevNext
         prev={{ label: 'Prepare the car', href: '/docs/getting-started/prepare-the-car' }}
-        next={{ label: 'Connect to the car', href: '/docs/getting-started/connect-to-car' }}
+        next={{ label: 'Connect to the router', href: '/docs/getting-started/connect-to-router' }}
       />
     </DocsShell>
   );

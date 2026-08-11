@@ -14,18 +14,18 @@ import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 import { Crumbs, Callout, PrevNext, DataTable } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
-  title: 'Connect to the car · Setup · NeoRacer Docs',
+  title: 'Connect to the router · Setup · NeoRacer Docs',
   description:
-    "Join the car's own Wi-Fi. The onboard router broadcasts neoracer-XXXX; connect your laptop to it and every dashboard the car serves is a browser tab away.",
+    "Join the car's own Wi-Fi. The Cudy router broadcasts neoracer-XXXX; connect your device to it and reach the car through the router's static IP, 192.168.10.100.",
 };
 
-export default function ConnectToCarPage() {
+export default function ConnectToRouterPage() {
   return (
     <DocsShell>
       <Crumbs
         items={[
           { label: 'Setup', href: '/docs/getting-started/unbox' },
-          { label: 'Connect to the car' },
+          { label: 'Connect to the router' },
         ]}
       />
 
@@ -35,11 +35,11 @@ export default function ConnectToCarPage() {
           <GhostNumeral n="05" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              CONNECT TO THE <Red>CAR</Red>
+              CONNECT TO THE <Red>ROUTER</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
-              The monitor and keyboard were only for the install. From here on,
-              you work from your own device over the car&apos;s Wi-Fi.
+              The monitor and keyboard are not required after installing the
+              driver. You can connect to the car using the router.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="outline" icon={<ClockGlyph />}>~5 minutes</ChromeBadge>
@@ -55,19 +55,21 @@ export default function ConnectToCarPage() {
             THE CAR&apos;S <Red>WI-FI</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-            The router you fitted earlier comes pre-configured. It broadcasts a
-            Wi-Fi network named{' '}
-            <code style={{ fontFamily: NB.monoFont }}>neoracer-XXXX</code>, where{' '}
-            <code style={{ fontFamily: NB.monoFont }}>XXXX</code> is a set of
-            letters and numbers unique to your car, along with a 5&nbsp;GHz
-            version of the same network. The router is wired to the Jetson, so
-            any device that joins this network can talk to the car.
+            The Cudy router comes pre-configured. It broadcasts a Wi-Fi network
+            named <code style={{ fontFamily: NB.monoFont }}>neoracer-XXXX</code>,
+            where <code style={{ fontFamily: NB.monoFont }}>XXXX</code> is a set
+            of letters and numbers unique to your car, along with a 5&nbsp;GHz
+            version of the same network. The router is wired to the Jetson.
+          </p>
+          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 14 }}>
+            You can find the name of this network on the sticker on the bottom
+            of the NeoRacer or inside the battery compartment.
           </p>
           <MonoLabel>Connect</MonoLabel>
           <DashList
             items={[
               <>Power the car on and give the router a minute to boot.</>,
-              <>On your laptop, open the Wi-Fi menu and find{' '}
+              <>On your device, open the Wi-Fi menu and find{' '}
                 <code style={{ fontFamily: NB.monoFont }}>neoracer-XXXX</code>{' '}
                 (or its 5&nbsp;GHz version).</>,
               <>Join it with the password{' '}
@@ -76,7 +78,8 @@ export default function ConnectToCarPage() {
           />
           <Callout type="note" title="No internet on this network">
             The car&apos;s Wi-Fi connects you to the car, not to the internet.
-            Your laptop stays on it only while you are working with the car.
+            Familiarize yourself with this page and the next one before joining,
+            or open the docs on another device to follow along.
           </Callout>
         </section>
       </ScrollReveal>
@@ -88,8 +91,9 @@ export default function ConnectToCarPage() {
             THE <Red>DASHBOARDS</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-            Once you are on the car&apos;s network, everything the driver serves
-            is a browser tab away:
+            Once connected to the router, you can interact with the car through
+            the router&apos;s IP address, which is static at{' '}
+            <code style={{ fontFamily: NB.monoFont }}>192.168.10.100</code>:
           </p>
           <DataTable
             columns={[
@@ -102,8 +106,7 @@ export default function ConnectToCarPage() {
             ]}
           />
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-            The next page uses JupyterLab to test that everything you installed
-            is working.
+            The rest of the setup uses the Health dashboard and JupyterLab.
           </p>
         </section>
       </ScrollReveal>

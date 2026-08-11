@@ -50,7 +50,7 @@ export default function InstallDriverPage() {
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
               The driver is the software that ties the Jetson to the sensors and
-              motors. This page is taken from the README of the{' '}
+              motors. For more information, visit the{' '}
               <a href={INSTALLER_REPO} target="_blank" rel="noopener noreferrer" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
                 neoracer-installer
               </a>{' '}

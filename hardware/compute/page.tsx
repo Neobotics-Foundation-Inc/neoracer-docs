@@ -112,9 +112,9 @@ export default function ComputePage() {
             The MCU is usually something you configure rather than program.
           </p>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 22, marginTop: 22 }}>
-            <NumberedFeatureCard n={1} title="Motor control" lede="PWM out to the ESC. Encoder counts in." body="Closed-loop velocity control runs at a fixed kHz tick so you don't see torque ripple from a stalled Python loop." />
-            <NumberedFeatureCard n={2} title="Servo control" lede="Steering angle commanded over PWM." body="Trim and centre offsets are stored in flash so a re-flash of the Jetson doesn't lose your calibration." />
-            <NumberedFeatureCard n={3} title="IMU fusion" lede="Fused orientation at 200 Hz." body="The MCU (microcontroller unit) does the bias subtraction and orientation fusion so the Jetson sees clean orientation+angular-rate samples on /imu, no warm-up delay." />
+            <NumberedFeatureCard n={1} title="Motor control" lede="The OSCORE drives the motor and reads the encoder." body="It adjusts motor power thousands of times per second to hold the speed your code asks for. Python on the Jetson cannot react that fast, which is why this job lives on the OSCORE." />
+            <NumberedFeatureCard n={2} title="Servo control" lede="The OSCORE moves the steering servo." body="Your code asks for a steering angle and the OSCORE turns it into the servo signal. The steering calibration is saved on the OSCORE itself, so reinstalling the Jetson does not erase it." />
+            <NumberedFeatureCard n={3} title="IMU fusion" lede="The OSCORE cleans up the IMU data." body="It combines the raw accelerometer and gyroscope readings into a stable orientation, 200 times a second, so the Jetson receives clean data on /imu." />
           </div>
         </section>
       </ScrollReveal>

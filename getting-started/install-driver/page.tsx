@@ -26,10 +26,17 @@ export default function InstallDriverPage() {
   // This page renders the neoracer-installer README so the repo stays the
   // single source of truth. The vendored copy is kept fresh by the
   // installer-readme-pr workflow in the docs repo.
-  const readme = fs.readFileSync(
-    path.join(process.cwd(), 'src/app/docs/getting-started/install-driver/installer-readme.md'),
-    'utf8',
-  );
+  const readme = fs
+    .readFileSync(
+      path.join(process.cwd(), 'src/app/docs/getting-started/install-driver/installer-readme.md'),
+      'utf8',
+    )
+    // The provenance note only makes sense on the website, so it is injected
+    // here rather than living in the README itself.
+    .replace(
+      /## Documentation\s*\n/,
+      `## Documentation\n\nThis page is summarized from the GitHub repository [neoracer-installer](${INSTALLER_REPO}).\n\n`,
+    );
 
   return (
     <DocsShell>
@@ -50,10 +57,7 @@ export default function InstallDriverPage() {
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
               The driver is the software that ties the Jetson to the sensors and
-              motors. For more information on the installer, see{' '}
-              <a href={INSTALLER_REPO} target="_blank" rel="noopener noreferrer" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-                neoracer-installer
-              </a>.
+              motors.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="outline" icon={<ClockGlyph />}><AnimatedNumeral value={45} prefix="~" suffix=" minutes" /></ChromeBadge>
@@ -68,7 +72,8 @@ export default function InstallDriverPage() {
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'Connect to the car', href: '/docs/getting-started/connect-to-car' }}
+        prev={{ label: 'Prepare the car', href: '/docs/getting-started/prepare-the-car' }}
+        next={{ label: 'Connect to the router', href: '/docs/getting-started/connect-to-router' }}
       />
     </DocsShell>
   );

@@ -15,18 +15,18 @@ import { SetupTimeline } from '@/components/docs/SetupTimeline';
 import { Crumbs, Callout, PrevNext } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
-  title: 'Connect to the car · Setup · NeoRacer Docs',
+  title: 'Prepare the car · Setup · NeoRacer Docs',
   description:
-    'The one-time first setup, done at the car: attach the Wi-Fi antennas, plug in a monitor and keyboard, and get the car onto the internet (join your Wi-Fi, plug in Ethernet, or use the cudy router). Then install the driver.',
+    'Get the car physically ready: fit the router, attach the Wi-Fi antennas, connect the Jetson peripherals, fit the battery and sidepods, plug in a monitor and keyboard, and get the car onto the internet. Then install the driver.',
 };
 
-export default function ConnectToCarPage() {
+export default function PrepareTheCarPage() {
   return (
     <DocsShell>
       <Crumbs
         items={[
           { label: 'Setup', href: '/docs/getting-started/unbox' },
-          { label: 'Connect to the car' },
+          { label: 'Prepare the car' },
         ]}
       />
 
@@ -36,7 +36,7 @@ export default function ConnectToCarPage() {
           <GhostNumeral n="03" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              CONNECT TO THE <Red>CAR</Red>
+              PREPARE THE <Red>CAR</Red>
             </DisplayHeading>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="outline" icon={<ClockGlyph />}>~30 minutes</ChromeBadge>

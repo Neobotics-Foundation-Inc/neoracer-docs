@@ -5,6 +5,8 @@ import {
   DisplayHeading,
   Red,
   GhostNumeral,
+  MonoLabel,
+  DashList,
   ChromeBadge,
   ClockGlyph,
 } from '@/components/docs/Editorial';
@@ -66,8 +68,8 @@ export default function TestTheSystemPage() {
               TEST THE <Red>SYSTEM</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
-              One notebook checks every sensor and control surface on the car.
-              If it passes, your install is good.
+              The Async Core Test notebook checks every sensor and control
+              surface on the car.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="outline" icon={<ClockGlyph />}>~15 minutes</ChromeBadge>
@@ -76,6 +78,19 @@ export default function TestTheSystemPage() {
         </section>
       </MouseFollowGlow>
 
+      {/* You'll need */}
+      <ScrollReveal>
+        <section style={{ paddingBottom: 24 }}>
+          <MonoLabel>You'll need</MonoLabel>
+          <DashList
+            items={[
+              <>A NeoRacer.</>,
+              <>A laptop connected to the NeoRacer&apos;s router.</>,
+            ]}
+          />
+        </section>
+      </ScrollReveal>
+
       {/* ── Run the Async Core Test ──────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ paddingBottom: 36 }}>
@@ -83,10 +98,9 @@ export default function TestTheSystemPage() {
             RUN THE ASYNC CORE <Red>TEST</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-            The car ships with the Async Core Test, a Jupyter notebook that
-            exercises each subsystem in turn and prints a pass/fail summary at
-            the end. Power the car on and connect to the router; the driver
-            services the test needs start automatically at boot.
+            The Async Core Test is a Jupyter notebook that exercises each
+            NeoRacer subsystem in turn and prints a pass/fail summary at the
+            end.
           </p>
           <PhotoSteps
             items={[
@@ -138,7 +152,7 @@ export default function TestTheSystemPage() {
             The final cell, 13. Summary, aggregates every test. On a healthy
             car it prints:
           </p>
-          <Code lang="text">{SUMMARY}</Code>
+          <Code lang="output">{SUMMARY}</Code>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             The four <code style={{ fontFamily: NB.monoFont }}>[ -- ]</code>{' '}
             entries are expected: they are features the NeoRacer&apos;s hardware

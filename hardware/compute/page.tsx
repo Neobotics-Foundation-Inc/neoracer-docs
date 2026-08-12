@@ -154,7 +154,6 @@ export default function ComputePage() {
             items={[
               <>Once the Jetson&apos;s power indicator is out, switch the car
                 off.</>,
-              <>If the car is going away for a while, unplug the battery.</>,
             ]}
           />
         </section>

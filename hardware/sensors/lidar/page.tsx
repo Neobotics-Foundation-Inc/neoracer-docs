@@ -3,7 +3,6 @@ import { Metadata } from 'next';
 import DocsShell from '@/components/docs/DocsShell';
 import { NB } from '@/lib/nb-tokens';
 import {
-  Eyebrow,
   DisplayHeading,
   Red,
   GhostNumeral,
@@ -37,7 +36,7 @@ export default function LidarPage() {
           <GhostNumeral n="03" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              THE PLANAR <Red>LIDAR</Red>
+              THE <Red>LIDAR</Red>
             </DisplayHeading>
             <p
               style={{
@@ -48,19 +47,12 @@ export default function LidarPage() {
                 maxWidth: 680,
               }}
             >
-              A Richbeam LakiBeam1 planar laser scanner on top of the car. Your
-              code reads it as ~1440 distances in centimetres, 0.25° apart,
-              index 0 straight ahead. The array covers the full circle; the
-              sensor&apos;s live window is 270°, so the rear wedge reads 0. It
+              A Richbeam LakiBeam1 planar laser scanner on top of the car. It
               connects to the Jetson through the OSCORE board.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="red">Same degrees in Playground (sim)</ChromeBadge>
               <ChromeBadge variant="outline"><AnimatedNumeral value={30} suffix=" Hz" /></ChromeBadge>
               <ChromeBadge variant="outline"><AnimatedNumeral value={25} suffix=" m range" /></ChromeBadge>
-              <ChromeBadge variant="outline"><AnimatedNumeral value={1440} prefix="~" suffix=" samples" /></ChromeBadge>
-              <ChromeBadge variant="outline">270° live window</ChromeBadge>
-              <ChromeBadge variant="outline">frame_id: laser</ChromeBadge>
             </div>
           </div>
         </section>
@@ -69,7 +61,6 @@ export default function LidarPage() {
       {/* ── Section · The scanner ────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ paddingBottom: 32 }}>
-          <Eyebrow>01 / THE SCANNER</Eyebrow>
           <DisplayHeading size="lg">
             RICHBEAM <Red>LAKIBEAM1</Red>
           </DisplayHeading>
@@ -88,10 +79,7 @@ export default function LidarPage() {
             >
               Richbeam LakiBeam product page
             </a>{' '}
-            is the place to go. These are the sensor's native numbers: it spins
-            at 0.25° resolution, ~1440 samples per revolution, and the library
-            hands you that scan as-is. Nothing is resampled; the 270° live
-            window is a sensor setting, and the rear wedge outside it reads 0.
+            is the place to go.
           </StepCard>
           <div
             style={{
@@ -109,7 +97,8 @@ export default function LidarPage() {
               ['Range', '≥25 m @ 90%, ≥15 m @ 10%'],
               ['Range accuracy', '±2 cm'],
               ['Laser wavelength', '940 nm (Class 1, eye-safe)'],
-              ['Interface', 'USB-C bridge (UDP/IP, sensor at 192.168.8.2)'],
+              ['Dimensions', '60 × 60 × 80 mm'],
+              ['Range principle', 'dTOF'],
             ].map(([k, v]) => (
               <div
                 key={k}
@@ -149,20 +138,9 @@ export default function LidarPage() {
         </section>
       </ScrollReveal>
 
-      <ScrollReveal>
-        <Callout type="tip" title="Got a scan that looks empty?">
-          Nine out of ten times it's the cable. The full decision tree lives at{' '}
-          <Link href="/docs/troubleshooting/lidar-empty-scan" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-            Troubleshooting · LiDAR empty scan
-          </Link>
-          .
-        </Callout>
-      </ScrollReveal>
-
       {/* ── Section · Sample layout ──────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 32 }}>
-          <Eyebrow>02 / SAMPLE LAYOUT</Eyebrow>
           <DisplayHeading size="lg">
             THE SCAN <Red>LAYOUT</Red>
           </DisplayHeading>
@@ -179,9 +157,8 @@ export default function LidarPage() {
             clockwise. To look at a direction, convert your angle to an index
             with one of the helpers below, or use{' '}
             <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>
-              rc_utils.get_lidar_average_distance(scan, angle, window_angle)
-            </code>{' '}
-            and let it do the maths for you.
+              rc_utils.get_lidar_average_distance
+            </code>.
           </p>
           <div style={{ marginTop: 18 }}>
             <Fig
@@ -202,6 +179,16 @@ left  = rc_utils.get_lidar_average_distance(scan, 270, window_angle=8)  # 90° l
 front = rc_utils.get_lidar_average_distance(scan, 0,   window_angle=4)`}
           </Code>
         </section>
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <Callout type="tip" title="Got a scan that looks empty?">
+          Nine out of ten times it's the cable. The full decision tree lives at{' '}
+          <Link href="/docs/troubleshooting/lidar-empty-scan" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
+            Troubleshooting · LiDAR empty scan
+          </Link>
+          .
+        </Callout>
       </ScrollReveal>
 
       <PrevNext

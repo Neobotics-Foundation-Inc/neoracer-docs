@@ -107,7 +107,7 @@ export default function ComputePage() {
       </ScrollReveal>
 
       <ScrollReveal>
-        <section style={{ paddingBottom: 32 }}>
+        <section style={{ paddingBottom: 4 }}>
           <DisplayHeading size="lg">
             THE MICROCONTROLLER <Red>STACK</Red>
           </DisplayHeading>
@@ -123,12 +123,14 @@ export default function ComputePage() {
       </ScrollReveal>
 
       <ScrollReveal>
+        <div style={{ paddingBottom: 36 }}>
         <Callout type="tip" title="Checking how hard the Jetson is working">
           You can run <code style={{ fontFamily: NB.monoFont }}>tegrastats</code> over
           SSH while your code is running. It reports the AI accelerator load,
           CPU per-core load, RAM, and thermal headroom in real time, and it's the
           same tool NVIDIA uses internally.
         </Callout>
+        </div>
       </ScrollReveal>
 
       {/* ── Powering off ─────────────────────────────────────────────── */}

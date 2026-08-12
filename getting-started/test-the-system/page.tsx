@@ -149,8 +149,8 @@ export default function TestTheSystemPage() {
             READ THE <Red>SUMMARY</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-            The final cell, 13. Summary, aggregates every test. On a healthy
-            car it prints:
+            The last cell of the notebook prints a summary of every test. On a
+            healthy car it looks like this:
           </p>
           <Code lang="output">{SUMMARY}</Code>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>

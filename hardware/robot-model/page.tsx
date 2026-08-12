@@ -7,9 +7,11 @@ import {
   Red,
   GhostNumeral,
   Fig,
+  MonoLabel,
+  DashList,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
-import { Crumbs, PrevNext, Callout } from '@/components/docs/DocsPrimitives';
+import { Crumbs, PrevNext, Callout, Code } from '@/components/docs/DocsPrimitives';
 import UrdfViewer from '@/components/docs/UrdfViewer';
 
 export const metadata: Metadata = {
@@ -71,6 +73,42 @@ export default function RobotModelPage() {
         >
           <UrdfViewer />
         </Fig>
+      </ScrollReveal>
+
+      {/* ── Using the model ──────────────────────────────────────────── */}
+      <ScrollReveal>
+        <section style={{ paddingBottom: 8 }}>
+          <DisplayHeading size="lg">
+            USING THE <Red>MODEL</Red>
+          </DisplayHeading>
+          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
+            The URDF ships on the car in the{' '}
+            <code style={{ fontFamily: NB.monoFont }}>osracer_description</code>{' '}
+            ROS 2 package; this page renders a copy of the same file. The driver
+            loads it at boot, so a running car is already broadcasting this
+            model as its transform tree.
+          </p>
+          <MonoLabel>See it live on the car</MonoLabel>
+          <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 6 }}>
+            With a monitor or a remote desktop session, open a terminal and run:
+          </p>
+          <Code lang="bash">{`source /opt/ros/humble/setup.bash && source ~/ros2_ws/install/setup.bash
+rviz2`}</Code>
+          <DashList
+            items={[
+              <>In RViz, click <strong>Add</strong> and choose{' '}
+                <code style={{ fontFamily: NB.monoFont }}>RobotModel</code>.</>,
+              <>Set its <strong>Description Topic</strong> to{' '}
+                <code style={{ fontFamily: NB.monoFont }}>/robot_description</code>.</>,
+              <>Set the <strong>Fixed Frame</strong> to{' '}
+                <code style={{ fontFamily: NB.monoFont }}>base_link</code>.</>,
+            ]}
+          />
+          <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 14 }}>
+            The car appears exactly as in FIG. A, driven by the live transform
+            tree instead of your mouse.
+          </p>
+        </section>
       </ScrollReveal>
 
       <ScrollReveal>

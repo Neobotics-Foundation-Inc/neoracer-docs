@@ -22,8 +22,8 @@ export const metadata: Metadata = {
 const ACCESSORIES = [
   {
     src: '/images/unbox-antenna-kit.jpeg',
-    name: 'Wi-Fi antenna kit',
-    d: 'The antenna, its U.FL-to-SMA lead, and the washers.',
+    name: 'Wi-Fi antenna kits',
+    d: 'Two kits, one for each antenna. Each has the antenna, its U.FL-to-SMA lead, and the washers.',
   },
   {
     src: '/images/unbox-zip-ties.jpeg',
@@ -31,29 +31,39 @@ const ACCESSORIES = [
     d: 'For routing the antenna leads and cables clear of the wheels and belt.',
   },
   {
-    src: '/images/unbox-cover-screws.jpeg',
+    src: '/images/unbox-sidepods.jpg',
     name: 'Sidepods',
+    d: 'The 3D-printed sidepods that screw onto the sides of the car.',
+  },
+  {
+    src: '/images/unbox-cover-screws.jpeg',
+    name: 'Sidepod screws',
     d: 'Screws for the 3D-printed sidepods, with one spare.',
+  },
+  {
+    src: '/images/unbox-allen-keys.jpg',
+    name: 'Allen keys',
+    d: 'Two ball-end allen keys, HEX 5.5 mm and 5 mm.',
   },
   {
     src: '/images/unbox-flysky-cable.jpeg',
     name: 'Controller data cable',
-    d: "USB-A to micro-USB, for updating the Flysky's firmware from a computer.",
+    d: "USB-A to micro-USB, for updating the Flysky's firmware from a computer. If needed.",
   },
   {
     src: '/images/unbox-flysky-bracket.jpeg',
     name: 'Controller bracket',
-    d: "The Flysky's metal bracket and its two screws.",
+    d: "The Flysky's metal bracket and its two screws. Not used.",
   },
   {
     src: '/images/unbox-cudy-eth.jpg',
     name: 'Ethernet cable',
-    d: "From the Cudy router box, for the router's wired uplink.",
+    d: "From the Cudy router box, for the router's wired uplink. Extra, not needed for the NeoRacer.",
   },
   {
     src: '/images/unbox-cudy-usbc.jpeg',
     name: 'USB-C cable',
-    d: 'From the Cudy router box, powers the router.',
+    d: 'From the Cudy router box, powers the router. Extra, not needed for the NeoRacer.',
   },
 ];
 

@@ -52,8 +52,8 @@ export default function ChargeAndPowerPage() {
           <DashList
             items={[
               <>The LiPo charger that shipped with your kit.</>,
-              <>An 11.1 V (3S) LiPo pack, <strong>you will need your own</strong>. See "Battery specs" below.</>,
-              <>An AC outlet within reach.</>,
+              <>An 11.1 V (3S) LiPo pack. See "Battery specs" below.</>,
+              <>An AC outlet.</>,
             ]}
           />
         </section>
@@ -89,7 +89,7 @@ export default function ChargeAndPowerPage() {
           </DisplayHeading>
           {[
             { t: 'Place the LiPo on a non-flammable surface.', d: 'A concrete floor or a LiPo charging bag is ideal.' },
-            { t: 'Plug the AC side of the charger into the wall.', d: 'The screen turns on with a boot screen, then the main interface loads. The home screen shows the per-cell voltage highlighted at the top and the current options in green text on the right.' },
+            { t: 'Plug the AC side of the charger into the wall.', d: 'The screen turns on with a boot screen, then the main interface loads. The home screen shows the per-cell voltage (V) highlighted at the top and the current (A) options in green text on the right.' },
             { t: 'Set the cut-off voltage and the charging current.', d: 'Hold the button for two seconds to adjust the voltage and select 4.20 V. Press the button to adjust the current and select 2.5 A.' },
             { t: 'Connect the balance wire to the charger\'s balance port.', d: 'The balance wire is the plug with several small wires, usually one red and one black.' },
             { t: 'Connect the main XT60 lead.', d: 'The battery begins charging immediately.' },
@@ -133,7 +133,7 @@ export default function ChargeAndPowerPage() {
 
       <PrevNext
         prev={{ label: 'Unbox', href: '/docs/getting-started/unbox' }}
-        next={{ label: 'Connect to the car', href: '/docs/getting-started/connect-to-car' }}
+        next={{ label: 'Prepare the car', href: '/docs/getting-started/prepare-the-car' }}
       />
     </DocsShell>
   );

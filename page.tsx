@@ -36,7 +36,7 @@ const SHOW_PLAYGROUND_TEASE = false;
 /* Bay order mirrors the sidebar. Counts are the real page counts in nav.ts;
    update both together when a page ships. */
 const pitLane: PitLaneSection[] = [
-  { title: 'Setup', href: '/docs/getting-started/unbox', pages: 5 },
+  { title: 'Setup', href: '/docs/getting-started/unbox', pages: 6 },
   { title: 'Hardware', href: '/docs/hardware/overview', pages: 16 },
   { title: 'Software', href: '/docs/software/os-and-image', pages: 9 },
   { title: 'API Reference', href: '/docs/api-reference/python/drive', pages: 9 },
@@ -68,7 +68,7 @@ export default function DocsLandingPage() {
             }}
           >
             The documentation for the NeoRacer V1. Setup takes a new
-            car from the box to its first program; the rest is the reference
+            car from the box to ready to drive; the rest is the reference
             you come back to: hardware, software, calibration, troubleshooting,
             and the full Python and ROS 2 APIs.
           </p>

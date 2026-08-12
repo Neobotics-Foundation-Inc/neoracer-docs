@@ -87,13 +87,10 @@ export default function ComputePage() {
           label="FIG. A / JETSON PORTS"
           caption={
             <>
-              Every connection on the Jetson. Power arrives from the power
-              module on the DC barrel jack, the OSCORE data lead and the camera
-              take two USB-A ports, and the Cudy router&apos;s LAN port connects
-              over RJ45. The HDMI port carries the dummy plug whenever a
-              monitor is not attached, two USB-A ports stay free for the setup
-              keyboard and mouse, USB-C is unused, and the M.2 Wi-Fi card on
-              the underside runs the two antennas.
+              The Jetson Orin Nano&apos;s I/O. The NeoRacer&apos;s carrier board
+              fits an HDMI connector where the stock devkit has DisplayPort.
+              The four Type-A ports are USB 3.2 at 10 Gb/s, the RJ45 port is
+              gigabit Ethernet, and the USB-C port carries data only.
             </>
           }
         >

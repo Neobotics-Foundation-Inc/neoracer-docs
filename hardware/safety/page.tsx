@@ -31,7 +31,7 @@ export default function SafetyPage() {
 
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="14" top={-30} right={-20} size={400} />
+          <GhostNumeral n="13" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               SAFETY <Red>RULES</Red>
@@ -168,7 +168,7 @@ export default function SafetyPage() {
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'Electrical', href: '/docs/hardware/electrical' }}
+        prev={{ label: 'Chassis & CAD', href: '/docs/hardware/chassis-and-cad' }}
         next={{ label: '3D model', href: '/docs/hardware/robot-model' }}
       />
     </DocsShell>

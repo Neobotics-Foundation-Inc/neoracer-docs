@@ -9,7 +9,7 @@ import {
   DashList,
   Fig,
 } from '@/components/docs/Editorial';
-import { Crumbs, PrevNext, Callout } from '@/components/docs/DocsPrimitives';
+import { Crumbs, PrevNext, Callout, Code } from '@/components/docs/DocsPrimitives';
 import { JetsonPortsDiagram } from '@/components/docs/Diagrams';
 import { ScrollReveal, MouseFollowGlow, AnimatedNumeral, InfoNote } from '@/components/docs/Interactive';
 
@@ -119,6 +119,37 @@ export default function ComputePage() {
             Everything else lives on the Jetson, which is where you write code.
             The MCU is usually something you configure rather than program.
           </p>
+        </section>
+      </ScrollReveal>
+
+      {/* ── Powering off ─────────────────────────────────────────────── */}
+      <ScrollReveal>
+        <section style={{ paddingBottom: 32 }}>
+          <DisplayHeading size="lg">
+            POWERING <Red>OFF</Red>
+          </DisplayHeading>
+          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
+            The Jetson is a computer, so shut it down before cutting power:
+          </p>
+          <DashList
+            items={[
+              <>Bring the car to a stop, with nothing still commanding it (no
+                running notebook cells or host apps like RViz).</>,
+              <>Shut down the Jetson from a terminal:</>,
+            ]}
+          />
+          <Code lang="bash">{`sudo shutdown -h now`}</Code>
+          <DashList
+            items={[
+              <>Once the Jetson&apos;s power indicator is out, switch the car
+                off.</>,
+              <>If the car is going away for a while, unplug the battery.</>,
+            ]}
+          />
+          <Callout type="warn" title="Don't skip straight to the switch">
+            Cutting power before the Jetson has shut down can corrupt its file
+            system.
+          </Callout>
         </section>
       </ScrollReveal>
 

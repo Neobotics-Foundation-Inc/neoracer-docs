@@ -356,7 +356,7 @@ cd neoracer-hardware-files`}</Code>
 
       <PrevNext
         prev={{ label: 'Power', href: '/docs/hardware/power' }}
-        next={{ label: 'Electrical', href: '/docs/hardware/electrical' }}
+        next={{ label: 'Safety', href: '/docs/hardware/safety' }}
       />
     </DocsShell>
   );

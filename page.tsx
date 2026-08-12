@@ -57,21 +57,6 @@ export default function DocsLandingPage() {
           <DisplayHeading size="2xl">
             NEORACER <Red>DOCS</Red>
           </DisplayHeading>
-          <p
-            style={{
-              fontFamily: NB.bodyFont,
-              fontSize: 19,
-              lineHeight: 1.55,
-              color: NB.textMutedBeige,
-              maxWidth: 660,
-              marginBottom: 8,
-            }}
-          >
-            The documentation for the NeoRacer V1. Setup takes a new
-            car from the box to ready to drive; the rest is the reference
-            you come back to: hardware, software, calibration, troubleshooting,
-            and the full Python and ROS 2 APIs.
-          </p>
         </div>
       </section>
 

@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Metadata } from 'next';
 import DocsShell from '@/components/docs/DocsShell';
 import { NB } from '@/lib/nb-tokens';
@@ -104,10 +105,16 @@ export default function ConnectToRouterPage() {
               { what: 'JupyterLab (write and run code on the car)', where: 'http://192.168.10.100:8888' },
             ]}
           />
-          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-            For interacting with the dashboards, see{' '}
-            <em style={{ color: NB.textMutedBeige }}>coming soon</em>.
-          </p>
+          <div style={{ marginTop: 18 }}>
+            <DashList
+              items={[
+                <>For interacting with the dashboards, see{' '}
+                  <em style={{ color: NB.textMutedBeige }}>(coming soon)</em>.</>,
+                <>For different methods to access the car, see{' '}
+                  <Link href="/docs/software/networking" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Networking</Link>.</>,
+              ]}
+            />
+          </div>
         </section>
       </ScrollReveal>
 

@@ -153,6 +153,36 @@ export default function OscoreBoardPage() {
               body="The board talks to the Jetson over USB. CAN, 100 Mbps Ethernet, and a 4-port USB hub are there for expansion."
             />
           </div>
+          <div style={{ marginTop: 28 }}>
+            <MonoLabel>The real-time jobs</MonoLabel>
+          </div>
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+              gap: 18,
+              marginTop: 14,
+            }}
+          >
+            <NumberedFeatureCard
+              n={4}
+              title="Motor control"
+              lede="The OSCORE drives the motor and reads the encoder."
+              body="It adjusts motor power thousands of times per second to hold the speed your code asks for. Python on the Jetson cannot react that fast, which is why this job lives on the OSCORE."
+            />
+            <NumberedFeatureCard
+              n={5}
+              title="Servo control"
+              lede="The OSCORE moves the steering servo."
+              body="Your code asks for a steering angle and the OSCORE turns it into the servo signal. The steering calibration is saved on the OSCORE itself, so reinstalling the Jetson does not erase it."
+            />
+            <NumberedFeatureCard
+              n={6}
+              title="IMU fusion"
+              lede="The OSCORE cleans up the IMU data."
+              body="It combines the raw accelerometer and gyroscope readings into a stable orientation, 200 times a second, so the Jetson receives clean data on /imu."
+            />
+          </div>
         </section>
       </ScrollReveal>
 

@@ -8,7 +8,6 @@ import {
   MonoLabel,
   ChromeBadge,
   DashList,
-  NumberedFeatureCard,
   Fig,
 } from '@/components/docs/Editorial';
 import { Crumbs, PrevNext, Callout } from '@/components/docs/DocsPrimitives';
@@ -100,6 +99,26 @@ export default function ComputePage() {
 
       <ScrollReveal>
         <section style={{ paddingBottom: 32 }}>
+          <MonoLabel>Base configuration</MonoLabel>
+          <DashList
+            items={[
+              <>The DC power jack is fed by the power module, which connects to
+                the battery.</>,
+              <>The HDMI port always has a connector in it: a monitor while you
+                are working at the car, or the HDMI dummy plug the car ships
+                with, which keeps a desktop rendering for{' '}
+                <a href="/docs/software/remote-desktop" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>remote desktop</a>.</>,
+              <>One USB 3.2 port connects to the OSCORE board and one to the
+                camera.</>,
+              <>The other two USB 3.2 ports are free; the setup keyboard and
+                mouse usually take one.</>,
+            ]}
+          />
+        </section>
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <section style={{ paddingBottom: 32 }}>
           <DisplayHeading size="lg">
             THE MICROCONTROLLER <Red>STACK</Red>
           </DisplayHeading>
@@ -111,11 +130,6 @@ export default function ComputePage() {
             Everything else lives on the Jetson, which is where you write code.
             The MCU is usually something you configure rather than program.
           </p>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 22, marginTop: 22 }}>
-            <NumberedFeatureCard n={1} title="Motor control" lede="The OSCORE drives the motor and reads the encoder." body="It adjusts motor power thousands of times per second to hold the speed your code asks for. Python on the Jetson cannot react that fast, which is why this job lives on the OSCORE." />
-            <NumberedFeatureCard n={2} title="Servo control" lede="The OSCORE moves the steering servo." body="Your code asks for a steering angle and the OSCORE turns it into the servo signal. The steering calibration is saved on the OSCORE itself, so reinstalling the Jetson does not erase it." />
-            <NumberedFeatureCard n={3} title="IMU fusion" lede="The OSCORE cleans up the IMU data." body="It combines the raw accelerometer and gyroscope readings into a stable orientation, 200 times a second, so the Jetson receives clean data on /imu." />
-          </div>
         </section>
       </ScrollReveal>
 

@@ -127,7 +127,7 @@ rviz2`}</Code>
 
       <PrevNext
         prev={{ label: 'Safety', href: '/docs/hardware/safety' }}
-        next={{ label: 'Reassembly', href: '/docs/hardware/reassembly' }}
+        next={{ label: 'OS & image', href: '/docs/software/os-and-image' }}
       />
     </DocsShell>
   );

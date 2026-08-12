@@ -25,14 +25,14 @@ export default function RobotModelPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Hardware', href: '/docs/hardware/overview' },
+          { label: 'Software', href: '/docs/software/os-and-image' },
           { label: 'Robot model' },
         ]}
       />
 
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 28, paddingTop: 24 }}>
-          <GhostNumeral n="14" top={-30} right={-20} size={400} />
+          <GhostNumeral n="3D" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               THE ROBOT <Red>MODEL</Red>
@@ -126,8 +126,8 @@ rviz2`}</Code>
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'Safety', href: '/docs/hardware/safety' }}
-        next={{ label: 'OS & image', href: '/docs/software/os-and-image' }}
+        prev={{ label: 'Navigation (Nav2)', href: '/docs/software/navigation' }}
+        next={{ label: 'API reference', href: '/docs/api-reference/python/drive' }}
       />
     </DocsShell>
   );

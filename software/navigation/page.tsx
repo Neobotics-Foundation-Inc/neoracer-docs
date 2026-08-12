@@ -162,7 +162,7 @@ ros2 launch osracer_navigation nav2.launch.py planner:=teb`}</Code>
 
       <PrevNext
         prev={{ label: 'Mapping (SLAM)', href: '/docs/software/mapping' }}
-        next={{ label: 'API reference', href: '/docs/api-reference/python/drive' }}
+        next={{ label: '3D model', href: '/docs/software/robot-model' }}
       />
     </DocsShell>
   );

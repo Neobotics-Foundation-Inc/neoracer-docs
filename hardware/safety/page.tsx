@@ -110,7 +110,7 @@ export default function SafetyPage() {
 
       <PrevNext
         prev={{ label: 'Chassis & CAD', href: '/docs/hardware/chassis-and-cad' }}
-        next={{ label: '3D model', href: '/docs/hardware/robot-model' }}
+        next={{ label: 'OS & image', href: '/docs/software/os-and-image' }}
       />
     </DocsShell>
   );

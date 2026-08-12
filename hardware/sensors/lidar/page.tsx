@@ -7,11 +7,8 @@ import {
   DisplayHeading,
   Red,
   GhostNumeral,
-  MonoLabel,
   ChromeBadge,
-  DashList,
   Fig,
-  NumberedFeatureCard,
 } from '@/components/docs/Editorial';
 import { LidarFrameDiagram } from '@/components/docs/Diagrams';
 import { ScrollReveal, MouseFollowGlow, AnimatedNumeral } from '@/components/docs/Interactive';
@@ -54,7 +51,8 @@ export default function LidarPage() {
               A Richbeam LakiBeam1 planar laser scanner on top of the car. Your
               code reads it as ~1440 distances in centimetres, 0.25° apart,
               index 0 straight ahead. The array covers the full circle; the
-              sensor&apos;s live window is 270°, so the rear wedge reads 0.
+              sensor&apos;s live window is 270°, so the rear wedge reads 0. It
+              connects to the Jetson through the OSCORE board.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="red">Same degrees in Playground (sim)</ChromeBadge>
@@ -68,183 +66,17 @@ export default function LidarPage() {
         </section>
       </MouseFollowGlow>
 
-      <ScrollReveal>
-        <StepCard
-          title="LakiBeam L1 LiDAR"
-          image="/images/build/lidar-2.jpg"
-          alt="The LakiBeam L1 spinning LiDAR unit on its mount"
-        >
-          The LakiBeam L1 mounts on a short tower at the nose and spins a laser
-          to measure the distance to walls and obstacles around the car. Wall
-          following, gap finding, and mapping all read from this scan. It
-          connects to the Jetson through the OSCORE board.
-        </StepCard>
-      </ScrollReveal>
-
-      {/* ── FIG, coordinate frame ───────────────────────────────────── */}
-      <ScrollReveal>
-        <Fig
-          label="FIG. A / COORDINATE FRAME"
-          caption="The scan array starts at index 0 (forward) and rotates clockwise. The rear arc (around 180°) is occluded by the chassis and returns 0."
-        >
-          <LidarFrameDiagram />
-        </Fig>
-      </ScrollReveal>
-
-      {/* ── Section · Sample layout ──────────────────────────────────── */}
-      <ScrollReveal>
-        <section style={{ position: 'relative', paddingBottom: 32 }}>
-          <Eyebrow>01 / SAMPLE LAYOUT</Eyebrow>
-          <DisplayHeading size="lg">
-            THE SCAN <Red>LAYOUT</Red>
-          </DisplayHeading>
-          <p
-            style={{
-              fontFamily: NB.bodyFont,
-              fontSize: 16,
-              lineHeight: 1.65,
-              color: NB.textMutedBeige,
-              maxWidth: 720,
-            }}
-          >
-            The full scan is one flat list. Index 0 is forward; the list wraps
-            clockwise. To look at a direction, convert your angle to an index
-            with one of the helpers below, or use{' '}
-            <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>
-              rc_utils.get_lidar_average_distance(scan, angle, window_angle)
-            </code>{' '}
-            and let it do the maths for you.
-          </p>
-          <Code lang="python">
-{`scan = rc.lidar.get_samples()          # ~1440 floats on the car, 720 in the sim
-print(len(scan))                       # use this, never a hardcoded count
-print(scan[0])                         # cm, straight forward
-print(scan[len(scan) // 4])            # cm, 90° right on any platform
-
-# For any other direction, let the helper do the index math:
-left  = rc_utils.get_lidar_average_distance(scan, 270, window_angle=8)  # 90° left
-front = rc_utils.get_lidar_average_distance(scan, 0,   window_angle=4)`}
-          </Code>
-        </section>
-      </ScrollReveal>
-
-      {/* ── Section · Three things to know ───────────────────────────── */}
+      {/* ── Section · The scanner ────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ paddingBottom: 32 }}>
-          <Eyebrow>02 / WHAT TRIPS PEOPLE UP</Eyebrow>
-          <DisplayHeading size="lg">
-            COMMON <Red>PITFALLS</Red>
-          </DisplayHeading>
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-              gap: 22,
-              marginTop: 22,
-            }}
-          >
-            <NumberedFeatureCard
-              n={1}
-              title="The rear is blind"
-              lede="Samples roughly 135° to 225° (around the back) return zero."
-              body="The chassis occludes the scanner there, so any control loop that divides by a sample without checking it will blow up at the rear. The helpers already skip the zero samples for you, which is the easy way to stay clear of this."
-            />
-            <NumberedFeatureCard
-              n={2}
-              title="Centimetres, not metres"
-              lede="The same as racecar-neo-library on the real car."
-              body="Picking cm or m once at the top of your script and staying with it keeps things honest. Switching units mid-loop is a common way for the gains to drift, and then the wobble is hard to trace back to the cause."
-            />
-            <NumberedFeatureCard
-              n={3}
-              title="Sample rate ≠ control rate"
-              lede="The scanner runs at 30 Hz. Your loop probably runs faster."
-              body="Reading get_samples() twice in the same frame returns the same list, which is fine. Just keep in mind that the loop's deltas aren't 30 Hz samples, so averaging them as if they were will give you the wrong picture."
-            />
-          </div>
-        </section>
-      </ScrollReveal>
-
-      {/* ── Section · Python API ─────────────────────────────────────── */}
-      <ScrollReveal>
-        <section style={{ paddingBottom: 32 }}>
-          <Eyebrow>03 / PYTHON API</Eyebrow>
-          <DisplayHeading size="lg">
-            THE PYTHON <Red>API</Red>
-          </DisplayHeading>
-          <DashList
-            items={[
-              <>
-                <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed, fontSize: 14 }}>
-                  rc.lidar.get_samples() → NDArray[Float]
-                </code>{' '}
-                · the raw scan in cm, ~1440 samples on the car.
-              </>,
-              <>
-                <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed, fontSize: 14 }}>
-                  rc_utils.get_lidar_average_distance(scan, angle, window_angle=4)
-                </code>{' '}
-                · average over a degree window. Skips blind-arc zeros for you.
-              </>,
-              <>
-                <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed, fontSize: 14 }}>
-                  rc_utils.get_lidar_closest_point(scan, window=(0, 360))
-                </code>{' '}
-                · returns <code style={{ fontFamily: NB.monoFont }}>(angle_deg, distance_cm)</code>.
-              </>,
-            ]}
-          />
-        </section>
-      </ScrollReveal>
-
-      {/* ── Section · ROS 2 ──────────────────────────────────────────── */}
-      <ScrollReveal>
-        <section style={{ paddingBottom: 32 }}>
-          <Eyebrow>04 / ROS 2</Eyebrow>
-          <DisplayHeading size="lg">
-            THE /scan <Red>TOPIC</Red>
-          </DisplayHeading>
-          <div
-            style={{
-              background: NB.tarmacBlue,
-              color: NB.haloWhite,
-              borderRadius: 12,
-              padding: '20px 22px',
-              fontFamily: NB.monoFont,
-              fontSize: 13.5,
-              lineHeight: 1.7,
-              boxShadow: NB.shadowCard,
-            }}
-          >
-            <div style={{ color: NB.neoboticsRed, fontWeight: 700, marginBottom: 8 }}>
-              // ros2 topic info /scan
-            </div>
-            Type:&nbsp;&nbsp;&nbsp;<span style={{ color: NB.neoboticsRed }}>sensor_msgs/msg/LaserScan</span>
-            <br />
-            Rate:&nbsp;&nbsp;&nbsp;30 Hz
-            <br />
-            Frame:&nbsp;&nbsp;<span style={{ color: NB.neoboticsRed }}>laser</span>
-            <br />
-            QoS:&nbsp;&nbsp;&nbsp;&nbsp;Reliable, Volatile, depth 10
-          </div>
-        </section>
-      </ScrollReveal>
-
-      {/* ── Section · The hardware ───────────────────────────────────── */}
-      <ScrollReveal>
-        <section style={{ paddingBottom: 32 }}>
-          <Eyebrow>05 / THE SCANNER ITSELF</Eyebrow>
+          <Eyebrow>01 / THE SCANNER</Eyebrow>
           <DisplayHeading size="lg">
             RICHBEAM <Red>LAKIBEAM1</Red>
           </DisplayHeading>
-          <p
-            style={{
-              fontFamily: NB.bodyFont,
-              fontSize: 16,
-              lineHeight: 1.65,
-              color: NB.textMutedBeige,
-              maxWidth: 720,
-            }}
+          <StepCard
+            title="LakiBeam L1 LiDAR"
+            image="/images/build/lidar-2.jpg"
+            alt="The LakiBeam L1 spinning LiDAR unit on its mount"
           >
             The scanner is an off-the-shelf Richbeam LakiBeam1. If you ever want
             the raw datasheet numbers straight from the source, the{' '}
@@ -260,7 +92,7 @@ front = rc_utils.get_lidar_average_distance(scan, 0,   window_angle=4)`}
             at 0.25° resolution, ~1440 samples per revolution, and the library
             hands you that scan as-is. Nothing is resampled; the 270° live
             window is a sensor setting, and the rear wedge outside it reads 0.
-          </p>
+          </StepCard>
           <div
             style={{
               display: 'grid',
@@ -325,6 +157,51 @@ front = rc_utils.get_lidar_average_distance(scan, 0,   window_angle=4)`}
           </Link>
           .
         </Callout>
+      </ScrollReveal>
+
+      {/* ── Section · Sample layout ──────────────────────────────────── */}
+      <ScrollReveal>
+        <section style={{ position: 'relative', paddingBottom: 32 }}>
+          <Eyebrow>02 / SAMPLE LAYOUT</Eyebrow>
+          <DisplayHeading size="lg">
+            THE SCAN <Red>LAYOUT</Red>
+          </DisplayHeading>
+          <p
+            style={{
+              fontFamily: NB.bodyFont,
+              fontSize: 16,
+              lineHeight: 1.65,
+              color: NB.textMutedBeige,
+              maxWidth: 720,
+            }}
+          >
+            The full scan is one flat list. Index 0 is forward; the list wraps
+            clockwise. To look at a direction, convert your angle to an index
+            with one of the helpers below, or use{' '}
+            <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>
+              rc_utils.get_lidar_average_distance(scan, angle, window_angle)
+            </code>{' '}
+            and let it do the maths for you.
+          </p>
+          <div style={{ marginTop: 18 }}>
+            <Fig
+              label="FIG. A / COORDINATE FRAME"
+              caption="The scan array starts at index 0 (forward) and rotates clockwise. The rear arc (around 180°) is occluded by the chassis and returns 0."
+            >
+              <LidarFrameDiagram />
+            </Fig>
+          </div>
+          <Code lang="python">
+{`scan = rc.lidar.get_samples()          # ~1440 floats on the car, 720 in the sim
+print(len(scan))                       # use this, never a hardcoded count
+print(scan[0])                         # cm, straight forward
+print(scan[len(scan) // 4])            # cm, 90° right on any platform
+
+# For any other direction, let the helper do the index math:
+left  = rc_utils.get_lidar_average_distance(scan, 270, window_angle=8)  # 90° left
+front = rc_utils.get_lidar_average_distance(scan, 0,   window_angle=4)`}
+          </Code>
+        </section>
       </ScrollReveal>
 
       <PrevNext

@@ -53,7 +53,7 @@ export default function ComputePage() {
       <ScrollReveal>
         <section style={{ paddingBottom: 32 }}>
           <DisplayHeading size="lg">
-            THE JETSON <Red>HOST</Red>
+            THE <Red>JETSON</Red>
           </DisplayHeading>
           <DashList
             items={[
@@ -122,6 +122,15 @@ export default function ComputePage() {
         </section>
       </ScrollReveal>
 
+      <ScrollReveal>
+        <Callout type="tip" title="Checking how hard the Jetson is working">
+          You can run <code style={{ fontFamily: NB.monoFont }}>tegrastats</code> over
+          SSH while your code is running. It reports the AI accelerator load,
+          CPU per-core load, RAM, and thermal headroom in real time, and it's the
+          same tool NVIDIA uses internally.
+        </Callout>
+      </ScrollReveal>
+
       {/* ── Powering off ─────────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ paddingBottom: 32 }}>
@@ -129,12 +138,12 @@ export default function ComputePage() {
             POWERING <Red>OFF</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-            The Jetson is a computer, so shut it down before cutting power:
+            Cutting power before the Jetson has shut down can corrupt its
+            file system. Instead, we recommend following these steps:
           </p>
           <DashList
             items={[
-              <>Bring the car to a stop, with nothing still commanding it (no
-                running notebook cells or host apps like RViz).</>,
+              <>Shut down any running notebook cells or host apps like RViz.</>,
               <>Shut down the Jetson from a terminal:</>,
             ]}
           />
@@ -146,20 +155,7 @@ export default function ComputePage() {
               <>If the car is going away for a while, unplug the battery.</>,
             ]}
           />
-          <Callout type="warn" title="Don't skip straight to the switch">
-            Cutting power before the Jetson has shut down can corrupt its file
-            system.
-          </Callout>
         </section>
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <Callout type="tip" title="Want a deeper headroom check?">
-          You can run <code style={{ fontFamily: NB.monoFont }}>tegrastats</code> over
-          SSH while your code is running. It reports the AI accelerator load,
-          CPU per-core load, RAM, and thermal headroom in real time, and it's the
-          same tool NVIDIA uses internally.
-        </Callout>
       </ScrollReveal>
 
       <PrevNext

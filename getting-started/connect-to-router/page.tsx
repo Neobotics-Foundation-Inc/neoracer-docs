@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { Metadata } from 'next';
 import DocsShell from '@/components/docs/DocsShell';
 import { NB } from '@/lib/nb-tokens';
@@ -111,7 +110,7 @@ export default function ConnectToRouterPage() {
                 <>For interacting with the dashboards, see{' '}
                   <em style={{ color: NB.textMutedBeige }}>(coming soon)</em>.</>,
                 <>For different methods to access the car, see{' '}
-                  <Link href="/docs/software/networking" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Networking</Link>.</>,
+                  <em style={{ color: NB.textMutedBeige }}>Networking (coming soon)</em>.</>,
               ]}
             />
           </div>

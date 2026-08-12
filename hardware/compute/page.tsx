@@ -9,8 +9,10 @@ import {
   ChromeBadge,
   DashList,
   NumberedFeatureCard,
+  Fig,
 } from '@/components/docs/Editorial';
 import { Crumbs, PrevNext, Callout } from '@/components/docs/DocsPrimitives';
+import { JetsonPortsDiagram } from '@/components/docs/Diagrams';
 import { ScrollReveal, MouseFollowGlow, AnimatedNumeral, InfoNote } from '@/components/docs/Interactive';
 import Image from 'next/image';
 
@@ -69,16 +71,34 @@ export default function ComputePage() {
           </DisplayHeading>
           <DashList
             items={[
-              <>Runs Ubuntu (the NeoRacer image ships pre-configured).</>,
-              <>Hosts the ROS 2 graph, every node from FIG. A on the{' '}
-                <a href="/docs/software/ros2-driver" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>ROS 2 driver</a>{' '}
-                page lives here.</>,
+              <>Runs Ubuntu 22.04 (the NeoRacer image ships pre-configured).</>,
               <>Drives the camera pipeline at 640×480 / 60 fps.</>,
               <>Provides the AI accelerator for any TensorRT, ONNX, or PyTorch model you deploy.</>,
-              <>Bridges Wi-Fi for SSH, ROS 2 topics, and OTA updates.</>,
+              <>Can act as a Wi-Fi access point for direct connection. For more
+                information, see{' '}
+                <a href="/docs/software/networking" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Networking</a>.</>,
             ]}
           />
         </section>
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <Fig
+          label="FIG. A / JETSON PORTS"
+          caption={
+            <>
+              Every connection on the Jetson. Power arrives from the power
+              module on the DC barrel jack, the OSCORE data lead and the camera
+              take two USB-A ports, and the Cudy router&apos;s LAN port connects
+              over RJ45. The HDMI port carries the dummy plug whenever a
+              monitor is not attached, two USB-A ports stay free for the setup
+              keyboard and mouse, USB-C is unused, and the M.2 Wi-Fi card on
+              the underside runs the two antennas.
+            </>
+          }
+        >
+          <JetsonPortsDiagram />
+        </Fig>
       </ScrollReveal>
 
       <ScrollReveal>
@@ -87,30 +107,18 @@ export default function ComputePage() {
             THE MICROCONTROLLER <Red>STACK</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-            The Jetson is built for seeing and planning, not precise timing:
-            even a short pause in Python lasts longer than one control loop
-            tick. The time-critical loops run on the microcontroller instead,
-            which talks to the Jetson over USB through the driver node.
+            The Jetson handles vision and planning, leaving exact timing to
+            the{' '}
+            <a href="/docs/hardware/oscore-board" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>OSCORE board</a>.
+            The MCU talks to the Jetson over USB through the driver node.
+            Everything else lives on the Jetson, which is where you write code.
+            The MCU is usually something you configure rather than program.
           </p>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 22, marginTop: 22 }}>
             <NumberedFeatureCard n={1} title="Motor control" lede="PWM out to the ESC. Encoder counts in." body="Closed-loop velocity control runs at a fixed kHz tick so you don't see torque ripple from a stalled Python loop." />
             <NumberedFeatureCard n={2} title="Servo control" lede="Steering angle commanded over PWM." body="Trim and centre offsets are stored in flash so a re-flash of the Jetson doesn't lose your calibration." />
             <NumberedFeatureCard n={3} title="IMU fusion" lede="Fused orientation at 200 Hz." body="The MCU (microcontroller unit) does the bias subtraction and orientation fusion so the Jetson sees clean orientation+angular-rate samples on /imu, no warm-up delay." />
           </div>
-        </section>
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <section style={{ paddingBottom: 32 }}>
-          <DisplayHeading size="lg">
-            THE WORK <Red>SPLIT</Red>
-          </DisplayHeading>
-          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-            Anything where timing has to be exact lives on the MCU, and
-            everything else lives on the Jetson. In practice you'll spend about
-            99 % of your time writing code on the Jetson side. The MCU is
-            usually something you configure rather than program.
-          </p>
         </section>
       </ScrollReveal>
 

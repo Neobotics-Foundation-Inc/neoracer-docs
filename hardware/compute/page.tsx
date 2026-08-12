@@ -13,7 +13,6 @@ import {
 import { Crumbs, PrevNext, Callout } from '@/components/docs/DocsPrimitives';
 import { JetsonPortsDiagram } from '@/components/docs/Diagrams';
 import { ScrollReveal, MouseFollowGlow, AnimatedNumeral, InfoNote } from '@/components/docs/Interactive';
-import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'Compute · Hardware · NeoRacer Docs',
@@ -51,17 +50,6 @@ export default function ComputePage() {
           </div>
         </section>
       </MouseFollowGlow>
-
-      <ScrollReveal>
-        <Image
-          src="/images/build/jetson.jpg"
-          alt="NVIDIA Jetson Orin Nano on its carrier board with cooling fan and USB ports"
-          width={1536}
-          height={1024}
-          sizes="(max-width: 640px) 100vw, 560px"
-          style={{ width: '100%', maxWidth: 560, height: 'auto', display: 'block', margin: '0 auto 18px', borderRadius: 10 }}
-        />
-      </ScrollReveal>
 
       <ScrollReveal>
         <section style={{ paddingBottom: 32 }}>

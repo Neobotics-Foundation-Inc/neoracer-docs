@@ -105,28 +105,6 @@ export default function SafetyPage() {
               <>Avoid a stalled motor left under power (a locked rotor) and continuous running above 40&nbsp;°C, both of which build heat fast.</>,
             ]}
           />
-          <Callout type="note" title="When you contact support">
-            Email{' '}
-            <a href="mailto:support@neobotics.org" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>support@neobotics.org</a>{' '}
-            with your serial number, what happened, the steps and conditions at the
-            time, and any photos or video. It gets you a faster answer.
-          </Callout>
-        </section>
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <section style={{ paddingBottom: 32 }}>
-          <Eyebrow>03 / FOR EDUCATORS</Eyebrow>
-          <DisplayHeading size="lg">
-            CLASSROOM <Red>SUPPLEMENTS</Red>
-          </DisplayHeading>
-          <DashList
-            items={[
-              <>A safe driving zone marked with tape or cones tells students where the car will and won't go.</>,
-              <>A first-aid kit on site covers the rare bad day.</>,
-              <>A printed copy of this page in the lab means the rules are there when the screen isn't.</>,
-            ]}
-          />
         </section>
       </ScrollReveal>
 

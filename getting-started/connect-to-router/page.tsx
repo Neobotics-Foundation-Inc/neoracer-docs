@@ -5,7 +5,6 @@ import {
   DisplayHeading,
   Red,
   GhostNumeral,
-  MonoLabel,
   DashList,
   ChromeBadge,
   ClockGlyph,
@@ -59,13 +58,12 @@ export default function ConnectToRouterPage() {
             named <code style={{ fontFamily: NB.monoFont }}>neoracer-XXXX</code>,
             where <code style={{ fontFamily: NB.monoFont }}>XXXX</code> is a set
             of letters and numbers unique to your car, along with a 5&nbsp;GHz
-            version of the same network. The router is wired to the Jetson.
+            version of the same network.
           </p>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 14 }}>
-            You can find the name of this network on the sticker on the bottom
-            of the NeoRacer or inside the battery compartment.
+            You can find the name (SSID) of this network on the sticker on the
+            bottom of the NeoRacer or within the battery compartment.
           </p>
-          <MonoLabel>Connect</MonoLabel>
           <DashList
             items={[
               <>Power the car on and give the router a minute to boot.</>,
@@ -93,11 +91,12 @@ export default function ConnectToRouterPage() {
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             Once connected to the router, you can interact with the car through
             the router&apos;s IP address, which is static at{' '}
-            <code style={{ fontFamily: NB.monoFont }}>192.168.10.100</code>:
+            <code style={{ fontFamily: NB.monoFont }}>192.168.10.100</code>. The
+            next page uses the Health dashboard and JupyterLab.
           </p>
           <DataTable
             columns={[
-              { key: 'what', label: 'Dashboard', accent: true },
+              { key: 'what', label: 'Key dashboards', accent: true },
               { key: 'where', label: 'Address', mono: true },
             ]}
             rows={[
@@ -106,7 +105,8 @@ export default function ConnectToRouterPage() {
             ]}
           />
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-            The rest of the setup uses the Health dashboard and JupyterLab.
+            For interacting with the dashboards, see{' '}
+            <em style={{ color: NB.textMutedBeige }}>coming soon</em>.
           </p>
         </section>
       </ScrollReveal>

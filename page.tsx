@@ -17,7 +17,7 @@ import PitLaneNav, { PitLaneSection } from '@/components/docs/PitLaneNav';
 export const metadata: Metadata = {
   title: 'NeoRacer Docs, from sealed box to autonomous lap',
   description:
-    'Documentation for the NeoRacer V1 autonomous racing kit. A four-page setup path, plus the full Python API and ROS 2 reference for researchers.',
+    'Documentation for the NeoRacer V1 autonomous racing kit. A six-page setup path, plus the full Python API and ROS 2 reference for researchers.',
 };
 
 /* ─────────────────────────────────────────────────────────────────────────
@@ -36,7 +36,7 @@ const SHOW_PLAYGROUND_TEASE = false;
 /* Bay order mirrors the sidebar. Counts are the real page counts in nav.ts;
    update both together when a page ships. */
 const pitLane: PitLaneSection[] = [
-  { title: 'Setup', href: '/docs/getting-started/unbox', pages: 4 },
+  { title: 'Setup', href: '/docs/getting-started/unbox', pages: 6 },
   { title: 'Hardware', href: '/docs/hardware/overview', pages: 14, disabled: true },
   { title: 'Build', href: '/docs/build/overview', pages: 2, disabled: true },
   { title: 'Software', href: '/docs/software/os-and-image', pages: 9, disabled: true },

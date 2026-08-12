@@ -67,10 +67,6 @@ export default function TestTheSystemPage() {
             <DisplayHeading size="xl">
               TEST THE <Red>SYSTEM</Red>
             </DisplayHeading>
-            <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
-              The Async Core Test notebook checks every sensor and control
-              surface on the car.
-            </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="outline" icon={<ClockGlyph />}>~15 minutes</ChromeBadge>
             </div>
@@ -98,9 +94,8 @@ export default function TestTheSystemPage() {
             RUN THE ASYNC CORE <Red>TEST</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-            The Async Core Test is a Jupyter notebook that exercises each
-            NeoRacer subsystem in turn and prints a pass/fail summary at the
-            end.
+            The Async Core Test notebook checks every sensor and control
+            surface on the car and prints a pass/fail summary at the end.
           </p>
           <PhotoSteps
             items={[

@@ -5,7 +5,6 @@ import {
   DisplayHeading,
   Red,
   GhostNumeral,
-  MonoLabel,
   ChromeBadge,
   DashList,
   Fig,
@@ -87,7 +86,9 @@ export default function ComputePage() {
 
       <ScrollReveal>
         <section style={{ paddingBottom: 32 }}>
-          <MonoLabel>Base configuration</MonoLabel>
+          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
+            The NeoRacer&apos;s base configuration is as follows:
+          </p>
           <DashList
             items={[
               <>The DC power jack is fed by the power module, which connects to
@@ -98,8 +99,8 @@ export default function ComputePage() {
                 <a href="/docs/software/remote-desktop" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>remote desktop</a>.</>,
               <>One USB 3.2 port connects to the OSCORE board and one to the
                 camera.</>,
-              <>The other two USB 3.2 ports are free; the setup keyboard and
-                mouse usually take one.</>,
+              <>The other two USB 3.2 ports are free. During setup, one of
+                them is used for the keyboard and mouse.</>,
             ]}
           />
         </section>

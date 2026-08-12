@@ -399,7 +399,7 @@ ros2 topic echo /scan --once | head -20`}</Code>
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'First program', href: '/docs/getting-started/first-program' }}
+        prev={{ label: 'Reassembly', href: '/docs/hardware/reassembly' }}
         next={{ label: 'racecar-neo-library', href: '/docs/software/racecar-neo-library' }}
       />
     </DocsShell>

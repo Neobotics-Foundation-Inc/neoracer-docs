@@ -188,6 +188,7 @@ export default function TestTheSystemPage() {
 
       <PrevNext
         prev={{ label: 'Connect to the router', href: '/docs/getting-started/connect-to-router' }}
+        next={{ label: 'Hardware overview', href: '/docs/hardware/overview' }}
       />
     </DocsShell>
   );

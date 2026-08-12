@@ -79,8 +79,8 @@ export default function NetworkingPage() {
         <Callout type="note" title="First time on a fresh car?">
           A brand new car has not been put on a network yet. That one-time setup
           happens at the car with a monitor and keyboard, and it is covered by{' '}
-          <Link href="/docs/getting-started/connect-to-car" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-            Connect to the car
+          <Link href="/docs/getting-started/prepare-the-car" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
+            Prepare the car
           </Link>{' '}
           and the end of{' '}
           <Link href="/docs/getting-started/install-driver" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
@@ -130,9 +130,9 @@ export default function NetworkingPage() {
               the car borrows a network instead: join an existing Wi-Fi from the
               console desktop or plug Ethernet into the Jetson&apos;s RJ45,
               exactly as in{' '}
-              <Link href="/docs/getting-started/connect-to-car" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-                Connect to the car
-              </Link>, step 03. On the cudy, connecting the router&apos;s uplink
+              <Link href="/docs/getting-started/prepare-the-car" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
+                Prepare the car
+              </Link>. On the cudy, connecting the router&apos;s uplink
               does the same job without touching the car.
             </Callout>
           </div>

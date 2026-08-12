@@ -159,7 +159,7 @@ export default function HardwareOverviewPage() {
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'First program', href: '/docs/getting-started/first-program' }}
+        prev={{ label: 'Test the system', href: '/docs/getting-started/test-the-system' }}
         next={{ label: 'Compute', href: '/docs/hardware/compute' }}
       />
     </DocsShell>

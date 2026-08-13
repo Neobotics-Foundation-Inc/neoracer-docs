@@ -57,6 +57,12 @@ const ROWS = [
     notes: 'A JPEG-compressed colour frame at 60 fps from the camera node (USB webcam in MJPG). The bytes are raw JPEG with encoding="jpeg", decode with cv2.imdecode before display. Publisher is best-effort: subscribe with sensor-data QoS or you receive nothing.',
   },
   {
+    topic: '/camera/decoded',
+    type: 'sensor_msgs/Image',
+    role: 'Read it',
+    notes: 'Optional. A decoded copy of /camera that RViz can render directly, republished by the decode_camera node when it is running.',
+  },
+  {
     topic: '/drive',
     type: 'ackermann_msgs/AckermannDriveStamped',
     role: 'Publish it',
@@ -218,7 +224,7 @@ export default function Ros2TopicsPage() {
           <code style={{ fontFamily: NB.monoFont }}>/map</code>,{' '}
           <code style={{ fontFamily: NB.monoFont }}>/tf</code>, and the Nav2 graph,
           so a <code style={{ fontFamily: NB.monoFont }}>ros2 topic list</code> on a
-          fully loaded car shows more than the eleven here. Those follow the standard
+          fully loaded car shows more than the twelve here. Those follow the standard
           Nav2 names; your own <code style={{ fontFamily: NB.monoFont }}>ros2 topic list</code>{' '}
           is the final word.
         </Callout>

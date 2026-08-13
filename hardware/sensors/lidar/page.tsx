@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { Metadata } from 'next';
 import DocsShell from '@/components/docs/DocsShell';
 import { NB } from '@/lib/nb-tokens';
@@ -12,7 +11,7 @@ import {
 import { LidarFrameDiagram } from '@/components/docs/Diagrams';
 import { ScrollReveal, MouseFollowGlow, AnimatedNumeral } from '@/components/docs/Interactive';
 import { StepCard } from '@/components/docs/StepCard';
-import { Crumbs, Callout, PrevNext, Code } from '@/components/docs/DocsPrimitives';
+import { Crumbs, PrevNext, Code } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
   title: 'LiDAR · Hardware · NeoRacer Docs',
@@ -69,8 +68,8 @@ export default function LidarPage() {
             image="/images/build/lidar-2.jpg"
             alt="The LakiBeam L1 spinning LiDAR unit on its mount"
           >
-            The scanner is an off-the-shelf Richbeam LakiBeam1. If you ever want
-            the raw datasheet numbers straight from the source, the{' '}
+            The scanner is an off-the-shelf Richbeam LakiBeam1. For raw
+            datasheet numbers, visit the{' '}
             <a
               href="https://www.richbeam.com/product/LakiBeam"
               target="_blank"
@@ -78,8 +77,7 @@ export default function LidarPage() {
               style={{ color: NB.neoboticsRed, fontWeight: 700 }}
             >
               Richbeam LakiBeam product page
-            </a>{' '}
-            is the place to go.
+            </a>.
           </StepCard>
           <div
             style={{
@@ -179,16 +177,6 @@ left  = rc_utils.get_lidar_average_distance(scan, 270, window_angle=8)  # 90° l
 front = rc_utils.get_lidar_average_distance(scan, 0,   window_angle=4)`}
           </Code>
         </section>
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <Callout type="tip" title="Got a scan that looks empty?">
-          Nine out of ten times it's the cable. The full decision tree lives at{' '}
-          <Link href="/docs/troubleshooting/lidar-empty-scan" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-            Troubleshooting · LiDAR empty scan
-          </Link>
-          .
-        </Callout>
       </ScrollReveal>
 
       <PrevNext

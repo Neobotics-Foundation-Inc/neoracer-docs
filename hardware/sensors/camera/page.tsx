@@ -66,16 +66,15 @@ export default function CameraPage() {
             image="/images/build/camera-2.jpg"
             alt="The NeoRacer camera in its front housing"
             specs={[
-              ['API resolution', '640 x 480'],
-              ['FPS', '60 (120 max)'],
-              ['Colour format', 'BGR (uint8)'],
-              ['Sensor type', 'RGB (no depth)'],
-              ['Sensor model', '1/2.6 inch'],
-              ['Pixels', '1920 × 1200 (approx. 2.3 MP)'],
-              ['Shutter type', 'Global shutter'],
-              ['Focal length', '2.7 mm'],
+              ['Sensor type', 'RGB'],
+              ['Resolution', '1920 × 1200'],
+              ['FPS', '120'],
               ['FOV', '130°'],
-              ['ROS 2 topic', '/camera (JPEG)'],
+              ['Focal length', '2.7 mm'],
+              ['Shutter type', 'Global shutter'],
+              ['Sensor model', '1/2.6 inch'],
+              ['Power consumption', '5V DC / 2W'],
+              ['Recommended frame rate', '640 × 480 @ 60 fps'],
             ]}
           >
             The camera is a forward-facing module located in the front of the

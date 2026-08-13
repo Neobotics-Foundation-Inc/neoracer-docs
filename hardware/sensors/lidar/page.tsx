@@ -67,16 +67,20 @@ export default function LidarPage() {
             title="LakiBeam L1 LiDAR"
             image="/images/build/lidar-2.jpg"
             alt="The LakiBeam L1 spinning LiDAR unit on its mount"
+            imageBg="#f9f9f9"
+            imageStyle={{ transform: 'scale(0.88) translateX(-5%)' }}
             specs={[
-              ['Live window', '270° (rear wedge reads 0)'],
+              ['Scan rate', '30 Hz (max)'],
+              ['Horizontal FOV', '270°'],
               ['Angular resolution', '0.25° native'],
-              ['Samples per scan', '~1440 per revolution'],
-              ['Scan rate', '30 Hz'],
               ['Range', '≥25 m @ 90%, ≥15 m @ 10%'],
               ['Range accuracy', '±2 cm'],
+              ['Samples per scan', '~1440 per revolution'],
               ['Laser wavelength', '940 nm (Class 1, eye-safe)'],
               ['Dimensions', '60 × 60 × 80 mm'],
-              ['Range principle', 'dTOF'],
+              ['Range principle', 'TOF'],
+              ['Operating voltage', '9V to 36V'],
+              ['Power consumption', '≤2W'],
             ]}
           >
             The scanner is an off-the-shelf Richbeam LakiBeam1. For raw

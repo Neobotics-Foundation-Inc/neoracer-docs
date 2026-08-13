@@ -9,7 +9,7 @@ import {
   ChromeBadge,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow, AnimatedNumeral } from '@/components/docs/Interactive';
-import { StepCard } from '@/components/docs/StepCard';
+import { SensorSheet } from '@/components/docs/SensorSheet';
 import { Crumbs, Callout, PrevNext, Code } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
@@ -61,24 +61,11 @@ export default function CameraPage() {
 
       <ScrollReveal>
         <section style={{ paddingBottom: 32 }}>
-          <StepCard
+          <SensorSheet
             title="The camera"
             image="/images/build/camera-2.jpg"
             alt="The NeoRacer camera in its front housing"
-          >
-            The camera is a forward-facing module located in the front of the
-            car. It can be used for lane following, colour and object
-            detection, and other computer vision work.
-          </StepCard>
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-              gap: 12,
-              marginTop: 18,
-            }}
-          >
-            {[
+            specs={[
               ['API resolution', '640 x 480'],
               ['FPS', '60 (120 max)'],
               ['Colour format', 'BGR (uint8)'],
@@ -89,42 +76,12 @@ export default function CameraPage() {
               ['Focal length', '2.7 mm'],
               ['FOV', '130°'],
               ['ROS 2 topic', '/camera (JPEG)'],
-            ].map(([k, v]) => (
-              <div
-                key={k}
-                style={{
-                  background: NB.haloWhite,
-                  border: `1px solid ${NB.borderOnBeige}`,
-                  borderRadius: 0,
-                  padding: '12px 14px',
-                }}
-              >
-                <div
-                  style={{
-                    fontFamily: NB.monoFont,
-                    fontSize: 10,
-                    letterSpacing: '0.14em',
-                    textTransform: 'uppercase',
-                    color: NB.textMutedBeige,
-                    fontWeight: 700,
-                    marginBottom: 4,
-                  }}
-                >
-                  {k}
-                </div>
-                <div
-                  style={{
-                    fontFamily: NB.headingFont,
-                    fontSize: 16,
-                    fontWeight: 700,
-                    color: NB.textOnBeige,
-                  }}
-                >
-                  {v}
-                </div>
-              </div>
-            ))}
-          </div>
+            ]}
+          >
+            The camera is a forward-facing module located in the front of the
+            car. It can be used for lane following, colour and object
+            detection, and other computer vision work.
+          </SensorSheet>
         </section>
       </ScrollReveal>
 

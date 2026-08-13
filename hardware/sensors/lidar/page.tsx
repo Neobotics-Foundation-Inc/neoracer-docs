@@ -10,7 +10,7 @@ import {
 } from '@/components/docs/Editorial';
 import { LidarFrameDiagram } from '@/components/docs/Diagrams';
 import { ScrollReveal, MouseFollowGlow, AnimatedNumeral } from '@/components/docs/Interactive';
-import { StepCard } from '@/components/docs/StepCard';
+import { SensorSheet } from '@/components/docs/SensorSheet';
 import { Crumbs, PrevNext, Code } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
@@ -63,10 +63,21 @@ export default function LidarPage() {
           <DisplayHeading size="lg">
             RICHBEAM <Red>LAKIBEAM1</Red>
           </DisplayHeading>
-          <StepCard
+          <SensorSheet
             title="LakiBeam L1 LiDAR"
             image="/images/build/lidar-2.jpg"
             alt="The LakiBeam L1 spinning LiDAR unit on its mount"
+            specs={[
+              ['Live window', '270° (rear wedge reads 0)'],
+              ['Angular resolution', '0.25° native'],
+              ['Samples per scan', '~1440 per revolution'],
+              ['Scan rate', '30 Hz'],
+              ['Range', '≥25 m @ 90%, ≥15 m @ 10%'],
+              ['Range accuracy', '±2 cm'],
+              ['Laser wavelength', '940 nm (Class 1, eye-safe)'],
+              ['Dimensions', '60 × 60 × 80 mm'],
+              ['Range principle', 'dTOF'],
+            ]}
           >
             The scanner is an off-the-shelf Richbeam LakiBeam1. For raw
             datasheet numbers, visit the{' '}
@@ -78,61 +89,7 @@ export default function LidarPage() {
             >
               Richbeam LakiBeam product page
             </a>.
-          </StepCard>
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-              gap: 12,
-              marginTop: 18,
-            }}
-          >
-            {[
-              ['Live window', '270° (rear wedge reads 0)'],
-              ['Angular resolution', '0.25° native'],
-              ['Samples per scan', '~1440 per revolution'],
-              ['Scan rate', '30 Hz'],
-              ['Range', '≥25 m @ 90%, ≥15 m @ 10%'],
-              ['Range accuracy', '±2 cm'],
-              ['Laser wavelength', '940 nm (Class 1, eye-safe)'],
-              ['Dimensions', '60 × 60 × 80 mm'],
-              ['Range principle', 'dTOF'],
-            ].map(([k, v]) => (
-              <div
-                key={k}
-                style={{
-                  background: NB.haloWhite,
-                  border: `1px solid ${NB.borderOnBeige}`,
-                  borderRadius: 0,
-                  padding: '12px 14px',
-                }}
-              >
-                <div
-                  style={{
-                    fontFamily: NB.monoFont,
-                    fontSize: 10,
-                    letterSpacing: '0.14em',
-                    textTransform: 'uppercase',
-                    color: NB.textMutedBeige,
-                    fontWeight: 700,
-                    marginBottom: 4,
-                  }}
-                >
-                  {k}
-                </div>
-                <div
-                  style={{
-                    fontFamily: NB.headingFont,
-                    fontSize: 16,
-                    fontWeight: 700,
-                    color: NB.textOnBeige,
-                  }}
-                >
-                  {v}
-                </div>
-              </div>
-            ))}
-          </div>
+          </SensorSheet>
         </section>
       </ScrollReveal>
 

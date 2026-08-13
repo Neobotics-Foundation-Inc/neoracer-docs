@@ -163,9 +163,9 @@ b, g, r = color[240, 320]              # centre pixel, one per channel
       {/* ── Section · No depth ───────────────────────────────────────── */}
       <ScrollReveal>
         <Callout type="warn" title="No depth camera on the NeoRacer">
-          The racecar-neo-library is generic, so it runs across the MIT RACECAR
-          family. Some of those cars carry a depth (RGB-D) camera, which is why the
-          API keeps <code style={{ fontFamily: NB.monoFont }}>get_depth_image()</code>{' '}
+          The RACECAR library is generic and applicable to other systems which
+          carry a depth (RGB-D) camera. Therefore, the API keeps{' '}
+          <code style={{ fontFamily: NB.monoFont }}>get_depth_image()</code>{' '}
           and <code style={{ fontFamily: NB.monoFont }}>get_max_range()</code>. The
           NeoRacer&apos;s camera is RGB-only, so those return an all-zero frame here
           and in the sim. For distance, use the{' '}

@@ -166,32 +166,6 @@ b, g, r = color[240, 320]              # centre pixel, one per channel
         </section>
       </ScrollReveal>
 
-      {/* ── Section · No depth ───────────────────────────────────────── */}
-      <ScrollReveal>
-        <Callout type="warn" title="No depth camera on the NeoRacer">
-          The RACECAR library is generic and applicable to other systems which
-          carry a depth (RGB-D) camera. Therefore, the API keeps{' '}
-          <code style={{ fontFamily: NB.monoFont }}>get_depth_image()</code>{' '}
-          and <code style={{ fontFamily: NB.monoFont }}>get_max_range()</code>. The
-          NeoRacer&apos;s camera is RGB-only, so those return an all-zero frame here
-          and in the sim. For distance, use the{' '}
-          <Link href="/docs/hardware/sensors/lidar" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>LiDAR</Link>.
-        </Callout>
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <Callout type="tip" title="Colours look washed out or boxes land in the wrong place?">
-          That usually traces back to calibration. Walk the intrinsics at{' '}
-          <Link
-            href="/docs/calibration/camera-intrinsics"
-            style={{ color: NB.neoboticsRed, fontWeight: 700 }}
-          >
-            Calibration · Camera intrinsics
-          </Link>
-          .
-        </Callout>
-      </ScrollReveal>
-
       <ScrollReveal>
         <Callout type="note" title="No image coming through at all?">
           A blank feed is almost always the cable or the camera_node not running,

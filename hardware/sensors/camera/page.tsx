@@ -80,8 +80,14 @@ export default function CameraPage() {
           >
             {[
               ['API resolution', '640 x 480'],
+              ['FPS', '60 (120 max)'],
               ['Colour format', 'BGR (uint8)'],
               ['Sensor type', 'RGB (no depth)'],
+              ['Sensor model', '1/2.6 inch'],
+              ['Pixels', '1920 × 1200 (approx. 2.3 MP)'],
+              ['Shutter type', 'Global shutter'],
+              ['Focal length', '2.7 mm'],
+              ['FOV', '130°'],
               ['ROS 2 topic', '/camera (JPEG)'],
             ].map(([k, v]) => (
               <div

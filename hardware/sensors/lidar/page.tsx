@@ -67,6 +67,7 @@ export default function LidarPage() {
             title="LakiBeam L1 LiDAR"
             image="/images/build/lidar-2-sheet.jpg"
             alt="The LakiBeam L1 spinning LiDAR unit with its mounting screw and cable"
+            imageStyle={{ objectPosition: 'right center' }}
             specs={[
               ['Scan rate', '30 Hz (max)'],
               ['Horizontal FOV', '270°'],

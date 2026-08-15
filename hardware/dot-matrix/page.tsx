@@ -56,7 +56,7 @@ export default function DotMatrixPage() {
             ]}
           >
             The dot matrix is an 8 by 8 LED display at the back of the car.
-            Programs write text to it while the car drives.
+            Programs write characters to it.
           </SensorSheet>
         </section>
       </ScrollReveal>

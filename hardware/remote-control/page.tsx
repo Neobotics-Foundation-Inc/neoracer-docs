@@ -8,7 +8,6 @@ import {
   DisplayHeading,
   Red,
   GhostNumeral,
-  MonoLabel,
   ChromeBadge,
   DashList,
   Fig,
@@ -115,23 +114,20 @@ export default function RemoteControlPage() {
         </section>
       </MouseFollowGlow>
 
-      {/* ── FIG. A / controls ───────────────────────────────────────────── */}
-      <ScrollReveal>
-        <Fig
-          label="FIG. A / THE TRANSMITTER"
-          caption="On our controller, SWB switches between manual (up position) and autonomous (down position). When driving manually, SWA switches between slow mode (up position) and fast mode (down position)."
-        >
-          <FlyskySwitchesFigure />
-        </Fig>
-      </ScrollReveal>
-
-      {/* ── 01 · controls ───────────────────────────────────────────────── */}
+      {/* ── Using the controller ────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ paddingBottom: 40 }}>
-          <Eyebrow>01 / WHAT EACH CONTROL DOES</Eyebrow>
           <DisplayHeading size="lg">
-            STICKS AND <Red>SWITCHES</Red>
+            USING THE <Red>CONTROLLER</Red>
           </DisplayHeading>
+          <div style={{ marginTop: 18 }}>
+            <Fig
+              label="FIG. A / THE TRANSMITTER"
+              caption="On our controller, SWB switches between manual (up position) and autonomous (down position). When driving manually, SWA switches between slow mode (up position) and fast mode (down position)."
+            >
+              <FlyskySwitchesFigure />
+            </Fig>
+          </div>
           <DashList
             items={[
               <><strong>Left stick, throttle.</strong> Push up to go forward, pull down to reverse. Releasing it to centre is the everyday way to stop.</>,
@@ -141,54 +137,33 @@ export default function RemoteControlPage() {
               <><strong>Power.</strong> Hold both side buttons together until it beeps to turn the transmitter on or off.</>,
             ]}
           />
-          <Callout type="note" title="Turn the transmitter on first">
-            Power the transmitter up before the car, so the receiver locks onto a
-            clean signal from the start. A small twitch at power-on just means the
-            link is still settling.
-          </Callout>
-        </section>
-      </ScrollReveal>
-
-      {/* ── 02 · modes ──────────────────────────────────────────────────── */}
-      <ScrollReveal>
-        <section style={{ position: 'relative', paddingBottom: 40 }}>
-          <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>02 / THE MODE SWITCH</Eyebrow>
-            <DisplayHeading size="lg">
-              THE MODE <Red>SWITCH</Red>
-            </DisplayHeading>
-            <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-              SWB answers one question: who is driving. Up is you, on the
-              sticks. Down hands the car to the host computer and your code.
-            </p>
-            <div style={{ marginTop: 18 }}>
-              <DataTable
-                columns={[
-                  { key: 'mode', label: 'Mode', accent: true },
-                  { key: 'pos', label: 'SWB position', mono: true },
-                  { key: 'who', label: 'Who drives' },
-                ]}
-                rows={[
-                  { mode: 'Manual (RC)', pos: 'Up', who: 'You, on the sticks. The safe default.' },
-                  { mode: 'Autonomous', pos: 'Down', who: 'The host computer: teleop, SLAM, Nav2, your code.' },
-                ]}
-              />
-            </div>
-            <Callout type="warn" title="Start and end in manual">
-              Set SWB up before you power on, and again before you shut down.
-              Coming up in manual means the car can&apos;t drive itself off the
-              bench, and dropping back to manual cuts autonomous control cleanly
-              when you&apos;re done. Whenever something looks wrong, flipping
-              SWB back up is the fastest way to take the wheel.
-            </Callout>
+          <div style={{ marginTop: 18 }}>
+            <DataTable
+              columns={[
+                { key: 'mode', label: 'Mode', accent: true },
+                { key: 'pos', label: 'SWB position', mono: true },
+                { key: 'who', label: 'Who drives' },
+              ]}
+              rows={[
+                { mode: 'Manual (RC)', pos: 'Up', who: 'You, on the sticks. The safe default.' },
+                { mode: 'Autonomous', pos: 'Down', who: 'The host computer: teleop, SLAM, Nav2, your code.' },
+              ]}
+            />
           </div>
+          <Callout type="warn" title="Start and end in manual">
+            Set SWB up before you power on, and again before you shut down.
+            Coming up in manual means the car can&apos;t drive itself off the
+            bench, and dropping back to manual cuts autonomous control cleanly
+            when you&apos;re done. Whenever something looks wrong, flipping
+            SWB back up is the fastest way to take the wheel.
+          </Callout>
         </section>
       </ScrollReveal>
 
       {/* ── 03 · channel setup (advanced) ───────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 24 }}>
-          <Eyebrow>03 / ADVANCED</Eyebrow>
+          <Eyebrow>ADVANCED</Eyebrow>
           <DisplayHeading size="lg">
             CHANNEL MAPPING + <Red>S.BUS</Red>
           </DisplayHeading>

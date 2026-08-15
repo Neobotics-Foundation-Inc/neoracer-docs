@@ -3,7 +3,6 @@ import { Metadata } from 'next';
 import DocsShell from '@/components/docs/DocsShell';
 import { NB } from '@/lib/nb-tokens';
 import {
-  Eyebrow,
   DisplayHeading,
   Red,
   GhostNumeral,
@@ -12,7 +11,8 @@ import {
   NumberedFeatureCard,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
-import { Crumbs, Callout, PrevNext, DataTable } from '@/components/docs/DocsPrimitives';
+import { SensorSheet } from '@/components/docs/SensorSheet';
+import { Crumbs, Callout, PrevNext } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
   title: 'Encoder · Hardware · NeoRacer Docs',
@@ -66,10 +66,29 @@ export default function EncodersPage() {
         </section>
       </MouseFollowGlow>
 
+      {/* ── Section · The sensor ─────────────────────────────────────── */}
+      <ScrollReveal>
+        <section style={{ paddingBottom: 32 }}>
+          <SensorSheet
+            title="The encoder"
+            specs={[
+              ['Encoder type', 'Hall effect'],
+              ['Location', 'Motor shaft'],
+              ['Counting', 'MCU hardware pulse counter'],
+              ['Topic', '/odom at ~200 Hz'],
+              ['Message', 'nav_msgs/Odometry'],
+            ]}
+          >
+            The encoder is a Hall-effect sensor on the motor shaft. The OSCORE
+            board counts its pulses and publishes the car&apos;s odometry
+            on <code style={{ fontFamily: NB.monoFont }}>/odom</code>.
+          </SensorSheet>
+        </section>
+      </ScrollReveal>
+
       {/* ── Section · One encoder, counted in hardware ───────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 32 }}>
-          <Eyebrow>01 / ONE ENCODER, COUNTED IN HARDWARE</Eyebrow>
           <DisplayHeading size="lg">
             SHAFT-SIDE <Red>COUNTING</Red>
           </DisplayHeading>
@@ -95,7 +114,6 @@ export default function EncodersPage() {
       {/* ── Section · How the MCU turns ticks into /odom ─────────────── */}
       <ScrollReveal>
         <section style={{ paddingBottom: 32 }}>
-          <Eyebrow>02 / TICKS TO ODOMETRY</Eyebrow>
           <DisplayHeading size="lg">
             FROM COUNTS TO <Red>/odom</Red>
           </DisplayHeading>
@@ -132,7 +150,6 @@ export default function EncodersPage() {
       {/* ── Section · Resolution ─────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ paddingBottom: 32 }}>
-          <Eyebrow>03 / RESOLUTION</Eyebrow>
           <DisplayHeading size="lg">
             WHAT SETS THE <Red>PRECISION</Red>
           </DisplayHeading>
@@ -167,7 +184,6 @@ export default function EncodersPage() {
       {/* ── Section · Why it matters to SLAM/Nav2 ───────────────────── */}
       <ScrollReveal>
         <section style={{ paddingBottom: 32 }}>
-          <Eyebrow>04 / WHY THE STACK CARES</Eyebrow>
           <DisplayHeading size="lg">
             FUSION WITH <Red>LiDAR</Red>
           </DisplayHeading>
@@ -210,41 +226,6 @@ export default function EncodersPage() {
             ]}
           />
         </section>
-      </ScrollReveal>
-
-      {/* ── Section · Spec grid ─────────────────────────────────────── */}
-      <ScrollReveal>
-        <section style={{ paddingBottom: 32 }}>
-          <Eyebrow>05 / AT A GLANCE</Eyebrow>
-          <DisplayHeading size="lg">
-            <Red>SPECIFICATIONS</Red>
-          </DisplayHeading>
-          <DataTable
-            columns={[
-              { key: 'field', label: 'Field', width: '40%' },
-              { key: 'value', label: 'Value', mono: true, accent: true },
-            ]}
-            rows={[
-              { field: 'Encoder type', value: 'Hall effect' },
-              { field: 'Location', value: 'Motor shaft (one encoder)' },
-              { field: 'Counting', value: 'MCU hardware pulse counter' },
-              { field: 'Topic', value: '/odom at ~200 Hz' },
-              { field: 'Message', value: 'nav_msgs/Odometry' },
-            ]}
-          />
-        </section>
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <Callout type="tip" title="Odometry reading high or low?">
-          Pulse counts are honest, the conversion from pulses to metres is where
-          a stale gear ratio or wheel diameter shows up. Check the drivetrain
-          figures first, then reach out at{' '}
-          <a href="mailto:support@neobotics.org" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-            support@neobotics.org
-          </a>{' '}
-          if the numbers still look off.
-        </Callout>
       </ScrollReveal>
 
       <PrevNext

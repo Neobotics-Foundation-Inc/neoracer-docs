@@ -92,9 +92,8 @@ export default function ImuPage() {
               },
             ]}
           >
-            The IMU lives on the OSCORE board and is split between two physical
-            sensors: the QMI8658A carries the accelerometer and the gyroscope,
-            and the QMC6309 is the magnetometer.
+            The QMI8658A carries the accelerometer and the gyroscope. The
+            QMC6309 is the magnetometer.
           </SensorSheet>
         </section>
       </ScrollReveal>

@@ -92,7 +92,7 @@ export default function ImuPage() {
               },
             ]}
           >
-            The QMI8658A carries the accelerometer and the gyroscope. The
+            The QMI8658A contains the accelerometer and the gyroscope. The
             QMC6309 is the magnetometer.
           </SensorSheet>
         </section>
@@ -104,22 +104,6 @@ export default function ImuPage() {
           <DisplayHeading size="lg">
             <Red>MEASUREMENTS</Red>
           </DisplayHeading>
-          <p
-            style={{
-              fontFamily: NB.bodyFont,
-              fontSize: 16,
-              lineHeight: 1.65,
-              color: NB.textMutedBeige,
-              maxWidth: 720,
-            }}
-          >
-            Each of the three sensors answers a different question. The
-            accelerometer reads linear acceleration along x, y, and z in metres
-            per second squared, which includes gravity. The gyroscope reads
-            angular velocity around each axis in radians per second. The
-            magnetometer reads the local magnetic field in teslas, which is what
-            you would lean on for an absolute heading.
-          </p>
           <div
             style={{
               display: 'grid',
@@ -131,30 +115,30 @@ export default function ImuPage() {
             <NumberedFeatureCard
               n={1}
               title="Accelerometer"
-              lede="Linear acceleration in m/s^2, gravity included."
-              body="The three axes tell you how the chassis is accelerating. At rest the vector points along gravity, so it doubles as a coarse tilt reference once you have subtracted the parts you do not care about."
+              lede="Measures the car's acceleration along each axis, in m/s^2."
+              body="The reading includes gravity: at rest it shows about 9.8 m/s^2 pointing down. Because of this, it can also be used to estimate the car's tilt."
             />
             <NumberedFeatureCard
               n={2}
               title="Gyroscope"
-              lede="Angular velocity in rad/s around each axis."
-              body="This is the rate of rotation, not the angle. Integrating it gives you orientation, but the drift adds up, which is why most yaw estimates pair the gyro with another source rather than trusting it alone."
+              lede="Measures how fast the car is rotating around each axis, in rad/s."
+              body="It measures the rate of rotation, not the angle itself. You can add up the rate over time to estimate orientation, but small errors accumulate, so it is usually combined with another sensor."
             />
             <NumberedFeatureCard
               n={3}
               title="Magnetometer"
-              lede="Local magnetic field in teslas, on the car only."
-              body="The field direction points you toward magnetic north, which makes it the anchor for an absolute heading. Motors and metal nearby bend the reading, so the magnetometer is the one that most rewards calibration."
+              lede="Measures the local magnetic field, in teslas."
+              body="The field points toward magnetic north, so it works as a compass. Motors and metal near the sensor distort the reading, so it needs calibration to be accurate."
             />
           </div>
         </section>
       </ScrollReveal>
 
-      {/* ── Section · Python API ─────────────────────────────────────── */}
+      {/* ── Section · Reading the IMU ────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ paddingBottom: 32 }}>
           <DisplayHeading size="lg">
-            THE rc.physics <Red>API</Red>
+            READING THE <Red>IMU</Red>
           </DisplayHeading>
           <p
             style={{
@@ -181,15 +165,6 @@ print(accel)   # e.g. acceleration along each axis, gravity included
 print(gyro)    # turn rate around each axis
 print(mag)     # magnetic field vector`}
           </Code>
-        </section>
-      </ScrollReveal>
-
-      {/* ── Section · Raw, not fused ─────────────────────────────────── */}
-      <ScrollReveal>
-        <section style={{ paddingBottom: 32 }}>
-          <DisplayHeading size="lg">
-            WHAT IT <Red>OUTPUTS</Red>
-          </DisplayHeading>
           <p
             style={{
               fontFamily: NB.bodyFont,
@@ -197,6 +172,7 @@ print(mag)     # magnetic field vector`}
               lineHeight: 1.65,
               color: NB.textMutedBeige,
               maxWidth: 720,
+              marginTop: 18,
             }}
           >
             The firmware does two jobs before the data reaches ROS: it
@@ -215,15 +191,6 @@ print(mag)     # magnetic field vector`}
             in controller.yaml). Turn it on when you want a compass heading or
             your own nine-axis fusion.
           </Callout>
-        </section>
-      </ScrollReveal>
-
-      {/* ── Section · On the car ─────────────────────────────────────── */}
-      <ScrollReveal>
-        <section style={{ paddingBottom: 32 }}>
-          <DisplayHeading size="lg">
-            ON THE <Red>CAR</Red>
-          </DisplayHeading>
           <p
             style={{
               fontFamily: NB.bodyFont,
@@ -231,6 +198,7 @@ print(mag)     # magnetic field vector`}
               lineHeight: 1.65,
               color: NB.textMutedBeige,
               maxWidth: 720,
+              marginTop: 18,
             }}
           >
             On the shipping car, the IMU does not talk to the Jetson directly. An

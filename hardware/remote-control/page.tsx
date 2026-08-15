@@ -57,12 +57,17 @@ function FlyskySwitchesFigure() {
         </defs>
         <line x1="18" y1="34" x2="41" y2="22.5" stroke={RED} strokeWidth="0.7" markerEnd="url(#fsp-arrow)" />
         <line x1="72" y1="9" x2="50" y2="17" stroke={RED} strokeWidth="0.7" markerEnd="url(#fsp-arrow)" />
+        <line x1="14" y1="86.5" x2="14.5" y2="55" stroke={RED} strokeWidth="0.7" markerEnd="url(#fsp-arrow)" />
+        <line x1="30" y1="87.5" x2="52.5" y2="80.5" stroke={RED} strokeWidth="0.7" markerEnd="url(#fsp-arrow)" />
       </svg>
       <div style={{ ...chip, left: '2%', top: '33%' }}>
         SWA · MANUAL SPEED<br />UP SLOW · DOWN FAST
       </div>
       <div style={{ ...chip, left: '66%', top: '3%' }}>
         SWB · WHO DRIVES<br />UP MANUAL · DOWN AUTONOMY
+      </div>
+      <div style={{ ...chip, left: '2%', top: '88%' }}>
+        POWER BUTTONS<br />HOLD BOTH · ON / OFF
       </div>
     </div>
   );
@@ -97,10 +102,8 @@ export default function RemoteControlPage() {
               <InfoNote term="Flysky FS-i6S" title="Flysky FS-i6S">
                 The handheld radio transmitter included with the car. Two sticks for throttle and steering, plus top switches mapped to auxiliary channels.
               </InfoNote>{' '}
-              transmitter. Two sticks drive it, and{' '}
-              <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>SWB</code>{' '}
-              is the switch that matters most: it hands control between you and
-              the host computer. Up you drive; down your code does.
+              transmitter. In the Flysky box, there is the controller, a
+              micro-USB cable, and a bracket.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="red">Flysky FS-i6S</ChromeBadge>

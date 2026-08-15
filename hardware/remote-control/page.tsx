@@ -15,59 +15,28 @@ import {
 import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext, Callout, DataTable } from '@/components/docs/DocsPrimitives';
 import { TransmitterChannelSetup } from '@/components/docs/ManualDiagrams';
+import { SensorSheet } from '@/components/docs/SensorSheet';
 
-/* The transmitter photo with the two switches that matter called out. First
- * lived on the retired First program page (archived in the brain); revived
- * here as the controller's FIG. A. */
-function FlyskySwitchesFigure() {
-  const RED = NB.neoboticsRed;
-  const BLUE = NB.tarmacBlue;
-  const chip: React.CSSProperties = {
-    position: 'absolute',
-    background: BLUE,
-    color: NB.haloWhite,
-    fontFamily: NB.monoFont,
-    fontSize: 10,
-    fontWeight: 700,
-    letterSpacing: '0.06em',
-    padding: '6px 9px',
-    lineHeight: 1.45,
-    whiteSpace: 'nowrap',
-  };
+/* The manufacturer's labelled line diagrams, front and back. */
+function FlyskyLabelledViews() {
   return (
-    <div style={{ position: 'relative', maxWidth: 560, margin: '0 auto' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 14, maxWidth: 720, margin: '0 auto' }}>
       <Image
-        src="/images/flysky-i6s.jpg"
-        alt="The Flysky FS-i6S transmitter. SWA and SWB are the two toggle switches on the top-left shoulder."
-        width={1000}
-        height={1000}
-        sizes="(max-width: 640px) 100vw, 560px"
-        style={{ width: '100%', height: 'auto', display: 'block' }}
+        src="/images/flysky_label_front.png"
+        alt="Front view of the Flysky FS-i6S with every control labelled: switches SwA to SwD, dials VrA and VrB, the two sticks, touch screen, and power buttons"
+        width={2470}
+        height={1420}
+        sizes="(max-width: 768px) 100vw, 720px"
+        style={{ width: '100%', height: 'auto', display: 'block', background: '#ffffff', borderRadius: 6 }}
       />
-      <svg
-        viewBox="0 0 100 100"
-        preserveAspectRatio="none"
-        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none' }}
-      >
-        <defs>
-          <marker id="fsp-arrow" markerWidth="8" markerHeight="8" refX="5" refY="4" orient="auto">
-            <path d="M0 0l7 4L0 8z" fill={RED} />
-          </marker>
-        </defs>
-        <line x1="18" y1="34" x2="41" y2="22.5" stroke={RED} strokeWidth="0.7" markerEnd="url(#fsp-arrow)" />
-        <line x1="72" y1="9" x2="50" y2="17" stroke={RED} strokeWidth="0.7" markerEnd="url(#fsp-arrow)" />
-        <line x1="14" y1="86.5" x2="14.5" y2="55" stroke={RED} strokeWidth="0.7" markerEnd="url(#fsp-arrow)" />
-        <line x1="30" y1="87.5" x2="52.5" y2="80.5" stroke={RED} strokeWidth="0.7" markerEnd="url(#fsp-arrow)" />
-      </svg>
-      <div style={{ ...chip, left: '2%', top: '33%' }}>
-        SWA · MANUAL SPEED<br />UP SLOW · DOWN FAST
-      </div>
-      <div style={{ ...chip, left: '66%', top: '3%' }}>
-        SWB · WHO DRIVES<br />UP MANUAL · DOWN AUTONOMY
-      </div>
-      <div style={{ ...chip, left: '2%', top: '88%' }}>
-        POWER BUTTONS<br />HOLD BOTH · ON / OFF
-      </div>
+      <Image
+        src="/images/flysky_label_back.png"
+        alt="Rear view of the Flysky FS-i6S with the handle, Key 1, Key 2, and battery cover labelled"
+        width={2466}
+        height={1278}
+        sizes="(max-width: 768px) 100vw, 720px"
+        style={{ width: '100%', height: 'auto', display: 'block', background: '#ffffff', borderRadius: 6 }}
+      />
     </div>
   );
 }
@@ -114,6 +83,31 @@ export default function RemoteControlPage() {
         </section>
       </MouseFollowGlow>
 
+      {/* ── The transmitter card ────────────────────────────────────────── */}
+      <ScrollReveal>
+        <section style={{ paddingBottom: 32 }}>
+          <SensorSheet
+            title="Flysky FS-i6S"
+            image="/images/flysky-sheet.jpg"
+            alt="The Flysky FS-i6S transmitter"
+            specs={[
+              ['Channels', '10'],
+              ['RF range', '2.408 - 2.475 GHz'],
+              ['Bandwidth', '500 KHz'],
+              ['Protocol', 'AFHDS 2A'],
+              ['Stick resolution', '4096'],
+              ['Power input', '4.3V - 6V'],
+              ['Battery', '4 AA batteries'],
+              ['Weight', '410g'],
+              ['Size', '179 × 81 × 161 mm'],
+            ]}
+          >
+            Two sticks drive the car, and the top switches map to auxiliary
+            channels.
+          </SensorSheet>
+        </section>
+      </ScrollReveal>
+
       {/* ── Using the controller ────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ paddingBottom: 40 }}>
@@ -123,9 +117,22 @@ export default function RemoteControlPage() {
           <div style={{ marginTop: 18 }}>
             <Fig
               label="FIG. A / THE TRANSMITTER"
-              caption="On our controller, SWB switches between manual (up position) and autonomous (down position). When driving manually, SWA switches between slow mode (up position) and fast mode (down position)."
+              caption={
+                <>
+                  The FS-i6S, front and back. For more information, visit the{' '}
+                  <a
+                    href="https://www.flysky-cn.com/fsi6s"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ color: NB.neoboticsRed, fontWeight: 700 }}
+                  >
+                    Flysky FS-i6S product page
+                  </a>
+                  .
+                </>
+              }
             >
-              <FlyskySwitchesFigure />
+              <FlyskyLabelledViews />
             </Fig>
           </div>
           <DashList
@@ -133,11 +140,10 @@ export default function RemoteControlPage() {
               <><strong>Left stick, throttle.</strong> Push up to go forward, pull down to reverse. Releasing it to centre is the everyday way to stop.</>,
               <><strong>Right stick, steering.</strong> Left turns left, right turns right. Steering only bites while the car is rolling.</>,
               <><strong>SWA, manual speed.</strong> Up is slow mode (throttle capped at 15% of full power), down is fast. Start slow while you find the feel of it.</>,
-              <><strong>SWB, mode.</strong> Decides who is driving, covered below.</>,
-              <><strong>Power.</strong> Hold both side buttons together until it beeps to turn the transmitter on or off.</>,
+              <><strong>SWB, mode.</strong> Decides who is driving:</>,
             ]}
           />
-          <div style={{ marginTop: 18 }}>
+          <div style={{ margin: '18px 0' }}>
             <DataTable
               columns={[
                 { key: 'mode', label: 'Mode', accent: true },
@@ -150,6 +156,11 @@ export default function RemoteControlPage() {
               ]}
             />
           </div>
+          <DashList
+            items={[
+              <><strong>Power.</strong> Hold both side buttons together until it beeps to turn the transmitter on or off.</>,
+            ]}
+          />
           <Callout type="warn" title="Start and end in manual">
             Set SWB up before you power on, and again before you shut down.
             Coming up in manual means the car can&apos;t drive itself off the

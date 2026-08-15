@@ -10,7 +10,7 @@ import {
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 import { SensorSheet } from '@/components/docs/SensorSheet';
-import { Crumbs, PrevNext } from '@/components/docs/DocsPrimitives';
+import { Crumbs, PrevNext, Code } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
   title: 'Encoder · Hardware · NeoRacer Docs',
@@ -122,6 +122,23 @@ export default function EncodersPage() {
             </Link>
             .
           </p>
+          <p
+            style={{
+              fontFamily: NB.bodyFont,
+              fontSize: 16,
+              lineHeight: 1.65,
+              color: NB.textMutedBeige,
+              maxWidth: 720,
+              marginTop: 14,
+            }}
+          >
+            Your code reads the encoder through{' '}
+            <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>rc.physics</code>:
+          </p>
+          <Code lang="python">
+{`speed = rc.physics.get_encoder_speed()   # forward speed in m/s
+print(speed)`}
+          </Code>
         </section>
       </ScrollReveal>
 

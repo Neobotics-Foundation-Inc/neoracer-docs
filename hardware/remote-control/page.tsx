@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Metadata } from 'next';
 import DocsShell from '@/components/docs/DocsShell';
 import { NB } from '@/lib/nb-tokens';
@@ -14,7 +15,58 @@ import {
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext, Callout, DataTable } from '@/components/docs/DocsPrimitives';
-import { TransmitterControlsDiagram, TransmitterChannelSetup } from '@/components/docs/ManualDiagrams';
+import { TransmitterChannelSetup } from '@/components/docs/ManualDiagrams';
+
+/* The transmitter photo with the two switches that matter called out. First
+ * lived on the retired First program page (archived in the brain); revived
+ * here as the controller's FIG. A. */
+function FlyskySwitchesFigure() {
+  const RED = NB.neoboticsRed;
+  const BLUE = NB.tarmacBlue;
+  const chip: React.CSSProperties = {
+    position: 'absolute',
+    background: BLUE,
+    color: NB.haloWhite,
+    fontFamily: NB.monoFont,
+    fontSize: 10,
+    fontWeight: 700,
+    letterSpacing: '0.06em',
+    padding: '6px 9px',
+    lineHeight: 1.45,
+    whiteSpace: 'nowrap',
+  };
+  return (
+    <div style={{ position: 'relative', maxWidth: 560, margin: '0 auto' }}>
+      <Image
+        src="/images/flysky-i6s.jpg"
+        alt="The Flysky FS-i6S transmitter. SWA and SWB are the two toggle switches on the top-left shoulder."
+        width={1000}
+        height={1000}
+        sizes="(max-width: 640px) 100vw, 560px"
+        style={{ width: '100%', height: 'auto', display: 'block' }}
+      />
+      <svg
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none' }}
+      >
+        <defs>
+          <marker id="fsp-arrow" markerWidth="8" markerHeight="8" refX="5" refY="4" orient="auto">
+            <path d="M0 0l7 4L0 8z" fill={RED} />
+          </marker>
+        </defs>
+        <line x1="18" y1="34" x2="41" y2="22.5" stroke={RED} strokeWidth="0.7" markerEnd="url(#fsp-arrow)" />
+        <line x1="72" y1="9" x2="50" y2="17" stroke={RED} strokeWidth="0.7" markerEnd="url(#fsp-arrow)" />
+      </svg>
+      <div style={{ ...chip, left: '2%', top: '33%' }}>
+        SWA · MANUAL SPEED<br />UP SLOW · DOWN FAST
+      </div>
+      <div style={{ ...chip, left: '66%', top: '3%' }}>
+        SWB · WHO DRIVES<br />UP MANUAL · DOWN AUTONOMY
+      </div>
+    </div>
+  );
+}
 
 export const metadata: Metadata = {
   title: 'Remote control · Hardware · NeoRacer Docs',
@@ -64,9 +116,9 @@ export default function RemoteControlPage() {
       <ScrollReveal>
         <Fig
           label="FIG. A / THE TRANSMITTER"
-          caption="The Flysky FS-i6S front face. Left stick is throttle, right stick is steering, the four top switches map to auxiliary channels, and the two side buttons power it on and off when you hold both together."
+          caption="On our controller, SWB switches between manual (up position) and autonomous (down position). When driving manually, SWA switches between slow mode (up position) and fast mode (down position)."
         >
-          <TransmitterControlsDiagram />
+          <FlyskySwitchesFigure />
         </Fig>
       </ScrollReveal>
 

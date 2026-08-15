@@ -39,6 +39,12 @@ const ROWS = [
     notes: 'Orientation, linear acceleration (m/s²), and angular velocity (rad/s) at ~200 Hz, frame_id imu_link. Published by the controller node from the MCU state frame.',
   },
   {
+    topic: '/mag',
+    type: 'sensor_msgs/MagneticField',
+    role: 'Read it',
+    notes: 'Magnetic field in teslas from the QMC6309 magnetometer, frame_id imu_link. Off by default (publish_mag: false in controller.yaml); enable it for a compass heading or your own nine-axis fusion.',
+  },
+  {
     topic: '/odom',
     type: 'nav_msgs/Odometry',
     role: 'Read it',
@@ -224,7 +230,7 @@ export default function Ros2TopicsPage() {
           <code style={{ fontFamily: NB.monoFont }}>/map</code>,{' '}
           <code style={{ fontFamily: NB.monoFont }}>/tf</code>, and the Nav2 graph,
           so a <code style={{ fontFamily: NB.monoFont }}>ros2 topic list</code> on a
-          fully loaded car shows more than the twelve here. Those follow the standard
+          fully loaded car shows more than the thirteen here. Those follow the standard
           Nav2 names; your own <code style={{ fontFamily: NB.monoFont }}>ros2 topic list</code>{' '}
           is the final word.
         </Callout>

@@ -7,12 +7,10 @@ import {
   Red,
   GhostNumeral,
   ChromeBadge,
-  DashList,
-  NumberedFeatureCard,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 import { SensorSheet } from '@/components/docs/SensorSheet';
-import { Crumbs, Callout, PrevNext } from '@/components/docs/DocsPrimitives';
+import { Crumbs, PrevNext } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
   title: 'Encoder · Hardware · NeoRacer Docs',
@@ -86,7 +84,7 @@ export default function EncodersPage() {
         </section>
       </ScrollReveal>
 
-      {/* ── Section · One encoder, counted in hardware ───────────────── */}
+      {/* ── Section · Shaft-side counting ────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 32 }}>
           <DisplayHeading size="lg">
@@ -101,58 +99,11 @@ export default function EncodersPage() {
               maxWidth: 720,
             }}
           >
-            The encoder sits on the motor shaft, before the gearbox, which is
-            the right side to measure from: one wheel turn is many shaft turns,
-            so every centimetre of travel produces plenty of pulses. The
-            MCU&apos;s hardware pulse counter tallies them without interrupting
-            the processor, which is how the count stays honest even at full
-            speed.
+            The encoder sits on the motor shaft, before the gearbox. One wheel
+            turn is many shaft turns, so every centimetre of travel produces
+            many pulses. The MCU counts them in a hardware counter, so no
+            pulses are missed even at full speed.
           </p>
-        </section>
-      </ScrollReveal>
-
-      {/* ── Section · How the MCU turns ticks into /odom ─────────────── */}
-      <ScrollReveal>
-        <section style={{ paddingBottom: 32 }}>
-          <DisplayHeading size="lg">
-            FROM COUNTS TO <Red>/odom</Red>
-          </DisplayHeading>
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-              gap: 22,
-              marginTop: 22,
-            }}
-          >
-            <NumberedFeatureCard
-              n={1}
-              title="Counted on the shaft"
-              lede="Pulses accumulate in a hardware counter."
-              body="Each shaft revolution produces a fixed number of Hall pulses. The gear ratio and wheel diameter turn that count into distance along the ground."
-            />
-            <NumberedFeatureCard
-              n={2}
-              title="Fused on the MCU"
-              lede="Distance plus heading becomes a position."
-              body="The MCU combines the travelled distance with the IMU's sense of rotation and the steering geometry, tracking position, velocity, and yaw in one place. That fused state streams to the Jetson at ~200 Hz."
-            />
-            <NumberedFeatureCard
-              n={3}
-              title="Published on /odom"
-              lede="The estimate leaves the car as nav_msgs/Odometry."
-              body="The driver publishes the estimate on /odom, where the rest of the stack subscribes to it the same way it subscribes to any other topic."
-            />
-          </div>
-        </section>
-      </ScrollReveal>
-
-      {/* ── Section · Resolution ─────────────────────────────────────── */}
-      <ScrollReveal>
-        <section style={{ paddingBottom: 32 }}>
-          <DisplayHeading size="lg">
-            WHAT SETS THE <Red>PRECISION</Red>
-          </DisplayHeading>
           <p
             style={{
               fontFamily: NB.bodyFont,
@@ -160,24 +111,17 @@ export default function EncodersPage() {
               lineHeight: 1.65,
               color: NB.textMutedBeige,
               maxWidth: 720,
+              marginTop: 14,
             }}
           >
-            Three numbers decide how finely the odometry resolves motion: the
-            pulses per shaft revolution, the gear ratio, and the wheel diameter.
-            Together they set how much ground one pulse represents. Measuring on
-            the shaft side of the gearbox multiplies the resolution by the gear
-            ratio, which is why a simple Hall sensor is enough for clean
-            odometry.
-          </p>
-          <Callout type="note" title="Where the numbers live">
-            The exact pulse count, wheel diameter, and gear ratio for your car
-            are drivetrain figures, not encoder figures. The{' '}
+            Three numbers convert the count into distance: the pulses per shaft
+            revolution, the gear ratio, and the wheel diameter. These are
+            drivetrain figures, and they live on the{' '}
             <Link href="/docs/hardware/drivetrain" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
               Drivetrain page
-            </Link>{' '}
-            is where those live, since they describe how a wheel turn maps to
-            distance on the ground.
-          </Callout>
+            </Link>
+            .
+          </p>
         </section>
       </ScrollReveal>
 
@@ -203,28 +147,12 @@ export default function EncodersPage() {
             <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>/odom</code>{' '}
             with the LiDAR scans, using the encoder to fill in the motion
             between scans and the LiDAR to correct the drift. Together they let
-            the car map and localise, which neither signal does well by itself.
+            the car map and localise, which neither signal does well by itself.{' '}
+            <Link href="/docs/api-reference/ros2/topics" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
+              /odom
+            </Link>{' '}
+            is listed with every other topic on the ROS 2 Topics page.
           </p>
-          <DashList
-            items={[
-              <>
-                <strong style={{ color: NB.textOnBeige }}>The encoder</strong> gives
-                continuous, high-rate motion between LiDAR frames.
-              </>,
-              <>
-                <strong style={{ color: NB.textOnBeige }}>LiDAR</strong> gives
-                absolute structure that pins the drift back down.
-              </>,
-              <>
-                The{' '}
-                <Link href="/docs/api-reference/ros2/topics" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-                  /odom topic
-                </Link>{' '}
-                is where the estimate starts, listed alongside every other
-                ROS 2 topic.
-              </>,
-            ]}
-          />
         </section>
       </ScrollReveal>
 

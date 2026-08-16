@@ -160,6 +160,7 @@ export default function RemoteControlPage() {
             image="/images/flysky-sheet.jpg"
             alt="The Flysky FS-i6S transmitter"
             wideSpecs
+            imageStyle={{ objectFit: 'contain', padding: '20px 18px' }}
             specs={[
               ['Channels', '10'],
               ['RF range', '2.408 - 2.475 GHz'],

@@ -45,9 +45,7 @@ export default function DrivetrainPage() {
                 get when both front wheels point the same way.
               </InfoNote>{' '}
               geometry with four-wheel drive,
-              independent suspension, and 80 mm all-terrain tyres. The same
-              Ackermann kinematics as the F1TENTH reference car, so the same
-              control laws carry over.
+              independent suspension, and 80 mm all-terrain tyres.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="outline">Ackermann steering</ChromeBadge>
@@ -73,10 +71,8 @@ export default function DrivetrainPage() {
           THE BRUSHED <Red>MOTOR</Red>
         </DisplayHeading>
         <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-          A purpose-spec brushed motor with integrated encoder. Brushless
-          motors give better top-end and efficiency, but brushed motors stall
-          cleanly when you bump a wall, which is the failure mode we wanted
-          for a classroom car.
+          A purpose-spec brushed motor with integrated encoder. The motor
+          converts electrical energy into mechanical energy to provide power.
         </p>
         <div style={{ marginTop: 18, background: NB.haloWhite, border: `1px solid ${NB.borderOnBeige}`, borderRadius: 10, padding: '16px 18px', boxShadow: NB.shadowCard }}>
           <div style={{ fontFamily: NB.monoFont, fontSize: 12, letterSpacing: '0.14em', textTransform: 'uppercase', color: NB.textMutedBeige }}>

@@ -210,11 +210,11 @@ export default function OscoreBoardPage() {
         </section>
       </ScrollReveal>
 
-      {/* ── Power ────────────────────────────────────────────────────── */}
+      {/* ── Power and limits ─────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ paddingBottom: 40 }}>
           <DisplayHeading size="lg">
-            THE POWER <Red>SYSTEM</Red>
+            POWER AND <Red>LIMITS</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
             A single 9 to 26 V input feeds a two-stage conversion: a TPS54540
@@ -230,40 +230,22 @@ export default function OscoreBoardPage() {
               { key: 'use', label: 'Usage' },
             ]}
             rows={[
-              { rail: 'VCC_IN', src: 'XT30 / Type-C', spec: '9 to 26 V', use: 'Main input, reverse-polarity protected' },
+              { rail: 'VCC_IN', src: 'XT30 / Type-C', spec: '9 to 26 V (12 to 24 V typ)', use: 'Main input, reverse-polarity protected' },
               { rail: 'VCC_5V_IO', src: 'TPS54540 DC-DC', spec: '5 V / 5 A', use: 'IO peripheral power' },
               { rail: 'VCC_5V', src: 'VCC_5V_IO + MOSFET', spec: '5 V (switched)', use: 'USB hub, CAN, WS2812' },
               { rail: 'VCC_3V3', src: 'AMS1117-3.3 LDO', spec: '3.3 V / 1 A', use: 'ESP32-S3, IMU, buzzer' },
               { rail: 'VCC_ESC', src: 'VCC_IN (passthrough)', spec: '9 to 26 V', use: 'ESC power output' },
             ]}
           />
-          <Callout type="warn" title="Two power rules">
-            Do not connect the XT30 and the Type-C to different power sources at
-            the same time, and keep the input at or below 26 V. Above 26 V can
-            damage the board. The pack voltage is readable in firmware: VCC_IN
-            runs through a 200k / 22k divider to an ADC pin, about a 1/10 ratio.
-          </Callout>
-        </section>
-      </ScrollReveal>
-
-      {/* ── Electrical params ────────────────────────────────────────── */}
-      <ScrollReveal>
-        <section style={{ paddingBottom: 40 }}>
-          <DisplayHeading size="lg">
-            ELECTRICAL <Red>LIMITS</Red>
-          </DisplayHeading>
           <div
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
               gap: 12,
-              marginTop: 8,
+              marginTop: 20,
             }}
           >
             {[
-              ['Input voltage', '9 V min · 12 to 24 V typ · 26 V max'],
-              ['5 V output', 'up to 5 A'],
-              ['3.3 V output', 'up to 1 A'],
               ['Operating temp', '-20 to +70 °C'],
               ['Storage temp', '-40 to +85 °C'],
               ['Humidity', '5 to 95 % RH, non-condensing'],
@@ -274,6 +256,12 @@ export default function OscoreBoardPage() {
               </div>
             ))}
           </div>
+          <Callout type="warn" title="Two power rules">
+            Do not connect the XT30 and the Type-C to different power sources at
+            the same time, and keep the input at or below 26 V. Above 26 V can
+            damage the board. The pack voltage is readable in firmware: VCC_IN
+            runs through a 200k / 22k divider to an ADC pin, about a 1/10 ratio.
+          </Callout>
         </section>
       </ScrollReveal>
 

@@ -7,13 +7,12 @@ import {
   DisplayHeading,
   Red,
   GhostNumeral,
-  ChromeBadge,
   MonoLabel,
   DashList,
   Fig,
   NumberedFeatureCard,
 } from '@/components/docs/Editorial';
-import { ScrollReveal, MouseFollowGlow, AnimatedNumeral, InfoNote } from '@/components/docs/Interactive';
+import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
 import { StepCard } from '@/components/docs/StepCard';
 import { Crumbs, PrevNext, Callout, DataTable } from '@/components/docs/DocsPrimitives';
 
@@ -69,13 +68,6 @@ export default function OscoreBoardPage() {
               <InfoNote term="IMU" title="IMU">An inertial measurement unit. It combines an accelerometer and a gyroscope, sometimes a magnetometer, to report how the car is accelerating, rotating, and oriented.</InfoNote>, and drives the motor and servo. It is
               the board the Jetson talks to over USB.
             </p>
-            <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="red">ESP32-S3-WROOM-1U</ChromeBadge>
-              <ChromeBadge variant="outline">9 to 26 V in</ChromeBadge>
-              <ChromeBadge variant="outline">5 V @ 5 A</ChromeBadge>
-              <ChromeBadge variant="outline">9-axis IMU</ChromeBadge>
-              <ChromeBadge variant="outline">CAN · Ethernet · USB hub</ChromeBadge>
-            </div>
           </div>
         </section>
       </MouseFollowGlow>

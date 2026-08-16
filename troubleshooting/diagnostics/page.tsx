@@ -197,7 +197,7 @@ ros2 launch osracer_debug debug_image.launch.py  # image pipeline`}</Code>
             <Callout type="danger" title="Heat or a smell? Stop now.">
               Any overheating, smoke, or odd smell means power down and isolate the
               pack at once, then work through{' '}
-              <Link href="/docs/hardware/safety" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Safety</Link>.
+              <Link href="/docs/reference/safety" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Safety</Link>.
               That is never something to drive through.
             </Callout>
           </div>

@@ -6,9 +6,8 @@ import {
   DisplayHeading,
   Red,
   GhostNumeral,
-  ChromeBadge,
 } from '@/components/docs/Editorial';
-import { ScrollReveal, MouseFollowGlow, AnimatedNumeral } from '@/components/docs/Interactive';
+import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 import { SensorSheet } from '@/components/docs/SensorSheet';
 import { Crumbs, PrevNext, Code } from '@/components/docs/DocsPrimitives';
 
@@ -49,12 +48,6 @@ export default function CameraPage() {
               A forward-facing colour camera sits at the front of the car. It
               connects directly to the Jetson over USB.
             </p>
-            <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="outline"><AnimatedNumeral value={640} suffix=" px wide" /></ChromeBadge>
-              <ChromeBadge variant="outline"><AnimatedNumeral value={480} suffix=" px tall" /></ChromeBadge>
-              <ChromeBadge variant="outline">60 fps (120 max)</ChromeBadge>
-              <ChromeBadge variant="outline">RGB</ChromeBadge>
-            </div>
           </div>
         </section>
       </MouseFollowGlow>
@@ -100,22 +93,7 @@ export default function CameraPage() {
           >
             Everything below assumes the camera is running at its default
             640 × 480. The sensor can capture 1920 × 1200, but the driver asks
-            it for 640 × 480 at 60 fps, and the sim uses the same size so that
-            code moves between them without changes.
-          </p>
-          <p
-            style={{
-              fontFamily: NB.bodyFont,
-              fontSize: 16,
-              lineHeight: 1.65,
-              color: NB.textMutedBeige,
-              maxWidth: 720,
-              marginTop: 14,
-            }}
-          >
-            At that setting the colour image arrives as a NumPy array shaped
-            (480, 640, 3): 480 rows, 640 columns, three colour channels in BGR
-            order.
+            it for 640 × 480 at 60 fps.
           </p>
           <Code lang="python">
 {`color = rc.camera.get_color_image()    # NDArray (480, 640, 3), uint8, BGR

@@ -7,7 +7,6 @@ import {
   DisplayHeading,
   Red,
   GhostNumeral,
-  ChromeBadge,
   DashList,
   Fig,
 } from '@/components/docs/Editorial';
@@ -178,12 +177,6 @@ export default function RemoteControlPage() {
               transmitter. In the Flysky box, there is the controller, its
               manual, a micro-USB cable, and a bracket.
             </p>
-            <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="red">Flysky FS-i6S</ChromeBadge>
-              <ChromeBadge variant="outline">SWB = manual ↔ autonomy</ChromeBadge>
-              <ChromeBadge variant="outline">SWA = slow ↔ fast</ChromeBadge>
-              <ChromeBadge variant="outline">S.BUS output</ChromeBadge>
-            </div>
           </div>
         </section>
       </MouseFollowGlow>

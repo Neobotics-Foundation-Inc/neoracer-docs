@@ -7,7 +7,6 @@ import {
   Red,
   GhostNumeral,
   MonoLabel,
-  ChromeBadge,
   DashList,
   NumberedFeatureCard,
 } from '@/components/docs/Editorial';
@@ -15,7 +14,7 @@ import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Inter
 import { Crumbs, PrevNext, Callout } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
-  title: 'Safety · Hardware · NeoRacer Docs',
+  title: 'Safety · Reference · NeoRacer Docs',
   description: 'Safety rules for running a NeoRacer indoors, in a classroom, or on your own.',
 };
 
@@ -24,14 +23,14 @@ export default function SafetyPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Hardware', href: '/docs/hardware/overview' },
+          { label: 'Reference', href: '/docs/reference/specifications' },
           { label: 'Safety' },
         ]}
       />
 
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="13" top={-30} right={-20} size={400} />
+          <GhostNumeral n="!" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               SAFETY <Red>RULES</Red>
@@ -42,10 +41,6 @@ export default function SafetyPage() {
               careless run can damage the car or damage property. A few minutes
               here before the first run sets you up for all of them.
             </p>
-            <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="red">Worth a read first</ChromeBadge>
-              <ChromeBadge variant="outline">Indoor only</ChromeBadge>
-            </div>
           </div>
         </section>
       </MouseFollowGlow>
@@ -109,8 +104,8 @@ export default function SafetyPage() {
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'Chassis & CAD', href: '/docs/hardware/chassis-and-cad' }}
-        next={{ label: 'OS & image', href: '/docs/software/os-and-image' }}
+        prev={{ label: 'Compatibility matrix', href: '/docs/reference/compatibility-matrix' }}
+        next={{ label: 'Warranty', href: '/docs/legal/warranty' }}
       />
     </DocsShell>
   );

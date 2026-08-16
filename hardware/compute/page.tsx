@@ -5,13 +5,12 @@ import {
   DisplayHeading,
   Red,
   GhostNumeral,
-  ChromeBadge,
   DashList,
   Fig,
 } from '@/components/docs/Editorial';
 import { Crumbs, PrevNext, Callout, Code } from '@/components/docs/DocsPrimitives';
 import { JetsonPortsDiagram } from '@/components/docs/Diagrams';
-import { ScrollReveal, MouseFollowGlow, AnimatedNumeral, InfoNote } from '@/components/docs/Interactive';
+import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
 
 export const metadata: Metadata = {
   title: 'Compute · Hardware · NeoRacer Docs',
@@ -40,12 +39,6 @@ export default function ComputePage() {
               <InfoNote term="ROS 2" title="ROS 2">The Robot Operating System, a framework that lets separate programs on a robot pass messages to each other. It is the standard way most robotics software is built.</InfoNote>, all Python code, the camera, and any
               neural networks deployed.
             </p>
-            <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="outline">NVIDIA Jetson Orin Nano</ChromeBadge>
-              <ChromeBadge variant="outline"><AnimatedNumeral value={67} suffix=" TOPS" /> AI accelerator</ChromeBadge>
-              <ChromeBadge variant="outline">Ubuntu + ROS 2 Humble</ChromeBadge>
-              <ChromeBadge variant="outline">Wi-Fi 6</ChromeBadge>
-            </div>
           </div>
         </section>
       </MouseFollowGlow>

@@ -5,7 +5,6 @@ import {
   DisplayHeading,
   Red,
   GhostNumeral,
-  ChromeBadge,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext } from '@/components/docs/DocsPrimitives';
@@ -39,9 +38,6 @@ export default function SensorsIndexPage() {
               turned. Between them, you have everything a basic racing stack
               needs.
             </p>
-            <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="red">Sim ↔ car parity on all four</ChromeBadge>
-            </div>
           </div>
         </section>
       </MouseFollowGlow>

@@ -6,7 +6,6 @@ import {
   DisplayHeading,
   Red,
   GhostNumeral,
-  ChromeBadge,
   DashList,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
@@ -44,11 +43,6 @@ export default function ChassisAndCadPage() {
               repository under a reciprocal open-hardware license, so you can
               print the parts or open the CAD and modify them.
             </p>
-            <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="outline">1:12 scale</ChromeBadge>
-              <ChromeBadge variant="outline">CERN-OHL-S-2.0</ChromeBadge>
-              <ChromeBadge variant="red">Public repo</ChromeBadge>
-            </div>
           </div>
         </section>
       </MouseFollowGlow>
@@ -111,11 +105,6 @@ export default function ChassisAndCadPage() {
           <DisplayHeading size="lg">
             THE <Red>DIMENSIONS</Red>
           </DisplayHeading>
-          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-            These are the figures you need to size a track gate, a pit box, or
-            a carry case. Width is measured across the wheels, which is the
-            widest part of the car.
-          </p>
           <DataTable
             columns={[
               { key: 'dim', label: 'Dimension', width: '38%' },
@@ -171,7 +160,7 @@ export default function ChassisAndCadPage() {
 
       <PrevNext
         prev={{ label: 'OSCORE board', href: '/docs/hardware/oscore-board' }}
-        next={{ label: 'Safety', href: '/docs/hardware/safety' }}
+        next={{ label: 'OS & image', href: '/docs/software/os-and-image' }}
       />
     </DocsShell>
   );

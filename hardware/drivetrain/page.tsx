@@ -5,9 +5,8 @@ import {
   DisplayHeading,
   Red,
   GhostNumeral,
-  ChromeBadge,
 } from '@/components/docs/Editorial';
-import { ScrollReveal, MouseFollowGlow, AnimatedNumeral, InfoNote } from '@/components/docs/Interactive';
+import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
@@ -44,19 +43,6 @@ export default function DrivetrainPage() {
               independent suspension, and 80 mm all-terrain tyres. Steering
               follows simple bicycle geometry.
             </p>
-            <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="outline">Ackermann steering</ChromeBadge>
-              <ChromeBadge variant="outline">Four-wheel drive</ChromeBadge>
-              <ChromeBadge variant="outline">
-                <AnimatedNumeral value={280} prefix="Wheelbase " suffix=" mm" />
-              </ChromeBadge>
-              <ChromeBadge variant="outline">
-                <AnimatedNumeral value={80} prefix="Tyres ≤ " suffix=" mm" />
-              </ChromeBadge>
-              <ChromeBadge variant="red">
-                <AnimatedNumeral value={6} prefix="Capped at " suffix=" m/s" />
-              </ChromeBadge>
-            </div>
           </div>
         </section>
       </MouseFollowGlow>

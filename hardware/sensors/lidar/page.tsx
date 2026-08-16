@@ -5,11 +5,10 @@ import {
   DisplayHeading,
   Red,
   GhostNumeral,
-  ChromeBadge,
   Fig,
 } from '@/components/docs/Editorial';
 import { LidarFrameDiagram } from '@/components/docs/Diagrams';
-import { ScrollReveal, MouseFollowGlow, AnimatedNumeral } from '@/components/docs/Interactive';
+import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 import { SensorSheet } from '@/components/docs/SensorSheet';
 import { Crumbs, PrevNext, Code } from '@/components/docs/DocsPrimitives';
 
@@ -49,10 +48,6 @@ export default function LidarPage() {
               A Richbeam LakiBeam1 planar laser scanner on top of the car. It
               connects to the Jetson through the OSCORE board.
             </p>
-            <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="outline"><AnimatedNumeral value={30} suffix=" Hz" /></ChromeBadge>
-              <ChromeBadge variant="outline"><AnimatedNumeral value={25} suffix=" m range" /></ChromeBadge>
-            </div>
           </div>
         </section>
       </MouseFollowGlow>

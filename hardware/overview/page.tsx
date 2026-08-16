@@ -7,7 +7,6 @@ import {
   DisplayHeading,
   Red,
   GhostNumeral,
-  ChromeBadge,
   Fig,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
@@ -125,10 +124,6 @@ export default function HardwareOverviewPage() {
             <DisplayHeading size="xl">
               THE NEORACER <Red>HARDWARE</Red>
             </DisplayHeading>
-            <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="outline">380 × 300 × 220 mm</ChromeBadge>
-              <ChromeBadge variant="outline">Wheelbase 280 mm</ChromeBadge>
-            </div>
           </div>
         </section>
       </MouseFollowGlow>

@@ -5,7 +5,6 @@ import {
   DisplayHeading,
   Red,
   GhostNumeral,
-  ChromeBadge,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 import { SensorSheet } from '@/components/docs/SensorSheet';
@@ -34,10 +33,6 @@ export default function DotMatrixPage() {
             <DisplayHeading size="xl">
               THE DOT <Red>MATRIX</Red>
             </DisplayHeading>
-            <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="outline">8 × 8 LEDs</ChromeBadge>
-              <ChromeBadge variant="outline">Rear-mounted</ChromeBadge>
-            </div>
           </div>
         </section>
       </MouseFollowGlow>

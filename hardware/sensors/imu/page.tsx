@@ -6,10 +6,9 @@ import {
   DisplayHeading,
   Red,
   GhostNumeral,
-  ChromeBadge,
   NumberedFeatureCard,
 } from '@/components/docs/Editorial';
-import { ScrollReveal, MouseFollowGlow, AnimatedNumeral } from '@/components/docs/Interactive';
+import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 import { SensorSheet } from '@/components/docs/SensorSheet';
 import { Crumbs, Callout, PrevNext, Code } from '@/components/docs/DocsPrimitives';
 
@@ -52,14 +51,6 @@ export default function ImuPage() {
               accelerating, how fast it is turning, and where magnetic north
               sits.
             </p>
-            <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="red">QMI8658A + QMC6309</ChromeBadge>
-              <ChromeBadge variant="outline"><AnimatedNumeral value={200} suffix=" Hz" /></ChromeBadge>
-              <ChromeBadge variant="outline">accel m/s²</ChromeBadge>
-              <ChromeBadge variant="outline">gyro rad/s</ChromeBadge>
-              <ChromeBadge variant="outline">mag teslas</ChromeBadge>
-              <ChromeBadge variant="outline">frame_id: imu_link</ChromeBadge>
-            </div>
           </div>
         </section>
       </MouseFollowGlow>

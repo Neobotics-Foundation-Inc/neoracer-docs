@@ -260,7 +260,7 @@ export default function CompatibilityMatrixPage() {
 
       <PrevNext
         prev={{ label: 'Changelog', href: '/docs/reference/changelog' }}
-        next={{ label: 'Warranty', href: '/docs/legal/warranty' }}
+        next={{ label: 'Safety', href: '/docs/reference/safety' }}
       />
     </DocsShell>
   );

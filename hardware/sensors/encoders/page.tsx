@@ -6,7 +6,6 @@ import {
   DisplayHeading,
   Red,
   GhostNumeral,
-  ChromeBadge,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 import { SensorSheet } from '@/components/docs/SensorSheet';
@@ -49,12 +48,6 @@ export default function EncodersPage() {
               A Hall-effect encoder on the motor shaft reports how far the
               drivetrain has turned.
             </p>
-            <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="red">Dead reckoning between scans</ChromeBadge>
-              <ChromeBadge variant="outline">Hall effect · motor shaft</ChromeBadge>
-              <ChromeBadge variant="outline">MCU integrated</ChromeBadge>
-              <ChromeBadge variant="outline">/odom · nav_msgs/Odometry</ChromeBadge>
-            </div>
           </div>
         </section>
       </MouseFollowGlow>

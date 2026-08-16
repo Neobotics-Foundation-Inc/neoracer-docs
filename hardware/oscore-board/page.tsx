@@ -92,7 +92,7 @@ export default function OscoreBoardPage() {
           </DisplayHeading>
           <Fig
             label="FIG. A / THE PINOUT"
-            caption="The OSCORE board, front and back, numbered as in the hardware manual. Click a number to see what that connector or component is."
+            caption="The OSCORE board, front and back, numbered as in the hardware manual. Click a number to see what that connector or component is, or click the board itself to open it full size without the numbers."
           >
             <BoardMap
               boards={[

@@ -3,7 +3,6 @@ import { Metadata } from 'next';
 import DocsShell from '@/components/docs/DocsShell';
 import { NB } from '@/lib/nb-tokens';
 import {
-  Eyebrow,
   DisplayHeading,
   Red,
   GhostNumeral,
@@ -13,7 +12,6 @@ import {
   NumberedFeatureCard,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
-import { StepCard } from '@/components/docs/StepCard';
 import { Crumbs, PrevNext, Callout, DataTable } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
@@ -61,55 +59,60 @@ export default function OscoreBoardPage() {
               THE OSCORE <Red>BOARD</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
-              OSCORE is the NeoRacer's power-distribution and control board, the
-              one piece of custom electronics in the car. It is an ESP32-S3 robot
-              controller that takes the LiPo in, fans out clean 5 V and 3.3 V
-              rails, reads the onboard{' '}
-              <InfoNote term="IMU" title="IMU">An inertial measurement unit. It combines an accelerometer and a gyroscope, sometimes a magnetometer, to report how the car is accelerating, rotating, and oriented.</InfoNote>, and drives the motor and servo. It is
-              the board the Jetson talks to over USB.
+              The OSCORE board sits between the Jetson and the lower chassis.
+              It is an ESP32-S3 robot controller that inputs the LiPo, outputs
+              5 V and 3.3 V rails, reads the onboard{' '}
+              <InfoNote term="IMU" title="IMU">An inertial measurement unit. It combines an accelerometer and a gyroscope, sometimes a magnetometer, to report how the car is accelerating, rotating, and oriented.</InfoNote>,
+              drives the motor and servo, and communicates with the Jetson over
+              USB.
             </p>
           </div>
         </section>
       </MouseFollowGlow>
 
+      {/* ── The MCU ──────────────────────────────────────────────────── */}
       <ScrollReveal>
-        <StepCard
-          title="The OSCORE control board"
-          image="/images/build/oscore-pcb-2.jpg"
-          alt="The OSCORE ESP32-S3 control board with its wiring harness"
-        >
-          The OSCORE board sits between the Jetson and the moving parts.
-          Built around an ESP32-S3, it takes the Jetson&apos;s commands and turns them
-          into the signals that drive the motor and steer the servo, and it
-          sends the IMU and wheel data back the other way.
-        </StepCard>
+        <section style={{ paddingBottom: 40 }}>
+          <DisplayHeading size="lg">
+            ESP32-S3, <Red>WROOM-1U</Red>
+          </DisplayHeading>
+          <Fig
+            label="FIG. A / THE BOARD"
+            caption="The OSCORE board, front (component side, left) and back. The ESP32-S3 module sits in the center; the gold XT30 pads carry power in and out."
+          >
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 16 }}>
+              <BoardImg src="/images/oscore/oscore-front.png" alt="OSCORE board, front (component) side" />
+              <BoardImg src="/images/oscore/oscore-back.png" alt="OSCORE board, back side" />
+            </div>
+          </Fig>
+          <DataTable
+            columns={[
+              { key: 'k', label: 'Parameter', accent: true, width: '180px' },
+              { key: 'v', label: 'Specification', mono: true },
+            ]}
+            rows={[
+              { k: 'Module', v: 'ESP32-S3-WROOM-1U-N16R8' },
+              { k: 'CPU', v: 'Xtensa LX7 dual-core @ 240 MHz' },
+              { k: 'Flash', v: '16 MB (Quad SPI)' },
+              { k: 'PSRAM', v: '8 MB (Octal SPI)' },
+              { k: 'Wireless', v: 'Wi-Fi 4 (802.11 b/g/n) + BLE 5.0' },
+              { k: 'Antenna', v: 'U.FL (IPEX) external' },
+              { k: 'Debug', v: 'USB OTG / Serial-JTAG, UART0 on RXD0/TXD0' },
+            ]}
+          />
+        </section>
       </ScrollReveal>
 
-      {/* ── FIG A · the board ────────────────────────────────────────── */}
-      <ScrollReveal>
-        <Fig
-          label="FIG. A / THE BOARD"
-          caption="The OSCORE board, front (component side, left) and back. The ESP32-S3 module sits in the center; the gold XT30 pads carry power in and out."
-        >
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 16 }}>
-            <BoardImg src="/images/oscore/oscore-front.png" alt="OSCORE board, front (component) side" />
-            <BoardImg src="/images/oscore/oscore-back.png" alt="OSCORE board, back side" />
-          </div>
-        </Fig>
-      </ScrollReveal>
-
-      {/* ── 01 · What it is ──────────────────────────────────────────── */}
+      {/* ── What it does ─────────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 40 }}>
-          <Eyebrow>01 / WHAT IT IS</Eyebrow>
           <DisplayHeading size="lg">
             WHAT IT <Red>DOES</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
-            OSCORE is built around the ESP32-S3-WROOM-1U module and pulls the
-            pieces a small autonomous robot needs onto one board: a 6-axis IMU
-            and a magnetometer, CAN bus, 100 Mbps Ethernet, a USB hub, an SBUS
-            receiver input,{' '}
+            OSCORE pulls the pieces a small autonomous robot needs onto one
+            board: a 6-axis IMU and a magnetometer, CAN bus, 100 Mbps Ethernet,
+            a USB hub, an SBUS receiver input,{' '}
             <InfoNote term="PWM" title="PWM">Pulse-width modulation. A control signal that encodes a value in the width of repeating pulses, used here to tell the ESC how much throttle and the servo what steering angle to hold.</InfoNote>{' '}
             outputs for the{' '}
             <InfoNote term="ESC" title="ESC">An electronic speed controller. It takes the control signal and the battery voltage and drives the motor at the commanded speed.</InfoNote>{' '}
@@ -178,104 +181,9 @@ export default function OscoreBoardPage() {
         </section>
       </ScrollReveal>
 
-      {/* ── 02 · The MCU ─────────────────────────────────────────────── */}
+      {/* ── Interfaces ───────────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ paddingBottom: 40 }}>
-          <Eyebrow>02 / THE MCU</Eyebrow>
-          <DisplayHeading size="lg">
-            ESP32-S3, <Red>WROOM-1U</Red>
-          </DisplayHeading>
-          <DataTable
-            columns={[
-              { key: 'k', label: 'Parameter', accent: true, width: '180px' },
-              { key: 'v', label: 'Specification', mono: true },
-            ]}
-            rows={[
-              { k: 'Module', v: 'ESP32-S3-WROOM-1U-N16R8' },
-              { k: 'CPU', v: 'Xtensa LX7 dual-core @ 240 MHz' },
-              { k: 'Flash', v: '16 MB (Quad SPI)' },
-              { k: 'PSRAM', v: '8 MB (Octal SPI)' },
-              { k: 'Wireless', v: 'Wi-Fi 4 (802.11 b/g/n) + BLE 5.0' },
-              { k: 'Antenna', v: 'U.FL (IPEX) external' },
-              { k: 'Debug', v: 'USB OTG / Serial-JTAG, UART0 on RXD0/TXD0' },
-            ]}
-          />
-        </section>
-      </ScrollReveal>
-
-      {/* ── 03 · Power ───────────────────────────────────────────────── */}
-      <ScrollReveal>
-        <section style={{ paddingBottom: 40 }}>
-          <Eyebrow>03 / POWER SYSTEM</Eyebrow>
-          <DisplayHeading size="lg">
-            THE POWER <Red>SYSTEM</Red>
-          </DisplayHeading>
-          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
-            A single 9 to 26 V input feeds a two-stage conversion: a TPS54540
-            switching regulator makes the 5 V rail, an AMS1117 LDO makes 3.3 V,
-            and the raw input passes through to the ESC. The input has reverse
-            polarity protection.
-          </p>
-          <DataTable
-            columns={[
-              { key: 'rail', label: 'Rail', accent: true, mono: true, width: '130px' },
-              { key: 'src', label: 'Source', mono: true },
-              { key: 'spec', label: 'Voltage / current', mono: true, width: '150px' },
-              { key: 'use', label: 'Usage' },
-            ]}
-            rows={[
-              { rail: 'VCC_IN', src: 'XT30 / Type-C', spec: '9 to 26 V', use: 'Main input, reverse-polarity protected' },
-              { rail: 'VCC_5V_IO', src: 'TPS54540 DC-DC', spec: '5 V / 5 A', use: 'IO peripheral power' },
-              { rail: 'VCC_5V', src: 'VCC_5V_IO + MOSFET', spec: '5 V (switched)', use: 'USB hub, CAN, WS2812' },
-              { rail: 'VCC_3V3', src: 'AMS1117-3.3 LDO', spec: '3.3 V / 1 A', use: 'ESP32-S3, IMU, buzzer' },
-              { rail: 'VCC_ESC', src: 'VCC_IN (passthrough)', spec: '9 to 26 V', use: 'ESC power output' },
-            ]}
-          />
-          <Callout type="warn" title="Two power rules">
-            Do not connect the XT30 and the Type-C to different power sources at
-            the same time, and keep the input at or below 26 V. Above 26 V can
-            damage the board. The pack voltage is readable in firmware: VCC_IN
-            runs through a 200k / 22k divider to an ADC pin, about a 1/10 ratio.
-          </Callout>
-        </section>
-      </ScrollReveal>
-
-      {/* ── 04 · IMU ─────────────────────────────────────────────────── */}
-      <ScrollReveal>
-        <section style={{ paddingBottom: 40 }}>
-          <Eyebrow>04 / ONBOARD IMU</Eyebrow>
-          <DisplayHeading size="lg">
-            THE ONBOARD <Red>IMU</Red>
-          </DisplayHeading>
-          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
-            The IMU lives on this board, two parts on a shared I2C bus. A QMI8658A
-            gives the 6-axis accelerometer and gyroscope; a QMC6309 adds the
-            3-axis magnetometer, so together they support a 9-axis heading. The
-            ESP32-S3 reads them and publishes on{' '}
-            <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>/imu</code>{' '}
-            once the{' '}
-            <Link href="/docs/software/ros2-driver" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>driver</Link>{' '}
-            is up.
-          </p>
-          <DataTable
-            columns={[
-              { key: 'part', label: 'Sensor', accent: true, mono: true, width: '130px' },
-              { key: 'type', label: 'Type' },
-              { key: 'addr', label: 'I2C', mono: true, width: '70px' },
-              { key: 'range', label: 'Range', mono: true },
-            ]}
-            rows={[
-              { part: 'QMI8658A', type: '6-axis gyro + accelerometer', addr: '0x6B', range: 'gyro ±16 to 2048 dps, accel ±2 to 16 g' },
-              { part: 'QMC6309', type: '3-axis magnetometer', addr: '0x7C', range: '±30 Gauss' },
-            ]}
-          />
-        </section>
-      </ScrollReveal>
-
-      {/* ── 05 · Interfaces ──────────────────────────────────────────── */}
-      <ScrollReveal>
-        <section style={{ paddingBottom: 40 }}>
-          <Eyebrow>05 / INTERFACES</Eyebrow>
           <DisplayHeading size="lg">
             INTERFACES AND <Red>CONNECTORS</Red>
           </DisplayHeading>
@@ -310,10 +218,45 @@ export default function OscoreBoardPage() {
         </section>
       </ScrollReveal>
 
-      {/* ── 06 · Electrical params ───────────────────────────────────── */}
+      {/* ── Power ────────────────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ paddingBottom: 40 }}>
-          <Eyebrow>06 / ELECTRICAL PARAMETERS</Eyebrow>
+          <DisplayHeading size="lg">
+            THE POWER <Red>SYSTEM</Red>
+          </DisplayHeading>
+          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
+            A single 9 to 26 V input feeds a two-stage conversion: a TPS54540
+            switching regulator makes the 5 V rail, an AMS1117 LDO makes 3.3 V,
+            and the raw input passes through to the ESC. The input has reverse
+            polarity protection.
+          </p>
+          <DataTable
+            columns={[
+              { key: 'rail', label: 'Rail', accent: true, mono: true, width: '130px' },
+              { key: 'src', label: 'Source', mono: true },
+              { key: 'spec', label: 'Voltage / current', mono: true, width: '150px' },
+              { key: 'use', label: 'Usage' },
+            ]}
+            rows={[
+              { rail: 'VCC_IN', src: 'XT30 / Type-C', spec: '9 to 26 V', use: 'Main input, reverse-polarity protected' },
+              { rail: 'VCC_5V_IO', src: 'TPS54540 DC-DC', spec: '5 V / 5 A', use: 'IO peripheral power' },
+              { rail: 'VCC_5V', src: 'VCC_5V_IO + MOSFET', spec: '5 V (switched)', use: 'USB hub, CAN, WS2812' },
+              { rail: 'VCC_3V3', src: 'AMS1117-3.3 LDO', spec: '3.3 V / 1 A', use: 'ESP32-S3, IMU, buzzer' },
+              { rail: 'VCC_ESC', src: 'VCC_IN (passthrough)', spec: '9 to 26 V', use: 'ESC power output' },
+            ]}
+          />
+          <Callout type="warn" title="Two power rules">
+            Do not connect the XT30 and the Type-C to different power sources at
+            the same time, and keep the input at or below 26 V. Above 26 V can
+            damage the board. The pack voltage is readable in firmware: VCC_IN
+            runs through a 200k / 22k divider to an ADC pin, about a 1/10 ratio.
+          </Callout>
+        </section>
+      </ScrollReveal>
+
+      {/* ── Electrical params ────────────────────────────────────────── */}
+      <ScrollReveal>
+        <section style={{ paddingBottom: 40 }}>
           <DisplayHeading size="lg">
             ELECTRICAL <Red>LIMITS</Red>
           </DisplayHeading>
@@ -345,7 +288,6 @@ export default function OscoreBoardPage() {
       {/* ── Downloads ────────────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ paddingBottom: 36 }}>
-          <MonoLabel>Open hardware, full electrical package</MonoLabel>
           <DisplayHeading size="lg">
             THE SOURCE <Red>FILES</Red>
           </DisplayHeading>

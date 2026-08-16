@@ -127,8 +127,7 @@ export default function ChassisAndCadPage() {
           />
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 14 }}>
             The repository README describes every file, which one to open for
-            what you are doing, and how to clone it. The large CAD files are
-            stored with Git LFS, so install that before you clone.
+            what you are doing, and how to clone it.
           </p>
         </section>
       </ScrollReveal>

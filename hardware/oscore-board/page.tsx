@@ -6,6 +6,7 @@ import {
   DisplayHeading,
   Red,
   GhostNumeral,
+  MonoLabel,
   DashList,
   Fig,
   NumberedFeatureCard,
@@ -92,7 +93,7 @@ export default function OscoreBoardPage() {
           </DisplayHeading>
           <Fig
             label="FIG. A / THE PINOUT"
-            caption="The OSCORE board, front and back, numbered as in the hardware manual. Click a number to see what that connector or component is, or click the board itself to open it full size without the numbers."
+            caption="The OSCORE board, front and back, with pinout description overlayed. Click a number to see what that component is, or click the board itself to open it full size."
           >
             <BoardMap
               boards={[
@@ -111,6 +112,9 @@ export default function OscoreBoardPage() {
               ]}
             />
           </Fig>
+          <div style={{ marginTop: 28, marginBottom: -6 }}>
+            <MonoLabel>Functional modules</MonoLabel>
+          </div>
           <DataTable
             columns={[
               { key: 'k', label: 'Parameter', accent: true, width: '180px' },
@@ -128,6 +132,7 @@ export default function OscoreBoardPage() {
             ]}
           />
           <div style={{ marginTop: 28 }}>
+            <MonoLabel>Interface comparison table</MonoLabel>
             <DataTable
               columns={[
                 { key: 'iface', label: 'Interface', accent: true, width: '150px' },
@@ -275,11 +280,10 @@ export default function OscoreBoardPage() {
               </div>
             ))}
           </div>
-          <Callout type="warn" title="Two power rules">
+          <Callout type="warn" title="Never exceed 26 V, and power the board from one source at a time">
             Do not connect the XT30 and the Type-C to different power sources at
             the same time, and keep the input at or below 26 V. Above 26 V can
-            damage the board. The pack voltage is readable in firmware: VCC_IN
-            runs through a 200k / 22k divider to an ADC pin, about a 1/10 ratio.
+            damage the board.
           </Callout>
         </section>
       </ScrollReveal>
@@ -302,24 +306,6 @@ export default function OscoreBoardPage() {
             ]}
           />
         </section>
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <Callout type="note" title="This is the board the ROS 2 driver talks to">
-          The OSCORE ESP32-S3 is the board the{' '}
-          <Link href="/docs/getting-started/install-driver" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>ROS 2 driver</Link>{' '}
-          reaches over USB-CDC. A udev rule pins it as{' '}
-          <code style={{ fontFamily: NB.monoFont }}>/dev/osrbot_base</code>, and a
-          single <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>controller</code> node owns
-          that link. It reads the IMU, the wheel encoder, and the Flysky RC
-          receiver, publishes them as{' '}
-          <code style={{ fontFamily: NB.monoFont }}>/imu</code>,{' '}
-          <code style={{ fontFamily: NB.monoFont }}>/odom</code>, and{' '}
-          <code style={{ fontFamily: NB.monoFont }}>/joy</code>, and writes{' '}
-          <code style={{ fontFamily: NB.monoFont }}>v &lt;m/s&gt; &lt;deg&gt;</code> back to the
-          ESP32 to drive the ESC and steering servo. No separate IMU, PWM, or
-          joystick driver, this one board and one node.
-        </Callout>
       </ScrollReveal>
 
       <PrevNext

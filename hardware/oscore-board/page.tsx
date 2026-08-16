@@ -11,7 +11,7 @@ import {
   Fig,
   NumberedFeatureCard,
 } from '@/components/docs/Editorial';
-import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
+import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 import { BoardMap, type BoardMarker } from '@/components/docs/BoardMap';
 import { Crumbs, PrevNext, Callout, DataTable } from '@/components/docs/DocsPrimitives';
 
@@ -166,16 +166,8 @@ export default function OscoreBoardPage() {
             WHAT IT <Red>DOES</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
-            OSCORE pulls the pieces a small autonomous robot needs onto one
-            board: a 6-axis IMU and a magnetometer, CAN bus, 100 Mbps Ethernet,
-            a USB hub, an SBUS receiver input,{' '}
-            <InfoNote term="PWM" title="PWM">Pulse-width modulation. A control signal that encodes a value in the width of repeating pulses, used here to tell the ESC how much throttle and the servo what steering angle to hold.</InfoNote>{' '}
-            outputs for the{' '}
-            <InfoNote term="ESC" title="ESC">An electronic speed controller. It takes the control signal and the battery voltage and drives the motor at the commanded speed.</InfoNote>{' '}
-            and servo, and an encoder
-            input. The Jetson runs the autonomy; OSCORE is the real-time layer
-            underneath it that actually moves the car and reads the sensors that
-            need microsecond timing.
+            The Jetson runs your code. The OSCORE does the three jobs that need
+            exact timing, which Python on the Jetson cannot do fast enough.
           </p>
           <div
             style={{
@@ -187,48 +179,21 @@ export default function OscoreBoardPage() {
           >
             <NumberedFeatureCard
               n={1}
-              title="Power distribution"
-              lede="LiPo in, clean rails out."
-              body="A 9 to 26 V input is converted in two stages to a 5 V at 5 A rail and a 3.3 V rail, with the raw pack voltage passed straight through to the ESC."
+              title="Motor control"
+              lede="Holds the speed your code asks for."
+              body="It reads the encoder to see how fast the wheels are turning, then adjusts motor power thousands of times a second to match."
             />
             <NumberedFeatureCard
               n={2}
-              title="Motion + sensing"
-              lede="ESC, servo, encoder, IMU."
-              body="PWM outputs drive the ESC and steering servo, an encoder input reads wheel motion, and the onboard 9-axis IMU gives orientation, all wired to the ESP32-S3."
+              title="Steering"
+              lede="Turns a steering angle into a servo signal."
+              body="The steering calibration is stored on the OSCORE, so reinstalling the Jetson does not erase it."
             />
             <NumberedFeatureCard
               n={3}
-              title="Comms to the Jetson"
-              lede="USB, plus CAN and Ethernet."
-              body="The board talks to the Jetson over USB. CAN, 100 Mbps Ethernet, and a 4-port USB hub are there for expansion."
-            />
-          </div>
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-              gap: 18,
-              marginTop: 18,
-            }}
-          >
-            <NumberedFeatureCard
-              n={4}
-              title="Motor control"
-              lede="The OSCORE drives the motor and reads the encoder."
-              body="It adjusts motor power thousands of times per second to hold the speed your code asks for. Python on the Jetson cannot react that fast, which is why this job lives on the OSCORE."
-            />
-            <NumberedFeatureCard
-              n={5}
-              title="Servo control"
-              lede="The OSCORE moves the steering servo."
-              body="Your code asks for a steering angle and the OSCORE turns it into the servo signal. The steering calibration is saved on the OSCORE itself, so reinstalling the Jetson does not erase it."
-            />
-            <NumberedFeatureCard
-              n={6}
-              title="IMU fusion"
-              lede="The OSCORE cleans up the IMU data."
-              body="It combines the raw accelerometer and gyroscope readings into a stable orientation, 200 times a second, so the Jetson receives clean data on /imu."
+              title="IMU"
+              lede="Turns raw sensor readings into an orientation."
+              body="It combines the accelerometer and gyroscope 200 times a second and sends the result to the Jetson on /imu."
             />
           </div>
         </section>

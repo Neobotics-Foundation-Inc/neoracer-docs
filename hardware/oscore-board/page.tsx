@@ -92,6 +92,7 @@ export default function OscoreBoardPage() {
               { key: 'v', label: 'Specification', mono: true },
             ]}
             rows={[
+              { k: 'Board size', v: '60 × 40 mm' },
               { k: 'Module', v: 'ESP32-S3-WROOM-1U-N16R8' },
               { k: 'CPU', v: 'Xtensa LX7 dual-core @ 240 MHz' },
               { k: 'Flash', v: '16 MB (Quad SPI)' },

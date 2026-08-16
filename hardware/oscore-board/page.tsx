@@ -71,14 +71,14 @@ export default function OscoreBoardPage() {
         </section>
       </MouseFollowGlow>
 
-      {/* ── The MCU ──────────────────────────────────────────────────── */}
+      {/* ── The board: the MCU and its interfaces ────────────────────── */}
       <ScrollReveal>
         <section style={{ paddingBottom: 40 }}>
           <DisplayHeading size="lg">
-            ESP32-S3, <Red>WROOM-1U</Red>
+            THE <Red>BOARD</Red>
           </DisplayHeading>
           <Fig
-            label="FIG. A / THE BOARD"
+            label="FIG. A / FRONT AND BACK"
             caption="The OSCORE board, front (component side, left) and back. The ESP32-S3 module sits in the center; the gold XT30 pads carry power in and out."
           >
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 16 }}>
@@ -99,6 +99,36 @@ export default function OscoreBoardPage() {
               { k: 'Wireless', v: 'Wi-Fi 4 (802.11 b/g/n) + BLE 5.0' },
               { k: 'Antenna', v: 'U.FL (IPEX) external' },
               { k: 'Debug', v: 'USB OTG / Serial-JTAG, UART0 on RXD0/TXD0' },
+            ]}
+          />
+          <div style={{ marginTop: 28 }}>
+            <Fig
+              label="FIG. B / INTERFACE MAP"
+              caption="The numbered pinout from the hardware manual. Every connector, switch, and header on the board, keyed to the table below."
+            >
+              <BoardImg src="/images/oscore/oscore-interface.png" alt="OSCORE board interface and pinout map" />
+            </Fig>
+          </div>
+          <DataTable
+            columns={[
+              { key: 'iface', label: 'Interface', accent: true, width: '150px' },
+              { key: 'type', label: 'Type', mono: true },
+              { key: 'fn', label: 'Function' },
+              { key: 'part', label: 'Part', mono: true },
+            ]}
+            rows={[
+              { iface: 'DC power input', type: 'XT30 (2+2)', fn: 'Main supply, 9 to 26 V', part: 'TPS54540' },
+              { iface: 'USB Type-C', type: 'Type-C 16P', fn: 'Flashing, USB comm, 5 V', part: 'CH339F hub' },
+              { iface: 'USB hub', type: '4x USB-A', fn: 'Cameras, drives, dongles', part: 'CH339F' },
+              { iface: 'Ethernet', type: 'RJ45 100M', fn: '100 Mbps comms', part: 'HR641680E' },
+              { iface: 'MicroSD', type: 'TF slot', fn: 'External storage', part: 'via CH339F SDIO' },
+              { iface: 'CAN bus', type: 'Header / terminal', fn: 'CAN 2.0, up to 1 Mbps', part: 'TJA1050T' },
+              { iface: 'SBUS / PWM / encoder', type: 'Pin header', fn: 'RC in, ESC + servo PWM, encoder A/B', part: 'VCC_5V_IO' },
+              { iface: 'WS2812 LED', type: '3P header / onboard', fn: 'Programmable RGB', part: 'IO46' },
+              { iface: 'Buzzer', type: 'Onboard', fn: 'Active buzzer', part: 'IO42' },
+              { iface: 'Reset / Boot', type: 'Touch buttons', fn: 'Reset + flashing mode', part: 'BOOT + RESET' },
+              { iface: 'IO expansion', type: '2.54 mm header', fn: 'Spare ESP32-S3 GPIO', part: 'SPI / I2C / UART' },
+              { iface: 'Power output', type: 'XT30 (2+2)', fn: 'VCC_5V / GND out', part: 'External' },
             ]}
           />
         </section>
@@ -176,43 +206,6 @@ export default function OscoreBoardPage() {
               body="It combines the raw accelerometer and gyroscope readings into a stable orientation, 200 times a second, so the Jetson receives clean data on /imu."
             />
           </div>
-        </section>
-      </ScrollReveal>
-
-      {/* ── Interfaces ───────────────────────────────────────────────── */}
-      <ScrollReveal>
-        <section style={{ paddingBottom: 40 }}>
-          <DisplayHeading size="lg">
-            INTERFACES AND <Red>CONNECTORS</Red>
-          </DisplayHeading>
-          <Fig
-            label="FIG. B / INTERFACE MAP"
-            caption="The numbered pinout from the hardware manual. Every connector, switch, and header on the board, keyed to the table below."
-          >
-            <BoardImg src="/images/oscore/oscore-interface.png" alt="OSCORE board interface and pinout map" />
-          </Fig>
-          <DataTable
-            columns={[
-              { key: 'iface', label: 'Interface', accent: true, width: '150px' },
-              { key: 'type', label: 'Type', mono: true },
-              { key: 'fn', label: 'Function' },
-              { key: 'part', label: 'Part', mono: true },
-            ]}
-            rows={[
-              { iface: 'DC power input', type: 'XT30 (2+2)', fn: 'Main supply, 9 to 26 V', part: 'TPS54540' },
-              { iface: 'USB Type-C', type: 'Type-C 16P', fn: 'Flashing, USB comm, 5 V', part: 'CH339F hub' },
-              { iface: 'USB hub', type: '4x USB-A', fn: 'Cameras, drives, dongles', part: 'CH339F' },
-              { iface: 'Ethernet', type: 'RJ45 100M', fn: '100 Mbps comms', part: 'HR641680E' },
-              { iface: 'MicroSD', type: 'TF slot', fn: 'External storage', part: 'via CH339F SDIO' },
-              { iface: 'CAN bus', type: 'Header / terminal', fn: 'CAN 2.0, up to 1 Mbps', part: 'TJA1050T' },
-              { iface: 'SBUS / PWM / encoder', type: 'Pin header', fn: 'RC in, ESC + servo PWM, encoder A/B', part: 'VCC_5V_IO' },
-              { iface: 'WS2812 LED', type: '3P header / onboard', fn: 'Programmable RGB', part: 'IO46' },
-              { iface: 'Buzzer', type: 'Onboard', fn: 'Active buzzer', part: 'IO42' },
-              { iface: 'Reset / Boot', type: 'Touch buttons', fn: 'Reset + flashing mode', part: 'BOOT + RESET' },
-              { iface: 'IO expansion', type: '2.54 mm header', fn: 'Spare ESP32-S3 GPIO', part: 'SPI / I2C / UART' },
-              { iface: 'Power output', type: 'XT30 (2+2)', fn: 'VCC_5V / GND out', part: 'External' },
-            ]}
-          />
         </section>
       </ScrollReveal>
 

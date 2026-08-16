@@ -61,9 +61,11 @@ export default function OscoreBoardPage() {
               The OSCORE board sits between the Jetson and the lower chassis.
               It is an ESP32-S3 robot controller that inputs the LiPo, outputs
               5 V and 3.3 V rails, reads the onboard{' '}
-              <InfoNote term="IMU" title="IMU">An inertial measurement unit. It combines an accelerometer and a gyroscope, sometimes a magnetometer, to report how the car is accelerating, rotating, and oriented.</InfoNote>,
-              drives the motor and servo, and communicates with the Jetson over
-              USB.
+              <Link href="/docs/hardware/sensors/imu" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
+                IMU
+              </Link>
+              , drives the motor and servo, and communicates with the Jetson
+              over USB.
             </p>
           </div>
         </section>

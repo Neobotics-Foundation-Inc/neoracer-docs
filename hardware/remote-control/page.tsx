@@ -4,7 +4,6 @@ import { Metadata } from 'next';
 import DocsShell from '@/components/docs/DocsShell';
 import { NB } from '@/lib/nb-tokens';
 import {
-  Eyebrow,
   DisplayHeading,
   Red,
   GhostNumeral,
@@ -70,8 +69,8 @@ export default function RemoteControlPage() {
               <InfoNote term="Flysky FS-i6S" title="Flysky FS-i6S">
                 The handheld radio transmitter included with the car. Two sticks for throttle and steering, plus top switches mapped to auxiliary channels.
               </InfoNote>{' '}
-              transmitter. In the Flysky box, there is the controller, a
-              micro-USB cable, and a bracket.
+              transmitter. In the Flysky box, there is the controller, its
+              manual, a micro-USB cable, and a bracket.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="red">Flysky FS-i6S</ChromeBadge>
@@ -90,6 +89,7 @@ export default function RemoteControlPage() {
             title="Flysky FS-i6S"
             image="/images/flysky-sheet.jpg"
             alt="The Flysky FS-i6S transmitter"
+            wideSpecs
             specs={[
               ['Channels', '10'],
               ['RF range', '2.408 - 2.475 GHz'],
@@ -102,8 +102,7 @@ export default function RemoteControlPage() {
               ['Size', '179 × 81 × 161 mm'],
             ]}
           >
-            Two sticks drive the car, and the top switches map to auxiliary
-            channels.
+            We highly recommend reading the Flysky manual along with this page.
           </SensorSheet>
         </section>
       </ScrollReveal>
@@ -117,6 +116,7 @@ export default function RemoteControlPage() {
           <div style={{ marginTop: 18 }}>
             <Fig
               label="FIG. A / THE TRANSMITTER"
+              bg="#ffffff"
               caption={
                 <>
                   The FS-i6S, front and back. For more information, visit the{' '}
@@ -137,10 +137,10 @@ export default function RemoteControlPage() {
           </div>
           <DashList
             items={[
-              <><strong>Left stick, throttle.</strong> Push up to go forward, pull down to reverse. Releasing it to centre is the everyday way to stop.</>,
-              <><strong>Right stick, steering.</strong> Left turns left, right turns right. Steering only bites while the car is rolling.</>,
-              <><strong>SWA, manual speed.</strong> Up is slow mode (throttle capped at 15% of full power), down is fast. Start slow while you find the feel of it.</>,
-              <><strong>SWB, mode.</strong> Decides who is driving:</>,
+              <><strong>Left stick: throttle.</strong> Push it up to drive forward. Pull it down to reverse. Let it return to the centre to stop.</>,
+              <><strong>Right stick: steering.</strong> Push it left to turn left and right to turn right. The car only steers while it is moving.</>,
+              <><strong>SWA: manual speed.</strong> Up is slow mode, which limits the throttle to 15% of full power. Down is fast mode.</>,
+              <><strong>SWB: mode.</strong> This switch decides who drives the car.</>,
             ]}
           />
           <div style={{ margin: '18px 0' }}>
@@ -151,22 +151,23 @@ export default function RemoteControlPage() {
                 { key: 'who', label: 'Who drives' },
               ]}
               rows={[
-                { mode: 'Manual (RC)', pos: 'Up', who: 'You, on the sticks. The safe default.' },
-                { mode: 'Autonomous', pos: 'Down', who: 'The host computer: teleop, SLAM, Nav2, your code.' },
+                { mode: 'Manual (RC)', pos: 'Up', who: 'You drive the car with the sticks.' },
+                { mode: 'Autonomous', pos: 'Down', who: 'Your code drives the car.' },
               ]}
             />
           </div>
           <DashList
             items={[
-              <><strong>Power.</strong> Hold both side buttons together until it beeps to turn the transmitter on or off.</>,
+              <><strong>Power.</strong> Hold both side buttons until the transmitter beeps to turn it on or off.</>,
             ]}
           />
-          <Callout type="warn" title="Start and end in manual">
-            Set SWB up before you power on, and again before you shut down.
-            Coming up in manual means the car can&apos;t drive itself off the
-            bench, and dropping back to manual cuts autonomous control cleanly
-            when you&apos;re done. Whenever something looks wrong, flipping
-            SWB back up is the fastest way to take the wheel.
+          <Callout type="warn" title="Turn the controller on before the car">
+            While the controller is off, the car stays in the mode it was last
+            put in. If you left it in autonomous mode and you power the car on
+            with a program already running, such as the wall following
+            dashboard, the car can start driving on its own straight away.
+            Always turn the controller on first and the car second, so SWB sets
+            the mode before the car can move.
           </Callout>
         </section>
       </ScrollReveal>
@@ -174,7 +175,6 @@ export default function RemoteControlPage() {
       {/* ── 03 · channel setup (advanced) ───────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 24 }}>
-          <Eyebrow>ADVANCED</Eyebrow>
           <DisplayHeading size="lg">
             CHANNEL MAPPING + <Red>S.BUS</Red>
           </DisplayHeading>

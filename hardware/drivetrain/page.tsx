@@ -66,13 +66,24 @@ export default function DrivetrainPage() {
 
       <ScrollReveal>
         <section style={{ paddingBottom: 32 }}>
-          <Eyebrow>01 / MOTOR</Eyebrow>
+          <Eyebrow>01 / MOTOR + ESC</Eyebrow>
         <DisplayHeading size="lg">
           THE BRUSHED <Red>MOTOR</Red>
         </DisplayHeading>
         <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
           A purpose-spec brushed motor with integrated encoder. The motor
           converts electrical energy into mechanical energy to provide power.
+        </p>
+        <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 14 }}>
+          The motor is driven by an ESC (electronic speed controller). It reads
+          the control signal and adjusts the power delivered to the motor
+          accordingly, which sets both the speed and the direction the motor
+          turns. This is what gives precise control over the motor&apos;s speed
+          and torque. The signal comes from the{' '}
+          <a href="/docs/hardware/oscore-board" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
+            OSCORE board
+          </a>
+          , and the ESC draws its power straight from the battery.
         </p>
         <div style={{ marginTop: 18, background: NB.haloWhite, border: `1px solid ${NB.borderOnBeige}`, borderRadius: 10, padding: '16px 18px', boxShadow: NB.shadowCard }}>
           <div style={{ fontFamily: NB.monoFont, fontSize: 12, letterSpacing: '0.14em', textTransform: 'uppercase', color: NB.textMutedBeige }}>

@@ -10,7 +10,7 @@ import {
   DashList,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
-import { StepCard } from '@/components/docs/StepCard';
+import { PhotoCard } from '@/components/docs/PhotoCard';
 import { Crumbs, PrevNext } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
@@ -54,51 +54,55 @@ export default function ChassisAndCadPage() {
       </MouseFollowGlow>
 
       <ScrollReveal>
-        <StepCard
-          title="The chassis"
-          image="/images/build/chassis.jpg"
-          alt="The NeoRacer rolling chassis with red oil-filled shocks and off-road wheels"
-        >
-          Everything starts with the rolling chassis, a 1:12 scale platform with
-          real oil-filled shocks, a brushed motor, an electronic speed
-          controller, and a steering servo already wired in. The bay down the
-          middle is where the battery and the electronics sit.
-        </StepCard>
-      </ScrollReveal>
+        <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: 22, marginBottom: 12 }}>
+          <PhotoCard
+            title="The chassis"
+            image="/images/build/chassis.jpg"
+            fit="cover"
+            bandHeight={258}
+            alt="The NeoRacer rolling chassis with red oil-filled shocks and off-road wheels"
+          >
+            Everything starts with the rolling chassis, a 1:12 scale platform
+            with real oil-filled shocks, a brushed motor, an electronic speed
+            controller, and a steering servo already wired in. The bay down the
+            middle is where the battery and the electronics sit.
+          </PhotoCard>
 
-      <ScrollReveal>
-        <StepCard
-          title="The front bumper"
-          image="/images/build/front-bumper-2.jpg"
-          alt="The NeoRacer front bumper with its four mounting screws"
-        >
-          The front bumper bolts onto the nose with four screws and shields the
-          camera, the LiDAR tower, and the front suspension in a crash.
-        </StepCard>
-      </ScrollReveal>
+          <PhotoCard
+            title="The front bumper"
+            image="/images/build/front-bumper-2.jpg"
+            fit="cover"
+            bandHeight={258}
+            alt="The NeoRacer front bumper with its four mounting screws"
+          >
+            The front bumper bolts onto the nose with four screws and shields
+            the camera, the LiDAR tower, and the front suspension in a crash.
+          </PhotoCard>
 
-      <ScrollReveal>
-        <StepCard
-          title="The rear wing"
-          image="/images/build/rear-wing-2.jpg"
-          alt="The rear wing with its mounting arms and screws"
-        >
-          The rear wing bolts onto the tail with its two mounting arms and
-          shields the back of the car the same way the bumper covers the
-          front. Both the wing and the bumper are stock factory parts.
-        </StepCard>
-      </ScrollReveal>
+          <PhotoCard
+            title="The rear wing"
+            image="/images/build/rear-wing-2.jpg"
+            fit="cover"
+            bandHeight={258}
+            alt="The rear wing with its mounting arms and screws"
+          >
+            The rear wing bolts onto the tail with its two mounting arms and
+            shields the back of the car the same way the bumper covers the
+            front. Both the wing and the bumper are stock factory parts.
+          </PhotoCard>
 
-      <ScrollReveal>
-        <StepCard
-          title="The side covers"
-          image="/images/build/side-cover-2.jpg"
-          alt="A NeoRacer-branded side cover panel"
-        >
-          The side covers close up the electronics bay and carry the NeoRacer
-          name. They keep dust out of the wiring, and they are the simplest
-          part to customize.
-        </StepCard>
+          <PhotoCard
+            title="The side covers"
+            image="/images/build/side-cover-2.jpg"
+            fit="cover"
+            bandHeight={258}
+            alt="A NeoRacer-branded side cover panel"
+          >
+            The side covers close up the electronics bay and carry the NeoRacer
+            name. They keep dust out of the wiring, and they are the simplest
+            part to customize.
+          </PhotoCard>
+        </div>
       </ScrollReveal>
 
       {/* ── The repository ─────────────────────────────────────────────── */}

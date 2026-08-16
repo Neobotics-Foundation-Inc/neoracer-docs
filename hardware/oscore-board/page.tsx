@@ -11,6 +11,7 @@ import {
   NumberedFeatureCard,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
+import { BoardMap, type BoardMarker } from '@/components/docs/BoardMap';
 import { Crumbs, PrevNext, Callout, DataTable } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
@@ -19,25 +20,37 @@ export const metadata: Metadata = {
     "The NeoRacer's power-distribution and control board. An ESP32-S3 robot controller (OSCORE) that takes the LiPo in and runs the motor, servo, IMU, and comms. Full pinout, power rails, and the hardware manual.",
 };
 
-/* A framed board photo. */
-function BoardImg({ src, alt }: { src: string; alt: string }) {
-  return (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img
-      src={src}
-      alt={alt}
-      style={{
-        width: '100%',
-        height: 'auto',
-        display: 'block',
-        borderRadius: 10,
-        border: `1px solid ${NB.borderOnBeige}`,
-        boxShadow: NB.shadowCard,
-        background: NB.tarmacBlue,
-      }}
-    />
-  );
-}
+/* The pinout, keyed to the numbers printed on the manufacturer's interface
+ * map. x and y are percentages of each board photo, so the markers hold
+ * their positions at any width. */
+const FRONT_MARKERS: BoardMarker[] = [
+  { id: 'f1',  n: 1,  x: 13.5, y: 12.5, title: 'Power input', detail: 'DC 9 to 26 V in, through the power switch and reverse-polarity protection.' },
+  { id: 'f2',  n: 2,  x: 12,   y: 43.5, title: 'IMU', detail: 'A QMI8658A 6-axis sensor and a QMC6309 3-axis magnetometer.' },
+  { id: 'f15', n: 15, x: 34,   y: 6.5,  title: 'Expansion switch interface' },
+  { id: 'f14', n: 14, x: 65.5, y: 6.5,  title: 'SH1.0-2P power output', detail: 'Controllable power output, with a self-recovery fuse.' },
+  { id: 'f13', n: 13, x: 86,   y: 12.5, title: 'XT30 2+2 power output', detail: 'Controllable power output, plus the CAN bus.' },
+  { id: 'f16', n: 16, x: 50,   y: 20.5, title: 'Buzzer' },
+  { id: 'f11', n: 11, x: 84,   y: 39.5, title: 'Reset button' },
+  { id: 'f12', n: 12, x: 93,   y: 39.5, title: 'BOOT button' },
+  { id: 'f10', n: 10, x: 88.5, y: 63,   title: '2.54 mm female header IO expansion interface' },
+  { id: 'f3',  n: 3,  x: 7,    y: 71.5, title: 'MX1.25-8P IO expansion interface' },
+  { id: 'f7',  n: 7,  x: 24.5, y: 71,   title: 'SH1.0-8P 100 Mbps Ethernet interface' },
+  { id: 'f8',  n: 8,  x: 71.5, y: 71.5, title: 'MX1.25-4P IO expansion interface' },
+  { id: 'f4a', n: 4,  x: 22.8, y: 87,   title: 'MX1.25-4P USB-hub output interface', detail: 'One of the three hub outputs.' },
+  { id: 'f4c', n: 4,  x: 74,   y: 87,   title: 'MX1.25-4P USB-hub output interface', detail: 'One of the three hub outputs.' },
+  { id: 'f9',  n: 9,  x: 94.5, y: 86.3, title: 'WS2812 LED' },
+  { id: 'f4b', n: 4,  x: 22.8, y: 94.5, title: 'MX1.25-4P USB-hub output interface', detail: 'One of the three hub outputs.' },
+  { id: 'f6',  n: 6,  x: 50,   y: 94,   title: 'Type-C communication interface' },
+  { id: 'f5',  n: 5,  x: 74,   y: 94.5, title: 'MX1.25-4P USB-hub input interface' },
+];
+
+const BACK_MARKERS: BoardMarker[] = [
+  { id: 'b20', n: 20, x: 88,   y: 71.5, title: 'SD card slot' },
+  { id: 'b21', n: 21, x: 6.5,  y: 84,   title: 'WS2812 expansion interface' },
+  { id: 'b17', n: 17, x: 24.5, y: 95,   title: 'MX1.25-4P IO expansion interface' },
+  { id: 'b18', n: 18, x: 49,   y: 95,   title: 'MX1.25-2P DC 5 V output' },
+  { id: 'b19', n: 19, x: 74,   y: 95,   title: 'MX1.25-4P 100 Mbps Ethernet interface' },
+];
 
 export default function OscoreBoardPage() {
   return (
@@ -78,13 +91,25 @@ export default function OscoreBoardPage() {
             THE <Red>BOARD</Red>
           </DisplayHeading>
           <Fig
-            label="FIG. A / FRONT AND BACK"
-            caption="The OSCORE board, front (component side, left) and back. The ESP32-S3 module sits in the center; the gold XT30 pads carry power in and out."
+            label="FIG. A / THE PINOUT"
+            caption="The OSCORE board, front and back, numbered as in the hardware manual. Click a number to see what that connector or component is."
           >
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 16 }}>
-              <BoardImg src="/images/oscore/oscore-front.png" alt="OSCORE board, front (component) side" />
-              <BoardImg src="/images/oscore/oscore-back.png" alt="OSCORE board, back side" />
-            </div>
+            <BoardMap
+              boards={[
+                {
+                  src: '/images/oscore/oscore-front.png',
+                  alt: 'OSCORE board, front (component) side',
+                  label: 'Front',
+                  markers: FRONT_MARKERS,
+                },
+                {
+                  src: '/images/oscore/oscore-back.png',
+                  alt: 'OSCORE board, back side',
+                  label: 'Back',
+                  markers: BACK_MARKERS,
+                },
+              ]}
+            />
           </Fig>
           <DataTable
             columns={[
@@ -103,35 +128,29 @@ export default function OscoreBoardPage() {
             ]}
           />
           <div style={{ marginTop: 28 }}>
-            <Fig
-              label="FIG. B / INTERFACE MAP"
-              caption="The numbered pinout from the hardware manual. Every connector, switch, and header on the board, keyed to the table below."
-            >
-              <BoardImg src="/images/oscore/oscore-interface.png" alt="OSCORE board interface and pinout map" />
-            </Fig>
+            <DataTable
+              columns={[
+                { key: 'iface', label: 'Interface', accent: true, width: '150px' },
+                { key: 'type', label: 'Type', mono: true },
+                { key: 'fn', label: 'Function' },
+                { key: 'part', label: 'Part', mono: true },
+              ]}
+              rows={[
+                { iface: 'DC power input', type: 'XT30 (2+2)', fn: 'Main supply, 9 to 26 V', part: 'TPS54540' },
+                { iface: 'USB Type-C', type: 'Type-C 16P', fn: 'Flashing, USB comm, 5 V', part: 'CH339F hub' },
+                { iface: 'USB hub', type: '4x USB-A', fn: 'Cameras, drives, dongles', part: 'CH339F' },
+                { iface: 'Ethernet', type: 'RJ45 100M', fn: '100 Mbps comms', part: 'HR641680E' },
+                { iface: 'MicroSD', type: 'TF slot', fn: 'External storage', part: 'via CH339F SDIO' },
+                { iface: 'CAN bus', type: 'Header / terminal', fn: 'CAN 2.0, up to 1 Mbps', part: 'TJA1050T' },
+                { iface: 'SBUS / PWM / encoder', type: 'Pin header', fn: 'RC in, ESC + servo PWM, encoder A/B', part: 'VCC_5V_IO' },
+                { iface: 'WS2812 LED', type: '3P header / onboard', fn: 'Programmable RGB', part: 'IO46' },
+                { iface: 'Buzzer', type: 'Onboard', fn: 'Active buzzer', part: 'IO42' },
+                { iface: 'Reset / Boot', type: 'Touch buttons', fn: 'Reset + flashing mode', part: 'BOOT + RESET' },
+                { iface: 'IO expansion', type: '2.54 mm header', fn: 'Spare ESP32-S3 GPIO', part: 'SPI / I2C / UART' },
+                { iface: 'Power output', type: 'XT30 (2+2)', fn: 'VCC_5V / GND out', part: 'External' },
+              ]}
+            />
           </div>
-          <DataTable
-            columns={[
-              { key: 'iface', label: 'Interface', accent: true, width: '150px' },
-              { key: 'type', label: 'Type', mono: true },
-              { key: 'fn', label: 'Function' },
-              { key: 'part', label: 'Part', mono: true },
-            ]}
-            rows={[
-              { iface: 'DC power input', type: 'XT30 (2+2)', fn: 'Main supply, 9 to 26 V', part: 'TPS54540' },
-              { iface: 'USB Type-C', type: 'Type-C 16P', fn: 'Flashing, USB comm, 5 V', part: 'CH339F hub' },
-              { iface: 'USB hub', type: '4x USB-A', fn: 'Cameras, drives, dongles', part: 'CH339F' },
-              { iface: 'Ethernet', type: 'RJ45 100M', fn: '100 Mbps comms', part: 'HR641680E' },
-              { iface: 'MicroSD', type: 'TF slot', fn: 'External storage', part: 'via CH339F SDIO' },
-              { iface: 'CAN bus', type: 'Header / terminal', fn: 'CAN 2.0, up to 1 Mbps', part: 'TJA1050T' },
-              { iface: 'SBUS / PWM / encoder', type: 'Pin header', fn: 'RC in, ESC + servo PWM, encoder A/B', part: 'VCC_5V_IO' },
-              { iface: 'WS2812 LED', type: '3P header / onboard', fn: 'Programmable RGB', part: 'IO46' },
-              { iface: 'Buzzer', type: 'Onboard', fn: 'Active buzzer', part: 'IO42' },
-              { iface: 'Reset / Boot', type: 'Touch buttons', fn: 'Reset + flashing mode', part: 'BOOT + RESET' },
-              { iface: 'IO expansion', type: '2.54 mm header', fn: 'Spare ESP32-S3 GPIO', part: 'SPI / I2C / UART' },
-              { iface: 'Power output', type: 'XT30 (2+2)', fn: 'VCC_5V / GND out', part: 'External' },
-            ]}
-          />
         </section>
       </ScrollReveal>
 

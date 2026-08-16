@@ -13,7 +13,6 @@ import {
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext, Callout, DataTable } from '@/components/docs/DocsPrimitives';
-import { TransmitterChannelSetup } from '@/components/docs/ManualDiagrams';
 import { SensorSheet } from '@/components/docs/SensorSheet';
 
 /* One screen of the transmitter's LCD, on its own white panel. */
@@ -356,20 +355,13 @@ export default function RemoteControlPage() {
                 <InfoNote term="S.BUS" title="S.BUS">
                   A serial protocol that carries every channel down a single wire, instead of one PWM wire per channel. The car&apos;s receiver feeds the OSCORE board over S.BUS.
                 </InfoNote>{' '}
-                in the Serial column.
+                in the Serial column. After changing the output mode, put the
+                receiver in bind mode and pair it with the transmitter again, or
+                the car will not respond.
               </p>
             </FlyskyScreenStep>
           </div>
         </section>
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <Fig
-          label="FIG. B / TRANSMITTER CHANNEL SETUP"
-          caption="Map the auxiliary channels to the top switches, set the output mode to S.BUS, and re-bind the receiver. Changing the output mode always needs a re-bind, or the car won't respond."
-        >
-          <TransmitterChannelSetup />
-        </Fig>
       </ScrollReveal>
 
       <PrevNext

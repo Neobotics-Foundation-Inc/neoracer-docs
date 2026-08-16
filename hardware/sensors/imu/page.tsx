@@ -67,18 +67,26 @@ export default function ImuPage() {
                 label: 'QMI8658A · accel + gyro',
                 specs: [
                   ['Accelerometer', '3-axis, m/s²'],
+                  ['Accelerometer range', '±2 to 16 g'],
                   ['Gyroscope', '3-axis, rad/s'],
+                  ['Gyroscope range', '±16 to 2048 dps'],
+                  ['I2C address', '0x6B'],
                 ],
               },
               {
                 label: 'QMC6309 · magnetometer',
-                specs: [['Magnetometer', '3-axis, teslas']],
+                specs: [
+                  ['Magnetometer', '3-axis, teslas'],
+                  ['Magnetometer range', '±30 Gauss'],
+                  ['I2C address', '0x7C'],
+                ],
               },
               {
                 label: 'Shared',
                 specs: [
                   ['Rate', '200 Hz'],
                   ['Frame', 'imu_link'],
+                  ['Bus', 'Shared I2C on the OSCORE board'],
                 ],
               },
             ]}

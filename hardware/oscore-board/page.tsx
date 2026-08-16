@@ -6,7 +6,6 @@ import {
   DisplayHeading,
   Red,
   GhostNumeral,
-  MonoLabel,
   DashList,
   Fig,
   NumberedFeatureCard,
@@ -148,15 +147,12 @@ export default function OscoreBoardPage() {
               body="The board talks to the Jetson over USB. CAN, 100 Mbps Ethernet, and a 4-port USB hub are there for expansion."
             />
           </div>
-          <div style={{ marginTop: 28 }}>
-            <MonoLabel>The real-time jobs</MonoLabel>
-          </div>
           <div
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
               gap: 18,
-              marginTop: 14,
+              marginTop: 18,
             }}
           >
             <NumberedFeatureCard

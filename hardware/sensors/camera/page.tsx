@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { Metadata } from 'next';
 import DocsShell from '@/components/docs/DocsShell';
 import { NB } from '@/lib/nb-tokens';
@@ -10,7 +9,7 @@ import {
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow, AnimatedNumeral } from '@/components/docs/Interactive';
 import { SensorSheet } from '@/components/docs/SensorSheet';
-import { Crumbs, Callout, PrevNext, Code } from '@/components/docs/DocsPrimitives';
+import { Crumbs, PrevNext, Code } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
   title: 'Camera · Hardware · NeoRacer Docs',
@@ -120,25 +119,6 @@ b, g, r = color[240, 320]              # centre pixel, one per channel
 # Use rc.lidar for distance.`}
           </Code>
         </section>
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <Callout type="note" title="No image coming through at all?">
-          A blank feed is almost always the cable or the camera_node not running,
-          and the camera does not need an MCU (microcontroller unit) of its own to
-          stream. The full decision tree lives at{' '}
-          <Link
-            href="/docs/troubleshooting/camera-no-feed"
-            style={{ color: NB.neoboticsRed, fontWeight: 700 }}
-          >
-            Troubleshooting · Camera no feed
-          </Link>
-          . If it still will not start, reach us at{' '}
-          <a href="mailto:support@neobotics.org" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-            support@neobotics.org
-          </a>
-          .
-        </Callout>
       </ScrollReveal>
 
       <PrevNext

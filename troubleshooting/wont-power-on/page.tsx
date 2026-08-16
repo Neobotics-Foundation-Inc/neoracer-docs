@@ -140,7 +140,7 @@ export default function WontPowerOnPage() {
                     The balance charger tells you the rest of the story. If any
                     cell reads under 3.0 V, the pack has been over-discharged and
                     wants a slow recovery charge before normal use. See{' '}
-                    <a href="/docs/hardware/power" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Hardware power</a>{' '}
+                    <a href="/docs/getting-started/charge-and-power" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Charge &amp; power</a>{' '}
                     for the safe routine.
                   </>
                 }
@@ -218,7 +218,7 @@ export default function WontPowerOnPage() {
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'Power', href: '/docs/hardware/power' }}
+        prev={{ label: 'Charge & power', href: '/docs/getting-started/charge-and-power' }}
         next={{ label: 'LiDAR empty scan', href: '/docs/troubleshooting/lidar-empty-scan' }}
       />
     </DocsShell>

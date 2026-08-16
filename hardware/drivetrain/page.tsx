@@ -127,7 +127,7 @@ export default function DrivetrainPage() {
 
       <PrevNext
         prev={{ label: 'IMU', href: '/docs/hardware/sensors/imu' }}
-        next={{ label: 'Power', href: '/docs/hardware/power' }}
+        next={{ label: 'OSCORE board', href: '/docs/hardware/oscore-board' }}
       />
     </DocsShell>
   );

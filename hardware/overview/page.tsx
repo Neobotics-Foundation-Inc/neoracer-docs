@@ -38,7 +38,7 @@ const ANATOMY_PARTS: {
   { name: 'Sidepod', x: 95.6, y: 22.7, color: '#1B2036', href: '/docs/hardware/chassis-and-cad' },
   { name: 'OSCORE PCB', x: 81.4, y: 25.9, color: '#7A3FB0', href: '/docs/hardware/oscore-board' },
   { name: 'Steering servo', x: 54.6, y: 45.4, color: '#65A30D', href: '/docs/hardware/drivetrain' },
-  { name: 'LiPo compartment', x: 46.6, y: 51.9, color: '#C2185B', href: '/docs/hardware/power', flip: true },
+  { name: 'LiPo compartment', x: 46.6, y: 51.9, color: '#C2185B', href: '/docs/getting-started/charge-and-power', flip: true },
   { name: 'ESC', x: 58.9, y: 53.0, color: '#0891B2', href: '/docs/hardware/drivetrain' },
   { name: '1:12 chassis', x: 44.5, y: 55.5, color: '#B45309', href: '/docs/hardware/chassis-and-cad', flip: true },
   { name: 'Motor', x: 57.9, y: 57.8, color: '#DC2626', href: '/docs/hardware/drivetrain' },

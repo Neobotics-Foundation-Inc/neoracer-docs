@@ -95,7 +95,7 @@ const TERMS: Term[] = [
     term: 'LiPo',
     short: 'Lithium polymer',
     def: 'The battery chemistry used in NeoRacer and most RC cars. High power density, but needs careful charging through a balance charger and a flat-storage routine.',
-    see: { label: 'Power', href: '/docs/hardware/power' },
+    see: { label: 'Charge & power', href: '/docs/getting-started/charge-and-power' },
   },
   {
     term: 'Static IP',

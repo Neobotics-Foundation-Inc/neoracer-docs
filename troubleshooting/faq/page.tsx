@@ -31,7 +31,7 @@ const FAQS: Faq[] = [
       <>
         Due to various international shipping regulations, Neobotics does not
         directly sell LiPo batteries. The{' '}
-        <a href="/docs/hardware/power" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
+        <a href="/docs/getting-started/charge-and-power" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
           Hardware power page
         </a>{' '}
         has the specifications you need to pick a{' '}

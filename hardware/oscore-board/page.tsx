@@ -390,7 +390,7 @@ export default function OscoreBoardPage() {
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'Power', href: '/docs/hardware/power' }}
+        prev={{ label: 'Drivetrain', href: '/docs/hardware/drivetrain' }}
         next={{ label: 'Chassis & CAD', href: '/docs/hardware/chassis-and-cad' }}
       />
     </DocsShell>

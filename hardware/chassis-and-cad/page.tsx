@@ -355,7 +355,7 @@ cd neoracer-hardware-files`}</Code>
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'Power', href: '/docs/hardware/power' }}
+        prev={{ label: 'OSCORE board', href: '/docs/hardware/oscore-board' }}
         next={{ label: 'Safety', href: '/docs/hardware/safety' }}
       />
     </DocsShell>

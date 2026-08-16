@@ -240,7 +240,7 @@ export default function SpecificationsPage() {
             >
               Due to various international shipping regulations, Neobotics does
               not directly sell LiPo batteries. The{' '}
-              <a href="/docs/hardware/power" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Hardware power page</a>{' '}
+              <a href="/docs/getting-started/charge-and-power" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Charge &amp; power page</a>{' '}
               has the full specifications and a buying guide so you can find a
               pack that fits.
             </p>
@@ -252,7 +252,7 @@ export default function SpecificationsPage() {
                 marginTop: 16,
               }}
             >
-              <SpecNumeral value="3S" label="LiPo cell count" source={{ label: 'Power', href: '/docs/hardware/power' }} />
+              <SpecNumeral value="3S" label="LiPo cell count" source={{ label: 'Charge & power', href: '/docs/getting-started/charge-and-power' }} />
               <SpecNumeral value={<AnimatedNumeral value={11.1} decimals={1} />} unit="V" label="Nominal pack voltage" />
               <SpecNumeral value="XT60" label="Pack connector" />
               <SpecNumeral value={<AnimatedNumeral value={30} />} unit="A" label="Main fuse (ATO)" source={{ label: "Won't power on", href: '/docs/troubleshooting/wont-power-on' }} />

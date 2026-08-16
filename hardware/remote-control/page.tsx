@@ -16,6 +16,91 @@ import { Crumbs, PrevNext, Callout, DataTable } from '@/components/docs/DocsPrim
 import { TransmitterChannelSetup } from '@/components/docs/ManualDiagrams';
 import { SensorSheet } from '@/components/docs/SensorSheet';
 
+/* One screen of the transmitter's LCD, on its own white panel. `highlight`
+ * draws a red box over a region, given as CSS percentages of the image. */
+function FlyskyScreen({
+  src,
+  alt,
+  width,
+  height,
+  highlight,
+}: {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  highlight?: { left: string; top: string; width: string; height: string };
+}) {
+  return (
+    <div
+      style={{
+        position: 'relative',
+        background: '#ffffff',
+        border: `1px solid ${NB.borderOnBeige}`,
+        borderRadius: 8,
+        padding: 14,
+        alignSelf: 'start',
+      }}
+    >
+      <div style={{ position: 'relative' }}>
+        <Image
+          src={src}
+          alt={alt}
+          width={width}
+          height={height}
+          sizes="(max-width: 768px) 100vw, 380px"
+          style={{ width: '100%', height: 'auto', display: 'block' }}
+        />
+        {highlight && (
+          <span
+            aria-hidden
+            style={{
+              position: 'absolute',
+              ...highlight,
+              border: `2px solid ${NB.neoboticsRed}`,
+              borderRadius: 3,
+            }}
+          />
+        )}
+      </div>
+    </div>
+  );
+}
+
+/* A screen next to its explanation; stacks on mobile. */
+function FlyskyScreenStep({
+  title,
+  screen,
+  children,
+}: {
+  title: string;
+  screen: React.ReactNode;
+  children: React.ReactNode;
+}) {
+  return (
+    <div
+      className="grid grid-cols-1 md:grid-cols-[0.85fr_1.15fr]"
+      style={{ gap: 22, alignItems: 'start', marginBottom: 28 }}
+    >
+      {screen}
+      <div>
+        <h3
+          style={{
+            fontFamily: NB.headingFont,
+            fontSize: 18,
+            fontWeight: 700,
+            color: NB.textOnBeige,
+            margin: '0 0 8px',
+          }}
+        >
+          {title}
+        </h3>
+        {children}
+      </div>
+    </div>
+  );
+}
+
 /* The manufacturer's labelled line diagrams, front and back. */
 function FlyskyLabelledViews() {
   return (
@@ -187,6 +272,79 @@ export default function RemoteControlPage() {
               A serial protocol that carries every channel down a single wire, instead of one PWM wire per channel. The car&apos;s receiver feeds the controller over S.BUS.
             </InfoNote>.
           </p>
+
+          <div style={{ marginTop: 28 }}>
+            <FlyskyScreenStep
+              title="The home screen"
+              screen={
+                <FlyskyScreen
+                  src="/images/flysky_start.png"
+                  alt="The FS-i6S home screen, showing the two timers, the fly mode, and the TX and RX battery indicators in the top right"
+                  width={796}
+                  height={410}
+                  highlight={{ left: '64.5%', top: '0.5%', width: '35%', height: '32%' }}
+                />
+              }
+            >
+              <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, margin: 0 }}>
+                Turning the controller on brings you to the home screen. The
+                battery level is in the top right, boxed in red above.
+              </p>
+            </FlyskyScreenStep>
+
+            <FlyskyScreenStep
+              title="The channels"
+              screen={
+                <FlyskyScreen
+                  src="/images/flysky_channels.png"
+                  alt="The FS-i6S channel screen, showing bars for channels 1 to 6 with channel 3 part way along its travel"
+                  width={832}
+                  height={410}
+                />
+              }
+            >
+              <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, margin: 0 }}>
+                Swipe right from the home screen to see the channels. The
+                controller has 10 of them. Move a stick or flick a switch and
+                the matching channel moves with it, which is the quickest way to
+                see what is mapped where. Slide your finger up and down to
+                scroll through the rest.
+              </p>
+            </FlyskyScreenStep>
+
+            <FlyskyScreenStep
+              title="Changing the mapping"
+              screen={
+                <FlyskyScreen
+                  src="/images/flysky_changing_channels.png"
+                  alt="The FS-i6S Aux. channels screen, showing Channel 5 with arrows either side and its control type set to None"
+                  width={654}
+                  height={344}
+                />
+              }
+            >
+              <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, margin: '0 0 10px' }}>
+                The switches are mapped to channels at the factory. To change
+                that mapping, open the auxiliary channel screen:
+              </p>
+              <DashList
+                items={[
+                  <>On the home screen, hold the lock icon for two seconds.</>,
+                  <>Tap the tool icon to open the controller settings.</>,
+                  <>Scroll down and tap <strong>Aux. channels</strong>.</>,
+                ]}
+              />
+              <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, margin: '10px 0' }}>
+                On this screen you can:
+              </p>
+              <DashList
+                items={[
+                  <>Select a channel with the left and right arrows on either side of the channel name.</>,
+                  <>Pick the type of control for that channel in the left box below the name: Nul, VRx, STx, KEY, or SWx.</>,
+                ]}
+              />
+            </FlyskyScreenStep>
+          </div>
         </section>
       </ScrollReveal>
 

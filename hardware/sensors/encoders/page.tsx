@@ -72,7 +72,7 @@ export default function EncodersPage() {
             specs={[
               ['Encoder type', 'Hall effect'],
               ['Location', 'Motor shaft'],
-              ['Channels', '3, incremental A and B'],
+              ['Channels', 'A and B (incremental)'],
               ['Resolution', '1 - 4096'],
               ['Maximum motor speed', '20,000 rpm'],
               ['Counting', 'MCU hardware pulse counter'],

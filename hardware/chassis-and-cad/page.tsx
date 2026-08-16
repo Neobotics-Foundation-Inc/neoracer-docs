@@ -81,7 +81,7 @@ export default function ChassisAndCadPage() {
 
           <PhotoCard
             title="The rear wing"
-            image="/images/build/rear-wing-2.jpg"
+            image="/images/build/rear-wing-3.jpg"
             fit="cover"
             bandHeight={258}
             alt="The rear wing with its mounting arms and screws"

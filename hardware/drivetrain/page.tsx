@@ -41,7 +41,8 @@ export default function DrivetrainPage() {
                 get when both front wheels point the same way.
               </InfoNote>{' '}
               geometry with four-wheel drive,
-              independent suspension, and 80 mm all-terrain tyres.
+              independent suspension, and 80 mm all-terrain tyres. Steering
+              follows simple bicycle geometry.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="outline">Ackermann steering</ChromeBadge>
@@ -123,33 +124,6 @@ export default function DrivetrainPage() {
         </div>
         </section>
       </ScrollReveal>
-
-      <ScrollReveal>
-        <section style={{ paddingBottom: 32 }}>
-        <DisplayHeading size="lg">
-          STEERING <Red>KINEMATICS</Red>
-        </DisplayHeading>
-        <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-          Steering follows simple bicycle geometry. The steering angle{' '}
-          <code style={{ fontFamily: NB.monoFont }}>δ</code> and the wheelbase{' '}
-          <code style={{ fontFamily: NB.monoFont }}>L = 280 mm</code> set how
-          tightly the car turns, as{' '}
-          <code style={{ fontFamily: NB.monoFont }}>κ = tan(δ) / L</code>, where{' '}
-          <code style={{ fontFamily: NB.monoFont }}>κ</code> is the curvature of
-          the path. This holds at low speed and is the basis most steering
-          controllers are written against, such as pure pursuit and{' '}
-          <InfoNote term="MPC" title="MPC">
-            Model Predictive Control. A controller that predicts the car's
-            motion a short way into the future and picks the steering and
-            throttle that best follow the planned path. It runs that prediction
-            again every cycle as new sensor data arrives.
-          </InfoNote>. At higher speed the tyres start to slip and weight
-          shifts around the car, so the real car turns a little wider than the
-          formula predicts.
-        </p>
-        </section>
-      </ScrollReveal>
-
 
       <PrevNext
         prev={{ label: 'IMU', href: '/docs/hardware/sensors/imu' }}

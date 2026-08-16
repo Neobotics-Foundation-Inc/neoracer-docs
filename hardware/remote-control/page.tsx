@@ -16,20 +16,17 @@ import { Crumbs, PrevNext, Callout, DataTable } from '@/components/docs/DocsPrim
 import { TransmitterChannelSetup } from '@/components/docs/ManualDiagrams';
 import { SensorSheet } from '@/components/docs/SensorSheet';
 
-/* One screen of the transmitter's LCD, on its own white panel. `highlight`
- * draws a red box over a region, given as CSS percentages of the image. */
+/* One screen of the transmitter's LCD, on its own white panel. */
 function FlyskyScreen({
   src,
   alt,
   width,
   height,
-  highlight,
 }: {
   src: string;
   alt: string;
   width: number;
   height: number;
-  highlight?: { left: string; top: string; width: string; height: string };
 }) {
   return (
     <div
@@ -51,17 +48,6 @@ function FlyskyScreen({
           sizes="(max-width: 768px) 100vw, 380px"
           style={{ width: '100%', height: 'auto', display: 'block' }}
         />
-        {highlight && (
-          <span
-            aria-hidden
-            style={{
-              position: 'absolute',
-              ...highlight,
-              border: `2px solid ${NB.neoboticsRed}`,
-              borderRadius: 3,
-            }}
-          />
-        )}
       </div>
     </div>
   );
@@ -187,7 +173,9 @@ export default function RemoteControlPage() {
               ['Size', '179 × 81 × 161 mm'],
             ]}
           >
-            We highly recommend reading the Flysky manual along with this page.
+            The Flysky controller is a touchscreen controller used to manually
+            drive the NeoRacer and enable autonomy. Before use, we recommend
+            reading the Flysky manual along with this page.
           </SensorSheet>
         </section>
       </ScrollReveal>
@@ -223,7 +211,7 @@ export default function RemoteControlPage() {
           <DashList
             items={[
               <><strong>Left stick: throttle.</strong> Push it up to drive forward. Pull it down to reverse. Let it return to the centre to stop.</>,
-              <><strong>Right stick: steering.</strong> Push it left to turn left and right to turn right. The car only steers while it is moving.</>,
+              <><strong>Right stick: steering.</strong> Push it left to turn left and right to turn right.</>,
               <><strong>SWA: manual speed.</strong> Up is slow mode, which limits the throttle to 15% of full power. Down is fast mode.</>,
               <><strong>SWB: mode.</strong> This switch decides who drives the car.</>,
             ]}
@@ -264,13 +252,10 @@ export default function RemoteControlPage() {
             CHANNEL MAPPING + <Red>S.BUS</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-            The transmitter ships mapped for the car, so most people never open
-            this menu. You only need it if the receiver gets reset, you swap
-            transmitters, or the auxiliary channels stop matching the switches.
-            The car expects the channels mapped to switches and the output set to{' '}
-            <InfoNote term="S.BUS" title="S.BUS">
-              A serial protocol that carries every channel down a single wire, instead of one PWM wire per channel. The car&apos;s receiver feeds the controller over S.BUS.
-            </InfoNote>.
+            The transmitter ships mapped for the car. However, it is good to
+            get familiar with some settings in the Flysky&apos;s menu. If the
+            receiver gets reset or you swap transmitters, you can remap and
+            reset the output method for the controller.
           </p>
 
           <div style={{ marginTop: 28 }}>
@@ -282,13 +267,12 @@ export default function RemoteControlPage() {
                   alt="The FS-i6S home screen, showing the two timers, the fly mode, and the TX and RX battery indicators in the top right"
                   width={796}
                   height={410}
-                  highlight={{ left: '64.5%', top: '0.5%', width: '35%', height: '32%' }}
                 />
               }
             >
               <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, margin: 0 }}>
                 Turning the controller on brings you to the home screen. The
-                battery level is in the top right, boxed in red above.
+                battery level is in the top right.
               </p>
             </FlyskyScreenStep>
 
@@ -343,6 +327,37 @@ export default function RemoteControlPage() {
                   <>Pick the type of control for that channel in the left box below the name: Nul, VRx, STx, KEY, or SWx.</>,
                 ]}
               />
+            </FlyskyScreenStep>
+
+            <FlyskyScreenStep
+              title="Changing the output mode"
+              screen={
+                <FlyskyScreen
+                  src="/images/flysky_output.png"
+                  alt="The FS-i6S output mode screen, with PWM and PPM under Output and i-BUS and S.BUS under Serial"
+                  width={734}
+                  height={334}
+                />
+              }
+            >
+              <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, margin: '0 0 10px' }}>
+                The output mode is how the receiver sends the channels to the
+                car. Getting there follows the same route:
+              </p>
+              <DashList
+                items={[
+                  <>On the home screen, hold the lock icon for two seconds.</>,
+                  <>Tap the tool icon to open the controller settings.</>,
+                  <>Tap <strong>Sys</strong> in the top right, then scroll down to <strong>Output mode</strong>.</>,
+                ]}
+              />
+              <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, margin: '10px 0 0' }}>
+                Make sure the output is set to{' '}
+                <InfoNote term="S.BUS" title="S.BUS">
+                  A serial protocol that carries every channel down a single wire, instead of one PWM wire per channel. The car&apos;s receiver feeds the OSCORE board over S.BUS.
+                </InfoNote>{' '}
+                in the Serial column.
+              </p>
             </FlyskyScreenStep>
           </div>
         </section>

@@ -144,7 +144,7 @@ export default function HardwareOverviewPage() {
 
       <ScrollReveal>
         <Fig
-          label="FIG. B / NEORACER SYSTEM DIAGRAM"
+          label="FIG. B / NEORACER SYSTEM DIAGRAM (WIP)"
           caption="Click a component to see how it connects and how it is powered, or a signal label to see what the letters stand for."
         >
           <WiringDiagram />

@@ -111,9 +111,10 @@ export default function LidarPage() {
               maxWidth: 720,
             }}
           >
-            The full scan is one flat list. Index 0 is forward; the list wraps
-            clockwise. To look at a direction, convert your angle to an index
-            with one of the helpers below, or use{' '}
+            A scan is one flat list of distances. Index 0 points straight
+            ahead, and the rest of the list goes clockwise from there. To read
+            a direction, turn the angle into an index using the helpers below,
+            or call{' '}
             <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>
               rc_utils.get_lidar_average_distance
             </code>.
@@ -127,7 +128,7 @@ export default function LidarPage() {
             </Fig>
           </div>
           <Code lang="python">
-{`scan = rc.lidar.get_samples()          # ~1440 floats on the car, 720 in the sim
+{`scan = rc.lidar.get_samples()          # ~1440 floats on the car
 print(len(scan))                       # use this, never a hardcoded count
 print(scan[0])                         # cm, straight forward
 print(scan[len(scan) // 4])            # cm, 90° right on any platform

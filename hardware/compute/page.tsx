@@ -57,6 +57,7 @@ export default function ComputePage() {
           </DisplayHeading>
           <DashList
             items={[
+              <>Sits on an open-source J401 carrier board.</>,
               <>Runs Ubuntu 22.04 (the NeoRacer image ships pre-configured).</>,
               <>Drives the camera pipeline at 640×480 / 60 fps.</>,
               <>Provides the AI accelerator for any TensorRT, ONNX, or PyTorch model you deploy.</>,
@@ -73,10 +74,19 @@ export default function ComputePage() {
           label="FIG. A / JETSON PORTS"
           caption={
             <>
-              The Jetson Orin Nano&apos;s I/O. The NeoRacer&apos;s carrier board
-              fits an HDMI connector where the stock devkit has DisplayPort.
-              The four Type-A ports are USB 3.2 at 10 Gb/s, the RJ45 port is
-              gigabit Ethernet, and the USB-C port carries data only.
+              The J401 carrier board fits an HDMI connector where the stock
+              devkit has DisplayPort. The four Type-A ports are USB 3.2 at
+              10 Gb/s, the RJ45 port is gigabit Ethernet, and the USB-C port
+              carries data only. For more information, look{' '}
+              <a
+                href="https://www.seeedstudio.com/reComputer-J401-Carrier-Board-for-Jetson-Orin-NX-Orin-Nano-p-5636.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: NB.neoboticsRed, fontWeight: 700 }}
+              >
+                here
+              </a>
+              .
             </>
           }
         >

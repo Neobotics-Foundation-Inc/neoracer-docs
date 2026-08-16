@@ -55,7 +55,7 @@ export default function ImuPage() {
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="red">QMI8658A + QMC6309</ChromeBadge>
               <ChromeBadge variant="outline"><AnimatedNumeral value={200} suffix=" Hz" /></ChromeBadge>
-              <ChromeBadge variant="outline">accel m/s^2</ChromeBadge>
+              <ChromeBadge variant="outline">accel m/s²</ChromeBadge>
               <ChromeBadge variant="outline">gyro rad/s</ChromeBadge>
               <ChromeBadge variant="outline">mag teslas</ChromeBadge>
               <ChromeBadge variant="outline">frame_id: imu_link</ChromeBadge>
@@ -75,7 +75,7 @@ export default function ImuPage() {
               {
                 label: 'QMI8658A · accel + gyro',
                 specs: [
-                  ['Accelerometer', '3-axis, m/s^2'],
+                  ['Accelerometer', '3-axis, m/s²'],
                   ['Gyroscope', '3-axis, rad/s'],
                 ],
               },
@@ -115,19 +115,19 @@ export default function ImuPage() {
             <NumberedFeatureCard
               n={1}
               title="Accelerometer"
-              lede="Measures the car's acceleration along each axis, in m/s^2."
-              body="The reading includes gravity: at rest it shows about 9.8 m/s^2 pointing down. Because of this, it can also be used to estimate the car's tilt."
+              lede="Measures the car's acceleration along each axis."
+              body="The reading includes gravity: at rest it shows about 9.8 m/s² pointing down. Because of this, it can also be used to estimate the car's tilt."
             />
             <NumberedFeatureCard
               n={2}
               title="Gyroscope"
-              lede="Measures how fast the car is rotating around each axis, in rad/s."
+              lede="Measures how fast the car is rotating around each axis."
               body="It measures the rate of rotation, not the angle itself. You can add up the rate over time to estimate orientation, but small errors accumulate, so it is usually combined with another sensor."
             />
             <NumberedFeatureCard
               n={3}
               title="Magnetometer"
-              lede="Measures the local magnetic field, in teslas."
+              lede="Measures the local magnetic field."
               body="The field points toward magnetic north, so it works as a compass. Motors and metal near the sensor distort the reading, so it needs calibration to be accurate."
             />
           </div>
@@ -149,15 +149,14 @@ export default function ImuPage() {
               maxWidth: 720,
             }}
           >
-            There is no <code style={{ fontFamily: NB.monoFont }}>rc.imu</code>{' '}
-            in the library. The IMU is read through{' '}
+            The IMU is read through{' '}
             <Link href="/docs/api-reference/python/physics" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
               rc.physics
             </Link>
             . Each of the three calls reads one of the three sensors.
           </p>
           <Code lang="python">
-{`accel = rc.physics.get_linear_acceleration()   # (x, y, z) in m/s^2
+{`accel = rc.physics.get_linear_acceleration()   # (x, y, z) in m/s²
 gyro  = rc.physics.get_angular_velocity()      # (x, y, z) in rad/s
 mag   = rc.physics.get_magnetic_field()        # (x, y, z) in teslas, car only
 
@@ -175,14 +174,14 @@ print(mag)     # magnetic field vector`}
               marginTop: 18,
             }}
           >
-            The firmware does two jobs before the data reaches ROS: it
-            subtracts each sensor&apos;s steady bias, and it fuses the
-            accelerometer and gyro into an orientation quaternion. Both arrive
-            on <code style={{ fontFamily: NB.monoFont }}>/imu</code> together:
-            the fused orientation, plus the bias-corrected raw acceleration and
-            turn rates. Use the quaternion for a ready-made heading; use the
-            raw fields to run your own filter and control the trade-off
-            between responsiveness and noise.
+            Before the data reaches ROS, the firmware removes each
+            sensor&apos;s steady bias and combines the accelerometer and
+            gyroscope into an orientation quaternion. The{' '}
+            <code style={{ fontFamily: NB.monoFont }}>/imu</code> topic carries
+            both: the orientation, and the corrected acceleration and turn
+            rates. Use the orientation if you want a heading without extra
+            work. Use the acceleration and turn rates if you want to write your
+            own filter.
           </p>
           <Callout type="note" title="The magnetometer is off by default">
             The QMC6309 is not part of the fused orientation and its{' '}
@@ -191,25 +190,6 @@ print(mag)     # magnetic field vector`}
             in controller.yaml). Turn it on when you want a compass heading or
             your own nine-axis fusion.
           </Callout>
-          <p
-            style={{
-              fontFamily: NB.bodyFont,
-              fontSize: 16,
-              lineHeight: 1.65,
-              color: NB.textMutedBeige,
-              maxWidth: 720,
-              marginTop: 18,
-            }}
-          >
-            On the shipping car, the IMU does not talk to the Jetson directly. An
-            MCU (microcontroller unit) sits between them and bridges the sensor to
-            the Jetson, then the data surfaces on the same topics and the same{' '}
-            <Link href="/docs/api-reference/python/physics" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-              rc.physics
-            </Link>{' '}
-            calls you saw above. The MCU is also why the magnetometer reading is
-            present on the car: that path carries the full 9-axis stream.
-          </p>
         </section>
       </ScrollReveal>
 

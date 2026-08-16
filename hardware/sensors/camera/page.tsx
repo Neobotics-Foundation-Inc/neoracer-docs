@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Metadata } from 'next';
 import DocsShell from '@/components/docs/DocsShell';
 import { NB } from '@/lib/nb-tokens';
@@ -45,7 +46,7 @@ export default function CameraPage() {
                 maxWidth: 680,
               }}
             >
-              A forward-facing colour camera at the front of the car. It
+              A forward-facing colour camera sits at the front of the car. It
               connects directly to the Jetson over USB.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
@@ -76,8 +77,7 @@ export default function CameraPage() {
               ['Recommended frame rate', '640 × 480 @ 60 fps'],
             ]}
           >
-            The camera is a forward-facing module located in the front of the
-            car. It can be used for lane following, colour and object
+            The camera can be used for lane following, colour and object
             detection, and other computer vision work.
           </SensorSheet>
         </section>
@@ -98,12 +98,24 @@ export default function CameraPage() {
               maxWidth: 720,
             }}
           >
-            The colour image arrives as a NumPy array shaped (480, 640, 3): 480
-            rows, 640 columns, three colour channels in BGR order. The physical
-            sensor can capture up to 1080p, but the library normalises every frame
-            to 640 x 480 so that the sim and the car return the exact same shape.
-            That is why the helpers below report a width of 640 and a height of
-            480 in both places.
+            Everything below assumes the camera is running at its default
+            640 × 480. The sensor can capture 1920 × 1200, but the driver asks
+            it for 640 × 480 at 60 fps, and the sim uses the same size so that
+            code moves between them without changes.
+          </p>
+          <p
+            style={{
+              fontFamily: NB.bodyFont,
+              fontSize: 16,
+              lineHeight: 1.65,
+              color: NB.textMutedBeige,
+              maxWidth: 720,
+              marginTop: 14,
+            }}
+          >
+            At that setting the colour image arrives as a NumPy array shaped
+            (480, 640, 3): 480 rows, 640 columns, three colour channels in BGR
+            order.
           </p>
           <Code lang="python">
 {`color = rc.camera.get_color_image()    # NDArray (480, 640, 3), uint8, BGR
@@ -117,6 +129,62 @@ b, g, r = color[240, 320]              # centre pixel, one per channel
 
 # The NeoRacer is RGB-only: get_depth_image() returns all zeros here.
 # Use rc.lidar for distance.`}
+          </Code>
+        </section>
+      </ScrollReveal>
+
+      {/* ── Section · Changing the resolution ────────────────────────── */}
+      <ScrollReveal>
+        <section style={{ position: 'relative', paddingBottom: 32 }}>
+          <DisplayHeading size="lg">
+            CHANGING THE <Red>RESOLUTION</Red>
+          </DisplayHeading>
+          <p
+            style={{
+              fontFamily: NB.bodyFont,
+              fontSize: 16,
+              lineHeight: 1.65,
+              color: NB.textMutedBeige,
+              maxWidth: 720,
+            }}
+          >
+            The resolution and the frame rate are set in the driver&apos;s{' '}
+            <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>config/camera.yaml</code>.
+            Edit the three values below and restart the camera node. Every
+            camera parameter is listed on the{' '}
+            <Link href="/docs/api-reference/ros2/params" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
+              ROS 2 parameters page
+            </Link>
+            .
+          </p>
+          <Code lang="yaml">
+{`camera_node:
+  ros__parameters:
+    image_width: 640
+    image_height: 480
+    framerate: 60.0`}
+          </Code>
+          <p
+            style={{
+              fontFamily: NB.bodyFont,
+              fontSize: 16,
+              lineHeight: 1.65,
+              color: NB.textMutedBeige,
+              maxWidth: 720,
+              marginTop: 18,
+            }}
+          >
+            One thing to watch:{' '}
+            <code style={{ fontFamily: NB.monoFont }}>rc.camera.get_width()</code>{' '}
+            and{' '}
+            <code style={{ fontFamily: NB.monoFont }}>rc.camera.get_height()</code>{' '}
+            are fixed at 640 and 480 in the library, so they do not follow the
+            config file. Once you change the resolution, read the size off the
+            frame instead.
+          </p>
+          <Code lang="python">
+{`color = rc.camera.get_color_image()
+height, width, _ = color.shape   # the size the camera is actually running at`}
           </Code>
         </section>
       </ScrollReveal>

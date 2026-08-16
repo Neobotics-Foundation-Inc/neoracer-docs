@@ -47,12 +47,7 @@ export default function EncodersPage() {
               }}
             >
               A Hall-effect encoder on the motor shaft reports how far the
-              drivetrain has turned. The MCU (microcontroller unit) counts its
-              pulses in hardware, folds in the gear ratio and the car&apos;s
-              steering geometry, and publishes the result on{' '}
-              <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>/odom</code>{' '}
-              at ~200 Hz. That is the car telling you, between LiDAR scans, how
-              far and how fast it has travelled.
+              drivetrain has turned.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="red">Dead reckoning between scans</ChromeBadge>
@@ -76,8 +71,6 @@ export default function EncodersPage() {
               ['Resolution', '1 - 4096'],
               ['Maximum motor speed', '20,000 rpm'],
               ['Counting', 'MCU hardware pulse counter'],
-              ['Topic', '/odom at ~200 Hz'],
-              ['Message', 'nav_msgs/Odometry'],
             ]}
           >
             The encoder is a Hall-effect sensor on the motor shaft. The OSCORE
@@ -160,14 +153,13 @@ print(speed)`}
               maxWidth: 720,
             }}
           >
-            On its own, odometry drifts. Run long enough and the dead-reckoning
-            position wanders away from the truth. That is fine, because the
-            SLAM and Nav2 stack does not trust it alone. It fuses the odometry
-            from{' '}
+            Odometry drifts over time. Small errors add up, so the position
+            the car calculates slowly moves away from its real position. The
+            SLAM and Nav2 stack corrects for this by combining{' '}
             <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>/odom</code>{' '}
-            with the LiDAR scans, using the encoder to fill in the motion
-            between scans and the LiDAR to correct the drift. Together they let
-            the car map and localise, which neither signal does well by itself.{' '}
+            with the LiDAR scans. The encoder fills in the motion between
+            scans, and the LiDAR corrects the accumulated error. Together they
+            are what lets the car map and localise.{' '}
             <Link href="/docs/api-reference/ros2/topics" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
               /odom
             </Link>{' '}

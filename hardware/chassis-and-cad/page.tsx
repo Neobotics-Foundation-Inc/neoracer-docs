@@ -11,7 +11,7 @@ import {
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 import { PhotoCard } from '@/components/docs/PhotoCard';
-import { Crumbs, PrevNext } from '@/components/docs/DocsPrimitives';
+import { Crumbs, PrevNext, DataTable } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
   title: 'Chassis & CAD · Hardware · NeoRacer Docs',
@@ -103,6 +103,43 @@ export default function ChassisAndCadPage() {
             part to customize.
           </PhotoCard>
         </div>
+      </ScrollReveal>
+
+      {/* ── Dimensions ─────────────────────────────────────────────────── */}
+      <ScrollReveal>
+        <section style={{ paddingBottom: 24 }}>
+          <DisplayHeading size="lg">
+            THE <Red>DIMENSIONS</Red>
+          </DisplayHeading>
+          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
+            These are the figures you need to size a track gate, a pit box, or
+            a carry case. Width is measured across the wheels, which is the
+            widest part of the car.
+          </p>
+          <DataTable
+            columns={[
+              { key: 'dim', label: 'Dimension', width: '38%' },
+              { key: 'value', label: 'Value' },
+            ]}
+            rows={[
+              { dim: 'Length', value: '380 mm' },
+              { dim: 'Width', value: '300 mm' },
+              { dim: 'Height', value: '220 mm' },
+              { dim: 'Wheelbase', value: '280 mm' },
+              { dim: 'Wheel diameter', value: '80 mm' },
+              { dim: 'Weight', value: 'Under 3 kg' },
+              { dim: 'Scale', value: '1:12' },
+            ]}
+          />
+          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 16 }}>
+            For any measurement not listed here, open{' '}
+            <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>
+              neoracer-full-vehicle-drawing.dwg
+            </code>{' '}
+            in the repository. It is the fully dimensioned 2D drawing of the
+            car.
+          </p>
+        </section>
       </ScrollReveal>
 
       {/* ── The repository ─────────────────────────────────────────────── */}

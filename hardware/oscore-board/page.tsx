@@ -187,8 +187,8 @@ export default function OscoreBoardPage() {
             <NumberedFeatureCard
               compact
               n={2}
-              title="Motion + sensing"
-              lede="Drives the ESC and the steering servo, and reads the encoder and the IMU."
+              title="Motor and servo"
+              lede="Drives the ESC and the steering servo, and reads the encoder to hold the speed your code asks for."
             />
             <NumberedFeatureCard
               compact
@@ -199,18 +199,6 @@ export default function OscoreBoardPage() {
             <NumberedFeatureCard
               compact
               n={4}
-              title="Motor control"
-              lede="Adjusts motor power thousands of times a second to hold the speed your code asks for."
-            />
-            <NumberedFeatureCard
-              compact
-              n={5}
-              title="Servo control"
-              lede="Turns the steering angle your code asks for into a servo signal."
-            />
-            <NumberedFeatureCard
-              compact
-              n={6}
               title="IMU fusion"
               lede="Combines the accelerometer and gyroscope into an orientation 200 times a second."
             />

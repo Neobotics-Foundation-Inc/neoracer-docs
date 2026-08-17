@@ -163,41 +163,32 @@ export default function OscoreBoardPage() {
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 40 }}>
           <DisplayHeading size="lg">
-            WHAT IT <Red>DOES</Red>
+            <Red>FUNCTIONALITY</Red>
           </DisplayHeading>
-          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
-            The Jetson runs your code. The OSCORE sits underneath it and
-            handles power, the motor and servo, and the jobs that need exact
-            timing, which Python on the Jetson cannot keep up with.
-          </p>
           <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-              gap: 18,
-              marginTop: 20,
-            }}
+            className="grid grid-cols-1 sm:grid-cols-2"
+            style={{ gap: 18, marginTop: 20, maxWidth: 740 }}
           >
             <NumberedFeatureCard
-              compact
+              collapsible
               n={1}
               title="Power distribution"
               lede="Puts out a 5 V rail at up to 5 A, a 3.3 V rail, and battery voltage to the ESC."
             />
             <NumberedFeatureCard
-              compact
+              collapsible
               n={2}
               title="Motor and servo"
-              lede="Drives the ESC and the steering servo, and reads the encoder to hold the speed your code asks for."
+              lede="Drives the ESC and the steering servo, and reads the encoder to maintain the commanded speed."
             />
             <NumberedFeatureCard
-              compact
+              collapsible
               n={3}
               title="Comms to the Jetson"
               lede="Talks to the Jetson over USB. CAN, Ethernet, and a USB hub are there for expansion."
             />
             <NumberedFeatureCard
-              compact
+              collapsible
               n={4}
               title="IMU fusion"
               lede="Combines the accelerometer and gyroscope into an orientation 200 times a second."
@@ -215,8 +206,7 @@ export default function OscoreBoardPage() {
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
             A single 9 to 26 V input feeds a two-stage conversion: a TPS54540
             switching regulator makes the 5 V rail, an AMS1117 LDO makes 3.3 V,
-            and the raw input passes through to the ESC. The input has reverse
-            polarity protection.
+            and the raw input passes through to the ESC.
           </p>
           <DataTable
             columns={[
@@ -252,7 +242,7 @@ export default function OscoreBoardPage() {
               </div>
             ))}
           </div>
-          <Callout type="warn" title="Never exceed 26 V, and power the board from one source at a time">
+          <Callout type="warn" title="Do not exceed 26 V">
             Do not connect the XT30 and the Type-C to different power sources at
             the same time, and keep the input at or below 26 V. Above 26 V can
             damage the board.

@@ -166,8 +166,9 @@ export default function OscoreBoardPage() {
             WHAT IT <Red>DOES</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
-            The Jetson runs your code. The OSCORE does the three jobs that need
-            exact timing, which Python on the Jetson cannot do fast enough.
+            The Jetson runs your code. The OSCORE sits underneath it and
+            handles power, the motor and servo, and the jobs that need exact
+            timing, which Python on the Jetson cannot keep up with.
           </p>
           <div
             style={{
@@ -178,22 +179,40 @@ export default function OscoreBoardPage() {
             }}
           >
             <NumberedFeatureCard
+              compact
               n={1}
-              title="Motor control"
-              lede="Holds the speed your code asks for."
-              body="It reads the encoder to see how fast the wheels are turning, then adjusts motor power thousands of times a second to match."
+              title="Power distribution"
+              lede="Puts out a 5 V rail at up to 5 A, a 3.3 V rail, and battery voltage to the ESC."
             />
             <NumberedFeatureCard
+              compact
               n={2}
-              title="Steering"
-              lede="Turns a steering angle into a servo signal."
-              body="The steering calibration is stored on the OSCORE, so reinstalling the Jetson does not erase it."
+              title="Motion + sensing"
+              lede="Drives the ESC and the steering servo, and reads the encoder and the IMU."
             />
             <NumberedFeatureCard
+              compact
               n={3}
-              title="IMU"
-              lede="Turns raw sensor readings into an orientation."
-              body="It combines the accelerometer and gyroscope 200 times a second and sends the result to the Jetson on /imu."
+              title="Comms to the Jetson"
+              lede="Talks to the Jetson over USB. CAN, Ethernet, and a USB hub are there for expansion."
+            />
+            <NumberedFeatureCard
+              compact
+              n={4}
+              title="Motor control"
+              lede="Adjusts motor power thousands of times a second to hold the speed your code asks for."
+            />
+            <NumberedFeatureCard
+              compact
+              n={5}
+              title="Servo control"
+              lede="Turns the steering angle your code asks for into a servo signal."
+            />
+            <NumberedFeatureCard
+              compact
+              n={6}
+              title="IMU fusion"
+              lede="Combines the accelerometer and gyroscope into an orientation 200 times a second."
             />
           </div>
         </section>

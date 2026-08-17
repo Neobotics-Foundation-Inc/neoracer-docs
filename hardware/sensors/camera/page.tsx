@@ -23,7 +23,7 @@ export default function CameraPage() {
       <Crumbs
         items={[
           { label: 'Hardware', href: '/docs/hardware/overview' },
-          { label: 'Sensors', href: '/docs/hardware/sensors' },
+          { label: 'Sensors' },
           { label: 'Camera' },
         ]}
       />

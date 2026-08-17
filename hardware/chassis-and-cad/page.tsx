@@ -56,7 +56,7 @@ export default function ChassisAndCadPage() {
             bandHeight={258}
             alt="The NeoRacer rolling chassis with red oil-filled shocks and off-road wheels"
           >
-The chassis is the base of the car. It comes with the shocks, the
+            The chassis is the base of the car. It comes with the shocks, the
             motor, the ESC, and the steering servo already fitted. The battery
             and the electronics sit in the bay down the middle.
           </PhotoCard>
@@ -68,7 +68,7 @@ The chassis is the base of the car. It comes with the shocks, the
             bandHeight={258}
             alt="The NeoRacer front bumper with its four mounting screws"
           >
-The front bumper bolts onto the nose with four screws. It protects
+            The front bumper bolts onto the nose with four screws. It protects
             the camera, the LiDAR, and the front suspension in a crash.
           </PhotoCard>
 
@@ -79,7 +79,7 @@ The front bumper bolts onto the nose with four screws. It protects
             bandHeight={258}
             alt="The rear wing with its mounting arms and screws"
           >
-The rear wing bolts onto the tail with two arms. It protects the
+            The rear wing bolts onto the tail with two arms. It protects the
             back of the car.
           </PhotoCard>
 
@@ -90,7 +90,7 @@ The rear wing bolts onto the tail with two arms. It protects the
             bandHeight={258}
             alt="A NeoRacer-branded side cover panel"
           >
-The side covers close the electronics bay and keep dust off the
+            The side covers close the electronics bay and keep dust off the
             wiring.
           </PhotoCard>
         </div>

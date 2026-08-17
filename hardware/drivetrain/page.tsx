@@ -5,9 +5,10 @@ import {
   DisplayHeading,
   Red,
   GhostNumeral,
+  MonoLabel,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
-import { Crumbs, PrevNext } from '@/components/docs/DocsPrimitives';
+import { Crumbs, PrevNext, DataTable } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
   title: 'Drivetrain · Hardware · NeoRacer Docs',
@@ -67,19 +68,20 @@ export default function DrivetrainPage() {
           </a>
           .
         </p>
-        <div style={{ marginTop: 18, background: NB.haloWhite, border: `1px solid ${NB.borderOnBeige}`, borderRadius: 10, padding: '16px 18px', boxShadow: NB.shadowCard }}>
-          <div style={{ fontFamily: NB.monoFont, fontSize: 12, letterSpacing: '0.14em', textTransform: 'uppercase', color: NB.textMutedBeige }}>
-            Motor specs
-          </div>
-          <div style={{ marginTop: 8, fontFamily: NB.monoFont, fontSize: 14, lineHeight: 1.85, color: NB.textOnBeige }}>
-            Type:&nbsp;&nbsp;&nbsp;&nbsp;Brushed DC w/ integrated encoder
-            <br />
-            No-load:&nbsp;<span style={{ color: NB.neoboticsRed }}>~11,000 RPM</span>
-            <br />
-            Drive:&nbsp;&nbsp;&nbsp;All four wheels, fixed reduction
-            <br />
-            Closed loop: MCU (microcontroller unit) velocity controller (see <a href="/docs/hardware/compute" style={{ color: NB.neoboticsRed }}>Compute</a>)
-          </div>
+        <div style={{ marginTop: 18 }}>
+          <MonoLabel>Motor specs</MonoLabel>
+          <DataTable
+            columns={[
+              { key: 'k', label: 'Parameter', accent: true, width: '180px' },
+              { key: 'v', label: 'Specification', mono: true },
+            ]}
+            rows={[
+              { k: 'Type', v: 'Brushed DC with integrated encoder' },
+              { k: 'No-load speed', v: '~11,000 RPM' },
+              { k: 'Drive', v: 'All four wheels, fixed reduction' },
+              { k: 'Closed loop', v: 'MCU velocity controller' },
+            ]}
+          />
         </div>
         </section>
       </ScrollReveal>
@@ -94,25 +96,25 @@ export default function DrivetrainPage() {
           car this size needs, so it will not strip its gears if the car hits a
           wall. It is also waterproof.
         </p>
-        <div style={{ marginTop: 18, background: NB.haloWhite, border: `1px solid ${NB.borderOnBeige}`, borderRadius: 10, padding: '16px 18px', boxShadow: NB.shadowCard }}>
-          <div style={{ fontFamily: NB.monoFont, fontSize: 12, letterSpacing: '0.14em', textTransform: 'uppercase', color: NB.textMutedBeige }}>
-            Servo specs
-          </div>
-          <div style={{ marginTop: 8, fontFamily: NB.monoFont, fontSize: 14, lineHeight: 1.85, color: NB.textOnBeige }}>
-            Stall torque:&nbsp;<span style={{ color: NB.neoboticsRed }}>20 kg·cm</span>
-            <br />
-            Waterproof:&nbsp;&nbsp;Yes
-            <br />
-            Geometry:&nbsp;&nbsp;&nbsp;Ackermann linkage
-            <br />
-            Calibration: <a href="/docs/calibration/servo-center" style={{ color: NB.neoboticsRed }}>servo-center cookbook</a>
-          </div>
+        <div style={{ marginTop: 18 }}>
+          <MonoLabel>Servo specs</MonoLabel>
+          <DataTable
+            columns={[
+              { key: 'k', label: 'Parameter', accent: true, width: '180px' },
+              { key: 'v', label: 'Specification', mono: true },
+            ]}
+            rows={[
+              { k: 'Stall torque', v: '20 kg·cm' },
+              { k: 'Waterproof', v: 'Yes' },
+              { k: 'Geometry', v: 'Ackermann linkage' },
+            ]}
+          />
         </div>
         </section>
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'IMU', href: '/docs/hardware/sensors/imu' }}
+        prev={{ label: 'Dot matrix', href: '/docs/hardware/dot-matrix' }}
         next={{ label: 'OSCORE board', href: '/docs/hardware/oscore-board' }}
       />
     </DocsShell>

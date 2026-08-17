@@ -13,7 +13,7 @@ import { Crumbs, PrevNext, Code } from '@/components/docs/DocsPrimitives';
 export const metadata: Metadata = {
   title: 'Dot matrix · Hardware · NeoRacer Docs',
   description:
-    'The 8 by 8 LED dot matrix at the back of the car. Programs write patterns, numbers, or status text to it over the /led_matrix/command topic.',
+    'The 8 by 8 LED dot matrix at the back of the car. Programs write characters to it through rc.display.',
 };
 
 export default function DotMatrixPage() {
@@ -33,6 +33,9 @@ export default function DotMatrixPage() {
             <DisplayHeading size="xl">
               THE DOT <Red>MATRIX</Red>
             </DisplayHeading>
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
+              The dot matrix is an 8 by 8 LED display at the back of the car.
+            </p>
           </div>
         </section>
       </MouseFollowGlow>
@@ -50,8 +53,8 @@ export default function DotMatrixPage() {
               ['Size', '32 × 32 × 13 mm'],
             ]}
           >
-            The dot matrix is an 8 by 8 LED display at the back of the car.
-            Programs write characters to it.
+The dot matrix is useful for debugging as programs write
+            characters to it. It displays an N on boot.
           </SensorSheet>
         </section>
       </ScrollReveal>
@@ -81,21 +84,6 @@ export default function DotMatrixPage() {
 {`rc.display.show_text("NEORACER")   # text wider than the panel scrolls
 rc.display.clear()                 # return to the idle frame`}
           </Code>
-          <p
-            style={{
-              fontFamily: NB.bodyFont,
-              fontSize: 16,
-              lineHeight: 1.65,
-              color: NB.textMutedBeige,
-              maxWidth: 720,
-              marginTop: 14,
-            }}
-          >
-            The panel renders text only. Calls that write raw pixels, like{' '}
-            <code style={{ fontFamily: NB.monoFont }}>set_matrix()</code>, raise{' '}
-            <code style={{ fontFamily: NB.monoFont }}>NotImplementedError</code>{' '}
-            on the car.
-          </p>
         </section>
       </ScrollReveal>
 

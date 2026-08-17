@@ -64,6 +64,7 @@ export default function EncodersPage() {
               ['Resolution', '1 - 4096'],
               ['Maximum motor speed', '20,000 rpm'],
               ['Counting', 'MCU hardware pulse counter'],
+              ['Topic', '/odom at ~200 Hz'],
             ]}
           >
             The encoder is a Hall-effect sensor on the motor shaft. The OSCORE
@@ -104,12 +105,7 @@ export default function EncodersPage() {
             }}
           >
             Three numbers convert the count into distance: the pulses per shaft
-            revolution, the gear ratio, and the wheel diameter. These are
-            drivetrain figures, and they live on the{' '}
-            <Link href="/docs/hardware/drivetrain" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-              Drivetrain page
-            </Link>
-            .
+            revolution, the gear ratio, and the wheel diameter.
           </p>
           <p
             style={{
@@ -163,7 +159,7 @@ print(speed)`}
 
       <PrevNext
         prev={{ label: 'IMU', href: '/docs/hardware/sensors/imu' }}
-        next={{ label: 'Drivetrain', href: '/docs/hardware/drivetrain' }}
+        next={{ label: 'Remote control', href: '/docs/hardware/remote-control' }}
       />
     </DocsShell>
   );

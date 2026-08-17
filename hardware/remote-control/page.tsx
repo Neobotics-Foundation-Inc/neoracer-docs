@@ -377,7 +377,7 @@ export default function RemoteControlPage() {
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'Hardware overview', href: '/docs/hardware/overview' }}
+        prev={{ label: 'Encoder', href: '/docs/hardware/sensors/encoders' }}
         next={{ label: 'Dot matrix', href: '/docs/hardware/dot-matrix' }}
       />
     </DocsShell>

@@ -66,7 +66,7 @@ export default function OscoreBoardPage() {
       {/* ── Hero ─────────────────────────────────────────────────────── */}
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="11" top={-30} right={-20} size={400} />
+          <GhostNumeral n="10" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               THE OSCORE <Red>BOARD</Red>
@@ -204,9 +204,8 @@ export default function OscoreBoardPage() {
             POWER AND <Red>LIMITS</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
-            A single 9 to 26 V input feeds a two-stage conversion: a TPS54540
-            switching regulator makes the 5 V rail, an AMS1117 LDO makes 3.3 V,
-            and the raw input passes through to the ESC.
+            A TPS54540 switching regulator makes the 5 V rail, an AMS1117 LDO
+            makes 3.3 V, and the raw input passes through to the ESC.
           </p>
           <DataTable
             columns={[

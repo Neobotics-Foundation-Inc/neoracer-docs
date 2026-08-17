@@ -194,7 +194,7 @@ print(mag)     # magnetic field vector`}
 
       <PrevNext
         prev={{ label: 'Camera', href: '/docs/hardware/sensors/camera' }}
-        next={{ label: 'Encoders', href: '/docs/hardware/sensors/encoders' }}
+        next={{ label: 'Encoder', href: '/docs/hardware/sensors/encoders' }}
       />
     </DocsShell>
   );

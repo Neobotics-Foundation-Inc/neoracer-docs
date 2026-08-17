@@ -15,7 +15,7 @@ import { WiringDiagram } from '@/components/docs/WiringDiagram';
 
 export const metadata: Metadata = {
   title: 'Hardware overview · NeoRacer Docs',
-  description: 'A single-page anatomy of the NeoRacer V1: compute, sensors, drivetrain, power, and chassis at a glance.',
+  description: 'A single-page anatomy of the NeoRacer V1: compute, sensors, drivetrain, and chassis at a glance.',
 };
 
 /* The real car, torn down and knolled. Label positions are percentages of

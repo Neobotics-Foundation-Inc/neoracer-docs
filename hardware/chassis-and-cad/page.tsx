@@ -32,7 +32,7 @@ export default function ChassisAndCadPage() {
 
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="12" top={-30} right={-20} size={400} />
+          <GhostNumeral n="11" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               THE CHASSIS AND <Red>CAD</Red>
@@ -56,10 +56,9 @@ export default function ChassisAndCadPage() {
             bandHeight={258}
             alt="The NeoRacer rolling chassis with red oil-filled shocks and off-road wheels"
           >
-            Everything starts with the rolling chassis, a 1:12 scale platform
-            with real oil-filled shocks, a brushed motor, an electronic speed
-            controller, and a steering servo already wired in. The bay down the
-            middle is where the battery and the electronics sit.
+The chassis is the base of the car. It comes with the shocks, the
+            motor, the ESC, and the steering servo already fitted. The battery
+            and the electronics sit in the bay down the middle.
           </PhotoCard>
 
           <PhotoCard
@@ -69,8 +68,8 @@ export default function ChassisAndCadPage() {
             bandHeight={258}
             alt="The NeoRacer front bumper with its four mounting screws"
           >
-            The front bumper bolts onto the nose with four screws and shields
-            the camera, the LiDAR tower, and the front suspension in a crash.
+The front bumper bolts onto the nose with four screws. It protects
+            the camera, the LiDAR, and the front suspension in a crash.
           </PhotoCard>
 
           <PhotoCard
@@ -80,9 +79,8 @@ export default function ChassisAndCadPage() {
             bandHeight={258}
             alt="The rear wing with its mounting arms and screws"
           >
-            The rear wing bolts onto the tail with its two mounting arms and
-            shields the back of the car the same way the bumper covers the
-            front. Both the wing and the bumper are stock factory parts.
+The rear wing bolts onto the tail with two arms. It protects the
+            back of the car. The wing and the bumper are both stock parts.
           </PhotoCard>
 
           <PhotoCard
@@ -92,9 +90,9 @@ export default function ChassisAndCadPage() {
             bandHeight={258}
             alt="A NeoRacer-branded side cover panel"
           >
-            The side covers close up the electronics bay and carry the NeoRacer
-            name. They keep dust out of the wiring, and they are the simplest
-            part to customize.
+The side covers close the electronics bay and keep dust off the
+            wiring. They carry the NeoRacer name and are the easiest part to
+            customise.
           </PhotoCard>
         </div>
       </ScrollReveal>

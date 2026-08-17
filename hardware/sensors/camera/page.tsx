@@ -70,8 +70,8 @@ export default function CameraPage() {
               ['Recommended frame rate', '640 × 480 @ 60 fps'],
             ]}
           >
-            The camera can be used for lane following, colour and object
-            detection, and other computer vision work.
+            Used for lane following, colour and object detection, and other
+            computer vision work.
           </SensorSheet>
         </section>
       </ScrollReveal>

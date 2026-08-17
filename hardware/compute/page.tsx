@@ -118,9 +118,8 @@ export default function ComputePage() {
             The Jetson handles vision and planning, leaving exact timing to
             the{' '}
             <a href="/docs/hardware/oscore-board" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>OSCORE board</a>.
-            The MCU talks to the Jetson over USB through the driver node.
-            Everything else lives on the Jetson, which is where you write code.
-            The MCU is usually something you configure rather than program.
+            The MCU talks to the Jetson over USB through the driver node. The
+            file system where you write and save code is on the Jetson.
           </p>
         </section>
       </ScrollReveal>

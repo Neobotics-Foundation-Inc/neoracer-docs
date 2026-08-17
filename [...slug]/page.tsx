@@ -10,6 +10,7 @@ import {
   MonoLabel,
   ChromeBadge,
 } from '@/components/docs/Editorial';
+import { notFound } from 'next/navigation';
 import { Crumbs } from '@/components/docs/DocsPrimitives';
 import { docsNav, type DocsNavGroup, type DocsNavLeaf } from '@/lib/docs/nav';
 
@@ -27,6 +28,11 @@ import { docsNav, type DocsNavGroup, type DocsNavLeaf } from '@/lib/docs/nav';
  *   - links back to existing pages
  *
  * Designed to feel like a deliberate placeholder, not a 404.
+ *
+ * A path only earns the placeholder if the sidebar actually lists it. Any
+ * other /docs/* path is a real 404: a typo, a stale bookmark, or a page we
+ * deleted. That keeps removed pages from lingering as "coming soon" forever,
+ * and it maintains itself, dropping a page from nav is enough.
  * ─────────────────────────────────────────────────────────────────────── */
 
 type MatchResult = {
@@ -64,6 +70,7 @@ function findInNav(
   return null;
 }
 
+/* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 function humaniseSlug(slug: string[]): string {
   const last = slug[slug.length - 1] ?? 'page';
   return last
@@ -79,7 +86,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const href = '/docs/' + params.slug.join('/');
   const match = findInNav(docsNav, href);
-  const title = match?.leaf?.title ?? humaniseSlug(params.slug);
+  /* Also here, not just in the page: generateMetadata runs before the
+     response starts streaming, and notFound() thrown after the stream has
+     opened renders the 404 body under a 200 status. */
+  if (!match?.leaf) notFound();
+  const title = match.leaf.title;
   return {
     title: `${title} · NeoRacer Docs (coming soon)`,
     description: `${title} is part of the NeoRacer documentation roadmap. This page is planned but not yet written.`,
@@ -90,7 +101,8 @@ export async function generateMetadata({
 export default function DocsCatchAllPage({ params }: { params: { slug: string[] } }) {
   const href = '/docs/' + params.slug.join('/');
   const match = findInNav(docsNav, href);
-  const title = match?.leaf?.title ?? humaniseSlug(params.slug);
+  if (!match?.leaf) notFound();
+  const title = match.leaf.title;
   const trail = match?.groupTrail ?? [];
   const siblings = (match?.siblings ?? []).filter((s) => s.href !== href);
 

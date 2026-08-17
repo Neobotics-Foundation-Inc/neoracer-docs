@@ -40,8 +40,9 @@ export default function ChassisAndCadPage() {
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
               The NeoRacer is a 1:12 scale autonomous racing platform, and its
               full mechanical design is open. Every part lives in a public
-              repository under a reciprocal open-hardware license, so you can
-              print the parts or open the CAD and modify them.
+              repository under CERN-OHL-S-2.0, a reciprocal open-hardware
+              licence, so you can print the parts or open the CAD and modify
+              them.
             </p>
           </div>
         </section>

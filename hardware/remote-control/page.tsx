@@ -202,9 +202,9 @@ export default function RemoteControlPage() {
               ['Size', '179 × 81 × 161 mm'],
             ]}
           >
-            The Flysky controller is a touchscreen controller used to manually
-            drive the NeoRacer and enable autonomy. Before use, we recommend
-            reading the Flysky manual along with this page.
+            A touchscreen controller used to manually drive the NeoRacer and
+            enable autonomy. Before use, we recommend reading the Flysky
+            manual along with this page.
           </SensorSheet>
         </section>
       </ScrollReveal>

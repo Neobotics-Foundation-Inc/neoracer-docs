@@ -41,8 +41,7 @@ export default function DrivetrainPage() {
                 get when both front wheels point the same way.
               </InfoNote>{' '}
               geometry with four-wheel drive,
-              independent suspension, and 80 mm all-terrain tyres. Steering
-              follows simple bicycle geometry.
+              independent suspension, and 80 mm all-terrain tyres.
             </p>
           </div>
         </section>

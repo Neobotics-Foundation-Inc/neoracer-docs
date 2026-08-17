@@ -67,9 +67,8 @@ export default function EncodersPage() {
               ['Topic', '/odom at ~200 Hz'],
             ]}
           >
-            The encoder is a Hall-effect sensor on the motor shaft. The OSCORE
-            board counts its pulses and publishes the car&apos;s odometry
-            on <code style={{ fontFamily: NB.monoFont }}>/odom</code>.
+            The OSCORE board counts its pulses and publishes the car&apos;s
+            odometry on <code style={{ fontFamily: NB.monoFont }}>/odom</code>.
           </SensorSheet>
         </section>
       </ScrollReveal>

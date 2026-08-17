@@ -55,9 +55,6 @@ export default function LidarPage() {
       {/* ── Section · The scanner ────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ paddingBottom: 32 }}>
-          <DisplayHeading size="lg">
-            RICHBEAM <Red>LAKIBEAM1</Red>
-          </DisplayHeading>
           <SensorSheet
             title="LakiBeam L1 LiDAR"
             image="/images/build/lidar-2-sheet.jpg"

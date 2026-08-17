@@ -53,8 +53,8 @@ export default function DotMatrixPage() {
               ['Size', '32 × 32 × 13 mm'],
             ]}
           >
-            The dot matrix is useful for debugging as programs write
-            characters to it. It displays an N on boot.
+            Useful for debugging as programs write characters to it. It
+            displays an N on boot.
           </SensorSheet>
         </section>
       </ScrollReveal>

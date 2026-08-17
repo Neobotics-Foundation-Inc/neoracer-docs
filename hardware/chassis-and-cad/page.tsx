@@ -80,7 +80,7 @@ The front bumper bolts onto the nose with four screws. It protects
             alt="The rear wing with its mounting arms and screws"
           >
 The rear wing bolts onto the tail with two arms. It protects the
-            back of the car. The wing and the bumper are both stock parts.
+            back of the car.
           </PhotoCard>
 
           <PhotoCard
@@ -91,8 +91,7 @@ The rear wing bolts onto the tail with two arms. It protects the
             alt="A NeoRacer-branded side cover panel"
           >
 The side covers close the electronics bay and keep dust off the
-            wiring. They carry the NeoRacer name and are the easiest part to
-            customise.
+            wiring.
           </PhotoCard>
         </div>
       </ScrollReveal>

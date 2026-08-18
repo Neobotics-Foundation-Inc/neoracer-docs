@@ -58,8 +58,8 @@ Documents   jupyter_ws  neoracer-installer  Pictures       Templates`}</Code>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 16 }}>
               Most of that is stock Ubuntu. Desktop, Documents, Downloads,
               Music, Pictures, Public, Templates and Videos come with the
-              desktop and the car does not use them. Seven directories are the
-              NeoRacer&apos;s.
+              desktop and the car does not use them. These six are the ones
+              you will actually use.
             </p>
             <div style={{ marginTop: 18 }}>
               <DataTable
@@ -74,7 +74,6 @@ Documents   jupyter_ws  neoracer-installer  Pictures       Templates`}</Code>
                   { dir: 'neoracer-installer', what: 'The installer that set the car up.' },
                   { dir: 'logs', what: 'One timestamped folder per run of the driver.' },
                   { dir: 'data', what: 'Object-detection datasets, written by the camlabel dashboard.' },
-                  { dir: 'osracer_demo', what: 'Came with the image. Nothing in the driver uses it.' },
                 ]}
               />
             </div>
@@ -285,13 +284,6 @@ docs  logs  README.md  scripts  tests`}</Code>
               </p>
             </div>
 
-            <div style={{ marginTop: 24 }}>
-              <MonoLabel>osracer_demo</MonoLabel>
-              <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 6 }}>
-                Came with the vendor image. Nothing in the driver reads or
-                writes it, and nothing in these docs needs it. Leave it alone.
-              </p>
-            </div>
           </div>
         </section>
       </ScrollReveal>

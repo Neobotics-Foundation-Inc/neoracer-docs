@@ -7,10 +7,9 @@ import {
   GhostNumeral,
   DashList,
   Fig,
-  NumberedFeatureCard,
 } from '@/components/docs/Editorial';
-import { ScrollReveal, MouseFollowGlow, AnimatedDataFlowDiagram, InfoNote } from '@/components/docs/Interactive';
-import { Crumbs, PrevNext, Callout } from '@/components/docs/DocsPrimitives';
+import { ScrollReveal, MouseFollowGlow, AnimatedDataFlowDiagram } from '@/components/docs/Interactive';
+import { Crumbs, PrevNext } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
   title: 'ROS 2 driver · Software · NeoRacer Docs',
@@ -59,52 +58,46 @@ export default function ROS2DriverPage() {
         ]}
       />
 
-      {/* ── Section 01 · QUICK ROS 2 PRIMER ────────────────────────────── */}
+      {/* ── Hero ────────────────────────────────────────────────────────── */}
       <MouseFollowGlow>
-        <section style={{ position: 'relative', paddingTop: 24, paddingBottom: 56 }}>
-          <GhostNumeral n="01" top={-30} right={-20} size={460} />
+        <section style={{ position: 'relative', paddingTop: 24, paddingBottom: 40 }}>
+          <GhostNumeral n="03" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 40 }}>
-              <div>
-                <DisplayHeading size="xl">
-                  THE ROS&nbsp;2 <Red>DRIVER</Red>
-                </DisplayHeading>
-              </div>
-              <div style={{ paddingTop: 40 }}>
-                <DashList
-                  items={[
-                    <>
-                      Each part of the car (camera, motors,{' '}
-                      <InfoNote term="LiDAR" title="LiDAR">
-                        A sensor that sweeps a laser around the car and measures
-                        how long each pulse takes to bounce back, giving a ring
-                        of distance readings it uses to map walls and obstacles.
-                      </InfoNote>
-                      ) runs as a separate program. ROS 2 calls these{' '}
-                      <strong>nodes</strong>.
-                    </>,
-                    <>Nodes don't call each other directly.</>,
-                    <>
-                      They publish messages on named channels (
-                      <strong>topics</strong>). Any other node listening picks
-                      them up.
-                    </>,
-                    <>
-                      The driver runs these nodes for you:{' '}
-                      <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>controller</code>,{' '}
-                      <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>gamepad_node</code>,{' '}
-                      <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>mux_node</code>,{' '}
-                      <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>throttle_node</code>, plus the four
-                      you can switch off individually:{' '}
-                      <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>lidar</code>,{' '}
-                      <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>camera</code>,{' '}
-                      <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>led_matrix</code>,{' '}
-                      <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>inference</code>.
-                    </>,
-                  ]}
-                />
-              </div>
-            </div>
+            <DisplayHeading size="xl">
+              THE ROS&nbsp;2 <Red>DRIVER</Red>
+            </DisplayHeading>
+            <p
+              style={{
+                fontFamily: NB.bodyFont,
+                fontSize: 18,
+                lineHeight: 1.55,
+                color: NB.textMutedBeige,
+                maxWidth: 700,
+              }}
+            >
+              The driver is what sits between your code and the car&apos;s
+              hardware. Every part of the car runs as its own program, called a
+              node, and the nodes pass data to each other over named channels
+              called topics. All of it starts at boot.
+            </p>
+            <DashList
+              items={[
+                <>
+                  Four nodes always run:{' '}
+                  <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>controller</code>,{' '}
+                  <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>gamepad_node</code>,{' '}
+                  <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>mux_node</code>, and{' '}
+                  <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>throttle_node</code>.
+                </>,
+                <>
+                  Four more can be switched off one at a time:{' '}
+                  <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>lidar</code>,{' '}
+                  <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>camera</code>,{' '}
+                  <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>led_matrix</code>, and{' '}
+                  <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>inference</code>.
+                </>,
+              ]}
+            />
           </div>
         </section>
       </MouseFollowGlow>
@@ -119,92 +112,9 @@ export default function ROS2DriverPage() {
         </Fig>
       </ScrollReveal>
 
-      {/* ── Section 02 · ROS 2 BASICS ──────────────────────────────────── */}
-      <ScrollReveal>
-        <section style={{ position: 'relative', paddingTop: 32, paddingBottom: 56 }}>
-          <GhostNumeral n="02" top={-30} right={-20} size={460} />
-          <div style={{ position: 'relative', zIndex: 1 }}>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 40 }}>
-              <div>
-                <DisplayHeading size="lg">
-                  QUICK ROS&nbsp;2 <Red>BASICS</Red>
-                </DisplayHeading>
-              </div>
-              <div style={{ paddingTop: 20 }}>
-                <p
-                  style={{
-                    fontFamily: NB.bodyFont,
-                    fontSize: 18,
-                    lineHeight: 1.55,
-                    color: NB.textMutedBeige,
-                    margin: 0,
-                  }}
-                >
-                  These four are the foundation. The rest of ROS 2 just builds on
-                  them.
-                </p>
-              </div>
-            </div>
-
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-                gap: 28,
-                marginTop: 32,
-              }}
-            >
-              <NumberedFeatureCard
-                n={1}
-                title="Publisher"
-                lede="A node that puts data out."
-                body={
-                  <>
-                    Like{' '}
-                    <code style={{ fontFamily: NB.monoFont, color: NB.textOnBeige, fontWeight: 700 }}>
-                      camera
-                    </code>{' '}
-                    on the car, sending frames out on /camera/color. It doesn't
-                    know who's reading.
-                  </>
-                }
-                codeChip="node.create_publisher(Imu, '/imu/fused', qos)"
-              />
-              <NumberedFeatureCard
-                n={2}
-                title="Subscriber"
-                lede="A node waiting for new data."
-                body={
-                  <>
-                    Like your script reading <code style={{ fontFamily: NB.monoFont }}>/imu/fused</code> to
-                    check which way the car is tilted right now.
-                  </>
-                }
-                codeChip="node.create_subscription(Imu, '/imu/fused', cb, qos)"
-              />
-              <NumberedFeatureCard
-                n={3}
-                title="Topic"
-                lede="A named channel. Just a string."
-                body="Things like /drive, /scan, /camera/color. Multiple nodes can publish or read from the same one."
-                codeChip="/camera/color   /drive   /imu/fused   /odom   /scan"
-              />
-              <NumberedFeatureCard
-                n={4}
-                title="Message"
-                lede="The actual data, with a fixed shape."
-                body="An /imu/fused message always has the same fields (orientation, accel, gyro)."
-                codeChip="sensor_msgs/Imu   nav_msgs/Odometry"
-              />
-            </div>
-          </div>
-        </section>
-      </ScrollReveal>
-
       {/* ── Section 03 · WHAT NEORACER SHIPS ───────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="03" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
               WHAT THE DRIVER <Red>PUBLISHES</Red>
@@ -252,19 +162,6 @@ export default function ROS2DriverPage() {
             </div>
           </div>
         </section>
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <Callout type="tip" title="Coming from F1TENTH?">
-          Every topic name and message type matches the{' '}
-          <InfoNote term="F1TENTH" title="F1TENTH">
-            An open autonomous racing platform built around a 1/10th-scale car.
-            Its topic and message conventions are widely used, so code written
-            for it transfers between compatible cars.
-          </InfoNote>{' '}
-          reference build.
-          Drop your existing nodes onto a NeoRacer and they run unchanged.
-        </Callout>
       </ScrollReveal>
 
       <PrevNext

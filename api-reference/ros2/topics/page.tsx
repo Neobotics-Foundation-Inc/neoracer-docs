@@ -303,11 +303,8 @@ if __name__ == "__main__":
 
       <ScrollReveal>
         <Callout type="tip" title="Most students never touch ROS 2 directly">
-          The{' '}
-          <a href="/docs/software/racecar-neo-library" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-            racecar-neo-library
-          </a>{' '}
-          wraps every one of these topics behind{' '}
+          The <code style={{ fontFamily: NB.monoFont }}>racecar-neo-library</code>{' '}
+          Python API wraps every one of these topics behind{' '}
           <code style={{ fontFamily: NB.monoFont }}>rc.lidar</code>,{' '}
           <code style={{ fontFamily: NB.monoFont }}>rc.camera</code>, and{' '}
           <code style={{ fontFamily: NB.monoFont }}>rc.drive</code>. Reach for raw

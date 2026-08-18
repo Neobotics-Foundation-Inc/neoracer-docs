@@ -149,9 +149,7 @@ racecar library --list             # valid folders in ~/jupyter_ws
 racecar library --select my-fork   # point at ~/jupyter_ws/my-fork/library
 racecar library --reset            # delete the .pth file`}</Code>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 14 }}>
-              What the modules do is on{' '}
-              <Link href="/docs/software/racecar-neo-library" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>racecar-neo-library</Link>,
-              and every method is in the{' '}
+              Every module and method is in the{' '}
               <Link href="/docs/api-reference/python/drive" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Python API reference</Link>.
             </p>
           </div>

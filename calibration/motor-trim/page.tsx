@@ -425,7 +425,7 @@ controller_node:
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'racecar-neo-library', href: '/docs/software/racecar-neo-library' }}
+        prev={{ label: 'racecar CLI', href: '/docs/api-reference/cli' }}
         next={{ label: 'Servo center', href: '/docs/calibration/servo-center' }}
       />
     </DocsShell>

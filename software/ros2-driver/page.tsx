@@ -268,7 +268,7 @@ export default function ROS2DriverPage() {
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'racecar-neo-library', href: '/docs/software/racecar-neo-library' }}
+        prev={{ label: 'OS & image', href: '/docs/software/os-and-image' }}
         next={{ label: 'Workspaces', href: '/docs/software/workspaces' }}
       />
     </DocsShell>

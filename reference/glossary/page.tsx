@@ -120,12 +120,12 @@ const TERMS: Term[] = [
   {
     term: 'Pyodide',
     def: 'A WebAssembly build of CPython that runs in the browser. Lets the NeoRacer Playground execute the same Python student code the car runs.',
-    see: { label: 'racecar-neo-library', href: '/docs/software/racecar-neo-library' },
+    see: { label: 'Python API reference', href: '/docs/api-reference/python/drive' },
   },
   {
     term: 'racecar-neo-library',
     def: 'The Python module every student writes against. The rc.* namespace it exposes is identical on the browser sim and the physical car.',
-    see: { label: 'racecar-neo-library', href: '/docs/software/racecar-neo-library' },
+    see: { label: 'Python API reference', href: '/docs/api-reference/python/drive' },
   },
   {
     term: 'rc',

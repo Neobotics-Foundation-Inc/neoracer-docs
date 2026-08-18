@@ -141,7 +141,7 @@ rc.go()`}</Code>
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'racecar-neo-library', href: '/docs/software/racecar-neo-library' }}
+        prev={{ label: 'Software · JupyterLab', href: '/docs/software/jupyterlab' }}
         next={{ label: 'rc.lidar', href: '/docs/api-reference/python/lidar' }}
       />
     </DocsShell>

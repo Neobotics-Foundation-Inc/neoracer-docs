@@ -304,8 +304,8 @@ export default function SpecificationsPage() {
                 marginTop: 16,
               }}
             >
-              <SpecNumeral value="Python 3" label="racecar-neo-library" source={{ label: 'racecar-neo-library', href: '/docs/software/racecar-neo-library' }} />
-              <SpecNumeral value={<AnimatedNumeral value={5} />} label="rc.* modules" source={{ label: 'racecar-neo-library', href: '/docs/software/racecar-neo-library' }} />
+              <SpecNumeral value="Python 3" label="racecar-neo-library" source={{ label: 'Python API reference', href: '/docs/api-reference/python/drive' }} />
+              <SpecNumeral value={<AnimatedNumeral value={5} />} label="rc.* modules" source={{ label: 'Python API reference', href: '/docs/api-reference/python/drive' }} />
               <SpecNumeral value="Humble" label="ROS 2 distro" source={{ label: 'ROS 2 driver', href: '/docs/software/ros2-driver' }} />
               <SpecNumeral value="Pyodide" label="Browser runtime (sim)" />
             </div>

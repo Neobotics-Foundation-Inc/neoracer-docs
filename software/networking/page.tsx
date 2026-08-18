@@ -6,12 +6,10 @@ import {
   DisplayHeading,
   Red,
   GhostNumeral,
-  ChromeBadge,
   NumberedFeatureCard,
   MonoLabel,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
-import { StepCard } from '@/components/docs/StepCard';
 import { Crumbs, PrevNext, Callout, Code, DataTable } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
@@ -33,10 +31,10 @@ export default function NetworkingPage() {
       {/* ── Hero ────────────────────────────────────────────────────────── */}
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="NET" top={-30} right={-20} size={460} />
+          <GhostNumeral n="01" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              THE CAR'S <Red>NETWORK</Red>
+              NETWORK<Red>ING</Red>
             </DisplayHeading>
             <p
               style={{
@@ -47,54 +45,17 @@ export default function NetworkingPage() {
                 maxWidth: 700,
               }}
             >
-              There are two ways to reach the car, and both end with it at a
-              fixed address. The cudy router travels with the car and can share
-              internet, which suits a classroom or several cars at once. The
-              car&apos;s own access point needs no extra hardware at all. Pick
-              either; the rest of this page works the same on both.
+              There are two ways to access the car: the cudy router or the
+              Nvidia Jetson&apos;s access point. Both methods have a fixed
+              address.
             </p>
-            <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="red">cudy · 192.168.10.100</ChromeBadge>
-              <ChromeBadge variant="red">access point · 10.42.0.1</ChromeBadge>
-              <ChromeBadge variant="outline">user racecar</ChromeBadge>
-            </div>
           </div>
         </section>
       </MouseFollowGlow>
 
-      <ScrollReveal>
-        <StepCard
-          title="The network"
-          image="/images/build/router-2.jpg"
-          alt="The Cudy travel router that puts the car and laptop on one network"
-        >
-          The kit includes a small travel router so the car and your laptop can
-          share one network straight out of the box, no cables needed. Power it
-          on, join its Wi-Fi, and you can reach the car&apos;s notebook interface and
-          start sending it code.
-        </StepCard>
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <Callout type="note" title="First time on a fresh car?">
-          A brand new car has not been put on a network yet. That one-time setup
-          happens at the car with a monitor and keyboard, and it is covered by{' '}
-          <Link href="/docs/getting-started/prepare-the-car" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-            Prepare the car
-          </Link>,{' '}
-          <Link href="/docs/getting-started/install-driver" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-            Install the driver
-          </Link>, and{' '}
-          <Link href="/docs/getting-started/connect-to-router" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-            Connect to the router
-          </Link>. This page is the reference for every day after that.
-        </Callout>
-      </ScrollReveal>
-
       {/* ── Section 01 · The two networks ──────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="01" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
               PICK YOUR <Red>NETWORK</Red>
@@ -110,32 +71,32 @@ export default function NetworkingPage() {
                 columns={[
                   { key: 'k', label: '', accent: true },
                   { key: 'cudy', label: 'Cudy router', mono: true },
-                  { key: 'ap', label: 'Access point', mono: true },
+                  { key: 'ap', label: 'Jetson Access Point', mono: true },
                 ]}
                 rows={[
-                  { k: 'Wi-Fi to join', cudy: 'neoracer-[ID] (+ -5G twin)', ap: 'neoracer-1 until you rename it' },
+                  {
+                    k: '',
+                    cudy: <HardwareShot src="/images/build/router-2.jpg" alt="The Cudy travel router included in the kit" />,
+                    ap: <HardwareShot src="/images/build/jetson.jpg" alt="The Nvidia Jetson on the car, which broadcasts its own access point" />,
+                  },
+                  { k: 'Wi-Fi to join', cudy: 'neoracer-[ID] (+ -5G twin)', ap: 'neoracer-1 (default)' },
                   { k: 'Wi-Fi password', cudy: 'neobotics', ap: 'neobotics' },
-                  { k: 'The car', cudy: '192.168.10.100', ap: '10.42.0.1' },
-                  { k: 'Gateway', cudy: '192.168.10.1 (router)', ap: '10.42.0.1 (the car)' },
-                  { k: 'Internet', cudy: 'via the router uplink', ap: 'none' },
+                  { k: 'Network IP', cudy: '192.168.10.100', ap: '10.42.0.1' },
+                  { k: 'Gateway', cudy: '192.168.10.1', ap: '10.42.0.1' },
                   { k: 'Extra hardware', cudy: 'the included cudy router', ap: 'none' },
+                  { k: 'Setup', cudy: 'automatic once the router is plugged in', ap: 'requires the CLI' },
+                  { k: 'Antennas', cudy: 'attached to the router', ap: 'externally placed (prepare the car)' },
                 ]}
               />
             </div>
-            <Callout type="tip" title="Which one when">
-              Classroom, several cars, or the car needs internet: cudy. One car
-              and one laptop on a bench or a track: the access point. Switching
-              is a matter of which Wi-Fi your laptop joins.
-            </Callout>
             <Callout type="note" title="Putting the car itself online">
-              The access point carries no internet, so for installs and updates
-              the car borrows a network instead: join an existing Wi-Fi from the
-              console desktop or plug Ethernet into the Jetson&apos;s RJ45,
-              exactly as in{' '}
+              For installs and updates, the Jetson needs access to the Wi-Fi.
+              Therefore, we recommend connecting to the router and connecting
+              the Jetson to internet. This is the same setup we work through in{' '}
               <Link href="/docs/getting-started/prepare-the-car" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-                Prepare the car
-              </Link>. On the cudy, connecting the router&apos;s uplink
-              does the same job without touching the car.
+                setup
+              </Link>. Using the Jetson access point means the Jetson cannot
+              connect to Wi-Fi directly.
             </Callout>
           </div>
         </section>
@@ -144,7 +105,6 @@ export default function NetworkingPage() {
       {/* ── Section 02 · Three ways in ──────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="02" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
               WAYS TO <Red>CONNECT</Red>
@@ -192,7 +152,6 @@ ssh racecar@10.42.0.1          # access point
       {/* ── Section 03 · Already running ───────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="03" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
               IN A <Red>BROWSER</Red>
@@ -221,7 +180,6 @@ http://192.168.10.100:8888     # JupyterLab        (10.42.0.1 on the AP)`}</Code
       {/* ── Section 04 · ROS 2 over the link ───────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="04" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
               ROS 2 <Red>DISCOVERY</Red>
@@ -284,7 +242,6 @@ ros2 topic echo /scan --once     # a single scan, straight off the car`}</Code>
       {/* ── Section 05 · Router admin (cudy path) ──────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="05" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
               ROUTER <Red>ADMIN</Red>
@@ -329,7 +286,6 @@ ros2 topic echo /scan --once     # a single scan, straight off the car`}</Code>
       {/* ── Section 06 · racecar setup networking ──────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="06" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
               THE SETUP <Red>COMMAND</Red>
@@ -401,5 +357,29 @@ racecar setup networking --reset             # back to the defaults`}</Code>
         next={{ label: 'Remote desktop', href: '/docs/software/remote-desktop' }}
       />
     </DocsShell>
+  );
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+ * HardwareShot: the photo cell in the router-vs-access-point table. Fixed
+ * aspect so the two sit level whatever the source images are, and object-fit
+ * cover so neither is squashed. Lives here because nothing else needs it.
+ * ─────────────────────────────────────────────────────────────────────── */
+function HardwareShot({ src, alt }: { src: string; alt: string }) {
+  return (
+    <img
+      src={src}
+      alt={alt}
+      loading="lazy"
+      style={{
+        display: 'block',
+        width: '100%',
+        maxWidth: 260,
+        aspectRatio: '4 / 3',
+        objectFit: 'cover',
+        borderRadius: 10,
+        border: `1px solid ${NB.borderOnBeige}`,
+      }}
+    />
   );
 }

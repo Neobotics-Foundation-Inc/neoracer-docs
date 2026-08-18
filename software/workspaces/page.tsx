@@ -7,9 +7,8 @@ import {
   Red,
   GhostNumeral,
   MonoLabel,
-  DashList,
 } from '@/components/docs/Editorial';
-import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
+import { ScrollReveal, MouseFollowGlow, PhotoSteps } from '@/components/docs/Interactive';
 import { SetupTimeline } from '@/components/docs/SetupTimeline';
 import { Crumbs, Callout, Code, PrevNext, DataTable } from '@/components/docs/DocsPrimitives';
 
@@ -144,8 +143,8 @@ neoracer-os  README.md
 labs  library
 
 ~/jupyter_ws/neoracer-os/labs$ ls
-demo.py     lab_a  lab_c  lab_e  lab_g  template.py  ultimate-wall-follower
-grand_prix  lab_b  lab_d  lab_f  lab_i  tests        utility
+demo.py     lab_a  lab_c  lab_e  lab_g  template.py  utility
+grand_prix  lab_b  lab_d  lab_f  lab_i  tests
 
 ~/jupyter_ws/neoracer-os/library$ ls
 camera.py      drive.py  nav.py       racecar_core.py   simulation   vision.py
@@ -161,6 +160,9 @@ display.py     lidar.py  __pycache__  real              telemetry.py`}</Code>
                     the <code style={{ fontFamily: NB.monoFont }}>rc.*</code> modules
                     that we use in the{' '}
                     <Link href="/docs/api-reference/python/drive" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Python API reference</Link>.
+                    The <code style={{ fontFamily: NB.monoFont }}>tests</code>{' '}
+                    folder holds the test notebook used in{' '}
+                    <Link href="/docs/getting-started/test-the-system" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Test the system</Link>.
                   </p>
 
                   <div style={{ marginTop: 30 }}>
@@ -173,52 +175,16 @@ display.py     lidar.py  __pycache__  real              telemetry.py`}</Code>
                     </p>
                     <Code lang="bash">{`http://192.168.10.100:8888     # cudy router
 http://10.42.0.1:8888          # the car's access point`}</Code>
-                    <Callout type="note" title="There is no login">
+                    <Callout type="warn" title="There is no authentication on JupyterLab">
                       The service runs with authentication off, because the car&apos;s
                       networks are local and closed. Anyone already on the car&apos;s
-                      Wi-Fi can open it and run code on the car. That is fine on a
-                      bench or a track and worth knowing about in a shared space.
+                      Wi-Fi can open it and run code on the car. The authentication
+                      is accessing the Wi-Fi.
                     </Callout>
                   </div>
 
                   <div style={{ marginTop: 30 }}>
-                    <MonoLabel>Why import already works</MonoLabel>
-                    <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 6 }}>
-                      <code style={{ fontFamily: NB.monoFont }}>import racecar_core</code>{' '}
-                      works from any file in the workspace, with no path juggling. The
-                      driver setup writes a{' '}
-                      <InfoNote term=".pth file" title="Python .pth file">
-                        A one-line file Python reads at startup. It adds the directory
-                        named inside it to the import path, so a package outside the
-                        usual locations can still be imported by name.
-                      </InfoNote>{' '}
-                      called{' '}
-                      <code style={{ fontFamily: NB.monoFont }}>racecar_student.pth</code>{' '}
-                      that points Python at{' '}
-                      <code style={{ fontFamily: NB.monoFont }}>neoracer-os/library</code>.
-                    </p>
-                    <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 12 }}>
-                      If you keep more than one copy of the library, for example a
-                      fork you are working on, the CLI manages which one that file
-                      points to. A folder you name here is read as{' '}
-                      <code style={{ fontFamily: NB.monoFont }}>~/jupyter_ws/&lt;folder&gt;/library</code>.
-                    </p>
-                    <Code lang="bash">{`racecar library --status           # which copy is active
-racecar library --list             # valid folders in ~/jupyter_ws
-racecar library --select my-fork   # point at ~/jupyter_ws/my-fork/library
-racecar library --reset            # delete the .pth file`}</Code>
-                    <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 12 }}>
-                      Every module and method is in the{' '}
-                      <Link href="/docs/api-reference/python/drive" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Python API reference</Link>.
-                    </p>
-                  </div>
-
-                  <div style={{ marginTop: 30 }}>
                     <MonoLabel>Notebooks or scripts</MonoLabel>
-                    <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 6 }}>
-                      Both run the same library against the same car. They suit
-                      different jobs.
-                    </p>
                     <div style={{ marginTop: 14 }}>
                       <DataTable
                         columns={[
@@ -233,8 +199,6 @@ racecar library --reset            # delete the .pth file`}</Code>
                         ]}
                       />
                     </div>
-                    <Code lang="bash">{`# A script, from an SSH session or the JupyterLab terminal.
-python3 ~/jupyter_ws/neoracer-os/labs/drive_square.py`}</Code>
                   </div>
 
                   <div style={{ marginTop: 30 }}>
@@ -246,28 +210,14 @@ python3 ~/jupyter_ws/neoracer-os/labs/drive_square.py`}</Code>
                       still loaded, the second one gets nothing. This is the most
                       common confusion on the car and it is not a fault.
                     </p>
-                    <DashList
+                    <PhotoSteps
                       items={[
-                        <>When you finish with a notebook, open the{' '}
-                          <code style={{ fontFamily: NB.monoFont }}>Kernel</code> menu and
-                          choose <strong>Restart Kernel and Clear Outputs of All Cells</strong>.
-                          That releases the sensors and leaves the file clean for the
-                          next person.</>,
-                        <>A notebook that suddenly reads zeros usually means another
-                          kernel still holds the hardware. Shut the other one down from
-                          the <strong>Running Terminals and Kernels</strong> tab in the
-                          left sidebar.</>,
-                        <>Logs for the service itself go to the journal, not to a file:{' '}
-                          <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>journalctl -u neoracer-jupyter -f</code>.</>,
+                        {
+                          text: <>When you are done, open the <code style={{ fontFamily: NB.monoFont }}>Kernel</code> menu and choose <strong>Restart Kernel and Clear Outputs of All Cells</strong>.</>,
+                          photos: [{ src: '/images/jupyter_clear_cells.png', alt: 'The Kernel menu with Restart Kernel and Clear Outputs of All Cells highlighted' }],
+                        },
                       ]}
                     />
-                    <Callout type="warn" title="A running notebook can still drive the car">
-                      A kernel with a live{' '}
-                      <code style={{ fontFamily: NB.monoFont }}>rc</code> object keeps
-                      control of the motors. Before you walk away from the car, restart
-                      the kernel and flip SWB up on the{' '}
-                      <Link href="/docs/hardware/remote-control" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>transmitter</Link>.
-                    </Callout>
                   </div>
                 </>
               ),

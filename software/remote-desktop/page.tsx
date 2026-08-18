@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { Metadata } from 'next';
 import DocsShell from '@/components/docs/DocsShell';
 import { NB } from '@/lib/nb-tokens';
@@ -6,8 +5,6 @@ import {
   DisplayHeading,
   Red,
   GhostNumeral,
-  ChromeBadge,
-  ClockGlyph,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow, InfoNote, PhotoSteps } from '@/components/docs/Interactive';
 import { Crumbs, Callout, Code, PrevNext } from '@/components/docs/DocsPrimitives';
@@ -31,7 +28,7 @@ export default function RemoteDesktopPage() {
       {/* ── Hero ─────────────────────────────────────────────────────── */}
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="RD" top={-30} right={-20} size={400} />
+          <GhostNumeral n="02" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               REMOTE DESKTOP <Red>SETUP</Red>
@@ -41,20 +38,41 @@ export default function RemoteDesktopPage() {
               <InfoNote term="RustDesk" title="RustDesk">
                 A remote-desktop tool. It mirrors the Jetson's screen to your laptop over the network so you can use its desktop directly.
               </InfoNote>{' '}
-              preinstalled, so your laptop can use the Jetson&apos;s desktop over
-              the network.
+              preinstalled, so your device can mirror the Jetson&apos;s desktop
+              over the network.
             </p>
-            <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="outline" icon={<ClockGlyph />}>~5 minutes</ChromeBadge>
-            </div>
           </div>
         </section>
       </MouseFollowGlow>
 
+      {/* ── RustDesk setup ───────────────────────────────────────────── */}
+      <ScrollReveal>
+        <section style={{ position: 'relative', paddingBottom: 44 }}>
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <DisplayHeading size="lg">
+              RUSTDESK <Red>SETUP</Red>
+            </DisplayHeading>
+            <PhotoSteps
+              items={[
+                { text: <>Download and install RustDesk on your computer from <a href="https://rustdesk.com" target="_blank" rel="noopener noreferrer" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>rustdesk.com</a>.</> },
+                { text: <>Make sure your computer and the Jetson are on the same network, either the cudy router or the access point.</> },
+                {
+                  text: <>Open RustDesk. You land on the home screen.</>,
+                  photos: [{ src: '/images/rustdesk_home.png', alt: 'The RustDesk home screen on a laptop, with the field for entering a remote address' }],
+                },
+                { text: <>Enter the car&apos;s IP address for your network: <code style={{ fontFamily: NB.monoFont }}>192.168.10.100</code> on the cudy router, or <code style={{ fontFamily: NB.monoFont }}>10.42.0.1</code> on the access point.</> },
+                { text: <>Press <strong>Connect</strong>.</> },
+                { text: <>The first time you connect, RustDesk asks for its password. It is <code style={{ fontFamily: NB.monoFont }}>Neo-2026</code>.</> },
+                { text: <>The Jetson login screen appears. Log in as <code style={{ fontFamily: NB.monoFont }}>racecar</code> with the password <code style={{ fontFamily: NB.monoFont }}>neobotics</code>.</> },
+              ]}
+            />
+          </div>
+        </section>
+      </ScrollReveal>
+
       {/* ── 01 · Change the password ─────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 44 }}>
-          <GhostNumeral n="01" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
               CHANGE THE <Red>PASSWORD</Red>
@@ -85,7 +103,6 @@ export default function RemoteDesktopPage() {
       {/* ── 02 · Connect from the laptop ─────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 44 }}>
-          <GhostNumeral n="02" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
               CONNECT BY <Red>ADDRESS</Red>
@@ -107,28 +124,6 @@ export default function RemoteDesktopPage() {
               connects directly across the local network instead, no internet
               involved. On the cudy with its uplink attached, either way works.
             </Callout>
-          </div>
-        </section>
-      </ScrollReveal>
-
-      {/* ── 03 · The monitor retires ─────────────────────────────────── */}
-      <ScrollReveal>
-        <section style={{ position: 'relative', paddingBottom: 44 }}>
-          <GhostNumeral n="03" top={-30} right={-20} size={400} />
-          <div style={{ position: 'relative', zIndex: 1 }}>
-            <DisplayHeading size="lg">
-              UNPLUG THE <Red>MONITOR</Red>
-            </DisplayHeading>
-            <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-              Everything on the car is now reachable from your laptop: RustDesk
-              for the full desktop, SSH for a terminal, the dashboard on port{' '}
-              <code style={{ fontFamily: NB.monoFont }}>8080</code>, and{' '}
-              <Link href="/docs/software/jupyterlab" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>JupyterLab</Link>{' '}
-              on port <code style={{ fontFamily: NB.monoFont }}>8888</code> for
-              writing code, at either address from{' '}
-              <Link href="/docs/software/networking" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Networking</Link>.
-              Unplug the monitor and keyboard.
-            </p>
           </div>
         </section>
       </ScrollReveal>

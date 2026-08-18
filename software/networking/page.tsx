@@ -61,9 +61,8 @@ export default function NetworkingPage() {
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
               With the cudy router, the car plugs into the router and both join
-              its Wi-Fi; the router can also uplink to the internet. With the
-              access point, the Jetson broadcasts its own Wi-Fi and your laptop
-              joins the car directly.
+              its Wi-Fi. With the access point, the Jetson broadcasts its own
+              Wi-Fi and your laptop joins the car directly.
             </p>
             <div style={{ marginTop: 18 }}>
               <DataTable
@@ -263,7 +262,7 @@ ssh racecar@10.42.0.1          # access point
         <section style={{ position: 'relative', paddingBottom: 56 }}>
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              EXAMPLE IP <Red>USE</Red>
+              SERV<Red>ICES</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
               The car runs its whole stack as services on boot: the driver, the

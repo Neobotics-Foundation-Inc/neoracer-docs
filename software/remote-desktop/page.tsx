@@ -102,7 +102,7 @@ export default function RemoteDesktopPage() {
 
       <PrevNext
         prev={{ label: 'Networking', href: '/docs/software/networking' }}
-        next={{ label: 'Workspaces', href: '/docs/software/workspaces' }}
+        next={{ label: 'File system', href: '/docs/software/workspaces' }}
       />
     </DocsShell>
   );

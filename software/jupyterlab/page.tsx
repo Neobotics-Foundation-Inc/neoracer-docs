@@ -230,7 +230,7 @@ python3 ~/jupyter_ws/neoracer-os/labs/drive_square.py`}</Code>
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'Workspaces', href: '/docs/software/workspaces' }}
+        prev={{ label: 'File system', href: '/docs/software/workspaces' }}
         next={{ label: 'OS & image', href: '/docs/software/os-and-image' }}
       />
     </DocsShell>

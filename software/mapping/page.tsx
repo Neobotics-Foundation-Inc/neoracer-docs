@@ -85,7 +85,7 @@ export default function MappingPage() {
                   <strong>The autonomy base.</strong> The transform tree comes
                   from here. It is not a service yet, so start it in a terminal
                   of its own and leave it there. See{' '}
-                  <Link href="/docs/software/workspaces" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Workspaces</Link>.
+                  <Link href="/docs/software/workspaces" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>File system</Link>.
                 </>,
                 <>
                   <strong>A bounded indoor space</strong> with walls the LiDAR

@@ -89,7 +89,7 @@ export default function RobotModelPage() {
               ROS 2 package, and this page renders a copy of the same file. To
               see the live version you need the osracer stack running, so start
               its bringup first (see{' '}
-              <Link href="/docs/software/workspaces" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Workspaces</Link>).
+              <Link href="/docs/software/workspaces" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>File system</Link>).
             </p>
             <MonoLabel>Open RViz</MonoLabel>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 6 }}>

@@ -68,7 +68,7 @@ export default function NavigationPage() {
               items={[
                 <>A saved map from <Link href="/docs/software/mapping" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Mapping</Link>. You drive it by the name you saved it under.</>,
                 <>The driver up, as usual, for <code style={{ fontFamily: NB.monoFont }}>/scan</code> and <code style={{ fontFamily: NB.monoFont }}>/odom</code>.</>,
-                <>The autonomy base running in its own terminal (see <Link href="/docs/software/workspaces" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Workspaces</Link>). It also carries the twist bridge, which is how Nav2 reaches the motors.</>,
+                <>The autonomy base running in its own terminal (see <Link href="/docs/software/workspaces" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>File system</Link>). It also carries the twist bridge, which is how Nav2 reaches the motors.</>,
                 <>RC ready as your override: keep the transmitter in reach and flip <code style={{ fontFamily: NB.monoFont }}>SWB</code> up (manual) the instant you need to take over.</>,
               ]}
             />

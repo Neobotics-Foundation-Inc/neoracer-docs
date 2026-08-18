@@ -6,63 +6,75 @@ import {
   DisplayHeading,
   Red,
   GhostNumeral,
+  MonoLabel,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 import { Crumbs, Callout, Code, PrevNext, DataTable } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
-  title: 'Workspaces · Software · NeoRacer Docs',
+  title: 'File system · Software · NeoRacer Docs',
   description:
-    'The car carries two ROS 2 workspaces: neoracer (the driver, and the default in every terminal) and osracer (the vendor autonomy stack). racecar ws switches one terminal between them.',
+    "A walk through the NeoRacer's home directory: ros2_ws holds the driver, jupyter_ws holds your code, osracer_ws is the vendor stack, and neoracer-installer is what put it all there.",
 };
 
-export default function WorkspacesPage() {
+export default function FileSystemPage() {
   return (
     <DocsShell>
       <Crumbs
         items={[
           { label: 'Software', href: '/docs/software/networking' },
-          { label: 'Workspaces' },
+          { label: 'File system' },
         ]}
       />
 
       {/* ── Hero ─────────────────────────────────────────────────────── */}
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="WS" top={-30} right={-20} size={420} />
+          <GhostNumeral n="03" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              THE TWO <Red>WORKSPACES</Red>
+              THE FILE <Red>SYSTEM</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
-              The car carries two ROS 2 workspaces. Almost everything you do
-              runs from the default one, so most of the time you can ignore
-              that there are two.
+              Log in as <code style={{ fontFamily: NB.monoFont }}>racecar</code>{' '}
+              and you land in the home directory. This is what is in it, and
+              which parts you are meant to touch.
             </p>
           </div>
         </section>
       </MouseFollowGlow>
 
-      {/* ── 01 · What they are ───────────────────────────────────────── */}
+      {/* ── Home ─────────────────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 44 }}>
-          <GhostNumeral n="01" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              NEORACER AND <Red>OSRACER</Red>
+              THE HOME <Red>DIRECTORY</Red>
             </DisplayHeading>
+            <Code lang="bash">{`racecar@neoracer:~$ ls
+data        Downloads   logs                osracer_demo   Public      Videos
+Desktop     home        Music               osracer_ws     ros2_ws
+Documents   jupyter_ws  neoracer-installer  Pictures       Templates`}</Code>
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 16 }}>
+              Most of that is stock Ubuntu. Desktop, Documents, Downloads,
+              Music, Pictures, Public, Templates and Videos come with the
+              desktop and the car does not use them. Seven directories are the
+              NeoRacer&apos;s.
+            </p>
             <div style={{ marginTop: 18 }}>
               <DataTable
                 columns={[
-                  { key: 'k', label: '', accent: true },
-                  { key: 'neo', label: 'neoracer (default)', mono: true },
-                  { key: 'os', label: 'osracer (vendor)', mono: true },
+                  { key: 'dir', label: 'Directory', accent: true, mono: true, width: '210px' },
+                  { key: 'what', label: 'What it is' },
                 ]}
                 rows={[
-                  { k: 'Path', neo: '~/ros2_ws', os: '~/osracer_ws' },
-                  { k: 'What it holds', neo: 'The driver, the services, the racecar CLI, rc.* programs', os: 'The robot description, SLAM, and Nav2' },
-                  { k: 'Who wrote it', neo: 'Neobotics', os: 'The vendor, preinstalled on the image' },
-                  { k: 'How you reach it', neo: 'Every terminal, by default', os: 'racecar ws osracer, in one terminal' },
+                  { dir: 'ros2_ws', what: 'The driver. The software that runs the car.' },
+                  { dir: 'jupyter_ws', what: 'Your code, and the Python library it imports.' },
+                  { dir: 'osracer_ws', what: 'The vendor stack: robot description, SLAM and Nav2.' },
+                  { dir: 'neoracer-installer', what: 'The installer that set the car up.' },
+                  { dir: 'logs', what: 'One timestamped folder per run of the driver.' },
+                  { dir: 'data', what: 'Scratch space on the SSD.' },
+                  { dir: 'osracer_demo', what: 'Demo material that came with the vendor image.' },
                 ]}
               />
             </div>
@@ -70,66 +82,191 @@ export default function WorkspacesPage() {
         </section>
       </ScrollReveal>
 
-      {/* ── 02 · racecar ws ──────────────────────────────────────────── */}
+      {/* ── ros2_ws ──────────────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 44 }}>
-          <GhostNumeral n="02" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              SWITCHING ONE <Red>TERMINAL</Red>
+              ROS2_WS, THE <Red>DRIVER</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-              <code style={{ fontFamily: NB.monoFont }}>racecar ws</code> swaps
-              which workspace the terminal you are sitting in uses. The change
-              applies to that terminal only, and new terminals always open on
-              neoracer.
+              The workspace every terminal opens on. You edit things in{' '}
+              <code style={{ fontFamily: NB.monoFont }}>src</code>;{' '}
+              <code style={{ fontFamily: NB.monoFont }}>build</code>,{' '}
+              <code style={{ fontFamily: NB.monoFont }}>install</code> and{' '}
+              <code style={{ fontFamily: NB.monoFont }}>log</code> are output
+              that <code style={{ fontFamily: NB.monoFont }}>racecar build</code>{' '}
+              regenerates.
             </p>
-            <Code lang="bash">{`racecar ws            # which one am I on?
-racecar ws osracer    # this terminal now uses the vendor workspace
-racecar ws neoracer   # back to the default`}</Code>
+            <Code lang="bash">{`~/ros2_ws$ ls
+build  install  log  src
+
+~/ros2_ws/src$ ls
+lakibeam1  neoracer_ros2_driver
+
+~/ros2_ws/src/neoracer_ros2_driver$ ls
+CHANGELOG.md     docs      neoracer_ros2_driver  scripts
+CITATION.cff     launch    package.xml           setup.cfg
+config           LICENSE   README.md             setup.py
+CONTRIBUTING.md  models    resource              test`}</Code>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 16 }}>
-              It is a clean swap, not a stack: switching to osracer strips the
-              neoracer paths out, and back again. That is deliberate, because
-              both workspaces carry a package called{' '}
-              <code style={{ fontFamily: NB.monoFont }}>lakibeam1</code> for the
-              LiDAR. They are the same shared source, but only one may resolve
-              at a time.
+              Inside the driver package,{' '}
+              <code style={{ fontFamily: NB.monoFont }}>launch</code> holds the
+              launch files, <code style={{ fontFamily: NB.monoFont }}>config</code>{' '}
+              the YAML that tunes them,{' '}
+              <code style={{ fontFamily: NB.monoFont }}>scripts</code> the{' '}
+              <code style={{ fontFamily: NB.monoFont }}>racecar</code> command
+              and the systemd services, and{' '}
+              <code style={{ fontFamily: NB.monoFont }}>neoracer_ros2_driver</code>{' '}
+              the node source itself.
             </p>
-            <Callout type="note" title="You will rarely need this">
-              Everything in these docs runs from the neoracer workspace, which
-              is where new terminals already are. Reach for{' '}
-              <code style={{ fontFamily: NB.monoFont }}>racecar ws</code> when
-              you want to inspect or build a vendor package by hand.
+            <Callout type="warn" title="racecar update overwrites this">
+              <code style={{ fontFamily: NB.monoFont }}>racecar update</code>{' '}
+              resets the driver repo to the latest published version, so edits
+              you make here are discarded. Copy anything you want to keep before
+              running it.
             </Callout>
           </div>
         </section>
       </ScrollReveal>
 
-      {/* ── 03 · What osracer is for ─────────────────────────────────── */}
+      {/* ── jupyter_ws ───────────────────────────────────────────────── */}
       <ScrollReveal>
-        <section style={{ position: 'relative', paddingBottom: 24 }}>
-          <GhostNumeral n="03" top={-30} right={-20} size={420} />
+        <section style={{ position: 'relative', paddingBottom: 44 }}>
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              WHAT OSRACER IS <Red>FOR</Red>
+              JUPYTER_WS, YOUR <Red>CODE</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-              The vendor workspace holds the robot description, SLAM and Nav2:
-              the autonomy tier. Reaching it needs one more layer between the
-              driver and those packages, publishing the transform tree and
-              bridging Nav2 back into the car&apos;s drive pipeline. That layer
-              exists in the driver repo but is not installed on a shipped car,
-              so autonomy is not something you can run today.
+              The one you actually work in. This is the directory{' '}
+              <Link href="/docs/software/jupyterlab" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>JupyterLab</Link>{' '}
+              serves, so the file list in the browser is exactly this.
             </p>
-            <Callout type="note" title="Not wired up yet">
-              Until it ships, treat{' '}
+            <Code lang="bash">{`~/jupyter_ws$ ls
+neoracer-os  README.md
+
+~/jupyter_ws/neoracer-os$ ls
+labs  library
+
+~/jupyter_ws/neoracer-os/labs$ ls
+demo.py     lab_a  lab_c  lab_e  lab_g  template.py  ultimate-wall-follower
+grand_prix  lab_b  lab_d  lab_f  lab_i  tests        utility
+
+~/jupyter_ws/neoracer-os/library$ ls
+camera.py      drive.py  nav.py       racecar_core.py   simulation   vision.py
+controller.py  led.py    physics.py   racecar_utils.py  slam.py
+display.py     lidar.py  __pycache__  real              telemetry.py`}</Code>
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 16 }}>
+              <code style={{ fontFamily: NB.monoFont }}>labs</code> holds the lab
+              exercises the car ships with, plus{' '}
+              <code style={{ fontFamily: NB.monoFont }}>template.py</code> to
+              start from and{' '}
+              <code style={{ fontFamily: NB.monoFont }}>tests</code>, which is
+              what Setup runs to check the car.{' '}
+              <code style={{ fontFamily: NB.monoFont }}>library</code> is the
+              Python you import: one file per{' '}
+              <code style={{ fontFamily: NB.monoFont }}>rc.*</code> module, with{' '}
+              <code style={{ fontFamily: NB.monoFont }}>real</code> and{' '}
+              <code style={{ fontFamily: NB.monoFont }}>simulation</code> holding
+              the two backends that sit behind the same API.
+            </p>
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 14 }}>
+              Every method in those modules is on the{' '}
+              <Link href="/docs/api-reference/python/drive" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Python API reference</Link>.
+            </p>
+          </div>
+        </section>
+      </ScrollReveal>
+
+      {/* ── osracer_ws ───────────────────────────────────────────────── */}
+      <ScrollReveal>
+        <section style={{ position: 'relative', paddingBottom: 44 }}>
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <DisplayHeading size="lg">
+              OSRACER_WS, THE <Red>VENDOR STACK</Red>
+            </DisplayHeading>
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
+              A second ROS 2 workspace, preinstalled on the image. It holds the
+              autonomy tier: the robot description, SLAM and Nav2.
+            </p>
+            <Code lang="bash">{`~/osracer_ws$ ls
+build  install  log  src
+
+~/osracer_ws/src$ ls
+lakibeam1  osracer
+
+~/osracer_ws/src/osracer$ ls
+CHANGELOG.md     osracer_calib       osracer_description  osracer_slam
+docs             osracer_debug       osracer_navigation   README.md
+LICENSE          osracer_demo        osracer_race         ruff.toml
+osracer_bringup  osracer_dependency  osracer_sim          tools`}</Code>
+            <Callout type="note" title="Both workspaces carry lakibeam1">
+              The LiDAR driver appears in both{' '}
+              <code style={{ fontFamily: NB.monoFont }}>src</code> folders. It is
+              one shared source rather than two copies, but only one can resolve
+              at a time, which is why{' '}
+              <code style={{ fontFamily: NB.monoFont }}>racecar ws</code> swaps a
+              terminal between the two instead of stacking them.
+            </Callout>
+            <Code lang="bash">{`racecar ws            # which one am I on?
+racecar ws osracer    # this terminal now uses the vendor workspace
+racecar ws neoracer   # back to the default`}</Code>
+            <Callout type="note" title="Not runnable yet">
+              Reaching the autonomy packages needs a layer between the driver
+              and them, and that layer is not installed on a shipped car. Treat{' '}
               <code style={{ fontFamily: NB.monoFont }}>~/osracer_ws</code> as
-              reference material rather than something to run. The{' '}
+              reference material for now. The{' '}
               <Link href="/docs/api-reference/cli" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>racecar CLI</Link>{' '}
-              page says the same thing about{' '}
-              <code style={{ fontFamily: NB.monoFont }}>racecar mapping</code> and{' '}
+              page says the same about{' '}
+              <code style={{ fontFamily: NB.monoFont }}>racecar mapping</code>{' '}
+              and{' '}
               <code style={{ fontFamily: NB.monoFont }}>racecar navigation</code>.
             </Callout>
+          </div>
+        </section>
+      </ScrollReveal>
+
+      {/* ── The rest ─────────────────────────────────────────────────── */}
+      <ScrollReveal>
+        <section style={{ position: 'relative', paddingBottom: 24 }}>
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <DisplayHeading size="lg">
+              THE <Red>REST</Red>
+            </DisplayHeading>
+
+            <MonoLabel>neoracer-installer</MonoLabel>
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 6 }}>
+              The installer that put the driver on the car. You clone and run it
+              once during{' '}
+              <Link href="/docs/getting-started/install-driver" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>setup</Link>,
+              and it stays behind afterwards. Its{' '}
+              <code style={{ fontFamily: NB.monoFont }}>logs</code> folder
+              records every install run, which is what support asks for when a
+              setup goes wrong.
+            </p>
+            <Code lang="bash">{`~/neoracer-installer$ ls
+docs  logs  README.md  scripts  tests`}</Code>
+
+            <div style={{ marginTop: 24 }}>
+              <MonoLabel>logs</MonoLabel>
+              <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 6 }}>
+                Not the installer&apos;s logs, the driver&apos;s. Every run of
+                the stack writes a timestamped folder here, and{' '}
+                <code style={{ fontFamily: NB.monoFont }}>logs/latest</code>{' '}
+                points at the most recent one. The health dashboard reads it.
+              </p>
+            </div>
+
+            <div style={{ marginTop: 24 }}>
+              <MonoLabel>data and osracer_demo</MonoLabel>
+              <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 6 }}>
+                Neither is part of the day-to-day workflow.{' '}
+                <code style={{ fontFamily: NB.monoFont }}>data</code> is scratch
+                space on the SSD, and{' '}
+                <code style={{ fontFamily: NB.monoFont }}>osracer_demo</code>{' '}
+                came with the vendor image. You can leave both alone.
+              </p>
+            </div>
           </div>
         </section>
       </ScrollReveal>

@@ -245,7 +245,7 @@ racecar launch led_matrix`}</Code>
                 Swaps which workspace this one terminal uses, for poking at
                 vendor packages by hand. Mapping and navigation do not need it.
                 See{' '}
-                <Link href="/docs/software/workspaces" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Workspaces</Link>.
+                <Link href="/docs/software/workspaces" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>File system</Link>.
               </p>
               <Code lang="bash">{`racecar ws            # which one am I on?
 racecar ws osracer

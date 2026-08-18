@@ -54,7 +54,7 @@ export default function ROS2DriverPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Software', href: '/docs/software/os-and-image' },
+          { label: 'Software', href: '/docs/software/networking' },
           { label: 'ROS 2 driver' },
         ]}
       />
@@ -268,7 +268,7 @@ export default function ROS2DriverPage() {
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'OS & image', href: '/docs/software/os-and-image' }}
+        prev={{ label: 'Remote desktop', href: '/docs/software/remote-desktop' }}
         next={{ label: 'Workspaces', href: '/docs/software/workspaces' }}
       />
     </DocsShell>

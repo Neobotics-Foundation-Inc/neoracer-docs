@@ -38,12 +38,12 @@ const SHOW_PLAYGROUND_TEASE = false;
 const pitLane: PitLaneSection[] = [
   { title: 'Setup', href: '/docs/getting-started/unbox', pages: 6 },
   { title: 'Hardware', href: '/docs/hardware/overview', pages: 11 },
-  { title: 'Software', href: '/docs/software/os-and-image', pages: 10 },
-  { title: 'API Reference', href: '/docs/api-reference/python/drive', pages: 9 },
+  { title: 'Software', href: '/docs/software/networking', pages: 7 },
+  { title: 'API Reference', href: '/docs/api-reference/python/drive', pages: 10 },
   { title: 'Calibration', href: '/docs/calibration/motor-trim', pages: 5, disabled: true },
   // Soft hyphen so narrow phone bays break it as TROUBLE-SHOOTING.
   { title: 'Trouble­shooting', href: '/docs/troubleshooting/faq', pages: 7, disabled: true },
-  { title: 'Reference', href: '/docs/reference/specifications', pages: 5, disabled: true },
+  { title: 'Reference', href: '/docs/reference/specifications', pages: 4, disabled: true },
   { title: 'Legal', href: '/docs/legal/warranty', pages: 5, disabled: true },
 ];
 

@@ -25,7 +25,7 @@ export default function NetworkingPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Software', href: '/docs/software/os-and-image' },
+          { label: 'Software', href: '/docs/software/networking' },
           { label: 'Networking' },
         ]}
       />
@@ -397,8 +397,8 @@ racecar setup networking --reset             # back to the defaults`}</Code>
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'Remote desktop', href: '/docs/software/remote-desktop' }}
-        next={{ label: 'JupyterLab', href: '/docs/software/jupyterlab' }}
+        prev={{ label: 'Chassis & CAD', href: '/docs/hardware/chassis-and-cad' }}
+        next={{ label: 'Remote desktop', href: '/docs/software/remote-desktop' }}
       />
     </DocsShell>
   );

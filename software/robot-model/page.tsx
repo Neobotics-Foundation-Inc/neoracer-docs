@@ -25,7 +25,7 @@ export default function RobotModelPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Software', href: '/docs/software/os-and-image' },
+          { label: 'Software', href: '/docs/software/networking' },
           { label: '3D model' },
         ]}
       />

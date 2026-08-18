@@ -23,7 +23,7 @@ export default function RemoteDesktopPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Software', href: '/docs/software/os-and-image' },
+          { label: 'Software', href: '/docs/software/networking' },
           { label: 'Remote desktop' },
         ]}
       />
@@ -125,17 +125,17 @@ export default function RemoteDesktopPage() {
               <code style={{ fontFamily: NB.monoFont }}>8080</code>, and{' '}
               <Link href="/docs/software/jupyterlab" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>JupyterLab</Link>{' '}
               on port <code style={{ fontFamily: NB.monoFont }}>8888</code> for
-              writing code. Unplug the monitor and keyboard. The day-to-day
-              connection reference is{' '}
+              writing code, at either address from{' '}
               <Link href="/docs/software/networking" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Networking</Link>.
+              Unplug the monitor and keyboard.
             </p>
           </div>
         </section>
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'Workspaces', href: '/docs/software/workspaces' }}
-        next={{ label: 'Networking', href: '/docs/software/networking' }}
+        prev={{ label: 'Networking', href: '/docs/software/networking' }}
+        next={{ label: 'ROS 2 driver', href: '/docs/software/ros2-driver' }}
       />
     </DocsShell>
   );

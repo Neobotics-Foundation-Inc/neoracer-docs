@@ -24,7 +24,7 @@ export default function NavigationPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Software', href: '/docs/software/os-and-image' },
+          { label: 'Software', href: '/docs/software/networking' },
           { label: 'Navigation (Nav2)' },
         ]}
       />

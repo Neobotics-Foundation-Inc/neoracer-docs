@@ -21,7 +21,7 @@ export default function WorkspacesPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Software', href: '/docs/software/os-and-image' },
+          { label: 'Software', href: '/docs/software/networking' },
           { label: 'Workspaces' },
         ]}
       />
@@ -136,7 +136,7 @@ racecar ws neoracer   # back to the default`}</Code>
 
       <PrevNext
         prev={{ label: 'ROS 2 driver', href: '/docs/software/ros2-driver' }}
-        next={{ label: 'Remote desktop', href: '/docs/software/remote-desktop' }}
+        next={{ label: 'JupyterLab', href: '/docs/software/jupyterlab' }}
       />
     </DocsShell>
   );

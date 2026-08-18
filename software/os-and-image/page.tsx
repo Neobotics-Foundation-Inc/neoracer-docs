@@ -32,7 +32,7 @@ export default function OsAndImagePage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Software', href: '/docs/software/os-and-image' },
+          { label: 'Software', href: '/docs/software/networking' },
           { label: 'OS & image' },
         ]}
       />
@@ -59,11 +59,12 @@ export default function OsAndImagePage() {
               running as a{' '}
               <InfoNote term="systemd service" title="systemd service">
                 A background program that Linux starts and supervises automatically. Running JupyterLab this way means it comes up on its own at boot and restarts if it crashes.
-              </InfoNote>. Power on, SSH in, install the{' '}
+              </InfoNote>. The{' '}
               <a href="/docs/getting-started/install-driver" style={{ color: NB.neoboticsRed, fontWeight: 700, textDecoration: 'none' }}>
                 neoracer_ros2_driver
-              </a> once, and you can start writing code on the same day it
-              arrives. Every boot after that comes up ready on its own.
+              </a> is installed on top of it once, on the first boot. Every boot
+              after that comes up ready on its own. This page is what is on the
+              image, and how to put it back if you ever need to.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="red">Pre-flashed at the factory</ChromeBadge>
@@ -403,8 +404,8 @@ ros2 topic echo /scan --once | head -20`}</Code>
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'Chassis & CAD', href: '/docs/hardware/chassis-and-cad' }}
-        next={{ label: 'ROS 2 driver', href: '/docs/software/ros2-driver' }}
+        prev={{ label: 'JupyterLab', href: '/docs/software/jupyterlab' }}
+        next={{ label: 'Firmware flashing', href: '/docs/software/firmware-flashing' }}
       />
     </DocsShell>
   );

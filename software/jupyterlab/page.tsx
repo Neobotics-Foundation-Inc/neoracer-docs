@@ -24,7 +24,7 @@ export default function JupyterLabPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Software', href: '/docs/software/os-and-image' },
+          { label: 'Software', href: '/docs/software/networking' },
           { label: 'JupyterLab' },
         ]}
       />
@@ -230,8 +230,8 @@ python3 ~/jupyter_ws/neoracer-os/labs/drive_square.py`}</Code>
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'Networking', href: '/docs/software/networking' }}
-        next={{ label: 'Firmware flashing', href: '/docs/software/firmware-flashing' }}
+        prev={{ label: 'Workspaces', href: '/docs/software/workspaces' }}
+        next={{ label: 'OS & image', href: '/docs/software/os-and-image' }}
       />
     </DocsShell>
   );

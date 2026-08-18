@@ -94,10 +94,12 @@ export default function ROS2DriverPage() {
                       <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>controller</code>,{' '}
                       <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>gamepad_node</code>,{' '}
                       <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>mux_node</code>,{' '}
-                      <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>throttle_node</code>,{' '}
+                      <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>throttle_node</code>, plus the four
+                      you can switch off individually:{' '}
+                      <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>lidar</code>,{' '}
                       <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>camera</code>,{' '}
-                      <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>led_matrix</code>, and{' '}
-                      <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>richbeam_lidar_node0</code>.
+                      <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>led_matrix</code>,{' '}
+                      <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>inference</code>.
                     </>,
                   ]}
                 />

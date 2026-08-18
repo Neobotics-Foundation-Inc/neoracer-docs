@@ -6,7 +6,6 @@ import {
   DisplayHeading,
   Red,
   GhostNumeral,
-  MonoLabel,
   ChromeBadge,
   DashList,
   NumberedSteps,
@@ -17,7 +16,7 @@ import { Crumbs, PrevNext, Callout, Code, DataTable } from '@/components/docs/Do
 export const metadata: Metadata = {
   title: 'Navigation (Nav2) · Software · NeoRacer Docs',
   description:
-    'Give the NeoRacer a goal on a saved map and let Nav2 drive it there. Localize with AMCL, choose the DWB or TEB planner, and set goals in RViz.',
+    'Give the NeoRacer a goal on a saved map and let Nav2 drive it there. Start it with racecar navigation, localize with AMCL, pick the TEB or DWB planner, and set goals in RViz.',
 };
 
 export default function NavigationPage() {
@@ -47,33 +46,29 @@ export default function NavigationPage() {
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="red">Nav2</ChromeBadge>
               <ChromeBadge variant="outline">AMCL localization</ChromeBadge>
-              <ChromeBadge variant="outline">DWB / TEB planners</ChromeBadge>
+              <ChromeBadge variant="outline">TEB / DWB planners</ChromeBadge>
             </div>
           </div>
         </section>
       </MouseFollowGlow>
 
-      <ScrollReveal>
-        <Callout type="note" title="Start the osracer bringup first">
-          Navigation runs on the osracer stack, not the default driver. Stop the
-          services, switch workspaces, and leave the bringup running in its own
-          terminal before anything on this page. The sequence is on{' '}
-          <Link href="/docs/software/workspaces" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Workspaces</Link>.
-        </Callout>
-      </ScrollReveal>
-
       {/* ── 01 · prerequisites ──────────────────────────────────────────── */}
       <ScrollReveal>
-        <section style={{ position: 'relative', paddingBottom: 40 }}>
+        <section style={{ position: 'relative', paddingBottom: 44 }}>
           <GhostNumeral n="01" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
               YOU NEED A <Red>MAP</Red>
             </DisplayHeading>
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
+              Navigation runs in the foreground on the same footing as mapping:
+              on top of the driver, which stays running, and the autonomy base.
+            </p>
             <DashList
               items={[
-                <>A saved <code style={{ fontFamily: NB.monoFont }}>map.pgm</code> + <code style={{ fontFamily: NB.monoFont }}>map.yaml</code> from <Link href="/docs/software/mapping" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Mapping</Link>.</>,
-                <>The osracer bringup running in its own terminal.</>,
+                <>A saved map from <Link href="/docs/software/mapping" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Mapping</Link>. You drive it by the name you saved it under.</>,
+                <>The driver up, as usual, for <code style={{ fontFamily: NB.monoFont }}>/scan</code> and <code style={{ fontFamily: NB.monoFont }}>/odom</code>.</>,
+                <>The autonomy base running in its own terminal (see <Link href="/docs/software/workspaces" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Workspaces</Link>). It also carries the twist bridge, which is how Nav2 reaches the motors.</>,
                 <>RC ready as your override: keep the transmitter in reach and flip <code style={{ fontFamily: NB.monoFont }}>SWB</code> up (manual) the instant you need to take over.</>,
               ]}
             />
@@ -83,22 +78,36 @@ export default function NavigationPage() {
               <Link href="/docs/hardware/remote-control" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>transmitter</Link>{' '}
               so flipping SWB up puts you back in manual control.
             </Callout>
+            <Callout type="note" title="Not at the same time as mapping">
+              SLAM and Nav2 both publish the map-to-odom transform, so they
+              cannot run together. Ctrl-C the mapper before you start
+              navigation.
+            </Callout>
           </div>
         </section>
       </ScrollReveal>
 
       {/* ── 02 · planners ───────────────────────────────────────────────── */}
       <ScrollReveal>
-        <section style={{ position: 'relative', paddingBottom: 40 }}>
+        <section style={{ position: 'relative', paddingBottom: 44 }}>
           <GhostNumeral n="02" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              DWB OR <Red>TEB</Red>
+              START <Red>NAV2</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-              One launch brings up the whole stack: map server, AMCL, planner, and
-              controller. Pick the local planner with the{' '}
-              <code style={{ fontFamily: NB.monoFont }}>planner</code> argument.
+              One command brings up the whole stack: map server, AMCL, planner
+              and controller. The first argument picks the local planner and the
+              second names the map. Both have defaults, so the bare command runs
+              TEB on a map called{' '}
+              <code style={{ fontFamily: NB.monoFont }}>map</code>.
+            </p>
+            <Code lang="bash">{`racecar navigation                # teb, on the map named "map"
+racecar navigation lab            # teb, on the map named "lab"
+racecar navigation dwb lab        # dwb, on the map named "lab"`}</Code>
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 16 }}>
+              Name a map that does not exist and it stops before launching
+              anything, then lists the maps you do have.
             </p>
             <div style={{ marginTop: 18 }}>
               <DataTable
@@ -107,20 +116,10 @@ export default function NavigationPage() {
                   { key: 'feel', label: 'How it drives' },
                 ]}
                 rows={[
-                  { p: 'dwb', feel: 'Dynamic Window. Steady and predictable, a good default.' },
-                  { p: 'teb', feel: 'Timed Elastic Band. Smoother curves, better in tight, cluttered space.' },
+                  { p: 'teb', feel: 'Timed Elastic Band. The default. Smoother curves, better in tight, cluttered space.' },
+                  { p: 'dwb', feel: 'Dynamic Window. Steady and predictable; worth trying if TEB is fighting the car.' },
                 ]}
               />
-            </div>
-            <div style={{ marginTop: 18 }}>
-              <MonoLabel>DWB</MonoLabel>
-              <Code lang="bash">{`racecar ws osracer
-ros2 launch osracer_navigation nav2.launch.py planner:=dwb`}</Code>
-            </div>
-            <div style={{ marginTop: 14 }}>
-              <MonoLabel>TEB</MonoLabel>
-              <Code lang="bash">{`racecar ws osracer
-ros2 launch osracer_navigation nav2.launch.py planner:=teb`}</Code>
             </div>
           </div>
         </section>
@@ -135,9 +134,11 @@ ros2 launch osracer_navigation nav2.launch.py planner:=teb`}</Code>
               SET A <Red>GOAL</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-              Nav2 opens RViz with the map loaded and a Navigation 2 panel. First
-              tell it roughly where the car is, then tell it where to go.
+              The launch itself has no window. Open the goal-setting view in a
+              second terminal, from the car&apos;s desktop rather than over SSH.
+              First tell it roughly where the car is, then tell it where to go.
             </p>
+            <Code lang="bash">{`racecar navigation rviz`}</Code>
             <NumberedSteps
               steps={[
                 { title: 'Set the starting pose.', detail: <>Use <strong>2D Pose Estimate</strong> and drag an arrow where the car actually sits, pointing the way it faces. The AMCL particle cloud tightens around the car as the scan matches the map.</> },
@@ -157,7 +158,7 @@ ros2 launch osracer_navigation nav2.launch.py planner:=teb`}</Code>
 
       <PrevNext
         prev={{ label: 'Mapping (SLAM)', href: '/docs/software/mapping' }}
-        next={{ label: '3D model', href: '/docs/software/robot-model' }}
+        next={{ label: 'API reference', href: '/docs/api-reference/python/drive' }}
       />
     </DocsShell>
   );

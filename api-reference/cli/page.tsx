@@ -15,7 +15,7 @@ import { Crumbs, PrevNext, Callout, Code, DataTable } from '@/components/docs/Do
 export const metadata: Metadata = {
   title: 'racecar CLI · API Reference · NeoRacer Docs',
   description:
-    'Every racecar subcommand on the car: service, ws, status, teleop, library, and setup networking. What each one does, when you need it, and what it changes.',
+    'Every racecar subcommand on the car: service, status, ws, teleop, mapping, navigation, build, launch, setup, library, compile, update, cleanup and selftest. racecar help prints the same list on the car.',
 };
 
 export default function CliReferencePage() {
@@ -38,14 +38,15 @@ export default function CliReferencePage() {
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
               <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>racecar</code>{' '}
-              is a shell wrapper the driver installs. It is the front door to
-              every operational task on the car, so you rarely need to touch{' '}
-              <code style={{ fontFamily: NB.monoFont }}>systemctl</code> or a raw{' '}
+              is a shell function the driver installs into every terminal. It is
+              the front door to every operational task on the car, so you rarely
+              need to touch{' '}
+              <code style={{ fontFamily: NB.monoFont }}>systemctl</code>,{' '}
+              <code style={{ fontFamily: NB.monoFont }}>colcon</code> or a raw{' '}
               <code style={{ fontFamily: NB.monoFont }}>ros2 launch</code> line.
-              It is on the path in every new terminal.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="red">6 subcommands</ChromeBadge>
+              <ChromeBadge variant="red">racecar help</ChromeBadge>
               <ChromeBadge variant="outline">installed by the driver</ChromeBadge>
               <ChromeBadge variant="outline">runs on the car</ChromeBadge>
             </div>
@@ -59,22 +60,43 @@ export default function CliReferencePage() {
           <GhostNumeral n="01" top={-30} right={-20} size={430} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              AT A <Red>GLANCE</Red>
+              EVERY <Red>COMMAND</Red>
             </DisplayHeading>
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
+              <code style={{ fontFamily: NB.monoFont }}>racecar help</code> prints
+              this same list on the car, and most subcommands take{' '}
+              <code style={{ fontFamily: NB.monoFont }}>--help</code> of their own.
+              Extra arguments are forwarded, so{' '}
+              <code style={{ fontFamily: NB.monoFont }}>racecar teleop camera_enable:=false</code>{' '}
+              works.
+            </p>
             <div style={{ marginTop: 18 }}>
               <DataTable
                 columns={[
                   { key: 'cmd', label: 'Command', accent: true, mono: true },
                   { key: 'what', label: 'What it does' },
-                  { key: 'when', label: 'When you need it' },
                 ]}
                 rows={[
-                  { cmd: 'racecar service', what: 'Start, stop, inspect and tail the four systemd services.', when: 'Checking the car is healthy, or freeing the hardware for the osracer stack.' },
-                  { cmd: 'racecar status', what: 'Prints the running nodes and the /dev/osrbot_* device symlinks.', when: 'A sensor is missing and you want to know whether it is the USB or the node.' },
-                  { cmd: 'racecar ws', what: 'Switches the current terminal between the neoracer and osracer workspaces.', when: 'Mapping and Navigation, which live in the osracer workspace.' },
-                  { cmd: 'racecar teleop', what: 'Runs the driver stack in the foreground instead of as a service.', when: 'Debugging, when you want the launch output in front of you.' },
-                  { cmd: 'racecar library', what: 'Selects which copy of racecar-neo-library Python imports.', when: 'You keep a fork of the library alongside the shipped one.' },
-                  { cmd: 'racecar setup networking', what: "Configures the access point, the fixed Ethernet address, and the lidar link.", when: 'Renaming a car, or rebuilding its networks after a re-flash.' },
+                  { cmd: 'service', what: 'Install, start, stop, enable and tail the systemd units.' },
+                  { cmd: 'status', what: 'USB peripherals, /dev/osrbot_* symlinks, and running ROS 2 nodes.' },
+                  { cmd: 'mapping', what: 'Start SLAM, save a map, or open the mapping RViz view.' },
+                  { cmd: 'navigation', what: 'Start Nav2 on a saved map, or open the goal-setting RViz view.' },
+                  { cmd: 'teleop', what: 'Run the driver stack in the foreground instead of as a service.' },
+                  { cmd: 'ws', what: 'Switch this terminal between the neoracer and osracer workspaces.' },
+                  { cmd: 'launch', what: 'Shortcut for ros2 launch neoracer_ros2_driver <name>.launch.py.' },
+                  { cmd: 'build', what: 'Build the driver with --symlink-install and source the overlay.' },
+                  { cmd: 'test', what: 'Run the driver package test suite.' },
+                  { cmd: 'source', what: 'Source the workspace overlay into the current shell.' },
+                  { cmd: 'cd', what: 'Change directory to the driver package root.' },
+                  { cmd: 'setup', what: 'Run a setup phase: all, ml, networking, and the rest.' },
+                  { cmd: 'library', what: 'Choose which racecar-neo-library copy Python imports.' },
+                  { cmd: 'update', what: 'Field update: repo to latest main, full setup, restart services.' },
+                  { cmd: 'compile', what: 'Export a YOLO .pt to a TensorRT .engine for the inference node.' },
+                  { cmd: 'udev', what: 'Re-install the udev rules that create /dev/osrbot_*.' },
+                  { cmd: 'watchdog', what: 'Run the node restart supervisor in the foreground.' },
+                  { cmd: 'cleanup', what: 'List orphaned processes and shared-memory segments. Dry run by default.' },
+                  { cmd: 'selftest', what: 'Hardware self-tests. Currently the LED matrix.' },
+                  { cmd: 'clear --led', what: 'Clear the 8x8 LED matrix display.' },
                 ]}
               />
             </div>
@@ -92,21 +114,23 @@ export default function CliReferencePage() {
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
               Four{' '}
-              <InfoNote term="systemd services" title="systemd service">
+              <InfoNote term="systemd units" title="systemd service">
                 A background program Linux starts and supervises automatically.
                 It comes up on its own at boot and restarts if it crashes.
               </InfoNote>{' '}
-              start at boot and this wraps all four at once.
+              make up the core stack and all four are enabled at boot. With no
+              unit named, these actions apply to all of them.
             </p>
-            <Code lang="bash">{`racecar service status     # all four, with their state
-racecar service stop       # hand the hardware to something else
-racecar service start      # give it back
-racecar service restart    # stop then start
-racecar service logs       # tail the journal for all four`}</Code>
+            <Code lang="bash">{`racecar service status       # active + enabled for every unit
+racecar service stop         # the core stack
+racecar service start
+racecar service restart      # every ENABLED unit; never starts a disabled one
+racecar service logs         # journalctl -f, defaults to teleop
+racecar service logs jupyter # or name one`}</Code>
             <div style={{ marginTop: 18 }}>
               <DataTable
                 columns={[
-                  { key: 'svc', label: 'Service', accent: true, mono: true },
+                  { key: 'svc', label: 'Unit', accent: true, mono: true },
                   { key: 'what', label: 'What it runs' },
                 ]}
                 rows={[
@@ -117,122 +141,192 @@ racecar service logs       # tail the journal for all four`}</Code>
                 ]}
               />
             </div>
-            <Callout type="note" title="Stop the services before the osracer stack">
-              Both stacks talk to the same hardware, so they cannot run at once.{' '}
-              <code style={{ fontFamily: NB.monoFont }}>racecar service stop</code>{' '}
-              is the first line of the osracer bringup on{' '}
-              <Link href="/docs/software/workspaces" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Workspaces</Link>.
+
+            <div style={{ marginTop: 26 }}>
+              <MonoLabel>Lab dashboards</MonoLabel>
+              <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 6 }}>
+                Five more units install <strong>disabled</strong> and are started
+                for a session when you want one. Each holds the camera or the GPU
+                for its whole run, so run one at a time.
+              </p>
+              <Code lang="bash">{`racecar service start camlabel     # 8082
+# also: wallfollow 8081, pursuit 8083, eps 8084, smartfollow 8085`}</Code>
+            </div>
+
+            <Callout type="warn" title="The autonomy unit is held">
+              A fifth unit,{' '}
+              <code style={{ fontFamily: NB.monoFont }}>neoracer-autonomy</code>,
+              exists in the repo but setup deliberately does not install it, and
+              removes it from a car that has it from an earlier run. It is what
+              would publish the transform tree at boot. Until it ships, start
+              that layer by hand:
+              <Code lang="bash">{`bash ~/ros2_ws/src/neoracer_ros2_driver/scripts/launch_autonomy.sh`}</Code>
+              This is why{' '}
+              <Link href="/docs/software/mapping" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Mapping</Link>{' '}
+              and{' '}
+              <Link href="/docs/software/navigation" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Navigation</Link>{' '}
+              both ask for a spare terminal.
             </Callout>
           </div>
         </section>
       </ScrollReveal>
 
-      {/* ── 03 · status ─────────────────────────────────────────────────── */}
+      {/* ── 03 · mapping + navigation ───────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 48 }}>
           <GhostNumeral n="03" top={-30} right={-20} size={430} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              RACECAR <Red>STATUS</Red>
+              MAPPING AND <Red>NAVIGATION</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-              Two things in one output: the ROS 2 nodes currently running, and
-              the <code style={{ fontFamily: NB.monoFont }}>/dev/osrbot_*</code>{' '}
-              symlinks that udev creates for the OSCORE board, the camera and the
-              LiDAR. That pairing is what makes it useful when something is
-              missing. A device with no symlink is unplugged or unpowered; a
-              symlink with no node is a software problem.
+              Both are activities, not daemons: they run in the foreground until
+              you Ctrl-C them, on top of the running driver. Each one warns you
+              if the driver or the autonomy base is missing, and reaches into
+              the vendor workspace on your behalf, so no{' '}
+              <code style={{ fontFamily: NB.monoFont }}>racecar ws</code> is needed.
             </p>
-            <Code lang="bash">{`racecar status`}</Code>
+            <Code lang="bash">{`racecar mapping                      # slam_toolbox (default), gmapping, cartographer
+racecar mapping save lab             # save from any backend, from another terminal
+racecar mapping rviz                 # watch it build (car desktop only)
+
+racecar navigation                   # teb planner, map named "map"
+racecar navigation dwb lab           # dwb planner, map named "lab"
+racecar navigation rviz              # set goals (car desktop only)`}</Code>
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 14 }}>
+              Maps live in the vendor workspace at{' '}
+              <code style={{ fontFamily: NB.monoFont }}>~/osracer_ws/src/osracer/osracer_slam/maps/</code>.
+              Full walkthroughs are on{' '}
+              <Link href="/docs/software/mapping" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Mapping</Link>{' '}
+              and{' '}
+              <Link href="/docs/software/navigation" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Navigation</Link>.
+            </p>
           </div>
         </section>
       </ScrollReveal>
 
-      {/* ── 04 · ws ─────────────────────────────────────────────────────── */}
+      {/* ── 04 · status, ws, teleop, launch ─────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 48 }}>
           <GhostNumeral n="04" top={-30} right={-20} size={430} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              RACECAR <Red>WS</Red>
+              RUNNING AND <Red>INSPECTING</Red>
             </DisplayHeading>
-            <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-              The car carries two ROS 2 workspaces and each terminal uses one at
-              a time. The switch applies to the current terminal only, and new
-              terminals always start on neoracer.
-            </p>
-            <Code lang="bash">{`racecar ws osracer      # SLAM and Nav2 live here
-racecar ws neoracer     # back to the default`}</Code>
-            <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 14 }}>
-              What each workspace holds is on{' '}
-              <Link href="/docs/software/workspaces" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Workspaces</Link>.
-            </p>
-          </div>
-        </section>
-      </ScrollReveal>
 
-      {/* ── 05 · teleop + library ───────────────────────────────────────── */}
-      <ScrollReveal>
-        <section style={{ position: 'relative', paddingBottom: 48 }}>
-          <GhostNumeral n="05" top={-30} right={-20} size={430} />
-          <div style={{ position: 'relative', zIndex: 1 }}>
-            <DisplayHeading size="lg">
-              TELEOP AND <Red>LIBRARY</Red>
-            </DisplayHeading>
-            <MonoLabel>racecar teleop</MonoLabel>
+            <MonoLabel>racecar status</MonoLabel>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 6 }}>
-              Runs the same driver stack the{' '}
-              <code style={{ fontFamily: NB.monoFont }}>neoracer-teleop</code>{' '}
-              service runs, but in the foreground so you can watch the launch
-              output. Stop the service first or the two will fight over the
-              hardware. Day to day you do not need this, because the service is
-              already running.
+              USB peripherals, the{' '}
+              <code style={{ fontFamily: NB.monoFont }}>/dev/osrbot_*</code>{' '}
+              symlinks udev creates, and the ROS 2 nodes currently running, in
+              one output. That pairing is what makes it useful when something is
+              missing: a device with no symlink is unplugged or unpowered, a
+              symlink with no node is a software problem.
             </p>
-            <Code lang="bash">{`racecar service stop
-racecar teleop           # Ctrl-C to quit, then: racecar service start`}</Code>
 
-            <div style={{ marginTop: 26 }}>
-              <MonoLabel>racecar library</MonoLabel>
+            <div style={{ marginTop: 24 }}>
+              <MonoLabel>racecar teleop</MonoLabel>
               <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 6 }}>
-                Chooses which copy of{' '}
-                <code style={{ fontFamily: NB.monoFont }}>racecar-neo-library</code>{' '}
-                Python imports, by rewriting the{' '}
-                <code style={{ fontFamily: NB.monoFont }}>racecar_student.pth</code>{' '}
-                file. Only relevant if you keep a second copy, such as a fork you
-                are developing. See{' '}
-                <Link href="/docs/software/jupyterlab" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>JupyterLab</Link>.
+                Runs the same stack the{' '}
+                <code style={{ fontFamily: NB.monoFont }}>neoracer-teleop</code>{' '}
+                service runs, in the foreground, with a timestamped log
+                directory. Stop the service first or the two fight over the
+                hardware. Subsystems can be switched off individually.
               </p>
-              <Code lang="bash">{`racecar library --select`}</Code>
+              <Code lang="bash">{`racecar service stop
+racecar teleop                        # Ctrl-C, then: racecar service start
+racecar teleop camera_enable:=false   # also: lidar_, led_matrix_, inference_`}</Code>
+            </div>
+
+            <div style={{ marginTop: 24 }}>
+              <MonoLabel>racecar launch</MonoLabel>
+              <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 6 }}>
+                One subsystem on its own, for bench work.
+              </p>
+              <Code lang="bash">{`racecar launch lidar
+racecar launch camera
+racecar launch led_matrix`}</Code>
+            </div>
+
+            <div style={{ marginTop: 24 }}>
+              <MonoLabel>racecar ws</MonoLabel>
+              <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 6 }}>
+                Swaps which workspace this one terminal uses, for poking at
+                vendor packages by hand. Mapping and navigation do not need it.
+                See{' '}
+                <Link href="/docs/software/workspaces" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Workspaces</Link>.
+              </p>
+              <Code lang="bash">{`racecar ws            # which one am I on?
+racecar ws osracer
+racecar ws neoracer`}</Code>
             </div>
           </div>
         </section>
       </ScrollReveal>
 
-      {/* ── 06 · setup networking ───────────────────────────────────────── */}
+      {/* ── 05 · setup + library + update ───────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 24 }}>
-          <GhostNumeral n="06" top={-30} right={-20} size={430} />
+          <GhostNumeral n="05" top={-30} right={-20} size={430} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              RACECAR SETUP <Red>NETWORKING</Red>
+              SETUP AND <Red>MAINTENANCE</Red>
             </DisplayHeading>
-            <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-              Configures the car&apos;s side of the network: the access point,
-              the fixed Ethernet address, and the lidar link. Run with no flags
-              it applies the defaults. Every flag value is saved to{' '}
+
+            <MonoLabel>racecar setup networking</MonoLabel>
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 6 }}>
+              Configures the access point, the fixed Ethernet address, and the
+              lidar link. Flag values persist to{' '}
               <code style={{ fontFamily: NB.monoFont }}>~/.config/racecar/networking.env</code>,
-              so a setting survives reboots and later runs. The flag table and
-              the full explanation are on{' '}
+              so a setting survives reboots. The full flag table is on{' '}
               <Link href="/docs/software/networking" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Networking</Link>.
             </p>
-            <Code lang="bash">{`racecar setup networking --ssid=neoracer-2   # rename the access point
-racecar setup networking --show              # print the saved settings
-racecar setup networking --reset             # back to the defaults`}</Code>
-            <Callout type="warn" title="Run it from a wired session">
+            <Code lang="bash">{`racecar setup networking --ssid=neoracer-2
+racecar setup networking --show
+racecar setup networking --reset
+
+racecar setup all        # the full orchestrator, as run on a fresh car
+racecar setup ml         # the GPU stack: PyTorch for Tegra, Ultralytics, ONNX`}</Code>
+            <Callout type="warn" title="Run networking from a wired session">
               The command takes over the Wi-Fi radio, so an SSH session over
               Wi-Fi drops the moment it runs. Use a monitor and keyboard at the
               car, the USB cable link, or SSH over the cudy&apos;s wired side.
             </Callout>
+
+            <div style={{ marginTop: 26 }}>
+              <MonoLabel>racecar library</MonoLabel>
+              <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 6 }}>
+                Manages the{' '}
+                <code style={{ fontFamily: NB.monoFont }}>racecar_student.pth</code>{' '}
+                file, which is what makes{' '}
+                <code style={{ fontFamily: NB.monoFont }}>import racecar_core</code>{' '}
+                work. Only relevant if you keep more than one copy of the
+                library. See{' '}
+                <Link href="/docs/software/jupyterlab" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>JupyterLab</Link>.
+              </p>
+              <Code lang="bash">{`racecar library --status           # which copy is active
+racecar library --list             # valid folders in ~/jupyter_ws
+racecar library --select my-fork   # point at ~/jupyter_ws/my-fork/library
+racecar library --reset`}</Code>
+            </div>
+
+            <div style={{ marginTop: 26 }}>
+              <MonoLabel>racecar update</MonoLabel>
+              <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 6 }}>
+                Field update in one command: the driver repo to latest{' '}
+                <code style={{ fontFamily: NB.monoFont }}>origin/main</code>, a
+                full setup run, then a restart of whatever was already enabled.
+                Needs internet, so put the car on a network first.
+              </p>
+              <Code lang="bash">{`racecar update
+racecar source     # or open a new terminal, so the shell picks up the new tool`}</Code>
+              <Callout type="warn" title="It discards local edits to the driver repo">
+                The update does a hard reset onto{' '}
+                <code style={{ fontFamily: NB.monoFont }}>origin/main</code>. If
+                you have been editing files inside the driver repo on the car,
+                commit or copy them out first.
+              </Callout>
+            </div>
           </div>
         </section>
       </ScrollReveal>

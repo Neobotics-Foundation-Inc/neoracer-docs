@@ -148,8 +148,13 @@ export default function OsAndImagePage() {
               <>
                 <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>neoracer-teleop</code> is the driver stack. The{' '}
                 <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>controller</code> node owns the ESP32 serial link (publishes /imu/fused, /odom, /joy and subscribes to /motor), alongside{' '}
-                <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>gamepad_node</code>, <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>mux_node</code>, <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>throttle_node</code>, <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>camera</code>, <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>led_matrix</code>, and{' '}
-                <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>richbeam_lidar_node0</code>.
+                <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>gamepad_node</code>, <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>mux_node</code>, and{' '}
+                <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>throttle_node</code>. Four more come up alongside them and each can be
+                switched off on its own:{' '}
+                <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>lidar</code>,{' '}
+                <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>camera</code>,{' '}
+                <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>led_matrix</code>, and{' '}
+                <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>inference</code>.
               </>,
               <>
                 The watchdog supervises every node and restarts a dead one. The web dashboard at{' '}
@@ -159,6 +164,13 @@ export default function OsAndImagePage() {
               <>
                 JupyterLab logs route through{' '}
                 <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>journalctl -u neoracer-jupyter -f</code>, no separate log directory to track.
+              </>,
+              <>
+                Autonomy is not among them. The transform tree, the twist bridge
+                and the EKF live in a fifth unit that setup deliberately does
+                not install, so mapping and navigation start that layer by hand.
+                See the{' '}
+                <a href="/docs/api-reference/cli" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>racecar CLI</a>.
               </>,
             ]}
           />

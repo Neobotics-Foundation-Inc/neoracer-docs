@@ -141,8 +141,13 @@ http://10.42.0.1:8888          # the car's access point`}</Code>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 6 }}>
               If you keep more than one copy of the library, for example a fork
               you are working on, the CLI manages which one that file points to.
+              A folder you name here is read as{' '}
+              <code style={{ fontFamily: NB.monoFont }}>~/jupyter_ws/&lt;folder&gt;/library</code>.
             </p>
-            <Code lang="bash">{`racecar library --select`}</Code>
+            <Code lang="bash">{`racecar library --status           # which copy is active
+racecar library --list             # valid folders in ~/jupyter_ws
+racecar library --select my-fork   # point at ~/jupyter_ws/my-fork/library
+racecar library --reset            # delete the .pth file`}</Code>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 14 }}>
               What the modules do is on{' '}
               <Link href="/docs/software/racecar-neo-library" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>racecar-neo-library</Link>,

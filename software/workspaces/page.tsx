@@ -38,9 +38,11 @@ export default function FileSystemPage() {
               THE FILE <Red>SYSTEM</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
-              Log in as <code style={{ fontFamily: NB.monoFont }}>racecar</code>{' '}
-              and you land in the home directory. This is what is in it, and
-              which parts you are meant to touch.
+              After logging in as{' '}
+              <code style={{ fontFamily: NB.monoFont }}>racecar</code>, open the
+              terminal in the home directory{' '}
+              <code style={{ fontFamily: NB.monoFont }}>~</code>. The file system
+              installed during setup is now visible on the car.
             </p>
           </div>
         </section>
@@ -53,25 +55,21 @@ export default function FileSystemPage() {
             <DisplayHeading size="lg">
               THE HOME <Red>DIRECTORY</Red>
             </DisplayHeading>
-            <Code lang="bash">{`racecar@neoracer:~$ ls
-data        Downloads   logs                osracer_demo   Public      Videos
-Desktop     home        Music               osracer_ws     ros2_ws
-Documents   jupyter_ws  neoracer-installer  Pictures       Templates`}</Code>
+            <HomeListing />
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 16 }}>
-              Most of that is stock Ubuntu. Desktop, Documents, Downloads,
-              Music, Pictures, Public, Templates and Videos come with the
-              desktop and the car does not use them. These six are the ones
-              you will actually use.
+              The car comes with stock Ubuntu files such as Desktop, Documents,
+              Downloads, and more. There are six directories that are installed
+              on the car.
             </p>
             <div style={{ marginTop: 18 }}>
               <DataTable
                 columns={[
                   { key: 'dir', label: 'Directory', accent: true, mono: true, width: '210px' },
-                  { key: 'what', label: 'What it is' },
+                  { key: 'what', label: 'Description' },
                 ]}
                 rows={[
-                  { dir: 'ros2_ws', what: 'The driver. The software that runs the car.' },
-                  { dir: 'jupyter_ws', what: 'Your code, and the Python library it imports.' },
+                  { dir: 'ros2_ws', what: 'Stores the latest version of the driver.' },
+                  { dir: 'jupyter_ws', what: 'Stores the Python library, starter code, and any additional code you write.' },
                   { dir: 'osracer_ws', what: 'The vendor stack: robot description, SLAM and Nav2.' },
                   { dir: 'neoracer-installer', what: 'The installer that set the car up.' },
                   { dir: 'logs', what: 'One timestamped folder per run of the driver.' },
@@ -79,9 +77,6 @@ Documents   jupyter_ws  neoracer-installer  Pictures       Templates`}</Code>
                 ]}
               />
             </div>
-            <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 20 }}>
-              Open any of them below for what is inside.
-            </p>
           </div>
         </section>
       </ScrollReveal>
@@ -402,5 +397,60 @@ docs  logs  README.md  scripts  tests`}</Code>
         next={{ label: 'OS & image', href: '/docs/software/os-and-image' }}
       />
     </DocsShell>
+  );
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+ * HomeListing: `ls ~` with the six directories this page covers picked out
+ * of the noise. Spacing is the real column layout from the terminal, so the
+ * split keeps whitespace runs intact rather than re-flowing them.
+ * ─────────────────────────────────────────────────────────────────────── */
+const HOME_LS = `data        Downloads   logs                osracer_demo   Public      Videos
+Desktop     home        Music               osracer_ws     ros2_ws
+Documents   jupyter_ws  neoracer-installer  Pictures       Templates`;
+
+const OURS = new Set([
+  'ros2_ws',
+  'jupyter_ws',
+  'osracer_ws',
+  'neoracer-installer',
+  'logs',
+  'data',
+]);
+
+function HomeListing() {
+  return (
+    <div
+      style={{
+        marginTop: 18,
+        background: NB.tarmacBlue,
+        borderRadius: 12,
+        padding: '22px 24px',
+        fontFamily: NB.monoFont,
+        fontSize: 13.5,
+        lineHeight: 1.9,
+        boxShadow: NB.shadowCard,
+        overflowX: 'auto',
+      }}
+    >
+      <div style={{ color: NB.textDimBlue, whiteSpace: 'pre' }}>
+        racecar@neoracer:~$ ls
+      </div>
+      {HOME_LS.split('\n').map((line, i) => (
+        <div key={i} style={{ whiteSpace: 'pre' }}>
+          {line.split(/(\s+)/).map((tok, j) =>
+            OURS.has(tok) ? (
+              <span key={j} style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
+                {tok}
+              </span>
+            ) : (
+              <span key={j} style={{ color: NB.textDimBlue }}>
+                {tok}
+              </span>
+            ),
+          )}
+        </div>
+      ))}
+    </div>
   );
 }

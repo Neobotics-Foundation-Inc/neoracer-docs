@@ -135,7 +135,7 @@ const TERMS: Term[] = [
     term: 'ROS 2',
     short: 'Robot Operating System 2',
     def: 'The middleware running on the Jetson. Sensors publish topics, your code subscribes, your code publishes drive commands, the actuators subscribe.',
-    see: { label: 'ROS 2 driver', href: '/docs/software/ros2-driver' },
+    see: { label: 'ROS 2 topics', href: '/docs/api-reference/ros2/topics' },
   },
   {
     term: 'Servo center',
@@ -150,7 +150,7 @@ const TERMS: Term[] = [
   {
     term: 'Topic',
     def: 'A named channel in ROS 2 (/scan, /imu, /drive). Publishers don\'t know who\'s reading. Subscribers don\'t know who\'s writing. The middleware does the routing.',
-    see: { label: 'ROS 2 driver', href: '/docs/software/ros2-driver' },
+    see: { label: 'ROS 2 topics', href: '/docs/api-reference/ros2/topics' },
   },
   {
     term: 'Watchdog',

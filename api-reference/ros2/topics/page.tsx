@@ -18,6 +18,30 @@ export const metadata: Metadata = {
     'Every topic the racecar_neo stack publishes and subscribes: /scan, /imu, /odom, /battery, /camera, /drive. Which ones you read, which one you publish, and the drive pipeline that connects them.',
 };
 
+/* `ros2 topic list` on a running car, verified 2026-08-17. Alphabetical, as
+ * the command prints it. Keep this in step with ROWS when either changes. */
+const LIVE_TOPICS: [string, string][] = [
+  ['/battery', 'pack state'],
+  ['/battery/voltage', 'pack voltage on its own'],
+  ['/camera/color', 'JPEG in an Image, 60 fps'],
+  ['/diagnostics', 'ROS 2 internals'],
+  ['/dotmatrix/text', 'text to the 8x8 display'],
+  ['/drive', 'PUBLISH here'],
+  ['/edgetpu/inference', 'inference output, when a model is running'],
+  ['/encoder/speed', 'wheel speed from the encoders'],
+  ['/gamepad_drive', 'what gamepad_node builds from the sticks'],
+  ['/imu/fused', 'accel + gyro fused, 200 Hz'],
+  ['/joy', 'the Flysky receiver'],
+  ['/mag', 'raw magnetometer, not part of the fused output'],
+  ['/motor', 'the final command to the ESC and the servo'],
+  ['/mux_out', 'whichever source the mux is forwarding'],
+  ['/odom', 'integrated from the encoders'],
+  ['/parameter_events', 'ROS 2 internals'],
+  ['/ric/channels', 'raw RC channel values'],
+  ['/rosout', 'ROS 2 internals'],
+  ['/scan', 'the LiDAR over UDP'],
+];
+
 const COLUMNS = [
   { key: 'topic', label: 'Topic', mono: true, accent: true, width: '180px' },
   { key: 'type', label: 'Message type', mono: true, width: '240px' },
@@ -33,7 +57,7 @@ const ROWS = [
     notes: 'One planar sweep from the Lakibeam LiDAR, ~1440 samples, frame_id laser. The depth source for wall follow, gap follow, and mapping. Publisher is RELIABLE.',
   },
   {
-    topic: '/imu',
+    topic: '/imu/fused',
     type: 'sensor_msgs/Imu',
     role: 'Read it',
     notes: 'Orientation, linear acceleration (m/s²), and angular velocity (rad/s) at ~200 Hz, frame_id imu_link. Published by the controller node from the MCU state frame.',
@@ -57,7 +81,7 @@ const ROWS = [
     notes: 'Pack voltage and a 3S charge fraction at ~0.5 Hz. The dashboard shows the same reading as a battery card.',
   },
   {
-    topic: '/camera',
+    topic: '/camera/color',
     type: 'sensor_msgs/Image',
     role: 'Read it',
     notes: 'A JPEG-compressed colour frame at 60 fps from the camera node (USB webcam in MJPG). The bytes are raw JPEG with encoding="jpeg", decode with cv2.imdecode before display. Publisher is best-effort: subscribe with sensor-data QoS or you receive nothing.',
@@ -66,7 +90,7 @@ const ROWS = [
     topic: '/camera/decoded',
     type: 'sensor_msgs/Image',
     role: 'Read it',
-    notes: 'Optional. A decoded copy of /camera that RViz can render directly, republished by the decode_camera node when it is running.',
+    notes: 'Optional. A decoded copy of /camera/color that RViz can render directly, republished by the decode_camera node when it is running, so it does not appear in a default topic list.',
   },
   {
     topic: '/drive',
@@ -99,10 +123,34 @@ const ROWS = [
     notes: 'The throttle-scaled command the controller node turns into the ESP32 serial command. The last hop before hardware.',
   },
   {
-    topic: '/led_matrix/command',
+    topic: '/dotmatrix/text',
     type: 'std_msgs/String',
     role: 'Publish it',
     notes: 'Write text or simple commands to the 8x8 dot-matrix display on the back of the car. Handled by the led_matrix node over USB-UART.',
+  },
+  {
+    topic: '/battery/voltage',
+    type: 'std_msgs/Float32',
+    role: 'Read it',
+    notes: 'Pack voltage on its own, for when you want the number without the rest of the BatteryState message.',
+  },
+  {
+    topic: '/encoder/speed',
+    type: 'std_msgs/Float32',
+    role: 'Read it',
+    notes: 'Wheel speed straight from the encoders, before it is integrated into /odom.',
+  },
+  {
+    topic: '/ric/channels',
+    type: 'std_msgs/Int32MultiArray',
+    role: 'Internal',
+    notes: 'Raw channel values from the Flysky receiver, before the controller node turns them into /joy.',
+  },
+  {
+    topic: '/edgetpu/inference',
+    type: 'std_msgs/String',
+    role: 'Read it',
+    notes: 'Output from the inference node. Only carries traffic while a model is loaded and running.',
   },
 ];
 
@@ -243,6 +291,38 @@ export default function Ros2TopicsPage() {
             THE TOPIC <Red>LIST</Red>
           </DisplayHeading>
           <DataTable columns={COLUMNS} rows={ROWS} />
+
+          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740, marginTop: 26 }}>
+            The driver starts at boot, so all of this is already live when you
+            log in. Run{' '}
+            <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>ros2 topic list</code>{' '}
+            on the car and you get the table above plus a few ROS 2 internals:
+          </p>
+
+          <div
+            style={{
+              marginTop: 16,
+              background: NB.tarmacBlue,
+              color: NB.haloWhite,
+              borderRadius: 12,
+              padding: '22px 24px',
+              fontFamily: NB.monoFont,
+              fontSize: 13.5,
+              lineHeight: 1.75,
+              boxShadow: NB.shadowCard,
+              overflowX: 'auto',
+            }}
+          >
+            <div style={{ color: NB.neoboticsRed, fontWeight: 700, marginBottom: 10 }}>
+              // ros2 topic list
+            </div>
+            {LIVE_TOPICS.map(([topic, note]) => (
+              <div key={topic} style={{ whiteSpace: 'nowrap' }}>
+                <span style={{ display: 'inline-block', minWidth: 168 }}>{topic}</span>
+                <span style={{ color: NB.textDimBlue }}># {note}</span>
+              </div>
+            ))}
+          </div>
         </section>
       </ScrollReveal>
 

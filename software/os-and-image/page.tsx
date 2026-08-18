@@ -118,7 +118,7 @@ export default function OsAndImagePage() {
             <InfoNote term="topic" title="ROS 2 topic">
               A named channel that ROS 2 nodes use to pass messages, such as sensor readings or drive commands. One node publishes to a topic and any number of others subscribe to read it.
             </InfoNote>{' '}on the{' '}
-            <a href="/docs/software/ros2-driver" style={{ color: NB.neoboticsRed, fontWeight: 700, textDecoration: 'none' }}>
+            <a href="/docs/api-reference/ros2/topics" style={{ color: NB.neoboticsRed, fontWeight: 700, textDecoration: 'none' }}>
               ROS 2 driver
             </a>{' '}
             page is live from power-on, with no terminal involved.

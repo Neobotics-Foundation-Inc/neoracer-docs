@@ -135,7 +135,7 @@ racecar ws neoracer   # back to the default`}</Code>
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'ROS 2 driver', href: '/docs/software/ros2-driver' }}
+        prev={{ label: 'Remote desktop', href: '/docs/software/remote-desktop' }}
         next={{ label: 'JupyterLab', href: '/docs/software/jupyterlab' }}
       />
     </DocsShell>

@@ -102,7 +102,7 @@ export default function RemoteDesktopPage() {
 
       <PrevNext
         prev={{ label: 'Networking', href: '/docs/software/networking' }}
-        next={{ label: 'ROS 2 driver', href: '/docs/software/ros2-driver' }}
+        next={{ label: 'Workspaces', href: '/docs/software/workspaces' }}
       />
     </DocsShell>
   );

@@ -105,7 +105,7 @@ export default function CameraApiPage() {
             parts read from, such as the stream of camera images here.
           </InfoNote>
           , covered on the{' '}
-          <a href="/docs/software/ros2-driver" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
+          <a href="/docs/api-reference/ros2/topics" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
             ROS 2 driver
           </a>{' '}
           page.

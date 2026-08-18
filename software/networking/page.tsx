@@ -165,8 +165,10 @@ racecar setup networking --reset             # back to the defaults`}</Code>
                   content: (
                     <>
                       <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 0 }}>
-                        The router is set up from its own admin page, in a
-                        browser.
+                        The Cudy router already comes set up for the car. These
+                        steps are not required, but they are helpful for getting
+                        familiar with the Cudy dashboard and for changing the
+                        network name and password.
                       </p>
                       <PhotoSteps
                         items={[
@@ -174,21 +176,21 @@ racecar setup networking --reset             # back to the defaults`}</Code>
                           { text: <>Open a browser and go to <code style={{ fontFamily: NB.monoFont }}>http://192.168.10.1</code>.</> },
                           { text: <>Sign in. The router administrator password is <code style={{ fontFamily: NB.monoFont }}>neobotics</code>.</> },
                           {
-                            text: <>The first screen is <strong>Operation Mode</strong>. Keep it at the default.</>,
+                            text: <>On <strong>Operation Mode</strong>, keep the default.</>,
                             photos: [{ src: '/images/cudy_setup_Oper_Mode.png', alt: 'The cudy Operation Mode screen, left at its default setting' }],
                           },
                           {
-                            text: <>The second screen shows <strong>WAN mode</strong>. We recommend keeping <code style={{ fontFamily: NB.monoFont }}>neoracer</code> as the hostname. Ignore the error at the top and leave the protocol as it is.</>,
+                            text: <>On <strong>WAN</strong>, we recommend keeping <code style={{ fontFamily: NB.monoFont }}>neoracer</code> as the hostname. Ignore the error at the top and leave the protocol as it is.</>,
                             photos: [{ src: '/images/cudy_setup_WAN_Mode.png', alt: 'The cudy WAN mode screen with neoracer as the hostname' }],
                           },
                           {
-                            text: <>The third screen lets you change the network name and password for both 2.4 GHz and 5 GHz. We recommend keeping the same network name, because it matches the name on the sticker under the car.</>,
+                            text: <>On <strong>Wireless</strong>, change the network name and password for both 2.4 GHz and 5 GHz. We recommend keeping the same network name, because it matches the name on the sticker under the car.</>,
                             photos: [{ src: '/images/cudy_setup_change_pass.png', alt: 'The cudy wireless screen, where the 2.4 GHz and 5 GHz network names and passwords are set' }],
                           },
                           {
                             text: (
                               <>
-                                Then you get a summary. Click <strong>Save and apply</strong>.
+                                On <strong>Summary</strong>, click <strong>Save and apply</strong>.
                                 You will normally be disconnected from the Wi-Fi at
                                 this point: changing the SSID or password drops every
                                 device.

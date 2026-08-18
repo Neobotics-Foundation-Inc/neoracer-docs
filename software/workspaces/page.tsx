@@ -93,13 +93,19 @@ Documents   jupyter_ws  neoracer-installer  Pictures       Templates`}</Code>
               content: (
                 <>
                   <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-                    The workspace every terminal opens on. You edit things in{' '}
-                    <code style={{ fontFamily: NB.monoFont }}>src</code>;{' '}
-                    <code style={{ fontFamily: NB.monoFont }}>build</code>,{' '}
-                    <code style={{ fontFamily: NB.monoFont }}>install</code> and{' '}
-                    <code style={{ fontFamily: NB.monoFont }}>log</code> are output
-                    that <code style={{ fontFamily: NB.monoFont }}>racecar build</code>{' '}
-                    regenerates.
+                    <code style={{ fontFamily: NB.monoFont }}>ros2_ws</code>{' '}
+                    stores the{' '}
+                    <a
+                      href="https://github.com/Neobotics-Foundation-Inc/neoracer_ros2_driver"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ color: NB.neoboticsRed, fontWeight: 700 }}
+                    >
+                      neoracer_ros2_driver
+                    </a>{' '}
+                    pulled from GitHub. You can view your dashboards, trained
+                    models, launch and config files, and all the setup scripts
+                    used to initialise the NeoRacer.
                   </p>
                   <Code lang="bash">{`~/ros2_ws$ ls
 build  install  log  src
@@ -112,22 +118,10 @@ CHANGELOG.md     docs      neoracer_ros2_driver  scripts
 CITATION.cff     launch    package.xml           setup.cfg
 config           LICENSE   README.md             setup.py
 CONTRIBUTING.md  models    resource              test`}</Code>
-                  <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 16 }}>
-                    Inside the driver package,{' '}
-                    <code style={{ fontFamily: NB.monoFont }}>launch</code> holds the
-                    launch files, <code style={{ fontFamily: NB.monoFont }}>config</code>{' '}
-                    the YAML that tunes them,{' '}
-                    <code style={{ fontFamily: NB.monoFont }}>scripts</code> the{' '}
-                    <code style={{ fontFamily: NB.monoFont }}>racecar</code> command
-                    and the systemd services, and{' '}
-                    <code style={{ fontFamily: NB.monoFont }}>neoracer_ros2_driver</code>{' '}
-                    the node source itself.
-                  </p>
-                  <Callout type="warn" title="racecar update overwrites this">
-                    <code style={{ fontFamily: NB.monoFont }}>racecar update</code>{' '}
-                    resets the driver repo to the latest published version, so edits
-                    you make here are discarded. Copy anything you want to keep before
-                    running it.
+                  <Callout type="warn" title="This workspace gets overwritten">
+                    When updating the car, the ROS 2 driver gets reset to the
+                    latest published version, so edits you make here are
+                    discarded. Copy anything you want to keep before updating.
                   </Callout>
                 </>
               ),
@@ -137,11 +131,11 @@ CONTRIBUTING.md  models    resource              test`}</Code>
               content: (
                 <>
                   <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-                    The one you actually work in, and the only one you need day to
-                    day. JupyterLab serves this directory, so the file browser in
-                    your browser is exactly this folder. Everything else on the car
-                    sits outside that root, so you cannot wander into the driver or
-                    the system by accident.
+                    <code style={{ fontFamily: NB.monoFont }}>jupyter_ws</code>{' '}
+                    is the main workspace where code is written. JupyterLab is
+                    available in your browser as a service on port{' '}
+                    <code style={{ fontFamily: NB.monoFont }}>8888</code>, and
+                    its file system is this folder.
                   </p>
                   <Code lang="bash">{`~/jupyter_ws$ ls
 neoracer-os  README.md
@@ -158,28 +152,16 @@ camera.py      drive.py  nav.py       racecar_core.py   simulation   vision.py
 controller.py  led.py    physics.py   racecar_utils.py  slam.py
 display.py     lidar.py  __pycache__  real              telemetry.py`}</Code>
                   <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 16 }}>
-                    <code style={{ fontFamily: NB.monoFont }}>labs</code> holds the lab
-                    exercises the car ships with, plus{' '}
-                    <code style={{ fontFamily: NB.monoFont }}>template.py</code> to
-                    start from and{' '}
-                    <code style={{ fontFamily: NB.monoFont }}>tests</code>, which is
-                    what Setup runs to check the car.{' '}
-                    <code style={{ fontFamily: NB.monoFont }}>library</code> is the
-                    Python you import: one file per{' '}
-                    <code style={{ fontFamily: NB.monoFont }}>rc.*</code> module, with{' '}
-                    <code style={{ fontFamily: NB.monoFont }}>real</code> and{' '}
-                    <code style={{ fontFamily: NB.monoFont }}>simulation</code> holding
-                    the two backends that sit behind the same API. Your own files can
-                    go straight in{' '}
-                    <code style={{ fontFamily: NB.monoFont }}>~/jupyter_ws</code>.
+                    In the workspace there is{' '}
+                    <code style={{ fontFamily: NB.monoFont }}>labs</code> and{' '}
+                    <code style={{ fontFamily: NB.monoFont }}>library</code>.{' '}
+                    <code style={{ fontFamily: NB.monoFont }}>labs</code> holds the
+                    lab exercises and some template code.{' '}
+                    <code style={{ fontFamily: NB.monoFont }}>library</code> has all
+                    the <code style={{ fontFamily: NB.monoFont }}>rc.*</code> modules
+                    that we use in the{' '}
+                    <Link href="/docs/api-reference/python/drive" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Python API reference</Link>.
                   </p>
-                  <Callout type="tip" title="Same files over SSH">
-                    This is an ordinary directory on the Jetson, so{' '}
-                    <code style={{ fontFamily: NB.monoFont }}>scp</code>,{' '}
-                    <code style={{ fontFamily: NB.monoFont }}>git</code>, and an SSH
-                    session all see exactly what the browser shows. Use whichever
-                    suits the job.
-                  </Callout>
 
                   <div style={{ marginTop: 30 }}>
                     <MonoLabel>Opening JupyterLab</MonoLabel>

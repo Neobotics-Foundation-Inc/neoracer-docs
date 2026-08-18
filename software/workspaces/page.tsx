@@ -73,8 +73,8 @@ Documents   jupyter_ws  neoracer-installer  Pictures       Templates`}</Code>
                   { dir: 'osracer_ws', what: 'The vendor stack: robot description, SLAM and Nav2.' },
                   { dir: 'neoracer-installer', what: 'The installer that set the car up.' },
                   { dir: 'logs', what: 'One timestamped folder per run of the driver.' },
-                  { dir: 'data', what: 'Scratch space on the SSD.' },
-                  { dir: 'osracer_demo', what: 'Demo material that came with the vendor image.' },
+                  { dir: 'data', what: 'Object-detection datasets, written by the camlabel dashboard.' },
+                  { dir: 'osracer_demo', what: 'Came with the image. Nothing in the driver uses it.' },
                 ]}
               />
             </div>
@@ -258,13 +258,38 @@ docs  logs  README.md  scripts  tests`}</Code>
             </div>
 
             <div style={{ marginTop: 24 }}>
-              <MonoLabel>data and osracer_demo</MonoLabel>
+              <MonoLabel>data</MonoLabel>
               <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 6 }}>
-                Neither is part of the day-to-day workflow.{' '}
-                <code style={{ fontFamily: NB.monoFont }}>data</code> is scratch
-                space on the SSD, and{' '}
-                <code style={{ fontFamily: NB.monoFont }}>osracer_demo</code>{' '}
-                came with the vendor image. You can leave both alone.
+                Written by the camlabel dashboard, and created the first time
+                you use it. It holds the images you capture, the labels you draw
+                on them, and the object classes you define, laid out in YOLO
+                format. That means the folder is a training dataset as it
+                stands: point an object-detection training run at it and it
+                works, no conversion step.
+              </p>
+              <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 12 }}>
+                camlabel is one of five lab dashboards. They install switched
+                off and you start one for a session, because each holds the
+                camera or the GPU while it runs.
+              </p>
+              <Code lang="bash">{`racecar service start camlabel     # then open port 8082 in a browser`}</Code>
+              <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 12 }}>
+                A model you train from it is loaded by the driver&apos;s
+                inference node. Turning a{' '}
+                <code style={{ fontFamily: NB.monoFont }}>.pt</code> into the
+                engine the car runs is{' '}
+                <code style={{ fontFamily: NB.monoFont }}>racecar compile</code>,
+                on the{' '}
+                <Link href="/docs/api-reference/cli" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>racecar CLI</Link>{' '}
+                page.
+              </p>
+            </div>
+
+            <div style={{ marginTop: 24 }}>
+              <MonoLabel>osracer_demo</MonoLabel>
+              <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 6 }}>
+                Came with the vendor image. Nothing in the driver reads or
+                writes it, and nothing in these docs needs it. Leave it alone.
               </p>
             </div>
           </div>

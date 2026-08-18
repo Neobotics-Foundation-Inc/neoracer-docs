@@ -9,7 +9,7 @@ import {
   NumberedFeatureCard,
   MonoLabel,
 } from '@/components/docs/Editorial';
-import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
+import { ScrollReveal, MouseFollowGlow, InfoNote, PhotoSteps, Tabs } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext, Callout, Code, DataTable } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
@@ -99,6 +99,120 @@ export default function NetworkingPage() {
               </Link>. Using the Jetson access point means the Jetson cannot
               connect to Wi-Fi directly.
             </Callout>
+          </div>
+        </section>
+      </ScrollReveal>
+
+      {/* ── Section 02 · Network setup ─────────────────────────────────── */}
+      <ScrollReveal>
+        <section style={{ position: 'relative', paddingBottom: 56 }}>
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <DisplayHeading size="lg">
+              NETWORK <Red>SETUP</Red>
+            </DisplayHeading>
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
+              Set up whichever network you picked. The access point is
+              configured on the car itself; the cudy router is configured from
+              a browser.
+            </p>
+
+            <Tabs
+              ariaLabel="Network setup method"
+              tabs={[
+                {
+                  label: 'Jetson Access Point',
+                  content: (
+                    <>
+                      <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 0 }}>
+                        <code style={{ fontFamily: NB.monoFont }}>racecar setup networking</code>{' '}
+                        configures the car&apos;s side of everything on this page:
+                        the access point, the fixed Ethernet address, and the
+                        lidar link. Run with no flags it applies the defaults.
+                        Flags change a setting, and every flag value is saved to{' '}
+                        <code style={{ fontFamily: NB.monoFont }}>~/.config/racecar/networking.env</code>{' '}
+                        on the car, so the setting survives reboots and later runs.
+                      </p>
+                      <Code lang="bash">{`racecar setup networking --ssid=neoracer-2   # rename the access point
+racecar setup networking --psk=mypassword    # change the AP password
+racecar setup networking --show              # print the saved settings
+racecar setup networking --reset             # back to the defaults`}</Code>
+                      <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 14 }}>
+                        Every flag is listed on the{' '}
+                        <Link href="/docs/api-reference/cli" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>racecar CLI</Link>{' '}
+                        page.
+                      </p>
+                      <Callout type="warn" title="Rename the access point before you power up a second car">
+                        Every car ships broadcasting{' '}
+                        <code style={{ fontFamily: NB.monoFont }}>neoracer-1</code>, so two
+                        cars on their access points in the same room show up as two
+                        networks with the same name and you cannot tell which is which.
+                        Rename each one the first time you use it,{' '}
+                        <code style={{ fontFamily: NB.monoFont }}>--ssid=neoracer-2</code>,{' '}
+                        <code style={{ fontFamily: NB.monoFont }}>--ssid=neoracer-3</code>,
+                        and so on. The name sticks. The cudy routers do not have this
+                        problem; each one is preconfigured with its own name.
+                      </Callout>
+                    </>
+                  ),
+                },
+                {
+                  label: 'Cudy router',
+                  content: (
+                    <>
+                      <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 0 }}>
+                        The router is set up from its own admin page, in a
+                        browser. Work through the wizard once and the car and
+                        your laptop share a network from then on.
+                      </p>
+                      <PhotoSteps
+                        items={[
+                          { text: <>Make sure your device is already connected to the cudy router&apos;s Wi-Fi.</> },
+                          { text: <>Open a browser and go to <code style={{ fontFamily: NB.monoFont }}>http://192.168.10.1</code>.</> },
+                          { text: <>Sign in. The router administrator password is <code style={{ fontFamily: NB.monoFont }}>neobotics</code>.</> },
+                          {
+                            text: <>The first screen is <strong>Operation Mode</strong>. Keep it at the default.</>,
+                            photos: [{ src: '/images/cudy_setup_Oper_Mode.png', alt: 'The cudy Operation Mode screen, left at its default setting' }],
+                          },
+                          {
+                            text: <>The second screen shows <strong>WAN mode</strong>. We recommend keeping <code style={{ fontFamily: NB.monoFont }}>neoracer</code> as the hostname. Ignore the error at the top and leave the protocol as it is.</>,
+                            photos: [{ src: '/images/cudy_setup_WAN_Mode.png', alt: 'The cudy WAN mode screen with neoracer as the hostname' }],
+                          },
+                          {
+                            text: <>The third screen lets you change the network name and password for both 2.4 GHz and 5 GHz. We recommend keeping the same network name, because it matches the name on the sticker under the car.</>,
+                            photos: [{ src: '/images/cudy_setup_change_pass.png', alt: 'The cudy wireless screen, where the 2.4 GHz and 5 GHz network names and passwords are set' }],
+                          },
+                          {
+                            text: (
+                              <>
+                                Then you get a summary. Click <strong>Save and apply</strong>.
+                                You will normally be disconnected from the Wi-Fi at
+                                this point: changing the SSID or password drops every
+                                device, including yours. Once the router applies the
+                                change, reconnect to the network before you expect to
+                                reach the car again.
+                              </>
+                            ),
+                            photos: [{ src: '/images/cudy_setup_summary.png', alt: 'The cudy summary screen with the Save and apply button' }],
+                          },
+                          {
+                            text: <>Connect back to the Wi-Fi and you land on the router dashboard. This is where you can see exactly what is connected to the car&apos;s network. Click <strong>Clients</strong>.</>,
+                            photos: [{ src: '/images/cudy_setup_dashboard.png', alt: 'The cudy router dashboard after reconnecting, with Clients in the menu' }],
+                          },
+                          {
+                            text: <>Then click <strong>Devices</strong>.</>,
+                            photos: [{ src: '/images/cudy_setup_devices.png', alt: 'The cudy Clients view with the Devices tab' }],
+                          },
+                          {
+                            text: <>The Nvidia Jetson appears in that list, alongside any personal devices on the network.</>,
+                            photos: [{ src: '/images/cudy_setup_view_jetson.png', alt: 'The cudy device list showing the Nvidia Jetson among the connected devices' }],
+                          },
+                        ]}
+                      />
+                    </>
+                  ),
+                },
+              ]}
+            />
           </div>
         </section>
       </ScrollReveal>
@@ -198,88 +312,14 @@ http://192.168.10.100:8888     # JupyterLab        (10.42.0.1 on the AP)`}</Code
                 body="Change the 2.4G and 5G SSID and password in the setup wizard's Wireless step. After you Save & Apply, re-join the renamed network from your laptop."
               />
             </div>
-            <Callout type="warn" title="Re-join after you rename it">
-              Changing the SSID or password drops every device, including you. Once
-              the router applies the change, reconnect to the new network name
-              before you expect to reach the car again.
-            </Callout>
             <Callout type="note" title="Rebuilding the access point">
               The access point is configured on the car, not the router. It is
               built and renamed with{' '}
               <code style={{ fontFamily: NB.monoFont }}>racecar setup networking</code>,
-              covered in the next section.
+              covered under Network setup above.
             </Callout>
           </div>
         </section>
-      </ScrollReveal>
-
-      {/* ── Section 06 · racecar setup networking ──────────────────────── */}
-      <ScrollReveal>
-        <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <div style={{ position: 'relative', zIndex: 1 }}>
-            <DisplayHeading size="lg">
-              THE SETUP <Red>COMMAND</Red>
-            </DisplayHeading>
-            <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-              <code style={{ fontFamily: NB.monoFont }}>racecar setup networking</code>{' '}
-              configures the car&apos;s side of everything on this page: the
-              access point, the fixed Ethernet address, and the lidar link. Run
-              with no flags it applies the defaults. Flags change a setting, and
-              every flag value is saved to{' '}
-              <code style={{ fontFamily: NB.monoFont }}>~/.config/racecar/networking.env</code>{' '}
-              on the car, so the setting survives reboots and later runs.
-            </p>
-            <Code lang="bash">{`racecar setup networking --ssid=neoracer-2   # rename the access point
-racecar setup networking --psk=mypassword    # change the AP password
-racecar setup networking --show              # print the saved settings
-racecar setup networking --reset             # back to the defaults`}</Code>
-            <div style={{ marginTop: 18 }}>
-              <DataTable
-                columns={[
-                  { key: 'flag', label: 'Flag', accent: true, mono: true },
-                  { key: 'sets', label: 'Sets' },
-                  { key: 'def', label: 'Default', mono: true },
-                ]}
-                rows={[
-                  { flag: '--ssid', sets: 'Access point name', def: 'neoracer-1' },
-                  { flag: '--psk', sets: 'Access point password', def: 'neobotics' },
-                  { flag: '--channel', sets: 'Access point 2.4 GHz channel', def: '6' },
-                  { flag: '--ap-addr', sets: "The car's address on the access point", def: '10.42.0.1/24' },
-                  { flag: '--eth-static', sets: "The car's fixed address on the cudy", def: '192.168.10.100/24' },
-                  { flag: '--lidar-host', sets: 'Host address on the lidar link', def: '192.168.8.1/24' },
-                  { flag: '--wifi-iface', sets: 'Wi-Fi interface name', def: 'wlP1p1s0' },
-                  { flag: '--eth-iface', sets: 'Ethernet interface name', def: 'nr_eth0' },
-                ]}
-              />
-            </div>
-            <Callout type="warn" title="Rename the access point before you power up a second car">
-              Every car ships broadcasting{' '}
-              <code style={{ fontFamily: NB.monoFont }}>neoracer-1</code>, so two
-              cars on their access points in the same room show up as two
-              networks with the same name and you cannot tell which is which.
-              Rename each one the first time you use it,{' '}
-              <code style={{ fontFamily: NB.monoFont }}>--ssid=neoracer-2</code>,{' '}
-              <code style={{ fontFamily: NB.monoFont }}>--ssid=neoracer-3</code>,
-              and so on. The name sticks. The cudy routers do not have this
-              problem; each one is preconfigured with its own name.
-            </Callout>
-            <Callout type="warn" title="Run it from a wired session">
-              The command takes over the Wi-Fi radio, so an SSH session over
-              Wi-Fi drops the moment it runs. Use a monitor and keyboard at the
-              car, the USB cable link, or SSH over the cudy&apos;s wired side.
-            </Callout>
-          </div>
-        </section>
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <Callout type="tip" title="Can't reach the car?">
-          If the Wi-Fi won&apos;t connect or the address won&apos;t answer, you
-          can reach a person at{' '}
-          <a href="mailto:support@neobotics.org" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-            support@neobotics.org
-          </a>.
-        </Callout>
       </ScrollReveal>
 
       <PrevNext

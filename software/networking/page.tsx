@@ -91,8 +91,7 @@ export default function NetworkingPage() {
                         requires the{' '}
                         <InfoNote term="CLI" title="CLI (command-line interface)">
                           A way of controlling the car by typing commands into a
-                          terminal instead of clicking through a web page. On the
-                          NeoRacer every command starts with <em>racecar</em>.
+                          terminal instead of clicking through a web page.
                         </InfoNote>
                       </>
                     ),
@@ -137,32 +136,27 @@ export default function NetworkingPage() {
                     <>
                       <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 0 }}>
                         <code style={{ fontFamily: NB.monoFont }}>racecar setup networking</code>{' '}
-                        configures the car&apos;s side of everything on this page:
-                        the access point, the fixed Ethernet address, and the
-                        lidar link. Run with no flags it applies the defaults.
-                        Flags change a setting, and every flag value is saved to{' '}
+                        configures the Jetson&apos;s access point. Run with no
+                        flags it applies the defaults. All flag values are saved
+                        to{' '}
                         <code style={{ fontFamily: NB.monoFont }}>~/.config/racecar/networking.env</code>{' '}
-                        on the car, so the setting survives reboots and later runs.
+                        on the car, so the settings are applied on boot.
                       </p>
                       <Code lang="bash">{`racecar setup networking --ssid=neoracer-2   # rename the access point
 racecar setup networking --psk=mypassword    # change the AP password
 racecar setup networking --show              # print the saved settings
 racecar setup networking --reset             # back to the defaults`}</Code>
                       <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 14 }}>
-                        Every flag is listed on the{' '}
+                        Other flags are listed on the{' '}
                         <Link href="/docs/api-reference/cli" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>racecar CLI</Link>{' '}
                         page.
                       </p>
-                      <Callout type="warn" title="Rename the access point before you power up a second car">
+                      <Callout type="tip" title="Rename access point with multiple cars">
                         Every car ships broadcasting{' '}
                         <code style={{ fontFamily: NB.monoFont }}>neoracer-1</code>, so two
-                        cars on their access points in the same room show up as two
-                        networks with the same name and you cannot tell which is which.
-                        Rename each one the first time you use it,{' '}
-                        <code style={{ fontFamily: NB.monoFont }}>--ssid=neoracer-2</code>,{' '}
-                        <code style={{ fontFamily: NB.monoFont }}>--ssid=neoracer-3</code>,
-                        and so on. The name sticks. The cudy routers do not have this
-                        problem; each one is preconfigured with its own name.
+                        cars share the same network name. Rename each one the first
+                        time you use it. The cudy routers do not have this problem as
+                        they are preconfigured with unique names.
                       </Callout>
                     </>
                   ),
@@ -173,8 +167,7 @@ racecar setup networking --reset             # back to the defaults`}</Code>
                     <>
                       <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 0 }}>
                         The router is set up from its own admin page, in a
-                        browser. Work through the wizard once and the car and
-                        your laptop share a network from then on.
+                        browser.
                       </p>
                       <PhotoSteps
                         items={[
@@ -270,18 +263,29 @@ ssh racecar@10.42.0.1          # access point
         <section style={{ position: 'relative', paddingBottom: 56 }}>
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              IN A <Red>BROWSER</Red>
+              EXAMPLE IP <Red>USE</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-              The car brings up its whole stack at boot: the driver, the
-              watchdog, the health dashboard, and JupyterLab all run as
-              services.
-              Two of them are web pages, so a browser on the car&apos;s network
-              is enough:
+              The car runs its whole stack as services on boot: the driver, the
+              watchdog, the health dashboard, and JupyterLab. The latter two are
+              webpages and can be accessed via the browser.
             </p>
             <Code lang="bash">{`http://192.168.10.100:8080     # health dashboard   (10.42.0.1 on the AP)
 http://192.168.10.100:8888     # JupyterLab        (10.42.0.1 on the AP)`}</Code>
-            <Callout type="note" title="Everything is already running">
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 18 }}>
+              Each address is two parts. The first is the car&apos;s IP, which
+              depends on the network you picked:{' '}
+              <code style={{ fontFamily: NB.monoFont }}>192.168.10.100</code> on
+              the cudy router, or{' '}
+              <code style={{ fontFamily: NB.monoFont }}>10.42.0.1</code> on the
+              Jetson access point. The second is the port after the colon, which
+              picks the service:{' '}
+              <code style={{ fontFamily: NB.monoFont }}>:8080</code> for the
+              health dashboard and{' '}
+              <code style={{ fontFamily: NB.monoFont }}>:8888</code> for
+              JupyterLab. The IP changes with your network; the port does not.
+            </p>
+            <Callout type="note" title="Maintain services on the car">
               There is nothing to start after a boot. Check or restart the
               services from a terminal with{' '}
               <code style={{ fontFamily: NB.monoFont }}>racecar service status</code>{' '}

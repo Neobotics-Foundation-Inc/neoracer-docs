@@ -186,7 +186,7 @@ unzip osrcore-firmware-v1.0.5.zip   # -> osrcore-firmware-v1.0.5.bin`}</Code>
 
       <PrevNext
         prev={{ label: 'JupyterLab', href: '/docs/software/jupyterlab' }}
-        next={{ label: 'Mapping (SLAM)', href: '/docs/software/mapping' }}
+        next={{ label: 'API reference', href: '/docs/api-reference/python/drive' }}
       />
     </DocsShell>
   );

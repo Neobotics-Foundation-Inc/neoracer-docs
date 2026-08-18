@@ -153,25 +153,21 @@ racecar service logs jupyter # or name one`}</Code>
 # also: wallfollow 8081, pursuit 8083, eps 8084, smartfollow 8085`}</Code>
             </div>
 
-            <Callout type="warn" title="The autonomy unit is held">
-              A fifth unit,{' '}
-              <code style={{ fontFamily: NB.monoFont }}>neoracer-autonomy</code>,
-              exists in the repo but setup deliberately does not install it, and
-              removes it from a car that has it from an earlier run. It is what
-              would publish the transform tree at boot. Until it ships, start
-              that layer by hand:
-              <Code lang="bash">{`bash ~/ros2_ws/src/neoracer_ros2_driver/scripts/launch_autonomy.sh`}</Code>
-              This is why{' '}
-              <Link href="/docs/software/mapping" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Mapping</Link>{' '}
-              and{' '}
-              <Link href="/docs/software/navigation" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Navigation</Link>{' '}
-              both ask for a spare terminal.
+            <Callout type="warn" title="A fifth unit is held back">
+              <code style={{ fontFamily: NB.monoFont }}>neoracer-autonomy</code>{' '}
+              exists in the driver repo but setup deliberately does not install
+              it, and removes it from a car that has it from an earlier run. It
+              is the layer that would publish the transform tree at boot, so on
+              a shipped car nothing publishes{' '}
+              <code style={{ fontFamily: NB.monoFont }}>/tf</code> or{' '}
+              <code style={{ fontFamily: NB.monoFont }}>/robot_description</code>.
+              Everything else on this page is unaffected.
             </Callout>
           </div>
         </section>
       </ScrollReveal>
 
-      {/* ── 03 · mapping + navigation ───────────────────────────────────── */}
+      {/* ── 03 · autonomy commands, parked ──────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 48 }}>
           <GhostNumeral n="03" top={-30} right={-20} size={430} />
@@ -180,26 +176,21 @@ racecar service logs jupyter # or name one`}</Code>
               MAPPING AND <Red>NAVIGATION</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-              Both are activities, not daemons: they run in the foreground until
-              you Ctrl-C them, on top of the running driver. Each one warns you
-              if the driver or the autonomy base is missing, and reaches into
-              the vendor workspace on your behalf, so no{' '}
-              <code style={{ fontFamily: NB.monoFont }}>racecar ws</code> is needed.
+              <code style={{ fontFamily: NB.monoFont }}>racecar mapping</code> and{' '}
+              <code style={{ fontFamily: NB.monoFont }}>racecar navigation</code>{' '}
+              exist in the CLI, but they depend on the autonomy layer above, and
+              that is not installed on a shipped car. Both need its transform
+              tree, and navigation also needs its bridge from Nav2 to the motors.
             </p>
-            <Code lang="bash">{`racecar mapping                      # slam_toolbox (default), gmapping, cartographer
-racecar mapping save lab             # save from any backend, from another terminal
-racecar mapping rviz                 # watch it build (car desktop only)
-
-racecar navigation                   # teb planner, map named "map"
-racecar navigation dwb lab           # dwb planner, map named "lab"
-racecar navigation rviz              # set goals (car desktop only)`}</Code>
-            <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 14 }}>
-              Maps live in the vendor workspace at{' '}
-              <code style={{ fontFamily: NB.monoFont }}>~/osracer_ws/src/osracer/osracer_slam/maps/</code>.
-              Full walkthroughs are on{' '}
-              <Link href="/docs/software/mapping" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Mapping</Link>{' '}
-              and{' '}
-              <Link href="/docs/software/navigation" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Navigation</Link>.
+            <Callout type="warn" title="They start without complaining">
+              Neither command refuses to run. They print a warning that the
+              autonomy base is missing and then launch anyway, so SLAM comes up
+              and quietly produces nothing, and Nav2 plans a route the car never
+              drives. Treat the warning as a stop sign.
+            </Callout>
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 16 }}>
+              Full pages for both are written and will go live with the autonomy
+              unit.
             </p>
           </div>
         </section>

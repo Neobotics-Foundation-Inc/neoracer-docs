@@ -85,7 +85,7 @@ export default function NetworkingPage() {
                   { k: 'Gateway', cudy: '192.168.10.1', ap: '10.42.0.1' },
                   { k: 'Extra hardware', cudy: 'the included cudy router', ap: 'none' },
                   { k: 'Setup', cudy: 'automatic once the router is plugged in', ap: 'requires the CLI' },
-                  { k: 'Antennas', cudy: 'attached to the router', ap: 'externally placed (prepare the car)' },
+                  { k: 'Antennas', cudy: 'attached to the router', ap: 'externally placed' },
                 ]}
               />
             </div>

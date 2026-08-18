@@ -6,7 +6,6 @@ import {
   DisplayHeading,
   Red,
   GhostNumeral,
-  NumberedFeatureCard,
   MonoLabel,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow, InfoNote, PhotoSteps, Tabs } from '@/components/docs/Interactive';
@@ -34,7 +33,7 @@ export default function NetworkingPage() {
           <GhostNumeral n="01" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              NETWORK<Red>ING</Red>
+              NEORACER <Red>NETWORKS</Red>
             </DisplayHeading>
             <p
               style={{
@@ -84,7 +83,20 @@ export default function NetworkingPage() {
                   { k: 'Network IP', cudy: '192.168.10.100', ap: '10.42.0.1' },
                   { k: 'Gateway', cudy: '192.168.10.1', ap: '10.42.0.1' },
                   { k: 'Extra hardware', cudy: 'the included cudy router', ap: 'none' },
-                  { k: 'Setup', cudy: 'automatic', ap: 'requires the CLI' },
+                  {
+                    k: 'Setup',
+                    cudy: 'automatic',
+                    ap: (
+                      <>
+                        requires the{' '}
+                        <InfoNote term="CLI" title="CLI (command-line interface)">
+                          A way of controlling the car by typing commands into a
+                          terminal instead of clicking through a web page. On the
+                          NeoRacer every command starts with <em>racecar</em>.
+                        </InfoNote>
+                      </>
+                    ),
+                  },
                   { k: 'Antennas', cudy: 'attached to the router', ap: 'externally placed' },
                 ]}
               />
@@ -187,9 +199,7 @@ racecar setup networking --reset             # back to the defaults`}</Code>
                                 Then you get a summary. Click <strong>Save and apply</strong>.
                                 You will normally be disconnected from the Wi-Fi at
                                 this point: changing the SSID or password drops every
-                                device, including yours. Once the router applies the
-                                change, reconnect to the network before you expect to
-                                reach the car again.
+                                device.
                               </>
                             ),
                             photos: [{ src: '/images/cudy_setup_summary.png', alt: 'The cudy summary screen with the Save and apply button' }],
@@ -278,45 +288,6 @@ http://192.168.10.100:8888     # JupyterLab        (10.42.0.1 on the AP)`}</Code
               and <code style={{ fontFamily: NB.monoFont }}>racecar service restart</code>;
               logs stream with{' '}
               <code style={{ fontFamily: NB.monoFont }}>racecar service logs</code>.
-            </Callout>
-          </div>
-        </section>
-      </ScrollReveal>
-
-      {/* ── Section 05 · Router admin (cudy path) ──────────────────────── */}
-      <ScrollReveal>
-        <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <div style={{ position: 'relative', zIndex: 1 }}>
-            <DisplayHeading size="lg">
-              ROUTER <Red>ADMIN</Red>
-            </DisplayHeading>
-            <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-              On the cudy path, you rarely touch the router itself. You open it
-              to find the car&apos;s address if it isn&apos;t at the default, or
-              to rename the Wi-Fi. The admin page is at{' '}
-              <code style={{ fontFamily: NB.monoFont }}>http://192.168.10.1</code>, and
-              the admin password is{' '}
-              <code style={{ fontFamily: NB.monoFont }}>neobotics</code>.
-            </p>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 18, marginTop: 18 }}>
-              <NumberedFeatureCard
-                n={1}
-                title="Find the car's IP"
-                lede="System Status → Devices."
-                body="The DHCP pool hands out addresses from 192.168.10.101, and the car holds the static 192.168.10.100 once the driver setup has run. If a device picked up a different address, the Devices list shows the wired client and its IP."
-              />
-              <NumberedFeatureCard
-                n={2}
-                title="Rename the Wi-Fi"
-                lede="Quick Setup → Wireless."
-                body="Change the 2.4G and 5G SSID and password in the setup wizard's Wireless step. After you Save & Apply, re-join the renamed network from your laptop."
-              />
-            </div>
-            <Callout type="note" title="Rebuilding the access point">
-              The access point is configured on the car, not the router. It is
-              built and renamed with{' '}
-              <code style={{ fontFamily: NB.monoFont }}>racecar setup networking</code>,
-              covered under Network setup above.
             </Callout>
           </div>
         </section>

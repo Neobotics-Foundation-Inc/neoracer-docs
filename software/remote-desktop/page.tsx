@@ -7,7 +7,7 @@ import {
   GhostNumeral,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow, InfoNote, PhotoSteps } from '@/components/docs/Interactive';
-import { Crumbs, Callout, Code, PrevNext } from '@/components/docs/DocsPrimitives';
+import { Crumbs, Callout, PrevNext } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
   title: 'Remote desktop · Software · NeoRacer Docs',
@@ -85,7 +85,7 @@ export default function RemoteDesktopPage() {
             <PhotoSteps
               items={[
                 {
-                  text: <>Open RustDesk on the car&apos;s desktop (it starts with the system; its window shows &quot;Your Desktop&quot; with an ID).</>,
+                  text: <>Open RustDesk on the car&apos;s desktop.</>,
                   photos: [{ src: '/images/rustdesk-main.png', alt: 'RustDesk main window on the Jetson desktop, showing the Your Desktop ID and one-time password' }],
                 },
                 { text: <>Open <strong>Settings</strong> from the menu, then the <strong>Security</strong> tab.</> },
@@ -93,39 +93,21 @@ export default function RemoteDesktopPage() {
                   text: <>Scroll to the <strong>Password</strong> section and select <strong>Use permanent password</strong>. The dropdown above it can stay on &quot;Accept sessions via both&quot;.</>,
                   photos: [{ src: '/images/rustdesk-security.png', alt: 'RustDesk Security settings with the Password section: Use permanent password selected, Set permanent password button' }],
                 },
-                { text: <>Click <strong>Set permanent password</strong>, pick one, and keep it somewhere sensible.</> },
+                { text: <>Click <strong>Set permanent password</strong>.</> },
               ]}
             />
           </div>
         </section>
       </ScrollReveal>
 
-      {/* ── 02 · Connect from the laptop ─────────────────────────────── */}
       <ScrollReveal>
-        <section style={{ position: 'relative', paddingBottom: 44 }}>
-          <div style={{ position: 'relative', zIndex: 1 }}>
-            <DisplayHeading size="lg">
-              CONNECT BY <Red>ADDRESS</Red>
-            </DisplayHeading>
-            <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-              Install RustDesk on your laptop from{' '}
-              <a href="https://rustdesk.com" target="_blank" rel="noopener noreferrer" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>rustdesk.com</a>,
-              join the car&apos;s network, and type the car&apos;s address into
-              the <strong>Control Remote Desktop</strong> field. Enter the
-              RustDesk password (<code style={{ fontFamily: NB.monoFont }}>Neo-2026</code>{' '}
-              unless you changed it) and the Jetson&apos;s desktop opens in a window.
-            </p>
-            <Code lang="bash">{`10.42.0.1          # on the car's access point (neoracer-1)
-192.168.10.100     # on the cudy router`}</Code>
-            <Callout type="note" title="Why the address, not the ID">
-              RustDesk&apos;s ID connects through its servers on the internet,
-              and the car&apos;s own network doesn&apos;t reach the internet, so
-              the ID route reports &quot;not ready&quot; there. The IP address
-              connects directly across the local network instead, no internet
-              involved. On the cudy with its uplink attached, either way works.
-            </Callout>
-          </div>
-        </section>
+        <Callout type="note" title="Why the address, not the ID">
+          RustDesk&apos;s ID connects through its servers on the internet, and
+          the car&apos;s own network doesn&apos;t reach the internet, so the ID
+          route reports &quot;not ready&quot; there. The IP address connects
+          directly across the local network instead, no internet involved. On
+          the cudy with its uplink attached, either way works.
+        </Callout>
       </ScrollReveal>
 
       <PrevNext

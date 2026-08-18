@@ -7,7 +7,7 @@ import {
   GhostNumeral,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow, InfoNote, PhotoSteps } from '@/components/docs/Interactive';
-import { Crumbs, Callout, PrevNext } from '@/components/docs/DocsPrimitives';
+import { Crumbs, PrevNext } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
   title: 'Remote desktop · Software · NeoRacer Docs',
@@ -57,7 +57,7 @@ export default function RemoteDesktopPage() {
                 { text: <>Download and install RustDesk on your computer from <a href="https://rustdesk.com" target="_blank" rel="noopener noreferrer" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>rustdesk.com</a>.</> },
                 { text: <>Make sure your computer and the Jetson are on the same network, either the cudy router or the access point.</> },
                 {
-                  text: <>Open RustDesk. You land on the home screen.</>,
+                  text: <>Open RustDesk. You will see the home screen.</>,
                   photos: [{ src: '/images/rustdesk_home.png', alt: 'The RustDesk home screen on a laptop, with the field for entering a remote address' }],
                 },
                 { text: <>Enter the car&apos;s IP address for your network: <code style={{ fontFamily: NB.monoFont }}>192.168.10.100</code> on the cudy router, or <code style={{ fontFamily: NB.monoFont }}>10.42.0.1</code> on the access point.</> },
@@ -98,16 +98,6 @@ export default function RemoteDesktopPage() {
             />
           </div>
         </section>
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <Callout type="note" title="Why the address, not the ID">
-          RustDesk&apos;s ID connects through its servers on the internet, and
-          the car&apos;s own network doesn&apos;t reach the internet, so the ID
-          route reports &quot;not ready&quot; there. The IP address connects
-          directly across the local network instead, no internet involved. On
-          the cudy with its uplink attached, either way works.
-        </Callout>
       </ScrollReveal>
 
       <PrevNext

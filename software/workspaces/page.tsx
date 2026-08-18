@@ -55,7 +55,10 @@ export default function FileSystemPage() {
             <DisplayHeading size="lg">
               THE HOME <Red>DIRECTORY</Red>
             </DisplayHeading>
-            <HomeListing />
+            <Code lang="bash">{`racecar@neoracer:~$ ls
+data        Downloads   logs                osracer_demo   Public      Videos
+Desktop     home        Music               osracer_ws     ros2_ws
+Documents   jupyter_ws  neoracer-installer  Pictures       Templates`}</Code>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 16 }}>
               The car comes with stock Ubuntu files such as Desktop, Documents,
               Downloads, and more. There are six directories that are installed
@@ -397,60 +400,5 @@ docs  logs  README.md  scripts  tests`}</Code>
         next={{ label: 'OS & image', href: '/docs/software/os-and-image' }}
       />
     </DocsShell>
-  );
-}
-
-/* ─────────────────────────────────────────────────────────────────────────
- * HomeListing: `ls ~` with the six directories this page covers picked out
- * of the noise. Spacing is the real column layout from the terminal, so the
- * split keeps whitespace runs intact rather than re-flowing them.
- * ─────────────────────────────────────────────────────────────────────── */
-const HOME_LS = `data        Downloads   logs                osracer_demo   Public      Videos
-Desktop     home        Music               osracer_ws     ros2_ws
-Documents   jupyter_ws  neoracer-installer  Pictures       Templates`;
-
-const OURS = new Set([
-  'ros2_ws',
-  'jupyter_ws',
-  'osracer_ws',
-  'neoracer-installer',
-  'logs',
-  'data',
-]);
-
-function HomeListing() {
-  return (
-    <div
-      style={{
-        marginTop: 18,
-        background: NB.tarmacBlue,
-        borderRadius: 12,
-        padding: '22px 24px',
-        fontFamily: NB.monoFont,
-        fontSize: 13.5,
-        lineHeight: 1.9,
-        boxShadow: NB.shadowCard,
-        overflowX: 'auto',
-      }}
-    >
-      <div style={{ color: NB.textDimBlue, whiteSpace: 'pre' }}>
-        racecar@neoracer:~$ ls
-      </div>
-      {HOME_LS.split('\n').map((line, i) => (
-        <div key={i} style={{ whiteSpace: 'pre' }}>
-          {line.split(/(\s+)/).map((tok, j) =>
-            OURS.has(tok) ? (
-              <span key={j} style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-                {tok}
-              </span>
-            ) : (
-              <span key={j} style={{ color: NB.textDimBlue }}>
-                {tok}
-              </span>
-            ),
-          )}
-        </div>
-      ))}
-    </div>
   );
 }

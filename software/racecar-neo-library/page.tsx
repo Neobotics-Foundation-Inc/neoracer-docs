@@ -5,7 +5,6 @@ import {
   DisplayHeading,
   Red,
   GhostNumeral,
-  ChromeBadge,
   DashList,
   Fig,
 } from '@/components/docs/Editorial';
@@ -19,12 +18,9 @@ import {
   MouseFollowGlow,
   LiveLidarSweep,
   TabbedCode,
-  InteractiveModuleExplorer,
-  AnimatedNumeral,
   InfoNote,
-  type ApiModule,
 } from '@/components/docs/Interactive';
-import { Crumbs, PrevNext, Callout, Code } from '@/components/docs/DocsPrimitives';
+import { Crumbs, PrevNext } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
   title: 'racecar-neo-library · Software · NeoRacer Docs',
@@ -33,21 +29,24 @@ export const metadata: Metadata = {
 };
 
 /* ─────────────────────────────────────────────────────────────────────────
- * The five rc.* modules. Data drives the InteractiveModuleExplorer.
- * Signatures + descriptions stay grounded in the established docs plan +
- * existing pages (lidar/compute/etc.); nothing invented beyond that.
+ * The five rc.* modules, as an overview only. Method signatures, parameters
+ * and return types live on the API reference pages under
+ * /docs/api-reference/python/*; do not restate them here.
  * ─────────────────────────────────────────────────────────────────────── */
-const MODULES: ApiModule[] = [
+type ModuleCard = {
+  id: string;
+  mono: string;
+  lede: string;
+  href: string;
+  icon: React.ReactNode;
+};
+
+const MODULES: ModuleCard[] = [
   {
     id: 'lidar',
     mono: 'rc.lidar',
     lede: 'The distance map you steer by.',
-    badge: '~1440 samples · 0.25°',
-    methods: [
-      { sig: 'rc.lidar.get_samples()', what: 'The latest scan in centimetres: ~1440 samples on the car, 720 in the sim. Index 0 is dead ahead; the rear wedge reads 0.' },
-      { sig: 'rc_utils.get_lidar_average_distance(scan, angle)', what: 'In racecar_utils. Mean range over a small angle window, for gap finding that holds up against noisy samples.' },
-      { sig: 'rc_utils.get_lidar_closest_point(scan)', what: 'In racecar_utils. The (angle, distance) of the nearest return.' },
-    ],
+    href: '/docs/api-reference/python/lidar',
     icon: (
       <svg width="40" height="40" viewBox="0 0 64 64" fill="none">
         <circle cx="32" cy="32" r="22" stroke="currentColor" strokeWidth="2" strokeDasharray="2 4" />
@@ -60,12 +59,8 @@ const MODULES: ApiModule[] = [
   {
     id: 'camera',
     mono: 'rc.camera',
-    lede: '640 × 480 RGB frames as NumPy arrays.',
-    badge: '640 × 480 · BGR',
-    methods: [
-      { sig: 'rc.camera.get_color_image()', what: 'Latest frame as a NumPy array, (480, 640, 3) uint8, blue-green-red. Same shape on car and in sim.' },
-      { sig: 'rc.camera.get_depth_image()', what: 'Depth-camera method (generic library); all zeros on the NeoRacer, which is RGB-only. Use rc.lidar for distance.' },
-    ],
+    lede: '640 × 480 BGR frames as NumPy arrays.',
+    href: '/docs/api-reference/python/camera',
     icon: (
       <svg width="40" height="40" viewBox="0 0 64 64" fill="none">
         <rect x="8" y="18" width="48" height="32" rx="3" stroke="currentColor" strokeWidth="2" />
@@ -79,11 +74,7 @@ const MODULES: ApiModule[] = [
     id: 'physics',
     mono: 'rc.physics',
     lede: 'The IMU. Acceleration and rotation.',
-    badge: 'accel · gyro',
-    methods: [
-      { sig: 'rc.physics.get_linear_acceleration()', what: 'Three-axis acceleration in m/s². Axes differ between sim and car.' },
-      { sig: 'rc.physics.get_angular_velocity()', what: 'Three-axis gyro in rad/s. The z component is your yaw rate.' },
-    ],
+    href: '/docs/api-reference/python/physics',
     icon: (
       <svg width="40" height="40" viewBox="0 0 64 64" fill="none">
         <rect x="14" y="14" width="36" height="36" rx="3" stroke="currentColor" strokeWidth="2" />
@@ -99,11 +90,7 @@ const MODULES: ApiModule[] = [
     id: 'drive',
     mono: 'rc.drive',
     lede: 'The only write you have.',
-    badge: 'speed · angle',
-    methods: [
-      { sig: 'rc.drive.set_speed_angle(speed, angle)', what: 'Speed in [-1, 1], steering angle in [-1, 1]. The MCU (microcontroller unit) enforces a 150 ms watchdog.' },
-      { sig: 'rc.drive.stop()', what: 'Zeros both. Same as set_speed_angle(0, 0).' },
-    ],
+    href: '/docs/api-reference/python/drive',
     icon: (
       <svg width="40" height="40" viewBox="0 0 64 64" fill="none">
         <rect x="6" y="22" width="52" height="20" rx="4" stroke="currentColor" strokeWidth="2" />
@@ -118,12 +105,7 @@ const MODULES: ApiModule[] = [
     id: 'controller',
     mono: 'rc.controller',
     lede: 'Buttons and sticks, debounced.',
-    badge: 'safety surface',
-    methods: [
-      { sig: 'rc.controller.is_down(button)', what: 'True while the button is held. was_pressed fires once on the tap. Most programs watch a button here for a manual stop.' },
-      { sig: 'rc.controller.get_joystick(stick)', what: '(x, y) tuple in [-1, 1] for the named stick.' },
-      { sig: 'rc.controller.get_trigger(trigger)', what: 'Analog value in [0, 1] for the named trigger.' },
-    ],
+    href: '/docs/api-reference/python/controller',
     icon: (
       <svg width="40" height="40" viewBox="0 0 64 64" fill="none">
         <rect x="6" y="20" width="52" height="24" rx="12" stroke="currentColor" strokeWidth="2" />
@@ -222,31 +204,6 @@ export default function RacecarNeoLibraryPage() {
               simulator and on the physical car. The same file works in both
               places.
             </p>
-            <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="red">Sim ↔ car portable</ChromeBadge>
-              <ChromeBadge variant="outline">
-                <AnimatedNumeral value={5} /> modules
-              </ChromeBadge>
-              <ChromeBadge variant="outline">
-                set_start_update + go
-              </ChromeBadge>
-              <ChromeBadge variant="outline">Pyodide-compatible</ChromeBadge>
-            </div>
-
-            {/* Live spec meter: three big numerals that count up on view */}
-            <div
-              style={{
-                marginTop: 28,
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
-                gap: 12,
-              }}
-            >
-              <MeterCard label="LiDAR scan rate" value={30} suffix=" Hz" />
-              <MeterCard label="get_samples() length" value={1440} sub="~, on the car (720 in sim)" />
-              <MeterCard label="IMU sample rate" value={200} suffix=" Hz" />
-              <MeterCard label="Camera frame width" value={640} sub="× 480, RGB (no depth)" />
-            </div>
           </div>
         </section>
       </MouseFollowGlow>
@@ -279,16 +236,63 @@ export default function RacecarNeoLibraryPage() {
                 marginBottom: 8,
               }}
             >
-              Click any module to see the methods it exposes. Every behaviour
-              you'll ever ship (
+              Every behaviour you'll ever ship (
               <InfoNote term="teleop" title="Teleop">
                 Teleoperation. Driving the car by hand from a controller or
                 keyboard, instead of the car deciding for itself. It is the
                 first thing most people wire up.
               </InfoNote>, wall follow, gap follower, end-to-end RL) is some
-              combination of these five.
+              combination of these five. Each one has its own reference page
+              with every method, parameter and return type.
             </p>
-            <InteractiveModuleExplorer modules={MODULES} />
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))',
+                gap: 14,
+                marginTop: 18,
+              }}
+            >
+              {MODULES.map((m) => (
+                <a
+                  key={m.id}
+                  href={m.href}
+                  style={{
+                    display: 'block',
+                    background: NB.haloWhite,
+                    border: `1px solid ${NB.borderOnBeige}`,
+                    borderRadius: 12,
+                    padding: '16px 18px 18px',
+                    textDecoration: 'none',
+                    color: 'inherit',
+                    boxShadow: '0 3px 0 -1px rgba(27,32,54,0.05), 0 10px 22px -10px rgba(27,32,54,0.16)',
+                  }}
+                >
+                  <div style={{ color: NB.textOnBeige, marginBottom: 8 }}>{m.icon}</div>
+                  <div
+                    style={{
+                      fontFamily: NB.monoFont,
+                      fontSize: 15,
+                      fontWeight: 700,
+                      color: NB.neoboticsRed,
+                      marginBottom: 4,
+                    }}
+                  >
+                    {m.mono}
+                  </div>
+                  <div
+                    style={{
+                      fontFamily: NB.bodyFont,
+                      fontSize: 14.5,
+                      lineHeight: 1.5,
+                      color: NB.textMutedBeige,
+                    }}
+                  >
+                    {m.lede}
+                  </div>
+                </a>
+              ))}
+            </div>
           </div>
         </section>
       </ScrollReveal>
@@ -469,92 +473,10 @@ export default function RacecarNeoLibraryPage() {
         </section>
       </ScrollReveal>
 
-      {/* ── Coming from F1TENTH? ───────────────────────────────────────── */}
-      <ScrollReveal>
-        <Callout type="tip" title="Coming from F1TENTH?">
-          The racecar-neo-library wraps the same ROS 2 driver topics the F1TENTH
-          reference build uses, so your existing F1TENTH Python helpers run
-          unchanged.
-        </Callout>
-      </ScrollReveal>
-
       <PrevNext
         prev={{ label: 'OS & image', href: '/docs/software/os-and-image' }}
         next={{ label: 'ROS 2 driver', href: '/docs/software/ros2-driver' }}
       />
     </DocsShell>
-  );
-}
-
-/* ─────────────────────────────────────────────────────────────────────────
- * MeterCard: compact numeral chip used in the hero. Wraps AnimatedNumeral
- * with a small label + optional secondary line. Lives inside this page
- * because nothing else uses this exact shape yet; if it spreads, lift it
- * up into Interactive.tsx.
- * ─────────────────────────────────────────────────────────────────────── */
-function MeterCard({
-  value,
-  label,
-  suffix = '',
-  sub,
-}: {
-  value: number;
-  label: string;
-  suffix?: string;
-  sub?: string;
-}) {
-  return (
-    <div
-      style={{
-        background: NB.haloWhite,
-        border: `1px solid ${NB.borderOnBeige}`,
-        borderRadius: 12,
-        padding: '14px 16px 12px',
-        boxShadow: '0 3px 0 -1px rgba(27,32,54,0.05), 0 10px 22px -10px rgba(27,32,54,0.16)',
-      }}
-    >
-      <div
-        style={{
-          fontFamily: NB.headingFont,
-          fontSize: 34,
-          fontWeight: 900,
-          letterSpacing: '-0.015em',
-          color: NB.neoboticsRed,
-          lineHeight: 1,
-          display: 'flex',
-          alignItems: 'baseline',
-          gap: 4,
-        }}
-      >
-        <AnimatedNumeral value={value} suffix={suffix} />
-      </div>
-      {sub && (
-        <div
-          style={{
-            fontFamily: NB.monoFont,
-            fontSize: 10.5,
-            letterSpacing: '0.16em',
-            color: NB.textMutedBeige,
-            marginTop: 4,
-            fontWeight: 700,
-          }}
-        >
-          {sub}
-        </div>
-      )}
-      <div
-        style={{
-          fontFamily: NB.headingFont,
-          fontSize: 12,
-          fontWeight: 700,
-          textTransform: 'uppercase',
-          letterSpacing: '0.06em',
-          color: NB.textOnBeige,
-          marginTop: 8,
-        }}
-      >
-        {label}
-      </div>
-    </div>
   );
 }

@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { Metadata } from 'next';
 import DocsShell from '@/components/docs/DocsShell';
 import { NB } from '@/lib/nb-tokens';
@@ -6,9 +5,9 @@ import {
   DisplayHeading,
   Red,
   GhostNumeral,
-  MonoLabel,
   ChromeBadge,
   DashList,
+  NumberedSteps,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext, Callout, Code } from '@/components/docs/DocsPrimitives';
@@ -60,7 +59,9 @@ export default function FirmwareFlashingPage() {
 
       {/* ── 01 · get the firmware ───────────────────────────────────────── */}
       <ScrollReveal>
-        <section style={{ paddingBottom: 40 }}>
+        <section style={{ position: 'relative', paddingBottom: 40 }}>
+          <GhostNumeral n="01" top={-30} right={-20} size={420} />
+          <div style={{ position: 'relative', zIndex: 1 }}>
           <DisplayHeading size="lg">
             GET THE <Red>FIRMWARE</Red>
           </DisplayHeading>
@@ -74,6 +75,7 @@ export default function FirmwareFlashingPage() {
           <Code lang="bash">{`# Example: fetch a tagged release and unzip it.
 wget ${RELEASES_URL}/download/v1.0.5/osrcore-firmware-v1.0.5.zip
 unzip osrcore-firmware-v1.0.5.zip   # -> osrcore-firmware-v1.0.5.bin`}</Code>
+          </div>
         </section>
       </ScrollReveal>
 
@@ -103,35 +105,30 @@ unzip osrcore-firmware-v1.0.5.zip   # -> osrcore-firmware-v1.0.5.bin`}</Code>
 
       {/* ── 03 · download mode ──────────────────────────────────────────── */}
       <ScrollReveal>
-        <section style={{ paddingBottom: 40 }}>
-          <DisplayHeading size="lg">
-            ENTER DOWNLOAD <Red>MODE</Red>
-          </DisplayHeading>
-          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-            Flashing needs the board in download mode. It&apos;s a four-step press,
-            in this exact order, right before you connect:
-          </p>
-          <div style={{ marginTop: 8 }}>
-            {[
-              { t: 'Hold BOOT', d: 'Press and keep holding the BOOT button.' },
-              { t: 'Tap RESET', d: 'With BOOT still held, press RESET once.' },
-              { t: 'Release RESET', d: 'Let go of RESET while still holding BOOT.' },
-              { t: 'Release BOOT', d: 'Now let go of BOOT. The board is in download mode.' },
-            ].map((s, i) => (
-              <div key={i} style={{ display: 'grid', gridTemplateColumns: '46px 1fr', gap: 14, padding: '14px 0', borderBottom: `1px solid ${NB.borderOnBeige}` }}>
-                <div style={{ fontFamily: NB.headingFont, fontSize: 26, fontWeight: 900, lineHeight: 1, color: NB.neoboticsRed }}>{String(i + 1).padStart(2, '0')}</div>
-                <div>
-                  <div style={{ fontFamily: NB.monoFont, fontSize: 14, fontWeight: 700, color: NB.textOnBeige, letterSpacing: '0.04em' }}>{s.t}</div>
-                  <p style={{ fontFamily: NB.bodyFont, fontSize: 14.5, lineHeight: 1.55, color: NB.textMutedBeige, margin: '3px 0 0' }}>{s.d}</p>
-                </div>
-              </div>
-            ))}
+        <section style={{ position: 'relative', paddingBottom: 40 }}>
+          <GhostNumeral n="03" top={-30} right={-20} size={420} />
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <DisplayHeading size="lg">
+              ENTER DOWNLOAD <Red>MODE</Red>
+            </DisplayHeading>
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
+              Flashing needs the board in download mode. It&apos;s a four-step press,
+              in this exact order, right before you connect:
+            </p>
+            <NumberedSteps
+              steps={[
+                { title: 'Hold BOOT', mono: true, detail: 'Press and keep holding the BOOT button.' },
+                { title: 'Tap RESET', mono: true, detail: 'With BOOT still held, press RESET once.' },
+                { title: 'Release RESET', mono: true, detail: 'Let go of RESET while still holding BOOT.' },
+                { title: 'Release BOOT', mono: true, detail: 'Now let go of BOOT. The board is in download mode.' },
+              ]}
+            />
+            <Callout type="note" title="Monitoring doesn't need this">
+              The download-mode sequence is only for flashing. To open the Serial
+              Monitor on a board that&apos;s already running, skip it and connect
+              directly.
+            </Callout>
           </div>
-          <Callout type="note" title="Monitoring doesn't need this">
-            The download-mode sequence is only for flashing. To open the Serial
-            Monitor on a board that&apos;s already running, skip it and connect
-            directly.
-          </Callout>
         </section>
       </ScrollReveal>
 
@@ -141,7 +138,7 @@ unzip osrcore-firmware-v1.0.5.zip   # -> osrcore-firmware-v1.0.5.bin`}</Code>
           <GhostNumeral n="04" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              FLASH THE <Red>BOARD</Red>
+              RUN THE <Red>FLASHER</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
               Open the{' '}
@@ -169,23 +166,26 @@ unzip osrcore-firmware-v1.0.5.zip   # -> osrcore-firmware-v1.0.5.bin`}</Code>
 
       {/* ── 05 · serial monitor ─────────────────────────────────────────── */}
       <ScrollReveal>
-        <section style={{ paddingBottom: 24 }}>
-          <DisplayHeading size="lg">
-            SERIAL <Red>MONITOR</Red>
-          </DisplayHeading>
-          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-            When the flash completes, the board resets and runs the new firmware.
-            To confirm it&apos;s alive, open the <strong>Serial Monitor</strong> in
-            the same tool (no download mode needed) and watch the log at{' '}
-            <code style={{ fontFamily: NB.monoFont }}>115200</code> baud. From there
-            you can bring the car back up with{' '}
-            <Link href="/docs/software/ros2-driver" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>the driver</Link>.
-          </p>
+        <section style={{ position: 'relative', paddingBottom: 24 }}>
+          <GhostNumeral n="05" top={-30} right={-20} size={420} />
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <DisplayHeading size="lg">
+              CHECK THE <Red>SERIAL MONITOR</Red>
+            </DisplayHeading>
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
+              When the flash completes, the board resets and runs the new firmware.
+              To confirm it&apos;s alive, open the <strong>Serial Monitor</strong> in
+              the same tool (no download mode needed) and watch the log at{' '}
+              <code style={{ fontFamily: NB.monoFont }}>115200</code> baud. Power-cycle
+              the car and the driver comes back up on its own, so there is nothing
+              else to restart.
+            </p>
+          </div>
         </section>
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'Networking', href: '/docs/software/networking' }}
+        prev={{ label: 'JupyterLab', href: '/docs/software/jupyterlab' }}
         next={{ label: 'Mapping (SLAM)', href: '/docs/software/mapping' }}
       />
     </DocsShell>

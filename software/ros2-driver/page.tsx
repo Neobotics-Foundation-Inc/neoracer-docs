@@ -5,11 +5,9 @@ import {
   DisplayHeading,
   Red,
   GhostNumeral,
-  MonoLabel,
   DashList,
   Fig,
   NumberedFeatureCard,
-  ChromeBadge,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow, AnimatedDataFlowDiagram, InfoNote } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext, Callout } from '@/components/docs/DocsPrimitives';
@@ -25,6 +23,31 @@ export const metadata: Metadata = {
  * ghost numerals, FIG. A data-flow diagram, four numbered feature cards
  * (Publisher / Subscriber / Topic / Message).
  * ─────────────────────────────────────────────────────────────────────── */
+
+/* `ros2 topic list` on a running car, verified 2026-08-17. Alphabetical, as
+ * the command prints it. Keep this in step with the API reference topics
+ * page when either one changes. */
+const TOPICS: [string, string][] = [
+  ['/battery', 'pack state'],
+  ['/battery/voltage', 'pack voltage on its own'],
+  ['/camera/color', 'sensor_msgs/Image, JPEG in an Image, 60 fps'],
+  ['/diagnostics', 'ROS 2 internals'],
+  ['/dotmatrix/text', 'text to the 8x8 display on the back'],
+  ['/drive', 'ackermann_msgs, PUBLISH here'],
+  ['/edgetpu/inference', 'Coral accelerator output, when it is running'],
+  ['/encoder/speed', 'wheel speed from the encoders'],
+  ['/gamepad_drive', 'the command gamepad_node builds from the sticks'],
+  ['/imu/fused', 'sensor_msgs/Imu, accel + gyro fused, 200 Hz'],
+  ['/joy', 'sensor_msgs/Joy, the Flysky receiver'],
+  ['/mag', 'raw magnetometer, not part of the fused output'],
+  ['/motor', 'the final command to the ESC and the servo'],
+  ['/mux_out', 'whichever source the mux is forwarding'],
+  ['/odom', 'nav_msgs/Odometry, integrated from the encoders'],
+  ['/parameter_events', 'ROS 2 internals'],
+  ['/ric/channels', 'raw RC channel values'],
+  ['/rosout', 'ROS 2 internals'],
+  ['/scan', 'sensor_msgs/LaserScan, the LiDAR over UDP'],
+];
 
 export default function ROS2DriverPage() {
   return (
@@ -43,19 +66,19 @@ export default function ROS2DriverPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 40 }}>
               <div>
-                <DisplayHeading size="2xl">
-                  THE ROS 2 <Red>DRIVER</Red>
+                <DisplayHeading size="xl">
+                  THE ROS&nbsp;2 <Red>DRIVER</Red>
                 </DisplayHeading>
               </div>
-              <div style={{ paddingTop: 60 }}>
+              <div style={{ paddingTop: 40 }}>
                 <DashList
                   items={[
                     <>
                       Each part of the car (camera, motors,{' '}
                       <InfoNote term="LiDAR" title="LiDAR">
-                        A sensor that spins a laser to measure distance in every
-                        direction, giving the car a 2D map of how far away walls
-                        and obstacles are.
+                        A sensor that sweeps a laser around the car and measures
+                        how long each pulse takes to bounce back, giving a ring
+                        of distance readings it uses to map walls and obstacles.
                       </InfoNote>
                       ) runs as a separate program. ROS 2 calls these{' '}
                       <strong>nodes</strong>.
@@ -67,7 +90,14 @@ export default function ROS2DriverPage() {
                       them up.
                     </>,
                     <>
-                      NeoRacer's <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>teleop</code> brings up the full stack: controller, gamepad_node, mux_node, throttle_node, camera, led_matrix, and the Lakibeam LiDAR.
+                      The driver runs these nodes for you:{' '}
+                      <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>controller</code>,{' '}
+                      <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>gamepad_node</code>,{' '}
+                      <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>mux_node</code>,{' '}
+                      <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>throttle_node</code>,{' '}
+                      <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>camera</code>,{' '}
+                      <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>led_matrix</code>, and{' '}
+                      <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>richbeam_lidar_node0</code>.
                     </>,
                   ]}
                 />
@@ -94,11 +124,11 @@ export default function ROS2DriverPage() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 40 }}>
               <div>
-                <DisplayHeading size="2xl">
-                  QUICK ROS 2 <Red>BASICS</Red>
+                <DisplayHeading size="lg">
+                  QUICK ROS&nbsp;2 <Red>BASICS</Red>
                 </DisplayHeading>
               </div>
-              <div style={{ paddingTop: 60 }}>
+              <div style={{ paddingTop: 20 }}>
                 <p
                   style={{
                     fontFamily: NB.bodyFont,
@@ -130,13 +160,13 @@ export default function ROS2DriverPage() {
                   <>
                     Like{' '}
                     <code style={{ fontFamily: NB.monoFont, color: NB.textOnBeige, fontWeight: 700 }}>
-                      camera_node
+                      camera
                     </code>{' '}
-                    on the car, sending frames out on /camera. It doesn't know
-                    who's reading.
+                    on the car, sending frames out on /camera/color. It doesn't
+                    know who's reading.
                   </>
                 }
-                codeChip="node.create_publisher(Imu, '/imu', qos)"
+                codeChip="node.create_publisher(Imu, '/imu/fused', qos)"
               />
               <NumberedFeatureCard
                 n={2}
@@ -144,24 +174,24 @@ export default function ROS2DriverPage() {
                 lede="A node waiting for new data."
                 body={
                   <>
-                    Like your script reading <code style={{ fontFamily: NB.monoFont }}>/imu</code> to check
-                    which way the car is tilted right now.
+                    Like your script reading <code style={{ fontFamily: NB.monoFont }}>/imu/fused</code> to
+                    check which way the car is tilted right now.
                   </>
                 }
-                codeChip="node.create_subscription(Imu, '/imu', cb, qos)"
+                codeChip="node.create_subscription(Imu, '/imu/fused', cb, qos)"
               />
               <NumberedFeatureCard
                 n={3}
                 title="Topic"
                 lede="A named channel. Just a string."
-                body="Things like /drive, /scan, /camera. Multiple nodes can publish or read from the same one."
-                codeChip="/camera   /drive   /imu   /odom   /scan"
+                body="Things like /drive, /scan, /camera/color. Multiple nodes can publish or read from the same one."
+                codeChip="/camera/color   /drive   /imu/fused   /odom   /scan"
               />
               <NumberedFeatureCard
                 n={4}
                 title="Message"
                 lede="The actual data, with a fixed shape."
-                body="An /imu message always has the same fields (orientation, accel, gyro)."
+                body="An /imu/fused message always has the same fields (orientation, accel, gyro)."
                 codeChip="sensor_msgs/Imu   nav_msgs/Odometry"
               />
             </div>
@@ -175,7 +205,7 @@ export default function ROS2DriverPage() {
           <GhostNumeral n="03" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              WHAT <Red>TELEOP</Red> BRINGS UP
+              WHAT THE DRIVER <Red>PUBLISHES</Red>
             </DisplayHeading>
             <p
               style={{
@@ -186,11 +216,12 @@ export default function ROS2DriverPage() {
                 maxWidth: 760,
               }}
             >
-              Once you've{' '}
-              <a href="/docs/getting-started/install-driver" style={{ color: NB.neoboticsRed, fontWeight: 700, textDecoration: 'none' }}>installed the driver</a>
-              , run{' '}
-              <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>ros2 launch neoracer_ros2_driver teleop.launch.py</code>
-              . That brings up the four nodes from FIG. A, so the only one left to write is the fifth.
+              The driver starts at boot, so every topic below is already live
+              when you log in. This is what{' '}
+              <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>ros2 topic list</code>{' '}
+              prints on a running car. The one you publish to is{' '}
+              <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>/drive</code>.
+              Everything else you read.
             </p>
 
             <div
@@ -204,26 +235,18 @@ export default function ROS2DriverPage() {
                 fontSize: 13.5,
                 lineHeight: 1.75,
                 boxShadow: NB.shadowCard,
+                overflowX: 'auto',
               }}
             >
               <div style={{ color: NB.neoboticsRed, fontWeight: 700, marginBottom: 10 }}>
                 // ros2 topic list
               </div>
-              /camera<span style={{ color: NB.textDimBlue }}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# sensor_msgs/Image, JPEG-in-Image from the USB webcam</span>
-              <br />
-              /scan<span style={{ color: NB.textDimBlue }}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# sensor_msgs/LaserScan, Lakibeam LiDAR over UDP</span>
-              <br />
-              /imu<span style={{ color: NB.textDimBlue }}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# sensor_msgs/Imu, QMI8658A + QMC6309 on the OSCORE board</span>
-              <br />
-              /odom<span style={{ color: NB.textDimBlue }}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# nav_msgs/Odometry, integrated from wheel encoders</span>
-              <br />
-              /battery<span style={{ color: NB.textDimBlue }}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# sensor_msgs/BatteryState, pack voltage at ~0.5 Hz</span>
-              <br />
-              /joy<span style={{ color: NB.textDimBlue }}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# sensor_msgs/Joy, Flysky RC via the controller node</span>
-              <br />
-              /drive<span style={{ color: NB.textDimBlue }}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# ackermann_msgs/AckermannDriveStamped, PUBLISH here</span>
-              <br />
-              /led_matrix/command<span style={{ color: NB.textDimBlue }}>&nbsp;# std_msgs/String, text to the 8x8 dot-matrix display</span>
+              {TOPICS.map(([topic, note]) => (
+                <div key={topic} style={{ whiteSpace: 'nowrap' }}>
+                  <span style={{ display: 'inline-block', minWidth: 168 }}>{topic}</span>
+                  <span style={{ color: NB.textDimBlue }}># {note}</span>
+                </div>
+              ))}
             </div>
           </div>
         </section>

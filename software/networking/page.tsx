@@ -81,10 +81,12 @@ export default function NetworkingPage() {
           happens at the car with a monitor and keyboard, and it is covered by{' '}
           <Link href="/docs/getting-started/prepare-the-car" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
             Prepare the car
-          </Link>{' '}
-          and the end of{' '}
+          </Link>,{' '}
           <Link href="/docs/getting-started/install-driver" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
             Install the driver
+          </Link>, and{' '}
+          <Link href="/docs/getting-started/connect-to-router" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
+            Connect to the router
           </Link>. This page is the reference for every day after that.
         </Callout>
       </ScrollReveal>
@@ -111,7 +113,7 @@ export default function NetworkingPage() {
                   { key: 'ap', label: 'Access point', mono: true },
                 ]}
                 rows={[
-                  { k: 'Wi-Fi to join', cudy: 'neoracer-[ID] (+ -5G twin)', ap: 'neoracer-1' },
+                  { k: 'Wi-Fi to join', cudy: 'neoracer-[ID] (+ -5G twin)', ap: 'neoracer-1 until you rename it' },
                   { k: 'Wi-Fi password', cudy: 'neobotics', ap: 'neobotics' },
                   { k: 'The car', cudy: '192.168.10.100', ap: '10.42.0.1' },
                   { k: 'Gateway', cudy: '192.168.10.1 (router)', ap: '10.42.0.1 (the car)' },
@@ -164,11 +166,11 @@ ssh racecar@10.42.0.1          # access point
             <div style={{ marginTop: 22 }}>
               <MonoLabel>Remote desktop (RustDesk)</MonoLabel>
               <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 0 }}>
-                For the full Jetson desktop, open{' '}
-                <InfoNote term="RustDesk" title="RustDesk">A remote-desktop tool. It mirrors the Jetson's screen to your laptop over the network so you can use its desktop directly.</InfoNote>{' '}
-                on your laptop and connect by the car&apos;s IP address (direct
-                IP; the password is{' '}
-                <code style={{ fontFamily: NB.monoFont }}>neobotics</code>).
+                For the full Jetson desktop, connect by the car&apos;s IP address.
+                Setup and the password are on{' '}
+                <Link href="/docs/software/remote-desktop" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
+                  Remote desktop
+                </Link>.
               </p>
             </div>
 
@@ -364,12 +366,16 @@ racecar setup networking --reset             # back to the defaults`}</Code>
                 ]}
               />
             </div>
-            <Callout type="tip" title="Several cars in one room">
-              Every car ships as <code style={{ fontFamily: NB.monoFont }}>neoracer-1</code>.
-              With more than one car powered up, give each its own name once,{' '}
+            <Callout type="warn" title="Rename the access point before you power up a second car">
+              Every car ships broadcasting{' '}
+              <code style={{ fontFamily: NB.monoFont }}>neoracer-1</code>, so two
+              cars on their access points in the same room show up as two
+              networks with the same name and you cannot tell which is which.
+              Rename each one the first time you use it,{' '}
               <code style={{ fontFamily: NB.monoFont }}>--ssid=neoracer-2</code>,{' '}
               <code style={{ fontFamily: NB.monoFont }}>--ssid=neoracer-3</code>,
-              and so on. The name sticks.
+              and so on. The name sticks. The cudy routers do not have this
+              problem; each one is preconfigured with its own name.
             </Callout>
             <Callout type="warn" title="Run it from a wired session">
               The command takes over the Wi-Fi radio, so an SSH session over
@@ -380,51 +386,19 @@ racecar setup networking --reset             # back to the defaults`}</Code>
         </section>
       </ScrollReveal>
 
-      {/* ── Section 07 · Quick reference ───────────────────────────────── */}
       <ScrollReveal>
-        <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="07" top={-30} right={-20} size={460} />
-          <div style={{ position: 'relative', zIndex: 1 }}>
-            <DisplayHeading size="lg">
-              QUICK <Red>REFERENCE</Red>
-            </DisplayHeading>
-            <div style={{ marginTop: 20 }}>
-              <DataTable
-                columns={[
-                  { key: 'path', label: 'Task', accent: true },
-                  { key: 'how', label: 'How' },
-                  { key: 'needs', label: 'What it needs', mono: true },
-                ]}
-                rows={[
-                  { path: 'Connect to the car (cudy)', how: "Join the router's Wi-Fi.", needs: 'neoracer-[ID] · 192.168.10.100' },
-                  { path: 'Connect to the car (AP)', how: "Join the car's own Wi-Fi.", needs: 'neoracer-1 · 10.42.0.1' },
-                  { path: 'Terminal', how: 'SSH in as racecar.', needs: 'racecar@<car address>' },
-                  { path: 'Full desktop', how: 'RustDesk by direct IP.', needs: '<car address>' },
-                  { path: 'No Wi-Fi', how: 'Wired USB-C, RNDIS link.', needs: 'racecar@192.168.55.1' },
-                  { path: 'Rename the AP', how: 'racecar setup networking.', needs: '--ssid=neoracer-N' },
-                  { path: 'Health dashboard', how: 'Browser, auto-started.', needs: ':8080' },
-                  { path: 'Write code', how: 'JupyterLab, auto-started.', needs: ':8888' },
-                  { path: 'See the car nodes', how: 'ROS 2 DDS discovery.', needs: 'same subnet + ROS_DOMAIN_ID' },
-                ]}
-              />
-            </div>
-            <Callout type="tip" title="Can't reach the car?">
-              If the Wi-Fi won&apos;t connect or the address won&apos;t answer, the{' '}
-              <a href="/docs/troubleshooting/wifi-cant-connect" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-                Wi-Fi can&apos;t connect
-              </a>{' '}
-              page walks the rest of the path. You can reach a person at{' '}
-              <a href="mailto:support@neobotics.org" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-                support@neobotics.org
-              </a>.
-            </Callout>
-          </div>
-        </section>
+        <Callout type="tip" title="Can't reach the car?">
+          If the Wi-Fi won&apos;t connect or the address won&apos;t answer, you
+          can reach a person at{' '}
+          <a href="mailto:support@neobotics.org" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
+            support@neobotics.org
+          </a>.
+        </Callout>
       </ScrollReveal>
 
       <PrevNext
         prev={{ label: 'Remote desktop', href: '/docs/software/remote-desktop' }}
-        next={{ label: 'Firmware flashing', href: '/docs/software/firmware-flashing' }}
+        next={{ label: 'JupyterLab', href: '/docs/software/jupyterlab' }}
       />
     </DocsShell>
   );

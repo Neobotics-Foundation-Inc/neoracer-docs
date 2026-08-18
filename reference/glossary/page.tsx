@@ -396,7 +396,7 @@ export default function GlossaryPage() {
 
       <PrevNext
         prev={{ label: 'Specifications', href: '/docs/reference/specifications' }}
-        next={{ label: 'Changelog', href: '/docs/reference/changelog' }}
+        next={{ label: 'Compatibility matrix', href: '/docs/reference/compatibility-matrix' }}
       />
     </DocsShell>
   );

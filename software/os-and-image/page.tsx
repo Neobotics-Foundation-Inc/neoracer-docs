@@ -7,7 +7,6 @@ import {
   GhostNumeral,
   ChromeBadge,
   DashList,
-  MonoLabel,
   Fig,
   NumberedFeatureCard,
 } from '@/components/docs/Editorial';
@@ -18,7 +17,6 @@ import {
 import {
   ScrollReveal,
   MouseFollowGlow,
-  AnimatedNumeral,
   InfoNote,
 } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext, Callout, Code } from '@/components/docs/DocsPrimitives';
@@ -26,7 +24,7 @@ import { Crumbs, PrevNext, Callout, Code } from '@/components/docs/DocsPrimitive
 export const metadata: Metadata = {
   title: 'OS & image · Software · NeoRacer Docs',
   description:
-    'NeoRacer ships with a pre-flashed Ubuntu + ROS 2 Humble image, so it boots ready to log in and write code. Here is what is on it and how to re-flash from scratch.',
+    'NeoRacer ships with a pre-flashed Ubuntu + ROS 2 Humble image. Install the driver once on the first boot and every boot after that comes up ready to write code. Here is what is on the image and how to re-flash from scratch.',
 };
 
 export default function OsAndImagePage() {
@@ -61,10 +59,11 @@ export default function OsAndImagePage() {
               running as a{' '}
               <InfoNote term="systemd service" title="systemd service">
                 A background program that Linux starts and supervises automatically. Running JupyterLab this way means it comes up on its own at boot and restarts if it crashes.
-              </InfoNote>. So you can power on, SSH in, install the{' '}
+              </InfoNote>. Power on, SSH in, install the{' '}
               <a href="/docs/getting-started/install-driver" style={{ color: NB.neoboticsRed, fontWeight: 700, textDecoration: 'none' }}>
                 neoracer_ros2_driver
-              </a>, and start writing code on the same day it arrives.
+              </a> once, and you can start writing code on the same day it
+              arrives. Every boot after that comes up ready on its own.
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <ChromeBadge variant="red">Pre-flashed at the factory</ChromeBadge>
@@ -142,28 +141,15 @@ export default function OsAndImagePage() {
             </div>
             neoracer-teleop · neoracer-watchdog · neoracer-dashboard · neoracer-jupyter
             <span style={{ color: NB.textDimBlue }}>&nbsp;&nbsp;# all active, all enabled at boot</span>
-            <br />
-            <br />
-            <div style={{ color: NB.neoboticsRed, fontWeight: 700, marginBottom: 10 }}>
-              // for interactive debugging, the same stack in the foreground
-            </div>
-            racecar teleop
-            <span style={{ color: NB.textDimBlue }}>&nbsp;&nbsp;# wraps: ros2 launch neoracer_ros2_driver teleop.launch.py (stop the service first)</span>
-            <br />
-            <span style={{ color: NB.textDimBlue }}>&nbsp;&nbsp;# brings up controller, gamepad_node, mux_node,</span>
-            <br />
-            <span style={{ color: NB.textDimBlue }}>&nbsp;&nbsp;# throttle_node, camera, led_matrix, lakibeam1</span>
           </div>
 
           <DashList
             items={[
               <>
-                <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>racecar teleop</code> brings up the full driver stack: the{' '}
-                <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>controller</code> node owns the ESP32 serial link (publishes /imu, /odom, /joy and subscribes to /motor), plus{' '}
-                <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>gamepad_node</code>, <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>mux_node</code>, <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>throttle_node</code>, <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>camera</code>, <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>led_matrix</code>, and the Lakibeam{' '}
-                <InfoNote term="LiDAR" title="LiDAR">
-                  A sensor that sweeps a laser around the car and measures how long each pulse takes to bounce back, giving a ring of distance readings it uses to map walls and obstacles.
-                </InfoNote>.
+                <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>neoracer-teleop</code> is the driver stack. The{' '}
+                <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>controller</code> node owns the ESP32 serial link (publishes /imu/fused, /odom, /joy and subscribes to /motor), alongside{' '}
+                <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>gamepad_node</code>, <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>mux_node</code>, <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>throttle_node</code>, <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>camera</code>, <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>led_matrix</code>, and{' '}
+                <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>richbeam_lidar_node0</code>.
               </>,
               <>
                 The watchdog supervises every node and restarts a dead one. The web dashboard at{' '}
@@ -184,7 +170,7 @@ export default function OsAndImagePage() {
       <ScrollReveal>
         <Fig
           label="FIG. B / RE-FLASH FROM SCRATCH"
-          caption="An x86 Linux host, the Jetson's USB-C recovery port, and five steps: base image, then driver setup on top."
+          caption="An x86 Linux host, the Jetson's USB-C recovery port, and five steps: the base image first, then the driver setup on top."
         >
           <div style={{ paddingTop: 6 }}>
             <FlashStripDiagram />
@@ -198,7 +184,7 @@ export default function OsAndImagePage() {
           <GhostNumeral n="02" top={-30} right={-20} size={460} />
         <div style={{ position: 'relative', zIndex: 1 }}>
           <DisplayHeading size="lg">
-            FLASH A FRESH <Red>CARD</Red>
+            FLASH A FRESH <Red>SSD</Red>
           </DisplayHeading>
           <p
             style={{
@@ -211,19 +197,26 @@ export default function OsAndImagePage() {
           >
             The car ships flashed. You&apos;ll only re-flash to bring one back
             to a known-good state, and it is a two-stage job: the base system
-            image first, then the driver setup on top.
+            image first, then the driver setup on top. The five steps below are
+            the five in FIG. B.
           </p>
 
-          <Code lang="bash">{`# 1. Flash the base system. The car boots from its NVMe SSD, and the base
-#    image is Seeed's reComputer J401 build of JetPack 6 (Ubuntu 22.04).
-#    Follow Seeed's reComputer J401 flashing guide, which runs from a Linux
-#    host over the Jetson's USB-C recovery port.
+          <Code lang="bash">{`# 1. Download the base image. It is Seeed's reComputer J401 build of
+#    JetPack 6 (Ubuntu 22.04). The car boots from its NVMe SSD, not an
+#    SD card.
 
-# 2. On first boot, follow Setup from the top:
-#    console + internet, clone neoracer_ros2_driver, bash scripts/setup_all.sh
-#    That installs ROS 2, the services, JupyterLab, and the student library.
+# 2. Get to an x86 Ubuntu host. The flashing tool only runs on Linux, and
+#    it talks to the car over the Jetson's USB-C recovery port.
 
-# 3. racecar setup networking gives the fresh car its networks back.`}</Code>
+# 3. Flash the NVMe. Follow Seeed's reComputer J401 flashing guide.
+
+# 4. Power on and log in as racecar. You now have a bare Ubuntu with no
+#    driver on it.
+
+# 5. Run the driver setup: console + internet, clone neoracer_ros2_driver,
+#    bash scripts/setup_all.sh. That installs ROS 2, the four services,
+#    JupyterLab, and the student library. Finish with
+#    racecar setup networking to give the car its networks back.`}</Code>
         </div>
         </section>
       </ScrollReveal>
@@ -313,15 +306,15 @@ export default function OsAndImagePage() {
             SSH IN AND <Red>VERIFY</Red>
           </DisplayHeading>
 
-          <Code lang="bash">{`# 1. Confirm you're in (after joining the car's neoracer-[Car ID] network).
+          <Code lang="bash">{`# 1. Confirm you're in.
 ssh racecar@192.168.10.100               # or: 10.42.0.1 on the access point
 # racecar@neoracer:~$
 
-# 2. JupyterLab service is healthy?
+# 2. Are the services healthy?
 racecar service status                   # all four active
 
-# 3. ROS 2 graph is up? (run "teleop" first)
-ros2 topic list                          # /camera /scan /imu /odom /battery /joy /drive
+# 3. Is the ROS 2 graph up? It already is; nothing to start.
+ros2 topic list                          # /scan /camera/color /imu/fused /odom /drive ...
 
 # 4. Try a single LiDAR scan.
 ros2 topic echo /scan --once | head -20`}</Code>
@@ -340,7 +333,7 @@ ros2 topic echo /scan --once | head -20`}</Code>
           <GhostNumeral n="05" top={-30} right={-20} size={460} />
         <div style={{ position: 'relative', zIndex: 1 }}>
           <DisplayHeading size="lg">
-            RECOVERY AND <Red>RE-FLASH</Red>
+            WHEN TO <Red>RE-FLASH</Red>
           </DisplayHeading>
           <p
             style={{
@@ -351,11 +344,10 @@ ros2 topic echo /scan --once | head -20`}</Code>
               maxWidth: 720,
             }}
           >
-            Recovery is a re-flash of the NVMe over the Jetson&apos;s USB-C
-            recovery port, the same two-stage flow as section 02: base image
-            first, then the driver setup on top. Your calibration files live on
-            the MCU (microcontroller unit)&apos;s flash, not on the SSD, so the
-            car is ready to drive the moment it boots.
+            Four situations where the five steps above are the answer. A
+            re-flashed car needs the driver installed again before it will
+            drive, but your calibration is safe: motor trim and servo centre
+            live on the MCU (microcontroller unit), not on the SSD.
           </p>
 
           <DashList
@@ -377,8 +369,8 @@ ros2 topic echo /scan --once | head -20`}</Code>
               </>,
               <>
                 <strong>Calibration gone?</strong> It's not. The motor trim
-                and servo center live on the MCU. Re-flashing the NVMe does
-                not touch them. See <a href="/docs/calibration/motor-trim" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Motor trim</a>.
+                and servo centre live on the MCU. Re-flashing the NVMe does
+                not touch them.
               </>,
             ]}
           />

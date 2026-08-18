@@ -54,6 +54,7 @@ export default function RemoteDesktopPage() {
       {/* ── 01 · Change the password ─────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 44 }}>
+          <GhostNumeral n="01" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
               CHANGE THE <Red>PASSWORD</Red>
@@ -84,6 +85,7 @@ export default function RemoteDesktopPage() {
       {/* ── 02 · Connect from the laptop ─────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 44 }}>
+          <GhostNumeral n="02" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
               CONNECT BY <Red>ADDRESS</Red>
@@ -112,6 +114,7 @@ export default function RemoteDesktopPage() {
       {/* ── 03 · The monitor retires ─────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 44 }}>
+          <GhostNumeral n="03" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
               UNPLUG THE <Red>MONITOR</Red>
@@ -119,10 +122,10 @@ export default function RemoteDesktopPage() {
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
               Everything on the car is now reachable from your laptop: RustDesk
               for the full desktop, SSH for a terminal, the dashboard on port{' '}
-              <code style={{ fontFamily: NB.monoFont }}>8080</code>, and
-              JupyterLab on port{' '}
-              <code style={{ fontFamily: NB.monoFont }}>8888</code> where the
-              next page happens. Unplug the monitor and keyboard. The day-to-day
+              <code style={{ fontFamily: NB.monoFont }}>8080</code>, and{' '}
+              <Link href="/docs/software/jupyterlab" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>JupyterLab</Link>{' '}
+              on port <code style={{ fontFamily: NB.monoFont }}>8888</code> for
+              writing code. Unplug the monitor and keyboard. The day-to-day
               connection reference is{' '}
               <Link href="/docs/software/networking" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Networking</Link>.
             </p>

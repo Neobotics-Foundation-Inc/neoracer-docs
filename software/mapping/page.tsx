@@ -60,38 +60,38 @@ export default function MappingPage() {
       </MouseFollowGlow>
 
       <ScrollReveal>
-        <Callout type="note" title="The osracer base runs underneath this">
-          Mapping runs on the osracer stack, so its bringup comes first: stop
-          the services, switch workspaces, and leave the bringup running in its
-          own terminal. The full sequence is on{' '}
-          <a href="/docs/software/workspaces" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Workspaces</a>.
-          <Code lang="bash">{`racecar service stop
-racecar ws osracer
-ros2 launch osracer_bringup bringup.launch.py`}</Code>
+        <Callout type="note" title="Start the osracer bringup first">
+          Mapping runs on the osracer stack, not the default driver. Stop the
+          services, switch workspaces, and leave the bringup running in its own
+          terminal before anything on this page. The sequence is on{' '}
+          <Link href="/docs/software/workspaces" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Workspaces</Link>.
         </Callout>
       </ScrollReveal>
 
       {/* ── 01 · before you map ─────────────────────────────────────────── */}
       <ScrollReveal>
-        <section style={{ paddingBottom: 40 }}>
-          <DisplayHeading size="lg">
-            DRIVE TO <Red>MAP</Red>
-          </DisplayHeading>
-          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-            Mapping runs on top of the live driver, and you build the map by
-            driving the car yourself. Keep the transmitter in{' '}
-            <Link href="/docs/hardware/remote-control" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>RC mode</Link>{' '}
-            and take it slowly: smooth, steady passes let the scan matcher keep up.
-          </p>
-          <div style={{ marginTop: 8 }}>
-            <DashList
-              items={[
-                <>The driver is up on the car (start it with <code style={{ fontFamily: NB.monoFont }}>teleop</code>, see <Link href="/docs/software/ros2-driver" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>ROS 2 driver</Link>).</>,
-                <>You can reach the car&apos;s ROS graph from your laptop (see <Link href="/docs/software/networking" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Networking</Link>).</>,
-                <>A bounded indoor space with walls the LiDAR can see. Glass and mirrors read as gaps, so keep them out of the run.</>,
-                <>SWB up (manual), so you stay on the sticks while SLAM runs.</>,
-              ]}
-            />
+        <section style={{ position: 'relative', paddingBottom: 40 }}>
+          <GhostNumeral n="01" top={-30} right={-20} size={420} />
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <DisplayHeading size="lg">
+              DRIVE TO <Red>MAP</Red>
+            </DisplayHeading>
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
+              You build the map by driving the car yourself. Keep the transmitter
+              in{' '}
+              <Link href="/docs/hardware/remote-control" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>RC mode</Link>{' '}
+              and take it slowly. Smooth, steady passes let the scan matcher keep up.
+            </p>
+            <div style={{ marginTop: 8 }}>
+              <DashList
+                items={[
+                  <>The osracer bringup running in its own terminal.</>,
+                  <>You can reach the car&apos;s ROS graph from your laptop (see <Link href="/docs/software/networking" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Networking</Link>).</>,
+                  <>A bounded indoor space with walls the LiDAR can see. Glass and mirrors read as gaps, so keep them out of the run.</>,
+                  <>SWB up (manual), so you stay on the sticks while SLAM runs.</>,
+                ]}
+              />
+            </div>
           </div>
         </section>
       </ScrollReveal>
@@ -106,7 +106,9 @@ ros2 launch osracer_bringup bringup.launch.py`}</Code>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
               Each backend runs in its own terminal, with a second terminal that
-              opens RViz so you can watch. Start one mapper, not three.
+              opens RViz so you can watch. Start one mapper, not three. Every new
+              terminal opens on the neoracer workspace, so each one needs{' '}
+              <code style={{ fontFamily: NB.monoFont }}>racecar ws osracer</code> first.
             </p>
             <div style={{ marginTop: 18 }}>
               <DataTable
@@ -124,19 +126,19 @@ ros2 launch osracer_bringup bringup.launch.py`}</Code>
 
             <div style={{ marginTop: 24 }}>
               <MonoLabel>slam_toolbox</MonoLabel>
-              <Code lang="bash">{`racecar ws osracer      # switch this shell to the vendor workspace
+              <Code lang="bash">{`racecar ws osracer
 ros2 launch osracer_slam slam_toolbox.launch.py      # terminal 1
 ros2 launch osracer_debug debug_mapping.launch.py    # terminal 2 (RViz)`}</Code>
             </div>
             <div style={{ marginTop: 16 }}>
               <MonoLabel>gmapping</MonoLabel>
-              <Code lang="bash">{`racecar ws osracer      # switch this shell to the vendor workspace
+              <Code lang="bash">{`racecar ws osracer
 ros2 launch osracer_slam gmapping.launch.py          # terminal 1
 ros2 launch osracer_debug debug_mapping.launch.py    # terminal 2 (RViz)`}</Code>
             </div>
             <div style={{ marginTop: 16 }}>
               <MonoLabel>Cartographer</MonoLabel>
-              <Code lang="bash">{`racecar ws osracer      # switch this shell to the vendor workspace
+              <Code lang="bash">{`racecar ws osracer
 ros2 launch osracer_slam cartographer.launch.py        # terminal 1
 ros2 launch osracer_debug debug_cartographer.launch.py # terminal 2 (RViz)`}</Code>
             </div>
@@ -146,7 +148,9 @@ ros2 launch osracer_debug debug_cartographer.launch.py # terminal 2 (RViz)`}</Co
 
       {/* ── 03 · watch it build ─────────────────────────────────────────── */}
       <ScrollReveal>
-        <section style={{ paddingBottom: 40 }}>
+        <section style={{ position: 'relative', paddingBottom: 40 }}>
+          <GhostNumeral n="03" top={-30} right={-20} size={420} />
+          <div style={{ position: 'relative', zIndex: 1 }}>
           <DisplayHeading size="lg">
             IN <Red>RVIZ</Red>
           </DisplayHeading>
@@ -165,6 +169,7 @@ ros2 launch osracer_debug debug_cartographer.launch.py # terminal 2 (RViz)`}</Co
             outer wall gives the backend a strong frame to fit everything else
             into, and it makes loop closure cleaner on Cartographer.
           </Callout>
+          </div>
         </section>
       </ScrollReveal>
 
@@ -185,12 +190,12 @@ ros2 launch osracer_debug debug_cartographer.launch.py # terminal 2 (RViz)`}</Co
             </p>
             <div style={{ marginTop: 14 }}>
               <MonoLabel>slam_toolbox / gmapping</MonoLabel>
-              <Code lang="bash">{`racecar ws osracer      # switch this shell to the vendor workspace
+              <Code lang="bash">{`racecar ws osracer
 ros2 launch osracer_slam map_save.launch.xml`}</Code>
             </div>
             <div style={{ marginTop: 14 }}>
               <MonoLabel>Cartographer</MonoLabel>
-              <Code lang="bash">{`racecar ws osracer      # switch this shell to the vendor workspace
+              <Code lang="bash">{`racecar ws osracer
 ros2 launch osracer_slam map_save_cartographer.launch.xml`}</Code>
             </div>
             <Callout type="note" title="Save before you stop the mapper">

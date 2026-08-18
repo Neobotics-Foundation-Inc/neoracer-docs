@@ -15,7 +15,7 @@ import { Crumbs, PrevNext, Callout, Code } from '@/components/docs/DocsPrimitive
 import UrdfViewer from '@/components/docs/UrdfViewer';
 
 export const metadata: Metadata = {
-  title: 'Robot model (3D) · NeoRacer Docs',
+  title: '3D model · Software · NeoRacer Docs',
   description:
     "An interactive 3D model of the NeoRacer, built from the real osracer ROS 2 URDF: rotate it, spin the wheels, and steer the front axle through the actual continuous joints.",
 };
@@ -26,7 +26,7 @@ export default function RobotModelPage() {
       <Crumbs
         items={[
           { label: 'Software', href: '/docs/software/os-and-image' },
-          { label: 'Robot model' },
+          { label: '3D model' },
         ]}
       />
 
@@ -75,39 +75,42 @@ export default function RobotModelPage() {
         </Fig>
       </ScrollReveal>
 
-      {/* ── Using the model ──────────────────────────────────────────── */}
+      {/* ── 01 · Using the model ─────────────────────────────────────── */}
       <ScrollReveal>
-        <section style={{ paddingBottom: 8 }}>
-          <DisplayHeading size="lg">
-            USING THE <Red>MODEL</Red>
-          </DisplayHeading>
-          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-            The URDF ships on the car in the{' '}
-            <code style={{ fontFamily: NB.monoFont }}>osracer_description</code>{' '}
-            ROS 2 package; this page renders a copy of the same file. The driver
-            loads it at boot, so a running car is already broadcasting this
-            model as its transform tree.
-          </p>
-          <MonoLabel>See it live on the car</MonoLabel>
-          <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 6 }}>
-            With a monitor or a remote desktop session, open a terminal and run:
-          </p>
-          <Code lang="bash">{`source /opt/ros/humble/setup.bash && source ~/ros2_ws/install/setup.bash
-rviz2`}</Code>
-          <DashList
-            items={[
-              <>In RViz, click <strong>Add</strong> and choose{' '}
-                <code style={{ fontFamily: NB.monoFont }}>RobotModel</code>.</>,
-              <>Set its <strong>Description Topic</strong> to{' '}
-                <code style={{ fontFamily: NB.monoFont }}>/robot_description</code>.</>,
-              <>Set the <strong>Fixed Frame</strong> to{' '}
-                <code style={{ fontFamily: NB.monoFont }}>base_link</code>.</>,
-            ]}
-          />
-          <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 14 }}>
-            The car appears exactly as in FIG. A, driven by the live transform
-            tree instead of your mouse.
-          </p>
+        <section style={{ position: 'relative', paddingBottom: 8 }}>
+          <GhostNumeral n="01" top={-30} right={-20} size={400} />
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <DisplayHeading size="lg">
+              SEE IT ON THE <Red>CAR</Red>
+            </DisplayHeading>
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
+              The URDF ships on the car in the{' '}
+              <code style={{ fontFamily: NB.monoFont }}>osracer_description</code>{' '}
+              ROS 2 package, and this page renders a copy of the same file. To
+              see the live version you need the osracer stack running, so start
+              its bringup first (see{' '}
+              <Link href="/docs/software/workspaces" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Workspaces</Link>).
+            </p>
+            <MonoLabel>Open RViz</MonoLabel>
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 6 }}>
+              With a monitor or a remote desktop session, open a terminal and run:
+            </p>
+            <Code lang="bash">{`rviz2`}</Code>
+            <DashList
+              items={[
+                <>In RViz, click <strong>Add</strong> and choose{' '}
+                  <code style={{ fontFamily: NB.monoFont }}>RobotModel</code>.</>,
+                <>Set its <strong>Description Topic</strong> to{' '}
+                  <code style={{ fontFamily: NB.monoFont }}>/robot_description</code>.</>,
+                <>Set the <strong>Fixed Frame</strong> to{' '}
+                  <code style={{ fontFamily: NB.monoFont }}>base_link</code>.</>,
+              ]}
+            />
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 14 }}>
+              The car appears exactly as in FIG. A, driven by the live transform
+              tree instead of your mouse.
+            </p>
+          </div>
         </section>
       </ScrollReveal>
 

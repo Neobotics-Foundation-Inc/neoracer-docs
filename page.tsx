@@ -38,7 +38,7 @@ const SHOW_PLAYGROUND_TEASE = false;
 const pitLane: PitLaneSection[] = [
   { title: 'Setup', href: '/docs/getting-started/unbox', pages: 6 },
   { title: 'Hardware', href: '/docs/hardware/overview', pages: 11 },
-  { title: 'Software', href: '/docs/software/networking', pages: 6 },
+  { title: 'Software', href: '/docs/software/networking', pages: 5 },
   { title: 'API Reference', href: '/docs/api-reference/python/drive', pages: 10 },
   { title: 'Calibration', href: '/docs/calibration/motor-trim', pages: 5, disabled: true },
   // Soft hyphen so narrow phone bays break it as TROUBLE-SHOOTING.

@@ -7,14 +7,15 @@ import {
   Red,
   GhostNumeral,
   MonoLabel,
+  DashList,
 } from '@/components/docs/Editorial';
-import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
+import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
 import { Crumbs, Callout, Code, PrevNext, DataTable } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
   title: 'File system · Software · NeoRacer Docs',
   description:
-    "A walk through the NeoRacer's home directory: ros2_ws holds the driver, jupyter_ws holds your code, osracer_ws is the vendor stack, and neoracer-installer is what put it all there.",
+    "A walk through the NeoRacer's home directory: ros2_ws holds the driver, jupyter_ws holds your code and is what JupyterLab serves, osracer_ws is the vendor stack, and neoracer-installer is what put it all there.",
 };
 
 export default function FileSystemPage() {
@@ -137,9 +138,11 @@ CONTRIBUTING.md  models    resource              test`}</Code>
               JUPYTER_WS, YOUR <Red>CODE</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-              The one you actually work in. This is the directory{' '}
-              <Link href="/docs/software/jupyterlab" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>JupyterLab</Link>{' '}
-              serves, so the file list in the browser is exactly this.
+              The one you actually work in, and the only one you need day to
+              day. JupyterLab serves this directory, so the file browser in
+              your browser is exactly this folder. Everything else on the car
+              sits outside that root, so you cannot wander into the driver or
+              the system by accident.
             </p>
             <Code lang="bash">{`~/jupyter_ws$ ls
 neoracer-os  README.md
@@ -167,12 +170,124 @@ display.py     lidar.py  __pycache__  real              telemetry.py`}</Code>
               <code style={{ fontFamily: NB.monoFont }}>rc.*</code> module, with{' '}
               <code style={{ fontFamily: NB.monoFont }}>real</code> and{' '}
               <code style={{ fontFamily: NB.monoFont }}>simulation</code> holding
-              the two backends that sit behind the same API.
+              the two backends that sit behind the same API. Your own files can
+              go straight in{' '}
+              <code style={{ fontFamily: NB.monoFont }}>~/jupyter_ws</code>.
             </p>
-            <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 14 }}>
-              Every method in those modules is on the{' '}
-              <Link href="/docs/api-reference/python/drive" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Python API reference</Link>.
-            </p>
+            <Callout type="tip" title="Same files over SSH">
+              This is an ordinary directory on the Jetson, so{' '}
+              <code style={{ fontFamily: NB.monoFont }}>scp</code>,{' '}
+              <code style={{ fontFamily: NB.monoFont }}>git</code>, and an SSH
+              session all see exactly what the browser shows. Use whichever
+              suits the job.
+            </Callout>
+
+            <div style={{ marginTop: 30 }}>
+              <MonoLabel>Opening JupyterLab</MonoLabel>
+              <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 6 }}>
+                It is one of the four services that start at boot, so there is
+                nothing to launch. Join the car&apos;s network and open its
+                address on port{' '}
+                <code style={{ fontFamily: NB.monoFont }}>8888</code>.
+              </p>
+              <Code lang="bash">{`http://192.168.10.100:8888     # cudy router
+http://10.42.0.1:8888          # the car's access point`}</Code>
+              <Callout type="note" title="There is no login">
+                The service runs with authentication off, because the car&apos;s
+                networks are local and closed. Anyone already on the car&apos;s
+                Wi-Fi can open it and run code on the car. That is fine on a
+                bench or a track and worth knowing about in a shared space.
+              </Callout>
+            </div>
+
+            <div style={{ marginTop: 30 }}>
+              <MonoLabel>Why import already works</MonoLabel>
+              <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 6 }}>
+                <code style={{ fontFamily: NB.monoFont }}>import racecar_core</code>{' '}
+                works from any file in the workspace, with no path juggling. The
+                driver setup writes a{' '}
+                <InfoNote term=".pth file" title="Python .pth file">
+                  A one-line file Python reads at startup. It adds the directory
+                  named inside it to the import path, so a package outside the
+                  usual locations can still be imported by name.
+                </InfoNote>{' '}
+                called{' '}
+                <code style={{ fontFamily: NB.monoFont }}>racecar_student.pth</code>{' '}
+                that points Python at{' '}
+                <code style={{ fontFamily: NB.monoFont }}>neoracer-os/library</code>.
+              </p>
+              <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 12 }}>
+                If you keep more than one copy of the library, for example a
+                fork you are working on, the CLI manages which one that file
+                points to. A folder you name here is read as{' '}
+                <code style={{ fontFamily: NB.monoFont }}>~/jupyter_ws/&lt;folder&gt;/library</code>.
+              </p>
+              <Code lang="bash">{`racecar library --status           # which copy is active
+racecar library --list             # valid folders in ~/jupyter_ws
+racecar library --select my-fork   # point at ~/jupyter_ws/my-fork/library
+racecar library --reset            # delete the .pth file`}</Code>
+              <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 12 }}>
+                Every module and method is in the{' '}
+                <Link href="/docs/api-reference/python/drive" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Python API reference</Link>.
+              </p>
+            </div>
+
+            <div style={{ marginTop: 30 }}>
+              <MonoLabel>Notebooks or scripts</MonoLabel>
+              <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 6 }}>
+                Both run the same library against the same car. They suit
+                different jobs.
+              </p>
+              <div style={{ marginTop: 14 }}>
+                <DataTable
+                  columns={[
+                    { key: 'k', label: '', accent: true },
+                    { key: 'nb', label: 'Notebook (.ipynb)', mono: true },
+                    { key: 'sc', label: 'Script (.py)', mono: true },
+                  ]}
+                  rows={[
+                    { k: 'Good for', nb: 'Reading one sensor, checking a value, teaching', sc: 'A full driving program you run start to finish' },
+                    { k: 'How you run it', nb: 'Cell by cell in the browser', sc: 'python3 <file> from a terminal' },
+                    { k: 'State', nb: 'Kept in the kernel between cells', sc: 'Gone when the program exits' },
+                  ]}
+                />
+              </div>
+              <Code lang="bash">{`# A script, from an SSH session or the JupyterLab terminal.
+python3 ~/jupyter_ws/neoracer-os/labs/drive_square.py`}</Code>
+            </div>
+
+            <div style={{ marginTop: 30 }}>
+              <MonoLabel>Restart the kernel</MonoLabel>
+              <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 6 }}>
+                A notebook holds the car&apos;s sensors for as long as its
+                kernel is alive, even after the last cell has finished. If you
+                open a second notebook, or run a script while a notebook is
+                still loaded, the second one gets nothing. This is the most
+                common confusion on the car and it is not a fault.
+              </p>
+              <DashList
+                items={[
+                  <>When you finish with a notebook, open the{' '}
+                    <code style={{ fontFamily: NB.monoFont }}>Kernel</code> menu and
+                    choose <strong>Restart Kernel and Clear Outputs of All Cells</strong>.
+                    That releases the sensors and leaves the file clean for the
+                    next person.</>,
+                  <>A notebook that suddenly reads zeros usually means another
+                    kernel still holds the hardware. Shut the other one down from
+                    the <strong>Running Terminals and Kernels</strong> tab in the
+                    left sidebar.</>,
+                  <>Logs for the service itself go to the journal, not to a file:{' '}
+                    <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>journalctl -u neoracer-jupyter -f</code>.</>,
+                ]}
+              />
+              <Callout type="warn" title="A running notebook can still drive the car">
+                A kernel with a live{' '}
+                <code style={{ fontFamily: NB.monoFont }}>rc</code> object keeps
+                control of the motors. Before you walk away from the car, restart
+                the kernel and flip SWB up on the{' '}
+                <Link href="/docs/hardware/remote-control" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>transmitter</Link>.
+              </Callout>
+            </div>
           </div>
         </section>
       </ScrollReveal>
@@ -290,7 +405,7 @@ docs  logs  README.md  scripts  tests`}</Code>
 
       <PrevNext
         prev={{ label: 'Remote desktop', href: '/docs/software/remote-desktop' }}
-        next={{ label: 'JupyterLab', href: '/docs/software/jupyterlab' }}
+        next={{ label: 'OS & image', href: '/docs/software/os-and-image' }}
       />
     </DocsShell>
   );

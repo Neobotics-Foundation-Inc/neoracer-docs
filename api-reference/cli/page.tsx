@@ -313,7 +313,7 @@ racecar setup ml         # the GPU stack: PyTorch for Tegra, Ultralytics, ONNX`}
                 <code style={{ fontFamily: NB.monoFont }}>import racecar_core</code>{' '}
                 work. Only relevant if you keep more than one copy of the
                 library. See{' '}
-                <Link href="/docs/software/jupyterlab" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>JupyterLab</Link>.
+                <Link href="/docs/software/workspaces" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>File system</Link>.
               </p>
               <Code lang="bash">{`racecar library --status           # which copy is active
 racecar library --list             # valid folders in ~/jupyter_ws
@@ -344,7 +344,7 @@ racecar source     # or open a new terminal, so the shell picks up the new tool`
 
       <PrevNext
         prev={{ label: 'ROS 2 TF frames', href: '/docs/api-reference/ros2/tf-frames' }}
-        next={{ label: 'Software · JupyterLab', href: '/docs/software/jupyterlab' }}
+        next={{ label: 'Software · File system', href: '/docs/software/workspaces' }}
       />
     </DocsShell>
   );

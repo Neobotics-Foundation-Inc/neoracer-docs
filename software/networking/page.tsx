@@ -84,15 +84,16 @@ export default function NetworkingPage() {
                   { k: 'Network IP', cudy: '192.168.10.100', ap: '10.42.0.1' },
                   { k: 'Gateway', cudy: '192.168.10.1', ap: '10.42.0.1' },
                   { k: 'Extra hardware', cudy: 'the included cudy router', ap: 'none' },
-                  { k: 'Setup', cudy: 'automatic once the router is plugged in', ap: 'requires the CLI' },
+                  { k: 'Setup', cudy: 'automatic', ap: 'requires the CLI' },
                   { k: 'Antennas', cudy: 'attached to the router', ap: 'externally placed' },
                 ]}
               />
             </div>
-            <Callout type="note" title="Putting the car itself online">
+            <Callout type="note" title="Access to Wi-Fi">
               For installs and updates, the Jetson needs access to the Wi-Fi.
-              Therefore, we recommend connecting to the router and connecting
-              the Jetson to internet. This is the same setup we work through in{' '}
+              Therefore, we recommend connecting your device to the router and
+              connecting the Jetson to internet. These are the same steps we
+              follow in{' '}
               <Link href="/docs/getting-started/prepare-the-car" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
                 setup
               </Link>. Using the Jetson access point means the Jetson cannot
@@ -102,18 +103,21 @@ export default function NetworkingPage() {
         </section>
       </ScrollReveal>
 
-      {/* ── Section 02 · Three ways in ──────────────────────────────────── */}
+      {/* ── Section 02 · Ways in ───────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
               WAYS TO <Red>CONNECT</Red>
             </DisplayHeading>
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
+              Once you have chosen your preferred network method, there are two
+              main ways to connect to the car:
+            </p>
 
             <div style={{ marginTop: 18 }}>
               <MonoLabel>SSH</MonoLabel>
               <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 0 }}>
-                A terminal is all you need for most work.{' '}
                 <InfoNote term="SSH" title="SSH">SSH (Secure Shell) logs you into another computer over the network and gives you its terminal. Here it puts you on the car.</InfoNote>{' '}
                 in as <code style={{ fontFamily: NB.monoFont }}>racecar</code> at the
                 address for your network:
@@ -126,24 +130,12 @@ ssh racecar@10.42.0.1          # access point
             <div style={{ marginTop: 22 }}>
               <MonoLabel>Remote desktop (RustDesk)</MonoLabel>
               <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 0 }}>
-                For the full Jetson desktop, connect by the car&apos;s IP address.
-                Setup and the password are on{' '}
+                For the full Jetson desktop, connect by the IP address. Setup is
+                done in{' '}
                 <Link href="/docs/software/remote-desktop" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
                   Remote desktop
                 </Link>.
               </p>
-            </div>
-
-            <div style={{ marginTop: 22 }}>
-              <MonoLabel>Wired USB fallback</MonoLabel>
-              <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 0 }}>
-                With no Wi-Fi at all, a USB-A to USB-C cable from your PC to the
-                Jetson&apos;s Type-C port brings up a{' '}
-                <InfoNote term="RNDIS" title="USB Ethernet (RNDIS)">A USB device can present itself as a virtual Ethernet adapter. The Jetson does this on its Type-C port, so a plain USB cable becomes a point-to-point network link.</InfoNote>{' '}
-                point-to-point link, and the Jetson answers at a fixed address:
-              </p>
-              <Code lang="bash">{`ssh racecar@192.168.55.1       # over the USB cable
-# password: neobotics`}</Code>
             </div>
           </div>
         </section>
@@ -158,8 +150,8 @@ ssh racecar@10.42.0.1          # access point
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
               The car brings up its whole stack at boot: the driver, the
-              watchdog, the health dashboard, and JupyterLab all run as{' '}
-              <Link href="/docs/getting-started/install-driver" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>services</Link>.
+              watchdog, the health dashboard, and JupyterLab all run as
+              services.
               Two of them are web pages, so a browser on the car&apos;s network
               is enough:
             </p>
@@ -172,68 +164,6 @@ http://192.168.10.100:8888     # JupyterLab        (10.42.0.1 on the AP)`}</Code
               and <code style={{ fontFamily: NB.monoFont }}>racecar service restart</code>;
               logs stream with{' '}
               <code style={{ fontFamily: NB.monoFont }}>racecar service logs</code>.
-            </Callout>
-          </div>
-        </section>
-      </ScrollReveal>
-
-      {/* ── Section 04 · ROS 2 over the link ───────────────────────────── */}
-      <ScrollReveal>
-        <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <div style={{ position: 'relative', zIndex: 1 }}>
-            <DisplayHeading size="lg">
-              ROS 2 <Red>DISCOVERY</Red>
-            </DisplayHeading>
-            <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-              Once your laptop is on the car&apos;s network, you share its{' '}
-              <InfoNote term="subnet" title="Subnet">A group of devices whose IP addresses share the same prefix, so they can talk directly. Joining the car's Wi-Fi puts your laptop on the same range as the car.</InfoNote>{' '}
-              (<code style={{ fontFamily: NB.monoFont }}>192.168.10.x</code> on the
-              cudy, <code style={{ fontFamily: NB.monoFont }}>10.42.0.x</code> on
-              the access point), and ROS 2 uses{' '}
-              <InfoNote term="DDS discovery" title="DDS Discovery">DDS is the messaging system under ROS 2. Its discovery step lets nodes on the same network find each other on their own, with no central server.</InfoNote>{' '}
-              to find the car&apos;s nodes automatically. You can list topics and
-              run nodes on the laptop that talk to{' '}
-              <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>/scan</code>,{' '}
-              <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>/drive</code>,
-              and the rest.
-            </p>
-
-            <Code lang="bash">{`# From your laptop, on the car's network.
-ros2 topic list                  # /scan /camera /imu /odom /battery /drive ...
-ros2 topic echo /scan --once     # a single scan, straight off the car`}</Code>
-
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-                gap: 18,
-                marginTop: 20,
-              }}
-            >
-              <NumberedFeatureCard
-                n={1}
-                title="Same subnet"
-                lede="You get this by joining the car's Wi-Fi."
-                body="DDS discovery reaches the car nodes when both sides are on the same subnet. Joining the car's network, cudy or access point, puts you there."
-                codeChip="ros2 topic list"
-              />
-              <NumberedFeatureCard
-                n={2}
-                title="Same ROS_DOMAIN_ID"
-                lede="Matched on both ends."
-                body="ROS 2 only joins peers that share the same ROS_DOMAIN_ID. Set the same value on the laptop and the car, and the two halves of the graph see each other."
-                codeChip="export ROS_DOMAIN_ID=..."
-              />
-            </div>
-
-            <Callout type="note" title="When ros2 topic list comes up empty">
-              An empty list almost always means the two sides aren&apos;t on the
-              same graph yet. Confirm the laptop is on the car&apos;s Wi-Fi (not a
-              second network), confirm the services are up with{' '}
-              <code style={{ fontFamily: NB.monoFont }}>racecar service status</code>,
-              and confirm the{' '}
-              <code style={{ fontFamily: NB.monoFont }}>ROS_DOMAIN_ID</code> matches
-              on both ends.
             </Callout>
           </div>
         </section>

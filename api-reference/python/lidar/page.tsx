@@ -7,7 +7,7 @@ import {
   GhostNumeral,
 } from '@/components/docs/Editorial';
 import { Crumbs, PrevNext, Callout, Code, ApiMethods, type ApiMethod } from '@/components/docs/DocsPrimitives';
-import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
+import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 
 export const metadata: Metadata = {
   title: 'rc.lidar · Python API · NeoRacer Docs',
@@ -75,12 +75,8 @@ export default function LidarApiPage() {
               RC.<Red>LIDAR</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
-              The{' '}
-              <InfoNote term="Lidar" title="LiDAR">
-                A sensor that spins a laser around and times how long each pulse takes to bounce back, turning that into a distance for every direction. That is how the car senses walls and obstacles.
-              </InfoNote>{' '}
-              module provides the LiDAR&apos;s current scan, number of
-              samples, and distances.
+              The Lidar module provides the LiDAR&apos;s current scan,
+              number of samples, and distances.
             </p>
           </div>
         </section>
@@ -128,7 +124,7 @@ export default function LidarApiPage() {
       <ScrollReveal>
         <section style={{ paddingBottom: 24 }}>
           <DisplayHeading size="lg">
-            A WALL-STOP <Red>EXAMPLE</Red>
+            EXAMPLE <Red>USAGE</Red>
           </DisplayHeading>
           <Code lang="python">{`import sys
 sys.path.insert(0, "../library")   # the racecar-neo library on the car

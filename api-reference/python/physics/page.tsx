@@ -114,7 +114,7 @@ export default function PhysicsApiPage() {
         <section style={{ paddingBottom: 24 }}>
           <Eyebrow>TYPICAL USE</Eyebrow>
           <DisplayHeading size="lg">
-            A WORKED <Red>EXAMPLE</Red>
+            EXAMPLE <Red>USAGE</Red>
           </DisplayHeading>
           <Code lang="python">{`import racecar_core
 

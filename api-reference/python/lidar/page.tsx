@@ -83,22 +83,6 @@ export default function LidarApiPage() {
       </MouseFollowGlow>
 
       <ScrollReveal>
-        <Callout type="note" title="The 270° window and the rear wedge">
-          The scanner is a{' '}
-          <a href="/docs/hardware/sensors/lidar" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-            Richbeam LakiBeam1
-          </a>{' '}
-          spinning a full circle at 0.25° per sample, and the scan array covers
-          all 360°. The sensor itself reads a 270° window of that circle, so the
-          ~90° wedge behind the car never carries a return and reads 0. Any
-          sample with no return reads 0 the same way, and the{' '}
-          <code style={{ fontFamily: NB.monoFont }}>rc_utils</code> helpers skip
-          zeros for you. If you index the raw array rearward, expect zeros
-          there, by design, not by fault.
-        </Callout>
-      </ScrollReveal>
-
-      <ScrollReveal>
         <section style={{ paddingBottom: 24 }}>
           <DisplayHeading size="lg">
             <Red>METHODS</Red>
@@ -146,6 +130,22 @@ def update():
 rc.set_start_update(start, update)
 rc.go()`}</Code>
         </section>
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <Callout type="note" title="The 270° window and the rear wedge">
+          The scanner is a{' '}
+          <a href="/docs/hardware/sensors/lidar" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
+            Richbeam LakiBeam1
+          </a>{' '}
+          spinning a full circle at 0.25° per sample, and the scan array covers
+          all 360°. The sensor itself reads a 270° window of that circle, so the
+          ~90° wedge behind the car never carries a return and reads 0. Any
+          sample with no return reads 0 the same way, and the{' '}
+          <code style={{ fontFamily: NB.monoFont }}>rc_utils</code> helpers skip
+          zeros for you. If you index the raw array rearward, expect zeros
+          there, by design, not by fault.
+        </Callout>
       </ScrollReveal>
 
       <PrevNext

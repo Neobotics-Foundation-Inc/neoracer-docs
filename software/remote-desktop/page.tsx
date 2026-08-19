@@ -62,7 +62,10 @@ export default function RemoteDesktopPage() {
                 },
                 { text: <>Enter the car&apos;s IP address for your network: <code style={{ fontFamily: NB.monoFont }}>192.168.10.100</code> on the cudy router, or <code style={{ fontFamily: NB.monoFont }}>10.42.0.1</code> on the access point.</> },
                 { text: <>Press <strong>Connect</strong>.</> },
-                { text: <>The first time you connect, RustDesk asks for its password. It is <code style={{ fontFamily: NB.monoFont }}>Neo-2026</code>.</> },
+                {
+                  text: <>The first time you connect, RustDesk asks for its password. It is <code style={{ fontFamily: NB.monoFont }}>Neo-2026</code>.</>,
+                  photos: [{ src: '/images/rustdesk_login.png', alt: 'The RustDesk Password required dialog, asking you to verify the RustDesk password before the session opens' }],
+                },
                 { text: <>The Jetson login screen appears. Log in as <code style={{ fontFamily: NB.monoFont }}>racecar</code> with the password <code style={{ fontFamily: NB.monoFont }}>neobotics</code>.</> },
               ]}
             />

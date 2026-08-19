@@ -2,11 +2,9 @@ import { Metadata } from 'next';
 import DocsShell from '@/components/docs/DocsShell';
 import { NB } from '@/lib/nb-tokens';
 import {
-  Eyebrow,
   DisplayHeading,
   Red,
   GhostNumeral,
-  ChromeBadge,
 } from '@/components/docs/Editorial';
 import { Crumbs, PrevNext, Callout, Code, ApiMethods, type ApiMethod } from '@/components/docs/DocsPrimitives';
 import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
@@ -33,11 +31,11 @@ const METHODS: ApiMethod[] = [
     summary: 'Halts the car and returns the front wheels to centre. The same as set_speed_angle(0, 0).',
   },
   {
-    sig: 'rc.drive.set_max_speed(max_speed=0.25)',
+    sig: 'rc.drive.set_max_speed(max_speed=1.0)',
     returns: 'None',
-    summary: 'Scales every speed you send afterward. A safety cap, set once in start(). The default is 0.25, so a student set_speed_angle(1.0, 0) only drives at a quarter of the hardware top speed until you raise it.',
+    summary: 'Sets the maximum throttle in both directions. A safety cap, set once in start(). Defaults to 1.0 (full scale); lower it to slow the whole program down in one place.',
     params: [
-      { name: 'max_speed: float', detail: <>Throttle scale in <code style={{ fontFamily: NB.monoFont }}>[0.0, 1.0]</code>. Defaults to 0.25.</> },
+      { name: 'max_speed: float', detail: <>Throttle scale in <code style={{ fontFamily: NB.monoFont }}>[0.0, 1.0]</code>. Defaults to 1.0.</> },
     ],
   },
 ];
@@ -69,17 +67,9 @@ export default function DriveApiPage() {
                 maxWidth: 680,
               }}
             >
-              The Drive module is how your code moves the car: one call sets the
-              wheel speed and the front-wheel steering angle. It is the
-              only part of the car your program writes to, and the same three
-              methods run unchanged in the Playground sim and on the physical
-              NeoRacer.
+              The drive module controls the wheel speed and steering angle of
+              the car.
             </p>
-            <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="red">Sim ↔ car identical</ChromeBadge>
-              <ChromeBadge variant="outline">3 methods</ChromeBadge>
-              <ChromeBadge variant="outline">speed, angle in [-1, 1]</ChromeBadge>
-            </div>
           </div>
         </section>
       </MouseFollowGlow>
@@ -87,7 +77,6 @@ export default function DriveApiPage() {
       {/* ── Methods ─────────────────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ paddingBottom: 24 }}>
-          <Eyebrow>METHODS</Eyebrow>
           <DisplayHeading size="lg">
             THE <Red>METHODS</Red>
           </DisplayHeading>
@@ -98,7 +87,6 @@ export default function DriveApiPage() {
       {/* ── Example ─────────────────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ paddingBottom: 24 }}>
-          <Eyebrow>TYPICAL USE</Eyebrow>
           <DisplayHeading size="lg">
             EXAMPLE <Red>USAGE</Red>
           </DisplayHeading>
@@ -107,7 +95,7 @@ export default function DriveApiPage() {
 rc = racecar_core.create_racecar()
 
 def start():
-    # Raise the throttle cap once. The library defaults it to 0.25.
+    # Cap the throttle once, so every later command is scaled down.
     rc.drive.set_max_speed(0.4)
     rc.drive.stop()
 
@@ -127,16 +115,7 @@ rc.go()`}</Code>
           You send numbers in <code style={{ fontFamily: NB.monoFont }}>[-1, 1]</code>, not m/s or
           degrees. The library maps them to the car's real throttle and steering
           range, which is what lets the same script run in the sim and on the
-          car. To make a "0 speed" command sit perfectly still on the real car,
-          run{' '}
-          <a href="/docs/calibration/motor-trim" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-            motor trim
-          </a>{' '}
-          and{' '}
-          <a href="/docs/calibration/servo-center" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-            servo center
-          </a>
-          .
+          car.
         </Callout>
       </ScrollReveal>
 

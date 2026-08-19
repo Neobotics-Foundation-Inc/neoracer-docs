@@ -19,7 +19,7 @@ const METHODS: ApiMethod[] = [
   {
     sig: 'rc.drive.set_speed_angle(speed, angle)',
     returns: 'None',
-    summary: 'The one write you have. Sets the wheel speed and the front-wheel steering angle for this frame.',
+    summary: 'Sets the wheel speed and the front-wheel steering angle for this frame.',
     params: [
       { name: 'speed: float', detail: <>Throttle in <code style={{ fontFamily: NB.monoFont }}>[-1.0, 1.0]</code>. 1.0 is full forward, -1.0 full reverse, 0 is stopped.</> },
       { name: 'angle: float', detail: <>Steering in <code style={{ fontFamily: NB.monoFont }}>[-1.0, 1.0]</code>. -1.0 is full left, 1.0 full right, 0 is straight.</> },

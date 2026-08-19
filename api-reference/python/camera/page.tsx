@@ -12,25 +12,25 @@ import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 export const metadata: Metadata = {
   title: 'rc.camera · Python API · NeoRacer Docs',
   description:
-    "The Camera module: 640x480 colour frames from the NeoRacer's RGB camera, identical in the Playground sim and on the car. racecar_core also exposes depth methods, but the NeoRacer has no depth camera, so use the LiDAR for distance.",
+    "The Camera module: color frames from the NeoRacer's RGB camera as NumPy arrays. racecar_core also exposes depth methods, but the NeoRacer has no depth camera, so use the LiDAR for distance.",
 };
 
 const METHODS: ApiMethod[] = [
   {
     sig: 'rc.camera.get_color_image()',
-    returns: 'NDArray[480, 640, 3]',
+    returns: 'NDArray[H, W, 3]',
     summary:
-      'A deep copy of the current color frame as a NumPy array, 480 rows by 640 columns, three channels in blue-green-red order, values 0 to 255.',
+      'A deep copy of the current color frame as a NumPy array of rows by columns, three channels in blue-green-red order, values 0 to 255.',
   },
   {
     sig: 'rc.camera.get_color_image_no_copy()',
-    returns: 'NDArray[480, 640, 3]',
+    returns: 'NDArray[H, W, 3]',
     summary:
       'A direct reference to the current color frame, without copying. Do not modify it; the library reuses the buffer for the next frame.',
   },
   {
     sig: 'rc.camera.get_depth_image()',
-    returns: 'NDArray[480, 640]',
+    returns: 'NDArray[H, W]',
     summary:
       'Not available on the NeoRacer: its camera is RGB-only, so this returns an all-zero frame.',
   },

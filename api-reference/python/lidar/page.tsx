@@ -26,7 +26,7 @@ const METHODS: ApiMethod[] = [
   {
     sig: 'rc.lidar.get_num_samples()',
     returns: 'int',
-    summary: 'How many samples a full scan contains: 1440 on the NeoRacer, 720 in the simulator. Use it (or len(scan)) whenever you index relative to the whole circle, for example scan[rc.lidar.get_num_samples() // 4] for 90° right.',
+    summary: 'Number of samples a full scan contains. Use it to index relative to the whole scan, for example scan[rc.lidar.get_num_samples() // 4] for 90° right.',
   },
   {
     sig: 'rc.lidar.get_samples_async()',

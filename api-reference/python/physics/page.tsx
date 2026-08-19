@@ -137,7 +137,7 @@ rc.go()`}</Code>
 
       <PrevNext
         prev={{ label: 'rc.controller', href: '/docs/api-reference/python/controller' }}
-        next={{ label: 'IMU hardware', href: '/docs/hardware/sensors/imu' }}
+        next={{ label: 'ROS 2 topics', href: '/docs/api-reference/ros2/topics' }}
       />
     </DocsShell>
   );

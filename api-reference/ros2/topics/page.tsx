@@ -87,12 +87,6 @@ const ROWS = [
     notes: 'A JPEG-compressed colour frame at 60 fps from the camera node (USB webcam in MJPG). The bytes are raw JPEG with encoding="jpeg", decode with cv2.imdecode before display. Publisher is best-effort: subscribe with sensor-data QoS or you receive nothing.',
   },
   {
-    topic: '/camera/decoded',
-    type: 'sensor_msgs/Image',
-    role: 'Read it',
-    notes: 'Optional. A decoded copy of /camera/color that RViz can render directly, republished by the decode_camera node when it is running, so it does not appear in a default topic list.',
-  },
-  {
     topic: '/drive',
     type: 'ackermann_msgs/AckermannDriveStamped',
     role: 'Publish it',

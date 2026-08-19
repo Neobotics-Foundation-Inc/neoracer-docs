@@ -344,7 +344,6 @@ racecar source     # or open a new terminal, so the shell picks up the new tool`
 
       <PrevNext
         prev={{ label: 'ROS 2 TF frames', href: '/docs/api-reference/ros2/tf-frames' }}
-        next={{ label: 'Software · File system', href: '/docs/software/workspaces' }}
       />
     </DocsShell>
   );

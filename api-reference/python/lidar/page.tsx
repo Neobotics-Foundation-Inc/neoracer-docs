@@ -2,13 +2,12 @@ import { Metadata } from 'next';
 import DocsShell from '@/components/docs/DocsShell';
 import { NB } from '@/lib/nb-tokens';
 import {
-  Eyebrow,
   DisplayHeading,
   Red,
   GhostNumeral,
   ChromeBadge,
 } from '@/components/docs/Editorial';
-import { Crumbs, PrevNext, Callout, Code, DataTable, ApiMethods, type ApiMethod } from '@/components/docs/DocsPrimitives';
+import { Crumbs, PrevNext, Callout, Code, ApiMethods, type ApiMethod } from '@/components/docs/DocsPrimitives';
 import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
 
 export const metadata: Metadata = {
@@ -41,7 +40,7 @@ const UTILS: ApiMethod[] = [
   {
     sig: 'rc_utils.get_lidar_average_distance(scan, angle, window_angle=4)',
     returns: 'float',
-    summary: 'Average distance to whatever sits at a given angle, smoothed over a small window so one noisy ray does not throw you off. Works in degrees, so the same call is correct on the car and in the sim regardless of sample count.',
+    summary: 'Returns the average distance over a small window of samples centred on the given angle. Angles are in degrees, so the call works with any sample count.',
     params: [
       { name: 'scan: NDArray', detail: <>The array from <code style={{ fontFamily: NB.monoFont }}>rc.lidar.get_samples()</code>.</> },
       { name: 'angle: float', detail: <>Degrees clockwise from straight ahead. 0 is forward, 90 is right, 270 is left.</> },
@@ -51,7 +50,7 @@ const UTILS: ApiMethod[] = [
   {
     sig: 'rc_utils.get_lidar_closest_point(scan, window=(0, 360))',
     returns: 'tuple[float, float]',
-    summary: 'The (angle, distance) of the nearest return, optionally restricted to an angular window. Handy for "how close is the nearest wall, and where is it". Zero samples (no return) are ignored.',
+    summary: 'Returns the (angle, distance) of the nearest return, optionally restricted to an angular window. Samples with no return are ignored.',
     params: [
       { name: 'scan: NDArray', detail: <>The array from <code style={{ fontFamily: NB.monoFont }}>rc.lidar.get_samples()</code>.</> },
       { name: 'window: tuple', detail: <>(start, end) degrees to search within. Defaults to the full circle.</> },
@@ -117,60 +116,8 @@ export default function LidarApiPage() {
 
       <ScrollReveal>
         <section style={{ paddingBottom: 24 }}>
-          <Eyebrow>SIM AND CAR</Eyebrow>
           <DisplayHeading size="lg">
-            SIM VS CAR <Red>COUNTS</Red>
-          </DisplayHeading>
-          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-            The API and the angle conventions are identical everywhere: index 0
-            forward, clockwise, centimetres. The sample count is not, so a
-            program that hardcodes an index breaks the moment it changes
-            platform. Work in degrees, or divide{' '}
-            <code style={{ fontFamily: NB.monoFont }}>len(scan)</code>.
-          </p>
-          <div style={{ marginTop: 16 }}>
-            <DataTable
-              columns={[
-                { key: 'k', label: '', accent: true },
-                { key: 'car', label: 'NeoRacer', mono: true },
-                { key: 'sim', label: 'Playground sim', mono: true },
-              ]}
-              rows={[
-                { k: 'Samples per scan', car: '~1440', sim: '720' },
-                { k: 'Angle per sample', car: '0.25°', sim: '0.5°' },
-                { k: 'Coverage', car: '360° array · 270° live', sim: '360°' },
-                { k: '90° right', car: 'scan[len(scan) // 4]', sim: 'scan[len(scan) // 4]' },
-              ]}
-            />
-          </div>
-          <Code lang="python">{`scan = rc.lidar.get_samples()
-
-right = scan[len(scan) // 4]       # 90° right on any platform
-rear  = scan[len(scan) // 2]       # directly behind (0 on the car: rear wedge)
-
-# or skip indexing entirely and work in degrees:
-right = rc_utils.get_lidar_average_distance(scan, 90)`}</Code>
-        </section>
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <Callout type="tip" title="The first scan is waited for">
-          On the car, <code style={{ fontFamily: NB.monoFont }}>rc.go()</code>{' '}
-          waits for the first scan before your{' '}
-          <code style={{ fontFamily: NB.monoFont }}>update()</code> runs, so the
-          array is never empty inside the loop. Outside the loop,{' '}
-          <code style={{ fontFamily: NB.monoFont }}>get_samples_async()</code>{' '}
-          can still return an empty array in the first moments after the driver
-          starts; check <code style={{ fontFamily: NB.monoFont }}>len()</code>{' '}
-          when polling it directly.
-        </Callout>
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <section style={{ paddingBottom: 24 }}>
-          <Eyebrow>METHODS</Eyebrow>
-          <DisplayHeading size="lg">
-            THE LIDAR <Red>METHODS</Red>
+            <Red>METHODS</Red>
           </DisplayHeading>
           <ApiMethods methods={METHODS} />
         </section>
@@ -178,15 +125,13 @@ right = rc_utils.get_lidar_average_distance(scan, 90)`}</Code>
 
       <ScrollReveal>
         <section style={{ paddingBottom: 24 }}>
-          <Eyebrow>HELPERS · RACECAR_UTILS</Eyebrow>
           <DisplayHeading size="lg">
-            LIDAR <Red>HELPERS</Red>
+            <Red>HELPERS</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             Reading a direction by hand means converting an angle to an index and
             averaging a window. The <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>racecar_utils</code> module
-            (imported as <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>rc_utils</code>) already does it, so most
-            programs use these two instead of indexing the raw array.
+            (imported as <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>rc_utils</code>) already does it.
           </p>
           <ApiMethods methods={UTILS} />
         </section>
@@ -194,7 +139,6 @@ right = rc_utils.get_lidar_average_distance(scan, 90)`}</Code>
 
       <ScrollReveal>
         <section style={{ paddingBottom: 24 }}>
-          <Eyebrow>TYPICAL USE</Eyebrow>
           <DisplayHeading size="lg">
             A WALL-STOP <Red>EXAMPLE</Red>
           </DisplayHeading>

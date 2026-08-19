@@ -78,7 +78,7 @@ export default function DriveApiPage() {
       <ScrollReveal>
         <section style={{ paddingBottom: 24 }}>
           <DisplayHeading size="lg">
-            THE <Red>METHODS</Red>
+            <Red>METHODS</Red>
           </DisplayHeading>
           <ApiMethods methods={METHODS} />
         </section>

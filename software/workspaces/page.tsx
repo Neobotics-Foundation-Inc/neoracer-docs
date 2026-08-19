@@ -59,7 +59,7 @@ data        Downloads   logs                osracer_demo   Public      Videos
 Desktop     home        Music               osracer_ws     ros2_ws
 Documents   jupyter_ws  neoracer-installer  Pictures       Templates`}</Code>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 16 }}>
-              The car comes with stock Ubuntu files such as Desktop, Documents,
+              The car comes with stock Ubuntu directories such as Desktop, Documents,
               Downloads, and more. There are six directories that are installed
               on the car.
             </p>
@@ -193,7 +193,7 @@ http://10.42.0.1:8888          # the car's access point`}</Code>
                           { key: 'sc', label: 'Script (.py)', mono: true },
                         ]}
                         rows={[
-                          { k: 'Good for', nb: 'Reading one sensor, checking a value, teaching', sc: 'A full driving program you run start to finish' },
+                          { k: 'Good for', nb: 'Running small tests, checking values, teaching', sc: 'A normal program run start to finish' },
                           { k: 'How you run it', nb: 'Cell by cell in the browser', sc: 'python3 <file> from a terminal' },
                           { k: 'State', nb: 'Kept in the kernel between cells', sc: 'Gone when the program exits' },
                         ]}
@@ -207,8 +207,7 @@ http://10.42.0.1:8888          # the car's access point`}</Code>
                       A notebook holds the car&apos;s sensors for as long as its
                       kernel is alive, even after the last cell has finished. If you
                       open a second notebook, or run a script while a notebook is
-                      still loaded, the second one gets nothing. This is the most
-                      common confusion on the car and it is not a fault.
+                      still loaded, the second one might fail.
                     </p>
                     <PhotoSteps
                       items={[
@@ -230,7 +229,8 @@ http://10.42.0.1:8888          # the car's access point`}</Code>
                     A second ROS 2 workspace, preinstalled on the image. It holds the
                     autonomy tier: the robot description, SLAM and Nav2.
                   </p>
-                  <Code lang="bash">{`~/osracer_ws$ ls
+                  <ComingSoon>
+                    <Code lang="bash">{`~/osracer_ws$ ls
 build  install  log  src
 
 ~/osracer_ws/src$ ls
@@ -241,28 +241,18 @@ CHANGELOG.md     osracer_calib       osracer_description  osracer_slam
 docs             osracer_debug       osracer_navigation   README.md
 LICENSE          osracer_demo        osracer_race         ruff.toml
 osracer_bringup  osracer_dependency  osracer_sim          tools`}</Code>
-                  <Callout type="note" title="Both workspaces carry lakibeam1">
-                    The LiDAR driver appears in both{' '}
-                    <code style={{ fontFamily: NB.monoFont }}>src</code> folders. It is
-                    one shared source rather than two copies, but only one can resolve
-                    at a time, which is why{' '}
-                    <code style={{ fontFamily: NB.monoFont }}>racecar ws</code> swaps a
-                    terminal between the two instead of stacking them.
-                  </Callout>
-                  <Code lang="bash">{`racecar ws            # which one am I on?
+                    <Callout type="note" title="Both workspaces carry lakibeam1">
+                      The LiDAR driver appears in both{' '}
+                      <code style={{ fontFamily: NB.monoFont }}>src</code> folders. It is
+                      one shared source rather than two copies, but only one can resolve
+                      at a time, which is why{' '}
+                      <code style={{ fontFamily: NB.monoFont }}>racecar ws</code> swaps a
+                      terminal between the two instead of stacking them.
+                    </Callout>
+                    <Code lang="bash">{`racecar ws            # which one am I on?
 racecar ws osracer    # this terminal now uses the vendor workspace
 racecar ws neoracer   # back to the default`}</Code>
-                  <Callout type="note" title="Not runnable yet">
-                    Reaching the autonomy packages needs a layer between the driver
-                    and them, and that layer is not installed on a shipped car. Treat{' '}
-                    <code style={{ fontFamily: NB.monoFont }}>~/osracer_ws</code> as
-                    reference material for now. The{' '}
-                    <Link href="/docs/api-reference/cli" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>racecar CLI</Link>{' '}
-                    page says the same about{' '}
-                    <code style={{ fontFamily: NB.monoFont }}>racecar mapping</code>{' '}
-                    and{' '}
-                    <code style={{ fontFamily: NB.monoFont }}>racecar navigation</code>.
-                  </Callout>
+                  </ComingSoon>
                 </>
               ),
             },
@@ -272,13 +262,11 @@ racecar ws neoracer   # back to the default`}</Code>
                 <>
                   <MonoLabel>neoracer-installer</MonoLabel>
                   <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 6 }}>
-                    The installer that put the driver on the car. You clone and run it
-                    once during{' '}
-                    <Link href="/docs/getting-started/install-driver" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>setup</Link>,
-                    and it stays behind afterwards. Its{' '}
-                    <code style={{ fontFamily: NB.monoFont }}>logs</code> folder
-                    records every install run, which is what support asks for when a
-                    setup goes wrong.
+                    The installer downloads the driver onto the car. It is cloned
+                    and run once during{' '}
+                    <Link href="/docs/getting-started/install-driver" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>setup</Link>.
+                    Its <code style={{ fontFamily: NB.monoFont }}>logs</code> folder
+                    records every install run.
                   </p>
                   <Code lang="bash">{`~/neoracer-installer$ ls
 docs  logs  README.md  scripts  tests`}</Code>
@@ -286,8 +274,11 @@ docs  logs  README.md  scripts  tests`}</Code>
                   <div style={{ marginTop: 24 }}>
                     <MonoLabel>logs</MonoLabel>
                     <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 6 }}>
-                      Not the installer&apos;s logs, the driver&apos;s. Every run of
-                      the stack writes a timestamped folder here, and{' '}
+                      This refers to the logs in the{' '}
+                      <code style={{ fontFamily: NB.monoFont }}>~</code> directory,
+                      not the logs in{' '}
+                      <code style={{ fontFamily: NB.monoFont }}>neoracer-installer</code>.
+                      Every run of the stack writes a timestamped folder here, and{' '}
                       <code style={{ fontFamily: NB.monoFont }}>logs/latest</code>{' '}
                       points at the most recent one. The health dashboard reads it.
                     </p>
@@ -296,28 +287,11 @@ docs  logs  README.md  scripts  tests`}</Code>
                   <div style={{ marginTop: 24 }}>
                     <MonoLabel>data</MonoLabel>
                     <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 6 }}>
-                      Written by the camlabel dashboard, and created the first time
-                      you use it. It holds the images you capture, the labels you draw
-                      on them, and the object classes you define, laid out in YOLO
-                      format. That means the folder is a training dataset as it
-                      stands: point an object-detection training run at it and it
-                      works, no conversion step.
-                    </p>
-                    <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 12 }}>
-                      camlabel is one of five lab dashboards. They install switched
-                      off and you start one for a session, because each holds the
-                      camera or the GPU while it runs.
-                    </p>
-                    <Code lang="bash">{`racecar service start camlabel     # then open port 8082 in a browser`}</Code>
-                    <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 12 }}>
-                      A model you train from it is loaded by the driver&apos;s
-                      inference node. Turning a{' '}
-                      <code style={{ fontFamily: NB.monoFont }}>.pt</code> into the
-                      engine the car runs is{' '}
-                      <code style={{ fontFamily: NB.monoFont }}>racecar compile</code>,
-                      on the{' '}
-                      <Link href="/docs/api-reference/cli" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>racecar CLI</Link>{' '}
-                      page.
+                      <code style={{ fontFamily: NB.monoFont }}>data</code> is
+                      created by the camlabel dashboard the first time you use it.
+                      It holds the captured images, their labels, and object
+                      classes, in YOLO format. This folder becomes a training
+                      dataset.
                     </p>
                   </div>
                 </>
@@ -332,5 +306,54 @@ docs  logs  README.md  scripts  tests`}</Code>
         next={{ label: 'OS & image', href: '/docs/software/os-and-image' }}
       />
     </DocsShell>
+  );
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+ * ComingSoon: blurs content that is written but not usable yet, with a
+ * label over it. Hidden from assistive tech and unselectable, so nobody
+ * copies a command out of something that does not work.
+ * ─────────────────────────────────────────────────────────────────────── */
+function ComingSoon({ children }: { children: React.ReactNode }) {
+  return (
+    <div style={{ position: 'relative', marginTop: 18 }}>
+      <div
+        aria-hidden
+        style={{
+          filter: 'blur(6px)',
+          opacity: 0.55,
+          userSelect: 'none',
+          pointerEvents: 'none',
+        }}
+      >
+        {children}
+      </div>
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <span
+          style={{
+            background: NB.tarmacBlue,
+            color: NB.haloWhite,
+            fontFamily: NB.monoFont,
+            fontSize: 12,
+            fontWeight: 700,
+            letterSpacing: '0.18em',
+            textTransform: 'uppercase',
+            padding: '10px 22px',
+            borderRadius: 999,
+            boxShadow: NB.shadowCard,
+          }}
+        >
+          Coming soon
+        </span>
+      </div>
+    </div>
   );
 }

@@ -5,7 +5,6 @@ import {
   DisplayHeading,
   Red,
   GhostNumeral,
-  ChromeBadge,
 } from '@/components/docs/Editorial';
 import { Crumbs, PrevNext, Callout, Code, ApiMethods, type ApiMethod } from '@/components/docs/DocsPrimitives';
 import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
@@ -32,7 +31,7 @@ const METHODS: ApiMethod[] = [
     sig: 'rc.lidar.get_samples_async()',
     returns: 'NDArray[Float]',
     summary:
-      'The same scan, readable outside the start/update loop. Use it in a one-off script or a notebook cell when the car is not in go mode. Before the first scan arrives it returns an empty array, so check len() when polling it directly.',
+      'The current scan but readable outside the start/update loop. This function should only be used in a Jupyter Notebook cell when the car is not in go mode.',
   },
 ];
 
@@ -80,20 +79,9 @@ export default function LidarApiPage() {
               <InfoNote term="Lidar" title="LiDAR">
                 A sensor that spins a laser around and times how long each pulse takes to bounce back, turning that into a distance for every direction. That is how the car senses walls and obstacles.
               </InfoNote>{' '}
-              module is your sense of distance. One call hands you the current
-              scan in centimetres: ~1440 samples on the car, 720 in the
-              Playground sim. Work in degrees through the{' '}
-              <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>rc_utils</code>{' '}
-              helpers or index relative to{' '}
-              <code style={{ fontFamily: NB.monoFont }}>len(scan)</code>, and the
-              same program runs unchanged on both.
+              module provides the LiDAR&apos;s current scan, number of
+              samples, and distances.
             </p>
-            <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="red">~1440 samples · 0.25°</ChromeBadge>
-              <ChromeBadge variant="outline">270° live window</ChromeBadge>
-              <ChromeBadge variant="outline">index 0 = forward</ChromeBadge>
-              <ChromeBadge variant="outline">no return = 0</ChromeBadge>
-            </div>
           </div>
         </section>
       </MouseFollowGlow>

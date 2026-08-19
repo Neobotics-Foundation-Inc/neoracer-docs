@@ -99,11 +99,16 @@ def start():
     rc.drive.set_max_speed(0.4)
     rc.drive.stop()
 
+timer = 0.0
+
 def update():
-    # Hold the A button to creep forward, steer with the left stick x-axis.
-    x, _ = rc.controller.get_joystick(rc.controller.Joystick.LEFT)
-    speed = 0.3 if rc.controller.is_down(rc.controller.Button.A) else 0.0
-    rc.drive.set_speed_angle(speed, x)
+    # Drive forward gently for 2 seconds, then stop.
+    global timer
+    timer += rc.get_delta_time()
+    if timer < 2.0:
+        rc.drive.set_speed_angle(0.3, 0)
+    else:
+        rc.drive.stop()
 
 rc.set_start_update(start, update)
 rc.go()`}</Code>

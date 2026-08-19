@@ -21,7 +21,7 @@ const METHODS: ApiMethod[] = [
     sig: 'rc.lidar.get_samples()',
     returns: 'NDArray[Float]',
     summary:
-      'The current scan as a flat array of distances in centimetres. Index 0 is directly ahead and the samples run clockwise at equal angles. On the car a scan holds ~1440 samples (0.25° apart); in the simulator it holds 720 (0.5° apart), so index with len(scan), never a fixed number. A sample with no return reads 0.',
+      'The current scan as a flat array of distances in centimetres. Index 0 is directly ahead and the samples run clockwise at equal angles.',
   },
   {
     sig: 'rc.lidar.get_num_samples()',

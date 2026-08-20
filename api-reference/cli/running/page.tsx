@@ -12,7 +12,7 @@ import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext, Code } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
-  title: 'Running · CLI · NeoRacer Docs',
+  title: 'Status and Running · CLI · NeoRacer Docs',
   description:
     'racecar status, teleop, launch and ws: inspect the hardware, run the stack in the foreground, launch one subsystem, or switch workspaces.',
 };
@@ -24,7 +24,7 @@ export default function CliRunningPage() {
         items={[
           { label: 'API Reference', href: '/docs/api-reference/python/core' },
           { label: 'CLI', href: '/docs/api-reference/cli' },
-          { label: 'Running' },
+          { label: 'Status and Running' },
         ]}
       />
 
@@ -33,10 +33,11 @@ export default function CliRunningPage() {
           <GhostNumeral n="11" top={-30} right={-20} size={440} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              RUNNING AND <Red>INSPECTING</Red>
+              STATUS AND <Red>RUNNING</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
-              These commands run the stack by hand and show what the car is doing.
+              These commands show the car&apos;s status and run parts of the
+              stack manually.
             </p>
           </div>
         </section>
@@ -123,7 +124,7 @@ racecar ws neoracer`}</Code>
 
       <PrevNext
         prev={{ label: 'Services', href: '/docs/api-reference/cli/service' }}
-        next={{ label: 'Setup', href: '/docs/api-reference/cli/setup' }}
+        next={{ label: 'Maintenance', href: '/docs/api-reference/cli/setup' }}
       />
     </DocsShell>
   );

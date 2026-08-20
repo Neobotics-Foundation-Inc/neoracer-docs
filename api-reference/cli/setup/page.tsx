@@ -11,7 +11,7 @@ import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext, Callout, Code, DataTable } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
-  title: 'Setup · CLI · NeoRacer Docs',
+  title: 'Maintenance · CLI · NeoRacer Docs',
   description:
     'racecar setup, library and update: configure networking, choose the Python library copy, and field-update the driver.',
 };
@@ -23,7 +23,7 @@ export default function CliSetupPage() {
         items={[
           { label: 'API Reference', href: '/docs/api-reference/python/core' },
           { label: 'CLI', href: '/docs/api-reference/cli' },
-          { label: 'Setup' },
+          { label: 'Maintenance' },
         ]}
       />
 
@@ -35,7 +35,8 @@ export default function CliSetupPage() {
               SETUP AND <Red>MAINTENANCE</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
-              These commands configure the car and keep the driver current.
+              These commands configure the access point and the GPU stack on
+              the car, and keep the library updated.
             </p>
           </div>
         </section>
@@ -81,11 +82,6 @@ racecar setup ml         # the GPU stack: PyTorch for Tegra, Ultralytics, ONNX`}
                 ]}
               />
             </div>
-            <Callout type="warn" title="Run networking from a wired session">
-              The command takes over the Wi-Fi radio, so an SSH session over
-              Wi-Fi drops the moment it runs. Use a monitor and keyboard at the
-              car, the USB cable link, or SSH over the cudy&apos;s wired side.
-            </Callout>
           </div>
         </section>
       </ScrollReveal>
@@ -140,7 +136,7 @@ racecar source     # or open a new terminal, so the shell picks up the new tool`
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'Running', href: '/docs/api-reference/cli/running' }}
+        prev={{ label: 'Status and Running', href: '/docs/api-reference/cli/running' }}
         next={{ label: 'ROS 2 topics', href: '/docs/api-reference/ros2/topics' }}
       />
     </DocsShell>

@@ -341,7 +341,7 @@ if __name__ == "__main__":
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'CLI · Setup', href: '/docs/api-reference/cli/setup' }}
+        prev={{ label: 'CLI · Maintenance', href: '/docs/api-reference/cli/setup' }}
         next={{ label: 'ROS 2 params', href: '/docs/api-reference/ros2/params' }}
       />
     </DocsShell>

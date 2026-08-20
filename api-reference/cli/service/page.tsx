@@ -195,7 +195,7 @@ racecar service logs jupyter      # or name one`}</Code>
 
       <PrevNext
         prev={{ label: 'CLI overview', href: '/docs/api-reference/cli' }}
-        next={{ label: 'Running', href: '/docs/api-reference/cli/running' }}
+        next={{ label: 'Status and Running', href: '/docs/api-reference/cli/running' }}
       />
     </DocsShell>
   );

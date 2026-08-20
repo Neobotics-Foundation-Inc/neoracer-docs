@@ -355,7 +355,6 @@ ros2 run tf2_ros static_transform_publisher 0.22 0 0.08 0 0 0 base_link camera_l
 
       <PrevNext
         prev={{ label: 'ROS 2 parameters', href: '/docs/api-reference/ros2/params' }}
-        next={{ label: 'racecar CLI', href: '/docs/api-reference/cli' }}
       />
     </DocsShell>
   );

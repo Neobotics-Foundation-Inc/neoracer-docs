@@ -210,7 +210,7 @@ rc.go()`}</Code>
 
       <PrevNext
         prev={{ label: 'rc.vision', href: '/docs/api-reference/python/vision' }}
-        next={{ label: 'ROS 2 topics', href: '/docs/api-reference/ros2/topics' }}
+        next={{ label: 'CLI overview', href: '/docs/api-reference/cli' }}
       />
     </DocsShell>
   );

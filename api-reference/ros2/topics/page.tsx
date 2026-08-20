@@ -388,7 +388,7 @@ if __name__ == "__main__":
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'racecar_utils', href: '/docs/api-reference/python/utils' }}
+        prev={{ label: 'CLI · Setup', href: '/docs/api-reference/cli/setup' }}
         next={{ label: 'ROS 2 services', href: '/docs/api-reference/ros2/services' }}
       />
     </DocsShell>

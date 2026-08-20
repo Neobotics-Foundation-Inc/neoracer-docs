@@ -51,13 +51,13 @@ const ROWS = [
     topic: '/battery',
     type: 'sensor_msgs/BatteryState',
     role: 'Subscribe',
-    notes: 'Pack voltage and a 3S charge fraction at ~0.5 Hz. The dashboard shows the same reading as a battery card.',
+    notes: 'Pack voltage and a 3S charge fraction at ~0.5 Hz.',
   },
   {
     topic: '/camera/color',
     type: 'sensor_msgs/Image',
     role: 'Subscribe',
-    notes: 'A JPEG-compressed colour frame at 60 fps from the camera node (USB webcam in MJPG). The bytes are raw JPEG with encoding="jpeg", decode with cv2.imdecode before display. Publisher is best-effort: subscribe with sensor-data QoS or you receive nothing.',
+    notes: 'A JPEG-compressed color frame at 60 fps from the camera node. The bytes are raw JPEG with encoding="jpeg". Publisher is best-effort; a subscriber needs sensor-data QoS to receive it.',
   },
   {
     topic: '/drive',
@@ -99,13 +99,13 @@ const ROWS = [
     topic: '/battery/voltage',
     type: 'std_msgs/Float32',
     role: 'Subscribe',
-    notes: 'Pack voltage on its own, without the rest of the BatteryState message.',
+    notes: 'Pack voltage as a plain number.',
   },
   {
     topic: '/encoder/speed',
     type: 'std_msgs/Float32',
     role: 'Subscribe',
-    notes: 'Wheel speed straight from the encoders, before it is integrated into /odom.',
+    notes: 'Wheel speed from the encoders, before it is integrated into /odom.',
   },
   {
     topic: '/rc/channels',

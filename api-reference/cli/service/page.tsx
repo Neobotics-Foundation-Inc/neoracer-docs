@@ -79,7 +79,7 @@ export default function CliServicesPage() {
                   { key: 'what', label: 'What it runs' },
                 ]}
                 rows={[
-                  { svc: 'neoracer-teleop', what: 'The driver stack. Every topic on the car comes from here.' },
+                  { svc: 'neoracer-teleop', what: 'Runs the driver, which publishes every topic on the car.' },
                   { svc: 'neoracer-watchdog', what: 'Supervises the driver nodes and restarts a dead one.' },
                   { svc: 'neoracer-dashboard', what: 'The health dashboard on port 8080.' },
                   { svc: 'neoracer-jupyter', what: 'JupyterLab on port 8888, serving ~/jupyter_ws.' },

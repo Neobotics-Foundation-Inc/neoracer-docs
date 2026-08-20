@@ -40,11 +40,11 @@ const pitLane: PitLaneSection[] = [
   { title: 'Hardware', href: '/docs/hardware/overview', pages: 11 },
   { title: 'Software', href: '/docs/software/networking', pages: 3 },
   { title: 'API Reference', href: '/docs/api-reference/python/core', pages: 14 },
-  { title: 'Calibration', href: '/docs/calibration/motor-trim', pages: 5, disabled: true },
+  { title: 'Calibration', href: '/docs/calibration/motor-trim', pages: 5 },
   // Soft hyphen so narrow phone bays break it as TROUBLE-SHOOTING.
-  { title: 'Trouble­shooting', href: '/docs/troubleshooting/faq', pages: 7, disabled: true },
-  { title: 'Reference', href: '/docs/reference/specifications', pages: 4, disabled: true },
-  { title: 'Legal', href: '/docs/legal/warranty', pages: 5, disabled: true },
+  { title: 'Trouble­shooting', href: '/docs/troubleshooting/faq', pages: 7 },
+  { title: 'Reference', href: '/docs/reference/specifications', pages: 4 },
+  { title: 'Legal', href: '/docs/legal/warranty', pages: 5 },
 ];
 
 export default function DocsLandingPage() {

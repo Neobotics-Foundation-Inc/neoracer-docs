@@ -44,23 +44,29 @@ const METHODS: ApiMethod[] = [
 
 const UTILS: ApiMethod[] = [
   {
-    sig: 'rc_utils.get_lidar_average_distance(scan, angle, window_angle=4)',
+    sig: 'racecar_utils.get_lidar_average_distance(scan: NDArray, angle: float, window_angle: float = 4)',
     returns: 'float',
-    summary: 'Returns the average distance over a small window of samples centred on the given angle. Angles are in degrees, so the call works with any sample count.',
-    params: [
-      { name: 'scan: NDArray', detail: <>The array from <code style={{ fontFamily: NB.monoFont }}>rc.lidar.get_samples()</code>.</> },
-      { name: 'angle: float', detail: <>Degrees clockwise from straight ahead. 0 is forward, 90 is right, 270 is left.</> },
-      { name: 'window_angle: float', detail: <>Total width of the averaging window in degrees. Defaults to 4.</> },
-    ],
+    summary: (
+      <>
+        Returns the average distance in cm over a small window of samples
+        centred on the given angle. <code style={{ fontFamily: NB.monoFont }}>scan</code> is the samples from a lidar
+        scan. <code style={{ fontFamily: NB.monoFont }}>angle</code> is degrees clockwise from straight ahead: 0 is
+        forward, 90 is right, 270 is left. <code style={{ fontFamily: NB.monoFont }}>window_angle</code> is the number
+        of degrees around <code style={{ fontFamily: NB.monoFont }}>angle</code>. Defaults to 4.
+      </>
+    ),
   },
   {
-    sig: 'rc_utils.get_lidar_closest_point(scan, window=(0, 360))',
+    sig: 'racecar_utils.get_lidar_closest_point(scan: NDArray, window: tuple[float, float] = (0, 360))',
     returns: 'tuple[float, float]',
-    summary: 'Returns the (angle, distance) of the nearest return, optionally restricted to an angular window. Samples with no return are ignored.',
-    params: [
-      { name: 'scan: NDArray', detail: <>The array from <code style={{ fontFamily: NB.monoFont }}>rc.lidar.get_samples()</code>.</> },
-      { name: 'window: tuple', detail: <>(start, end) degrees to search within. Defaults to the full circle.</> },
-    ],
+    summary: (
+      <>
+        Returns the (angle, distance) of the nearest return. <code style={{ fontFamily: NB.monoFont }}>scan</code> is
+        the samples from a lidar scan. <code style={{ fontFamily: NB.monoFont }}>window</code> is the (start, end)
+        degrees to search within. Defaults to (0, 360). Samples with no
+        return are ignored.
+      </>
+    ),
   },
 ];
 
@@ -104,9 +110,9 @@ export default function LidarApiPage() {
             <Red>HELPERS</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-            Reading a direction by hand means converting an angle to an index and
-            averaging a window. The <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>racecar_utils</code> module
-            (imported as <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>rc_utils</code>) already does it.
+            The <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>racecar_utils</code> module
+            (imported as <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>rc_utils</code>) converts
+            an angle to an index and averages a window.
           </p>
           <ApiMethods methods={UTILS} />
         </section>
@@ -126,12 +132,14 @@ import racecar_utils as rc_utils
 rc = racecar_core.create_racecar()
 
 def start():
-    rc.drive.set_max_speed(0.4)    # a calmer scale for close-quarters work
+    print("start: capping speed at 0.4")
+    rc.drive.set_max_speed(0.4)
 
 def update():
     scan = rc.lidar.get_samples()  # ~1440 distances on the car, cm
     # average distance in a 10-degree window straight ahead
     front = rc_utils.get_lidar_average_distance(scan, 0, 10)
+    print(f"wall ahead at {front:.0f} cm")
     rc.drive.set_speed_angle(0.0 if front < 50 else 0.3, 0)
 
 rc.set_start_update(start, update)

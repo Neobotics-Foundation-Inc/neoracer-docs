@@ -8,7 +8,7 @@ import {
   MonoLabel,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
-import { Crumbs, PrevNext, Code, DataTable } from '@/components/docs/DocsPrimitives';
+import { Crumbs, PrevNext, Callout, Code, DataTable } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
   title: 'Services · CLI · NeoRacer Docs',
@@ -97,8 +97,6 @@ export default function CliServicesPage() {
             <MonoLabel>Lab dashboards</MonoLabel>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
               Five more units install disabled and are started for a session.
-              Each holds the camera or the GPU while it runs, so run one at a
-              time.
             </p>
             <div style={{ marginTop: 18 }}>
               <DataTable
@@ -116,6 +114,10 @@ export default function CliServicesPage() {
                 ]}
               />
             </div>
+            <Callout type="warn" title="Run one dashboard at a time">
+              We recommend running one dashboard at a time instead of multiple,
+              since they might interfere with each other.
+            </Callout>
           </div>
         </section>
       </ScrollReveal>

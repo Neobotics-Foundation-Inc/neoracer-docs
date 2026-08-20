@@ -88,7 +88,8 @@ export default function CoreApiPage() {
               RACECAR_<Red>CORE</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
-              The racecar_core module creates the car object and runs your
+              The racecar_core module creates the car object, contains
+              multiple submodules to interact with the car, and runs your
               program.
             </p>
           </div>

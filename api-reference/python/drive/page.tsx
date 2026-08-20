@@ -17,13 +17,15 @@ export const metadata: Metadata = {
 
 const METHODS: ApiMethod[] = [
   {
-    sig: 'rc.drive.set_speed_angle(speed, angle)',
+    sig: 'rc.drive.set_speed_angle(speed: float, angle: float)',
     returns: 'None',
-    summary: 'Sets the wheel speed and the front-wheel steering angle for this frame.',
-    params: [
-      { name: 'speed: float', detail: <>Throttle in <code style={{ fontFamily: NB.monoFont }}>[-1.0, 1.0]</code>. 1.0 is full forward, -1.0 full reverse, 0 is stopped.</> },
-      { name: 'angle: float', detail: <>Steering in <code style={{ fontFamily: NB.monoFont }}>[-1.0, 1.0]</code>. -1.0 is full left, 1.0 full right, 0 is straight.</> },
-    ],
+    summary: (
+      <>
+        Sets the wheel speed and the front-wheel steering angle for this frame.
+        Both are in <code style={{ fontFamily: NB.monoFont }}>[-1.0, 1.0]</code>:
+        1.0 is full forward or full right, -1.0 is full reverse or full left.
+      </>
+    ),
   },
   {
     sig: 'rc.drive.stop()',
@@ -35,12 +37,15 @@ const METHODS: ApiMethod[] = [
     ),
   },
   {
-    sig: 'rc.drive.set_max_speed(max_speed=1.0)',
+    sig: 'rc.drive.set_max_speed(max_speed: float = 1.0)',
     returns: 'None',
-    summary: 'Sets the maximum throttle in both directions. A safety cap, set once in start(). Defaults to 1.0 (full scale); lower it to slow the whole program down in one place.',
-    params: [
-      { name: 'max_speed: float', detail: <>Throttle scale in <code style={{ fontFamily: NB.monoFont }}>[0.0, 1.0]</code>. Defaults to 1.0.</> },
-    ],
+    summary: (
+      <>
+        Sets the maximum throttle in both directions, in{' '}
+        <code style={{ fontFamily: NB.monoFont }}>[0.0, 1.0]</code>. A safety
+        cap, set once in <code style={{ fontFamily: NB.monoFont }}>start</code>.
+      </>
+    ),
   },
 ];
 
@@ -99,7 +104,7 @@ export default function DriveApiPage() {
 rc = racecar_core.create_racecar()
 
 def start():
-    # Cap the throttle once, so every later command is scaled down.
+    print("start: capping speed at 0.4")
     rc.drive.set_max_speed(0.4)
     rc.drive.stop()
 
@@ -110,8 +115,10 @@ def update():
     global timer
     timer += rc.get_delta_time()
     if timer < 2.0:
+        print(f"driving, timer at {timer:.1f} s")
         rc.drive.set_speed_angle(0.3, 0)
     else:
+        print("2 seconds reached, stopping")
         rc.drive.stop()
 
 rc.set_start_update(start, update)
@@ -123,8 +130,7 @@ rc.go()`}</Code>
         <Callout type="note" title="Speed and angle are normalized, not physical units">
           You send numbers in <code style={{ fontFamily: NB.monoFont }}>[-1, 1]</code>, not m/s or
           degrees. The library maps them to the car's real throttle and steering
-          range, which is what lets the same script run in the sim and on the
-          car.
+          range, which is what lets the same script run on the car.
         </Callout>
       </ScrollReveal>
 

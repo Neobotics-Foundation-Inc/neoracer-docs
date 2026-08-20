@@ -157,8 +157,7 @@ rc.go()`}</Code>
           ~90° wedge behind the car never carries a return and reads 0. Any
           sample with no return reads 0 the same way, and the{' '}
           <code style={{ fontFamily: NB.monoFont }}>racecar_utils</code> helpers skip
-          zeros for you. If you index the raw array rearward, expect zeros
-          there, by design, not by fault.
+          zeros for you.
         </Callout>
       </ScrollReveal>
 

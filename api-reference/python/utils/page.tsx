@@ -17,12 +17,12 @@ export const metadata: Metadata = {
 
 const GENERAL: ApiMethod[] = [
   {
-    sig: 'rc_utils.clamp(value, min, max)',
+    sig: 'racecar_utils.clamp(value, min, max)',
     returns: 'float',
     summary: 'Clamps a value between a minimum and a maximum.',
   },
   {
-    sig: 'rc_utils.remap_range(val, old_min, old_max, new_min, new_max, saturate=False)',
+    sig: 'racecar_utils.remap_range(val, old_min, old_max, new_min, new_max, saturate=False)',
     returns: 'float',
     summary:
       'Remaps a value from one range to another. With saturate, the result is clamped to the new range.',
@@ -31,13 +31,13 @@ const GENERAL: ApiMethod[] = [
 
 const IMAGES: ApiMethod[] = [
   {
-    sig: 'rc_utils.crop(image, top_left_inclusive, bottom_right_exclusive)',
+    sig: 'racecar_utils.crop(image, top_left_inclusive, bottom_right_exclusive)',
     returns: 'NDArray',
     summary:
       'Returns the rectangle of the image between the two (row, column) corners.',
   },
   {
-    sig: 'rc_utils.stack_images_horizontal(image_0, image_1)',
+    sig: 'racecar_utils.stack_images_horizontal(image_0, image_1)',
     returns: 'NDArray',
     summary: (
       <>
@@ -49,34 +49,34 @@ const IMAGES: ApiMethod[] = [
 
 const CONTOURS: ApiMethod[] = [
   {
-    sig: 'rc_utils.find_contours(color_image, hsv_lower, hsv_upper)',
+    sig: 'racecar_utils.find_contours(color_image, hsv_lower, hsv_upper)',
     returns: 'list[NDArray]',
     summary:
       'Finds all contours of the given HSV color range in the image.',
   },
   {
-    sig: 'rc_utils.get_largest_contour(contours, min_area=30)',
+    sig: 'racecar_utils.get_largest_contour(contours, min_area=30)',
     returns: 'NDArray | None',
     summary:
       'Returns the largest contour with area greater than min_area, or None if there is none.',
   },
   {
-    sig: 'rc_utils.get_contour_center(contour)',
+    sig: 'racecar_utils.get_contour_center(contour)',
     returns: 'tuple[int, int] | None',
     summary: 'Returns the (row, column) center of a contour.',
   },
   {
-    sig: 'rc_utils.get_contour_area(contour)',
+    sig: 'racecar_utils.get_contour_area(contour)',
     returns: 'float',
     summary: 'Returns the area of a contour in pixels.',
   },
   {
-    sig: 'rc_utils.draw_contour(color_image, contour, color=green)',
+    sig: 'racecar_utils.draw_contour(color_image, contour, color=green)',
     returns: 'None',
     summary: 'Draws a contour outline onto the image, in place.',
   },
   {
-    sig: 'rc_utils.draw_circle(color_image, center, color=yellow, radius=6)',
+    sig: 'racecar_utils.draw_circle(color_image, center, color=yellow, radius=6)',
     returns: 'None',
     summary: 'Draws a circle onto the image, in place.',
   },
@@ -84,13 +84,13 @@ const CONTOURS: ApiMethod[] = [
 
 const MARKERS: ApiMethod[] = [
   {
-    sig: 'rc_utils.get_ar_markers(color_image, potential_colors=[])',
+    sig: 'racecar_utils.get_ar_markers(color_image, potential_colors=[])',
     returns: 'list[ARMarker]',
     summary:
       'Finds ArUco markers in the image. Each marker carries its id and corner positions.',
   },
   {
-    sig: 'rc_utils.draw_ar_markers(color_image, markers, color=green)',
+    sig: 'racecar_utils.draw_ar_markers(color_image, markers, color=green)',
     returns: 'None',
     summary: 'Draws detected markers onto the image, in place.',
   },
@@ -116,7 +116,7 @@ export default function UtilsApiPage() {
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
               The racecar_utils module provides helper functions for working
               with numbers, images, and the LiDAR. Import it as{' '}
-              <code style={{ fontFamily: NB.monoFont }}>rc_utils</code>. The
+              <code style={{ fontFamily: NB.monoFont }}>racecar_utils</code>. The
               LiDAR helpers are on the{' '}
               <a href="/docs/api-reference/python/lidar" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>rc.lidar</a>{' '}
               page.
@@ -171,7 +171,7 @@ export default function UtilsApiPage() {
             EXAMPLE <Red>USAGE</Red>
           </DisplayHeading>
           <Code lang="python">{`import racecar_core
-import racecar_utils as rc_utils
+import racecar_utils
 
 rc = racecar_core.create_racecar()
 
@@ -182,12 +182,12 @@ def start():
 
 def update():
     image = rc.camera.get_color_image()
-    contours = rc_utils.find_contours(image, BLUE[0], BLUE[1])
-    largest = rc_utils.get_largest_contour(contours)
+    contours = racecar_utils.find_contours(image, BLUE[0], BLUE[1])
+    largest = racecar_utils.get_largest_contour(contours)
     if largest is not None:
-        center = rc_utils.get_contour_center(largest)
+        center = racecar_utils.get_contour_center(largest)
         # steer toward the contour: map its column to a steering angle
-        angle = rc_utils.remap_range(center[1], 0, image.shape[1], -1, 1)
+        angle = racecar_utils.remap_range(center[1], 0, image.shape[1], -1, 1)
         rc.drive.set_speed_angle(0.3, angle)
     else:
         rc.drive.stop()

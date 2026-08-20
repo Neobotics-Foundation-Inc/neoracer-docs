@@ -110,8 +110,7 @@ export default function LidarApiPage() {
             <Red>HELPERS</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-            The <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>racecar_utils</code> module
-            (imported as <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>rc_utils</code>) converts
+            The <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>racecar_utils</code> module converts
             an angle to an index and averages a window.
           </p>
           <ApiMethods methods={UTILS} />
@@ -127,7 +126,7 @@ export default function LidarApiPage() {
 sys.path.insert(0, "../library")   # the racecar-neo library on the car
 
 import racecar_core
-import racecar_utils as rc_utils
+import racecar_utils
 
 rc = racecar_core.create_racecar()
 
@@ -138,7 +137,7 @@ def start():
 def update():
     scan = rc.lidar.get_samples()  # ~1440 distances on the car, cm
     # average distance in a 10-degree window straight ahead
-    front = rc_utils.get_lidar_average_distance(scan, 0, 10)
+    front = racecar_utils.get_lidar_average_distance(scan, 0, 10)
     print(f"wall ahead at {front:.0f} cm")
     rc.drive.set_speed_angle(0.0 if front < 50 else 0.3, 0)
 
@@ -157,7 +156,7 @@ rc.go()`}</Code>
           all 360°. The sensor itself reads a 270° window of that circle, so the
           ~90° wedge behind the car never carries a return and reads 0. Any
           sample with no return reads 0 the same way, and the{' '}
-          <code style={{ fontFamily: NB.monoFont }}>rc_utils</code> helpers skip
+          <code style={{ fontFamily: NB.monoFont }}>racecar_utils</code> helpers skip
           zeros for you. If you index the raw array rearward, expect zeros
           there, by design, not by fault.
         </Callout>

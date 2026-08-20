@@ -17,12 +17,12 @@ export const metadata: Metadata = {
 
 const GENERAL: ApiMethod[] = [
   {
-    sig: 'racecar_utils.clamp(value, min, max)',
+    sig: 'racecar_utils.clamp(value: float, min: float, max: float)',
     returns: 'float',
     summary: 'Clamps a value between a minimum and a maximum.',
   },
   {
-    sig: 'racecar_utils.remap_range(val, old_min, old_max, new_min, new_max, saturate=False)',
+    sig: 'racecar_utils.remap_range(val: float, old_min: float, old_max: float, new_min: float, new_max: float, saturate: bool = False)',
     returns: 'float',
     summary:
       'Remaps a value from one range to another. With saturate, the result is clamped to the new range.',
@@ -31,13 +31,13 @@ const GENERAL: ApiMethod[] = [
 
 const IMAGES: ApiMethod[] = [
   {
-    sig: 'racecar_utils.crop(image, top_left_inclusive, bottom_right_exclusive)',
+    sig: 'racecar_utils.crop(image: NDArray, top_left_inclusive: tuple[float, float], bottom_right_exclusive: tuple[float, float])',
     returns: 'NDArray',
     summary:
       'Returns the rectangle of the image between the two (row, column) corners.',
   },
   {
-    sig: 'racecar_utils.stack_images_horizontal(image_0, image_1)',
+    sig: 'racecar_utils.stack_images_horizontal(image_0: NDArray, image_1: NDArray)',
     returns: 'NDArray',
     summary: (
       <>
@@ -49,34 +49,34 @@ const IMAGES: ApiMethod[] = [
 
 const CONTOURS: ApiMethod[] = [
   {
-    sig: 'racecar_utils.find_contours(color_image, hsv_lower, hsv_upper)',
+    sig: 'racecar_utils.find_contours(color_image: NDArray, hsv_lower: tuple[int, int, int], hsv_upper: tuple[int, int, int])',
     returns: 'list[NDArray]',
     summary:
       'Finds all contours of the given HSV color range in the image.',
   },
   {
-    sig: 'racecar_utils.get_largest_contour(contours, min_area=30)',
+    sig: 'racecar_utils.get_largest_contour(contours: list[NDArray], min_area: int = 30)',
     returns: 'NDArray | None',
     summary:
       'Returns the largest contour with area greater than min_area, or None if there is none.',
   },
   {
-    sig: 'racecar_utils.get_contour_center(contour)',
+    sig: 'racecar_utils.get_contour_center(contour: NDArray)',
     returns: 'tuple[int, int] | None',
     summary: 'Returns the (row, column) center of a contour.',
   },
   {
-    sig: 'racecar_utils.get_contour_area(contour)',
+    sig: 'racecar_utils.get_contour_area(contour: NDArray)',
     returns: 'float',
     summary: 'Returns the area of a contour in pixels.',
   },
   {
-    sig: 'racecar_utils.draw_contour(color_image, contour, color=green)',
+    sig: 'racecar_utils.draw_contour(color_image: NDArray, contour: NDArray, color: tuple[int, int, int] = ColorBGR.green.value)',
     returns: 'None',
     summary: 'Draws a contour outline onto the image, in place.',
   },
   {
-    sig: 'racecar_utils.draw_circle(color_image, center, color=yellow, radius=6)',
+    sig: 'racecar_utils.draw_circle(color_image: NDArray, center: tuple[int, int], color: tuple[int, int, int] = ColorBGR.yellow.value, radius: int = 6)',
     returns: 'None',
     summary: 'Draws a circle onto the image, in place.',
   },
@@ -84,13 +84,13 @@ const CONTOURS: ApiMethod[] = [
 
 const MARKERS: ApiMethod[] = [
   {
-    sig: 'racecar_utils.get_ar_markers(color_image, potential_colors=[])',
+    sig: 'racecar_utils.get_ar_markers(color_image: NDArray, potential_colors: list[tuple[tuple[int, int, int], tuple[int, int, int], str]] = None, marker_type: int = cv.aruco.DICT_6X6_250)',
     returns: 'list[ARMarker]',
     summary:
       'Finds ArUco markers in the image. Each marker carries its id and corner positions.',
   },
   {
-    sig: 'racecar_utils.draw_ar_markers(color_image, markers, color=green)',
+    sig: 'racecar_utils.draw_ar_markers(color_image: NDArray, markers: list[ARMarker], color: tuple[int, int, int] = ColorBGR.green.value)',
     returns: 'None',
     summary: 'Draws detected markers onto the image, in place.',
   },

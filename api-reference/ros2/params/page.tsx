@@ -7,7 +7,7 @@ import {
   GhostNumeral,
   MonoLabel,
 } from '@/components/docs/Editorial';
-import { Crumbs, PrevNext, Callout, Code, DataTable } from '@/components/docs/DocsPrimitives';
+import { Crumbs, PrevNext, Code, DataTable } from '@/components/docs/DocsPrimitives';
 import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 
 export const metadata: Metadata = {
@@ -26,7 +26,7 @@ const THROTTLE_ROWS = [
   {
     param: 'max_speed_forward',
     value: '1.0',
-    notes: 'Scales every forward /drive command before it reaches the controller. At 1.0 a full-speed command uses the whole firmware ceiling; lower it to derate the car.',
+    notes: 'Scales every forward /drive command.',
   },
   {
     param: 'max_speed_backward',
@@ -44,7 +44,7 @@ const CONTROLLER_ROWS = [
   {
     param: 'max_speed_mps',
     value: '6.0',
-    notes: 'The physical speed a full-scale command maps to, in m/s. Matches the firmware’s closed-loop ceiling; raising it past 6.0 needs a firmware change, not a parameter.',
+    notes: 'The physical speed a full-scale command maps to, in m/s. Raising it past 6.0 requires a firmware change.',
   },
   {
     param: 'max_steering_angle_deg',
@@ -82,12 +82,12 @@ const CAMERA_ROWS = [
   {
     param: 'framerate',
     value: '60.0',
-    notes: 'Frames per second on /camera. The node passes the camera’s native MJPG through, so this is real throughput, not a target.',
+    notes: 'Frames per second on /camera. The node passes the camera’s native MJPG stream through unchanged.',
   },
   {
     param: 'video_device',
     value: '/dev/osrbot_usb_cam',
-    notes: 'The stable udev name for the USB camera; the node falls back to scanning /dev/video* if it moves.',
+    notes: 'The stable udev name for the USB camera. If the symlink is missing, the node scans /dev/video*.',
   },
 ];
 
@@ -141,17 +141,26 @@ export default function Ros2ParamsPage() {
       </MouseFollowGlow>
 
       <ScrollReveal>
-        <Callout type="note" title="Two ways to change a value">
-          Set a parameter at runtime with{' '}
-          <code style={{ fontFamily: NB.monoFont }}>ros2 param set</code> and it
-          applies immediately but lasts until the node restarts. Edit the
-          matching YAML under{' '}
-          <code style={{ fontFamily: NB.monoFont }}>neoracer_ros2_driver/config/</code>{' '}
-          and restart (<code style={{ fontFamily: NB.monoFont }}>racecar service restart</code>)
-          and it persists. The workspace builds with symlinks, so a YAML edit
-          needs no rebuild. <code style={{ fontFamily: NB.monoFont }}>ros2 param list</code>{' '}
-          on the running car is always the final word.
-        </Callout>
+        <section style={{ paddingBottom: 8 }}>
+          <DisplayHeading size="lg">
+            CHANGING A <Red>VALUE</Red>
+          </DisplayHeading>
+          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
+            <code style={{ fontFamily: NB.monoFont }}>ros2 param set</code>{' '}
+            applies immediately and lasts until the node restarts. To make a
+            change permanent, edit the matching YAML under{' '}
+            <code style={{ fontFamily: NB.monoFont }}>neoracer_ros2_driver/config/</code>{' '}
+            and restart the services.{' '}
+            <code style={{ fontFamily: NB.monoFont }}>ros2 param list</code>{' '}
+            shows the live values.
+          </p>
+          <Code lang="bash">{`ros2 param list /throttle_node                        # every parameter the node declares
+ros2 param get /throttle_node max_speed_forward
+ros2 param set /throttle_node max_speed_forward 0.3   # applies now, lasts until restart
+
+# permanent: edit config/throttle.yaml, then
+racecar service restart`}</Code>
+        </section>
       </ScrollReveal>
 
       <ScrollReveal>
@@ -202,23 +211,6 @@ export default function Ros2ParamsPage() {
             sensor&apos;s own configuration at startup.
           </p>
           <DataTable columns={COLUMNS} rows={LIDAR_ROWS} />
-        </section>
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <section style={{ paddingTop: 28, paddingBottom: 24 }}>
-          <MonoLabel>Reading and setting parameters at runtime</MonoLabel>
-          <Code lang="bash">{`# What does a node expose?
-ros2 param list /throttle_node
-
-# Read one
-ros2 param get /throttle_node max_speed_forward
-
-# Change one while the node runs (until the next restart)
-ros2 param set /throttle_node max_speed_forward 0.3
-
-# Make it permanent instead: edit config/throttle.yaml, then
-racecar service restart`}</Code>
         </section>
       </ScrollReveal>
 

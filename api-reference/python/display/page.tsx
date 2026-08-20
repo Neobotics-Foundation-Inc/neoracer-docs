@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 
 const METHODS: ApiMethod[] = [
   {
-    sig: 'rc.display.show_text(text, scroll_speed=2.0)',
+    sig: 'rc.display.show_text(text: str, scroll_speed: float = 2.0)',
     returns: 'None',
     summary:
       'Shows text on the dot matrix panel on the back of the car. Text wider than the panel scrolls automatically; the firmware ignores scroll_speed.',
@@ -38,7 +38,7 @@ const METHODS: ApiMethod[] = [
       'Opens a window on the Jetson desktop showing the given color image. Needs a display: use it at the car or over Remote desktop, not plain SSH.',
   },
   {
-    sig: 'rc.display.show_lidar(samples, radius=128, max_range=1000, highlighted_samples=[])',
+    sig: 'rc.display.show_lidar(samples: NDArray, radius: int = 128, max_range: int = 1000, highlighted_samples: list[tuple[float, float]] = [])',
     returns: 'None',
     summary: (
       <>

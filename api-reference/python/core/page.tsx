@@ -12,7 +12,7 @@ import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 export const metadata: Metadata = {
   title: 'racecar_core · Python API · NeoRacer Docs',
   description:
-    'The racecar_core module: create_racecar, set_start_update, go, go_async, get_delta_time, and set_update_slow_time. The program lifecycle every rc.* module hangs off.',
+    'The racecar_core module: create_racecar, set_start_update, go, go_async, get_delta_time, and set_update_slow_time.',
 };
 
 const METHODS: ApiMethod[] = [
@@ -20,31 +20,31 @@ const METHODS: ApiMethod[] = [
     sig: 'racecar_core.create_racecar()',
     returns: 'Racecar',
     summary:
-      'Creates the rc object every program starts from. All the rc.* modules on the following pages hang off it.',
+      'Creates the rc object.',
   },
   {
     sig: 'rc.set_start_update(start, update, update_slow=None)',
     returns: 'None',
     summary:
-      'Registers your functions. start runs once when the program begins; update runs every frame; update_slow, if given, runs once per fixed interval.',
+      'Tells the car which functions to run. The start function runs once at the beginning. The update function runs repeatedly, once per frame. The optional update_slow function runs once per second.',
   },
   {
     sig: 'rc.go()',
     returns: 'None',
     summary:
-      'Starts the program. Call it at the bottom of the file after set_start_update. It blocks until the program exits.',
+      'Starts the program. It blocks until the program exits.',
   },
   {
     sig: 'rc.go_async()',
     returns: 'None',
     summary:
-      'Starts the sensor streams in the background without taking over the program. Use it in a Jupyter Notebook: call it once in an early cell, then read the *_async methods from any later cell.',
+      'Starts the sensor streams in the background without blocking. Used in Jupyter Notebooks instead of go, so the *_async methods return data.',
   },
   {
     sig: 'rc.get_delta_time()',
     returns: 'float',
     summary:
-      'The number of seconds the previous frame took. Use it inside update to run timers, as in the drive example.',
+      'Returns the number of seconds the previous frame took.',
   },
   {
     sig: 'rc.set_update_slow_time(time=1.0)',
@@ -72,10 +72,7 @@ export default function CoreApiPage() {
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
               The racecar_core module creates the car object and runs your
-              program. Every program uses the same structure: define{' '}
-              <code style={{ fontFamily: NB.monoFont }}>start</code> and{' '}
-              <code style={{ fontFamily: NB.monoFont }}>update</code>, register
-              them, and call <code style={{ fontFamily: NB.monoFont }}>go</code>.
+              program.
             </p>
           </div>
         </section>
@@ -117,12 +114,11 @@ rc.go()`}</Code>
 
       <ScrollReveal>
         <Callout type="note" title="In a Jupyter Notebook">
-          A notebook has no single program to hand over to, so use{' '}
-          <code style={{ fontFamily: NB.monoFont }}>rc.go_async()</code> instead
-          of <code style={{ fontFamily: NB.monoFont }}>rc.go()</code>. It starts
-          the sensor streams in the background, and the{' '}
-          <code style={{ fontFamily: NB.monoFont }}>*_async</code> methods on
-          the other pages read them. Without it they return empty data.
+          In a Jupyter Notebook, call{' '}
+          <code style={{ fontFamily: NB.monoFont }}>rc.go_async()</code> once
+          before reading any{' '}
+          <code style={{ fontFamily: NB.monoFont }}>*_async</code> method.
+          Without it they return empty data.
         </Callout>
       </ScrollReveal>
 

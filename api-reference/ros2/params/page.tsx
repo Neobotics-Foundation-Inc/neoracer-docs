@@ -165,9 +165,9 @@ racecar service restart`}</Code>
       <ScrollReveal>
         <section style={{ paddingBottom: 8 }}>
           <DisplayHeading size="lg">
-            SPEED <Red>CAPS</Red>
+            <Red>THROTTLE</Red>
           </DisplayHeading>
-          <MonoLabel>throttle_node · config/throttle.yaml</MonoLabel>
+          <MonoLabel>config/throttle.yaml</MonoLabel>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
             A command in [-1, 1] is multiplied by these caps, then by the
             controller&apos;s{' '}
@@ -182,7 +182,7 @@ racecar service restart`}</Code>
           <DisplayHeading size="lg">
             <Red>CONTROLLER</Red>
           </DisplayHeading>
-          <MonoLabel>controller · config/controller.yaml</MonoLabel>
+          <MonoLabel>config/controller.yaml</MonoLabel>
           <DataTable columns={COLUMNS} rows={CONTROLLER_ROWS} />
         </section>
       </ScrollReveal>
@@ -192,7 +192,7 @@ racecar service restart`}</Code>
           <DisplayHeading size="lg">
             <Red>CAMERA</Red>
           </DisplayHeading>
-          <MonoLabel>camera · config/camera.yaml</MonoLabel>
+          <MonoLabel>config/camera.yaml</MonoLabel>
           <DataTable columns={COLUMNS} rows={CAMERA_ROWS} />
         </section>
       </ScrollReveal>
@@ -202,7 +202,7 @@ racecar service restart`}</Code>
           <DisplayHeading size="lg">
             <Red>LIDAR</Red>
           </DisplayHeading>
-          <MonoLabel>lidar · launch arguments</MonoLabel>
+          <MonoLabel>launch arguments</MonoLabel>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
             The LakiBeam1 driver takes these as launch arguments in{' '}
             <code style={{ fontFamily: NB.monoFont }}>lidar.launch.py</code>{' '}

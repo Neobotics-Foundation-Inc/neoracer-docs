@@ -6,6 +6,7 @@ import {
   DisplayHeading,
   Red,
   GhostNumeral,
+  ComingSoon,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext, Code } from '@/components/docs/DocsPrimitives';
@@ -71,11 +72,11 @@ export default function CliRunningPage() {
               runs the same stack the{' '}
               <code style={{ fontFamily: NB.monoFont }}>neoracer-teleop</code>{' '}
               service runs, in the foreground, with a timestamped log directory.
-              Stop the service first or the two fight over the hardware.
-              Subsystems can be switched off individually.
+              Stop the service before running teleop; both cannot control the
+              car at the same time. Subsystems can be switched off
+              individually.
             </p>
-            <Code lang="bash">{`racecar service stop
-racecar teleop                        # Ctrl-C, then: racecar service start
+            <Code lang="bash">{`racecar teleop                        # Ctrl-C, then: racecar service start
 racecar teleop camera_enable:=false   # also: lidar_, led_matrix_, inference_`}</Code>
           </div>
         </section>
@@ -89,7 +90,7 @@ racecar teleop camera_enable:=false   # also: lidar_, led_matrix_, inference_`}<
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
               <code style={{ fontFamily: NB.monoFont }}>racecar launch</code>{' '}
-              runs one subsystem on its own, for bench work.
+              runs one subsystem on its own.
             </p>
             <Code lang="bash">{`racecar launch lidar
 racecar launch camera
@@ -104,14 +105,16 @@ racecar launch led_matrix`}</Code>
             <DisplayHeading size="lg">
               <Red>WS</Red>
             </DisplayHeading>
-            <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-              <code style={{ fontFamily: NB.monoFont }}>racecar ws</code>{' '}
-              swaps which workspace this one terminal uses. See{' '}
-              <Link href="/docs/software/workspaces" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>File system</Link>.
-            </p>
-            <Code lang="bash">{`racecar ws            # which one am I on?
+            <ComingSoon>
+              <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
+                <code style={{ fontFamily: NB.monoFont }}>racecar ws</code>{' '}
+                swaps which workspace this one terminal uses. See{' '}
+                <Link href="/docs/software/workspaces" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>File system</Link>.
+              </p>
+              <Code lang="bash">{`racecar ws            # which one am I on?
 racecar ws osracer
 racecar ws neoracer`}</Code>
+            </ComingSoon>
           </div>
         </section>
       </ScrollReveal>

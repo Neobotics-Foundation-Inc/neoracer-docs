@@ -47,7 +47,7 @@ export default function DisplayApiPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'API Reference', href: '/docs/api-reference/python/drive' },
+          { label: 'API Reference', href: '/docs/api-reference/python/core' },
           { label: 'rc.display' },
         ]}
       />

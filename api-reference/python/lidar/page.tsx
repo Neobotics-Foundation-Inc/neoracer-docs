@@ -31,7 +31,7 @@ const METHODS: ApiMethod[] = [
     sig: 'rc.lidar.get_samples_async()',
     returns: 'NDArray[Float]',
     summary:
-      'The current scan but readable outside the start/update loop. This function should only be used in a Jupyter Notebook cell when the car is not in go mode.',
+      'The current scan but readable outside the start/update loop. This function should only be used in a Jupyter Notebook cell, after rc.go_async() has been called.',
   },
 ];
 
@@ -62,7 +62,7 @@ export default function LidarApiPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'API Reference', href: '/docs/api-reference/python/drive' },
+          { label: 'API Reference', href: '/docs/api-reference/python/core' },
           { label: 'rc.lidar' },
         ]}
       />

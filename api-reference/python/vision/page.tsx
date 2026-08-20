@@ -26,7 +26,7 @@ const METHODS: ApiMethod[] = [
     sig: 'rc.vision.get_detections_async()',
     returns: 'List[Detection]',
     summary:
-      'The same detections but readable outside the start/update loop. This function should only be used in a Jupyter Notebook cell when the car is not in go mode.',
+      'The same detections but readable outside the start/update loop. This function should only be used in a Jupyter Notebook cell, after rc.go_async() has been called.',
   },
 ];
 
@@ -35,7 +35,7 @@ export default function VisionApiPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'API Reference', href: '/docs/api-reference/python/drive' },
+          { label: 'API Reference', href: '/docs/api-reference/python/core' },
           { label: 'rc.vision' },
         ]}
       />

@@ -23,7 +23,7 @@ export default function CliReferencePage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'API Reference', href: '/docs/api-reference/python/drive' },
+          { label: 'API Reference', href: '/docs/api-reference/python/core' },
           { label: 'racecar CLI' },
         ]}
       />

@@ -45,7 +45,7 @@ export default function DriveApiPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'API Reference', href: '/docs/api-reference/python/drive' },
+          { label: 'API Reference', href: '/docs/api-reference/python/core' },
           { label: 'rc.drive' },
         ]}
       />
@@ -125,7 +125,7 @@ rc.go()`}</Code>
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'Software · File system', href: '/docs/software/workspaces' }}
+        prev={{ label: 'racecar_core', href: '/docs/api-reference/python/core' }}
         next={{ label: 'rc.lidar', href: '/docs/api-reference/python/lidar' }}
       />
     </DocsShell>

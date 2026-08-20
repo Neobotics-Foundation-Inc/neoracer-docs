@@ -20,7 +20,7 @@ const METHODS: ApiMethod[] = [
     sig: 'rc.physics.get_linear_acceleration()',
     returns: 'NDArray[3, Float]',
     summary:
-      'The car’s acceleration as an (x, y, z) vector in metres per second squared. The reading includes gravity, so at rest the axis pointing down reads about 9.8.',
+      'The car’s acceleration as an (x, y, z) vector in metres per second squared.',
   },
   {
     sig: 'rc.physics.get_angular_velocity()',
@@ -101,7 +101,7 @@ def update():
     ax, ay, az = rc.physics.get_linear_acceleration()   # m/s^2
     wx, wy, wz = rc.physics.get_angular_velocity()       # rad/s
 
-    # wz is the yaw rate: positive one way, negative the other.
+    # wz is the yaw rate.
     print(f"down accel {az:.1f} m/s^2, yaw rate {wz:.2f} rad/s")
 
 rc.set_start_update(start, update)

@@ -27,7 +27,7 @@ const ROWS = [
     topic: '/scan',
     type: 'sensor_msgs/LaserScan',
     role: 'Subscribe',
-    notes: 'One planar sweep from the Lakibeam LiDAR, ~1440 samples, frame_id laser. Publisher is RELIABLE.',
+    notes: 'One planar sweep from the Lakibeam LiDAR, ~1440 samples, frame_id laser. Any subscriber receives it; no special QoS is needed.',
   },
   {
     topic: '/imu/fused',
@@ -153,7 +153,6 @@ function PipelineBlock() {
       </div>
       <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 6 }}>
         <Hop text="/drive" kind="topic" />
-        <span style={{ color: NB.textDimBlue, fontFamily: NB.monoFont, fontSize: 12 }}>(yours)</span>
         <Arrow />
         <Hop text="mux_node" kind="node" />
         <Arrow />
@@ -165,7 +164,9 @@ function PipelineBlock() {
         <Arrow />
         <Hop text="controller" kind="node" />
         <Arrow />
-        <span style={{ fontFamily: NB.monoFont, fontSize: 13, color: NB.textDimBlue }}>ESP32 → ESC + steering servo</span>
+        <span style={{ fontFamily: NB.monoFont, fontSize: 13, color: NB.textDimBlue }}>ESP32 board</span>
+        <Arrow />
+        <span style={{ fontFamily: NB.monoFont, fontSize: 13, color: NB.textDimBlue }}>ESC and steering servo</span>
       </div>
       <div style={{ marginTop: 14, display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 6 }}>
         <Hop text="/gamepad_drive" kind="topic" />
@@ -173,8 +174,11 @@ function PipelineBlock() {
         <Arrow />
         <Hop text="mux_node" kind="node" />
         <span style={{ color: NB.textDimBlue, fontFamily: NB.monoFont, fontSize: 12 }}>
-          {' '}joins the same arbiter. SWB picks the winner: up is teleop, down is /drive.
+          {' '}The SWB switch on the transmitter selects the source: up is teleop, down is /drive.
         </span>
+      </div>
+      <div style={{ marginTop: 14, fontFamily: NB.monoFont, fontSize: 11.5, color: NB.textDimBlue, letterSpacing: '0.06em' }}>
+        <span style={{ color: NB.neoboticsRed }}>red</span> = topic · <span style={{ color: NB.haloWhite }}>white</span> = node · grey = hardware
       </div>
     </div>
   );

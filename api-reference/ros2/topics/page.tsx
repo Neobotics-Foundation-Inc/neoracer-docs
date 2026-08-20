@@ -2,15 +2,13 @@ import { Metadata } from 'next';
 import DocsShell from '@/components/docs/DocsShell';
 import { NB } from '@/lib/nb-tokens';
 import {
-  Eyebrow,
   DisplayHeading,
   Red,
   GhostNumeral,
-  ChromeBadge,
   MonoLabel,
 } from '@/components/docs/Editorial';
 import { Crumbs, PrevNext, Callout, Code, DataTable } from '@/components/docs/DocsPrimitives';
-import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
+import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 
 export const metadata: Metadata = {
   title: 'ROS 2 topics · API Reference · NeoRacer Docs',
@@ -54,7 +52,7 @@ const ROWS = [
     topic: '/scan',
     type: 'sensor_msgs/LaserScan',
     role: 'Read it',
-    notes: 'One planar sweep from the Lakibeam LiDAR, ~1440 samples, frame_id laser. The depth source for wall follow, gap follow, and mapping. Publisher is RELIABLE.',
+    notes: 'One planar sweep from the Lakibeam LiDAR, ~1440 samples, frame_id laser. Publisher is RELIABLE.',
   },
   {
     topic: '/imu/fused',
@@ -72,7 +70,7 @@ const ROWS = [
     topic: '/odom',
     type: 'nav_msgs/Odometry',
     role: 'Read it',
-    notes: 'Wheel odometry at ~200 Hz, integrated on the MCU from the motor encoder. Useful for short-horizon dead reckoning between LiDAR scans.',
+    notes: 'Wheel odometry at ~200 Hz, integrated on the MCU from the motor encoder.',
   },
   {
     topic: '/battery',
@@ -90,13 +88,13 @@ const ROWS = [
     topic: '/drive',
     type: 'ackermann_msgs/AckermannDriveStamped',
     role: 'Publish it',
-    notes: 'The autonomy channel. This is the one topic your own node writes to. The mux only forwards it while autonomy mode is armed.',
+    notes: 'The topic your own node publishes to. The mux only forwards it while autonomy mode is armed.',
   },
   {
     topic: '/joy',
     type: 'sensor_msgs/Joy',
     role: 'Teleop',
-    notes: 'Flysky RC stick and switch state, published by the controller node from the receiver on the ESP32. The gamepad and mux nodes read it; you rarely need to.',
+    notes: 'Flysky RC stick and switch state, published by the controller node from the receiver on the ESP32. The gamepad and mux nodes read it.',
   },
   {
     topic: '/gamepad_drive',
@@ -108,25 +106,25 @@ const ROWS = [
     topic: '/mux_out',
     type: 'ackermann_msgs/AckermannDriveStamped',
     role: 'Internal',
-    notes: 'Whichever command won arbitration, teleop or autonomy. You read this to see what the car was actually told.',
+    notes: 'Whichever command won arbitration, teleop or autonomy.',
   },
   {
     topic: '/motor',
     type: 'ackermann_msgs/AckermannDriveStamped',
     role: 'Internal',
-    notes: 'The throttle-scaled command the controller node turns into the ESP32 serial command. The last hop before hardware.',
+    notes: 'The throttle-scaled command the controller node turns into the ESP32 serial command.',
   },
   {
     topic: '/dotmatrix/text',
     type: 'std_msgs/String',
     role: 'Publish it',
-    notes: 'Write text or simple commands to the 8x8 dot-matrix display on the back of the car. Handled by the led_matrix node over USB-UART.',
+    notes: 'Text to the dot-matrix display on the back of the car. Handled by the led_matrix node over USB-UART.',
   },
   {
     topic: '/battery/voltage',
     type: 'std_msgs/Float32',
     role: 'Read it',
-    notes: 'Pack voltage on its own, for when you want the number without the rest of the BatteryState message.',
+    notes: 'Pack voltage on its own, without the rest of the BatteryState message.',
   },
   {
     topic: '/encoder/speed',
@@ -136,15 +134,15 @@ const ROWS = [
   },
   {
     topic: '/rc/channels',
-    type: 'std_msgs/Int32MultiArray',
+    type: 'std_msgs/Float32MultiArray',
     role: 'Internal',
     notes: 'Raw channel values from the Flysky receiver, before the controller node turns them into /joy.',
   },
   {
     topic: '/edgetpu/inference',
-    type: 'std_msgs/String',
+    type: 'vision_msgs/Detection2DArray',
     role: 'Read it',
-    notes: 'Output from the inference node. Only carries traffic while a model is loaded and running.',
+    notes: 'Object detections from the inference node. Only publishes while a model is loaded and running.',
   },
 ];
 
@@ -226,63 +224,26 @@ export default function Ros2TopicsPage() {
               ROS 2 <Red>TOPICS</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
-              The whole stack is sensors publishing and actuators subscribing.
-              You read five sensor topics, you publish one drive topic, and the
-              nodes in between do the arbitration and scaling. Below is the exact
-              list the default launch brings up, with the message type on each.
+              This page lists every topic the driver publishes and subscribes,
+              with the message type on each.
             </p>
-            <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="red">Publish /drive</ChromeBadge>
-              <ChromeBadge variant="outline">Read /scan · /imu · /camera</ChromeBadge>
-              <ChromeBadge variant="outline">ackermann_msgs</ChromeBadge>
-            </div>
           </div>
         </section>
       </MouseFollowGlow>
 
       <ScrollReveal>
-        <Callout type="note" title="What this reference is built from">
-          The topics below are published by the{' '}
+        <Callout type="note" title="Where these topics come from">
+          The topics on this page are published by the{' '}
           <a href="https://github.com/Neobotics-Foundation-Inc/neoracer_ros2_driver" target="_blank" rel="noopener noreferrer" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
             neoracer_ros2_driver
-          </a>
-          , the ROS 2 backend that ships on every NeoRacer. It is a fork of the
-          MIT RACECAR Neo driver, retargeted for the Jetson Orin Nano, the
-          OSCORE ESP32 board, the Lakibeam LiDAR over UDP, and a USB MJPG
-          camera, with the same topic contract so the racecar-neo-library API
-          continues to work without changes.
-        </Callout>
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <Callout type="tip" title="Two stacks share the car">
-          The NeoRacer runs two ROS 2 stacks side by side, each for a different
-          job. The table below is{' '}
-          <code style={{ fontFamily: NB.monoFont }}>racecar_neo</code>, the custom
-          MIT teaching driver the{' '}
-          <code style={{ fontFamily: NB.monoFont }}>rc.*</code> API sits on. The
-          second is{' '}
-          <a href="https://github.com/osrbot/osracer" target="_blank" rel="noopener noreferrer" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-            osracer
-          </a>
-          , the general, standard ROS 2 autonomy stack (osracer_bringup,
-          osracer_slam, osracer_navigation) for SLAM and Nav2. They run together
-          or on their own. When osracer is up it adds the usual autonomy topics,{' '}
-          <code style={{ fontFamily: NB.monoFont }}>/odom</code>,{' '}
-          <code style={{ fontFamily: NB.monoFont }}>/map</code>,{' '}
-          <code style={{ fontFamily: NB.monoFont }}>/tf</code>, and the Nav2 graph,
-          so a <code style={{ fontFamily: NB.monoFont }}>ros2 topic list</code> on a
-          fully loaded car shows more than the thirteen here. Those follow the standard
-          Nav2 names; your own <code style={{ fontFamily: NB.monoFont }}>ros2 topic list</code>{' '}
-          is the final word.
+          </a>. Verified against a running car.
         </Callout>
       </ScrollReveal>
 
       <ScrollReveal>
         <section style={{ paddingBottom: 8 }}>
-          <Eyebrow>THE FULL LIST</Eyebrow>
           <DisplayHeading size="lg">
-            THE TOPIC <Red>LIST</Red>
+            TOPIC <Red>LIST</Red>
           </DisplayHeading>
           <DataTable columns={COLUMNS} rows={ROWS} />
 
@@ -322,20 +283,14 @@ export default function Ros2TopicsPage() {
 
       <ScrollReveal>
         <section style={{ paddingTop: 28, paddingBottom: 8 }}>
-          <Eyebrow>THE DRIVE PIPELINE</Eyebrow>
           <DisplayHeading size="lg">
-            THE DRIVE <Red>PIPELINE</Red>
+            DRIVE <Red>PIPELINE</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
-            Your message does not go straight to the motor. It passes through an
-            arbiter that decides whether{' '}
-            <InfoNote term="teleop" title="Teleop">Teleoperation. Driving the car by hand with the gamepad, as opposed to autonomy where your code drives.</InfoNote>{' '}
-            or autonomy is in control, then a
-            throttle stage that scales speed down to a safe range before the{' '}
-            <InfoNote term="PWM" title="PWM">Pulse-width modulation. A square signal whose on-time encodes a value. The motor controller and steering servo read it to set throttle and angle.</InfoNote>{' '}
-            node ever touches the hardware. That is why a raw{' '}
-            <code style={{ fontFamily: NB.monoFont }}>set_speed_angle(1.0, 0)</code>{' '}
-            does not launch the car at full speed.
+            A drive message does not go straight to the motor. The mux node
+            decides whether teleop or autonomy is in control, and the throttle
+            node scales the speed to a safe range before the controller node
+            touches the hardware.
           </p>
           <PipelineBlock />
         </section>
@@ -378,12 +333,10 @@ if __name__ == "__main__":
       <ScrollReveal>
         <Callout type="tip" title="Most students never touch ROS 2 directly">
           The <code style={{ fontFamily: NB.monoFont }}>racecar-neo-library</code>{' '}
-          Python API wraps every one of these topics behind{' '}
-          <code style={{ fontFamily: NB.monoFont }}>rc.lidar</code>,{' '}
-          <code style={{ fontFamily: NB.monoFont }}>rc.camera</code>, and{' '}
-          <code style={{ fontFamily: NB.monoFont }}>rc.drive</code>. Reach for raw
-          ROS 2 when you want to add your own node alongside the stack, or wire in
-          a tool from the wider ROS ecosystem.
+          Python API wraps these topics behind the{' '}
+          <code style={{ fontFamily: NB.monoFont }}>rc.*</code> modules. Use raw
+          ROS 2 to add your own node alongside the stack, or to use a tool from
+          the wider ROS ecosystem.
         </Callout>
       </ScrollReveal>
 

@@ -40,12 +40,12 @@ const METHODS: ApiMethod[] = [
   {
     sig: 'rc.camera.get_width()',
     returns: 'int',
-    summary: 'Returns 640, the default frame width. It does not follow a changed camera resolution; read the size off the frame instead.',
+    summary: 'Returns the frame width in pixels.',
   },
   {
     sig: 'rc.camera.get_height()',
     returns: 'int',
-    summary: 'Returns 480, the default frame height. It does not follow a changed camera resolution; read the size off the frame instead.',
+    summary: 'Returns the frame height in pixels.',
   },
 ];
 

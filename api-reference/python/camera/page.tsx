@@ -12,7 +12,7 @@ import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 export const metadata: Metadata = {
   title: 'rc.camera · Python API · NeoRacer Docs',
   description:
-    "The Camera module: color frames from the NeoRacer's RGB camera as NumPy arrays. racecar_core also exposes depth methods, but the NeoRacer has no depth camera, so use the LiDAR for distance.",
+    "The Camera module: color frames from the NeoRacer's RGB camera as NumPy arrays. The NeoRacer has no depth camera, so use the LiDAR for distance.",
 };
 
 const METHODS: ApiMethod[] = [
@@ -35,26 +35,14 @@ const METHODS: ApiMethod[] = [
       'The current color frame but readable outside the start/update loop. This function should only be used in a Jupyter Notebook cell, after rc.go_async() has been called.',
   },
   {
-    sig: 'rc.camera.get_depth_image()',
-    returns: 'NDArray[H, W]',
-    summary:
-      'Not available on the NeoRacer: its camera is RGB-only, so this returns an all-zero frame.',
-  },
-  {
     sig: 'rc.camera.get_width()',
     returns: 'int',
-    summary: 'The pixel width of the color frame.',
+    summary: 'Returns 640, the default frame width. It does not follow a changed camera resolution; read the size off the frame instead.',
   },
   {
     sig: 'rc.camera.get_height()',
     returns: 'int',
-    summary: 'The pixel height of the color frame.',
-  },
-  {
-    sig: 'rc.camera.get_max_range()',
-    returns: 'float',
-    summary:
-      'Not used on the NeoRacer. On a car that can capture depth, it returns the farthest distance the depth sensor can report.',
+    summary: 'Returns 480, the default frame height. It does not follow a changed camera resolution; read the size off the frame instead.',
   },
 ];
 

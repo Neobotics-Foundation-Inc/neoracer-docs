@@ -105,7 +105,7 @@ print(rc.camera.get_height())          # 480
 # BGR, not RGB: the blue channel comes first.
 b, g, r = color[240, 320]              # centre pixel, one per channel
 
-# The NeoRacer is RGB-only: get_depth_image() returns all zeros here.
+# The NeoRacer is RGB-only: get_depth_image() raises NotImplementedError.
 # Use rc.lidar for distance.`}
           </Code>
         </section>

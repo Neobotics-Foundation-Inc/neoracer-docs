@@ -235,8 +235,7 @@ racecar service restart`}</Code>
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'ROS 2 services', href: '/docs/api-reference/ros2/services' }}
-        next={{ label: 'ROS 2 TF frames', href: '/docs/api-reference/ros2/tf-frames' }}
+        prev={{ label: 'ROS 2 topics', href: '/docs/api-reference/ros2/topics' }}
       />
     </DocsShell>
   );

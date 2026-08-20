@@ -389,7 +389,7 @@ if __name__ == "__main__":
 
       <PrevNext
         prev={{ label: 'CLI · Setup', href: '/docs/api-reference/cli/setup' }}
-        next={{ label: 'ROS 2 services', href: '/docs/api-reference/ros2/services' }}
+        next={{ label: 'ROS 2 params', href: '/docs/api-reference/ros2/params' }}
       />
     </DocsShell>
   );

@@ -15,30 +15,6 @@ export const metadata: Metadata = {
     'Every topic the racecar_neo stack publishes and subscribes: /scan, /imu, /odom, /battery, /camera, /drive. Which ones you read, which one you publish, and the drive pipeline that connects them.',
 };
 
-/* `ros2 topic list` on a running car, verified 2026-08-17. Alphabetical, as
- * the command prints it. Keep this in step with ROWS when either changes. */
-const LIVE_TOPICS: [string, string][] = [
-  ['/battery', 'pack state'],
-  ['/battery/voltage', 'pack voltage on its own'],
-  ['/camera/color', 'JPEG in an Image, 60 fps'],
-  ['/diagnostics', 'ROS 2 internals'],
-  ['/dotmatrix/text', 'text to the 8x8 display'],
-  ['/drive', 'PUBLISH here'],
-  ['/edgetpu/inference', 'inference output, when a model is running'],
-  ['/encoder/speed', 'wheel speed from the encoders'],
-  ['/gamepad_drive', 'what gamepad_node builds from the sticks'],
-  ['/imu/fused', 'accel + gyro fused, 200 Hz'],
-  ['/joy', 'the Flysky receiver'],
-  ['/mag', 'raw magnetometer, not part of the fused output'],
-  ['/motor', 'the final command to the ESC and the servo'],
-  ['/mux_out', 'whichever source the mux is forwarding'],
-  ['/odom', 'integrated from the encoders'],
-  ['/parameter_events', 'ROS 2 internals'],
-  ['/rc/channels', 'raw RC channel values'],
-  ['/rosout', 'ROS 2 internals'],
-  ['/scan', 'the LiDAR over UDP'],
-];
-
 const COLUMNS = [
   { key: 'topic', label: 'Topic', mono: true, accent: true, width: '180px' },
   { key: 'type', label: 'Message type', mono: true, width: '240px' },
@@ -99,13 +75,13 @@ const ROWS = [
     topic: '/gamepad_drive',
     type: 'ackermann_msgs/AckermannDriveStamped',
     role: 'Teleop',
-    notes: 'The drive command gamepad_node builds from the sticks. Gated by the mux the same way /drive is.',
+    notes: 'The drive command gamepad_node builds from the sticks.',
   },
   {
     topic: '/mux_out',
     type: 'ackermann_msgs/AckermannDriveStamped',
     role: 'Internal',
-    notes: 'Whichever command won arbitration, teleop or autonomy.',
+    notes: 'The command the mux forwarded, teleop or autonomy.',
   },
   {
     topic: '/motor',
@@ -247,36 +223,15 @@ export default function Ros2TopicsPage() {
           <DataTable columns={COLUMNS} rows={ROWS} />
 
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740, marginTop: 26 }}>
-            The driver starts at boot, so all of this is already live when you
-            log in. Run{' '}
+            The driver starts at boot, so every topic above is already live when
+            you log in.{' '}
             <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>ros2 topic list</code>{' '}
-            on the car and you get the table above plus a few ROS 2 internals:
+            on the car also prints{' '}
+            <code style={{ fontFamily: NB.monoFont }}>/diagnostics</code>,{' '}
+            <code style={{ fontFamily: NB.monoFont }}>/parameter_events</code> and{' '}
+            <code style={{ fontFamily: NB.monoFont }}>/rosout</code>, which are
+            ROS 2 internals.
           </p>
-
-          <div
-            style={{
-              marginTop: 16,
-              background: NB.tarmacBlue,
-              color: NB.haloWhite,
-              borderRadius: 12,
-              padding: '22px 24px',
-              fontFamily: NB.monoFont,
-              fontSize: 13.5,
-              lineHeight: 1.75,
-              boxShadow: NB.shadowCard,
-              overflowX: 'auto',
-            }}
-          >
-            <div style={{ color: NB.neoboticsRed, fontWeight: 700, marginBottom: 10 }}>
-              // ros2 topic list
-            </div>
-            {LIVE_TOPICS.map(([topic, note]) => (
-              <div key={topic} style={{ whiteSpace: 'nowrap' }}>
-                <span style={{ display: 'inline-block', minWidth: 168 }}>{topic}</span>
-                <span style={{ color: NB.textDimBlue }}># {note}</span>
-              </div>
-            ))}
-          </div>
         </section>
       </ScrollReveal>
 

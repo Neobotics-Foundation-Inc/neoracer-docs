@@ -68,9 +68,9 @@ const FAQS: Faq[] = [
       <>
         The firmware caps the drivetrain at 6 m/s, and the driver ships with
         the full range unlocked. The caps are real parameters you can read and
-        lower to derate the car for a classroom; the{' '}
-        <a href="/docs/calibration/motor-trim" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-          Motor trim
+        lower for a classroom; the{' '}
+        <a href="/docs/api-reference/ros2/params" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
+          ROS 2 params
         </a>{' '}
         page shows where they live.
       </>

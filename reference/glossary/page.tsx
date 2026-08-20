@@ -111,7 +111,7 @@ const TERMS: Term[] = [
   {
     term: 'Motor trim',
     def: 'In practice, the top-speed cap (max_speed_mps + max_speed_forward) you set in the driver YAML so set_speed_angle scales to a speed you chose. The motor neutral itself lives in the ESP32 firmware, so a creep at zero is usually the ESC neutral or drivetrain drag, not a value you tune here.',
-    see: { label: 'Motor trim', href: '/docs/calibration/motor-trim' },
+    see: { label: 'ROS 2 params', href: '/docs/api-reference/ros2/params' },
   },
   {
     term: 'Odometry',
@@ -140,7 +140,7 @@ const TERMS: Term[] = [
   {
     term: 'Servo center',
     def: 'A few degrees of trim, set as steering_trim_deg in config/controller.yaml, that points the front wheels dead ahead when your steering command is zero. Pinned per car because the steering linkage has a little slop.',
-    see: { label: 'Servo center', href: '/docs/calibration/servo-center' },
+    see: { label: 'ROS 2 params', href: '/docs/api-reference/ros2/params' },
   },
   {
     term: 'SLAM',

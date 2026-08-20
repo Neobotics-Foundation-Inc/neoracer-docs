@@ -201,7 +201,8 @@ export default function SpecificationsPage() {
                   axle. Range mapped to{' '}
                   <code style={{ fontFamily: NB.monoFont }}>rc.drive.set_speed_angle(_, angle)</code>{' '}
                   in [-1, +1]. Center pinned via{' '}
-                  <a href="/docs/calibration/servo-center" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>servo center</a>.
+                  <code style={{ fontFamily: NB.monoFont }}>steering_trim_deg</code> in{' '}
+                  <a href="/docs/api-reference/ros2/params" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>ROS 2 params</a>.
                 </>,
                 <>
                   <strong>Motor:</strong> brushed RC motor through a

@@ -137,8 +137,6 @@ rc.go()`}</Code>
             If it still shakes at exactly zero on a charged pack and a flat
             floor, the cause is the ESC neutral or mechanical drag, covered on
             the{' '}
-            <a href="/docs/calibration/motor-trim" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>motor trim</a>{' '}
-            and{' '}
             <a href="/docs/hardware/drivetrain" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>drivetrain</a>{' '}
             pages. Read on.
           </p>

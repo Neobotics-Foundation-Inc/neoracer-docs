@@ -173,7 +173,7 @@ ros2 launch osracer_debug debug_image.launch.py  # image pipeline`}</Code>
                 ]}
                 rows={[
                   { cause: 'Motor wiring reversed', fix: 'Forward gives reverse: swap any two motor leads.' },
-                  { cause: 'Servo off-centre', fix: <>Wheels not symmetric left/right. Re-centre on the trim, see <Link href="/docs/calibration/servo-center" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Servo center</Link>.</> },
+                  { cause: 'Servo off-centre', fix: <>Wheels not symmetric left/right. Adjust steering_trim_deg, see <Link href="/docs/api-reference/ros2/params" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>ROS 2 params</Link>.</> },
                   { cause: 'Encoder jumps', fix: 'Odometry jumps after a known distance: reseat the encoder cable.' },
                 ]}
               />

@@ -6,7 +6,6 @@ import {
   DisplayHeading,
   Red,
   GhostNumeral,
-  MonoLabel,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext, Code } from '@/components/docs/DocsPrimitives';
@@ -43,58 +42,79 @@ export default function CliRunningPage() {
       </MouseFollowGlow>
 
       <ScrollReveal>
-        <section style={{ position: 'relative', paddingBottom: 24 }}>
+        <section style={{ position: 'relative', paddingBottom: 44 }}>
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <MonoLabel>racecar status</MonoLabel>
-            <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 6 }}>
-              USB peripherals, the{' '}
+            <DisplayHeading size="lg">
+              <Red>STATUS</Red>
+            </DisplayHeading>
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
+              <code style={{ fontFamily: NB.monoFont }}>racecar status</code>{' '}
+              shows the USB peripherals, the{' '}
               <code style={{ fontFamily: NB.monoFont }}>/dev/osrbot_*</code>{' '}
-              symlinks udev creates, and the ROS 2 nodes currently running, in
-              one output. That pairing is what makes it useful when something is
-              missing: a device with no symlink is unplugged or unpowered, a
-              symlink with no node is a software problem.
+              symlinks, and the ROS 2 nodes currently running, in one output. A
+              device with no symlink is unplugged or unpowered; a symlink with
+              no node is a software problem.
             </p>
-
-            <div style={{ marginTop: 24 }}>
-              <MonoLabel>racecar teleop</MonoLabel>
-              <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 6 }}>
-                Runs the same stack the{' '}
-                <code style={{ fontFamily: NB.monoFont }}>neoracer-teleop</code>{' '}
-                service runs, in the foreground, with a timestamped log
-                directory. Stop the service first or the two fight over the
-                hardware. Subsystems can be switched off individually.
-              </p>
-              <Code lang="bash">{`racecar service stop
-racecar teleop                        # Ctrl-C, then: racecar service start
-racecar teleop camera_enable:=false   # also: lidar_, led_matrix_, inference_`}</Code>
-            </div>
-
-            <div style={{ marginTop: 24 }}>
-              <MonoLabel>racecar launch</MonoLabel>
-              <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 6 }}>
-                One subsystem on its own, for bench work.
-              </p>
-              <Code lang="bash">{`racecar launch lidar
-racecar launch camera
-racecar launch led_matrix`}</Code>
-            </div>
-
-            <div style={{ marginTop: 24 }}>
-              <MonoLabel>racecar ws</MonoLabel>
-              <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 6 }}>
-                Swaps which workspace this one terminal uses, for poking at
-                vendor packages by hand. Mapping and navigation do not need it.
-                See{' '}
-                <Link href="/docs/software/workspaces" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>File system</Link>.
-              </p>
-              <Code lang="bash">{`racecar ws            # which one am I on?
-racecar ws osracer
-racecar ws neoracer`}</Code>
-            </div>
+            <Code lang="bash">{`racecar status`}</Code>
           </div>
         </section>
       </ScrollReveal>
 
+      <ScrollReveal>
+        <section style={{ position: 'relative', paddingBottom: 44 }}>
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <DisplayHeading size="lg">
+              <Red>TELEOP</Red>
+            </DisplayHeading>
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
+              <code style={{ fontFamily: NB.monoFont }}>racecar teleop</code>{' '}
+              runs the same stack the{' '}
+              <code style={{ fontFamily: NB.monoFont }}>neoracer-teleop</code>{' '}
+              service runs, in the foreground, with a timestamped log directory.
+              Stop the service first or the two fight over the hardware.
+              Subsystems can be switched off individually.
+            </p>
+            <Code lang="bash">{`racecar service stop
+racecar teleop                        # Ctrl-C, then: racecar service start
+racecar teleop camera_enable:=false   # also: lidar_, led_matrix_, inference_`}</Code>
+          </div>
+        </section>
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <section style={{ position: 'relative', paddingBottom: 44 }}>
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <DisplayHeading size="lg">
+              <Red>LAUNCH</Red>
+            </DisplayHeading>
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
+              <code style={{ fontFamily: NB.monoFont }}>racecar launch</code>{' '}
+              runs one subsystem on its own, for bench work.
+            </p>
+            <Code lang="bash">{`racecar launch lidar
+racecar launch camera
+racecar launch led_matrix`}</Code>
+          </div>
+        </section>
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <section style={{ position: 'relative', paddingBottom: 24 }}>
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <DisplayHeading size="lg">
+              <Red>WS</Red>
+            </DisplayHeading>
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
+              <code style={{ fontFamily: NB.monoFont }}>racecar ws</code>{' '}
+              swaps which workspace this one terminal uses. See{' '}
+              <Link href="/docs/software/workspaces" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>File system</Link>.
+            </p>
+            <Code lang="bash">{`racecar ws            # which one am I on?
+racecar ws osracer
+racecar ws neoracer`}</Code>
+          </div>
+        </section>
+      </ScrollReveal>
 
       <PrevNext
         prev={{ label: 'Services', href: '/docs/api-reference/cli/service' }}

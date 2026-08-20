@@ -29,6 +29,12 @@ const METHODS: ApiMethod[] = [
       'A direct reference to the current color frame, without copying. Do not modify it; the library reuses the buffer for the next frame.',
   },
   {
+    sig: 'rc.camera.get_color_image_async()',
+    returns: 'NDArray[H, W, 3]',
+    summary:
+      'The current color frame but readable outside the start/update loop. This function should only be used in a Jupyter Notebook cell when the car is not in go mode.',
+  },
+  {
     sig: 'rc.camera.get_depth_image()',
     returns: 'NDArray[H, W]',
     summary:

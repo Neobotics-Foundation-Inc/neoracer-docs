@@ -37,7 +37,7 @@ const LIVE_TOPICS: [string, string][] = [
   ['/mux_out', 'whichever source the mux is forwarding'],
   ['/odom', 'integrated from the encoders'],
   ['/parameter_events', 'ROS 2 internals'],
-  ['/ric/channels', 'raw RC channel values'],
+  ['/rc/channels', 'raw RC channel values'],
   ['/rosout', 'ROS 2 internals'],
   ['/scan', 'the LiDAR over UDP'],
 ];
@@ -135,7 +135,7 @@ const ROWS = [
     notes: 'Wheel speed straight from the encoders, before it is integrated into /odom.',
   },
   {
-    topic: '/ric/channels',
+    topic: '/rc/channels',
     type: 'std_msgs/Int32MultiArray',
     role: 'Internal',
     notes: 'Raw channel values from the Flysky receiver, before the controller node turns them into /joy.',
@@ -388,7 +388,7 @@ if __name__ == "__main__":
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'rc.physics', href: '/docs/api-reference/python/physics' }}
+        prev={{ label: 'racecar_utils', href: '/docs/api-reference/python/utils' }}
         next={{ label: 'ROS 2 services', href: '/docs/api-reference/ros2/services' }}
       />
     </DocsShell>

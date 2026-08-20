@@ -6,8 +6,8 @@ import {
   Red,
   GhostNumeral,
 } from '@/components/docs/Editorial';
-import { Crumbs, PrevNext, Callout, Code, ApiMethods, type ApiMethod } from '@/components/docs/DocsPrimitives';
-import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
+import { Crumbs, PrevNext, Code, ApiMethods, type ApiMethod } from '@/components/docs/DocsPrimitives';
+import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 
 export const metadata: Metadata = {
   title: 'rc.physics · Python API · NeoRacer Docs',
@@ -33,6 +33,21 @@ const METHODS: ApiMethod[] = [
     returns: 'NDArray[3, Float]',
     summary:
       'The magnetic field as an (x, y, z) vector in teslas. Publishing is off by default (publish_mag in config/controller.yaml), so this returns zeros until it is enabled.',
+  },
+  {
+    sig: 'rc.physics.get_encoder_speed()',
+    returns: 'float',
+    summary: 'The wheel speed from the drivetrain encoder, in metres per second. Positive is forward.',
+  },
+  {
+    sig: 'rc.physics.get_battery_voltage()',
+    returns: 'float',
+    summary: 'The battery pack voltage in volts.',
+  },
+  {
+    sig: 'rc.physics.get_rc_channels()',
+    returns: 'NDArray[8, Float]',
+    summary: 'The raw channel values from the FlySky receiver, normalized. A channel with no signal reads -1.',
   },
 ];
 
@@ -94,35 +109,9 @@ rc.go()`}</Code>
         </section>
       </ScrollReveal>
 
-      <ScrollReveal>
-        <Callout type="note" title="It's called physics, not imu">
-          In the racecar-neo library the IMU lives under{' '}
-          <code style={{ fontFamily: NB.monoFont }}>rc.physics</code>, not{' '}
-          <code style={{ fontFamily: NB.monoFont }}>rc.imu</code>. The hardware page still calls
-          it the{' '}
-          <a href="/docs/hardware/sensors/imu" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-            IMU
-          </a>{' '}
-          because that is the chip, but the calls you write all start with{' '}
-          <code style={{ fontFamily: NB.monoFont }}>rc.physics</code>.
-        </Callout>
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <Callout type="warn" title="Axes differ between sim and car">
-          The direction each axis points is not identical in the Playground and
-          on the physical car. Lean on relative changes (a{' '}
-          <InfoNote term="yaw rate" title="Yaw Rate">
-            How fast the car is turning left or right, measured as rotation around the vertical axis in radians per second.
-          </InfoNote>, a spike in
-          acceleration) rather than hard-coding which axis is which, and your
-          code stays portable.
-        </Callout>
-      </ScrollReveal>
-
       <PrevNext
         prev={{ label: 'rc.camera', href: '/docs/api-reference/python/camera' }}
-        next={{ label: 'ROS 2 topics', href: '/docs/api-reference/ros2/topics' }}
+        next={{ label: 'rc.display', href: '/docs/api-reference/python/display' }}
       />
     </DocsShell>
   );

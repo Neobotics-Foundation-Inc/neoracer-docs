@@ -5,9 +5,8 @@ import {
   DisplayHeading,
   Red,
   GhostNumeral,
-  MonoLabel,
 } from '@/components/docs/Editorial';
-import { Crumbs, PrevNext, Callout, Code, DataTable } from '@/components/docs/DocsPrimitives';
+import { Crumbs, PrevNext, Callout, DataTable } from '@/components/docs/DocsPrimitives';
 import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 
 export const metadata: Metadata = {
@@ -51,43 +50,43 @@ const ROWS = [
   {
     topic: '/scan',
     type: 'sensor_msgs/LaserScan',
-    role: 'Read it',
+    role: 'Subscribe',
     notes: 'One planar sweep from the Lakibeam LiDAR, ~1440 samples, frame_id laser. Publisher is RELIABLE.',
   },
   {
     topic: '/imu/fused',
     type: 'sensor_msgs/Imu',
-    role: 'Read it',
+    role: 'Subscribe',
     notes: 'Orientation, linear acceleration (m/s²), and angular velocity (rad/s) at ~200 Hz, frame_id imu_link. Published by the controller node from the MCU state frame.',
   },
   {
     topic: '/mag',
     type: 'sensor_msgs/MagneticField',
-    role: 'Read it',
+    role: 'Subscribe',
     notes: 'Magnetic field in teslas from the QMC6309 magnetometer, frame_id imu_link. Not part of the fused orientation on /imu/fused.',
   },
   {
     topic: '/odom',
     type: 'nav_msgs/Odometry',
-    role: 'Read it',
+    role: 'Subscribe',
     notes: 'Wheel odometry at ~200 Hz, integrated on the MCU from the motor encoder.',
   },
   {
     topic: '/battery',
     type: 'sensor_msgs/BatteryState',
-    role: 'Read it',
+    role: 'Subscribe',
     notes: 'Pack voltage and a 3S charge fraction at ~0.5 Hz. The dashboard shows the same reading as a battery card.',
   },
   {
     topic: '/camera/color',
     type: 'sensor_msgs/Image',
-    role: 'Read it',
+    role: 'Subscribe',
     notes: 'A JPEG-compressed colour frame at 60 fps from the camera node (USB webcam in MJPG). The bytes are raw JPEG with encoding="jpeg", decode with cv2.imdecode before display. Publisher is best-effort: subscribe with sensor-data QoS or you receive nothing.',
   },
   {
     topic: '/drive',
     type: 'ackermann_msgs/AckermannDriveStamped',
-    role: 'Publish it',
+    role: 'Publish',
     notes: 'The topic your own node publishes to. The mux only forwards it while autonomy mode is armed.',
   },
   {
@@ -117,19 +116,19 @@ const ROWS = [
   {
     topic: '/dotmatrix/text',
     type: 'std_msgs/String',
-    role: 'Publish it',
+    role: 'Publish',
     notes: 'Text to the dot-matrix display on the back of the car. Handled by the led_matrix node over USB-UART.',
   },
   {
     topic: '/battery/voltage',
     type: 'std_msgs/Float32',
-    role: 'Read it',
+    role: 'Subscribe',
     notes: 'Pack voltage on its own, without the rest of the BatteryState message.',
   },
   {
     topic: '/encoder/speed',
     type: 'std_msgs/Float32',
-    role: 'Read it',
+    role: 'Subscribe',
     notes: 'Wheel speed straight from the encoders, before it is integrated into /odom.',
   },
   {
@@ -141,7 +140,7 @@ const ROWS = [
   {
     topic: '/edgetpu/inference',
     type: 'vision_msgs/Detection2DArray',
-    role: 'Read it',
+    role: 'Subscribe',
     notes: 'Object detections from the inference node. Only publishes while a model is loaded and running.',
   },
 ];
@@ -294,50 +293,6 @@ export default function Ros2TopicsPage() {
           </p>
           <PipelineBlock />
         </section>
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <section style={{ paddingTop: 28, paddingBottom: 24 }}>
-          <MonoLabel>Reading and writing from your own node</MonoLabel>
-          <Code lang="python">{`import rclpy
-from rclpy.node import Node
-from sensor_msgs.msg import LaserScan
-from ackermann_msgs.msg import AckermannDriveStamped
-
-
-class GapFollower(Node):
-    def __init__(self):
-        super().__init__("gap_follower")
-        # Read the LiDAR.
-        self.create_subscription(LaserScan, "/scan", self.on_scan, 10)
-        # Publish to the autonomy channel. The mux forwards it when RB is held.
-        self.drive = self.create_publisher(AckermannDriveStamped, "/drive", 10)
-
-    def on_scan(self, scan):
-        msg = AckermannDriveStamped()
-        msg.drive.speed = 0.25
-        msg.drive.steering_angle = 0.0
-        self.drive.publish(msg)
-
-
-def main():
-    rclpy.init()
-    rclpy.spin(GapFollower())
-
-
-if __name__ == "__main__":
-    main()`}</Code>
-        </section>
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <Callout type="tip" title="Most students never touch ROS 2 directly">
-          The <code style={{ fontFamily: NB.monoFont }}>racecar-neo-library</code>{' '}
-          Python API wraps these topics behind the{' '}
-          <code style={{ fontFamily: NB.monoFont }}>rc.*</code> modules. Use raw
-          ROS 2 to add your own node alongside the stack, or to use a tool from
-          the wider ROS ecosystem.
-        </Callout>
       </ScrollReveal>
 
       <PrevNext

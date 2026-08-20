@@ -49,8 +49,8 @@ export default function CliServicesPage() {
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
               <code style={{ fontFamily: NB.monoFont }}>racecar service status</code>{' '}
-              (or just <code style={{ fontFamily: NB.monoFont }}>racecar service</code>,
-              they are the same) shows every{' '}
+              (or just <code style={{ fontFamily: NB.monoFont }}>racecar service</code>)
+              shows every{' '}
               <InfoNote term="systemd unit" title="systemd unit">
                 A background program Linux starts and supervises automatically.
                 It comes up on its own at boot and restarts if it crashes.

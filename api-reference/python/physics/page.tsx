@@ -32,7 +32,7 @@ const METHODS: ApiMethod[] = [
     sig: 'rc.physics.get_magnetic_field()',
     returns: 'NDArray[3, Float]',
     summary:
-      'The magnetic field as an (x, y, z) vector in teslas. Publishing is off by default (publish_mag in config/controller.yaml), so this returns zeros until it is enabled.',
+      'The magnetic field as an (x, y, z) vector in teslas.',
   },
   {
     sig: 'rc.physics.get_encoder_speed()',

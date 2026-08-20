@@ -64,7 +64,7 @@ const ROWS = [
     topic: '/mag',
     type: 'sensor_msgs/MagneticField',
     role: 'Read it',
-    notes: 'Magnetic field in teslas from the QMC6309 magnetometer, frame_id imu_link. Off by default (publish_mag: false in controller.yaml); enable it for a compass heading or your own nine-axis fusion.',
+    notes: 'Magnetic field in teslas from the QMC6309 magnetometer, frame_id imu_link. Not part of the fused orientation on /imu/fused.',
   },
   {
     topic: '/odom',

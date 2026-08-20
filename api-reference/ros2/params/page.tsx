@@ -2,15 +2,13 @@ import { Metadata } from 'next';
 import DocsShell from '@/components/docs/DocsShell';
 import { NB } from '@/lib/nb-tokens';
 import {
-  Eyebrow,
   DisplayHeading,
   Red,
   GhostNumeral,
-  ChromeBadge,
   MonoLabel,
 } from '@/components/docs/Editorial';
 import { Crumbs, PrevNext, Callout, Code, DataTable } from '@/components/docs/DocsPrimitives';
-import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
+import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 
 export const metadata: Metadata = {
   title: 'ROS 2 parameters · API Reference · NeoRacer Docs',
@@ -33,7 +31,7 @@ const THROTTLE_ROWS = [
   {
     param: 'max_speed_backward',
     value: '1.0',
-    notes: 'The reverse scale, same idea in the other direction.',
+    notes: 'Scales every reverse /drive command the same way.',
   },
   {
     param: 'max_steering',
@@ -70,8 +68,8 @@ const CONTROLLER_ROWS = [
   },
   {
     param: 'publish_mag',
-    value: 'false',
-    notes: 'The magnetometer topic is off by default; the fused orientation already comes from the MCU state frame.',
+    value: 'true',
+    notes: 'Publishes the raw magnetometer on /mag. The fused orientation on /imu/fused does not use it.',
   },
 ];
 
@@ -135,18 +133,9 @@ export default function Ros2ParamsPage() {
               ROS 2 <Red>PARAMETERS</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
-              Every node in the driver declares real, live ROS 2 parameters, and
-              the ones below are the ones you will actually reach for: the
-              throttle caps that scale every{' '}
-              <code style={{ fontFamily: NB.monoFont }}>/drive</code> command, the
-              controller mapping from commands to physical speed and angle, the
-              camera settings, and the LiDAR launch arguments.
+              This page lists the parameters the driver nodes declare and the
+              values they ship with.
             </p>
-            <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="red">Live via ros2 param</ChromeBadge>
-              <ChromeBadge variant="outline">Persisted in config/*.yaml</ChromeBadge>
-              <ChromeBadge variant="outline">neoracer_ros2_driver</ChromeBadge>
-            </div>
           </div>
         </section>
       </MouseFollowGlow>
@@ -167,15 +156,14 @@ export default function Ros2ParamsPage() {
 
       <ScrollReveal>
         <section style={{ paddingBottom: 8 }}>
-          <Eyebrow>THROTTLE_NODE · config/throttle.yaml</Eyebrow>
           <DisplayHeading size="lg">
-            THE SPEED <Red>CAPS</Red>
+            SPEED <Red>CAPS</Red>
           </DisplayHeading>
+          <MonoLabel>throttle_node · config/throttle.yaml</MonoLabel>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
-            The most-tuned three values on the car. Full chain: your command
-            [-1, 1] × these caps × the controller&apos;s{' '}
-            <code style={{ fontFamily: NB.monoFont }}>max_speed_mps</code> = what
-            the motor is asked to do.
+            A command in [-1, 1] is multiplied by these caps, then by the
+            controller&apos;s{' '}
+            <code style={{ fontFamily: NB.monoFont }}>max_speed_mps</code>.
           </p>
           <DataTable columns={COLUMNS} rows={THROTTLE_ROWS} />
         </section>
@@ -183,30 +171,30 @@ export default function Ros2ParamsPage() {
 
       <ScrollReveal>
         <section style={{ paddingTop: 28, paddingBottom: 8 }}>
-          <Eyebrow>CONTROLLER_NODE · config/controller.yaml</Eyebrow>
           <DisplayHeading size="lg">
-            THE ESP32 <Red>BRIDGE</Red>
+            <Red>CONTROLLER</Red>
           </DisplayHeading>
+          <MonoLabel>controller · config/controller.yaml</MonoLabel>
           <DataTable columns={COLUMNS} rows={CONTROLLER_ROWS} />
         </section>
       </ScrollReveal>
 
       <ScrollReveal>
         <section style={{ paddingTop: 28, paddingBottom: 8 }}>
-          <Eyebrow>CAMERA_NODE · config/camera.yaml</Eyebrow>
           <DisplayHeading size="lg">
-            THE <Red>CAMERA</Red>
+            <Red>CAMERA</Red>
           </DisplayHeading>
+          <MonoLabel>camera · config/camera.yaml</MonoLabel>
           <DataTable columns={COLUMNS} rows={CAMERA_ROWS} />
         </section>
       </ScrollReveal>
 
       <ScrollReveal>
         <section style={{ paddingTop: 28, paddingBottom: 8 }}>
-          <Eyebrow>LIDAR · launch arguments</Eyebrow>
           <DisplayHeading size="lg">
-            THE LIDAR <Red>DRIVER</Red>
+            <Red>LIDAR</Red>
           </DisplayHeading>
+          <MonoLabel>lidar · launch arguments</MonoLabel>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
             The LakiBeam1 driver takes these as launch arguments in{' '}
             <code style={{ fontFamily: NB.monoFont }}>lidar.launch.py</code>{' '}

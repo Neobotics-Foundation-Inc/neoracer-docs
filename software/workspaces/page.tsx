@@ -303,7 +303,7 @@ docs  logs  README.md  scripts  tests`}</Code>
 
       <PrevNext
         prev={{ label: 'Remote desktop', href: '/docs/software/remote-desktop' }}
-        next={{ label: 'API reference', href: '/docs/api-reference/python/drive' }}
+        next={{ label: 'API reference', href: '/docs/api-reference/python/core' }}
       />
     </DocsShell>
   );

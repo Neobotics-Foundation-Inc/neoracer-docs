@@ -28,7 +28,11 @@ const METHODS: ApiMethod[] = [
   {
     sig: 'rc.drive.stop()',
     returns: 'None',
-    summary: 'Halts the car and returns the front wheels to centre. The same as set_speed_angle(0, 0).',
+    summary: (
+      <>
+        Halts the car and returns the front wheels to centre. The same as <code style={{ fontFamily: NB.monoFont }}>set_speed_angle(0, 0)</code>.
+      </>
+    ),
   },
   {
     sig: 'rc.drive.set_max_speed(max_speed=1.0)',
@@ -53,7 +57,7 @@ export default function DriveApiPage() {
       {/* ── Hero ────────────────────────────────────────────────────────── */}
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="rc" top={-40} right={-20} size={420} />
+          <GhostNumeral n="02" top={-40} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               RC.<Red>DRIVE</Red>

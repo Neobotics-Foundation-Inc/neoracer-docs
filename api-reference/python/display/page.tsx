@@ -25,8 +25,11 @@ const METHODS: ApiMethod[] = [
   {
     sig: 'rc.display.clear()',
     returns: 'None',
-    summary:
-      'Returns the dot matrix to its idle frame. To blank the panel instead, call show_text(" ").',
+    summary: (
+      <>
+        Returns the dot matrix to its idle frame. To blank the panel instead, call <code style={{ fontFamily: NB.monoFont }}>show_text(" ")</code>.
+      </>
+    ),
   },
   {
     sig: 'rc.display.show_color_image(image)',
@@ -37,8 +40,11 @@ const METHODS: ApiMethod[] = [
   {
     sig: 'rc.display.show_lidar(samples, radius=128, max_range=1000, highlighted_samples=[])',
     returns: 'None',
-    summary:
-      'Opens a window on the Jetson desktop plotting a LiDAR scan top-down, with the car at the centre. Needs a display, the same as show_color_image.',
+    summary: (
+      <>
+        Opens a window on the Jetson desktop plotting a LiDAR scan top-down, with the car at the centre. Needs a display, the same as <code style={{ fontFamily: NB.monoFont }}>show_color_image</code>.
+      </>
+    ),
   },
 ];
 
@@ -54,7 +60,7 @@ export default function DisplayApiPage() {
 
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="rc" top={-40} right={-20} size={420} />
+          <GhostNumeral n="06" top={-40} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               RC.<Red>DISPLAY</Red>

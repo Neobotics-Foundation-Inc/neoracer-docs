@@ -31,8 +31,11 @@ const METHODS: ApiMethod[] = [
   {
     sig: 'rc.camera.get_color_image_async()',
     returns: 'NDArray[H, W, 3]',
-    summary:
-      'The current color frame but readable outside the start/update loop. This function should only be used in a Jupyter Notebook cell, after rc.go_async() has been called.',
+    summary: (
+      <>
+        The current color frame but readable outside the start/update loop. This function should only be used in a Jupyter Notebook cell, after <code style={{ fontFamily: NB.monoFont }}>rc.go_async()</code> has been called.
+      </>
+    ),
   },
   {
     sig: 'rc.camera.get_width()',
@@ -58,7 +61,7 @@ export default function CameraApiPage() {
 
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="rc" top={-40} right={-20} size={420} />
+          <GhostNumeral n="04" top={-40} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               RC.<Red>CAMERA</Red>

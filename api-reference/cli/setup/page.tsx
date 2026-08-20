@@ -30,7 +30,7 @@ export default function CliSetupPage() {
 
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="CLI" top={-30} right={-20} size={440} />
+          <GhostNumeral n="12" top={-30} right={-20} size={440} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               SETUP AND <Red>MAINTENANCE</Red>

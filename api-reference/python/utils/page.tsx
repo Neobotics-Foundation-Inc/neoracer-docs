@@ -39,8 +39,11 @@ const IMAGES: ApiMethod[] = [
   {
     sig: 'rc_utils.stack_images_horizontal(image_0, image_1)',
     returns: 'NDArray',
-    summary:
-      'Joins two images side by side. stack_images_vertical joins them top to bottom.',
+    summary: (
+      <>
+        Joins two images side by side. <code style={{ fontFamily: NB.monoFont }}>stack_images_vertical</code> joins them top to bottom.
+      </>
+    ),
   },
 ];
 
@@ -105,7 +108,7 @@ export default function UtilsApiPage() {
 
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="rc" top={-40} right={-20} size={420} />
+          <GhostNumeral n="08" top={-40} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               RACECAR_<Red>UTILS</Red>

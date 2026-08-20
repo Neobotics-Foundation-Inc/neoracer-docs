@@ -63,7 +63,7 @@ export default function PhysicsApiPage() {
 
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="rc" top={-40} right={-20} size={420} />
+          <GhostNumeral n="05" top={-40} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               RC.<Red>PHYSICS</Red>

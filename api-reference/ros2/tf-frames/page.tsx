@@ -212,7 +212,7 @@ export default function Ros2TfFramesPage() {
 
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="//" top={-40} right={-20} size={420} />
+          <GhostNumeral n="15" top={-40} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               ROS 2 TF <Red>FRAMES</Red>

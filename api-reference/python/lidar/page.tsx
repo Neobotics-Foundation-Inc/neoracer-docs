@@ -25,13 +25,20 @@ const METHODS: ApiMethod[] = [
   {
     sig: 'rc.lidar.get_num_samples()',
     returns: 'int',
-    summary: 'Number of samples a full scan contains. Use it to index relative to the whole scan, for example scan[rc.lidar.get_num_samples() // 4] for 90° right.',
+    summary: (
+      <>
+        Number of samples a full scan contains. Use it to index relative to the whole scan, for example <code style={{ fontFamily: NB.monoFont }}>scan[rc.lidar.get_num_samples() // 4]</code> for 90° right.
+      </>
+    ),
   },
   {
     sig: 'rc.lidar.get_samples_async()',
     returns: 'NDArray[Float]',
-    summary:
-      'The current scan but readable outside the start/update loop. This function should only be used in a Jupyter Notebook cell, after rc.go_async() has been called.',
+    summary: (
+      <>
+        The current scan but readable outside the start/update loop. This function should only be used in a Jupyter Notebook cell, after <code style={{ fontFamily: NB.monoFont }}>rc.go_async()</code> has been called.
+      </>
+    ),
   },
 ];
 
@@ -69,7 +76,7 @@ export default function LidarApiPage() {
 
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="rc" top={-40} right={-20} size={420} />
+          <GhostNumeral n="03" top={-40} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               RC.<Red>LIDAR</Red>

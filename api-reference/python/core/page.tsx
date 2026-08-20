@@ -6,7 +6,7 @@ import {
   Red,
   GhostNumeral,
 } from '@/components/docs/Editorial';
-import { Crumbs, PrevNext, Callout, Code, ApiMethods, type ApiMethod } from '@/components/docs/DocsPrimitives';
+import { Crumbs, PrevNext, Code, ApiMethods, type ApiMethod } from '@/components/docs/DocsPrimitives';
 import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 
 export const metadata: Metadata = {
@@ -17,39 +17,56 @@ export const metadata: Metadata = {
 
 const METHODS: ApiMethod[] = [
   {
-    sig: 'racecar_core.create_racecar()',
+    sig: 'racecar_core.create_racecar(isSimulation: bool | None = None)',
     returns: 'Racecar',
     summary:
-      'Creates the rc object.',
+      'Creates a racecar object.',
   },
   {
-    sig: 'rc.set_start_update(start, update, update_slow=None)',
+    sig: 'rc.set_start_update(start: Callable[[], None], update: Callable[[], None], update_slow: Callable[[], None] | None = None)',
     returns: 'None',
-    summary:
-      'Tells the car which functions to run. The start function runs once at the beginning. The update function runs repeatedly, once per frame. The optional update_slow function runs once per second.',
+    summary: (
+      <>
+        Sets a <code style={{ fontFamily: NB.monoFont }}>start</code> function to run once at the beginning, an{' '}
+        <code style={{ fontFamily: NB.monoFont }}>update</code> function to run repeatedly, once per frame, and an
+        optional <code style={{ fontFamily: NB.monoFont }}>update_slow</code> function that runs once per set interval
+        (default one second). The argument functions should not take any
+        parameters.
+      </>
+    ),
   },
   {
     sig: 'rc.go()',
     returns: 'None',
     summary:
-      'Starts the program. It blocks until the program exits.',
+      'Starts the program. It blocks execution until the program exits.',
   },
   {
     sig: 'rc.go_async()',
     returns: 'None',
-    summary:
-      'Starts the sensor streams in the background without blocking. Used in Jupyter Notebooks instead of go, so the *_async methods return data.',
+    summary: (
+      <>
+        Starts the sensor streams in the background without blocking. Used in
+        Jupyter Notebooks instead of <code style={{ fontFamily: NB.monoFont }}>go</code>, so the <code style={{ fontFamily: NB.monoFont }}>*_async</code> methods return
+        data.
+      </>
+    ),
   },
   {
     sig: 'rc.get_delta_time()',
     returns: 'float',
     summary:
-      'Returns the number of seconds the previous frame took.',
+      'Returns the number of seconds between the start of the current frame and the start of the previous frame.',
   },
   {
-    sig: 'rc.set_update_slow_time(time=1.0)',
+    sig: 'rc.set_update_slow_time(time: float = 1.0)',
     returns: 'None',
-    summary: 'Sets the interval in seconds between calls to the update_slow function registered with set_start_update.',
+    summary: (
+      <>
+        Sets the interval in seconds between calls to the <code style={{ fontFamily: NB.monoFont }}>update_slow</code> function
+        registered with <code style={{ fontFamily: NB.monoFont }}>set_start_update</code>.
+      </>
+    ),
   },
 ];
 
@@ -65,7 +82,7 @@ export default function CoreApiPage() {
 
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="rc" top={-40} right={-20} size={420} />
+          <GhostNumeral n="01" top={-40} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               RACECAR_<Red>CORE</Red>
@@ -97,11 +114,12 @@ export default function CoreApiPage() {
 rc = racecar_core.create_racecar()
 
 def start():
+    print("start: runs once")
     rc.drive.stop()
 
 def update():
     # runs every frame
-    pass
+    print("update: runs every frame")
 
 def update_slow():
     # runs once per second by default
@@ -112,31 +130,10 @@ rc.go()`}</Code>
         </section>
       </ScrollReveal>
 
-      <ScrollReveal>
-        <Callout type="note" title="In a Jupyter Notebook">
-          In a Jupyter Notebook, call{' '}
-          <code style={{ fontFamily: NB.monoFont }}>rc.go_async()</code> once
-          before reading any{' '}
-          <code style={{ fontFamily: NB.monoFont }}>*_async</code> method.
-          Without it they return empty data.
-        </Callout>
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, paddingBottom: 8 }}>
-          For full documentation, visit the{' '}
-          <a
-            href="https://mitracecarneo.github.io/racecar-neo-library/index.html"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: NB.neoboticsRed, fontWeight: 700 }}
-          >
-            racecar-neo-library documentation
-          </a>.
-        </p>
-      </ScrollReveal>
-
-      <PrevNext next={{ label: 'rc.drive', href: '/docs/api-reference/python/drive' }} />
+      <PrevNext
+        prev={{ label: 'Software · File system', href: '/docs/software/workspaces' }}
+        next={{ label: 'rc.drive', href: '/docs/api-reference/python/drive' }}
+      />
     </DocsShell>
   );
 }

@@ -100,6 +100,20 @@ rc.go()`}</Code>
         </Callout>
       </ScrollReveal>
 
+      <ScrollReveal>
+        <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, paddingBottom: 8 }}>
+          For full documentation, visit the{' '}
+          <a
+            href="https://mitracecarneo.github.io/racecar-neo-library/index.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: NB.neoboticsRed, fontWeight: 700 }}
+          >
+            racecar-neo-library documentation
+          </a>.
+        </p>
+      </ScrollReveal>
+
       <PrevNext
         prev={{ label: 'rc.display', href: '/docs/api-reference/python/display' }}
         next={{ label: 'racecar_utils', href: '/docs/api-reference/python/utils' }}

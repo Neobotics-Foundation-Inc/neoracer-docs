@@ -72,17 +72,22 @@ export default function CliServicesPage() {
             <div style={{ marginTop: 22 }}>
               <MonoLabel>Systemd units</MonoLabel>
             </div>
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 8 }}>
+              Four units are installed enabled on all cars and should remain
+              enabled always.
+            </p>
             <div style={{ marginTop: 10 }}>
               <DataTable
                 columns={[
                   { key: 'svc', label: 'Systemd unit', accent: true, mono: true },
+                  { key: 'port', label: 'Port', mono: true, width: '90px' },
                   { key: 'what', label: 'What it runs' },
                 ]}
                 rows={[
-                  { svc: 'neoracer-teleop', what: 'Runs the driver, which publishes every topic on the car.' },
-                  { svc: 'neoracer-watchdog', what: 'Supervises the driver nodes and restarts a dead one.' },
-                  { svc: 'neoracer-dashboard', what: 'The health dashboard on port 8080.' },
-                  { svc: 'neoracer-jupyter', what: 'JupyterLab on port 8888, serving ~/jupyter_ws.' },
+                  { svc: 'neoracer-teleop', port: '—', what: 'Runs the driver, which publishes every topic on the car.' },
+                  { svc: 'neoracer-watchdog', port: '—', what: 'Supervises the driver nodes and restarts a dead one.' },
+                  { svc: 'neoracer-dashboard', port: '8080', what: 'The health dashboard.' },
+                  { svc: 'neoracer-jupyter', port: '8888', what: 'JupyterLab, serving ~/jupyter_ws.' },
                 ]}
               />
             </div>
@@ -97,6 +102,11 @@ export default function CliServicesPage() {
             <MonoLabel>Lab dashboards</MonoLabel>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
               Five more units install disabled and are started for a session.
+              We are working to incorporate the dashboards within curriculums
+              to foster learning using the NeoRacer; view them in detail in{' '}
+              <a href="/docs/Neoracer%20Dashboards.pdf" target="_blank" rel="noopener noreferrer" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
+                these slides
+              </a>.
             </p>
             <div style={{ marginTop: 18 }}>
               <DataTable
@@ -136,7 +146,7 @@ export default function CliServicesPage() {
             </p>
             <Code lang="bash">{`racecar service enable            # the core stack starts at boot
 racecar service disable           # the core stack stays off at boot
-racecar service enable camlabel   # this car wants camlabel at boot
+racecar service enable camlabel   # camlabel is available at boot
 racecar service disable camlabel`}</Code>
           </div>
         </section>
@@ -156,7 +166,7 @@ racecar service disable camlabel`}</Code>
             </p>
             <Code lang="bash">{`racecar service stop              # the core stack, now
 racecar service start             # bring it back
-racecar service start camlabel    # one dashboard, for this session
+racecar service start camlabel    # starts camlabel for this session
 racecar service stop camlabel`}</Code>
           </div>
         </section>

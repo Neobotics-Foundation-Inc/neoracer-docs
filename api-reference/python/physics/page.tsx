@@ -136,7 +136,7 @@ rc.go()`}</Code>
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'rc.controller', href: '/docs/api-reference/python/controller' }}
+        prev={{ label: 'rc.camera', href: '/docs/api-reference/python/camera' }}
         next={{ label: 'ROS 2 topics', href: '/docs/api-reference/ros2/topics' }}
       />
     </DocsShell>

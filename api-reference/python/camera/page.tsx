@@ -117,7 +117,7 @@ rc.go()`}</Code>
 
       <PrevNext
         prev={{ label: 'rc.lidar', href: '/docs/api-reference/python/lidar' }}
-        next={{ label: 'rc.controller', href: '/docs/api-reference/python/controller' }}
+        next={{ label: 'rc.physics', href: '/docs/api-reference/python/physics' }}
       />
     </DocsShell>
   );

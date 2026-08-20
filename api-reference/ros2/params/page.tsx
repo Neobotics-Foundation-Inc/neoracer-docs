@@ -54,7 +54,7 @@ const CONTROLLER_ROWS = [
   {
     param: 'steering_trim_deg',
     value: '0.0',
-    notes: 'Added to every steering command so a 0.0 angle drives straight. Set through the servo-center calibration.',
+    notes: 'Added to every steering command so a 0.0 angle drives straight. Measured with lab_trim_cal.py and set in controller.yaml.',
   },
   {
     param: 'rc_min / rc_center / rc_max',
@@ -146,19 +146,18 @@ export default function Ros2ParamsPage() {
             CHANGING A <Red>VALUE</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
-            <code style={{ fontFamily: NB.monoFont }}>ros2 param set</code>{' '}
-            applies immediately and lasts until the node restarts. To make a
-            change permanent, edit the matching YAML under{' '}
+            The driver nodes read their parameters once at startup. To change a
+            value, edit the matching YAML under{' '}
             <code style={{ fontFamily: NB.monoFont }}>neoracer_ros2_driver/config/</code>{' '}
             and restart the services.{' '}
-            <code style={{ fontFamily: NB.monoFont }}>ros2 param list</code>{' '}
-            shows the live values.
+            <code style={{ fontFamily: NB.monoFont }}>ros2 param list</code> and{' '}
+            <code style={{ fontFamily: NB.monoFont }}>ros2 param get</code> show
+            the live values.
           </p>
-          <Code lang="bash">{`ros2 param list /throttle_node                        # every parameter the node declares
+          <Code lang="bash">{`ros2 param list /throttle_node                    # every parameter the node declares
 ros2 param get /throttle_node max_speed_forward
-ros2 param set /throttle_node max_speed_forward 0.3   # applies now, lasts until restart
 
-# permanent: edit config/throttle.yaml, then
+# change a value: edit config/throttle.yaml, then
 racecar service restart`}</Code>
         </section>
       </ScrollReveal>

@@ -5,6 +5,7 @@ import {
   DisplayHeading,
   Red,
   GhostNumeral,
+  MonoLabel,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext, Code, DataTable } from '@/components/docs/DocsPrimitives';
@@ -68,7 +69,10 @@ export default function CliServicesPage() {
   neoracer-pursuit        active=inactive     enabled=disabled
   neoracer-eps            active=inactive     enabled=disabled
   neoracer-smartfollow    active=inactive     enabled=disabled`}</Code>
-            <div style={{ marginTop: 18 }}>
+            <div style={{ marginTop: 22 }}>
+              <MonoLabel>Systemd units</MonoLabel>
+            </div>
+            <div style={{ marginTop: 10 }}>
               <DataTable
                 columns={[
                   { key: 'svc', label: 'Systemd unit', accent: true, mono: true },
@@ -90,9 +94,7 @@ export default function CliServicesPage() {
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 44 }}>
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <DisplayHeading size="lg">
-              LAB <Red>DASHBOARDS</Red>
-            </DisplayHeading>
+            <MonoLabel>Lab dashboards</MonoLabel>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
               Five more units install disabled and are started for a session.
               Each holds the camera or the GPU while it runs, so run one at a

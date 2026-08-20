@@ -6,7 +6,6 @@ import {
   DisplayHeading,
   Red,
   GhostNumeral,
-  MonoLabel,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext, Callout, Code, DataTable } from '@/components/docs/DocsPrimitives';
@@ -43,15 +42,18 @@ export default function CliSetupPage() {
       </MouseFollowGlow>
 
       <ScrollReveal>
-        <section style={{ position: 'relative', paddingBottom: 24 }}>
+        <section style={{ position: 'relative', paddingBottom: 44 }}>
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <MonoLabel>racecar setup networking</MonoLabel>
-            <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 6 }}>
-              Configures the access point, the fixed Ethernet address, and the
+            <DisplayHeading size="lg">
+              SETUP <Red>NETWORKING</Red>
+            </DisplayHeading>
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
+              <code style={{ fontFamily: NB.monoFont }}>racecar setup networking</code>{' '}
+              configures the access point, the fixed Ethernet address, and the
               lidar link. Flag values persist to{' '}
               <code style={{ fontFamily: NB.monoFont }}>~/.config/racecar/networking.env</code>,
-              so a setting survives reboots. Picking a network and walking through either
-              setup is on{' '}
+              so a setting survives reboots. Picking a network and walking
+              through either setup is on{' '}
               <Link href="/docs/software/networking" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Networking</Link>.
             </p>
             <Code lang="bash">{`racecar setup networking --ssid=neoracer-2
@@ -84,45 +86,58 @@ racecar setup ml         # the GPU stack: PyTorch for Tegra, Ultralytics, ONNX`}
               Wi-Fi drops the moment it runs. Use a monitor and keyboard at the
               car, the USB cable link, or SSH over the cudy&apos;s wired side.
             </Callout>
-
-            <div style={{ marginTop: 26 }}>
-              <MonoLabel>racecar library</MonoLabel>
-              <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 6 }}>
-                Manages the{' '}
-                <code style={{ fontFamily: NB.monoFont }}>racecar_student.pth</code>{' '}
-                file, which is what makes{' '}
-                <code style={{ fontFamily: NB.monoFont }}>import racecar_core</code>{' '}
-                work. Only relevant if you keep more than one copy of the
-                library. See{' '}
-                <Link href="/docs/software/workspaces" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>File system</Link>.
-              </p>
-              <Code lang="bash">{`racecar library --status           # which copy is active
-racecar library --list             # valid folders in ~/jupyter_ws
-racecar library --select my-fork   # point at ~/jupyter_ws/my-fork/library
-racecar library --reset`}</Code>
-            </div>
-
-            <div style={{ marginTop: 26 }}>
-              <MonoLabel>racecar update</MonoLabel>
-              <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 6 }}>
-                Field update in one command: the driver repo to latest{' '}
-                <code style={{ fontFamily: NB.monoFont }}>origin/main</code>, a
-                full setup run, then a restart of whatever was already enabled.
-                Needs internet, so put the car on a network first.
-              </p>
-              <Code lang="bash">{`racecar update
-racecar source     # or open a new terminal, so the shell picks up the new tool`}</Code>
-              <Callout type="warn" title="It discards local edits to the driver repo">
-                The update does a hard reset onto{' '}
-                <code style={{ fontFamily: NB.monoFont }}>origin/main</code>. If
-                you have been editing files inside the driver repo on the car,
-                commit or copy them out first.
-              </Callout>
-            </div>
           </div>
         </section>
       </ScrollReveal>
 
+      <ScrollReveal>
+        <section style={{ position: 'relative', paddingBottom: 44 }}>
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <DisplayHeading size="lg">
+              <Red>LIBRARY</Red>
+            </DisplayHeading>
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
+              <code style={{ fontFamily: NB.monoFont }}>racecar library</code>{' '}
+              manages the{' '}
+              <code style={{ fontFamily: NB.monoFont }}>racecar_student.pth</code>{' '}
+              file, which is what makes{' '}
+              <code style={{ fontFamily: NB.monoFont }}>import racecar_core</code>{' '}
+              work. Only relevant if you keep more than one copy of the
+              library. See{' '}
+              <Link href="/docs/software/workspaces" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>File system</Link>.
+            </p>
+            <Code lang="bash">{`racecar library --status           # which copy is active
+racecar library --list             # valid folders in ~/jupyter_ws
+racecar library --select my-fork   # point at ~/jupyter_ws/my-fork/library
+racecar library --reset`}</Code>
+          </div>
+        </section>
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <section style={{ position: 'relative', paddingBottom: 24 }}>
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <DisplayHeading size="lg">
+              <Red>UPDATE</Red>
+            </DisplayHeading>
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
+              <code style={{ fontFamily: NB.monoFont }}>racecar update</code>{' '}
+              is a field update in one command: the driver repo to latest{' '}
+              <code style={{ fontFamily: NB.monoFont }}>origin/main</code>, a
+              full setup run, then a restart of whatever was already enabled.
+              Needs internet, so put the car on a network first.
+            </p>
+            <Code lang="bash">{`racecar update
+racecar source     # or open a new terminal, so the shell picks up the new tool`}</Code>
+            <Callout type="warn" title="It discards local edits to the driver repo">
+              The update does a hard reset onto{' '}
+              <code style={{ fontFamily: NB.monoFont }}>origin/main</code>. If
+              you have been editing files inside the driver repo on the car,
+              commit or copy them out first.
+            </Callout>
+          </div>
+        </section>
+      </ScrollReveal>
 
       <PrevNext
         prev={{ label: 'Running', href: '/docs/api-reference/cli/running' }}

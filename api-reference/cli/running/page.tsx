@@ -77,7 +77,8 @@ export default function CliRunningPage() {
               service first. Only one copy of the driver can run at a time.
               Subsystems can be switched off individually.
             </p>
-            <Code lang="bash">{`racecar teleop                        # Ctrl-C, then: racecar service start
+            <Code lang="bash">{`racecar service stop
+racecar teleop                        # Ctrl-C, then: racecar service start
 racecar teleop camera_enable:=false   # also: lidar_, led_matrix_, inference_`}</Code>
           </div>
         </section>

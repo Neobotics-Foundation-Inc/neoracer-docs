@@ -5,9 +5,10 @@ import {
   DisplayHeading,
   Red,
   GhostNumeral,
+  ComingSoon,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
-import { Crumbs, PrevNext, Callout, DataTable } from '@/components/docs/DocsPrimitives';
+import { Crumbs, PrevNext, Code, DataTable } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
   title: 'Overview · CLI · NeoRacer Docs',
@@ -35,11 +36,7 @@ export default function CliOverviewPage() {
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
               <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>racecar</code>{' '}
-              is a shell function the driver installs into every terminal. It
-              covers every operational task on the car, so you rarely need{' '}
-              <code style={{ fontFamily: NB.monoFont }}>systemctl</code>,{' '}
-              <code style={{ fontFamily: NB.monoFont }}>colcon</code> or a raw{' '}
-              <code style={{ fontFamily: NB.monoFont }}>ros2 launch</code> line.
+              is a shell function the driver installs into every terminal.
             </p>
           </div>
         </section>
@@ -96,23 +93,16 @@ export default function CliOverviewPage() {
             <DisplayHeading size="lg">
               MAPPING AND <Red>NAVIGATION</Red>
             </DisplayHeading>
-            <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-              <code style={{ fontFamily: NB.monoFont }}>racecar mapping</code> and{' '}
-              <code style={{ fontFamily: NB.monoFont }}>racecar navigation</code>{' '}
-              exist in the CLI, but they depend on the autonomy layer above, and
-              that is not installed on a shipped car. Both need its transform
-              tree, and navigation also needs its bridge from Nav2 to the motors.
-            </p>
-            <Callout type="warn" title="They start without complaining">
-              Neither command refuses to run. They print a warning that the
-              autonomy base is missing and then launch anyway, so SLAM comes up
-              and quietly produces nothing, and Nav2 plans a route the car never
-              drives. Treat the warning as a stop sign.
-            </Callout>
-            <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 16 }}>
-              Full pages for both are written and will go live with the autonomy
-              unit.
-            </p>
+            <ComingSoon>
+              <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
+                <code style={{ fontFamily: NB.monoFont }}>racecar mapping</code> and{' '}
+                <code style={{ fontFamily: NB.monoFont }}>racecar navigation</code>{' '}
+                exist in the CLI, but they depend on the autonomy layer.
+              </p>
+              <Code lang="bash">{`racecar mapping              # start SLAM
+racecar mapping save <name>  # save the current map
+racecar navigation <name>    # drive a saved map with Nav2`}</Code>
+            </ComingSoon>
           </div>
         </section>
       </ScrollReveal>

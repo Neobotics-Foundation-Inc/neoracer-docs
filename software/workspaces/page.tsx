@@ -7,6 +7,7 @@ import {
   Red,
   GhostNumeral,
   MonoLabel,
+  ComingSoon,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow, PhotoSteps } from '@/components/docs/Interactive';
 import { SetupTimeline } from '@/components/docs/SetupTimeline';
@@ -306,54 +307,5 @@ docs  logs  README.md  scripts  tests`}</Code>
         next={{ label: 'API reference', href: '/docs/api-reference/python/core' }}
       />
     </DocsShell>
-  );
-}
-
-/* ─────────────────────────────────────────────────────────────────────────
- * ComingSoon: blurs content that is written but not usable yet, with a
- * label over it. Hidden from assistive tech and unselectable, so nobody
- * copies a command out of something that does not work.
- * ─────────────────────────────────────────────────────────────────────── */
-function ComingSoon({ children }: { children: React.ReactNode }) {
-  return (
-    <div style={{ position: 'relative', marginTop: 18 }}>
-      <div
-        aria-hidden
-        style={{
-          filter: 'blur(6px)',
-          opacity: 0.55,
-          userSelect: 'none',
-          pointerEvents: 'none',
-        }}
-      >
-        {children}
-      </div>
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-        <span
-          style={{
-            background: NB.tarmacBlue,
-            color: NB.haloWhite,
-            fontFamily: NB.monoFont,
-            fontSize: 12,
-            fontWeight: 700,
-            letterSpacing: '0.18em',
-            textTransform: 'uppercase',
-            padding: '10px 22px',
-            borderRadius: 999,
-            boxShadow: NB.shadowCard,
-          }}
-        >
-          Coming soon
-        </span>
-      </div>
-    </div>
   );
 }

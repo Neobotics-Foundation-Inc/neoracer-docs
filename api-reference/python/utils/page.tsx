@@ -115,8 +115,7 @@ export default function UtilsApiPage() {
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
               The racecar_utils module provides helper functions for working
-              with numbers, images, and the LiDAR. Import it as{' '}
-              <code style={{ fontFamily: NB.monoFont }}>racecar_utils</code>. The
+              with numbers, images, and the LiDAR. The
               LiDAR helpers are on the{' '}
               <a href="/docs/api-reference/python/lidar" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>rc.lidar</a>{' '}
               page.

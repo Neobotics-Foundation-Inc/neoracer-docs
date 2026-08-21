@@ -77,6 +77,51 @@ ros2 topic list           # /scan /drive /imu/fused /odom /camera/color /joy`}</
         </section>
       </ScrollReveal>
 
+      {/* ── Power ────────────────────────────────────────────────────── */}
+      <ScrollReveal>
+        <section style={{ position: 'relative', paddingBottom: 44 }}>
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <DisplayHeading size="lg">
+              <Red>POWER</Red>
+            </DisplayHeading>
+            <MonoLabel>Symptom: the car does not power on</MonoLabel>
+            <div style={{ marginTop: 12 }}>
+              <DataTable
+                columns={SYM_COLUMNS}
+                rows={[
+                  { sym: 'No response at the power switch', cause: 'The battery is discharged.', fix: 'Charge it on the included balance charger.' },
+                  { sym: 'No response with a charged battery', cause: 'The XT60 plug is not seated.', fix: 'Push the XT60 plug in firmly until it clicks.' },
+                  { sym: 'Still no response', cause: 'Power hardware failure.', fix: 'Contact support. Do not disassemble the boards.' },
+                ]}
+              />
+            </div>
+          </div>
+        </section>
+      </ScrollReveal>
+
+      {/* ── Transmitter ──────────────────────────────────────────────── */}
+      <ScrollReveal>
+        <section style={{ position: 'relative', paddingBottom: 44 }}>
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <DisplayHeading size="lg">
+              <Red>TRANSMITTER</Red>
+            </DisplayHeading>
+            <MonoLabel>Symptom: the remote control does not drive the car</MonoLabel>
+            <div style={{ marginTop: 12 }}>
+              <DataTable
+                columns={SYM_COLUMNS}
+                rows={[
+                  { sym: 'The transmitter does not turn on or drops out', cause: 'Transmitter batteries are low.', fix: 'Replace them. Alkaline batteries are recommended.' },
+                  { sym: 'The car ignores the sticks', cause: 'SWB is not in the manual position.', fix: 'Flip SWB up.' },
+                  { sym: 'Still no response in manual', cause: 'The receiver cable or the OSCORE USB link is loose.', fix: 'Reseat the receiver cable at the OSCORE board, and check that racecar status lists /dev/osrbot_base.' },
+                  { sym: 'The receiver does not respond to the transmitter', cause: 'The pair is not bound.', fix: 'Re-pair them following the FlySky manual.' },
+                ]}
+              />
+            </div>
+          </div>
+        </section>
+      </ScrollReveal>
+
       {/* ── LiDAR ────────────────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 44 }}>
@@ -100,7 +145,7 @@ journalctl -u neoracer-teleop -b | grep scan-watchdog`}</Code>
                 rows={[
                   { sym: 'Ping to 192.168.8.2 fails', cause: 'The USB-C lidar link is down.', fix: 'Reseat the USB-C cable, then racecar setup networking to rebuild the link.' },
                   { sym: 'Ping works but /scan publishes nothing', cause: 'The driver stopped receiving data from the sensor.', fix: 'racecar service restart' },
-                  { sym: 'Scan publishes but reads all zeros', cause: 'Something covers the sensor dome.', fix: 'Check for tape, a bag, or a shell edge in front of the dome. The rear 90° always reads 0 by design.' },
+                  { sym: 'Scan publishes but reads all zeros', cause: 'Something covers the sensor dome.', fix: 'Check for tape, dirt, or a shell edge in front of the dome, and wipe the window with a soft dry cloth. The rear 90° always reads 0 by design.' },
                 ]}
               />
             </div>
@@ -127,6 +172,30 @@ v4l2-ctl --list-formats-ext -d /dev/osrbot_usb_cam   # MJPG must appear`}</Code>
                   { sym: 'Frames publish but are black', cause: 'The shipping film is still on the lens.', fix: 'Peel it off.' },
                   { sym: 'No /camera/color at all', cause: 'The camera node crashed or the USB cable is loose.', fix: 'Reseat the USB cable at the front of the car, then racecar service restart.' },
                   { sym: 'A subscriber receives nothing', cause: 'The publisher is best-effort.', fix: 'Subscribe with sensor-data QoS.' },
+                  { sym: 'The camera is absent from /dev on the car', cause: 'Camera hardware failure.', fix: 'Test the camera on another computer. If it does not appear there either, contact support.' },
+                ]}
+              />
+            </div>
+          </div>
+        </section>
+      </ScrollReveal>
+
+      {/* ── IMU ──────────────────────────────────────────────────────── */}
+      <ScrollReveal>
+        <section style={{ position: 'relative', paddingBottom: 44 }}>
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <DisplayHeading size="lg">
+              <Red>IMU</Red>
+            </DisplayHeading>
+            <MonoLabel>Symptom: no or wrong IMU data</MonoLabel>
+            <Code lang="bash">{`ros2 topic hz /imu/fused             # ~200 Hz when healthy
+ros2 topic echo /imu/fused --once    # readings should be steady while the car is still`}</Code>
+            <div style={{ marginTop: 12 }}>
+              <DataTable
+                columns={SYM_COLUMNS}
+                rows={[
+                  { sym: 'No /imu/fused at all', cause: 'The OSCORE serial link is down.', fix: 'Check that racecar status lists /dev/osrbot_base, then racecar service restart.' },
+                  { sym: 'Readings drift or jump while the car is still', cause: 'IMU fault.', fix: 'Contact support.' },
                 ]}
               />
             </div>
@@ -158,6 +227,9 @@ v4l2-ctl --list-formats-ext -d /dev/osrbot_usb_cam   # MJPG must appear`}</Code>
                   { sym: 'Forward command drives in reverse', cause: 'Motor wiring reversed.', fix: 'Swap any two motor leads.' },
                   { sym: 'Wheels not symmetric left and right', cause: 'Steering center is off.', fix: 'Adjust steering_trim_deg, see ROS 2 params.' },
                   { sym: 'Odometry jumps a known distance', cause: 'Loose encoder cable.', fix: 'Reseat the encoder cable.' },
+                  { sym: 'Pulls to one side or fishtails', cause: 'Worn tires, loose wheel screws, or worn shock absorbers.', fix: 'Replace worn tires on the same axle together. Tighten the wheel screws. If the shocks are worn, contact support.' },
+                  { sym: 'Steering is weak or does not turn', cause: 'A mechanical jam or a servo failure.', fix: 'Power off and turn the front wheels by hand. Remove anything blocking them. If the servo grinds or stays stuck, contact support.' },
+                  { sym: 'Steering has slack', cause: 'Loose ball joints on the steering linkage.', fix: 'Tighten the linkage connectors.' },
                 ]}
               />
             </div>

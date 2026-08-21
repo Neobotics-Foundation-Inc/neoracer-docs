@@ -51,7 +51,7 @@ export default function ChargeAndPowerPage() {
           <MonoLabel>You'll need</MonoLabel>
           <DashList
             items={[
-              <>The LiPo charger that shipped with your kit.</>,
+              <>The ToolkitRC M4AC charger that shipped with your kit.</>,
               <>An 11.1 V (3S) LiPo pack. See "Battery specs" below.</>,
               <>An AC outlet.</>,
             ]}

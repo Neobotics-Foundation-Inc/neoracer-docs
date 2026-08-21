@@ -5,7 +5,6 @@ import {
   DisplayHeading,
   Red,
   GhostNumeral,
-  MonoLabel,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext, Callout } from '@/components/docs/DocsPrimitives';
@@ -167,11 +166,11 @@ const FAQS: Faq[] = [
   },
 ];
 
-const GROUP_LABELS: Record<Faq['group'], string> = {
-  kits: 'KITS & HARDWARE',
-  software: 'SOFTWARE',
-  classroom: 'CLASSROOM',
-  support: 'SUPPORT',
+const GROUP_HEADINGS: Record<Faq['group'], React.ReactNode> = {
+  kits: <>KITS &amp; <Red>HARDWARE</Red></>,
+  software: <><Red>SOFTWARE</Red></>,
+  classroom: <><Red>CLASSROOM</Red></>,
+  support: <><Red>SUPPORT</Red></>,
 };
 
 function QnA({ f }: { f: Faq }) {
@@ -267,7 +266,7 @@ export default function FaqPage() {
         return (
           <ScrollReveal key={g}>
             <section style={{ paddingBottom: 36 }}>
-              <MonoLabel>{GROUP_LABELS[g]}</MonoLabel>
+              <DisplayHeading size="lg">{GROUP_HEADINGS[g]}</DisplayHeading>
               <div
                 style={{
                   display: 'grid',

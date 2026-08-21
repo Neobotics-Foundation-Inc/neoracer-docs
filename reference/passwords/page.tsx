@@ -8,7 +8,7 @@ import {
   GhostNumeral,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
-import { Crumbs, PrevNext, Callout, DataTable } from '@/components/docs/DocsPrimitives';
+import { Crumbs, PrevNext, DataTable } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
   title: 'Passwords · Reference · NeoRacer Docs',
@@ -107,26 +107,9 @@ export default function PasswordsPage() {
                       </>
                     ),
                   },
-                  {
-                    what: 'JupyterLab',
-                    user: 'port 8888',
-                    pw: 'none',
-                    change: (
-                      <>
-                        There is no password. Anyone on the car&apos;s network
-                        can open it; see{' '}
-                        <Link href="/docs/software/workspaces" style={link}>File system</Link>.
-                      </>
-                    ),
-                  },
                 ]}
               />
             </div>
-            <Callout type="warn" title="Change the passwords in shared spaces">
-              Every car ships with the same passwords. In a classroom or any
-              shared space, change the Wi-Fi and car login passwords on day
-              one.
-            </Callout>
           </div>
         </section>
       </ScrollReveal>

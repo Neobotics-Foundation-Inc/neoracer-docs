@@ -43,6 +43,22 @@ export default function SafetyPage() {
       <ScrollReveal>
         <section style={{ paddingBottom: 40 }}>
           <DisplayHeading size="lg">
+            <Red>GENERAL</Red>
+          </DisplayHeading>
+          <DashList
+            items={[
+              <>Operators should have basic experience with robots or electronic devices. Children should operate the car under adult supervision.</>,
+              <>Check the car before each use. Stop using it if you find a damaged housing, loose screws, or damaged cables.</>,
+              <>After a drop or a hard impact, inspect the mechanical structure and the electrical connections before using the car again.</>,
+              <>Do not use the car to carry people or animals.</>,
+            ]}
+          />
+        </section>
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <section style={{ paddingBottom: 40 }}>
+          <DisplayHeading size="lg">
             <Red>DRIVING</Red>
           </DisplayHeading>
           <DashList
@@ -86,6 +102,24 @@ export default function SafetyPage() {
               <>Stop using a pack that is swollen, cracked, or leaking, and contact support.</>,
               <>Store the pack at 40&ndash;60% charge, out of the car. Storage rules are on{' '}
                 <Link href="/docs/reference/maintenance" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Maintenance</Link>.</>,
+            ]}
+          />
+        </section>
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <section style={{ paddingBottom: 32 }}>
+          <DisplayHeading size="lg">
+            <Red>MECHANICAL</Red>
+          </DisplayHeading>
+          <DashList
+            items={[
+              <>Inspect the chassis regularly for loose, deformed, or cracked parts.</>,
+              <>Check that the tires are secured and not worn. Replace worn tires.</>,
+              <>Check that the servo, motor, and encoders are firmly mounted.</>,
+              <>After a collision, check the aluminum base plate and the shock absorbers.</>,
+              <>3D printed parts are structural consumables. Report manufacturing defects, such as delamination or severe cracks, within 7 days of arrival; damage from normal use is not covered by the{' '}
+                <Link href="/docs/legal/warranty" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>warranty</Link>.</>,
             ]}
           />
         </section>

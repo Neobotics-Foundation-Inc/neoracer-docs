@@ -2,11 +2,9 @@ import { Metadata } from 'next';
 import DocsShell from '@/components/docs/DocsShell';
 import { NB } from '@/lib/nb-tokens';
 import {
-  Eyebrow,
   DisplayHeading,
   Red,
   GhostNumeral,
-  ChromeBadge,
   MonoLabel,
   DashList,
 } from '@/components/docs/Editorial';
@@ -48,7 +46,7 @@ export default function PrivacyPage() {
       {/* ── Hero ───────────────────────────────────────────────────────── */}
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="P" top={-30} right={-20} size={460} />
+          <GhostNumeral n="05" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               THE PRIVACY <Red>POLICY</Red>
@@ -62,17 +60,14 @@ export default function PrivacyPage() {
                 maxWidth: 680,
               }}
             >
-              This is the Neobotics Privacy Policy, rendered for the docs so the
-              text you read here matches the version on neobotics.org. It
-              describes the information we collect when you use the site, how we
-              use it, the service providers we rely on, how long we keep it, and
-              the rights you have over it.
+              This is the Neobotics Privacy Policy. It describes the information
+              we collect when you use the site, how we use it, the service
+              providers we rely on, how long we keep it, and the rights you have
+              over it.
             </p>
-            <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="red">Neobotics Foundation Inc.</ChromeBadge>
-              <ChromeBadge variant="outline">Effective April 23, 2026</ChromeBadge>
-              <ChromeBadge variant="outline">Last updated 2026-04-23</ChromeBadge>
-            </div>
+            <p style={{ fontFamily: NB.monoFont, fontSize: 12.5, letterSpacing: '0.08em', color: NB.textMutedBeige, marginTop: 14 }}>
+              EFFECTIVE APRIL 23, 2026 · LAST UPDATED APRIL 23, 2026
+            </p>
           </div>
         </section>
       </MouseFollowGlow>
@@ -93,9 +88,7 @@ export default function PrivacyPage() {
       {/* ── 01 · Who we are ──────────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={sectionStyle}>
-          <GhostNumeral n="01" top={-30} right={-20} size={360} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>SECTION 01</Eyebrow>
             <DisplayHeading size="lg">
               WHO WE <Red>ARE</Red>
             </DisplayHeading>
@@ -115,9 +108,7 @@ export default function PrivacyPage() {
       {/* ── 02 · Information we collect ──────────────────────────────────── */}
       <ScrollReveal>
         <section style={sectionStyle}>
-          <GhostNumeral n="02" top={-30} right={-20} size={360} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>SECTION 02</Eyebrow>
             <DisplayHeading size="lg">
               INFORMATION WE <Red>COLLECT</Red>
             </DisplayHeading>
@@ -160,9 +151,7 @@ export default function PrivacyPage() {
       {/* ── 03 · How we use it ───────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={sectionStyle}>
-          <GhostNumeral n="03" top={-30} right={-20} size={360} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>SECTION 03</Eyebrow>
             <DisplayHeading size="lg">
               HOW WE USE <Red>IT</Red>
             </DisplayHeading>
@@ -186,9 +175,7 @@ export default function PrivacyPage() {
       {/* ── 04 · Service providers ───────────────────────────────────────── */}
       <ScrollReveal>
         <section style={sectionStyle}>
-          <GhostNumeral n="04" top={-30} right={-20} size={360} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>SECTION 04</Eyebrow>
             <DisplayHeading size="lg">
               SERVICE <Red>PROVIDERS</Red>
             </DisplayHeading>
@@ -257,9 +244,7 @@ export default function PrivacyPage() {
       {/* ── 05 · Your rights ─────────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={sectionStyle}>
-          <GhostNumeral n="05" top={-30} right={-20} size={360} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>SECTION 05</Eyebrow>
             <DisplayHeading size="lg">
               YOUR <Red>RIGHTS</Red>
             </DisplayHeading>
@@ -285,9 +270,7 @@ export default function PrivacyPage() {
       {/* ── 06 · Children's privacy ──────────────────────────────────────── */}
       <ScrollReveal>
         <section style={sectionStyle}>
-          <GhostNumeral n="06" top={-30} right={-20} size={360} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>SECTION 06</Eyebrow>
             <DisplayHeading size="lg">
               CHILDREN&apos;S <Red>PRIVACY</Red>
             </DisplayHeading>
@@ -305,9 +288,7 @@ export default function PrivacyPage() {
       {/* ── 07 · Data retention and security ─────────────────────────────── */}
       <ScrollReveal>
         <section style={sectionStyle}>
-          <GhostNumeral n="07" top={-30} right={-20} size={360} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>SECTION 07</Eyebrow>
             <DisplayHeading size="lg">
               DATA RETENTION AND <Red>SECURITY</Red>
             </DisplayHeading>
@@ -325,9 +306,7 @@ export default function PrivacyPage() {
       {/* ── 08 · Changes to this policy ──────────────────────────────────── */}
       <ScrollReveal>
         <section style={sectionStyle}>
-          <GhostNumeral n="08" top={-30} right={-20} size={360} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>SECTION 08</Eyebrow>
             <DisplayHeading size="lg">
               CHANGES TO THIS <Red>POLICY</Red>
             </DisplayHeading>
@@ -343,9 +322,7 @@ export default function PrivacyPage() {
       {/* ── 09 · Contact ─────────────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={sectionStyle}>
-          <GhostNumeral n="09" top={-30} right={-20} size={360} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>SECTION 09</Eyebrow>
             <DisplayHeading size="lg">
               <Red>CONTACT</Red>
             </DisplayHeading>

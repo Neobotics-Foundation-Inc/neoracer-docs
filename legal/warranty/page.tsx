@@ -2,11 +2,9 @@ import { Metadata } from 'next';
 import DocsShell from '@/components/docs/DocsShell';
 import { NB } from '@/lib/nb-tokens';
 import {
-  Eyebrow,
   DisplayHeading,
   Red,
   GhostNumeral,
-  ChromeBadge,
   MonoLabel,
   DashList,
 } from '@/components/docs/Editorial';
@@ -42,7 +40,7 @@ export default function WarrantyPage() {
       {/* ── Hero ───────────────────────────────────────────────────────── */}
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="9mo" top={-30} right={-20} size={460} />
+          <GhostNumeral n="01" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               NEORACER LIMITED HARDWARE <Red>WARRANTY</Red>
@@ -58,15 +56,9 @@ export default function WarrantyPage() {
             >
               Neobotics warrants the NeoRacer robotic car kit against defects in
               materials and workmanship under normal use for nine (9) months from
-              the date of original delivery. This page renders those terms in a
-              readable form. The sections below preserve every term, number, and
-              timeframe from the official warranty document.
+              the date of original delivery. This page renders the official
+              warranty in a readable form.
             </p>
-            <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="red">9-month term</ChromeBadge>
-              <ChromeBadge variant="outline">Hardware warranty</ChromeBadge>
-              <ChromeBadge variant="outline">Limited</ChromeBadge>
-            </div>
           </div>
         </section>
       </MouseFollowGlow>
@@ -87,9 +79,7 @@ export default function WarrantyPage() {
       {/* ── 01 · Warranty term ────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="01" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>01 / WARRANTY TERM</Eyebrow>
             <DisplayHeading size="lg">
               THE WARRANTY <Red>TERM</Red>
             </DisplayHeading>
@@ -107,9 +97,7 @@ export default function WarrantyPage() {
       {/* ── 02 · Initial inspection ───────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="02" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>02 / INITIAL INSPECTION AND VISIBLE DEFECTS</Eyebrow>
             <DisplayHeading size="lg">
               INITIAL <Red>INSPECTION</Red>
             </DisplayHeading>
@@ -143,9 +131,7 @@ export default function WarrantyPage() {
       {/* ── 03 · Warranty coverage ────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="03" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>03 / WARRANTY COVERAGE</Eyebrow>
             <DisplayHeading size="lg">
               WARRANTY <Red>COVERAGE</Red>
             </DisplayHeading>
@@ -179,9 +165,7 @@ export default function WarrantyPage() {
       {/* ── 04 · Exclusions and limitations ───────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="04" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>04 / EXCLUSIONS AND LIMITATIONS</Eyebrow>
             <DisplayHeading size="lg">
               EXCLUSIONS AND <Red>LIMITATIONS</Red>
             </DisplayHeading>
@@ -228,9 +212,7 @@ export default function WarrantyPage() {
       {/* ── 05 · Filing a claim ───────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="05" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>05 / FILING A CLAIM</Eyebrow>
             <DisplayHeading size="lg">
               FILING A <Red>CLAIM</Red>
             </DisplayHeading>
@@ -266,9 +248,7 @@ export default function WarrantyPage() {
       {/* ── 06 · Limitation of liability ──────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="06" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>06 / LIMITATION OF LIABILITY</Eyebrow>
             <DisplayHeading size="lg">
               LIMITATION OF <Red>LIABILITY</Red>
             </DisplayHeading>

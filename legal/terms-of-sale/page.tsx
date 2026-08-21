@@ -2,11 +2,9 @@ import { Metadata } from 'next';
 import DocsShell from '@/components/docs/DocsShell';
 import { NB } from '@/lib/nb-tokens';
 import {
-  Eyebrow,
   DisplayHeading,
   Red,
   GhostNumeral,
-  ChromeBadge,
   MonoLabel,
   DashList,
 } from '@/components/docs/Editorial';
@@ -48,7 +46,7 @@ export default function TermsOfSalePage() {
       {/* ── Hero ───────────────────────────────────────────────────────── */}
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="ToS" top={-30} right={-20} size={460} />
+          <GhostNumeral n="04" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               TERMS OF <Red>SALE</Red>
@@ -70,11 +68,9 @@ export default function TermsOfSalePage() {
               any Neobotics product, you agree to these Terms of Sale. If you do
               not agree, do not place an order or use the product.
             </p>
-            <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="red">Neobotics Foundation Inc.</ChromeBadge>
-              <ChromeBadge variant="outline">Effective 3/13/2026</ChromeBadge>
-              <ChromeBadge variant="outline">Last updated 3/13/2026</ChromeBadge>
-            </div>
+            <p style={{ fontFamily: NB.monoFont, fontSize: 12.5, letterSpacing: '0.08em', color: NB.textMutedBeige, marginTop: 14 }}>
+              EFFECTIVE MARCH 13, 2026 · LAST UPDATED MARCH 13, 2026
+            </p>
           </div>
         </section>
       </MouseFollowGlow>
@@ -96,9 +92,7 @@ export default function TermsOfSalePage() {
       {/* ── 01 · Scope of Sale ───────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={sectionStyle}>
-          <GhostNumeral n="01" top={-30} right={-20} size={360} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>SECTION 01</Eyebrow>
             <DisplayHeading size="lg">
               SCOPE OF <Red>SALE</Red>
             </DisplayHeading>
@@ -125,9 +119,7 @@ export default function TermsOfSalePage() {
       {/* ── 02 · Product Nature and Intended Use ─────────────────────────── */}
       <ScrollReveal>
         <section style={sectionStyle}>
-          <GhostNumeral n="02" top={-30} right={-20} size={360} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>SECTION 02</Eyebrow>
             <DisplayHeading size="lg">
               PRODUCT NATURE AND INTENDED <Red>USE</Red>
             </DisplayHeading>
@@ -156,9 +148,7 @@ export default function TermsOfSalePage() {
       {/* ── 03 · Orders and Acceptance ───────────────────────────────────── */}
       <ScrollReveal>
         <section style={sectionStyle}>
-          <GhostNumeral n="03" top={-30} right={-20} size={360} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>SECTION 03</Eyebrow>
             <DisplayHeading size="lg">
               ORDERS AND <Red>ACCEPTANCE</Red>
             </DisplayHeading>
@@ -177,9 +167,7 @@ export default function TermsOfSalePage() {
       {/* ── 04 · Prices, Payment, and Taxes ──────────────────────────────── */}
       <ScrollReveal>
         <section style={sectionStyle}>
-          <GhostNumeral n="04" top={-30} right={-20} size={360} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>SECTION 04</Eyebrow>
             <DisplayHeading size="lg">
               PRICES, PAYMENT, AND <Red>TAXES</Red>
             </DisplayHeading>
@@ -200,9 +188,7 @@ export default function TermsOfSalePage() {
       {/* ── 05 · Initial Inspection; Shortages and Visible Defects ───────── */}
       <ScrollReveal>
         <section style={sectionStyle}>
-          <GhostNumeral n="05" top={-30} right={-20} size={360} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>SECTION 05</Eyebrow>
             <DisplayHeading size="lg">
               INITIAL INSPECTION; SHORTAGES AND VISIBLE <Red>DEFECTS</Red>
             </DisplayHeading>
@@ -231,9 +217,7 @@ export default function TermsOfSalePage() {
       {/* ── 06 · Limited Hardware Warranty ───────────────────────────────── */}
       <ScrollReveal>
         <section style={sectionStyle}>
-          <GhostNumeral n="06" top={-30} right={-20} size={360} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>SECTION 06</Eyebrow>
             <DisplayHeading size="lg">
               LIMITED HARDWARE <Red>WARRANTY</Red>
             </DisplayHeading>
@@ -321,9 +305,7 @@ export default function TermsOfSalePage() {
       {/* ── 07 · Warranty Exclusions and Improper Usage ──────────────────── */}
       <ScrollReveal>
         <section style={sectionStyle}>
-          <GhostNumeral n="07" top={-30} right={-20} size={360} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>SECTION 07</Eyebrow>
             <DisplayHeading size="lg">
               WARRANTY EXCLUSIONS AND IMPROPER <Red>USAGE</Red>
             </DisplayHeading>
@@ -376,9 +358,7 @@ export default function TermsOfSalePage() {
       {/* ── 08 · Software and Digital Materials ──────────────────────────── */}
       <ScrollReveal>
         <section style={sectionStyle}>
-          <GhostNumeral n="08" top={-30} right={-20} size={360} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>SECTION 08</Eyebrow>
             <DisplayHeading size="lg">
               SOFTWARE AND DIGITAL <Red>MATERIALS</Red>
             </DisplayHeading>
@@ -396,9 +376,7 @@ export default function TermsOfSalePage() {
       {/* ── 09 · Implied Warranties ──────────────────────────────────────── */}
       <ScrollReveal>
         <section style={sectionStyle}>
-          <GhostNumeral n="09" top={-30} right={-20} size={360} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>SECTION 09</Eyebrow>
             <DisplayHeading size="lg">
               IMPLIED <Red>WARRANTIES</Red>
             </DisplayHeading>
@@ -425,9 +403,7 @@ export default function TermsOfSalePage() {
       {/* ── 10 · Disclaimer of Non-Warranty Statements ───────────────────── */}
       <ScrollReveal>
         <section style={sectionStyle}>
-          <GhostNumeral n="10" top={-30} right={-20} size={360} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>SECTION 10</Eyebrow>
             <DisplayHeading size="lg">
               DISCLAIMER OF NON-WARRANTY <Red>STATEMENTS</Red>
             </DisplayHeading>
@@ -449,9 +425,7 @@ export default function TermsOfSalePage() {
       {/* ── 11 · Buyer Responsibilities and Assumption of Operational Risk ─ */}
       <ScrollReveal>
         <section style={sectionStyle}>
-          <GhostNumeral n="11" top={-30} right={-20} size={360} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>SECTION 11</Eyebrow>
             <DisplayHeading size="lg">
               BUYER RESPONSIBILITIES AND ASSUMPTION OF OPERATIONAL{' '}
               <Red>RISK</Red>
@@ -479,9 +453,7 @@ export default function TermsOfSalePage() {
       {/* ── 12 · Limitation of Liability ─────────────────────────────────── */}
       <ScrollReveal>
         <section style={sectionStyle}>
-          <GhostNumeral n="12" top={-30} right={-20} size={360} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>SECTION 12</Eyebrow>
             <DisplayHeading size="lg">
               LIMITATION OF <Red>LIABILITY</Red>
             </DisplayHeading>
@@ -525,9 +497,7 @@ export default function TermsOfSalePage() {
       {/* ── 13 · No Liability for Improper Use or Unauthorized Modification ─ */}
       <ScrollReveal>
         <section style={sectionStyle}>
-          <GhostNumeral n="13" top={-30} right={-20} size={360} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>SECTION 13</Eyebrow>
             <DisplayHeading size="lg">
               NO LIABILITY FOR IMPROPER USE OR UNAUTHORIZED{' '}
               <Red>MODIFICATION</Red>
@@ -554,9 +524,7 @@ export default function TermsOfSalePage() {
       {/* ── 14 · Indemnification ─────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={sectionStyle}>
-          <GhostNumeral n="14" top={-30} right={-20} size={360} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>SECTION 14</Eyebrow>
             <DisplayHeading size="lg">
               <Red>INDEMNIFICATION</Red>
             </DisplayHeading>
@@ -587,9 +555,7 @@ export default function TermsOfSalePage() {
       {/* ── 15 · Exclusive Remedies ──────────────────────────────────────── */}
       <ScrollReveal>
         <section style={sectionStyle}>
-          <GhostNumeral n="15" top={-30} right={-20} size={360} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>SECTION 15</Eyebrow>
             <DisplayHeading size="lg">
               EXCLUSIVE <Red>REMEDIES</Red>
             </DisplayHeading>
@@ -610,9 +576,7 @@ export default function TermsOfSalePage() {
       {/* ── 16 · Force Majeure ───────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={sectionStyle}>
-          <GhostNumeral n="16" top={-30} right={-20} size={360} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>SECTION 16</Eyebrow>
             <DisplayHeading size="lg">
               FORCE <Red>MAJEURE</Red>
             </DisplayHeading>
@@ -631,9 +595,7 @@ export default function TermsOfSalePage() {
       {/* ── 17 · Governing Law ───────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={sectionStyle}>
-          <GhostNumeral n="17" top={-30} right={-20} size={360} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>SECTION 17</Eyebrow>
             <DisplayHeading size="lg">
               GOVERNING <Red>LAW</Red>
             </DisplayHeading>
@@ -650,9 +612,7 @@ export default function TermsOfSalePage() {
       {/* ── 18 · Dispute Resolution ──────────────────────────────────────── */}
       <ScrollReveal>
         <section style={sectionStyle}>
-          <GhostNumeral n="18" top={-30} right={-20} size={360} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>SECTION 18</Eyebrow>
             <DisplayHeading size="lg">
               DISPUTE <Red>RESOLUTION</Red>
             </DisplayHeading>
@@ -669,9 +629,7 @@ export default function TermsOfSalePage() {
       {/* ── 19 · Severability ────────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={sectionStyle}>
-          <GhostNumeral n="19" top={-30} right={-20} size={360} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>SECTION 19</Eyebrow>
             <DisplayHeading size="lg">
               <Red>SEVERABILITY</Red>
             </DisplayHeading>
@@ -687,9 +645,7 @@ export default function TermsOfSalePage() {
       {/* ── 20 · Entire Agreement ────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={sectionStyle}>
-          <GhostNumeral n="20" top={-30} right={-20} size={360} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>SECTION 20</Eyebrow>
             <DisplayHeading size="lg">
               ENTIRE <Red>AGREEMENT</Red>
             </DisplayHeading>
@@ -711,9 +667,7 @@ export default function TermsOfSalePage() {
       {/* ── 21 · Contact Information ──────────────────────────────────────── */}
       <ScrollReveal>
         <section style={sectionStyle}>
-          <GhostNumeral n="21" top={-30} right={-20} size={360} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>SECTION 21</Eyebrow>
             <DisplayHeading size="lg">
               CONTACT <Red>INFORMATION</Red>
             </DisplayHeading>

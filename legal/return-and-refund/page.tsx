@@ -2,11 +2,9 @@ import { Metadata } from 'next';
 import DocsShell from '@/components/docs/DocsShell';
 import { NB } from '@/lib/nb-tokens';
 import {
-  Eyebrow,
   DisplayHeading,
   Red,
   GhostNumeral,
-  ChromeBadge,
   MonoLabel,
   DashList,
 } from '@/components/docs/Editorial';
@@ -42,7 +40,7 @@ export default function ReturnAndRefundPage() {
       {/* ── Hero ───────────────────────────────────────────────────────── */}
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="R&R" top={-30} right={-20} size={460} />
+          <GhostNumeral n="02" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               RETURN AND REFUND <Red>POLICY</Red>
@@ -56,17 +54,9 @@ export default function ReturnAndRefundPage() {
                 maxWidth: 680,
               }}
             >
-              This page reproduces the NeoRacer Return and Refund Policy so you
-              know exactly where you stand before you order. A kit is full of
-              sensitive electronics and precision-cut structural parts, which is
-              why the windows below are tight and the conditions are specific.
-              The official policy document governs in every case.
+              This page reproduces the NeoRacer Return and Refund Policy. The
+              official policy document governs in every case.
             </p>
-            <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="red">All sales final</ChromeBadge>
-              <ChromeBadge variant="outline">7-day inspection window</ChromeBadge>
-              <ChromeBadge variant="outline">9-month warranty remedy</ChromeBadge>
-            </div>
           </div>
         </section>
       </MouseFollowGlow>
@@ -90,9 +80,7 @@ export default function ReturnAndRefundPage() {
       {/* ── 01 · No returns ────────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="01" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>01 / NO RETURNS POLICY</Eyebrow>
             <DisplayHeading size="lg">
               NO RETURNS <Red>POLICY</Red>
             </DisplayHeading>
@@ -108,9 +96,7 @@ export default function ReturnAndRefundPage() {
       {/* ── 02 · Refund eligibility ────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="02" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>02 / REFUND ELIGIBILITY</Eyebrow>
             <DisplayHeading size="lg">
               REFUND <Red>ELIGIBILITY</Red>
             </DisplayHeading>
@@ -140,9 +126,7 @@ export default function ReturnAndRefundPage() {
       {/* ── 03 · Defective products ────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="03" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>03 / DEFECTIVE PRODUCTS</Eyebrow>
             <DisplayHeading size="lg">
               DEFECTIVE <Red>PRODUCTS</Red>
             </DisplayHeading>
@@ -177,9 +161,7 @@ export default function ReturnAndRefundPage() {
       {/* ── 04 · DOA & missing parts ───────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="04" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>04 / DEAD ON ARRIVAL &amp; MISSING PARTS</Eyebrow>
             <DisplayHeading size="lg">
               DOA AND MISSING <Red>PARTS</Red>
             </DisplayHeading>
@@ -208,9 +190,7 @@ export default function ReturnAndRefundPage() {
       {/* ── 05 · Exclusions ────────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="05" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>05 / EXCLUSIONS</Eyebrow>
             <DisplayHeading size="lg">
               REFUND <Red>EXCLUSIONS</Red>
             </DisplayHeading>

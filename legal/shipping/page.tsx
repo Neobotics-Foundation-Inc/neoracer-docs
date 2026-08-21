@@ -2,11 +2,9 @@ import { Metadata } from 'next';
 import DocsShell from '@/components/docs/DocsShell';
 import { NB } from '@/lib/nb-tokens';
 import {
-  Eyebrow,
   DisplayHeading,
   Red,
   GhostNumeral,
-  ChromeBadge,
   MonoLabel,
   DashList,
 } from '@/components/docs/Editorial';
@@ -42,7 +40,7 @@ export default function ShippingPage() {
       {/* ── Hero ───────────────────────────────────────────────────────── */}
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="SHIP" top={-30} right={-20} size={460} />
+          <GhostNumeral n="03" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               THE SHIPPING <Red>POLICY</Red>
@@ -56,18 +54,16 @@ export default function ShippingPage() {
                 maxWidth: 680,
               }}
             >
-              This page is a faithful rendering of the Neobotics Foundation Inc.
-              Shipping Policy for the NeoRacer autonomous car kit and related
-              products. It covers where we ship, how long processing and delivery
-              take, who handles customs, and what happens when a package is delayed,
-              lost, or undeliverable. The official PDF is the governing document. By
-              placing an order with Neobotics, you agree to this Shipping Policy.
+              This is the Neobotics Shipping Policy for the NeoRacer kit and
+              related products. It covers where we ship, how long processing and
+              delivery take, who handles customs, and what happens when a package
+              is delayed, lost, or undeliverable. The official PDF is the
+              governing document. By placing an order with Neobotics, you agree
+              to this Shipping Policy.
             </p>
-            <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="red">Effective 3/13/2026</ChromeBadge>
-              <ChromeBadge variant="outline">Last updated 3/13/2026</ChromeBadge>
-              <ChromeBadge variant="outline">Neobotics Foundation Inc.</ChromeBadge>
-            </div>
+            <p style={{ fontFamily: NB.monoFont, fontSize: 12.5, letterSpacing: '0.08em', color: NB.textMutedBeige, marginTop: 14 }}>
+              EFFECTIVE MARCH 13, 2026 · LAST UPDATED MARCH 13, 2026
+            </p>
           </div>
         </section>
       </MouseFollowGlow>
@@ -75,9 +71,7 @@ export default function ShippingPage() {
       {/* ── 01 · Shipping coverage ─────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="01" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>01 / SHIPPING COVERAGE</Eyebrow>
             <DisplayHeading size="lg">
               SHIPPING <Red>COVERAGE</Red>
             </DisplayHeading>
@@ -116,9 +110,7 @@ export default function ShippingPage() {
       {/* ── 02 · Regions ───────────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="02" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>02 / REGIONS WE COMMONLY EXPECT TO SERVE</Eyebrow>
             <DisplayHeading size="lg">
               REGIONS WE <Red>SERVE</Red>
             </DisplayHeading>
@@ -151,9 +143,7 @@ export default function ShippingPage() {
       {/* ── 03 · Order processing time ─────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="03" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>03 / ORDER PROCESSING TIME</Eyebrow>
             <DisplayHeading size="lg">
               ORDER PROCESSING <Red>TIME</Red>
             </DisplayHeading>
@@ -192,9 +182,7 @@ export default function ShippingPage() {
       {/* ── 04 · Estimated delivery timelines ──────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="04" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>04 / ESTIMATED DELIVERY TIMELINES</Eyebrow>
             <DisplayHeading size="lg">
               ESTIMATED DELIVERY <Red>TIMELINES</Red>
             </DisplayHeading>
@@ -247,9 +235,7 @@ export default function ShippingPage() {
       {/* ── 05 · Shipping methods ──────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="05" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>05 / SHIPPING METHODS</Eyebrow>
             <DisplayHeading size="lg">
               SHIPPING <Red>METHODS</Red>
             </DisplayHeading>
@@ -280,9 +266,7 @@ export default function ShippingPage() {
       {/* ── 06 · Shipping rates ────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="06" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>06 / SHIPPING RATES</Eyebrow>
             <DisplayHeading size="lg">
               SHIPPING <Red>RATES</Red>
             </DisplayHeading>
@@ -311,9 +295,7 @@ export default function ShippingPage() {
       {/* ── 07 · Customs, duties, taxes ────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="07" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>07 / CUSTOMS, DUTIES, TAXES, AND IMPORT FEES</Eyebrow>
             <DisplayHeading size="lg">
               CUSTOMS AND IMPORT <Red>FEES</Red>
             </DisplayHeading>
@@ -354,9 +336,7 @@ export default function ShippingPage() {
       {/* ── 08 · Shipping address accuracy ─────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="08" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>08 / SHIPPING ADDRESS ACCURACY</Eyebrow>
             <DisplayHeading size="lg">
               SHIPPING ADDRESS <Red>ACCURACY</Red>
             </DisplayHeading>
@@ -395,9 +375,7 @@ export default function ShippingPage() {
       {/* ── 09 · Shipment confirmation and tracking ────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="09" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>09 / SHIPMENT CONFIRMATION AND TRACKING</Eyebrow>
             <DisplayHeading size="lg">
               CONFIRMATION AND <Red>TRACKING</Red>
             </DisplayHeading>
@@ -416,9 +394,7 @@ export default function ShippingPage() {
       {/* ── 10 · Delays ────────────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="10" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>10 / DELAYS</Eyebrow>
             <DisplayHeading size="lg">
               SHIPPING <Red>DELAYS</Red>
             </DisplayHeading>
@@ -450,9 +426,7 @@ export default function ShippingPage() {
       {/* ── 11 · Lost, stolen, or damaged packages ─────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="11" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>11 / LOST, STOLEN, OR DAMAGED PACKAGES</Eyebrow>
             <DisplayHeading size="lg">
               LOST OR DAMAGED <Red>PACKAGES</Red>
             </DisplayHeading>
@@ -519,9 +493,7 @@ export default function ShippingPage() {
       {/* ── 12 · Refused, undeliverable, or unclaimed shipments ────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="12" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>12 / REFUSED, UNDELIVERABLE, OR UNCLAIMED SHIPMENTS</Eyebrow>
             <DisplayHeading size="lg">
               UNDELIVERABLE <Red>SHIPMENTS</Red>
             </DisplayHeading>
@@ -562,9 +534,7 @@ export default function ShippingPage() {
       {/* ── 13 · Partial shipments ─────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="13" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>13 / PARTIAL SHIPMENTS</Eyebrow>
             <DisplayHeading size="lg">
               PARTIAL <Red>SHIPMENTS</Red>
             </DisplayHeading>
@@ -581,9 +551,7 @@ export default function ShippingPage() {
       {/* ── 14 · Preorders and backorders ──────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="14" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>14 / PREORDERS AND BACKORDERS</Eyebrow>
             <DisplayHeading size="lg">
               PREORDERS AND <Red>BACKORDERS</Red>
             </DisplayHeading>
@@ -605,9 +573,7 @@ export default function ShippingPage() {
       {/* ── 15 · Export compliance and destination restrictions ────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="15" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>15 / EXPORT COMPLIANCE AND DESTINATION RESTRICTIONS</Eyebrow>
             <DisplayHeading size="lg">
               EXPORT <Red>COMPLIANCE</Red>
             </DisplayHeading>
@@ -636,9 +602,7 @@ export default function ShippingPage() {
       {/* ── 16 · Institutional and school deliveries ───────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="16" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>16 / INSTITUTIONAL AND SCHOOL DELIVERIES</Eyebrow>
             <DisplayHeading size="lg">
               INSTITUTIONAL <Red>DELIVERIES</Red>
             </DisplayHeading>
@@ -666,9 +630,7 @@ export default function ShippingPage() {
       {/* ── 17 · Title and risk of loss ────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="17" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>17 / TITLE AND RISK OF LOSS</Eyebrow>
             <DisplayHeading size="lg">
               TITLE AND RISK OF <Red>LOSS</Red>
             </DisplayHeading>
@@ -689,9 +651,7 @@ export default function ShippingPage() {
       {/* ── 18 · Policy changes ────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="18" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>18 / POLICY CHANGES</Eyebrow>
             <DisplayHeading size="lg">
               POLICY <Red>CHANGES</Red>
             </DisplayHeading>
@@ -708,9 +668,7 @@ export default function ShippingPage() {
       {/* ── 19 · Contact ───────────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="19" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>19 / CONTACT US</Eyebrow>
             <DisplayHeading size="lg">
               CONTACT <Red>US</Red>
             </DisplayHeading>

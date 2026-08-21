@@ -12,7 +12,7 @@ import { ScrollReveal, MouseFollowGlow, AnimatedNumeral, InfoNote } from '@/comp
 import { Crumbs, PrevNext, Callout } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
-  title: 'FAQ · Troubleshooting · NeoRacer Docs',
+  title: 'FAQ · Reference · NeoRacer Docs',
   description:
     'Questions that get asked enough that they deserve a single canonical answer. Battery choice, ROS 1 support, Windows compatibility, classroom counts, more.',
 };
@@ -251,7 +251,7 @@ export default function FaqPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Troubleshooting', href: '/docs/troubleshooting/diagnostics' },
+          { label: 'Reference', href: '/docs/reference/specifications' },
           { label: 'FAQ' },
         ]}
       />
@@ -327,7 +327,7 @@ export default function FaqPage() {
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: "Wi-Fi can't connect", href: '/docs/troubleshooting/wifi-cant-connect' }}
+        prev={{ label: 'Troubleshooting', href: '/docs/reference/troubleshooting' }}
         next={{ label: 'Specifications', href: '/docs/reference/specifications' }}
       />
     </DocsShell>

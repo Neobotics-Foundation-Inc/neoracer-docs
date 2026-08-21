@@ -40,9 +40,7 @@ const pitLane: PitLaneSection[] = [
   { title: 'Hardware', href: '/docs/hardware/overview', pages: 11 },
   { title: 'Software', href: '/docs/software/networking', pages: 3 },
   { title: 'API Reference', href: '/docs/api-reference/python/core', pages: 14 },
-  // Soft hyphen so narrow phone bays break it as TROUBLE-SHOOTING.
-  { title: 'Trouble­shooting', href: '/docs/troubleshooting/faq', pages: 7 },
-  { title: 'Reference', href: '/docs/reference/specifications', pages: 4 },
+  { title: 'Reference', href: '/docs/reference/specifications', pages: 6 },
   { title: 'Legal', href: '/docs/legal/warranty', pages: 5 },
 ];
 

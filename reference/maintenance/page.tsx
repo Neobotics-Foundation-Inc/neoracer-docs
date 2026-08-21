@@ -112,7 +112,7 @@ export default function MaintenancePage() {
                 { item: 'LiDAR lens', when: 'Weekly', how: 'Wipe with a soft cloth.', fix: 'No alcohol or solvents.' },
                 { item: 'Camera lens', when: 'Weekly', how: 'Wipe with a lens cloth.', fix: "Don't press the lens hard." },
                 { item: 'Sensor mounts', when: 'Each use', how: 'Brackets fixed, no play.', fix: 'Tighten the mounting screws.' },
-                { item: 'Sensor data', when: 'Each use', how: 'Outputs normally on start.', fix: <Link href="/docs/troubleshooting/lidar-empty-scan" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Troubleshoot</Link> },
+                { item: 'Sensor data', when: 'Each use', how: 'Outputs normally on start.', fix: <Link href="/docs/reference/troubleshooting" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Troubleshoot</Link> },
               ]}
             />
           </div>

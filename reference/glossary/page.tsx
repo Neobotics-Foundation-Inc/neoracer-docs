@@ -100,7 +100,7 @@ const TERMS: Term[] = [
     term: 'Static IP',
     short: 'Fixed access address',
     def: 'The car answers at a fixed address on either of its networks: 192.168.10.100 on the cudy router, 10.42.0.1 on its own access point (SSID neoracer-1, password neobotics). Log in as user racecar at whichever matches the Wi-Fi you joined.',
-    see: { label: "Wi-Fi can't connect", href: '/docs/troubleshooting/wifi-cant-connect' },
+    see: { label: 'Troubleshooting', href: '/docs/reference/troubleshooting' },
   },
   {
     term: 'MCU',

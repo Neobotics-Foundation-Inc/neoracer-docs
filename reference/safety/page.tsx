@@ -31,10 +31,11 @@ export default function SafetyPage() {
           <GhostNumeral n="01" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              SAFETY <Red>RULES</Red>
+              SAFETY <Red>PROCEDURES</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
-              Follow these rules whenever the car is powered.
+              We advise reading these safety procedures before using the
+              NeoRacer.
             </p>
           </div>
         </section>

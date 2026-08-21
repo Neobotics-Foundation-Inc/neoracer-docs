@@ -27,7 +27,7 @@ export default function TroubleshootingPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Reference', href: '/docs/reference/compatibility-matrix' },
+          { label: 'Reference', href: '/docs/reference/safety' },
           { label: 'Troubleshooting' },
         ]}
       />

@@ -23,7 +23,7 @@ export default function SafetyPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Reference', href: '/docs/reference/compatibility-matrix' },
+          { label: 'Reference', href: '/docs/reference/safety' },
           { label: 'Safety' },
         ]}
       />
@@ -104,7 +104,7 @@ export default function SafetyPage() {
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'Compatibility matrix', href: '/docs/reference/compatibility-matrix' }}
+        prev={{ label: 'Passwords', href: '/docs/reference/passwords' }}
         next={{ label: 'Warranty', href: '/docs/legal/warranty' }}
       />
     </DocsShell>

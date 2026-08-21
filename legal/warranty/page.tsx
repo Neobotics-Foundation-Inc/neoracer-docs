@@ -299,7 +299,7 @@ export default function WarrantyPage() {
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'Compatibility matrix', href: '/docs/reference/compatibility-matrix' }}
+        prev={{ label: 'Safety', href: '/docs/reference/safety' }}
         next={{ label: 'Returns & refunds', href: '/docs/legal/return-and-refund' }}
       />
     </DocsShell>

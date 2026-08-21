@@ -251,7 +251,7 @@ export default function FaqPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Reference', href: '/docs/reference/compatibility-matrix' },
+          { label: 'Reference', href: '/docs/reference/safety' },
           { label: 'FAQ' },
         ]}
       />

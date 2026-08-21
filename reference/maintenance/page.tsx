@@ -25,7 +25,7 @@ export default function MaintenancePage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Reference', href: '/docs/reference/compatibility-matrix' },
+          { label: 'Reference', href: '/docs/reference/safety' },
           { label: 'Maintenance' },
         ]}
       />

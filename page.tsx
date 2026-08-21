@@ -40,7 +40,7 @@ const pitLane: PitLaneSection[] = [
   { title: 'Hardware', href: '/docs/hardware/overview', pages: 11 },
   { title: 'Software', href: '/docs/software/networking', pages: 3 },
   { title: 'API Reference', href: '/docs/api-reference/python/core', pages: 14 },
-  { title: 'Reference', href: '/docs/reference/compatibility-matrix', pages: 5 },
+  { title: 'Reference', href: '/docs/reference/safety', pages: 4 },
   { title: 'Legal', href: '/docs/legal/warranty', pages: 5 },
 ];
 

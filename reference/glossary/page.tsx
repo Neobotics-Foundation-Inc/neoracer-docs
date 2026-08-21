@@ -49,7 +49,6 @@ const TERMS: Term[] = [
   {
     term: 'XT60 connector',
     def: 'The yellow two-pin power plug on the battery. If the car won\'t power on, a firm reseat is usually the first thing to try. When the halves seat loosely, the connector is worn and worth replacing.',
-    see: { label: "Won't power on", href: '/docs/troubleshooting/wont-power-on' },
   },
   {
     term: 'e-stop',

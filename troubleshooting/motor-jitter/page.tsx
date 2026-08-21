@@ -29,7 +29,7 @@ export default function MotorJitterPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Troubleshooting', href: '/docs/troubleshooting/wont-power-on' },
+          { label: 'Troubleshooting', href: '/docs/troubleshooting/diagnostics' },
           { label: 'Motor jitter' },
         ]}
       />

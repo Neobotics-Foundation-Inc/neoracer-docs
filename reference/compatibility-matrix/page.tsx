@@ -116,7 +116,7 @@ export default function CompatibilityMatrixPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Reference', href: '/docs/reference/specifications' },
+          { label: 'Reference', href: '/docs/reference/compatibility-matrix' },
           { label: 'Compatibility matrix' },
         ]}
       />
@@ -149,11 +149,7 @@ export default function CompatibilityMatrixPage() {
           The rows here are the parts we are confident about: the compute,
           operating system, and middleware the car runs, the named sensors and the
           rc.* call that reaches each one, and the racing ecosystems it lines up
-          with. For exact figures and dimensions, the{' '}
-          <a href="/docs/reference/specifications" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-            specifications
-          </a>{' '}
-          page is the authority. Package version pins are not listed here, because
+          with. Package version pins are not listed here, because
           a frozen pin in a doc ages faster than the stack does. Your own car is
           the final word on the versions it has installed.
         </Callout>
@@ -259,7 +255,7 @@ export default function CompatibilityMatrixPage() {
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'Glossary', href: '/docs/reference/glossary' }}
+        prev={{ label: 'Passwords', href: '/docs/reference/passwords' }}
         next={{ label: 'Safety', href: '/docs/reference/safety' }}
       />
     </DocsShell>

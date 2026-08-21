@@ -25,7 +25,7 @@ export default function MaintenancePage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Reference', href: '/docs/reference/specifications' },
+          { label: 'Reference', href: '/docs/reference/compatibility-matrix' },
           { label: 'Maintenance' },
         ]}
       />
@@ -214,8 +214,8 @@ sudo shutdown -h now`}</Code>
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'Specifications', href: '/docs/reference/specifications' }}
-        next={{ label: 'Glossary', href: '/docs/reference/glossary' }}
+        prev={{ label: 'Troubleshooting', href: '/docs/reference/troubleshooting' }}
+        next={{ label: 'FAQ', href: '/docs/reference/faq' }}
       />
     </DocsShell>
   );

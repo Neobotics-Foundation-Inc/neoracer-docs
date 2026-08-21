@@ -24,7 +24,7 @@ export default function PasswordsPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Reference', href: '/docs/reference/specifications' },
+          { label: 'Reference', href: '/docs/reference/compatibility-matrix' },
           { label: 'Passwords' },
         ]}
       />
@@ -133,6 +133,7 @@ export default function PasswordsPage() {
 
       <PrevNext
         prev={{ label: 'FAQ', href: '/docs/reference/faq' }}
+        next={{ label: 'Compatibility matrix', href: '/docs/reference/compatibility-matrix' }}
       />
     </DocsShell>
   );

@@ -9,7 +9,7 @@ import {
   DashList,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
-import { Crumbs, PrevNext, Callout } from '@/components/docs/DocsPrimitives';
+import { Crumbs, PrevNext } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
   title: 'Safety · Reference · NeoRacer Docs',
@@ -81,9 +81,12 @@ export default function SafetyPage() {
           </DisplayHeading>
           <DashList
             items={[
+              <>Use only the original power adapter and battery. Do not use power sources with different specifications.</>,
               <>Switch the car off before plugging or unplugging any connector.</>,
               <>Do not leave a stalled motor under power. A blocked wheel builds heat fast.</>,
               <>Stop driving if any part of the car is hot to the touch, and let it cool before the next run.</>,
+              <>If you notice an unusual smell, smoke, or abnormal heating, cut the power and disconnect the battery.</>,
+              <>Do not use or charge the car during thunderstorms.</>,
               <>Keep metal objects away from the boards and connectors.</>,
             ]}
           />
@@ -97,9 +100,14 @@ export default function SafetyPage() {
           </DisplayHeading>
           <DashList
             items={[
-              <>Charge on the balance charger, and stay nearby while it charges. The charging routine is on{' '}
+              <>The battery is a 3S (11.1 V) 5200 mAh 35C lithium pack with an XT60 plug.</>,
+              <>Charge on the balance charger, in a well-ventilated and fireproof area away from flammable materials, and stay nearby while it charges. The charging routine is on{' '}
                 <Link href="/docs/getting-started/charge-and-power" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Charge &amp; power</Link>.</>,
+              <>If the pack is deeply discharged, charge it at the lowest current.</>,
+              <>Do not short-circuit the pack, immerse it in water, or expose it to open flames.</>,
               <>Stop using a pack that is swollen, cracked, or leaking, and contact support.</>,
+              <>If the pack swells, smokes, or smells unusual, disconnect it and move it to a safe, well-ventilated area.</>,
+              <>For classrooms, keep a sand bucket, a fire blanket, or a Class D extinguisher nearby.</>,
               <>Store the pack at 40&ndash;60% charge, out of the car. Storage rules are on{' '}
                 <Link href="/docs/reference/maintenance" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Maintenance</Link>.</>,
             ]}
@@ -123,17 +131,6 @@ export default function SafetyPage() {
             ]}
           />
         </section>
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <Callout type="danger" title="If something goes wrong">
-          Flip <code style={{ fontFamily: NB.monoFont }}>SWB</code> up, switch
-          the car off, and unplug the battery. Then email{' '}
-          <a href="mailto:support@neobotics.org" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-            support@neobotics.org
-          </a>{' '}
-          with what happened.
-        </Callout>
       </ScrollReveal>
 
       <PrevNext

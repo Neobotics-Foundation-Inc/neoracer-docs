@@ -32,7 +32,7 @@ export default function PasswordsPage() {
       {/* ── Hero ─────────────────────────────────────────────────────── */}
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="***" top={-30} right={-20} size={420} />
+          <GhostNumeral n="04" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               <Red>PASSWORDS</Red>

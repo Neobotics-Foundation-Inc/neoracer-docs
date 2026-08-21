@@ -259,7 +259,7 @@ export default function FaqPage() {
       {/* ── Hero ───────────────────────────────────────────────────────── */}
       <MouseFollowGlow>
       <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-        <GhostNumeral n="?" top={-50} right={-20} size={440} />
+        <GhostNumeral n="05" top={-50} right={-20} size={440} />
         <div style={{ position: 'relative', zIndex: 1 }}>
           <DisplayHeading size="xl">
             FREQUENTLY ASKED <Red>QUESTIONS</Red>

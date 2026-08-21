@@ -34,7 +34,7 @@ export default function TroubleshootingPage() {
       {/* ── Hero ─────────────────────────────────────────────────────── */}
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="05" top={-30} right={-20} size={420} />
+          <GhostNumeral n="02" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               TROUBLE<Red>SHOOTING</Red>

@@ -3,12 +3,10 @@ import { Metadata } from 'next';
 import DocsShell from '@/components/docs/DocsShell';
 import { NB } from '@/lib/nb-tokens';
 import {
-  Eyebrow,
   DisplayHeading,
   Red,
   GhostNumeral,
   MonoLabel,
-  ChromeBadge,
   DashList,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
@@ -33,21 +31,15 @@ export default function MaintenancePage() {
       {/* ── Hero ────────────────────────────────────────────────────────── */}
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="7" top={-40} right={-20} size={460} />
+          <GhostNumeral n="03" top={-40} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               ROUTINE <Red>MAINTENANCE</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
-              Treated well, the NeoRacer has a multi-year service life. A short
-              routine keeps it there: a quick look before each run, a closer one
-              weekly, and a little care for the LiPo between sessions.
+              This page lists the maintenance schedule for the car, the
+              battery care rules, and how to store and transport it.
             </p>
-            <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="red">Before each use</ChromeBadge>
-              <ChromeBadge variant="outline">Weekly</ChromeBadge>
-              <ChromeBadge variant="outline">Store at 40–60%</ChromeBadge>
-            </div>
           </div>
         </section>
       </MouseFollowGlow>
@@ -55,7 +47,6 @@ export default function MaintenancePage() {
       {/* ── 01 · daily checks ───────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ paddingBottom: 40 }}>
-          <Eyebrow>01 / THE SCHEDULE</Eyebrow>
           <DisplayHeading size="lg">
             ROUTINE <Red>CHECKS</Red>
           </DisplayHeading>
@@ -90,10 +81,9 @@ export default function MaintenancePage() {
                 { key: 'fix', label: 'If it fails' },
               ]}
               rows={[
-                { item: 'Battery level', when: 'Each use', how: '3 bars or more.', fix: 'Charge with the included charger.' },
+                { item: 'Battery level', when: 'Each use', how: 'Check the charge on the dashboard (port 8080).', fix: 'Charge with the included charger.' },
                 { item: 'Battery appearance', when: 'Weekly', how: 'No swelling, cracks, leaks.', fix: 'Stop and contact support.' },
                 { item: 'Connectors', when: 'Each use', how: 'Seated, no heat marks.', fix: 'Reseat; investigate heat.' },
-                { item: 'Jetson indicator', when: 'Each use', how: 'Start LED lights normally.', fix: 'Check supply or contact support.' },
                 { item: 'Controller heat', when: 'In use', how: 'Cool 30 min after power-off.', fix: 'Hot (> 50 °C): stop, contact support.' },
               ]}
             />
@@ -122,18 +112,16 @@ export default function MaintenancePage() {
       {/* ── 02 · battery care ───────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 40 }}>
-          <GhostNumeral n="02" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>02 / THE LIPO</Eyebrow>
             <DisplayHeading size="lg">
               BATTERY <Red>CARE</Red>
             </DisplayHeading>
             <DashList
               items={[
-                <><strong>Charge on the balance charger.</strong> Use a balance charger (30 W, 1–4S, AC 100–240 V, XT60). Cut power once it shows green to avoid overcharge. Full routine on <Link href="/docs/getting-started/charge-and-power" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Charge &amp; power</Link>.</>,
-                <><strong>Don&apos;t run it flat.</strong> Keep above 20%. Over-discharge does irreversible damage. Stop at once if the pack drops fast or overheats.</>,
-                <><strong>Mind the temperature.</strong> Avoid running below 0 °C or above 40 °C, and keep the pack firmly fixed so a knock can&apos;t crush the case.</>,
-                <><strong>Store at half charge.</strong> For more than a few days, store at 40–60% (about 3.7–3.85 V/cell). Check every 2–3 months and top back to ~50% if it falls below 40%. Never store full or empty.</>,
+                <>Charge on the balance charger (30 W, 1&ndash;4S, AC 100&ndash;240 V, XT60). Cut power once it shows green. The full routine is on <Link href="/docs/getting-started/charge-and-power" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Charge &amp; power</Link>.</>,
+                <>Keep the charge above 20%. Over-discharge causes irreversible damage. Stop at once if the pack drops fast or overheats.</>,
+                <>Do not run the car below 0 °C or above 40 °C. Keep the pack firmly fixed.</>,
+                <>Store the pack at 40&ndash;60% (about 3.7&ndash;3.85 V/cell) when unused for more than a few days. Check every 2&ndash;3 months and recharge to about 50% if it falls below 40%. Do not store the pack full or empty.</>,
               ]}
             />
           </div>
@@ -143,11 +131,9 @@ export default function MaintenancePage() {
       {/* ── 03 · storage + transport ────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 40 }}>
-          <GhostNumeral n="03" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Eyebrow>03 / PUTTING IT AWAY</Eyebrow>
             <DisplayHeading size="lg">
-              STORE + <Red>TRANSPORT</Red>
+              STORAGE AND <Red>TRANSPORT</Red>
             </DisplayHeading>
             <div style={{ marginTop: 18 }}>
               <MonoLabel>Storage</MonoLabel>
@@ -181,9 +167,9 @@ export default function MaintenancePage() {
               />
             </div>
             <Callout type="warn" title="Handle the pack with care in transit">
-              Don&apos;t drop, squeeze, or shake the car hard during transport, and
-              follow your local lithium-battery shipping law. A separately packed,
-              half-charged pack is both safer and usually required.
+              Do not drop, squeeze, or shake the car during transport. Follow
+              your local lithium-battery shipping law; a separately packed,
+              half-charged pack is usually required.
             </Callout>
           </div>
         </section>
@@ -192,9 +178,8 @@ export default function MaintenancePage() {
       {/* ── 04 · after a session ────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ paddingBottom: 24 }}>
-          <Eyebrow>04 / AFTER EACH SESSION</Eyebrow>
           <DisplayHeading size="lg">
-            SHUT DOWN <Red>CLEAN</Red>
+            SHUT <Red>DOWN</Red>
           </DisplayHeading>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             Stop the software before you cut power, then put the car away. The full

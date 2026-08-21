@@ -15,7 +15,7 @@ import { ScrollReveal, MouseFollowGlow, AnimatedNumeral } from '@/components/doc
 export const metadata: Metadata = {
   title: 'Camera no feed · Troubleshooting · NeoRacer Docs',
   description:
-    'rc.camera.get_color_image returns a black frame, or /camera publishes nothing. Three causes and a quick diagnostic.',
+    'rc.camera.get_color_image returns a black frame, or /camera/color publishes nothing. Three causes and a quick diagnostic.',
 };
 
 export default function CameraNoFeedPage() {
@@ -93,13 +93,13 @@ export default function CameraNoFeedPage() {
             <Code lang="bash">{`# 1. Is the teleop driver running?
 ssh racecar@neoracer
 racecar status                                       # shows running nodes
-ros2 topic list | grep camera                        # /camera should be there
+ros2 topic list | grep camera                        # /camera/color should be there
 
 # 2. Does the kernel see the webcam, and does it advertise MJPG?
 ls -l /dev/osrbot_usb_cam                            # udev symlink
 v4l2-ctl --list-formats-ext -d /dev/osrbot_usb_cam   # MJPG format must appear
 
-# 3. If teleop is up but /camera publishes nothing, bring the stack back up.
+# 3. If teleop is up but /camera/color publishes nothing, bring the stack back up.
 racecar teleop
 
 # 4. Confirm the topic publishes.

@@ -62,7 +62,7 @@ export default function DiagnosticsPage() {
             isn&apos;t up or your shells aren&apos;t talking to it yet.
           </p>
           <Code lang="bash">{`ros2 node list      # the driver's nodes should be here
-ros2 topic list     # /scan /drive /imu /odom /camera /joy`}</Code>
+ros2 topic list     # /scan /drive /imu/fused /odom /camera/color /joy`}</Code>
           <div style={{ marginTop: 18 }}>
             <DataTable
               columns={[
@@ -104,14 +104,14 @@ ls -l /dev/serial/by-id/         # is the device node present?`}</Code>
             <div style={{ marginTop: 14 }}>
               <MonoLabel>Camera</MonoLabel>
               <Code lang="bash">{`ls /dev/video*                   # device node exists?
-ros2 topic list | grep image     # image topics live?
-ros2 topic echo /camera --once   # JPEG bytes; best-effort QoS
-ros2 topic bw /camera              # bandwidth, ~3-4 MB/s when healthy`}</Code>
+ros2 topic list | grep camera        # /camera/color live?
+ros2 topic echo /camera/color --once # JPEG bytes; best-effort QoS
+ros2 topic bw /camera/color          # bandwidth, ~3-4 MB/s when healthy`}</Code>
             </div>
             <div style={{ marginTop: 14 }}>
               <MonoLabel>IMU + odometry</MonoLabel>
-              <Code lang="bash">{`ros2 topic list | grep imu       # /imu present?
-ros2 topic hz /imu               # ~200 Hz when streaming
+              <Code lang="bash">{`ros2 topic list | grep imu       # /imu/fused present?
+ros2 topic hz /imu/fused         # ~200 Hz when streaming
 ros2 topic hz /odom              # ~200 Hz, moves when the wheels do`}</Code>
             </div>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 15, lineHeight: 1.6, color: NB.textMutedBeige, maxWidth: 720, marginTop: 16 }}>
@@ -205,8 +205,8 @@ ros2 launch osracer_debug debug_image.launch.py  # image pipeline`}</Code>
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: "Won't power on", href: '/docs/troubleshooting/wont-power-on' }}
-        next={{ label: 'FAQ', href: '/docs/troubleshooting/faq' }}
+        prev={{ label: 'ROS 2 params', href: '/docs/api-reference/ros2/params' }}
+        next={{ label: 'LiDAR empty scan', href: '/docs/troubleshooting/lidar-empty-scan' }}
       />
     </DocsShell>
   );

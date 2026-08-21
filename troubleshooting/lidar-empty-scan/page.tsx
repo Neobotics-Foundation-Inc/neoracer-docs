@@ -237,7 +237,7 @@ journalctl -u neoracer-teleop -b | grep scan-watchdog`}</Code>
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: "Won't power on", href: '/docs/troubleshooting/wont-power-on' }}
+        prev={{ label: 'Diagnostics', href: '/docs/troubleshooting/diagnostics' }}
         next={{ label: 'Motor jitter', href: '/docs/troubleshooting/motor-jitter' }}
       />
     </DocsShell>

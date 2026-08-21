@@ -91,7 +91,7 @@ ros2 topic list           # /scan /drive /imu/fused /odom /camera/color /joy`}</
                 rows={[
                   { sym: 'No response at the power switch', cause: 'The battery is discharged.', fix: 'Charge it on the included balance charger.' },
                   { sym: 'No response with a charged battery', cause: 'The XT60 plug is not seated.', fix: 'Push the XT60 plug in firmly until it clicks.' },
-                  { sym: 'Still no response', cause: 'Power hardware failure.', fix: 'Contact support. Do not disassemble the boards.' },
+                  { sym: 'Still no response', cause: 'Power hardware failure.', fix: 'Do not disassemble the boards.' },
                 ]}
               />
             </div>
@@ -112,8 +112,8 @@ ros2 topic list           # /scan /drive /imu/fused /odom /camera/color /joy`}</
                 columns={SYM_COLUMNS}
                 rows={[
                   { sym: 'The transmitter does not turn on or drops out', cause: 'Transmitter batteries are low.', fix: 'Replace them. Alkaline batteries are recommended.' },
-                  { sym: 'The car ignores the sticks', cause: 'SWB is not in the manual position.', fix: 'Flip SWB up.' },
-                  { sym: 'Still no response in manual', cause: 'The receiver cable or the OSCORE USB link is loose.', fix: 'Reseat the receiver cable at the OSCORE board, and check that racecar status lists /dev/osrbot_base.' },
+                  { sym: 'The car does not respond to the sticks', cause: 'SWB is not in the manual position.', fix: 'Flip SWB up.' },
+                  { sym: 'Still no response in manual', cause: 'The receiver cable or the OSCORE USB link is loose.', fix: 'Reseat the receiver cable at the OSCORE board.' },
                   { sym: 'The receiver does not respond to the transmitter', cause: 'The pair is not bound.', fix: 'Re-pair them following the FlySky manual.' },
                 ]}
               />
@@ -172,7 +172,7 @@ v4l2-ctl --list-formats-ext -d /dev/osrbot_usb_cam   # MJPG must appear`}</Code>
                   { sym: 'Frames publish but are black', cause: 'The shipping film is still on the lens.', fix: 'Peel it off.' },
                   { sym: 'No /camera/color at all', cause: 'The camera node crashed or the USB cable is loose.', fix: 'Reseat the USB cable at the front of the car, then racecar service restart.' },
                   { sym: 'A subscriber receives nothing', cause: 'The publisher is best-effort.', fix: 'Subscribe with sensor-data QoS.' },
-                  { sym: 'The camera is absent from /dev on the car', cause: 'Camera hardware failure.', fix: 'Test the camera on another computer. If it does not appear there either, contact support.' },
+                  { sym: 'The camera is absent from /dev on the car', cause: 'Camera hardware failure.', fix: 'Test the camera on another computer.' },
                 ]}
               />
             </div>
@@ -195,7 +195,6 @@ ros2 topic echo /imu/fused --once    # readings should be steady while the car i
                 columns={SYM_COLUMNS}
                 rows={[
                   { sym: 'No /imu/fused at all', cause: 'The OSCORE serial link is down.', fix: 'Check that racecar status lists /dev/osrbot_base, then racecar service restart.' },
-                  { sym: 'Readings drift or jump while the car is still', cause: 'IMU fault.', fix: 'Contact support.' },
                 ]}
               />
             </div>
@@ -227,8 +226,8 @@ ros2 topic echo /imu/fused --once    # readings should be steady while the car i
                   { sym: 'Forward command drives in reverse', cause: 'Motor wiring reversed.', fix: 'Swap any two motor leads.' },
                   { sym: 'Wheels not symmetric left and right', cause: 'Steering center is off.', fix: 'Adjust steering_trim_deg, see ROS 2 params.' },
                   { sym: 'Odometry jumps a known distance', cause: 'Loose encoder cable.', fix: 'Reseat the encoder cable.' },
-                  { sym: 'Pulls to one side or fishtails', cause: 'Worn tires, loose wheel screws, or worn shock absorbers.', fix: 'Replace worn tires on the same axle together. Tighten the wheel screws. If the shocks are worn, contact support.' },
-                  { sym: 'Steering is weak or does not turn', cause: 'A mechanical jam or a servo failure.', fix: 'Power off and turn the front wheels by hand. Remove anything blocking them. If the servo grinds or stays stuck, contact support.' },
+                  { sym: 'Pulls to one side or fishtails', cause: 'Worn tires, loose wheel screws, or worn shock absorbers.', fix: 'Replace worn tires on the same axle together. Tighten the wheel screws.' },
+                  { sym: 'Steering is weak or does not turn', cause: 'A mechanical jam or a servo failure.', fix: 'Power off and turn the front wheels by hand. Remove anything blocking them.' },
                   { sym: 'Steering has slack', cause: 'Loose ball joints on the steering linkage.', fix: 'Tighten the linkage connectors.' },
                 ]}
               />
@@ -260,7 +259,7 @@ whoami                     # racecar`}</Code>
                 rows={[
                   { sym: 'The network never appears', cause: 'The car has not finished booting, or the access point was renamed.', fix: 'Wait a minute after power-on. racecar setup networking --show prints the saved name.' },
                   { sym: 'Joined, but the ping hangs', cause: 'Wrong Car ID, or your laptop joined a different network.', fix: 'Check which Wi-Fi your laptop is on and match the car ID on the sticker.' },
-                  { sym: 'No Wi-Fi at all', cause: 'Radio or configuration problem.', fix: 'Connect an Ethernet cable directly and rebuild the network: racecar setup networking.' },
+                  { sym: 'No Wi-Fi at all', cause: 'Radio or configuration problem.', fix: 'Connect an Ethernet cable between your computer and the car. Set your computer to an address in 192.168.10.x, SSH to 192.168.10.100, then run racecar setup networking.' },
                 ]}
               />
             </div>

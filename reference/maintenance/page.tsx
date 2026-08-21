@@ -147,6 +147,7 @@ export default function MaintenancePage() {
                   { k: 'Temperature', v: '−10 °C to 55 °C' },
                   { k: 'Humidity', v: '≤ 85% RH, no condensation' },
                   { k: 'Method', v: 'Powered off, battery stored separately' },
+                  { k: 'Environment', v: 'Dry, ventilated, free of corrosive gases' },
                 ]}
               />
             </div>
@@ -192,7 +193,7 @@ sudo shutdown -h now`}</Code>
             items={[
               <>Once the Jetson is down, switch off the module and unplug the battery XT60.</>,
               <>Wipe dust off the wheels and chassis, and check connectors and cables.</>,
-              <>Store the car dry and out of sunlight, with the half-charged pack kept separately.</>,
+              <>Cover the car against dust. Store it in a stable, dry place, out of sunlight and out of reach of children, with the half-charged pack kept separately.</>,
             ]}
           />
         </section>

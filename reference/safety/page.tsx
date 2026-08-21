@@ -107,7 +107,7 @@ export default function SafetyPage() {
               <>The battery is a 3S (11.1 V) 5200 mAh 35C lithium pack with an XT60 plug.</>,
               <>Charge on the balance charger, in a well-ventilated and fireproof area away from flammable materials, and stay nearby while it charges. The charging routine is on{' '}
                 <Link href="/docs/getting-started/charge-and-power" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Charge &amp; power</Link>.</>,
-              <>If the pack is deeply discharged, charge it at the lowest current.</>,
+              <>If the pack is deeply discharged, charge it at the lowest current, about 0.5&ndash;1 A.</>,
               <>Do not short-circuit the pack, immerse it in water, or expose it to open flames.</>,
               <>Stop using a pack that is swollen, cracked, or leaking, and contact support.</>,
               <>If the pack swells, smokes, or smells unusual, disconnect it and move it to a safe, well-ventilated area.</>,

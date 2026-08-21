@@ -8,7 +8,7 @@ import {
   MonoLabel,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
-import { Crumbs, PrevNext, Callout, Code, DataTable } from '@/components/docs/DocsPrimitives';
+import { Crumbs, PrevNext, Code, DataTable } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
   title: 'Troubleshooting · Reference · NeoRacer Docs',
@@ -196,19 +196,6 @@ whoami                     # racecar`}</Code>
       </ScrollReveal>
 
       {/* ── Support ──────────────────────────────────────────────────── */}
-      <ScrollReveal>
-        <Callout type="tip" title="Still stuck?">
-          Email{' '}
-          <a href="mailto:support@neobotics.org" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-            support@neobotics.org
-          </a>{' '}
-          with the car&apos;s serial number, what you tried from this page, and
-          the output of{' '}
-          <code style={{ fontFamily: NB.monoFont }}>racecar status</code> and{' '}
-          <code style={{ fontFamily: NB.monoFont }}>journalctl -u neoracer-teleop -n 60</code>.
-        </Callout>
-      </ScrollReveal>
-
       <PrevNext
         prev={{ label: 'ROS 2 params', href: '/docs/api-reference/ros2/params' }}
         next={{ label: 'FAQ', href: '/docs/reference/faq' }}

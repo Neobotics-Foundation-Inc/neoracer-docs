@@ -104,7 +104,7 @@ export default function SafetyPage() {
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'Passwords', href: '/docs/reference/passwords' }}
+        prev={{ label: 'Maintenance', href: '/docs/reference/maintenance' }}
         next={{ label: 'Warranty', href: '/docs/legal/warranty' }}
       />
     </DocsShell>

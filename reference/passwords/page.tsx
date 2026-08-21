@@ -133,7 +133,7 @@ export default function PasswordsPage() {
 
       <PrevNext
         prev={{ label: 'FAQ', href: '/docs/reference/faq' }}
-        next={{ label: 'Safety', href: '/docs/reference/safety' }}
+        next={{ label: 'Maintenance', href: '/docs/reference/maintenance' }}
       />
     </DocsShell>
   );

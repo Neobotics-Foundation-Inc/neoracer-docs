@@ -328,7 +328,7 @@ export default function FaqPage() {
 
       <PrevNext
         prev={{ label: 'Troubleshooting', href: '/docs/reference/troubleshooting' }}
-        next={{ label: 'Specifications', href: '/docs/reference/specifications' }}
+        next={{ label: 'Passwords', href: '/docs/reference/passwords' }}
       />
     </DocsShell>
   );

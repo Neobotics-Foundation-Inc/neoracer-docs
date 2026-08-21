@@ -132,8 +132,8 @@ export default function PasswordsPage() {
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'FAQ', href: '/docs/reference/faq' }}
-        next={{ label: 'Maintenance', href: '/docs/reference/maintenance' }}
+        prev={{ label: 'Maintenance', href: '/docs/reference/maintenance' }}
+        next={{ label: 'FAQ', href: '/docs/reference/faq' }}
       />
     </DocsShell>
   );

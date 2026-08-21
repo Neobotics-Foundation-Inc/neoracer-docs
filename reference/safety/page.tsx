@@ -138,8 +138,8 @@ export default function SafetyPage() {
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'Maintenance', href: '/docs/reference/maintenance' }}
-        next={{ label: 'Warranty', href: '/docs/legal/warranty' }}
+        prev={{ label: 'ROS 2 params', href: '/docs/api-reference/ros2/params' }}
+        next={{ label: 'Troubleshooting', href: '/docs/reference/troubleshooting' }}
       />
     </DocsShell>
   );

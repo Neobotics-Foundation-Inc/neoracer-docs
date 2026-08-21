@@ -67,7 +67,8 @@ ros2 topic list           # /scan /drive /imu/fused /odom /camera/color /joy`}</
                 columns={SYM_COLUMNS}
                 rows={[
                   { sym: 'Empty node or topic list', cause: 'Workspace not sourced in this shell, or the services are down.', fix: 'racecar source, then racecar service status' },
-                  { sym: 'A device is missing from racecar status', cause: 'Unplugged or unpowered hardware.', fix: 'A device with no symlink is a cable problem. A symlink with no node is a software problem.' },
+                  { sym: 'A device is missing from racecar status', cause: 'Unplugged or unpowered hardware.', fix: 'Reseat the cable and check its power.' },
+                  { sym: 'The symlink exists but its node is not running', cause: 'Software problem.', fix: 'racecar service restart' },
                   { sym: 'Port or process already in use', cause: 'A launch was started twice.', fix: 'racecar cleanup --force, then relaunch' },
                 ]}
               />
@@ -98,7 +99,7 @@ journalctl -u neoracer-teleop -b | grep scan-watchdog`}</Code>
                 columns={SYM_COLUMNS}
                 rows={[
                   { sym: 'Ping to 192.168.8.2 fails', cause: 'The USB-C lidar link is down.', fix: 'Reseat the USB-C cable, then racecar setup networking to rebuild the link.' },
-                  { sym: 'Ping works, /scan silent', cause: 'The driver lost the sensor.', fix: 'racecar service restart' },
+                  { sym: 'Ping works but /scan publishes nothing', cause: 'The driver stopped receiving data from the sensor.', fix: 'racecar service restart' },
                   { sym: 'Scan publishes but reads all zeros', cause: 'Something covers the sensor dome.', fix: 'Check for tape, a bag, or a shell edge in front of the dome. The rear 90° always reads 0 by design.' },
                 ]}
               />
@@ -142,9 +143,9 @@ v4l2-ctl --list-formats-ext -d /dev/osrbot_usb_cam   # MJPG must appear`}</Code>
             </DisplayHeading>
             <MonoLabel>Symptom: jitter, creep, or crooked driving</MonoLabel>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-              First separate software from hardware: command zero and listen.
-              A car that is silent at zero has a software cause; a car that
-              jitters at zero has an electrical or mechanical one.
+              First check whether the cause is software or hardware. Command
+              zero speed. A car that is silent at zero has a software cause. A
+              car that jitters at zero has an electrical or mechanical cause.
             </p>
             <Code lang="python">{`rc.drive.set_speed_angle(0, 0)   # the car should be silent and still`}</Code>
             <div style={{ marginTop: 18 }}>
@@ -197,8 +198,8 @@ whoami                     # racecar`}</Code>
 
       {/* ── Support ──────────────────────────────────────────────────── */}
       <PrevNext
-        prev={{ label: 'ROS 2 params', href: '/docs/api-reference/ros2/params' }}
-        next={{ label: 'FAQ', href: '/docs/reference/faq' }}
+        prev={{ label: 'Safety', href: '/docs/reference/safety' }}
+        next={{ label: 'Maintenance', href: '/docs/reference/maintenance' }}
       />
     </DocsShell>
   );

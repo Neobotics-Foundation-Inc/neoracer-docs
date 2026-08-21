@@ -215,7 +215,7 @@ racecar service restart`}</Code>
 
       <PrevNext
         prev={{ label: 'ROS 2 topics', href: '/docs/api-reference/ros2/topics' }}
-        next={{ label: 'Troubleshooting', href: '/docs/reference/troubleshooting' }}
+        next={{ label: 'Safety', href: '/docs/reference/safety' }}
       />
     </DocsShell>
   );

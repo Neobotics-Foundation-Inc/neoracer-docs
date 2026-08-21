@@ -327,8 +327,8 @@ export default function FaqPage() {
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'Troubleshooting', href: '/docs/reference/troubleshooting' }}
-        next={{ label: 'Passwords', href: '/docs/reference/passwords' }}
+        prev={{ label: 'Passwords', href: '/docs/reference/passwords' }}
+        next={{ label: 'Warranty', href: '/docs/legal/warranty' }}
       />
     </DocsShell>
   );

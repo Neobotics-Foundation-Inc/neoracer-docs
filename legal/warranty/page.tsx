@@ -299,7 +299,7 @@ export default function WarrantyPage() {
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'Safety', href: '/docs/reference/safety' }}
+        prev={{ label: 'FAQ', href: '/docs/reference/faq' }}
         next={{ label: 'Returns & refunds', href: '/docs/legal/return-and-refund' }}
       />
     </DocsShell>

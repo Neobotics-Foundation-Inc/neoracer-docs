@@ -214,8 +214,8 @@ sudo shutdown -h now`}</Code>
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'Passwords', href: '/docs/reference/passwords' }}
-        next={{ label: 'Safety', href: '/docs/reference/safety' }}
+        prev={{ label: 'Troubleshooting', href: '/docs/reference/troubleshooting' }}
+        next={{ label: 'Passwords', href: '/docs/reference/passwords' }}
       />
     </DocsShell>
   );

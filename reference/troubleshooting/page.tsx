@@ -5,7 +5,6 @@ import {
   DisplayHeading,
   Red,
   GhostNumeral,
-  MonoLabel,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext, Code, DataTable } from '@/components/docs/DocsPrimitives';
@@ -84,7 +83,6 @@ ros2 topic list           # /scan /drive /imu/fused /odom /camera/color /joy`}</
             <DisplayHeading size="lg">
               <Red>POWER</Red>
             </DisplayHeading>
-            <MonoLabel>Symptom: the car does not power on</MonoLabel>
             <div style={{ marginTop: 12 }}>
               <DataTable
                 columns={SYM_COLUMNS}
@@ -106,7 +104,6 @@ ros2 topic list           # /scan /drive /imu/fused /odom /camera/color /joy`}</
             <DisplayHeading size="lg">
               <Red>TRANSMITTER</Red>
             </DisplayHeading>
-            <MonoLabel>Symptom: the remote control does not drive the car</MonoLabel>
             <div style={{ marginTop: 12 }}>
               <DataTable
                 columns={SYM_COLUMNS}
@@ -129,7 +126,6 @@ ros2 topic list           # /scan /drive /imu/fused /odom /camera/color /joy`}</
             <DisplayHeading size="lg">
               <Red>LIDAR</Red>
             </DisplayHeading>
-            <MonoLabel>Symptom: /scan is empty or all zeros</MonoLabel>
             <Code lang="bash">{`ros2 topic hz /scan          # ~30 Hz when healthy
 ping -c 3 192.168.8.2        # the sensor; the host side is 192.168.8.1
 ip a | grep 192.168.8        # the usb* interface should hold .1
@@ -160,7 +156,6 @@ journalctl -u neoracer-teleop -b | grep scan-watchdog`}</Code>
             <DisplayHeading size="lg">
               <Red>CAMERA</Red>
             </DisplayHeading>
-            <MonoLabel>Symptom: black frames, or /camera/color publishes nothing</MonoLabel>
             <Code lang="bash">{`ros2 topic list | grep camera                        # /camera/color present?
 ros2 topic bw /camera/color                          # ~3-4 MB/s when healthy
 ls -l /dev/osrbot_usb_cam                            # the udev symlink
@@ -187,7 +182,6 @@ v4l2-ctl --list-formats-ext -d /dev/osrbot_usb_cam   # MJPG must appear`}</Code>
             <DisplayHeading size="lg">
               <Red>IMU</Red>
             </DisplayHeading>
-            <MonoLabel>Symptom: no or wrong IMU data</MonoLabel>
             <Code lang="bash">{`ros2 topic hz /imu/fused             # ~200 Hz when healthy
 ros2 topic echo /imu/fused --once    # readings should be steady while the car is still`}</Code>
             <div style={{ marginTop: 12 }}>
@@ -209,7 +203,6 @@ ros2 topic echo /imu/fused --once    # readings should be steady while the car i
             <DisplayHeading size="lg">
               MOTOR AND <Red>STEERING</Red>
             </DisplayHeading>
-            <MonoLabel>Symptom: jitter, creep, or crooked driving</MonoLabel>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
               First check whether the cause is software or hardware. Command
               zero speed. A car that is silent at zero has a software cause. A
@@ -243,7 +236,6 @@ ros2 topic echo /imu/fused --once    # readings should be steady while the car i
             <DisplayHeading size="lg">
               <Red>WI-FI</Red>
             </DisplayHeading>
-            <MonoLabel>Symptom: cannot reach the car</MonoLabel>
             <Code lang="bash">{`# 1. Join the car's network: neoracer-[Car ID], password neobotics.
 # 2. Ping the car's address for that network.
 ping 192.168.10.100        # cudy router

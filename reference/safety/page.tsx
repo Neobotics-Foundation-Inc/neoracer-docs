@@ -85,7 +85,7 @@ export default function SafetyPage() {
           </DisplayHeading>
           <DashList
             items={[
-              <>Use only the original power adapter and battery. Do not use power sources with different specifications.</>,
+              <>Use only the included charger and a battery that matches the specification in the Battery section.</>,
               <>Switch the car off before plugging or unplugging any connector.</>,
               <>Do not leave a stalled motor under power. A blocked wheel overheats the motor.</>,
               <>Stop driving if any part of the car is hot to the touch, and let it cool before the next run.</>,
@@ -104,13 +104,12 @@ export default function SafetyPage() {
           </DisplayHeading>
           <DashList
             items={[
-              <>The battery is a 3S (11.1 V) 5200 mAh 35C lithium pack with an XT60 plug.</>,
+              <>Use a 3S (11.1 V) lithium pack with an XT60 plug. The recommended pack is 5200 mAh 35C.</>,
               <>Charge on the balance charger, in a well-ventilated and fireproof area away from flammable materials, and stay nearby while it charges. The charging routine is on{' '}
                 <Link href="/docs/getting-started/charge-and-power" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Charge &amp; power</Link>.</>,
               <>If the pack is deeply discharged, charge it at the lowest current, about 0.5&ndash;1 A.</>,
               <>Do not short-circuit the pack, immerse it in water, or expose it to open flames.</>,
-              <>Stop using a pack that is swollen, cracked, or leaking, and contact support.</>,
-              <>If the pack swells, smokes, or smells unusual, disconnect it and move it to a safe, well-ventilated area.</>,
+              <>If the pack is swollen, cracked, leaking, smoking, or smells unusual, disconnect it, move it to a safe and well-ventilated area, and stop using it.</>,
               <>For classrooms, keep a sand bucket, a fire blanket, or a Class D extinguisher nearby.</>,
               <>Store the pack at 40&ndash;60% charge, out of the car. Storage rules are on{' '}
                 <Link href="/docs/reference/maintenance" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Maintenance</Link>.</>,
@@ -126,10 +125,9 @@ export default function SafetyPage() {
           </DisplayHeading>
           <DashList
             items={[
-              <>Inspect the chassis regularly for loose, deformed, or cracked parts.</>,
-              <>Check that the tires are secured and not worn. Replace worn tires.</>,
-              <>Check that the servo, motor, and encoders are firmly mounted.</>,
-              <>After a collision, check the aluminum base plate and the shock absorbers.</>,
+              <>Routine mechanical checks and their schedule are on{' '}
+                <Link href="/docs/reference/maintenance" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Maintenance</Link>.</>,
+              <>After a collision, check the base plate and the shock absorbers.</>,
               <>3D printed parts are structural consumables. Report manufacturing defects, such as delamination or severe cracks, within 7 days of arrival; damage from normal use is not covered by the{' '}
                 <Link href="/docs/legal/warranty" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>warranty</Link>.</>,
             ]}

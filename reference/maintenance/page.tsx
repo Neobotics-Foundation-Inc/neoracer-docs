@@ -83,8 +83,7 @@ export default function MaintenancePage() {
               rows={[
                 { item: 'Battery level', when: 'Each use', how: 'Check the charge on the dashboard (port 8080).', fix: 'Charge with the included charger.' },
                 { item: 'Battery appearance', when: 'Weekly', how: 'No swelling, cracks, leaks.', fix: 'Stop and contact support.' },
-                { item: 'Connectors', when: 'Each use', how: 'Seated, no heat marks.', fix: 'Reseat; investigate heat.' },
-                { item: 'Controller heat', when: 'In use', how: 'Cool 30 min after power-off.', fix: 'Hot (> 50 °C): stop, contact support.' },
+                { item: 'Connectors', when: 'Each use', how: 'Seated, no heat marks.', fix: 'Reseat. If a connector heats up, stop.' },
               ]}
             />
           </div>
@@ -121,7 +120,6 @@ export default function MaintenancePage() {
                 <>Charge on the balance charger (30 W, 1&ndash;4S, AC 100&ndash;240 V, XT60). Cut power once it shows green. The full routine is on <Link href="/docs/getting-started/charge-and-power" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Charge &amp; power</Link>.</>,
                 <>Keep the charge above 20%. Over-discharge causes irreversible damage. Stop at once if the pack drops fast or overheats.</>,
                 <>Do not run the car below 0 °C or above 40 °C. Keep the pack firmly fixed.</>,
-                <>Store the pack at 40&ndash;60% (about 3.7&ndash;3.85 V/cell) when unused for more than a few days. Check every 2&ndash;3 months and recharge to about 50% if it falls below 40%. Do not store the pack full or empty.</>,
               ]}
             />
           </div>
@@ -143,11 +141,12 @@ export default function MaintenancePage() {
                   { key: 'v', label: 'Requirement' },
                 ]}
                 rows={[
-                  { k: 'Charge level', v: '40–60% for long-term storage' },
+                  { k: 'Charge level', v: '40–60% (about 3.7–3.85 V/cell); never full or empty' },
                   { k: 'Temperature', v: '−10 °C to 55 °C' },
                   { k: 'Humidity', v: '≤ 85% RH, no condensation' },
                   { k: 'Method', v: 'Powered off, battery stored separately' },
                   { k: 'Environment', v: 'Dry, ventilated, free of corrosive gases' },
+                  { k: 'Regular check', v: 'Every 2–3 months; recharge to about 50% if below 40%' },
                 ]}
               />
             </div>
@@ -191,7 +190,7 @@ export default function MaintenancePage() {
 sudo shutdown -h now`}</Code>
           <DashList
             items={[
-              <>Once the Jetson is down, switch off the module and unplug the battery XT60.</>,
+              <>Once the Jetson has shut down, switch off the module and unplug the battery XT60.</>,
               <>Wipe dust off the wheels and chassis, and check connectors and cables.</>,
               <>Cover the car against dust. Store it in a stable, dry place, out of sunlight and out of reach of children, with the half-charged pack kept separately.</>,
             ]}

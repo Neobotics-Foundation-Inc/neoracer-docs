@@ -70,6 +70,9 @@ export default function SafetyPage() {
               <>Watch every autonomous run with the transmitter in hand. Flip{' '}
                 <code style={{ fontFamily: NB.monoFont }}>SWB</code> up to take
                 manual control at any time.</>,
+              <>If a sensor misbehaves during a run, take manual control, stop
+                the program, and check the sensor against{' '}
+                <Link href="/docs/reference/troubleshooting" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Troubleshooting</Link>.</>,
             ]}
           />
         </section>
@@ -86,7 +89,7 @@ export default function SafetyPage() {
               <>Switch the car off before plugging or unplugging any connector.</>,
               <>Do not leave a stalled motor under power. A blocked wheel builds heat fast.</>,
               <>Stop driving if any part of the car is hot to the touch, and let it cool before the next run.</>,
-              <>If you notice an unusual smell, smoke, or abnormal heating, cut the power and disconnect the battery.</>,
+              <>If you notice an unusual smell, smoke, or abnormal heating, cut the power, disconnect the battery, and move the car to a well-ventilated area. Do not keep using it.</>,
               <>Do not use or charge the car during thunderstorms.</>,
               <>Keep metal objects away from the boards and connectors.</>,
             ]}

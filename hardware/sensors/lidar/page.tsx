@@ -108,7 +108,7 @@ export default function LidarPage() {
             a direction, turn the angle into an index using the helpers below,
             or call{' '}
             <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>
-              rc_utils.get_lidar_average_distance
+              racecar_utils.get_lidar_average_distance
             </code>.
           </p>
           <div style={{ marginTop: 18 }}>
@@ -126,8 +126,8 @@ print(scan[0])                         # cm, straight forward
 print(scan[len(scan) // 4])            # cm, 90° right on any platform
 
 # For any other direction, let the helper do the index math:
-left  = rc_utils.get_lidar_average_distance(scan, 270, window_angle=8)  # 90° left
-front = rc_utils.get_lidar_average_distance(scan, 0,   window_angle=4)`}
+left  = racecar_utils.get_lidar_average_distance(scan, 270, window_angle=8)  # 90° left
+front = racecar_utils.get_lidar_average_distance(scan, 0,   window_angle=4)`}
           </Code>
         </section>
       </ScrollReveal>

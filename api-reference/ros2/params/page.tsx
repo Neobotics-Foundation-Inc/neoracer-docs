@@ -2,15 +2,13 @@ import { Metadata } from 'next';
 import DocsShell from '@/components/docs/DocsShell';
 import { NB } from '@/lib/nb-tokens';
 import {
-  Eyebrow,
   DisplayHeading,
   Red,
   GhostNumeral,
-  ChromeBadge,
   MonoLabel,
 } from '@/components/docs/Editorial';
-import { Crumbs, PrevNext, Callout, Code, DataTable } from '@/components/docs/DocsPrimitives';
-import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
+import { Crumbs, PrevNext, Code, DataTable } from '@/components/docs/DocsPrimitives';
+import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 
 export const metadata: Metadata = {
   title: 'ROS 2 parameters · API Reference · NeoRacer Docs',
@@ -28,12 +26,12 @@ const THROTTLE_ROWS = [
   {
     param: 'max_speed_forward',
     value: '1.0',
-    notes: 'Scales every forward /drive command before it reaches the controller. At 1.0 a full-speed command uses the whole firmware ceiling; lower it to derate the car.',
+    notes: 'Scales every forward /drive command.',
   },
   {
     param: 'max_speed_backward',
     value: '1.0',
-    notes: 'The reverse scale, same idea in the other direction.',
+    notes: 'Scales every reverse /drive command the same way.',
   },
   {
     param: 'max_steering',
@@ -46,7 +44,7 @@ const CONTROLLER_ROWS = [
   {
     param: 'max_speed_mps',
     value: '6.0',
-    notes: 'The physical speed a full-scale command maps to, in m/s. Matches the firmware’s closed-loop ceiling; raising it past 6.0 needs a firmware change, not a parameter.',
+    notes: 'The physical speed a full-scale command maps to, in m/s. Raising it past 6.0 requires a firmware change.',
   },
   {
     param: 'max_steering_angle_deg',
@@ -56,7 +54,7 @@ const CONTROLLER_ROWS = [
   {
     param: 'steering_trim_deg',
     value: '0.0',
-    notes: 'Added to every steering command so a 0.0 angle drives straight. Set through the servo-center calibration.',
+    notes: 'Added to every steering command so a 0.0 angle drives straight. Measured with lab_trim_cal.py and set in controller.yaml.',
   },
   {
     param: 'rc_min / rc_center / rc_max',
@@ -70,8 +68,8 @@ const CONTROLLER_ROWS = [
   },
   {
     param: 'publish_mag',
-    value: 'false',
-    notes: 'The magnetometer topic is off by default; the fused orientation already comes from the MCU state frame.',
+    value: 'true',
+    notes: 'Publishes the raw magnetometer on /mag. The fused orientation on /imu/fused does not use it.',
   },
 ];
 
@@ -84,12 +82,12 @@ const CAMERA_ROWS = [
   {
     param: 'framerate',
     value: '60.0',
-    notes: 'Frames per second on /camera. The node passes the camera’s native MJPG through, so this is real throughput, not a target.',
+    notes: 'Frames per second on /camera. The node passes the camera’s native MJPG stream through unchanged.',
   },
   {
     param: 'video_device',
     value: '/dev/osrbot_usb_cam',
-    notes: 'The stable udev name for the USB camera; the node falls back to scanning /dev/video* if it moves.',
+    notes: 'The stable udev name for the USB camera. If the symlink is missing, the node scans /dev/video*.',
   },
 ];
 
@@ -121,7 +119,7 @@ export default function Ros2ParamsPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'API Reference', href: '/docs/api-reference/python/drive' },
+          { label: 'API Reference', href: '/docs/api-reference/python/core' },
           { label: 'ROS 2' },
           { label: 'Parameters' },
         ]}
@@ -129,53 +127,51 @@ export default function Ros2ParamsPage() {
 
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="//" top={-40} right={-20} size={420} />
+          <GhostNumeral n="14" top={-40} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               ROS 2 <Red>PARAMETERS</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
-              Every node in the driver declares real, live ROS 2 parameters, and
-              the ones below are the ones you will actually reach for: the
-              throttle caps that scale every{' '}
-              <code style={{ fontFamily: NB.monoFont }}>/drive</code> command, the
-              controller mapping from commands to physical speed and angle, the
-              camera settings, and the LiDAR launch arguments.
+              This page lists the parameters the driver nodes declare and the
+              values they ship with.
             </p>
-            <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="red">Live via ros2 param</ChromeBadge>
-              <ChromeBadge variant="outline">Persisted in config/*.yaml</ChromeBadge>
-              <ChromeBadge variant="outline">neoracer_ros2_driver</ChromeBadge>
-            </div>
           </div>
         </section>
       </MouseFollowGlow>
 
       <ScrollReveal>
-        <Callout type="note" title="Two ways to change a value">
-          Set a parameter at runtime with{' '}
-          <code style={{ fontFamily: NB.monoFont }}>ros2 param set</code> and it
-          applies immediately but lasts until the node restarts. Edit the
-          matching YAML under{' '}
-          <code style={{ fontFamily: NB.monoFont }}>neoracer_ros2_driver/config/</code>{' '}
-          and restart (<code style={{ fontFamily: NB.monoFont }}>racecar service restart</code>)
-          and it persists. The workspace builds with symlinks, so a YAML edit
-          needs no rebuild. <code style={{ fontFamily: NB.monoFont }}>ros2 param list</code>{' '}
-          on the running car is always the final word.
-        </Callout>
+        <section style={{ paddingBottom: 8 }}>
+          <DisplayHeading size="lg">
+            CHANGING A <Red>VALUE</Red>
+          </DisplayHeading>
+          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
+            The driver nodes read their parameters once at startup. To change a
+            value, edit the matching YAML under{' '}
+            <code style={{ fontFamily: NB.monoFont }}>neoracer_ros2_driver/config/</code>{' '}
+            and restart the services.{' '}
+            <code style={{ fontFamily: NB.monoFont }}>ros2 param list</code> and{' '}
+            <code style={{ fontFamily: NB.monoFont }}>ros2 param get</code> show
+            the live values.
+          </p>
+          <Code lang="bash">{`ros2 param list /throttle_node                    # every parameter the node declares
+ros2 param get /throttle_node max_speed_forward
+
+# change a value: edit config/throttle.yaml, then
+racecar service restart`}</Code>
+        </section>
       </ScrollReveal>
 
       <ScrollReveal>
         <section style={{ paddingBottom: 8 }}>
-          <Eyebrow>THROTTLE_NODE · config/throttle.yaml</Eyebrow>
           <DisplayHeading size="lg">
-            THE SPEED <Red>CAPS</Red>
+            <Red>THROTTLE</Red>
           </DisplayHeading>
+          <MonoLabel>config/throttle.yaml</MonoLabel>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
-            The most-tuned three values on the car. Full chain: your command
-            [-1, 1] × these caps × the controller&apos;s{' '}
-            <code style={{ fontFamily: NB.monoFont }}>max_speed_mps</code> = what
-            the motor is asked to do.
+            A command in [-1, 1] is multiplied by these caps, then by the
+            controller&apos;s{' '}
+            <code style={{ fontFamily: NB.monoFont }}>max_speed_mps</code>.
           </p>
           <DataTable columns={COLUMNS} rows={THROTTLE_ROWS} />
         </section>
@@ -183,30 +179,30 @@ export default function Ros2ParamsPage() {
 
       <ScrollReveal>
         <section style={{ paddingTop: 28, paddingBottom: 8 }}>
-          <Eyebrow>CONTROLLER_NODE · config/controller.yaml</Eyebrow>
           <DisplayHeading size="lg">
-            THE ESP32 <Red>BRIDGE</Red>
+            <Red>CONTROLLER</Red>
           </DisplayHeading>
+          <MonoLabel>config/controller.yaml</MonoLabel>
           <DataTable columns={COLUMNS} rows={CONTROLLER_ROWS} />
         </section>
       </ScrollReveal>
 
       <ScrollReveal>
         <section style={{ paddingTop: 28, paddingBottom: 8 }}>
-          <Eyebrow>CAMERA_NODE · config/camera.yaml</Eyebrow>
           <DisplayHeading size="lg">
-            THE <Red>CAMERA</Red>
+            <Red>CAMERA</Red>
           </DisplayHeading>
+          <MonoLabel>config/camera.yaml</MonoLabel>
           <DataTable columns={COLUMNS} rows={CAMERA_ROWS} />
         </section>
       </ScrollReveal>
 
       <ScrollReveal>
         <section style={{ paddingTop: 28, paddingBottom: 8 }}>
-          <Eyebrow>LIDAR · launch arguments</Eyebrow>
           <DisplayHeading size="lg">
-            THE LIDAR <Red>DRIVER</Red>
+            <Red>LIDAR</Red>
           </DisplayHeading>
+          <MonoLabel>launch arguments</MonoLabel>
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
             The LakiBeam1 driver takes these as launch arguments in{' '}
             <code style={{ fontFamily: NB.monoFont }}>lidar.launch.py</code>{' '}
@@ -217,26 +213,8 @@ export default function Ros2ParamsPage() {
         </section>
       </ScrollReveal>
 
-      <ScrollReveal>
-        <section style={{ paddingTop: 28, paddingBottom: 24 }}>
-          <MonoLabel>Reading and setting parameters at runtime</MonoLabel>
-          <Code lang="bash">{`# What does a node expose?
-ros2 param list /throttle_node
-
-# Read one
-ros2 param get /throttle_node max_speed_forward
-
-# Change one while the node runs (until the next restart)
-ros2 param set /throttle_node max_speed_forward 0.3
-
-# Make it permanent instead: edit config/throttle.yaml, then
-racecar service restart`}</Code>
-        </section>
-      </ScrollReveal>
-
       <PrevNext
-        prev={{ label: 'ROS 2 services', href: '/docs/api-reference/ros2/services' }}
-        next={{ label: 'ROS 2 TF frames', href: '/docs/api-reference/ros2/tf-frames' }}
+        prev={{ label: 'ROS 2 topics', href: '/docs/api-reference/ros2/topics' }}
       />
     </DocsShell>
   );

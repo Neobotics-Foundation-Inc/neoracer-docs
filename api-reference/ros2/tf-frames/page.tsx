@@ -204,7 +204,7 @@ export default function Ros2TfFramesPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'API Reference', href: '/docs/api-reference/python/drive' },
+          { label: 'API Reference', href: '/docs/api-reference/python/core' },
           { label: 'ROS 2' },
           { label: 'TF frames' },
         ]}
@@ -212,7 +212,7 @@ export default function Ros2TfFramesPage() {
 
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="//" top={-40} right={-20} size={420} />
+          <GhostNumeral n="15" top={-40} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               ROS 2 TF <Red>FRAMES</Red>
@@ -355,7 +355,6 @@ ros2 run tf2_ros static_transform_publisher 0.22 0 0.08 0 0 0 base_link camera_l
 
       <PrevNext
         prev={{ label: 'ROS 2 parameters', href: '/docs/api-reference/ros2/params' }}
-        next={{ label: 'racecar CLI', href: '/docs/api-reference/cli' }}
       />
     </DocsShell>
   );

@@ -214,7 +214,7 @@ http://10.42.0.1:8888          # the car's access point`}</Code>
                       items={[
                         {
                           text: <>When you are done, open the <code style={{ fontFamily: NB.monoFont }}>Kernel</code> menu and choose <strong>Restart Kernel and Clear Outputs of All Cells</strong>.</>,
-                          photos: [{ src: '/images/jupyter_clear_cells.png', alt: 'The Kernel menu with Restart Kernel and Clear Outputs of All Cells highlighted' }],
+                          photos: [{ src: '/images/JupyterLabs/jupyter_clear_cells.png', alt: 'The Kernel menu with Restart Kernel and Clear Outputs of All Cells highlighted' }],
                         },
                       ]}
                     />

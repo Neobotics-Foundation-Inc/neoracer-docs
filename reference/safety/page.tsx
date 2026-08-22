@@ -1,21 +1,19 @@
+import Link from 'next/link';
 import { Metadata } from 'next';
 import DocsShell from '@/components/docs/DocsShell';
 import { NB } from '@/lib/nb-tokens';
 import {
-  Eyebrow,
   DisplayHeading,
   Red,
   GhostNumeral,
-  MonoLabel,
   DashList,
-  NumberedFeatureCard,
 } from '@/components/docs/Editorial';
-import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
-import { Crumbs, PrevNext, Callout } from '@/components/docs/DocsPrimitives';
+import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
+import { Crumbs, PrevNext } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
   title: 'Safety · Reference · NeoRacer Docs',
-  description: 'Safety rules for running a NeoRacer indoors, in a classroom, or on your own.',
+  description: 'The safety rules for running the NeoRacer: where to drive, how to stop it, and how to handle power and the battery.',
 };
 
 export default function SafetyPage() {
@@ -23,89 +21,123 @@ export default function SafetyPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Reference', href: '/docs/reference/specifications' },
+          { label: 'Reference', href: '/docs/reference/safety' },
           { label: 'Safety' },
         ]}
       />
 
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="!" top={-30} right={-20} size={460} />
+          <GhostNumeral n="01" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              SAFETY <Red>RULES</Red>
+              SAFETY <Red>PROCEDURES</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
-              The NeoRacer is a small autonomous robot, and treated well it has
-              a multi-year service life. A few habits keep it that way, since a
-              careless run can damage the car or damage property. A few minutes
-              here before the first run sets you up for all of them.
+              We advise reading these safety procedures before using the
+              NeoRacer.
             </p>
           </div>
         </section>
       </MouseFollowGlow>
 
       <ScrollReveal>
-        <Callout type="danger" title="The short version">
-          <strong>1.</strong> Drive indoors.{' '}
-          <strong>2.</strong> Keep people and pets outside the safe zone.{' '}
-          <strong>3.</strong> Battery care lives on{' '}
-          <a href="/docs/getting-started/charge-and-power" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Charge &amp; power</a>.
-        </Callout>
+        <section style={{ paddingBottom: 40 }}>
+          <DisplayHeading size="lg">
+            <Red>GENERAL</Red>
+          </DisplayHeading>
+          <DashList
+            items={[
+              <>Operators should have basic experience with robots or electronic devices. Children should operate the car under adult supervision.</>,
+              <>Check the car before each use. Stop using it if you find a damaged housing, loose screws, or damaged cables.</>,
+              <>After a drop or a hard impact, inspect the mechanical structure and the electrical connections before using the car again.</>,
+              <>Do not use the car to carry people or animals.</>,
+            ]}
+          />
+        </section>
       </ScrollReveal>
 
       <ScrollReveal>
-        <section style={{ paddingBottom: 32 }}>
-          <Eyebrow>01 / RULE-BY-RULE</Eyebrow>
+        <section style={{ paddingBottom: 40 }}>
           <DisplayHeading size="lg">
-            THE GROUND <Red>RULES</Red>
+            <Red>DRIVING</Red>
           </DisplayHeading>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 22, marginTop: 22 }}>
-            <NumberedFeatureCard
-              n={1}
-              title="Indoor only"
-              lede="Indoor floors are where the car runs best."
-              body={
-                <>
-                  The motor,{' '}
-                  <InfoNote term="encoder" title="Encoder">
-                    A sensor on the motor shaft that counts how far the drivetrain has turned. The car uses it to track its own speed and distance.
-                  </InfoNote>
-                  , and Jetson are not rated for moisture, sand, or grit, and outdoor runs add a property and liability question on top. A known, controlled floor keeps all of that out of the picture.
-                </>
-              }
-            />
-            <NumberedFeatureCard
-              n={2}
-              title="Clear safe zone"
-              lede="A driving area free of people, pets, and breakables runs smoothest."
-              body="The car is capped at 6 m/s, over 20 km/h, and at indoor distances that's faster than your reaction time. About 1 m of clearance from anything you care about, yourself included, gives everyone room to stay out of the way."
-            />
-</div>
+          <DashList
+            items={[
+              <>Drive indoors, on smooth and dry floors. The electronics are not rated for moisture, sand, or grit.</>,
+              <>Keep people, pets, and breakable objects out of the driving area. Keep at least 1 m of clearance. The car&apos;s top speed is 6 m/s, over 20 km/h.</>,
+              <>Keep hands, hair, and loose clothing away from the wheels and drivetrain while the car is powered.</>,
+              <>Watch every autonomous run with the transmitter in hand. Flip{' '}
+                <code style={{ fontFamily: NB.monoFont }}>SWB</code> up to take
+                manual control at any time.</>,
+              <>If a sensor malfunctions, switch to manual control, stop the
+                program, and troubleshoot the sensor connections. See{' '}
+                <Link href="/docs/reference/troubleshooting" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Troubleshooting</Link>.</>,
+            ]}
+          />
+        </section>
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <section style={{ paddingBottom: 40 }}>
+          <DisplayHeading size="lg">
+            <Red>POWER</Red>
+          </DisplayHeading>
+          <DashList
+            items={[
+              <>Use only the included charger and a battery that matches the specification in the Battery section.</>,
+              <>Switch the car off before plugging or unplugging any connector.</>,
+              <>Do not leave a stalled motor under power. A blocked wheel overheats the motor.</>,
+              <>Stop driving if any part of the car is hot to the touch, and let it cool before the next run.</>,
+              <>If you notice an unusual smell, smoke, or abnormal heating, cut the power, disconnect the battery, and move the car to a well-ventilated area. Do not keep using it.</>,
+              <>Do not use or charge the car during thunderstorms.</>,
+              <>Keep metal objects away from the boards and connectors.</>,
+            ]}
+          />
         </section>
       </ScrollReveal>
 
       <ScrollReveal>
         <section style={{ paddingBottom: 32 }}>
-          <Eyebrow>02 / OPERATING SAFELY</Eyebrow>
           <DisplayHeading size="lg">
-            BEFORE AND DURING A <Red>RUN</Red>
+            <Red>BATTERY</Red>
           </DisplayHeading>
           <DashList
             items={[
-              <>Keep hands and loose objects clear of the moving parts, the tires, servo, encoder, and drivetrain, while the car is powered, and ask bystanders to keep back too.</>,
-              <>Switch the power off before you plug or unplug anything. Hot-plugging a connector can damage the board or whatever is on the other end.</>,
-              <>Keep metal out of the interfaces, and don&apos;t run during a thunderstorm.</>,
-              <>The car&apos;s autonomous behaviour is uncertain by design, so someone should always be watching with the transmitter in reach. A flick of <code style={{ fontFamily: NB.monoFont }}>CH7</code> back to RC takes the wheel.</>,
-              <>Avoid a stalled motor left under power (a locked rotor) and continuous running above 40&nbsp;°C, both of which build heat fast.</>,
+              <>Use a 3S (11.1 V) lithium pack with an XT60 plug. The recommended pack is 5200 mAh 35C.</>,
+              <>Charge on the balance charger, in a well-ventilated and fireproof area away from flammable materials, and stay nearby while it charges. The charging routine is on{' '}
+                <Link href="/docs/getting-started/charge-and-power" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Charge &amp; power</Link>.</>,
+              <>If the pack is deeply discharged, charge it at the lowest current, about 0.5&ndash;1 A.</>,
+              <>Do not short-circuit the pack, immerse it in water, or expose it to open flames.</>,
+              <>If the pack is swollen, cracked, leaking, smoking, or smells unusual, disconnect it, move it to a safe and well-ventilated area, and stop using it.</>,
+              <>For classrooms, keep a sand bucket, a fire blanket, or a Class D extinguisher nearby.</>,
+              <>Store the pack at 40&ndash;60% charge, out of the car. Storage rules are on{' '}
+                <Link href="/docs/reference/maintenance" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Maintenance</Link>.</>,
+            ]}
+          />
+        </section>
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <section style={{ paddingBottom: 32 }}>
+          <DisplayHeading size="lg">
+            <Red>MECHANICAL</Red>
+          </DisplayHeading>
+          <DashList
+            items={[
+              <>Routine mechanical checks and their schedule are on{' '}
+                <Link href="/docs/reference/maintenance" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Maintenance</Link>.</>,
+              <>After a collision, check the base plate and the shock absorbers.</>,
+              <>3D printed parts are structural consumables. Report manufacturing defects, such as delamination or severe cracks, within 7 days of arrival; damage from normal use is not covered by the{' '}
+                <Link href="/docs/legal/warranty" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>warranty</Link>.</>,
             ]}
           />
         </section>
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'Compatibility matrix', href: '/docs/reference/compatibility-matrix' }}
-        next={{ label: 'Warranty', href: '/docs/legal/warranty' }}
+        prev={{ label: 'ROS 2 params', href: '/docs/api-reference/ros2/params' }}
+        next={{ label: 'Troubleshooting', href: '/docs/reference/troubleshooting' }}
       />
     </DocsShell>
   );

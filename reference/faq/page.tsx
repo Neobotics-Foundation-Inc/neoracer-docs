@@ -5,14 +5,12 @@ import {
   DisplayHeading,
   Red,
   GhostNumeral,
-  ChromeBadge,
-  MonoLabel,
 } from '@/components/docs/Editorial';
-import { ScrollReveal, MouseFollowGlow, AnimatedNumeral, InfoNote } from '@/components/docs/Interactive';
+import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext, Callout } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
-  title: 'FAQ · Troubleshooting · NeoRacer Docs',
+  title: 'FAQ · Reference · NeoRacer Docs',
   description:
     'Questions that get asked enough that they deserve a single canonical answer. Battery choice, ROS 1 support, Windows compatibility, classroom counts, more.',
 };
@@ -30,17 +28,11 @@ const FAQS: Faq[] = [
     a: (
       <>
         Due to various international shipping regulations, Neobotics does not
-        directly sell LiPo batteries. The{' '}
+        directly sell LiPo batteries.{' '}
         <a href="/docs/getting-started/charge-and-power" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-          Hardware power page
+          Charge &amp; power
         </a>{' '}
-        has the specifications you need to pick a{' '}
-        <InfoNote term="3S pack" title="3S Pack">
-          A battery with three lithium cells wired in series. More cells in
-          series means higher voltage, so the S count tells you the pack's
-          voltage range.
-        </InfoNote>{' '}
-        that fits.
+        has the specifications you need to pick a 3S pack that fits.
       </>
     ),
   },
@@ -49,15 +41,9 @@ const FAQS: Faq[] = [
     q: "Can I run the car outside?",
     a: (
       <>
-        The NeoRacer is designed for indoor use on smooth surfaces. Outdoor
-        running on pavement is fine for short tests, but the{' '}
-        <InfoNote term="LiDAR" title="LiDAR">
-          A sensor that measures distance by bouncing laser pulses off
-          surfaces and timing how long they take to return. The car uses it to
-          map walls and obstacles around it.
-        </InfoNote>{' '}
-        struggles in direct sun and the wheels were tuned for smooth gym
-        floors.
+        The NeoRacer is designed for indoor use on smooth surfaces. Short
+        tests on pavement are fine, but the LiDAR does not read reliably in
+        direct sunlight and the wheels are tuned for smooth indoor floors.
       </>
     ),
   },
@@ -67,12 +53,11 @@ const FAQS: Faq[] = [
     a: (
       <>
         The firmware caps the drivetrain at 6 m/s, and the driver ships with
-        the full range unlocked. The caps are real parameters you can read and
-        lower to derate the car for a classroom; the{' '}
-        <a href="/docs/calibration/motor-trim" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-          Motor trim
+        the full range unlocked. The caps can be lowered for a classroom; the{' '}
+        <a href="/docs/api-reference/ros2/params" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
+          ROS 2 params
         </a>{' '}
-        page shows where they live.
+        page lists them.
       </>
     ),
   },
@@ -111,13 +96,14 @@ const FAQS: Faq[] = [
     q: 'How do I update the on-car software?',
     a: (
       <>
-        Pull the driver repository and re-run the setup script, which is safe
-        to run repeatedly:{' '}
-        <code style={{ fontFamily: NB.monoFont }}>cd ~/ros2_ws/src/neoracer_ros2_driver && git pull && bash scripts/setup_all.sh</code>,
-        then <code style={{ fontFamily: NB.monoFont }}>racecar service restart</code>.
-        The car needs internet for the pull, the same way as during{' '}
+        Run <code style={{ fontFamily: NB.monoFont }}>racecar update</code> on
+        the car. It pulls the latest driver, reruns setup, and restarts the
+        services. The car needs internet, as during{' '}
         <a href="/docs/getting-started/prepare-the-car" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
           Prepare the car
+        </a>. Details are on{' '}
+        <a href="/docs/api-reference/cli/setup" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
+          CLI &middot; Maintenance
         </a>.
       </>
     ),
@@ -137,17 +123,12 @@ const FAQS: Faq[] = [
     q: 'How do multiple cars share one classroom?',
     a: (
       <>
-        The clean classroom setup is one cudy router per car: each car plugs
-        into its own router (Wi-Fi{' '}
-        <code style={{ fontFamily: NB.monoFont }}>neoracer-[Car ID]</code>,
-        password <code style={{ fontFamily: NB.monoFont }}>neobotics</code>) and
-        each student reaches their car at{' '}
-        <code style={{ fontFamily: NB.monoFont }}>192.168.10.100</code> on their
-        own network, so there is no shared access point to overload. A car can
-        also broadcast its own Wi-Fi
-        (<code style={{ fontFamily: NB.monoFont }}>neoracer-1</code>, car at{' '}
-        <code style={{ fontFamily: NB.monoFont }}>10.42.0.1</code>) when a router
-        isn&apos;t around.
+        Use one cudy router per car. Each student joins their own car&apos;s
+        network, so there is no shared access point to overload. Addresses and
+        setup are on{' '}
+        <a href="/docs/software/networking" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
+          Networking
+        </a>.
       </>
     ),
   },
@@ -164,8 +145,8 @@ const FAQS: Faq[] = [
           support@neobotics.org
         </a>{' '}
         with the car's serial number and, if relevant, the output of{' '}
-        <code style={{ fontFamily: NB.monoFont }}>journalctl -u neoracer-jupyter -n 60</code>
-        . Most cases get diagnosed inside an hour.
+        <code style={{ fontFamily: NB.monoFont }}>racecar status</code> and{' '}
+        <code style={{ fontFamily: NB.monoFont }}>journalctl -u neoracer-teleop -n 60</code>.
       </>
     ),
   },
@@ -178,18 +159,18 @@ const FAQS: Faq[] = [
         <a href="/docs/legal/warranty" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
           Legal → Warranty
         </a>
-        . The short version: one year on parts that fail under normal
-        classroom use.
+        . The short version: nine months from delivery, covering defects
+        under normal use.
       </>
     ),
   },
 ];
 
-const GROUP_LABELS: Record<Faq['group'], string> = {
-  kits: 'KITS & HARDWARE',
-  software: 'SOFTWARE',
-  classroom: 'CLASSROOM',
-  support: 'SUPPORT',
+const GROUP_HEADINGS: Record<Faq['group'], React.ReactNode> = {
+  kits: <>KITS &amp; <Red>HARDWARE</Red></>,
+  software: <><Red>SOFTWARE</Red></>,
+  classroom: <><Red>CLASSROOM</Red></>,
+  support: <><Red>SUPPORT</Red></>,
 };
 
 function QnA({ f }: { f: Faq }) {
@@ -251,7 +232,7 @@ export default function FaqPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Troubleshooting', href: '/docs/troubleshooting/wont-power-on' },
+          { label: 'Reference', href: '/docs/reference/safety' },
           { label: 'FAQ' },
         ]}
       />
@@ -259,7 +240,7 @@ export default function FaqPage() {
       {/* ── Hero ───────────────────────────────────────────────────────── */}
       <MouseFollowGlow>
       <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-        <GhostNumeral n="?" top={-50} right={-20} size={440} />
+        <GhostNumeral n="05" top={-50} right={-20} size={440} />
         <div style={{ position: 'relative', zIndex: 1 }}>
           <DisplayHeading size="xl">
             FREQUENTLY ASKED <Red>QUESTIONS</Red>
@@ -273,17 +254,8 @@ export default function FaqPage() {
               maxWidth: 680,
             }}
           >
-            If a question shows up in support more than twice, it lands here
-            with a canonical answer. They're grouped into four sections: kits,
-            software, classroom, and support. Each answer links out to the page
-            that covers it in full detail.
+            Answers to common questions about the NeoRacer.
           </p>
-          <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-            <ChromeBadge variant="red">
-              <AnimatedNumeral value={FAQS.length} suffix=" answers" />
-            </ChromeBadge>
-            <ChromeBadge variant="outline">Updated continuously</ChromeBadge>
-          </div>
         </div>
       </section>
       </MouseFollowGlow>
@@ -294,7 +266,7 @@ export default function FaqPage() {
         return (
           <ScrollReveal key={g}>
             <section style={{ paddingBottom: 36 }}>
-              <MonoLabel>{GROUP_LABELS[g]}</MonoLabel>
+              <DisplayHeading size="lg">{GROUP_HEADINGS[g]}</DisplayHeading>
               <div
                 style={{
                   display: 'grid',
@@ -321,14 +293,13 @@ export default function FaqPage() {
           >
             support@neobotics.org
           </a>{' '}
-          with the question. If we end up answering it more than twice, it
-          joins this page so the next person doesn't have to ask.
+          with the question.
         </Callout>
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: "Wi-Fi can't connect", href: '/docs/troubleshooting/wifi-cant-connect' }}
-        next={{ label: 'Specifications', href: '/docs/reference/specifications' }}
+        prev={{ label: 'Passwords', href: '/docs/reference/passwords' }}
+        next={{ label: 'Warranty', href: '/docs/legal/warranty' }}
       />
     </DocsShell>
   );

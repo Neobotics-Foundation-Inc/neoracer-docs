@@ -96,7 +96,7 @@ export default function PrepareTheCarPage() {
                       { text: <>Take the Cudy router on its own, without its cables, and slide it into the rear of the car under the top chassis, with its ports facing the front of the car.</> },
                       {
                         text: <>Connect the Ethernet cable and the short USB-C cable in the top chassis. The Ethernet cable plugs into the router&apos;s LAN port. Make sure you use the correct USB-C cable: the shorter one connects to the underside of the PCB, while the LiDAR&apos;s cable connects to the top side.</>,
-                        photos: [{ src: '/images/chassis-cudy.jpeg', alt: 'The Cudy router in the chassis with the Ethernet and short USB-C cable connected' }],
+                        photos: [{ src: '/images/router/chassis-cudy.jpeg', alt: 'The Cudy router in the chassis with the Ethernet and short USB-C cable connected' }],
                       },
                       { text: <>Fit the router snugly within the top chassis and screw the chassis back in.</> },
                     ]}
@@ -119,27 +119,27 @@ export default function PrepareTheCarPage() {
                       { text: <>Power the car off before you unmount the Jetson.</> },
                       {
                         text: <>Unscrew the Jetson from its 3D-printed chassis mount to reach the Wi-Fi card underneath. It is held by four hex screws.</>,
-                        photos: [{ src: '/images/jetson-screws.jpeg', alt: 'The four hex screws holding the Jetson to its chassis mount' }],
+                        photos: [{ src: '/images/compute/jetson-screws.jpeg', alt: 'The four hex screws holding the Jetson to its chassis mount' }],
                       },
                       {
                         text: <>Flip the Jetson over to find the two antenna sockets on the Wi-Fi card.</>,
-                        photos: [{ src: '/images/jetson-flipped.jpeg', alt: 'The flipped Jetson with the antenna sockets on the Wi-Fi card highlighted' }],
+                        photos: [{ src: '/images/compute/jetson-flipped.jpeg', alt: 'The flipped Jetson with the antenna sockets on the Wi-Fi card highlighted' }],
                       },
                       {
                         text: <>Keep the plastic antennas aside for now; they screw onto the cable ends later.</>,
-                        photos: [{ src: '/images/jetson-antenna.jpeg', alt: 'An antenna cable next to the plastic antenna that screws onto it' }],
+                        photos: [{ src: '/images/compute/jetson-antenna.jpeg', alt: 'An antenna cable next to the plastic antenna that screws onto it' }],
                       },
                       {
                         text: <>Keep the Jetson on a steady surface and hold the U.FL connector perfectly vertical over its socket on the card. Remove any tension in the wire so the U.FL does not sit misaligned, then press the connector onto the socket until it clicks. It may take a few attempts, as the connector is very delicate.</>,
-                        photos: [{ src: '/images/jetson-antenna-attached.jpeg', alt: 'An antenna cable attached to the Wi-Fi card socket' }],
+                        photos: [{ src: '/images/compute/jetson-antenna-attached.jpeg', alt: 'An antenna cable attached to the Wi-Fi card socket' }],
                       },
                       {
                         text: <>Screw the Jetson back onto its mount and route the cables through the chassis to the sides of the car. Make sure all four screw holes line up with the Jetson before screwing it back in.</>,
-                        photos: [{ src: '/images/jetson-antennas-hanging.jpeg', alt: 'The antenna cables routed through the chassis to the sides' }],
+                        photos: [{ src: '/images/compute/jetson-antennas-hanging.jpeg', alt: 'The antenna cables routed through the chassis to the sides' }],
                       },
                       {
                         text: <>Screw the plastic antennas onto the cable ends on each side.</>,
-                        photos: [{ src: '/images/jetson-antennas-attached-car.jpeg', alt: 'A plastic antenna screwed onto the cable at the side of the car' }],
+                        photos: [{ src: '/images/compute/jetson-antennas-attached-car.jpeg', alt: 'A plastic antenna screwed onto the cable at the side of the car' }],
                       },
                       {
                         text: <>Zip-tie each antenna to the front of the top chassis, where the on/off switch is. Route the zip tie around the antenna with one side above it and one below. Do the same on the other side.</>,
@@ -164,17 +164,17 @@ export default function PrepareTheCarPage() {
                   items={[
                     {
                       text: <>Find the two cables on the right side of the car: one USB-A and one DC barrel jack.</>,
-                      photos: [{ src: '/images/jetson-cables-unplugged.jpg', alt: 'The USB-A and DC barrel jack cables on the right side of the car' }],
+                      photos: [{ src: '/images/compute/jetson-cables-unplugged.jpg', alt: 'The USB-A and DC barrel jack cables on the right side of the car' }],
                     },
                     {
                       text: <>Plug both cables into the Jetson.</>,
-                      photos: [{ src: '/images/jetson-cables-plugged.jpg', alt: 'The USB-A and DC barrel jack cables plugged into the Jetson' }],
+                      photos: [{ src: '/images/compute/jetson-cables-plugged.jpg', alt: 'The USB-A and DC barrel jack cables plugged into the Jetson' }],
                     },
                     {
                       text: <>Make sure the camera is plugged into the Jetson. The camera uses a JST connector and connects over USB-A.</>,
                       photos: [
                         { src: '/images/camera-plugged.jpg', alt: 'The JST connector plugged into the back of the camera' },
-                        { src: '/images/jetson-camera-plugged.jpg', alt: "The camera's USB-A cable plugged into the Jetson" },
+                        { src: '/images/compute/jetson-camera-plugged.jpg', alt: "The camera's USB-A cable plugged into the Jetson" },
                       ],
                     },
                     {

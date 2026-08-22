@@ -259,7 +259,7 @@ export default function CompatibilityMatrixPage() {
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'Changelog', href: '/docs/reference/changelog' }}
+        prev={{ label: 'Glossary', href: '/docs/reference/glossary' }}
         next={{ label: 'Safety', href: '/docs/reference/safety' }}
       />
     </DocsShell>

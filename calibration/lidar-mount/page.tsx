@@ -146,7 +146,7 @@ export default function LidarMountPage() {
                 body={
                   <>
                     You read the live scan to confirm the aim, so bring up the{' '}
-                    <a href="/docs/software/ros2-driver" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>driver</a>{' '}
+                    <a href="/docs/api-reference/ros2/topics" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>driver</a>{' '}
                     first. The hardware detail is on the{' '}
                     <a href="/docs/hardware/sensors/lidar" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>LiDAR</a>{' '}
                     page.

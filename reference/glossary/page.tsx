@@ -120,12 +120,12 @@ const TERMS: Term[] = [
   {
     term: 'Pyodide',
     def: 'A WebAssembly build of CPython that runs in the browser. Lets the NeoRacer Playground execute the same Python student code the car runs.',
-    see: { label: 'racecar-neo-library', href: '/docs/software/racecar-neo-library' },
+    see: { label: 'Python API reference', href: '/docs/api-reference/python/drive' },
   },
   {
     term: 'racecar-neo-library',
     def: 'The Python module every student writes against. The rc.* namespace it exposes is identical on the browser sim and the physical car.',
-    see: { label: 'racecar-neo-library', href: '/docs/software/racecar-neo-library' },
+    see: { label: 'Python API reference', href: '/docs/api-reference/python/drive' },
   },
   {
     term: 'rc',
@@ -135,7 +135,7 @@ const TERMS: Term[] = [
     term: 'ROS 2',
     short: 'Robot Operating System 2',
     def: 'The middleware running on the Jetson. Sensors publish topics, your code subscribes, your code publishes drive commands, the actuators subscribe.',
-    see: { label: 'ROS 2 driver', href: '/docs/software/ros2-driver' },
+    see: { label: 'ROS 2 topics', href: '/docs/api-reference/ros2/topics' },
   },
   {
     term: 'Servo center',
@@ -150,7 +150,7 @@ const TERMS: Term[] = [
   {
     term: 'Topic',
     def: 'A named channel in ROS 2 (/scan, /imu, /drive). Publishers don\'t know who\'s reading. Subscribers don\'t know who\'s writing. The middleware does the routing.',
-    see: { label: 'ROS 2 driver', href: '/docs/software/ros2-driver' },
+    see: { label: 'ROS 2 topics', href: '/docs/api-reference/ros2/topics' },
   },
   {
     term: 'Watchdog',
@@ -396,7 +396,7 @@ export default function GlossaryPage() {
 
       <PrevNext
         prev={{ label: 'Specifications', href: '/docs/reference/specifications' }}
-        next={{ label: 'Changelog', href: '/docs/reference/changelog' }}
+        next={{ label: 'Compatibility matrix', href: '/docs/reference/compatibility-matrix' }}
       />
     </DocsShell>
   );

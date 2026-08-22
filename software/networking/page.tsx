@@ -6,12 +6,9 @@ import {
   DisplayHeading,
   Red,
   GhostNumeral,
-  ChromeBadge,
-  NumberedFeatureCard,
   MonoLabel,
 } from '@/components/docs/Editorial';
-import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
-import { StepCard } from '@/components/docs/StepCard';
+import { ScrollReveal, MouseFollowGlow, InfoNote, PhotoSteps, Tabs } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext, Callout, Code, DataTable } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
@@ -25,7 +22,7 @@ export default function NetworkingPage() {
     <DocsShell>
       <Crumbs
         items={[
-          { label: 'Software', href: '/docs/software/os-and-image' },
+          { label: 'Software', href: '/docs/software/networking' },
           { label: 'Networking' },
         ]}
       />
@@ -33,10 +30,10 @@ export default function NetworkingPage() {
       {/* ── Hero ────────────────────────────────────────────────────────── */}
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="NET" top={-30} right={-20} size={460} />
+          <GhostNumeral n="01" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              THE CAR'S <Red>NETWORK</Red>
+              NEORACER <Red>NETWORKS</Red>
             </DisplayHeading>
             <p
               style={{
@@ -47,111 +44,198 @@ export default function NetworkingPage() {
                 maxWidth: 700,
               }}
             >
-              There are two ways to reach the car, and both end with it at a
-              fixed address. The cudy router travels with the car and can share
-              internet, which suits a classroom or several cars at once. The
-              car&apos;s own access point needs no extra hardware at all. Pick
-              either; the rest of this page works the same on both.
+              There are two ways to access the car: the cudy router or the
+              Nvidia Jetson&apos;s access point. Both methods have a fixed
+              address.
             </p>
-            <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="red">cudy · 192.168.10.100</ChromeBadge>
-              <ChromeBadge variant="red">access point · 10.42.0.1</ChromeBadge>
-              <ChromeBadge variant="outline">user racecar</ChromeBadge>
-            </div>
           </div>
         </section>
       </MouseFollowGlow>
 
-      <ScrollReveal>
-        <StepCard
-          title="The network"
-          image="/images/build/router-2.jpg"
-          alt="The Cudy travel router that puts the car and laptop on one network"
-        >
-          The kit includes a small travel router so the car and your laptop can
-          share one network straight out of the box, no cables needed. Power it
-          on, join its Wi-Fi, and you can reach the car&apos;s notebook interface and
-          start sending it code.
-        </StepCard>
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <Callout type="note" title="First time on a fresh car?">
-          A brand new car has not been put on a network yet. That one-time setup
-          happens at the car with a monitor and keyboard, and it is covered by{' '}
-          <Link href="/docs/getting-started/prepare-the-car" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-            Prepare the car
-          </Link>{' '}
-          and the end of{' '}
-          <Link href="/docs/getting-started/install-driver" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-            Install the driver
-          </Link>. This page is the reference for every day after that.
-        </Callout>
-      </ScrollReveal>
-
       {/* ── Section 01 · The two networks ──────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="01" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
               PICK YOUR <Red>NETWORK</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
               With the cudy router, the car plugs into the router and both join
-              its Wi-Fi; the router can also uplink to the internet. With the
-              access point, the Jetson broadcasts its own Wi-Fi and your laptop
-              joins the car directly.
+              its Wi-Fi. With the access point, the Jetson broadcasts its own
+              Wi-Fi and your laptop joins the car directly.
             </p>
             <div style={{ marginTop: 18 }}>
               <DataTable
                 columns={[
                   { key: 'k', label: '', accent: true },
                   { key: 'cudy', label: 'Cudy router', mono: true },
-                  { key: 'ap', label: 'Access point', mono: true },
+                  { key: 'ap', label: 'Jetson Access Point', mono: true },
                 ]}
                 rows={[
-                  { k: 'Wi-Fi to join', cudy: 'neoracer-[ID] (+ -5G twin)', ap: 'neoracer-1' },
+                  {
+                    k: '',
+                    cudy: <HardwareShot src="/images/build/router-2.jpg" alt="The Cudy travel router included in the kit" />,
+                    ap: <HardwareShot src="/images/build/jetson.jpg" alt="The Nvidia Jetson on the car, which broadcasts its own access point" />,
+                  },
+                  { k: 'Wi-Fi to join', cudy: 'neoracer-[ID] (+ -5G twin)', ap: 'neoracer-1 (default)' },
                   { k: 'Wi-Fi password', cudy: 'neobotics', ap: 'neobotics' },
-                  { k: 'The car', cudy: '192.168.10.100', ap: '10.42.0.1' },
-                  { k: 'Gateway', cudy: '192.168.10.1 (router)', ap: '10.42.0.1 (the car)' },
-                  { k: 'Internet', cudy: 'via the router uplink', ap: 'none' },
+                  { k: 'Network IP', cudy: '192.168.10.100', ap: '10.42.0.1' },
+                  { k: 'Gateway', cudy: '192.168.10.1', ap: '10.42.0.1' },
                   { k: 'Extra hardware', cudy: 'the included cudy router', ap: 'none' },
+                  {
+                    k: 'Setup',
+                    cudy: 'automatic',
+                    ap: (
+                      <>
+                        requires the{' '}
+                        <InfoNote term="CLI" title="CLI (command-line interface)">
+                          A way of controlling the car by typing commands into a
+                          terminal instead of clicking through a web page.
+                        </InfoNote>
+                      </>
+                    ),
+                  },
+                  { k: 'Antennas', cudy: 'attached to the router', ap: 'externally placed' },
                 ]}
               />
             </div>
-            <Callout type="tip" title="Which one when">
-              Classroom, several cars, or the car needs internet: cudy. One car
-              and one laptop on a bench or a track: the access point. Switching
-              is a matter of which Wi-Fi your laptop joins.
-            </Callout>
-            <Callout type="note" title="Putting the car itself online">
-              The access point carries no internet, so for installs and updates
-              the car borrows a network instead: join an existing Wi-Fi from the
-              console desktop or plug Ethernet into the Jetson&apos;s RJ45,
-              exactly as in{' '}
+            <Callout type="note" title="Access to Wi-Fi">
+              For installs and updates, the Jetson needs access to the Wi-Fi.
+              Therefore, we recommend connecting your device to the router and
+              connecting the Jetson to internet. These are the same steps we
+              follow in{' '}
               <Link href="/docs/getting-started/prepare-the-car" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-                Prepare the car
-              </Link>. On the cudy, connecting the router&apos;s uplink
-              does the same job without touching the car.
+                setup
+              </Link>. Using the Jetson access point means the Jetson cannot
+              connect to Wi-Fi directly.
             </Callout>
           </div>
         </section>
       </ScrollReveal>
 
-      {/* ── Section 02 · Three ways in ──────────────────────────────────── */}
+      {/* ── Section 02 · Network setup ─────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="02" top={-30} right={-20} size={460} />
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <DisplayHeading size="lg">
+              NETWORK <Red>SETUP</Red>
+            </DisplayHeading>
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
+              Set up whichever network you picked. The access point is
+              configured on the car itself; the cudy router is configured from
+              a browser.
+            </p>
+
+            <Tabs
+              ariaLabel="Network setup method"
+              tabs={[
+                {
+                  label: 'Jetson Access Point',
+                  content: (
+                    <>
+                      <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 0 }}>
+                        <code style={{ fontFamily: NB.monoFont }}>racecar setup networking</code>{' '}
+                        configures the Jetson&apos;s access point. Run with no
+                        flags it applies the defaults. All flag values are saved
+                        to{' '}
+                        <code style={{ fontFamily: NB.monoFont }}>~/.config/racecar/networking.env</code>{' '}
+                        on the car, so the settings are applied on boot.
+                      </p>
+                      <Code lang="bash">{`racecar setup networking --ssid=neoracer-2   # rename the access point
+racecar setup networking --psk=mypassword    # change the AP password
+racecar setup networking --show              # print the saved settings
+racecar setup networking --reset             # back to the defaults`}</Code>
+                      <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 14 }}>
+                        Other flags are listed on the{' '}
+                        <Link href="/docs/api-reference/cli" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>racecar CLI</Link>{' '}
+                        page.
+                      </p>
+                      <Callout type="tip" title="Rename access point with multiple cars">
+                        Every car ships broadcasting{' '}
+                        <code style={{ fontFamily: NB.monoFont }}>neoracer-1</code>, so two
+                        cars share the same network name. Rename each one the first
+                        time you use it. The cudy routers do not have this problem as
+                        they are preconfigured with unique names.
+                      </Callout>
+                    </>
+                  ),
+                },
+                {
+                  label: 'Cudy router',
+                  content: (
+                    <>
+                      <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 0 }}>
+                        The Cudy router already comes set up for the car. These
+                        steps are not required, but they are helpful for getting
+                        familiar with the Cudy dashboard and for changing the
+                        network name and password.
+                      </p>
+                      <PhotoSteps
+                        items={[
+                          { text: <>Make sure your device is already connected to the cudy router&apos;s Wi-Fi.</> },
+                          { text: <>Open a browser and go to <code style={{ fontFamily: NB.monoFont }}>http://192.168.10.1</code>.</> },
+                          { text: <>Sign in. The router administrator password is <code style={{ fontFamily: NB.monoFont }}>neobotics</code>.</> },
+                          {
+                            text: <>On <strong>Operation Mode</strong>, keep the default.</>,
+                            photos: [{ src: '/images/cudy_setup_Oper_Mode.png', alt: 'The cudy Operation Mode screen, left at its default setting' }],
+                          },
+                          {
+                            text: <>On <strong>WAN</strong>, we recommend keeping <code style={{ fontFamily: NB.monoFont }}>neoracer</code> as the hostname. Ignore the error at the top and leave the protocol as it is.</>,
+                            photos: [{ src: '/images/cudy_setup_WAN_Mode.png', alt: 'The cudy WAN mode screen with neoracer as the hostname' }],
+                          },
+                          {
+                            text: <>On <strong>Wireless</strong>, change the network name and password for both 2.4 GHz and 5 GHz. We recommend keeping the same network name, because it matches the name on the sticker under the car.</>,
+                            photos: [{ src: '/images/cudy_setup_change_pass.png', alt: 'The cudy wireless screen, where the 2.4 GHz and 5 GHz network names and passwords are set' }],
+                          },
+                          {
+                            text: (
+                              <>
+                                On <strong>Summary</strong>, click <strong>Save and apply</strong>.
+                                You will normally be disconnected from the Wi-Fi at
+                                this point: changing the SSID or password drops every
+                                device.
+                              </>
+                            ),
+                            photos: [{ src: '/images/cudy_setup_summary.png', alt: 'The cudy summary screen with the Save and apply button' }],
+                          },
+                          {
+                            text: <>Connect back to the Wi-Fi and you land on the router dashboard. This is where you can see exactly what is connected to the car&apos;s network. Click <strong>Clients</strong>.</>,
+                            photos: [{ src: '/images/cudy_setup_dashboard.png', alt: 'The cudy router dashboard after reconnecting, with Clients in the menu' }],
+                          },
+                          {
+                            text: <>Then click <strong>Devices</strong>.</>,
+                            photos: [{ src: '/images/cudy_setup_devices.png', alt: 'The cudy Clients view with the Devices tab' }],
+                          },
+                          {
+                            text: <>The Nvidia Jetson appears in that list, alongside any personal devices on the network.</>,
+                            photos: [{ src: '/images/cudy_setup_view_jetson.png', alt: 'The cudy device list showing the Nvidia Jetson among the connected devices' }],
+                          },
+                        ]}
+                      />
+                    </>
+                  ),
+                },
+              ]}
+            />
+          </div>
+        </section>
+      </ScrollReveal>
+
+      {/* ── Section 02 · Ways in ───────────────────────────────────────── */}
+      <ScrollReveal>
+        <section style={{ position: 'relative', paddingBottom: 56 }}>
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
               WAYS TO <Red>CONNECT</Red>
             </DisplayHeading>
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
+              Once you have chosen your preferred network method, there are two
+              main ways to connect to the car:
+            </p>
 
             <div style={{ marginTop: 18 }}>
               <MonoLabel>SSH</MonoLabel>
               <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 0 }}>
-                A terminal is all you need for most work.{' '}
                 <InfoNote term="SSH" title="SSH">SSH (Secure Shell) logs you into another computer over the network and gives you its terminal. Here it puts you on the car.</InfoNote>{' '}
                 in as <code style={{ fontFamily: NB.monoFont }}>racecar</code> at the
                 address for your network:
@@ -164,24 +248,12 @@ ssh racecar@10.42.0.1          # access point
             <div style={{ marginTop: 22 }}>
               <MonoLabel>Remote desktop (RustDesk)</MonoLabel>
               <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 0 }}>
-                For the full Jetson desktop, open{' '}
-                <InfoNote term="RustDesk" title="RustDesk">A remote-desktop tool. It mirrors the Jetson's screen to your laptop over the network so you can use its desktop directly.</InfoNote>{' '}
-                on your laptop and connect by the car&apos;s IP address (direct
-                IP; the password is{' '}
-                <code style={{ fontFamily: NB.monoFont }}>neobotics</code>).
+                For the full Jetson desktop, connect by the IP address. Setup is
+                done in{' '}
+                <Link href="/docs/software/remote-desktop" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
+                  Remote desktop
+                </Link>.
               </p>
-            </div>
-
-            <div style={{ marginTop: 22 }}>
-              <MonoLabel>Wired USB fallback</MonoLabel>
-              <p style={{ fontFamily: NB.bodyFont, fontSize: 15.5, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 0 }}>
-                With no Wi-Fi at all, a USB-A to USB-C cable from your PC to the
-                Jetson&apos;s Type-C port brings up a{' '}
-                <InfoNote term="RNDIS" title="USB Ethernet (RNDIS)">A USB device can present itself as a virtual Ethernet adapter. The Jetson does this on its Type-C port, so a plain USB cable becomes a point-to-point network link.</InfoNote>{' '}
-                point-to-point link, and the Jetson answers at a fixed address:
-              </p>
-              <Code lang="bash">{`ssh racecar@192.168.55.1       # over the USB cable
-# password: neobotics`}</Code>
             </div>
           </div>
         </section>
@@ -190,21 +262,31 @@ ssh racecar@10.42.0.1          # access point
       {/* ── Section 03 · Already running ───────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="03" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              IN A <Red>BROWSER</Red>
+              SERV<Red>ICES</Red>
             </DisplayHeading>
             <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-              The car brings up its whole stack at boot: the driver, the
-              watchdog, the health dashboard, and JupyterLab all run as{' '}
-              <Link href="/docs/getting-started/install-driver" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>services</Link>.
-              Two of them are web pages, so a browser on the car&apos;s network
-              is enough:
+              The car runs its whole stack as services on boot: the driver, the
+              watchdog, the health dashboard, and JupyterLab. The latter two are
+              webpages and can be accessed via the browser.
             </p>
             <Code lang="bash">{`http://192.168.10.100:8080     # health dashboard   (10.42.0.1 on the AP)
 http://192.168.10.100:8888     # JupyterLab        (10.42.0.1 on the AP)`}</Code>
-            <Callout type="note" title="Everything is already running">
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 18 }}>
+              Each address is two parts. The first is the car&apos;s IP, which
+              depends on the network you picked:{' '}
+              <code style={{ fontFamily: NB.monoFont }}>192.168.10.100</code> on
+              the cudy router, or{' '}
+              <code style={{ fontFamily: NB.monoFont }}>10.42.0.1</code> on the
+              Jetson access point. The second is the port after the colon, which
+              picks the service:{' '}
+              <code style={{ fontFamily: NB.monoFont }}>:8080</code> for the
+              health dashboard and{' '}
+              <code style={{ fontFamily: NB.monoFont }}>:8888</code> for
+              JupyterLab. The IP changes with your network; the port does not.
+            </p>
+            <Callout type="note" title="Maintain services on the car">
               There is nothing to start after a boot. Check or restart the
               services from a terminal with{' '}
               <code style={{ fontFamily: NB.monoFont }}>racecar service status</code>{' '}
@@ -216,216 +298,34 @@ http://192.168.10.100:8888     # JupyterLab        (10.42.0.1 on the AP)`}</Code
         </section>
       </ScrollReveal>
 
-      {/* ── Section 04 · ROS 2 over the link ───────────────────────────── */}
-      <ScrollReveal>
-        <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="04" top={-30} right={-20} size={460} />
-          <div style={{ position: 'relative', zIndex: 1 }}>
-            <DisplayHeading size="lg">
-              ROS 2 <Red>DISCOVERY</Red>
-            </DisplayHeading>
-            <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-              Once your laptop is on the car&apos;s network, you share its{' '}
-              <InfoNote term="subnet" title="Subnet">A group of devices whose IP addresses share the same prefix, so they can talk directly. Joining the car's Wi-Fi puts your laptop on the same range as the car.</InfoNote>{' '}
-              (<code style={{ fontFamily: NB.monoFont }}>192.168.10.x</code> on the
-              cudy, <code style={{ fontFamily: NB.monoFont }}>10.42.0.x</code> on
-              the access point), and ROS 2 uses{' '}
-              <InfoNote term="DDS discovery" title="DDS Discovery">DDS is the messaging system under ROS 2. Its discovery step lets nodes on the same network find each other on their own, with no central server.</InfoNote>{' '}
-              to find the car&apos;s nodes automatically. You can list topics and
-              run nodes on the laptop that talk to{' '}
-              <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>/scan</code>,{' '}
-              <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>/drive</code>,
-              and the rest.
-            </p>
-
-            <Code lang="bash">{`# From your laptop, on the car's network.
-ros2 topic list                  # /scan /camera /imu /odom /battery /drive ...
-ros2 topic echo /scan --once     # a single scan, straight off the car`}</Code>
-
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-                gap: 18,
-                marginTop: 20,
-              }}
-            >
-              <NumberedFeatureCard
-                n={1}
-                title="Same subnet"
-                lede="You get this by joining the car's Wi-Fi."
-                body="DDS discovery reaches the car nodes when both sides are on the same subnet. Joining the car's network, cudy or access point, puts you there."
-                codeChip="ros2 topic list"
-              />
-              <NumberedFeatureCard
-                n={2}
-                title="Same ROS_DOMAIN_ID"
-                lede="Matched on both ends."
-                body="ROS 2 only joins peers that share the same ROS_DOMAIN_ID. Set the same value on the laptop and the car, and the two halves of the graph see each other."
-                codeChip="export ROS_DOMAIN_ID=..."
-              />
-            </div>
-
-            <Callout type="note" title="When ros2 topic list comes up empty">
-              An empty list almost always means the two sides aren&apos;t on the
-              same graph yet. Confirm the laptop is on the car&apos;s Wi-Fi (not a
-              second network), confirm the services are up with{' '}
-              <code style={{ fontFamily: NB.monoFont }}>racecar service status</code>,
-              and confirm the{' '}
-              <code style={{ fontFamily: NB.monoFont }}>ROS_DOMAIN_ID</code> matches
-              on both ends.
-            </Callout>
-          </div>
-        </section>
-      </ScrollReveal>
-
-      {/* ── Section 05 · Router admin (cudy path) ──────────────────────── */}
-      <ScrollReveal>
-        <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="05" top={-30} right={-20} size={460} />
-          <div style={{ position: 'relative', zIndex: 1 }}>
-            <DisplayHeading size="lg">
-              ROUTER <Red>ADMIN</Red>
-            </DisplayHeading>
-            <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-              On the cudy path, you rarely touch the router itself. You open it
-              to find the car&apos;s address if it isn&apos;t at the default, or
-              to rename the Wi-Fi. The admin page is at{' '}
-              <code style={{ fontFamily: NB.monoFont }}>http://192.168.10.1</code>, and
-              the admin password is{' '}
-              <code style={{ fontFamily: NB.monoFont }}>neobotics</code>.
-            </p>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 18, marginTop: 18 }}>
-              <NumberedFeatureCard
-                n={1}
-                title="Find the car's IP"
-                lede="System Status → Devices."
-                body="The DHCP pool hands out addresses from 192.168.10.101, and the car holds the static 192.168.10.100 once the driver setup has run. If a device picked up a different address, the Devices list shows the wired client and its IP."
-              />
-              <NumberedFeatureCard
-                n={2}
-                title="Rename the Wi-Fi"
-                lede="Quick Setup → Wireless."
-                body="Change the 2.4G and 5G SSID and password in the setup wizard's Wireless step. After you Save & Apply, re-join the renamed network from your laptop."
-              />
-            </div>
-            <Callout type="warn" title="Re-join after you rename it">
-              Changing the SSID or password drops every device, including you. Once
-              the router applies the change, reconnect to the new network name
-              before you expect to reach the car again.
-            </Callout>
-            <Callout type="note" title="Rebuilding the access point">
-              The access point is configured on the car, not the router. It is
-              built and renamed with{' '}
-              <code style={{ fontFamily: NB.monoFont }}>racecar setup networking</code>,
-              covered in the next section.
-            </Callout>
-          </div>
-        </section>
-      </ScrollReveal>
-
-      {/* ── Section 06 · racecar setup networking ──────────────────────── */}
-      <ScrollReveal>
-        <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="06" top={-30} right={-20} size={460} />
-          <div style={{ position: 'relative', zIndex: 1 }}>
-            <DisplayHeading size="lg">
-              THE SETUP <Red>COMMAND</Red>
-            </DisplayHeading>
-            <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
-              <code style={{ fontFamily: NB.monoFont }}>racecar setup networking</code>{' '}
-              configures the car&apos;s side of everything on this page: the
-              access point, the fixed Ethernet address, and the lidar link. Run
-              with no flags it applies the defaults. Flags change a setting, and
-              every flag value is saved to{' '}
-              <code style={{ fontFamily: NB.monoFont }}>~/.config/racecar/networking.env</code>{' '}
-              on the car, so the setting survives reboots and later runs.
-            </p>
-            <Code lang="bash">{`racecar setup networking --ssid=neoracer-2   # rename the access point
-racecar setup networking --psk=mypassword    # change the AP password
-racecar setup networking --show              # print the saved settings
-racecar setup networking --reset             # back to the defaults`}</Code>
-            <div style={{ marginTop: 18 }}>
-              <DataTable
-                columns={[
-                  { key: 'flag', label: 'Flag', accent: true, mono: true },
-                  { key: 'sets', label: 'Sets' },
-                  { key: 'def', label: 'Default', mono: true },
-                ]}
-                rows={[
-                  { flag: '--ssid', sets: 'Access point name', def: 'neoracer-1' },
-                  { flag: '--psk', sets: 'Access point password', def: 'neobotics' },
-                  { flag: '--channel', sets: 'Access point 2.4 GHz channel', def: '6' },
-                  { flag: '--ap-addr', sets: "The car's address on the access point", def: '10.42.0.1/24' },
-                  { flag: '--eth-static', sets: "The car's fixed address on the cudy", def: '192.168.10.100/24' },
-                  { flag: '--lidar-host', sets: 'Host address on the lidar link', def: '192.168.8.1/24' },
-                  { flag: '--wifi-iface', sets: 'Wi-Fi interface name', def: 'wlP1p1s0' },
-                  { flag: '--eth-iface', sets: 'Ethernet interface name', def: 'nr_eth0' },
-                ]}
-              />
-            </div>
-            <Callout type="tip" title="Several cars in one room">
-              Every car ships as <code style={{ fontFamily: NB.monoFont }}>neoracer-1</code>.
-              With more than one car powered up, give each its own name once,{' '}
-              <code style={{ fontFamily: NB.monoFont }}>--ssid=neoracer-2</code>,{' '}
-              <code style={{ fontFamily: NB.monoFont }}>--ssid=neoracer-3</code>,
-              and so on. The name sticks.
-            </Callout>
-            <Callout type="warn" title="Run it from a wired session">
-              The command takes over the Wi-Fi radio, so an SSH session over
-              Wi-Fi drops the moment it runs. Use a monitor and keyboard at the
-              car, the USB cable link, or SSH over the cudy&apos;s wired side.
-            </Callout>
-          </div>
-        </section>
-      </ScrollReveal>
-
-      {/* ── Section 07 · Quick reference ───────────────────────────────── */}
-      <ScrollReveal>
-        <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="07" top={-30} right={-20} size={460} />
-          <div style={{ position: 'relative', zIndex: 1 }}>
-            <DisplayHeading size="lg">
-              QUICK <Red>REFERENCE</Red>
-            </DisplayHeading>
-            <div style={{ marginTop: 20 }}>
-              <DataTable
-                columns={[
-                  { key: 'path', label: 'Task', accent: true },
-                  { key: 'how', label: 'How' },
-                  { key: 'needs', label: 'What it needs', mono: true },
-                ]}
-                rows={[
-                  { path: 'Connect to the car (cudy)', how: "Join the router's Wi-Fi.", needs: 'neoracer-[ID] · 192.168.10.100' },
-                  { path: 'Connect to the car (AP)', how: "Join the car's own Wi-Fi.", needs: 'neoracer-1 · 10.42.0.1' },
-                  { path: 'Terminal', how: 'SSH in as racecar.', needs: 'racecar@<car address>' },
-                  { path: 'Full desktop', how: 'RustDesk by direct IP.', needs: '<car address>' },
-                  { path: 'No Wi-Fi', how: 'Wired USB-C, RNDIS link.', needs: 'racecar@192.168.55.1' },
-                  { path: 'Rename the AP', how: 'racecar setup networking.', needs: '--ssid=neoracer-N' },
-                  { path: 'Health dashboard', how: 'Browser, auto-started.', needs: ':8080' },
-                  { path: 'Write code', how: 'JupyterLab, auto-started.', needs: ':8888' },
-                  { path: 'See the car nodes', how: 'ROS 2 DDS discovery.', needs: 'same subnet + ROS_DOMAIN_ID' },
-                ]}
-              />
-            </div>
-            <Callout type="tip" title="Can't reach the car?">
-              If the Wi-Fi won&apos;t connect or the address won&apos;t answer, the{' '}
-              <a href="/docs/troubleshooting/wifi-cant-connect" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-                Wi-Fi can&apos;t connect
-              </a>{' '}
-              page walks the rest of the path. You can reach a person at{' '}
-              <a href="mailto:support@neobotics.org" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-                support@neobotics.org
-              </a>.
-            </Callout>
-          </div>
-        </section>
-      </ScrollReveal>
-
       <PrevNext
-        prev={{ label: 'Remote desktop', href: '/docs/software/remote-desktop' }}
-        next={{ label: 'Firmware flashing', href: '/docs/software/firmware-flashing' }}
+        prev={{ label: 'Chassis & CAD', href: '/docs/hardware/chassis-and-cad' }}
+        next={{ label: 'Remote desktop', href: '/docs/software/remote-desktop' }}
       />
     </DocsShell>
+  );
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+ * HardwareShot: the photo cell in the router-vs-access-point table. Fixed
+ * aspect so the two sit level whatever the source images are, and object-fit
+ * cover so neither is squashed. Lives here because nothing else needs it.
+ * ─────────────────────────────────────────────────────────────────────── */
+function HardwareShot({ src, alt }: { src: string; alt: string }) {
+  return (
+    <img
+      src={src}
+      alt={alt}
+      loading="lazy"
+      style={{
+        display: 'block',
+        width: '100%',
+        maxWidth: 260,
+        aspectRatio: '4 / 3',
+        objectFit: 'cover',
+        borderRadius: 10,
+        border: `1px solid ${NB.borderOnBeige}`,
+      }}
+    />
   );
 }

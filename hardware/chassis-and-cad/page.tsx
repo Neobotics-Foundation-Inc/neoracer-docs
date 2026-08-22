@@ -158,7 +158,7 @@ export default function ChassisAndCadPage() {
 
       <PrevNext
         prev={{ label: 'OSCORE board', href: '/docs/hardware/oscore-board' }}
-        next={{ label: 'OS & image', href: '/docs/software/os-and-image' }}
+        next={{ label: 'Networking', href: '/docs/software/networking' }}
       />
     </DocsShell>
   );

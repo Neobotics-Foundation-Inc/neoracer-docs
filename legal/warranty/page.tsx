@@ -30,7 +30,7 @@ export default function WarrantyPage() {
           <GhostNumeral n="01" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              NEORACER LIMITED HARDWARE <Red>WARRANTY</Red>
+              NEORACER <Red>WARRANTY</Red>
             </DisplayHeading>
           </div>
         </section>

@@ -30,7 +30,7 @@ export default function PrivacyPage() {
           <GhostNumeral n="05" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              THE PRIVACY <Red>POLICY</Red>
+              PRIVACY <Red>POLICY</Red>
             </DisplayHeading>
           </div>
         </section>

@@ -29,7 +29,7 @@ export default function ShippingPage() {
           <GhostNumeral n="03" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              THE SHIPPING <Red>POLICY</Red>
+              SHIPPING <Red>POLICY</Red>
             </DisplayHeading>
           </div>
         </section>

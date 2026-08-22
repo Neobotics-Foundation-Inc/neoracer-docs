@@ -177,15 +177,15 @@ racecar setup networking --reset             # back to the defaults`}</Code>
                           { text: <>Sign in. The router administrator password is <code style={{ fontFamily: NB.monoFont }}>neobotics</code>.</> },
                           {
                             text: <>On <strong>Operation Mode</strong>, keep the default.</>,
-                            photos: [{ src: '/images/cudy_setup_Oper_Mode.png', alt: 'The cudy Operation Mode screen, left at its default setting' }],
+                            photos: [{ src: '/images/router/cudy_setup_Oper_Mode.png', alt: 'The cudy Operation Mode screen, left at its default setting' }],
                           },
                           {
                             text: <>On <strong>WAN</strong>, we recommend keeping <code style={{ fontFamily: NB.monoFont }}>neoracer</code> as the hostname. Ignore the error at the top and leave the protocol as it is.</>,
-                            photos: [{ src: '/images/cudy_setup_WAN_Mode.png', alt: 'The cudy WAN mode screen with neoracer as the hostname' }],
+                            photos: [{ src: '/images/router/cudy_setup_WAN_Mode.png', alt: 'The cudy WAN mode screen with neoracer as the hostname' }],
                           },
                           {
                             text: <>On <strong>Wireless</strong>, change the network name and password for both 2.4 GHz and 5 GHz. We recommend keeping the same network name, because it matches the name on the sticker under the car.</>,
-                            photos: [{ src: '/images/cudy_setup_change_pass.png', alt: 'The cudy wireless screen, where the 2.4 GHz and 5 GHz network names and passwords are set' }],
+                            photos: [{ src: '/images/router/cudy_setup_change_pass.png', alt: 'The cudy wireless screen, where the 2.4 GHz and 5 GHz network names and passwords are set' }],
                           },
                           {
                             text: (
@@ -196,19 +196,19 @@ racecar setup networking --reset             # back to the defaults`}</Code>
                                 device.
                               </>
                             ),
-                            photos: [{ src: '/images/cudy_setup_summary.png', alt: 'The cudy summary screen with the Save and apply button' }],
+                            photos: [{ src: '/images/router/cudy_setup_summary.png', alt: 'The cudy summary screen with the Save and apply button' }],
                           },
                           {
                             text: <>Connect back to the Wi-Fi and you land on the router dashboard. This is where you can see exactly what is connected to the car&apos;s network. Click <strong>Clients</strong>.</>,
-                            photos: [{ src: '/images/cudy_setup_dashboard.png', alt: 'The cudy router dashboard after reconnecting, with Clients in the menu' }],
+                            photos: [{ src: '/images/router/cudy_setup_dashboard.png', alt: 'The cudy router dashboard after reconnecting, with Clients in the menu' }],
                           },
                           {
                             text: <>Then click <strong>Devices</strong>.</>,
-                            photos: [{ src: '/images/cudy_setup_devices.png', alt: 'The cudy Clients view with the Devices tab' }],
+                            photos: [{ src: '/images/router/cudy_setup_devices.png', alt: 'The cudy Clients view with the Devices tab' }],
                           },
                           {
                             text: <>The Nvidia Jetson appears in that list, alongside any personal devices on the network.</>,
-                            photos: [{ src: '/images/cudy_setup_view_jetson.png', alt: 'The cudy device list showing the Nvidia Jetson among the connected devices' }],
+                            photos: [{ src: '/images/router/cudy_setup_view_jetson.png', alt: 'The cudy device list showing the Nvidia Jetson among the connected devices' }],
                           },
                         ]}
                       />

@@ -103,20 +103,20 @@ export default function TestTheSystemPage() {
                 text: <>Open{' '}
                   <code style={{ fontFamily: NB.monoFont }}>http://192.168.10.100:8888</code>{' '}
                   in a browser. JupyterLab opens with the file browser on the left.</>,
-                photos: [{ src: '/images/jupyter_opening_page.png', alt: 'JupyterLab open in a browser at 192.168.10.100:8888, with the file browser highlighted on the left' }],
+                photos: [{ src: '/images/jupyter/jupyter_opening_page.png', alt: 'JupyterLab open in a browser at 192.168.10.100:8888, with the file browser highlighted on the left' }],
               },
               {
                 text: <>In the file browser, go to{' '}
                   <code style={{ fontFamily: NB.monoFont }}>neoracer-os</code> →{' '}
                   <code style={{ fontFamily: NB.monoFont }}>labs</code> →{' '}
                   <code style={{ fontFamily: NB.monoFont }}>tests</code>.</>,
-                photos: [{ src: '/images/jupyter_access_async.png', alt: 'The file browser path neoracer-os/labs/tests with the test files listed' }],
+                photos: [{ src: '/images/jupyter/jupyter_access_async.png', alt: 'The file browser path neoracer-os/labs/tests with the test files listed' }],
               },
               {
                 text: <>Double-click{' '}
                   <code style={{ fontFamily: NB.monoFont }}>test_async_core_real.ipynb</code>{' '}
                   to open it.</>,
-                photos: [{ src: '/images/jupyter_open_async.png', alt: 'The Async Core Test notebook open in JupyterLab' }],
+                photos: [{ src: '/images/jupyter/jupyter_open_async.png', alt: 'The Async Core Test notebook open in JupyterLab' }],
               },
               {
                 text: <>Run the notebook from the toolbar at the top of the tab.
@@ -124,13 +124,13 @@ export default function TestTheSystemPage() {
                   the next one; the double arrow (blue box) restarts the kernel
                   and runs every cell in order. Either works, as long as the
                   cells run in order.</>,
-                photos: [{ src: '/images/jupyter_run_cells.png', alt: 'The notebook toolbar with the run-cell button boxed in red and the restart-and-run-all button boxed in blue' }],
+                photos: [{ src: '/images/jupyter/jupyter_run_cells.png', alt: 'The notebook toolbar with the run-cell button boxed in red and the restart-and-run-all button boxed in blue' }],
               },
               {
                 text: <>Each test follows the same shape: a title, a short
                   explanation of what is being tested, the code, and the output
                   it prints below. Watch the outputs as they appear.</>,
-                photos: [{ src: '/images/jupyter_typical_cell.png', alt: 'A typical test cell with its title and explanation, code block, and printed output' }],
+                photos: [{ src: '/images/jupyter/jupyter_typical_cell.png', alt: 'A typical test cell with its title and explanation, code block, and printed output' }],
               },
             ]}
           />
@@ -173,7 +173,7 @@ export default function TestTheSystemPage() {
                   <code style={{ fontFamily: NB.monoFont }}>Kernel</code> menu
                   and choose{' '}
                   <strong>Restart Kernel and Clear Outputs of All Cells</strong>.</>,
-                photos: [{ src: '/images/jupyter_clear_cells.png', alt: 'The Kernel menu with Restart Kernel and Clear Outputs of All Cells highlighted' }],
+                photos: [{ src: '/images/jupyter/jupyter_clear_cells.png', alt: 'The Kernel menu with Restart Kernel and Clear Outputs of All Cells highlighted' }],
               },
             ]}
           />

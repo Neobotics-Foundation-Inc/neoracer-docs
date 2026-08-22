@@ -126,7 +126,7 @@ function FlyskyLabelledViews() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 14, maxWidth: 720, margin: '0 auto' }}>
       <Image
-        src="/images/flysky_label_front.png"
+        src="/images/controller/flysky_label_front.png"
         alt="Front view of the Flysky FS-i6S with every control labelled: switches SwA to SwD, dials VrA and VrB, the two sticks, touch screen, and power buttons"
         width={2470}
         height={1420}
@@ -134,7 +134,7 @@ function FlyskyLabelledViews() {
         style={{ width: '100%', height: 'auto', display: 'block', background: '#ffffff', borderRadius: 6 }}
       />
       <Image
-        src="/images/flysky_label_back.png"
+        src="/images/controller/flysky_label_back.png"
         alt="Rear view of the Flysky FS-i6S with the handle, Key 1, Key 2, and battery cover labelled"
         width={2466}
         height={1278}
@@ -186,7 +186,7 @@ export default function RemoteControlPage() {
         <section style={{ paddingBottom: 32 }}>
           <SensorSheet
             title="Flysky FS-i6S"
-            image="/images/flysky-sheet.jpg"
+            image="/images/controller/flysky-sheet.jpg"
             alt="The Flysky FS-i6S transmitter"
             wideSpecs
             imageStyle={{ objectFit: 'contain', padding: '20px 18px' }}
@@ -291,7 +291,7 @@ export default function RemoteControlPage() {
             <ScreenCard
               n="01"
               title="The home screen"
-              src="/images/flysky_start.png"
+              src="/images/controller/flysky_start.png"
               alt="The FS-i6S home screen, showing the two timers, the fly mode, and the TX and RX battery indicators in the top right"
             >
               <CardText>
@@ -303,7 +303,7 @@ export default function RemoteControlPage() {
             <ScreenCard
               n="02"
               title="The channels"
-              src="/images/flysky_channels.png"
+              src="/images/controller/flysky_channels.png"
               alt="The FS-i6S channel screen, showing bars for channels 1 to 6 with channel 3 part way along its travel"
             >
               <CardText>
@@ -335,7 +335,7 @@ export default function RemoteControlPage() {
             <ScreenCard
               n="03"
               title="Changing the mapping"
-              src="/images/flysky_changing_channels.png"
+              src="/images/controller/flysky_changing_channels.png"
               alt="The FS-i6S Aux. channels screen, showing Channel 5 with arrows either side and its control type set to None"
             >
               <CardText>
@@ -354,7 +354,7 @@ export default function RemoteControlPage() {
             <ScreenCard
               n="04"
               title="Changing the output mode"
-              src="/images/flysky_output.png"
+              src="/images/controller/flysky_output.png"
               alt="The FS-i6S output mode screen, with PWM and PPM under Output and i-BUS and S.BUS under Serial"
             >
               <CardText>

@@ -60,7 +60,7 @@ export default function ImuPage() {
         <section style={{ paddingBottom: 32 }}>
           <SensorSheet
             title="The IMU"
-            image="/images/IMU.png"
+            image="/images/oscore/IMU.png"
             alt="The IMU footprint on the OSCORE board render, labelled IMU with its orientation arrow"
             specGroups={[
               {

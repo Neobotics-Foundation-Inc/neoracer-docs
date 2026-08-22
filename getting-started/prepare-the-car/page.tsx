@@ -96,7 +96,7 @@ export default function PrepareTheCarPage() {
                       { text: <>Take the Cudy router on its own, without its cables, and slide it into the rear of the car under the top chassis, with its ports facing the front of the car.</> },
                       {
                         text: <>Connect the Ethernet cable and the short USB-C cable in the top chassis. The Ethernet cable plugs into the router&apos;s LAN port. Make sure you use the correct USB-C cable: the shorter one connects to the underside of the PCB, while the LiDAR&apos;s cable connects to the top side.</>,
-                        photos: [{ src: '/images/router/chassis-cudy.jpeg', alt: 'The Cudy router in the chassis with the Ethernet and short USB-C cable connected' }],
+                        photos: [{ src: '/images/preparation/chassis-cudy.jpeg', alt: 'The Cudy router in the chassis with the Ethernet and short USB-C cable connected' }],
                       },
                       { text: <>Fit the router snugly within the top chassis and screw the chassis back in.</> },
                     ]}

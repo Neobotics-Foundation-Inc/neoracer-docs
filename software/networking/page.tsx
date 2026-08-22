@@ -11,6 +11,7 @@ import {
   MonoLabel,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
+import { StepCard } from '@/components/docs/StepCard';
 import { Crumbs, PrevNext, Callout, Code, DataTable } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
@@ -62,11 +63,24 @@ export default function NetworkingPage() {
       </MouseFollowGlow>
 
       <ScrollReveal>
+        <StepCard
+          title="The network"
+          image="/images/build/router-2.jpg"
+          alt="The Cudy travel router that puts the car and laptop on one network"
+        >
+          The kit includes a small travel router so the car and your laptop can
+          share one network straight out of the box, no cables needed. Power it
+          on, join its Wi-Fi, and you can reach the car&apos;s notebook interface and
+          start sending it code.
+        </StepCard>
+      </ScrollReveal>
+
+      <ScrollReveal>
         <Callout type="note" title="First time on a fresh car?">
           A brand new car has not been put on a network yet. That one-time setup
           happens at the car with a monitor and keyboard, and it is covered by{' '}
-          <Link href="/docs/getting-started/connect-to-car" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-            Connect to the car
+          <Link href="/docs/getting-started/prepare-the-car" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
+            Prepare the car
           </Link>{' '}
           and the end of{' '}
           <Link href="/docs/getting-started/install-driver" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
@@ -116,9 +130,9 @@ export default function NetworkingPage() {
               the car borrows a network instead: join an existing Wi-Fi from the
               console desktop or plug Ethernet into the Jetson&apos;s RJ45,
               exactly as in{' '}
-              <Link href="/docs/getting-started/connect-to-car" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-                Connect to the car
-              </Link>, step 03. On the cudy, connecting the router&apos;s uplink
+              <Link href="/docs/getting-started/prepare-the-car" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
+                Prepare the car
+              </Link>. On the cudy, connecting the router&apos;s uplink
               does the same job without touching the car.
             </Callout>
           </div>

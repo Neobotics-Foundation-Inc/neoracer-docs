@@ -7,16 +7,16 @@ import {
   DisplayHeading,
   Red,
   GhostNumeral,
-  ChromeBadge,
   Fig,
+  ComingSoon,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext, Callout } from '@/components/docs/DocsPrimitives';
-import { HardwareConnectionDiagram } from '@/components/docs/ManualDiagrams';
+import { WiringDiagram } from '@/components/docs/WiringDiagram';
 
 export const metadata: Metadata = {
   title: 'Hardware overview · NeoRacer Docs',
-  description: 'A single-page anatomy of the NeoRacer V1: compute, sensors, drivetrain, power, and chassis at a glance.',
+  description: 'A single-page anatomy of the NeoRacer V1: compute, sensors, drivetrain, and chassis at a glance.',
 };
 
 /* The real car, torn down and knolled. Label positions are percentages of
@@ -32,17 +32,20 @@ const ANATOMY_PARTS: {
   href: string;
   flip?: boolean;
 }[] = [
-  { name: 'Front bumper', x: 47.6, y: 2.9, color: '#64748B', href: '/docs/build/overview' },
+  { name: 'Front bumper', x: 47.6, y: 2.9, color: '#64748B', href: '/docs/hardware/chassis-and-cad' },
   { name: 'Camera', x: 48.9, y: 8.6, color: '#FF0033', href: '/docs/hardware/sensors/camera' },
   { name: 'Jetson Orin Nano', x: 26.8, y: 19.9, color: '#0E8A4F', href: '/docs/hardware/compute' },
-  { name: 'Side cover', x: 95.6, y: 22.7, color: '#1B2036', href: '/docs/build/overview' },
+  { name: 'Sidepod', x: 95.6, y: 22.7, color: '#1B2036', href: '/docs/hardware/chassis-and-cad' },
   { name: 'OSCORE PCB', x: 81.4, y: 25.9, color: '#7A3FB0', href: '/docs/hardware/oscore-board' },
-  { name: '1:12 chassis', x: 54.9, y: 52.4, color: '#B45309', href: '/docs/hardware/drivetrain' },
-  { name: 'LiPo compartment', x: 46.6, y: 51.9, color: '#C2185B', href: '/docs/hardware/power', flip: true },
+  { name: 'Steering servo', x: 54.6, y: 45.4, color: '#65A30D', href: '/docs/hardware/drivetrain' },
+  { name: 'LiPo compartment', x: 46.6, y: 51.9, color: '#C2185B', href: '/docs/getting-started/charge-and-power', flip: true },
+  { name: 'ESC', x: 58.9, y: 53.0, color: '#0891B2', href: '/docs/hardware/drivetrain' },
+  { name: '1:12 chassis', x: 44.5, y: 55.5, color: '#B45309', href: '/docs/hardware/chassis-and-cad', flip: true },
+  { name: 'Motor', x: 57.9, y: 57.8, color: '#DC2626', href: '/docs/hardware/drivetrain' },
   { name: 'LiDAR', x: 37.1, y: 78.2, color: '#0E9594', href: '/docs/hardware/sensors/lidar' },
-  { name: 'Dot matrix display', x: 54.1, y: 80.6, color: '#4F46E5', href: '/docs/build/overview' },
+  { name: 'Dot matrix display', x: 54.1, y: 80.6, color: '#4F46E5', href: '/docs/hardware/dot-matrix' },
   { name: 'Cudy router', x: 70.9, y: 74.9, color: '#EA580C', href: '/docs/software/networking' },
-  { name: 'Rear wing', x: 53.3, y: 95.3, color: '#0284C7', href: '/docs/build/overview' },
+  { name: 'Rear wing', x: 53.3, y: 95.3, color: '#0284C7', href: '/docs/hardware/chassis-and-cad' },
 ];
 
 function AnatomyDiagram() {
@@ -117,16 +120,11 @@ export default function HardwareOverviewPage() {
 
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="H" top={-40} right={-20} size={460} />
+          <GhostNumeral n="01" top={-30} right={-20} size={400} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               THE NEORACER <Red>HARDWARE</Red>
             </DisplayHeading>
-            <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="outline">380 × 300 × 220 mm</ChromeBadge>
-              <ChromeBadge variant="outline">Wheelbase 280 mm</ChromeBadge>
-              <ChromeBadge variant="outline">6 m/s</ChromeBadge>
-            </div>
           </div>
         </section>
       </MouseFollowGlow>
@@ -134,7 +132,7 @@ export default function HardwareOverviewPage() {
       <ScrollReveal>
         <Fig
           label="FIG. A / THE PARTS OF THE NEORACER"
-          caption="A real NeoRacer, torn down and photographed from above. Click a label to open that part's page."
+          caption="Click a label to open that part's page."
         >
           <AnatomyDiagram />
         </Fig>
@@ -142,16 +140,18 @@ export default function HardwareOverviewPage() {
 
       <ScrollReveal>
         <Fig
-          label="FIG. B / HOW IT ALL CONNECTS"
-          caption="The signal architecture: the camera connects to the Jetson directly over USB. Everything else routes through the OSCORE board, which reaches the Jetson over one USB link: the LiDAR, the ESC and servo it drives, and the encoder and RF receiver it reads. Power wiring lives on the Electrical page."
+          label="FIG. B / NEORACER SYSTEM DIAGRAM (WIP)"
+          caption="The signal and power map of the car."
         >
-          <HardwareConnectionDiagram />
+          <ComingSoon>
+            <WiringDiagram />
+          </ComingSoon>
         </Fig>
       </ScrollReveal>
 
       <ScrollReveal>
-        <Callout type="tip" title="Want to see the diagram in 3D?">
-          The same anatomy is interactive at{' '}
+        <Callout type="tip" title="3D visualizer">
+          An interactive NeoRacer is available at{' '}
           <Link href="/kits/visualize" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
             /kits/visualize
           </Link>
@@ -160,7 +160,7 @@ export default function HardwareOverviewPage() {
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'First program', href: '/docs/getting-started/first-program' }}
+        prev={{ label: 'Test the system', href: '/docs/getting-started/test-the-system' }}
         next={{ label: 'Compute', href: '/docs/hardware/compute' }}
       />
     </DocsShell>

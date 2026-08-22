@@ -31,7 +31,7 @@ const FAQS: Faq[] = [
       <>
         Due to various international shipping regulations, Neobotics does not
         directly sell LiPo batteries. The{' '}
-        <a href="/docs/hardware/power" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
+        <a href="/docs/getting-started/charge-and-power" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
           Hardware power page
         </a>{' '}
         has the specifications you need to pick a{' '}
@@ -116,8 +116,8 @@ const FAQS: Faq[] = [
         <code style={{ fontFamily: NB.monoFont }}>cd ~/ros2_ws/src/neoracer_ros2_driver && git pull && bash scripts/setup_all.sh</code>,
         then <code style={{ fontFamily: NB.monoFont }}>racecar service restart</code>.
         The car needs internet for the pull, the same way as during{' '}
-        <a href="/docs/getting-started/connect-to-car" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-          Connect to the car
+        <a href="/docs/getting-started/prepare-the-car" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
+          Prepare the car
         </a>.
       </>
     ),

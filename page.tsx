@@ -37,14 +37,13 @@ const SHOW_PLAYGROUND_TEASE = false;
    update both together when a page ships. */
 const pitLane: PitLaneSection[] = [
   { title: 'Setup', href: '/docs/getting-started/unbox', pages: 6 },
-  { title: 'Hardware', href: '/docs/hardware/overview', pages: 14, disabled: true },
-  { title: 'Build', href: '/docs/build/overview', pages: 2, disabled: true },
-  { title: 'Software', href: '/docs/software/os-and-image', pages: 9, disabled: true },
-  { title: 'API Reference', href: '/docs/api-reference/python/drive', pages: 9, disabled: true },
+  { title: 'Hardware', href: '/docs/hardware/overview', pages: 11 },
+  { title: 'Software', href: '/docs/software/os-and-image', pages: 10 },
+  { title: 'API Reference', href: '/docs/api-reference/python/drive', pages: 9 },
   { title: 'Calibration', href: '/docs/calibration/motor-trim', pages: 5, disabled: true },
   // Soft hyphen so narrow phone bays break it as TROUBLE-SHOOTING.
   { title: 'Trouble­shooting', href: '/docs/troubleshooting/faq', pages: 7, disabled: true },
-  { title: 'Reference', href: '/docs/reference/specifications', pages: 4, disabled: true },
+  { title: 'Reference', href: '/docs/reference/specifications', pages: 5, disabled: true },
   { title: 'Legal', href: '/docs/legal/warranty', pages: 5, disabled: true },
 ];
 
@@ -68,10 +67,11 @@ export default function DocsLandingPage() {
               marginBottom: 8,
             }}
           >
-            The documentation for the NeoRacer V1. Setup takes a new
-            car from the box to ready to drive; the rest is the reference
-            you come back to: hardware, software, calibration, troubleshooting,
-            and the full Python and ROS 2 APIs.
+            Welcome to the NeoRacer V1 documentation. If you have received
+            your NeoRacer shipment, go to Setup to get started. For
+            information on the NeoRacer&apos;s components and capabilities,
+            take a look at Hardware and Software. For the library functions
+            or ROS 2, check out the API Reference.
           </p>
         </div>
       </section>

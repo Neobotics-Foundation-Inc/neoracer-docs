@@ -199,7 +199,7 @@ export default function MaintenancePage() {
           <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             Stop the software before you cut power, then put the car away. The full
             power-off order is on{' '}
-            <Link href="/docs/hardware/electrical" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Electrical</Link>.
+            <Link href="/docs/hardware/compute" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>Compute</Link>.
           </p>
           <Code lang="bash">{`# Stop every ROS launch (Ctrl+C in each terminal), then:
 sudo shutdown -h now`}</Code>

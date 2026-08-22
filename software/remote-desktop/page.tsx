@@ -58,13 +58,13 @@ export default function RemoteDesktopPage() {
                 { text: <>Make sure your computer and the Jetson are on the same network, either the cudy router or the access point.</> },
                 {
                   text: <>Open RustDesk. You will see the home screen.</>,
-                  photos: [{ src: '/images/rustdesk_home.png', alt: 'The RustDesk home screen on a laptop, with the field for entering a remote address' }],
+                  photos: [{ src: '/images/rustdesk/rustdesk_home.png', alt: 'The RustDesk home screen on a laptop, with the field for entering a remote address' }],
                 },
                 { text: <>Enter the car&apos;s IP address for your network: <code style={{ fontFamily: NB.monoFont }}>192.168.10.100</code> on the cudy router, or <code style={{ fontFamily: NB.monoFont }}>10.42.0.1</code> on the access point.</> },
                 { text: <>Press <strong>Connect</strong>.</> },
                 {
                   text: <>The first time you connect, RustDesk asks for its password. It is <code style={{ fontFamily: NB.monoFont }}>Neo-2026</code>.</>,
-                  photos: [{ src: '/images/rustdesk_login.png', alt: 'The RustDesk Password required dialog, asking you to verify the RustDesk password before the session opens' }],
+                  photos: [{ src: '/images/rustdesk/rustdesk_login.png', alt: 'The RustDesk Password required dialog, asking you to verify the RustDesk password before the session opens' }],
                 },
                 { text: <>The Jetson login screen appears. Log in as <code style={{ fontFamily: NB.monoFont }}>racecar</code> with the password <code style={{ fontFamily: NB.monoFont }}>neobotics</code>.</> },
               ]}
@@ -89,12 +89,12 @@ export default function RemoteDesktopPage() {
               items={[
                 {
                   text: <>Open RustDesk on the car&apos;s desktop.</>,
-                  photos: [{ src: '/images/rustdesk-main.png', alt: 'RustDesk main window on the Jetson desktop, showing the Your Desktop ID and one-time password' }],
+                  photos: [{ src: '/images/rustdesk/rustdesk-main.png', alt: 'RustDesk main window on the Jetson desktop, showing the Your Desktop ID and one-time password' }],
                 },
                 { text: <>Open <strong>Settings</strong> from the menu, then the <strong>Security</strong> tab.</> },
                 {
                   text: <>Scroll to the <strong>Password</strong> section and select <strong>Use permanent password</strong>. The dropdown above it can stay on &quot;Accept sessions via both&quot;.</>,
-                  photos: [{ src: '/images/rustdesk-security.png', alt: 'RustDesk Security settings with the Password section: Use permanent password selected, Set permanent password button' }],
+                  photos: [{ src: '/images/rustdesk/rustdesk-security.png', alt: 'RustDesk Security settings with the Password section: Use permanent password selected, Set permanent password button' }],
                 },
                 { text: <>Click <strong>Set permanent password</strong>.</> },
               ]}

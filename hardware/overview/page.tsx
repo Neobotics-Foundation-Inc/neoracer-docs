@@ -8,7 +8,6 @@ import {
   Red,
   GhostNumeral,
   Fig,
-  ComingSoon,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext, Callout } from '@/components/docs/DocsPrimitives';
@@ -140,12 +139,10 @@ export default function HardwareOverviewPage() {
 
       <ScrollReveal>
         <Fig
-          label="FIG. B / NEORACER SYSTEM DIAGRAM (WIP)"
-          caption="The signal and power map of the car."
+          label="FIG. B / NEORACER SYSTEM DIAGRAM"
+          caption="The signal and power map of the car. Click a component for its exact cable."
         >
-          <ComingSoon>
-            <WiringDiagram />
-          </ComingSoon>
+          <WiringDiagram />
         </Fig>
       </ScrollReveal>
 

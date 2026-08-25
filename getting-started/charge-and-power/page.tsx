@@ -88,6 +88,7 @@ export default function ChargeAndPowerPage() {
             CHARGING THE <Red>BATTERY</Red>
           </DisplayHeading>
           {[
+            { t: 'Inspect the battery.', d: 'Check the pack for torn or damaged leads, and for the problems listed under "Signs of a bad battery" below. Do not charge a damaged pack.' },
             { t: 'Place the LiPo on a non-flammable surface.', d: 'A concrete floor or a LiPo charging bag is ideal.' },
             { t: 'Plug the AC side of the charger into the wall.', d: 'The screen turns on with a boot screen, then the main interface loads. The home screen shows the per-cell voltage (V) highlighted at the top and the current (A) options in green text on the right.' },
             { t: 'Set the cut-off voltage and the charging current.', d: 'Hold the button for two seconds to adjust the voltage and select 4.20 V. Press the button to adjust the current and select 2.5 A.' },

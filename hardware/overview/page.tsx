@@ -140,7 +140,7 @@ export default function HardwareOverviewPage() {
       <ScrollReveal>
         <Fig
           label="FIG. B / NEORACER SYSTEM DIAGRAM"
-          caption="The signal and power map of the car. Click a component for its exact cable."
+          caption="The signal and power map of the car. Click a component to see how it connects."
         >
           <WiringDiagram />
         </Fig>

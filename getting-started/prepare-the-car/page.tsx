@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Link from 'next/link';
 import DocsShell from '@/components/docs/DocsShell';
 import { NB } from '@/lib/nb-tokens';
 import {
@@ -217,10 +218,12 @@ export default function PrepareTheCarPage() {
                         <code style={{ fontFamily: NB.monoFont }}>neobotics</code>).</>,
                     ]}
                   />
-                  <Callout type="note" title="Why this setup happens on the car">
-                    A brand new car is not on any network yet, so there is no way to
-                    log in remotely. The first setup is done with a monitor and
-                    keyboard plugged directly into the car.
+                  <Callout type="note" title="Alternative: Remote desktop option">
+                    If there is no access to a monitor and keyboard, you can use the{' '}
+                    <Link href="/docs/software/remote-desktop" style={{ color: NB.neoboticsRed, textDecoration: 'underline' }}>
+                      remote desktop option
+                    </Link>{' '}
+                    and connect to the car using your computer.
                   </Callout>
                 </>
               ),

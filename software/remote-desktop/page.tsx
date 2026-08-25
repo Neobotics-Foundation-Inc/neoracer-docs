@@ -7,7 +7,7 @@ import {
   GhostNumeral,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow, InfoNote, PhotoSteps } from '@/components/docs/Interactive';
-import { Crumbs, PrevNext } from '@/components/docs/DocsPrimitives';
+import { Crumbs, Callout, PrevNext } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
   title: 'Remote desktop · Software · NeoRacer Docs',
@@ -101,6 +101,14 @@ export default function RemoteDesktopPage() {
             />
           </div>
         </section>
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <Callout type="note" title="Alternative: AnyDesk">
+          If you prefer not to use RustDesk, you can use{' '}
+          <a href="https://anydesk.com" target="_blank" rel="noopener noreferrer" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>AnyDesk</a>{' '}
+          instead. The setup is similar.
+        </Callout>
       </ScrollReveal>
 
       <PrevNext

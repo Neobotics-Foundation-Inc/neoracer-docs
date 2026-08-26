@@ -11,6 +11,7 @@ import {
 import { Crumbs, PrevNext, Callout, Code } from '@/components/docs/DocsPrimitives';
 import { JetsonPortsDiagram } from '@/components/docs/Diagrams';
 import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
+import { HardwareConnectionDiagram } from './HardwareConnectionDiagram';
 
 export const metadata: Metadata = {
   title: 'Compute · Hardware · NeoRacer Docs',
@@ -122,6 +123,22 @@ export default function ComputePage() {
             file system where you write and save code is on the Jetson.
           </p>
         </section>
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <Fig
+          label="FIG. B / HARDWARE CONNECTIONS"
+          caption={
+            <>
+              How the signals route. The Jetson reads the LiDAR and camera
+              over USB and holds a two-way USB link with the vehicle
+              controller. The controller drives the ESC and servo, reads the
+              encoder, and takes RC commands from the 2.4 GHz receiver.
+            </>
+          }
+        >
+          <HardwareConnectionDiagram />
+        </Fig>
       </ScrollReveal>
 
       <ScrollReveal>

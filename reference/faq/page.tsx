@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 type Faq = {
   q: string;
   a: React.ReactNode;
-  group: 'kits' | 'software' | 'classroom' | 'support';
+  group: 'kits' | 'software' | 'classroom';
 };
 
 const FAQS: Faq[] = [
@@ -77,17 +77,7 @@ const FAQS: Faq[] = [
     a: (
       <>
         Yes, but indirectly. You write Python on Windows, push to the car
-        over SSH, and run on the car's Ubuntu. The{' '}
-        <a
-          href="https://playground.neobotics.org"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ color: NB.neoboticsRed, fontWeight: 700 }}
-        >
-          NeoRacer Playground
-        </a>{' '}
-        runs in any modern browser, so you can build and iterate fully on
-        Windows before touching the car.
+        over SSH, and run on the car's Ubuntu.
       </>
     ),
   },
@@ -109,16 +99,6 @@ const FAQS: Faq[] = [
     ),
   },
   {
-    group: 'software',
-    q: 'Will my F1TENTH code run on NeoRacer?',
-    a: (
-      <>
-        Yes. The ROS 2 topic names and message types match the F1TENTH
-        reference build, so your existing nodes run on a NeoRacer unchanged.
-      </>
-    ),
-  },
-  {
     group: 'classroom',
     q: 'How do multiple cars share one classroom?',
     a: (
@@ -132,45 +112,12 @@ const FAQS: Faq[] = [
       </>
     ),
   },
-  {
-    group: 'support',
-    q: 'Where do I file a bug?',
-    a: (
-      <>
-        Email{' '}
-        <a
-          href="mailto:support@neobotics.org"
-          style={{ color: NB.neoboticsRed, fontWeight: 700 }}
-        >
-          support@neobotics.org
-        </a>{' '}
-        with the car's serial number and, if relevant, the output of{' '}
-        <code style={{ fontFamily: NB.monoFont }}>racecar status</code> and{' '}
-        <code style={{ fontFamily: NB.monoFont }}>journalctl -u neoracer-teleop -n 60</code>.
-      </>
-    ),
-  },
-  {
-    group: 'support',
-    q: "Where's the warranty page?",
-    a: (
-      <>
-        Under{' '}
-        <a href="/docs/legal/warranty" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-          Legal → Warranty
-        </a>
-        . The short version: nine months from delivery, covering defects
-        under normal use.
-      </>
-    ),
-  },
 ];
 
 const GROUP_HEADINGS: Record<Faq['group'], React.ReactNode> = {
   kits: <>KITS &amp; <Red>HARDWARE</Red></>,
   software: <><Red>SOFTWARE</Red></>,
   classroom: <><Red>CLASSROOM</Red></>,
-  support: <><Red>SUPPORT</Red></>,
 };
 
 function QnA({ f }: { f: Faq }) {
@@ -227,7 +174,7 @@ function QnA({ f }: { f: Faq }) {
 }
 
 export default function FaqPage() {
-  const groups: Faq['group'][] = ['kits', 'software', 'classroom', 'support'];
+  const groups: Faq['group'][] = ['kits', 'software', 'classroom'];
   return (
     <DocsShell>
       <Crumbs

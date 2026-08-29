@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { Metadata } from 'next';
 import DocsShell from '@/components/docs/DocsShell';
 import { NB } from '@/lib/nb-tokens';
@@ -12,7 +11,7 @@ import { Crumbs, PrevNext } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
   title: 'Privacy · Legal · NeoRacer Docs',
-  description: 'The official Neobotics privacy policy.',
+  description: 'The official Neobotics privacy policy document (PDF).',
 };
 
 export default function PrivacyPage() {
@@ -27,7 +26,7 @@ export default function PrivacyPage() {
 
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="05" top={-30} right={-20} size={460} />
+          <GhostNumeral n="06" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               PRIVACY <Red>POLICY</Red>
@@ -38,8 +37,10 @@ export default function PrivacyPage() {
 
       <ScrollReveal>
         <section style={{ paddingBottom: 56 }}>
-          <Link
-            href="/legal/privacy"
+          <a
+            href="/docs/privacy-policy.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             style={{
               display: 'inline-block',
               background: NB.neoboticsRed,
@@ -53,8 +54,8 @@ export default function PrivacyPage() {
               whiteSpace: 'nowrap',
             }}
           >
-            OPEN THE PRIVACY POLICY ↗
-          </Link>
+            OPEN THE PRIVACY POLICY (PDF) ↗
+          </a>
           <p
             style={{
               fontFamily: NB.monoFont,
@@ -63,13 +64,13 @@ export default function PrivacyPage() {
               marginTop: 10,
             }}
           >
-            neobotics.org/legal/privacy
+            privacy-policy.pdf
           </p>
         </section>
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'Terms of sale', href: '/docs/legal/terms-of-sale' }}
+        prev={{ label: 'Terms of service', href: '/docs/legal/terms-of-service' }}
         next={{ label: 'Documentation home', href: '/docs' }}
       />
     </DocsShell>

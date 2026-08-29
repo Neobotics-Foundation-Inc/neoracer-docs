@@ -10,26 +10,26 @@ import { MouseFollowGlow, ScrollReveal } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
-  title: 'Terms of sale · Legal · NeoRacer Docs',
-  description: 'The official NeoRacer terms of sale document (PDF).',
+  title: 'Terms of service · Legal · NeoRacer Docs',
+  description: 'The official Neobotics terms of service document (PDF).',
 };
 
-export default function TermsOfSalePage() {
+export default function TermsOfServicePage() {
   return (
     <DocsShell>
       <Crumbs
         items={[
           { label: 'Legal', href: '/docs/legal/warranty' },
-          { label: 'Terms of sale' },
+          { label: 'Terms of service' },
         ]}
       />
 
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="04" top={-30} right={-20} size={460} />
+          <GhostNumeral n="05" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              TERMS OF <Red>SALE</Red>
+              TERMS OF <Red>SERVICE</Red>
             </DisplayHeading>
           </div>
         </section>
@@ -38,7 +38,7 @@ export default function TermsOfSalePage() {
       <ScrollReveal>
         <section style={{ paddingBottom: 56 }}>
           <a
-            href="/docs/terms-of-sale.pdf"
+            href="/docs/terms-of-service.pdf"
             target="_blank"
             rel="noopener noreferrer"
             style={{
@@ -54,7 +54,7 @@ export default function TermsOfSalePage() {
               whiteSpace: 'nowrap',
             }}
           >
-            OPEN THE TERMS OF SALE (PDF) ↗
+            OPEN THE TERMS OF SERVICE (PDF) ↗
           </a>
           <p
             style={{
@@ -64,14 +64,14 @@ export default function TermsOfSalePage() {
               marginTop: 10,
             }}
           >
-            terms-of-sale.pdf
+            terms-of-service.pdf
           </p>
         </section>
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'Shipping', href: '/docs/legal/shipping' }}
-        next={{ label: 'Terms of service', href: '/docs/legal/terms-of-service' }}
+        prev={{ label: 'Terms of sale', href: '/docs/legal/terms-of-sale' }}
+        next={{ label: 'Privacy', href: '/docs/legal/privacy' }}
       />
     </DocsShell>
   );

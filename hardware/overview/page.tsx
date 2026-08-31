@@ -56,6 +56,7 @@ function AnatomyDiagram() {
         width={902}
         height={1800}
         sizes="(max-width: 640px) 100vw, 560px"
+        priority
         style={{ width: '100%', height: 'auto', display: 'block' }}
       />
       {ANATOMY_PARTS.map((p, i) => {

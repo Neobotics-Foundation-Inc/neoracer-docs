@@ -54,7 +54,7 @@ export default function PrivacyPage() {
               whiteSpace: 'nowrap',
             }}
           >
-            OPEN THE PRIVACY POLICY (PDF) ↗
+            OPEN THE PRIVACY POLICY (PDF)
           </a>
           <p
             style={{

@@ -55,7 +55,7 @@ export default function WarrantyPage() {
               whiteSpace: 'nowrap',
             }}
           >
-            OPEN THE WARRANTY (PDF) ↗
+            OPEN THE WARRANTY (PDF)
           </a>
           <p
             style={{

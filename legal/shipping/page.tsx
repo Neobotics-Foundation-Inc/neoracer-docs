@@ -54,7 +54,7 @@ export default function ShippingPage() {
               whiteSpace: 'nowrap',
             }}
           >
-            OPEN THE SHIPPING POLICY (PDF) ↗
+            OPEN THE SHIPPING POLICY (PDF)
           </a>
           <p
             style={{

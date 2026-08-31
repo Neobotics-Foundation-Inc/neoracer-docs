@@ -54,7 +54,7 @@ export default function TermsOfServicePage() {
               whiteSpace: 'nowrap',
             }}
           >
-            OPEN THE TERMS OF SERVICE (PDF) ↗
+            OPEN THE TERMS OF SERVICE (PDF)
           </a>
           <p
             style={{

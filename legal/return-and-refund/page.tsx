@@ -55,7 +55,7 @@ export default function ReturnAndRefundPage() {
               whiteSpace: 'nowrap',
             }}
           >
-            OPEN THE RETURN AND REFUND POLICY (PDF) ↗
+            OPEN THE RETURN AND REFUND POLICY (PDF)
           </a>
           <p
             style={{

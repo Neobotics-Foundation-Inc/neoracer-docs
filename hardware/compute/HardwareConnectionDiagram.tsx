@@ -73,11 +73,14 @@ export function HardwareConnectionDiagram() {
         background: NB.beige,
         border: `1px solid ${NB.borderOnBeige}`,
         borderRadius: 12,
+        /* Phones: the diagram keeps a readable minimum width and pans
+           sideways instead of shrinking the whole map to fit. */
+        overflowX: 'auto',
       }}
     >
       <svg
         viewBox="0 0 960 690"
-        style={{ width: '100%', maxWidth: 860, height: 'auto', display: 'block' }}
+        style={{ width: '100%', maxWidth: 860, minWidth: 700, height: 'auto', display: 'block' }}
         role="img"
         aria-label="Hardware connection diagram. Host signal routing: the Jetson Orin Nano Super connects over USB 3.2 downstream ports to the Richbeam LiDAR and the RGB camera, which provide perception data, and holds a two-way USB link with the vehicle controller carrying control commands out and status feedback back. Controller signal routing: the vehicle controller drives the ESC and the servo over PWM outputs, reads the encoder over a pulse input for status feedback, and takes remote commands from the 2.4 gigahertz RF receiver over a PPM signal."
       >

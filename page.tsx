@@ -17,7 +17,7 @@ import PitLaneNav, { PitLaneSection } from '@/components/docs/PitLaneNav';
 export const metadata: Metadata = {
   title: 'NeoRacer Docs, from sealed box to autonomous lap',
   description:
-    'Documentation for the NeoRacer V1 autonomous racing kit. A six-page setup path, plus the full Python API and ROS 2 reference for researchers.',
+    'Documentation for the NeoRacer M1 autonomous racing kit. A six-page setup path, plus the full Python API and ROS 2 reference for researchers.',
 };
 
 /* ─────────────────────────────────────────────────────────────────────────
@@ -64,7 +64,7 @@ export default function DocsLandingPage() {
               marginBottom: 8,
             }}
           >
-            Welcome to the NeoRacer V1 documentation. If you have received
+            Welcome to the NeoRacer M1 documentation. If you have received
             your NeoRacer shipment, go to Setup to get started. For
             information on the NeoRacer&apos;s components and capabilities,
             take a look at Hardware and Software. For the library functions

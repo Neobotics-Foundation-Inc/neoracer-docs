@@ -7,7 +7,7 @@ import {
   GhostNumeral,
   MonoLabel,
 } from '@/components/docs/Editorial';
-import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
+import { ScrollReveal, MouseFollowGlow, InfoNote, PhotoSteps } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext, DataTable } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
@@ -79,6 +79,25 @@ export default function DrivetrainPage() {
               { k: 'No-load speed', v: '~11,000 RPM' },
               { k: 'Drive', v: 'All four wheels, fixed reduction' },
               { k: 'Closed loop', v: 'MCU velocity controller' },
+            ]}
+          />
+        </div>
+        <div style={{ marginTop: 26, maxWidth: 720 }}>
+          <MonoLabel>The ESC switch</MonoLabel>
+          <PhotoSteps
+            items={[
+              {
+                text: 'The ESC has its own switch, located inside the chassis. It is on by default. If the ESC is switched off, the car will not move, even if you use the transmitter.',
+                photos: [
+                  {
+                    src: '/images/drivetrain/esc-switch.jpeg',
+                    alt: 'The ESC switch inside the chassis, with the OFF and ON positions labelled',
+                  },
+                ],
+              },
+              {
+                text: 'To switch it back on, first make sure nothing is sending drive commands to the car, then flip the switch to ON. You will hear a succession of beeps, and the car will operate as normal.',
+              },
             ]}
           />
         </div>

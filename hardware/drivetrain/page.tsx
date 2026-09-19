@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Image from 'next/image';
 import DocsShell from '@/components/docs/DocsShell';
 import { NB } from '@/lib/nb-tokens';
 import {
@@ -81,6 +82,29 @@ export default function DrivetrainPage() {
               { k: 'Closed loop', v: 'MCU velocity controller' },
             ]}
           />
+        </div>
+        <div style={{ marginTop: 26 }}>
+          <MonoLabel>The ESC switch</MonoLabel>
+          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 12 }}>
+            The ESC has its own switch, located inside the chassis. It is on by
+            default. If the ESC is switched off, the car will not move, even if
+            you use the transmitter.
+          </p>
+          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 12 }}>
+            To switch it back on, first make sure nothing is sending drive
+            commands to the car, then flip the switch to ON. You will hear a
+            succession of beeps, and the car will operate as normal.
+          </p>
+          <div style={{ marginTop: 16, maxWidth: 720 }}>
+            <Image
+              src="/images/drivetrain/esc-switch.jpeg"
+              alt="The ESC switch inside the chassis, with the OFF and ON positions labelled"
+              width={1600}
+              height={1200}
+              sizes="(max-width: 768px) 100vw, 720px"
+              style={{ width: '100%', height: 'auto', borderRadius: 12, border: `1px solid ${NB.borderOnBeige}` }}
+            />
+          </div>
         </div>
         </section>
       </ScrollReveal>

@@ -12,6 +12,7 @@ import { ScrollReveal, MouseFollowGlow, InfoNote, PhotoSteps, Tabs } from '@/com
 import { Crumbs, PrevNext, Callout, Code, DataTable } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://neobotics.org/docs/software/networking' },
   title: 'Networking · Software · NeoRacer Docs',
   description:
     "Two ways onto the car: the cudy router (car at 192.168.10.100) or the car's own access point (10.42.0.1). SSH or RustDesk in as racecar, the services are already running, and ROS 2 DDS discovery works across either network.",

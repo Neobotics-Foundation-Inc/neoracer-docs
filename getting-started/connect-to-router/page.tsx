@@ -13,6 +13,7 @@ import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 import { Crumbs, Callout, PrevNext, DataTable } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://neobotics.org/docs/getting-started/connect-to-router' },
   title: 'Connect to the router · Setup · NeoRacer Docs',
   description:
     "Join the car's own Wi-Fi. The Cudy router broadcasts neoracer-XXXX; connect your device to it and reach the car through the router's static IP, 192.168.10.100.",

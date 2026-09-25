@@ -146,6 +146,7 @@ function FlyskyLabelledViews() {
 }
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://neobotics.org/docs/hardware/remote-control' },
   title: 'Remote control · Hardware · NeoRacer Docs',
   description:
     'The Flysky FS-i6S transmitter: the sticks and switches, SWB to hand control between manual and autonomy, SWA for slow or fast manual driving, and how to remap the auxiliary channels to S.BUS output.',

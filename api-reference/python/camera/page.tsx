@@ -10,6 +10,7 @@ import { Crumbs, PrevNext, Code, ApiMethods, type ApiMethod } from '@/components
 import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://neobotics.org/docs/api-reference/python/camera' },
   title: 'rc.camera · Python API · NeoRacer Docs',
   description:
     "The Camera module: color frames from the NeoRacer's RGB camera as NumPy arrays. The NeoRacer has no depth camera, so use the LiDAR for distance.",

@@ -10,6 +10,7 @@ import { MouseFollowGlow, ScrollReveal } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://neobotics.org/docs/legal/return-and-refund' },
   title: 'Returns & refunds · Legal · NeoRacer Docs',
   description:
     'The official NeoRacer return and refund policy document (PDF).',

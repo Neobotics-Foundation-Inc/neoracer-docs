@@ -15,6 +15,7 @@ import {
 import PitLaneNav, { PitLaneSection } from '@/components/docs/PitLaneNav';
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://neobotics.org/docs' },
   title: 'NeoRacer Docs, from sealed box to autonomous lap',
   description:
     'Documentation for the NeoRacer M1 autonomous racing kit. A six-page setup path, plus the full Python API and ROS 2 reference for researchers.',

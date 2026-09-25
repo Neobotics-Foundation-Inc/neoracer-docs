@@ -12,6 +12,7 @@ import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext, Code } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://neobotics.org/docs/api-reference/cli/running' },
   title: 'Status and Running · CLI · NeoRacer Docs',
   description:
     'racecar status, teleop, launch and ws: inspect the hardware, run the stack in the foreground, launch one subsystem, or switch workspaces.',

@@ -14,6 +14,7 @@ import { ScrollReveal, MouseFollowGlow, PhotoSteps } from '@/components/docs/Int
 import { Crumbs, Callout, PrevNext, Code } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://neobotics.org/docs/getting-started/test-the-system' },
   title: 'Test the system · Setup · NeoRacer Docs',
   description:
     'Validate the install by running the Async Core Test notebook in JupyterLab. It checks every sensor and control surface on the car and prints a pass/fail summary.',

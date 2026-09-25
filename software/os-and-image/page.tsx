@@ -22,6 +22,7 @@ import {
 import { Crumbs, PrevNext, Callout, Code } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://neobotics.org/docs/software/os-and-image' },
   title: 'OS & image · Software · NeoRacer Docs',
   description:
     'NeoRacer ships with a pre-flashed Ubuntu + ROS 2 Humble image. Install the driver once on the first boot and every boot after that comes up ready to write code. Here is what is on the image and how to re-flash from scratch.',

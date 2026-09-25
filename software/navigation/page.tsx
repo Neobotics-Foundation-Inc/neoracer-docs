@@ -14,6 +14,7 @@ import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Inter
 import { Crumbs, PrevNext, Callout, Code, DataTable } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://neobotics.org/docs/software/navigation' },
   title: 'Navigation (Nav2) · Software · NeoRacer Docs',
   description:
     'Give the NeoRacer a goal on a saved map and let Nav2 drive it there. Start it with racecar navigation, localize with AMCL, pick the TEB or DWB planner, and set goals in RViz.',

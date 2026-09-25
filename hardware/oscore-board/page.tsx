@@ -16,6 +16,7 @@ import { BoardMap, type BoardMarker } from '@/components/docs/BoardMap';
 import { Crumbs, PrevNext, Callout, DataTable } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://neobotics.org/docs/hardware/oscore-board' },
   title: 'OSCORE board · Hardware · NeoRacer Docs',
   description:
     "The NeoRacer's power-distribution and control board. An ESP32-S3 robot controller (OSCORE) that takes the LiPo in and runs the motor, servo, IMU, and comms. Full pinout, power rails, and the hardware manual.",

@@ -10,6 +10,7 @@ import { Crumbs, PrevNext, Code, ApiMethods, type ApiMethod } from '@/components
 import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://neobotics.org/docs/api-reference/python/physics' },
   title: 'rc.physics · Python API · NeoRacer Docs',
   description:
     'The Physics module is the IMU: get_linear_acceleration, get_angular_velocity, get_magnetic_field. Acceleration in m/s^2, angular velocity in rad/s.',

@@ -13,6 +13,7 @@ import { SensorSheet } from '@/components/docs/SensorSheet';
 import { Crumbs, Callout, PrevNext, Code } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://neobotics.org/docs/hardware/sensors/imu' },
   title: 'IMU · Hardware · NeoRacer Docs',
   description:
     '9-axis IMU on the OSCORE board: a QMI8658A accelerometer and gyroscope plus a QMC6309 magnetometer, read through the rc.physics Python API.',

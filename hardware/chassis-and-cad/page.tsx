@@ -13,6 +13,7 @@ import { PhotoCard } from '@/components/docs/PhotoCard';
 import { Crumbs, PrevNext, DataTable } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://neobotics.org/docs/hardware/chassis-and-cad' },
   title: 'Chassis & CAD · Hardware · NeoRacer Docs',
   description:
     'The parts that make up the NeoRacer body: the rolling chassis, the front bumper, the rear wing, and the side covers. The full mechanical design is open under CERN-OHL-S-2.0.',

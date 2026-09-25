@@ -14,6 +14,7 @@ import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Inter
 import { HardwareConnectionDiagram } from './HardwareConnectionDiagram';
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://neobotics.org/docs/hardware/compute' },
   title: 'Compute · Hardware · NeoRacer Docs',
   description: 'NVIDIA Jetson Orin Nano host with 67 TOPS of AI acceleration, plus a real-time microcontroller stack for motor, servo, and IMU.',
 };

@@ -10,6 +10,7 @@ import { Crumbs, PrevNext, Code, ApiMethods, type ApiMethod } from '@/components
 import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://neobotics.org/docs/api-reference/python/utils' },
   title: 'racecar_utils · Python API · NeoRacer Docs',
   description:
     'The racecar_utils helper module: clamp, remap_range, crop, contour finding and drawing for color tracking, and AR marker detection.',

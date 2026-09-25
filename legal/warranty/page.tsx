@@ -10,6 +10,7 @@ import { MouseFollowGlow, ScrollReveal } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://neobotics.org/docs/legal/warranty' },
   title: 'Warranty · Legal · NeoRacer Docs',
   description:
     'The official NeoRacer limited hardware warranty document (PDF).',

@@ -11,6 +11,7 @@ import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext, DataTable } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://neobotics.org/docs/reference/passwords' },
   title: 'Passwords · Reference · NeoRacer Docs',
   description:
     'Every password the car ships with: the Wi-Fi networks, the router admin, the car login, and RustDesk, with where to change each one.',

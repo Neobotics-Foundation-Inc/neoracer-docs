@@ -14,6 +14,7 @@ import { SetupTimeline } from '@/components/docs/SetupTimeline';
 import { Crumbs, Callout, Code, PrevNext, DataTable } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://neobotics.org/docs/software/workspaces' },
   title: 'File system · Software · NeoRacer Docs',
   description:
     "A walk through the NeoRacer's home directory: ros2_ws holds the driver, jupyter_ws holds your code and is what JupyterLab serves, osracer_ws is the vendor stack, and neoracer-installer is what put it all there.",

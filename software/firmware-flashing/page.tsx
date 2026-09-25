@@ -13,6 +13,7 @@ import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Inter
 import { Crumbs, PrevNext, Callout, Code } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://neobotics.org/docs/software/firmware-flashing' },
   title: 'Firmware flashing · Software · NeoRacer Docs',
   description:
     'Update the OSCORE (ESP32-S3) controller firmware from a Chrome or Edge browser. Power V_IN, put the board in download mode with BOOT + RESET, then Connect Board and Start Flashing in the web flasher.',

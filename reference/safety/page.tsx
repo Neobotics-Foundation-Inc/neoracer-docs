@@ -12,6 +12,7 @@ import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://neobotics.org/docs/reference/safety' },
   title: 'Safety · Reference · NeoRacer Docs',
   description: 'The safety rules for running the NeoRacer: where to drive, how to stop it, and how to handle power and the battery.',
 };

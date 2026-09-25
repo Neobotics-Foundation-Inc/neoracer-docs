@@ -10,6 +10,7 @@ import { Crumbs, PrevNext, Callout, DataTable } from '@/components/docs/DocsPrim
 import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://neobotics.org/docs/api-reference/ros2/topics' },
   title: 'ROS 2 topics · API Reference · NeoRacer Docs',
   description:
     'Every topic the racecar_neo stack publishes and subscribes: /scan, /imu, /odom, /battery, /camera, /drive. Which ones you read, which one you publish, and the drive pipeline that connects them.',

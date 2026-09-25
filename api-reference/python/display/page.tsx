@@ -10,6 +10,7 @@ import { Crumbs, PrevNext, Callout, Code, ApiMethods, type ApiMethod } from '@/c
 import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://neobotics.org/docs/api-reference/python/display' },
   title: 'rc.display · Python API · NeoRacer Docs',
   description:
     'The Display module: show_text drives the dot matrix on the back of the car, and show_color_image and show_lidar open windows on the Jetson desktop.',

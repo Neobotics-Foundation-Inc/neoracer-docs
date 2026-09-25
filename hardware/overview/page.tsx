@@ -14,6 +14,7 @@ import { Crumbs, PrevNext, Callout } from '@/components/docs/DocsPrimitives';
 import { WiringDiagram } from '@/components/docs/WiringDiagram';
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://neobotics.org/docs/hardware/overview' },
   title: 'Hardware overview · NeoRacer Docs',
   description: 'A single-page anatomy of the NeoRacer M1: compute, sensors, drivetrain, and chassis at a glance.',
 };

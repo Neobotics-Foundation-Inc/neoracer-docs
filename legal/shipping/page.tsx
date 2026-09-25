@@ -10,6 +10,7 @@ import { MouseFollowGlow, ScrollReveal } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://neobotics.org/docs/legal/shipping' },
   title: 'Shipping · Legal · NeoRacer Docs',
   description: 'The official NeoRacer shipping policy document (PDF).',
 };

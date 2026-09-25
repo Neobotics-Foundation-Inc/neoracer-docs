@@ -11,6 +11,7 @@ import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext, Code, DataTable } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://neobotics.org/docs/api-reference/cli' },
   title: 'Overview · CLI · NeoRacer Docs',
   description:
     'Every racecar subcommand on the car. racecar help prints the same list. Services, running and setup each have their own page.',

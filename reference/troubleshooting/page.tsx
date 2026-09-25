@@ -10,6 +10,7 @@ import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext, Code, DataTable } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://neobotics.org/docs/reference/troubleshooting' },
   title: 'Troubleshooting · Reference · NeoRacer Docs',
   description:
     'One page to find what is wrong with the car: first checks, per-sensor probes, and the common problems with the LiDAR, camera, motor and Wi-Fi.',

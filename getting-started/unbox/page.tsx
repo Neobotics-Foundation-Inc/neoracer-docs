@@ -15,6 +15,7 @@ import { ScrollReveal, MouseFollowGlow, AnimatedNumeral } from '@/components/doc
 import { Crumbs, PrevNext } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://neobotics.org/docs/getting-started/unbox' },
   title: 'Unbox · NeoRacer Docs',
   description: 'What\'s in the box: the car, controller, charger, router, and antenna, plus the small accessories that ship alongside them.',
 };

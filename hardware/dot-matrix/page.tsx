@@ -11,6 +11,7 @@ import { SensorSheet } from '@/components/docs/SensorSheet';
 import { Crumbs, PrevNext, Code } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://neobotics.org/docs/hardware/dot-matrix' },
   title: 'Dot matrix · Hardware · NeoRacer Docs',
   description:
     'The 8 by 8 LED dot matrix at the back of the car. Programs write characters to it through rc.display.',

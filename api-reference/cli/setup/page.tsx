@@ -11,6 +11,7 @@ import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext, Callout, Code, DataTable } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://neobotics.org/docs/api-reference/cli/setup' },
   title: 'Maintenance · CLI · NeoRacer Docs',
   description:
     'racecar setup, library and update: configure networking, choose the Python library copy, and field-update the driver.',

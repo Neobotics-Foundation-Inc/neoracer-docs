@@ -11,6 +11,7 @@ import { Crumbs, PrevNext, Code, DataTable } from '@/components/docs/DocsPrimiti
 import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://neobotics.org/docs/api-reference/ros2/params' },
   title: 'ROS 2 parameters · API Reference · NeoRacer Docs',
   description:
     'The parameters the neoracer_ros2_driver nodes declare: the throttle caps every /drive command is scaled by, the controller node speed and steering mapping, the camera settings, and the LiDAR launch arguments.',

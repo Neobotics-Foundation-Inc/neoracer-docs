@@ -10,6 +10,7 @@ import { Crumbs, PrevNext, Code, ApiMethods, type ApiMethod } from '@/components
 import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://neobotics.org/docs/api-reference/python/core' },
   title: 'racecar_core · Python API · NeoRacer Docs',
   description:
     'The racecar_core module: create_racecar, set_start_update, go, go_async, get_delta_time, and set_update_slow_time.',

@@ -15,6 +15,7 @@ import { Crumbs, PrevNext, Callout, Code, DataTable } from '@/components/docs/Do
 import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://neobotics.org/docs/api-reference/ros2/tf-frames' },
   title: 'ROS 2 TF frames · API Reference · NeoRacer Docs',
   description:
     'The driver stamps frame_ids (laser, imu_link, camera_link) on its messages. This page lists the frames and shows the static transforms you set up to relate them.',

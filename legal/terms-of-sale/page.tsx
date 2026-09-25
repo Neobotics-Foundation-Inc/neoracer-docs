@@ -10,6 +10,7 @@ import { MouseFollowGlow, ScrollReveal } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://neobotics.org/docs/legal/terms-of-sale' },
   title: 'Terms of sale · Legal · NeoRacer Docs',
   description: 'The official NeoRacer terms of sale document (PDF).',
 };

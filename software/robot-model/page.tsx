@@ -15,6 +15,7 @@ import { Crumbs, PrevNext, Callout, Code } from '@/components/docs/DocsPrimitive
 import UrdfViewer from '@/components/docs/UrdfViewer';
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://neobotics.org/docs/software/robot-model' },
   title: '3D model · Software · NeoRacer Docs',
   description:
     "An interactive 3D model of the NeoRacer, built from the real osracer ROS 2 URDF: rotate it, spin the wheels, and steer the front axle through the actual continuous joints.",

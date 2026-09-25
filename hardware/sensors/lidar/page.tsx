@@ -13,6 +13,7 @@ import { SensorSheet } from '@/components/docs/SensorSheet';
 import { Crumbs, PrevNext, Code } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://neobotics.org/docs/hardware/sensors/lidar' },
   title: 'LiDAR · Hardware · NeoRacer Docs',
   description: '30 Hz planar scanner, ~1440 samples over a 270° live window. Coordinate frame, sample layout, Python and ROS 2 access.',
 };

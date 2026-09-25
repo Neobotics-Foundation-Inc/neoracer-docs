@@ -17,6 +17,7 @@ import { Crumbs, Callout, PrevNext, Code } from '@/components/docs/DocsPrimitive
 import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://neobotics.org/docs/getting-started/charge-and-power' },
   title: 'Charge & power · NeoRacer Docs',
   description: 'Charge an 11.1 V LiPo pack safely, power the car for the first time, and learn the LED states.',
 };

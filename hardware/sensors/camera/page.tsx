@@ -12,6 +12,7 @@ import { SensorSheet } from '@/components/docs/SensorSheet';
 import { Crumbs, PrevNext, Code } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://neobotics.org/docs/hardware/sensors/camera' },
   title: 'Camera · Hardware · NeoRacer Docs',
   description:
     'The forward-facing colour camera. 640 x 480 BGR frames at 60 fps in the Python API.',

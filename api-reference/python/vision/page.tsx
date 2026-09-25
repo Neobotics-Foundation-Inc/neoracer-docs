@@ -10,6 +10,7 @@ import { Crumbs, PrevNext, Callout, Code, ApiMethods, type ApiMethod } from '@/c
 import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://neobotics.org/docs/api-reference/python/vision' },
   title: 'rc.vision · Python API · NeoRacer Docs',
   description:
     'The Vision module: get_detections returns object detections from the inference node. Each detection carries a class label, a confidence score, and a bounding box.',

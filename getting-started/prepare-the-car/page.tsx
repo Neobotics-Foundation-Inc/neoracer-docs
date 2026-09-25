@@ -16,6 +16,7 @@ import { SetupTimeline } from '@/components/docs/SetupTimeline';
 import { Crumbs, Callout, PrevNext } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://neobotics.org/docs/getting-started/prepare-the-car' },
   title: 'Prepare the car · Setup · NeoRacer Docs',
   description:
     'Get the car physically ready: fit the router, attach the Wi-Fi antennas, connect the Jetson peripherals, fit the battery and sidepods, plug in a monitor and keyboard, and get the car onto the internet. Then install the driver.',

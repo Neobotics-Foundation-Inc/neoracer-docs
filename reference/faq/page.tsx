@@ -10,6 +10,7 @@ import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext, Callout } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://neobotics.org/docs/reference/faq' },
   title: 'FAQ · Reference · NeoRacer Docs',
   description:
     'Questions that get asked enough that they deserve a single canonical answer. Battery choice, ROS 1 support, Windows compatibility, classroom counts, more.',

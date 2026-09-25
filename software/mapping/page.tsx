@@ -14,6 +14,7 @@ import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Inter
 import { Crumbs, PrevNext, Callout, Code, DataTable } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://neobotics.org/docs/software/mapping' },
   title: 'Mapping (SLAM) · Software · NeoRacer Docs',
   description:
     'Build a 2D occupancy map of a room with racecar mapping. Drive the car under RC while slam_toolbox, gmapping, or Cartographer fuse the LiDAR and odometry, watch the map form in RViz, and save it for navigation.',

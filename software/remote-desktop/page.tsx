@@ -10,6 +10,7 @@ import { ScrollReveal, MouseFollowGlow, InfoNote, PhotoSteps } from '@/component
 import { Crumbs, Callout, PrevNext } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://neobotics.org/docs/software/remote-desktop' },
   title: 'Remote desktop · Software · NeoRacer Docs',
   description:
     "Reach the car's full desktop from your laptop by IP address with RustDesk. The password ships preset; change it any time. After this page the monitor and keyboard are never needed again.",

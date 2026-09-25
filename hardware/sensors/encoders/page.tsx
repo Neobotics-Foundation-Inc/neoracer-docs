@@ -12,6 +12,7 @@ import { SensorSheet } from '@/components/docs/SensorSheet';
 import { Crumbs, PrevNext, Code } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://neobotics.org/docs/hardware/sensors/encoders' },
   title: 'Encoder · Hardware · NeoRacer Docs',
   description:
     'A Hall-effect encoder on the motor shaft, counted in hardware on the MCU and integrated into the odometry published on /odom at ~200 Hz. Dead reckoning between LiDAR scans.',

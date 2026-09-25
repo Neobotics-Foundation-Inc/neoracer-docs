@@ -17,6 +17,7 @@ import { Crumbs, PrevNext } from '@/components/docs/DocsPrimitives';
 const INSTALLER_REPO = 'https://github.com/Neobotics-Foundation-Inc/neoracer-installer';
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://neobotics.org/docs/getting-started/install-driver' },
   title: 'Install the driver · Setup · NeoRacer Docs',
   description:
     'One installer sets up the whole car: clone neoracer-installer, run install.sh, and the ROS2 driver, the GPU stack, and every service install and verify themselves.',

@@ -13,6 +13,7 @@ import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext, Callout, Code, DataTable } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://neobotics.org/docs/reference/maintenance' },
   title: 'Maintenance · Reference · NeoRacer Docs',
   description:
     'The upkeep schedule for the NeoRacer: what to check before each run, weekly, and monthly; how to look after the LiPo; and how to store and transport the car safely.',

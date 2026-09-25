@@ -10,6 +10,7 @@ import { Crumbs, PrevNext, Callout, Code, ApiMethods, type ApiMethod } from '@/c
 import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://neobotics.org/docs/api-reference/python/lidar' },
   title: 'rc.lidar · Python API · NeoRacer Docs',
   description:
     'The Lidar module: get_samples returns the scan in centimetres, ~1440 samples at 0.25° on the car and 720 at 0.5° in the simulator. Index 0 is forward, the sensor sees a 270° window, and no-return samples read 0.',

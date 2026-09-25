@@ -11,6 +11,7 @@ import { ScrollReveal, MouseFollowGlow, InfoNote, PhotoSteps } from '@/component
 import { Crumbs, PrevNext, DataTable } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://neobotics.org/docs/hardware/drivetrain' },
   title: 'Drivetrain · Hardware · NeoRacer Docs',
   description: 'Ackermann steering, four-wheel drive, brushed motor at 11,000 RPM no-load, and a 20 kg waterproof high-torque servo.',
 };

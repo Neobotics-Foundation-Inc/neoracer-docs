@@ -87,13 +87,19 @@ style with the red kicker bar; `size="xl"` is only for the hero.
 
 ## Writing style
 
-Short plain sentences, actor first, one fact per sentence. No fluff, no
-jokes, no emojis. Address the reader as "you". Name exact things: the real
-file name, the real command, the real button label. Do not personify the
-software or the hardware: nothing refuses, wants, decides or complains.
-Say what happens ("the update will not start on a low pack", not "the
-firmware refuses the update"). If a procedure was not run end to end on
-real hardware, the page does not ship (see Gated pages).
+Write in short, plain sentences, with the actor first and one fact per
+sentence. Keep the tone technical and direct: the documentation describes
+what the system does and what the reader should do, without embellishment,
+humor, or emoji. Address the reader as "you".
+
+Be specific. Name the exact file, the exact command, and the exact button
+label the reader will see. Describe behavior rather than attributing
+intent to the software or the hardware: write "the update will not start
+on a low pack", not "the firmware refuses the update".
+
+Publish only procedures that have been carried out end to end on real
+hardware. A page whose procedure has not been verified stays gated (see
+Gated pages).
 
 ## The You'll need block
 

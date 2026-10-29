@@ -240,53 +240,47 @@ export default function Ros2TfFramesPage() {
               <ChromeBadge variant="outline">racecar_neo: no /tf</ChromeBadge>
               <ChromeBadge variant="outline">osracer: full tree</ChromeBadge>
             </div>
+            <Callout type="warn" title="The racecar_neo teaching stack publishes no /tf or /tf_static">
+              Its teleop launch starts the sensor and drive nodes, but it does not run{' '}
+              <code style={{ fontFamily: NB.monoFont }}>robot_state_publisher</code> or
+              any{' '}
+              <code style={{ fontFamily: NB.monoFont }}>static_transform_publisher</code>.
+              So <code style={{ fontFamily: NB.monoFont }}>laser</code> and{' '}
+              <code style={{ fontFamily: NB.monoFont }}>imu_link</code> exist as labels
+              on messages, but ROS 2 does not know where they sit relative to each
+              other. If you are running only this stack, anything that needs that
+              geometry, RViz, a costmap, sensor fusion, starts with the
+              transforms below.
+            </Callout>
+            <Callout type="tip" title="Running osracer? The tree is already there">
+              The{' '}
+              <a href="https://github.com/osrbot/osracer" target="_blank" rel="noopener noreferrer" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
+                osracer
+              </a>{' '}
+              stack brings up{' '}
+              <code style={{ fontFamily: NB.monoFont }}>robot_state_publisher</code>{' '}
+              from a{' '}
+              <InfoNote term="URDF" title="URDF">
+                Unified Robot Description Format. An XML file that describes a robot's
+                parts and how they connect, so tools can compute where each sensor sits
+                relative to the body.
+              </InfoNote>{' '}
+              with{' '}
+              <InfoNote term="Ackermann kinematics" title="Ackermann kinematics">
+                The geometry of car-style steering, where the front wheels turn and the
+                body pivots around the rear axle. It describes how the car moves, unlike
+                a robot that can spin in place.
+              </InfoNote>, so{' '}
+              <code style={{ fontFamily: NB.monoFont }}>base_link</code> and every
+              sensor frame are already related and its SLAM adds{' '}
+              <code style={{ fontFamily: NB.monoFont }}>map</code> and{' '}
+              <code style={{ fontFamily: NB.monoFont }}>odom</code> on top. Reach for the
+              hand-rolled transforms below when you run the teaching stack on its own,
+              or when you add a node that needs a frame osracer does not define.
+            </Callout>
           </div>
         </section>
       </MouseFollowGlow>
-
-      <ScrollReveal>
-        <Callout type="warn" title="The racecar_neo teaching stack publishes no /tf or /tf_static">
-          Its teleop launch starts the sensor and drive nodes, but it does not run{' '}
-          <code style={{ fontFamily: NB.monoFont }}>robot_state_publisher</code> or
-          any{' '}
-          <code style={{ fontFamily: NB.monoFont }}>static_transform_publisher</code>.
-          So <code style={{ fontFamily: NB.monoFont }}>laser</code> and{' '}
-          <code style={{ fontFamily: NB.monoFont }}>imu_link</code> exist as labels
-          on messages, but ROS 2 does not know where they sit relative to each
-          other. If you are running only this stack, anything that needs that
-          geometry, RViz, a costmap, sensor fusion, starts with the
-          transforms below.
-        </Callout>
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <Callout type="tip" title="Running osracer? The tree is already there">
-          The{' '}
-          <a href="https://github.com/osrbot/osracer" target="_blank" rel="noopener noreferrer" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-            osracer
-          </a>{' '}
-          stack brings up{' '}
-          <code style={{ fontFamily: NB.monoFont }}>robot_state_publisher</code>{' '}
-          from a{' '}
-          <InfoNote term="URDF" title="URDF">
-            Unified Robot Description Format. An XML file that describes a robot's
-            parts and how they connect, so tools can compute where each sensor sits
-            relative to the body.
-          </InfoNote>{' '}
-          with{' '}
-          <InfoNote term="Ackermann kinematics" title="Ackermann kinematics">
-            The geometry of car-style steering, where the front wheels turn and the
-            body pivots around the rear axle. It describes how the car moves, unlike
-            a robot that can spin in place.
-          </InfoNote>, so{' '}
-          <code style={{ fontFamily: NB.monoFont }}>base_link</code> and every
-          sensor frame are already related and its SLAM adds{' '}
-          <code style={{ fontFamily: NB.monoFont }}>map</code> and{' '}
-          <code style={{ fontFamily: NB.monoFont }}>odom</code> on top. Reach for the
-          hand-rolled transforms below when you run the teaching stack on its own,
-          or when you add a node that needs a frame osracer does not define.
-        </Callout>
-      </ScrollReveal>
 
       <ScrollReveal>
         <Fig
@@ -341,17 +335,14 @@ ros2 run tf2_ros static_transform_publisher 0.22 0 0.08 0 0 0 base_link camera_l
             driven by a URDF, so the whole tree comes up with one node and stays in
             one place.
           </p>
+          <Callout type="tip" title="Coming from F1TENTH or a full Nav2 stack?">
+            Those builds assume a populated TF tree, so wiring{' '}
+            <code style={{ fontFamily: NB.monoFont }}>base_link</code> to each sensor
+            is the first thing to port over. The frame names here follow the same
+            convention, so a URDF from a comparable car usually drops in with only
+            the offsets changed.
+          </Callout>
         </section>
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <Callout type="tip" title="Coming from F1TENTH or a full Nav2 stack?">
-          Those builds assume a populated TF tree, so wiring{' '}
-          <code style={{ fontFamily: NB.monoFont }}>base_link</code> to each sensor
-          is the first thing to port over. The frame names here follow the same
-          convention, so a URDF from a comparable car usually drops in with only
-          the offsets changed.
-        </Callout>
       </ScrollReveal>
 
       <PrevNext />

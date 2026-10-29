@@ -100,21 +100,18 @@ def update():
 
 rc.set_start_update(start, update)
 rc.go()`}</Code>
+          <Callout type="note" title="The panel shows text only">
+            The dot matrix accepts text through{' '}
+            <code style={{ fontFamily: NB.monoFont }}>show_text</code>. The
+            pixel-level methods from the generic library,{' '}
+            <code style={{ fontFamily: NB.monoFont }}>set_matrix</code>,{' '}
+            <code style={{ fontFamily: NB.monoFont }}>get_matrix</code> and{' '}
+            <code style={{ fontFamily: NB.monoFont }}>set_matrix_intensity</code>,
+            raise{' '}
+            <code style={{ fontFamily: NB.monoFont }}>NotImplementedError</code>{' '}
+            on the NeoRacer.
+          </Callout>
         </section>
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <Callout type="note" title="The panel shows text only">
-          The dot matrix accepts text through{' '}
-          <code style={{ fontFamily: NB.monoFont }}>show_text</code>. The
-          pixel-level methods from the generic library,{' '}
-          <code style={{ fontFamily: NB.monoFont }}>set_matrix</code>,{' '}
-          <code style={{ fontFamily: NB.monoFont }}>get_matrix</code> and{' '}
-          <code style={{ fontFamily: NB.monoFont }}>set_matrix_intensity</code>,
-          raise{' '}
-          <code style={{ fontFamily: NB.monoFont }}>NotImplementedError</code>{' '}
-          on the NeoRacer.
-        </Callout>
       </ScrollReveal>
 
       <ScrollReveal>

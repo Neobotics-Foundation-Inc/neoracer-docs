@@ -146,9 +146,6 @@ export default function HardwareOverviewPage() {
         >
           <WiringDiagram />
         </Fig>
-      </ScrollReveal>
-
-      <ScrollReveal>
         <Callout type="tip" title="3D visualizer">
           An interactive NeoRacer is available at{' '}
           <Link href="/kits/visualize" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>

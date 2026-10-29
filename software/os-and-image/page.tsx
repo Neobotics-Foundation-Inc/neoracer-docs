@@ -389,19 +389,16 @@ ros2 topic echo /scan --once | head -20`}</Code>
             ]}
           />
         </div>
+          <Callout type="note" title="Shut down cleanly">
+          Cutting power while the SSD is mid-write can corrupt the rootfs,
+          so it's worth getting into the habit of shutting down cleanly at the
+          end of a session. Either run{' '}
+          <code style={{ fontFamily: NB.monoFont, fontWeight: 700 }}>sudo shutdown now</code>
+          {' '}from an SSH session, or long-press the chassis power button for
+          about 3 seconds and watch the status LED ladder fade to off. Once the
+          green LED is dark, the master switch is safe to flip.
+        </Callout>
         </section>
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <Callout type="note" title="Shut down cleanly">
-        Cutting power while the SSD is mid-write can corrupt the rootfs,
-        so it's worth getting into the habit of shutting down cleanly at the
-        end of a session. Either run{' '}
-        <code style={{ fontFamily: NB.monoFont, fontWeight: 700 }}>sudo shutdown now</code>
-        {' '}from an SSH session, or long-press the chassis power button for
-        about 3 seconds and watch the status LED ladder fade to off. Once the
-        green LED is dark, the master switch is safe to flip.
-      </Callout>
       </ScrollReveal>
 
       <PrevNext />

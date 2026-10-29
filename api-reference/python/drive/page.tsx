@@ -124,15 +124,12 @@ def update():
 
 rc.set_start_update(start, update)
 rc.go()`}</Code>
+          <Callout type="note" title="Speed and angle are normalized, not physical units">
+            You send numbers in <code style={{ fontFamily: NB.monoFont }}>[-1, 1]</code>, not m/s or
+            degrees. The library maps them to the car's real throttle and steering
+            range, which is what lets the same script run on the car.
+          </Callout>
         </section>
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <Callout type="note" title="Speed and angle are normalized, not physical units">
-          You send numbers in <code style={{ fontFamily: NB.monoFont }}>[-1, 1]</code>, not m/s or
-          degrees. The library maps them to the car's real throttle and steering
-          range, which is what lets the same script run on the car.
-        </Callout>
       </ScrollReveal>
 
       <ScrollReveal>

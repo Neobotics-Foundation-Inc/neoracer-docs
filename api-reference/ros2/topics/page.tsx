@@ -207,18 +207,15 @@ export default function Ros2TopicsPage() {
               This page lists every topic the driver publishes and subscribes,
               with the message type on each.
             </p>
+            <Callout type="note" title="Where these topics come from">
+              The topics on this page are published by the{' '}
+              <a href="https://github.com/Neobotics-Foundation-Inc/neoracer_ros2_driver" target="_blank" rel="noopener noreferrer" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
+                neoracer_ros2_driver
+              </a>. Verified against a running car.
+            </Callout>
           </div>
         </section>
       </MouseFollowGlow>
-
-      <ScrollReveal>
-        <Callout type="note" title="Where these topics come from">
-          The topics on this page are published by the{' '}
-          <a href="https://github.com/Neobotics-Foundation-Inc/neoracer_ros2_driver" target="_blank" rel="noopener noreferrer" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-            neoracer_ros2_driver
-          </a>. Verified against a running car.
-        </Callout>
-      </ScrollReveal>
 
       <ScrollReveal>
         <section style={{ paddingBottom: 8 }}>

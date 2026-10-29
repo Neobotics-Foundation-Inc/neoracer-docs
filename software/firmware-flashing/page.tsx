@@ -97,7 +97,7 @@ export default function FirmwareFlashingPage() {
 
       {/* You'll need */}
       <ScrollReveal>
-        <section style={{ paddingBottom: 24 }}>
+        <section style={{ paddingBottom: 40 }}>
           <MonoLabel>You&apos;ll need</MonoLabel>
           <DashList
             items={[
@@ -108,16 +108,13 @@ export default function FirmwareFlashingPage() {
               <>A charged battery. The update will not start on a low pack.</>,
             ]}
           />
+          <Callout type="note" title="What the update keeps">
+            The board keeps its settings: PID gains, steering trim, odometry
+            scale, throttle deadband, and the IMU and battery calibration. If
+            the transfer is interrupted, the board keeps booting the old
+            firmware.
+          </Callout>
         </section>
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <Callout type="note" title="What the update keeps">
-          The board keeps its settings: PID gains, steering trim, odometry
-          scale, throttle deadband, and the IMU and battery calibration. If
-          the transfer is interrupted, the board keeps booting the old
-          firmware.
-        </Callout>
       </ScrollReveal>
 
       {/* ── download the binary and deb file ───────────────────────── */}
@@ -157,7 +154,8 @@ export default function FirmwareFlashingPage() {
             <Callout type="note" title="Newer releases">
               If a newer release is listed, use its{' '}
               <code style={mono}>arm64.deb</code> file and change the file name
-              in the commands below to match.
+              in the commands below to match. This page was written with v1.0.1
+              as the latest.
             </Callout>
           </div>
         </section>

@@ -101,15 +101,12 @@ export default function RemoteDesktopPage() {
               ]}
             />
           </div>
+          <Callout type="note" title="Alternative: AnyDesk">
+            If you prefer not to use RustDesk, you can use{' '}
+            <a href="https://anydesk.com" target="_blank" rel="noopener noreferrer" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>AnyDesk</a>{' '}
+            instead. The setup is similar.
+          </Callout>
         </section>
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <Callout type="note" title="Alternative: AnyDesk">
-          If you prefer not to use RustDesk, you can use{' '}
-          <a href="https://anydesk.com" target="_blank" rel="noopener noreferrer" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>AnyDesk</a>{' '}
-          instead. The setup is similar.
-        </Callout>
       </ScrollReveal>
 
       <PrevNext />

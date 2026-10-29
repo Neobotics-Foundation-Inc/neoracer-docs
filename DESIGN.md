@@ -139,6 +139,14 @@ eyebrow and header colour per type. Pick the type by meaning:
 Brand red is reserved for `danger`; the green and amber are the Callout
 component's own values, not NB tokens. Give every callout a short title.
 
+A callout sits inside the section it belongs to, after the content it
+comments on, never between two sections. Its own margin gives it a small,
+fixed gap above. When it is the last element of its section, its bottom
+margin drops (the component's `docs-callout` rule), so the gap to the next
+section is the standard section boundary: larger than a continuation
+inside the section. The one exception is a page-closing note that stands
+after the last section, before the previous/next links.
+
 ## InfoNote
 
 `<InfoNote term="..." title="...">` defines a term inline, in place, the

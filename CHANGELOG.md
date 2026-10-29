@@ -41,6 +41,9 @@ Each merged pull request bumps the version once and adds its entry here.
 - The previous/next links at the foot of every page derive from the sidebar
   tree instead of being hand-wired per page, so the reading chain can never
   drift from the sidebar.
+- Callouts follow one spacing rhythm across the docs: each sits inside its
+  section with a small fixed gap above, and when it closes a section the
+  gap below is the standard section boundary.
 
 ## [0.8.5] - 2026-10-28 (#20)
 

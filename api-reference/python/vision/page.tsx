@@ -87,21 +87,18 @@ def update():
 
 rc.set_start_update(start, update)
 rc.go()`}</Code>
+          <Callout type="note" title="Where the detections come from">
+            Detections are produced by the driver&apos;s inference node, which
+            runs a trained model against the camera stream. Datasets for training
+            are collected with the camlabel dashboard into{' '}
+            <code style={{ fontFamily: NB.monoFont }}>~/data</code>, described on
+            the{' '}
+            <a href="/docs/software/workspaces" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
+              File system
+            </a>{' '}
+            page. If no model is loaded, the list is empty.
+          </Callout>
         </section>
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <Callout type="note" title="Where the detections come from">
-          Detections are produced by the driver&apos;s inference node, which
-          runs a trained model against the camera stream. Datasets for training
-          are collected with the camlabel dashboard into{' '}
-          <code style={{ fontFamily: NB.monoFont }}>~/data</code>, described on
-          the{' '}
-          <a href="/docs/software/workspaces" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-            File system
-          </a>{' '}
-          page. If no model is loaded, the list is empty.
-        </Callout>
       </ScrollReveal>
 
       <ScrollReveal>

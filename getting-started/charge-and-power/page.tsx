@@ -57,14 +57,11 @@ export default function ChargeAndPowerPage() {
               <>An AC outlet.</>,
             ]}
           />
+          <Callout type="danger" title="Charging safety">
+            Charge on a non-flammable surface (a LiPo bag is ideal) and stay
+            in the room while it charges.
+          </Callout>
         </section>
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <Callout type="danger" title="Charging safety">
-          Charge on a non-flammable surface (a LiPo bag is ideal) and stay
-          in the room while it charges.
-        </Callout>
       </ScrollReveal>
 
       {/* Battery specs */}
@@ -123,16 +120,13 @@ export default function ChargeAndPowerPage() {
             <ExpandableFeatureCard n={2} title="Heat" lede="The pack can get warm, but never hot to the touch." body="If you cannot comfortably hold the pack, stop charging and let it cool in a fire-safe location for 30 minutes." />
             <ExpandableFeatureCard n={3} title="Smell or smoke" lede="Sweet chemical smell or any visible smoke." body="Disconnect if you safely can, then leave the room and call your fire service if there is open flame. LiPo fires burn bright white and accelerate fast." />
           </div>
+          <Callout type="tip" title="Storage between sessions">
+            If the car will sit for more than a week, the charger's "storage" mode
+            settles the pack to ~3.85 V/cell (about 11.55 V total), the correct
+            state for storage. A LiPo left fully charged or fully drained
+            ages a lot faster.
+          </Callout>
         </section>
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <Callout type="tip" title="Storage between sessions">
-          If the car will sit for more than a week, the charger's "storage" mode
-          settles the pack to ~3.85 V/cell (about 11.55 V total), the correct
-          state for storage. A LiPo left fully charged or fully drained
-          ages a lot faster.
-        </Callout>
       </ScrollReveal>
 
       <PrevNext />

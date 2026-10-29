@@ -112,21 +112,18 @@ export default function RobotModelPage() {
               tree instead of your mouse.
             </p>
           </div>
+          <Callout type="tip" title="How the frames connect">
+            The links you see here are exactly the frames in the car's transform
+            tree. To see the parent-child hierarchy and the measured offsets
+            between them, see{' '}
+            <Link href="/docs/api-reference/ros2/tf-frames" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
+              ROS 2 TF frames
+            </Link>
+            . Note the LiDAR frame is named{' '}
+            <code style={{ fontFamily: NB.monoFont }}>laser</code> in this stack, not{' '}
+            <code style={{ fontFamily: NB.monoFont }}>lidar_link</code>.
+          </Callout>
         </section>
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <Callout type="tip" title="How the frames connect">
-          The links you see here are exactly the frames in the car's transform
-          tree. To see the parent-child hierarchy and the measured offsets
-          between them, see{' '}
-          <Link href="/docs/api-reference/ros2/tf-frames" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-            ROS 2 TF frames
-          </Link>
-          . Note the LiDAR frame is named{' '}
-          <code style={{ fontFamily: NB.monoFont }}>laser</code> in this stack, not{' '}
-          <code style={{ fontFamily: NB.monoFont }}>lidar_link</code>.
-        </Callout>
       </ScrollReveal>
 
       <PrevNext />

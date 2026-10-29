@@ -446,10 +446,6 @@ systemctl list-units 'neoracer-*' --state=active --no-legend`}</Code>
                     fix: 'Charge the pack. Do not update below 10.8 V.',
                   },
                   {
-                    msg: 'fw begin invalid, or a result that says not to retry',
-                    fix: 'This image cannot be installed from the running firmware. Do not retry. Keep the audit log and contact winter@osrbot.com.',
-                  },
-                  {
                     msg: 'The update stopped part way (power loss, cable pulled)',
                     fix: 'The board still boots the old firmware. Fix the cause, stop the services again, and rerun the update.',
                   },

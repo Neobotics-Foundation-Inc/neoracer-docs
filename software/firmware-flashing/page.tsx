@@ -52,7 +52,7 @@ export default function FirmwareFlashingPage() {
       {/* ── Hero ────────────────────────────────────────────────────────── */}
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="FW" top={-30} right={-20} size={460} />
+          <GhostNumeral n="05" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               UPDATING THE <Red>FIRMWARE</Red>
@@ -86,10 +86,9 @@ export default function FirmwareFlashingPage() {
         </Callout>
       </ScrollReveal>
 
-      {/* ── 01 · what you need ──────────────────────────────────────────── */}
+      {/* ── what you need ──────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 40 }}>
-          <GhostNumeral n="01" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
               WHAT YOU <Red>NEED</Red>
@@ -116,10 +115,9 @@ export default function FirmwareFlashingPage() {
         </section>
       </ScrollReveal>
 
-      {/* ── 02 · get the files ──────────────────────────────────────────── */}
+      {/* ── get the files ──────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 40 }}>
-          <GhostNumeral n="02" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
               GET THE <Red>FILES</Red>
@@ -144,10 +142,9 @@ export default function FirmwareFlashingPage() {
         </section>
       </ScrollReveal>
 
-      {/* ── 03 · copy to the car ────────────────────────────────────────── */}
+      {/* ── copy to the car ────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 40 }}>
-          <GhostNumeral n="03" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
               COPY THE FILES TO THE <Red>CAR</Red>
@@ -174,10 +171,9 @@ scp <path-to>/${FIRMWARE_FILE} racecar@<car-address>:~/osr-fw/`}</Code>
         </section>
       </ScrollReveal>
 
-      {/* ── 04 · install the updater ────────────────────────────────────── */}
+      {/* ── install the updater ────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 40 }}>
-          <GhostNumeral n="04" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
               INSTALL OSR <Red>UPDATER</Red>
@@ -194,10 +190,9 @@ sudo apt install ./osr-updater_1.0.1_arm64.deb`}</Code>
         </section>
       </ScrollReveal>
 
-      {/* ── 05 · stop the programs ──────────────────────────────────────── */}
+      {/* ── stop the programs ──────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 40 }}>
-          <GhostNumeral n="05" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
               STOP THE PROGRAMS THAT USE THE <Red>CONTROLLER</Red>
@@ -222,10 +217,9 @@ sudo fuser -v /dev/osrbot_base`}</Code>
         </section>
       </ScrollReveal>
 
-      {/* ── 06 · run the update ─────────────────────────────────────────── */}
+      {/* ── run the update ─────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 40 }}>
-          <GhostNumeral n="06" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
               RUN THE <Red>UPDATE</Red>
@@ -265,10 +259,9 @@ sudo fuser -v /dev/osrbot_base`}</Code>
         </section>
       </ScrollReveal>
 
-      {/* ── 07 · restart the services ───────────────────────────────────── */}
+      {/* ── restart the services ───────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 40 }}>
-          <GhostNumeral n="07" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
               RESTART THE <Red>SERVICES</Red>
@@ -286,10 +279,9 @@ sudo fuser -v /dev/osrbot_base`}</Code>
         </section>
       </ScrollReveal>
 
-      {/* ── 08 · problems ───────────────────────────────────────────────── */}
+      {/* ── problems ───────────────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 40 }}>
-          <GhostNumeral n="08" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
               <Red>PROBLEMS</Red>
@@ -303,7 +295,7 @@ sudo fuser -v /dev/osrbot_base`}</Code>
                 rows={[
                   {
                     msg: 'The selected serial port is in use by ROS or another program',
-                    fix: 'Teleop or the watchdog is still running. Repeat step 05.',
+                    fix: 'Teleop or the watchdog is still running. Stop them again, then retry.',
                   },
                   {
                     msg: 'The firmware reports low battery voltage',
@@ -315,7 +307,7 @@ sudo fuser -v /dev/osrbot_base`}</Code>
                   },
                   {
                     msg: 'The update stopped part way (power loss, cable pulled)',
-                    fix: 'The board still boots the old firmware. Fix the cause and run the update again from step 05.',
+                    fix: 'The board still boots the old firmware. Fix the cause, stop the services again, and rerun the update.',
                   },
                   {
                     msg: 'Inspect shows no firmware after a failed update',
@@ -328,10 +320,9 @@ sudo fuser -v /dev/osrbot_base`}</Code>
         </section>
       </ScrollReveal>
 
-      {/* ── 09 · command-line alternative ───────────────────────────────── */}
+      {/* ── command-line alternative ───────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 24 }}>
-          <GhostNumeral n="09" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
               COMMAND-LINE <Red>ALTERNATIVE</Red>
@@ -352,7 +343,9 @@ sudo fuser -v /dev/osrbot_base`}</Code>
                   <code style={mono}>serial_ota.py</code>.</>,
               ]}
             />
-            <p style={{ ...body, marginTop: 14 }}>After step 05:</p>
+            <p style={{ ...body, marginTop: 14 }}>
+              After stopping the programs that use the controller:
+            </p>
             <Code lang="bash">{`cd ~/osr-fw
 python3 NEORACER_V1_Serial_Diagnostic_Tool.py --port /dev/osrbot_base "stream off" "fw version" "diag"
 python3 NEORACER_V1_Serial_OTA_Update_Tool.py --port /dev/osrbot_base ${FIRMWARE_FILE}`}</Code>
@@ -364,7 +357,7 @@ python3 NEORACER_V1_Serial_OTA_Update_Tool.py --port /dev/osrbot_base ${FIRMWARE
             <p style={{ ...body, marginTop: 14 }}>
               The version line must show the new{' '}
               <code style={mono}>ProjectVer</code>. Then restart the services
-              (step 07).
+              as above.
             </p>
             <Callout type="warn" title="Not covered: full-flash and Factory Restore">
               Full-flash installation and Factory Restore erase the whole chip.

@@ -6,7 +6,7 @@ named here live in the website repository under `src/components/docs/`, and
 the design tokens live in `src/lib/nb-tokens.ts` (imported as `NB`).
 
 Every change to the docs is versioned. See `CHANGELOG.md` and `version.ts`
-at this repo root.
+at the root of this repository.
 
 ## Page anatomy
 
@@ -22,7 +22,7 @@ order, with nothing else at the top level:
 
 ## Metadata
 
-Every page exports a `Metadata` object with all three of:
+Every page exports a `Metadata` object with all three of these fields:
 
 - `alternates: { canonical: 'https://neobotics.org/docs/<section>/<page>' }`.
 - `title: '<Page name> · <Section> · NeoRacer Docs'`.
@@ -63,9 +63,9 @@ Badges are `<ChromeBadge>` in a flex row under the lede
 - A procedure page carries one time badge:
   `<ChromeBadge variant="outline" icon={<ClockGlyph />}>` with
   `<AnimatedNumeral value={N} prefix="~" suffix=" minutes" />`.
-- `variant="outline"` is the default look. `variant="red"` is for one short
-  hardware identity tag at most. Do not stack decorative badges; if a badge
-  repeats something the lede already says, drop it.
+- `variant="outline"` is the default look. `variant="red"` is reserved for
+  at most one short hardware identity tag. Do not stack decorative badges:
+  a badge that repeats information from the lede should be removed.
 
 ## Section headings
 
@@ -114,17 +114,18 @@ them.
 
 A file the reader downloads, such as a legal PDF or a firmware image, ships
 from the website repository's `public/` folder (`public/docs/` for PDFs,
-`public/firmware/` for firmware). The page offers it as the solid red
+`public/firmware/` for firmware). The page presents it as the solid red
 button the legal pages use (`NB.neoboticsRed` background, `NB.haloWhite`
-text, radius 8, no arrow), with a mono file-name caption under the button,
-and the `download` attribute when the site serves the file itself. The docs
-never link a file that is not published.
+text, radius 8, no arrow), with a mono file-name caption under the button.
+When the site serves the file itself, the link also carries the `download`
+attribute. The docs never link a file that has not been published.
 
 ## Lists and steps
 
-- `<DashList>` for unordered items. Lead each item with a bold phrase when
-  the list mixes topics ("**A charged battery.** The firmware refuses...").
-- `<NumberedSteps>` for ordered actions. Each step is
+- Use `<DashList>` for unordered items. When a list mixes topics, lead each
+  item with a short bold phrase ("**A charged battery.** The update will
+  not start on a low pack.").
+- Use `<NumberedSteps>` for ordered actions. Each step is
   `{ title, detail, mono? }`; set `mono: true` only when the title is a
   literal control or command name.
 - Do not number steps in prose across sections. Refer to a section by its
@@ -133,9 +134,9 @@ never link a file that is not published.
 ## Callouts (note boxes)
 
 `<Callout type="..." title="...">` renders a solid header strip with a fixed
-eyebrow and header colour per type. Pick the type by meaning:
+eyebrow and header color per type. Choose the type by meaning:
 
-| Type     | Eyebrow  | Header colour     | Use for                                     |
+| Type     | Eyebrow  | Header color      | Use for                                     |
 | -------- | -------- | ----------------- | ------------------------------------------- |
 | `note`   | Note     | `NB.tarmacBlue`   | context and reassurance the reader may skip |
 | `tip`    | Tip      | green `#0E7C49`   | a shortcut or a quicker path                |
@@ -156,22 +157,24 @@ after the last section, before the previous/next links.
 ## InfoNote
 
 `<InfoNote term="..." title="...">` defines a term inline, in place, the
-first time the page uses it. The children are the definition. Use it instead
-of a parenthetical explanation.
+first time the page uses it. Its children are the definition text. Use it
+instead of a parenthetical explanation.
 
 ## Code blocks
 
-`<Code lang="...">` with a template literal. `lang` is `bash`, `python`,
-`yaml` or `output`. Commands are written exactly as the reader runs them,
-with placeholders in angle brackets (`<car-address>`). Comments inside a
-block start with `#` and are sentences.
+Code blocks use `<Code lang="...">` with a template literal, where `lang`
+is `bash`, `python`, `yaml` or `output`. Commands are written exactly as
+the reader runs them, with placeholders in angle brackets
+(`<car-address>`). Comments inside a block start with `#` and are written
+as full sentences.
 
 ## Tables
 
-`<DataTable>` with `columns` of `{ key, label, accent?, mono?, width? }`.
-The first column takes `accent: true`. Use `mono: true` for columns holding
-values, commands or part numbers. Spec tables use the column pair
-Parameter (width 180px, accent) and Specification (mono). Problem tables use
+Tables use `<DataTable>` with `columns` of
+`{ key, label, accent?, mono?, width? }`. The first column takes
+`accent: true`. Use `mono: true` for columns holding values, commands or
+part numbers. Spec tables use the column pair Parameter (width 180px,
+accent) and Specification (mono). Troubleshooting tables use the pair
 Message (accent) and What to do.
 
 ## Figures
@@ -198,9 +201,9 @@ card, and its Fig caption says what clicking does.
 Photos live in the website repository under `public/images/<area>/`. A photo
 always attaches to the step it belongs to, behind the camera chip that
 expands it in place and opens a lightbox on click: `<PhotoSteps>` items and
-`<NumberedSteps>` steps both take `photos: [{ src, alt }]`. Write a real
-`alt` sentence. Compress photos to roughly 1600 px on the long edge before
-committing.
+`<NumberedSteps>` steps both take `photos: [{ src, alt }]`. Give every
+photo a complete `alt` sentence that describes what it shows. Compress
+photos to roughly 1600 px on the long edge before committing.
 
 ## Navigation wiring
 
@@ -227,12 +230,12 @@ un-gating is a MINOR version bump (see `CHANGELOG.md`).
 
 ## Legal pages
 
-Legal pages are PDF shells, not prose pages. The pattern: hero with ghost
-numeral and `<DisplayHeading>`, no lede, one solid red button
-(`background: NB.neoboticsRed`, `color: NB.haloWhite`, radius 8, no arrow)
-linking the official PDF in `public/docs/`, a mono file-name caption under
-the button, and `<PrevNext>`. The PDF is the single source of truth; the
-page never restates its content.
+Legal pages are PDF shells, not prose pages. Each one consists of a hero
+with its ghost numeral and `<DisplayHeading>` but no lede, one solid red
+button (`background: NB.neoboticsRed`, `color: NB.haloWhite`, radius 8, no
+arrow) linking the official PDF in `public/docs/`, a mono file-name caption
+under the button, and `<PrevNext />`. The PDF is the single source of
+truth; the page never restates its content.
 
 ## Versioning
 

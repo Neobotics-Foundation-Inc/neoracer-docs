@@ -22,11 +22,9 @@ export const metadata: Metadata = {
     'Update the OSCORE (ESP32-S3) controller firmware with OSR Updater: copy the firmware file and the updater to the car, stop teleop and the watchdog, and install the new app image through the running firmware.',
 };
 
-// The firmware image is hosted with the docs; the command-line tools live in
-// the public neoracer-pcb-firmware repo; the updater is OSRBOT's own release.
+// The firmware image is hosted with the docs; the updater is OSRBOT's own release.
 const FIRMWARE_FILE = 'NEORACER_V1.2_OSCORE_NEO_ESP32S3_IDF_Project_RevA_20260714.bin';
 const FIRMWARE_URL = `/firmware/${FIRMWARE_FILE}`;
-const TOOLS_URL = 'https://github.com/Neobotics-Foundation-Inc/neoracer-pcb-firmware/tree/main/firmware/tools';
 const UPDATER_RELEASES_URL = 'https://github.com/osrbot/osr_updater/releases';
 const UPDATER_DEB_URL = 'https://github.com/osrbot/osr_updater/releases/download/v1.0.1/osr-updater_1.0.1_arm64.deb';
 
@@ -39,6 +37,25 @@ const body: CSSProperties = {
   maxWidth: 720,
 };
 const link: CSSProperties = { color: NB.neoboticsRed, fontWeight: 700 };
+// the legal pages' download button, and the mono file-name caption under it
+const btn: CSSProperties = {
+  display: 'inline-block',
+  background: NB.neoboticsRed,
+  color: NB.haloWhite,
+  fontFamily: NB.bodyFont,
+  fontSize: 14,
+  fontWeight: 700,
+  padding: '11px 18px',
+  borderRadius: 8,
+  textDecoration: 'none',
+  whiteSpace: 'nowrap',
+};
+const fileCaption: CSSProperties = {
+  fontFamily: NB.monoFont,
+  fontSize: 11,
+  color: NB.textMutedBeige,
+  marginTop: 8,
+};
 
 export default function FirmwareFlashingPage() {
   return (
@@ -78,6 +95,22 @@ export default function FirmwareFlashingPage() {
         </section>
       </MouseFollowGlow>
 
+      {/* You'll need */}
+      <ScrollReveal>
+        <section style={{ paddingBottom: 24 }}>
+          <MonoLabel>You&apos;ll need</MonoLabel>
+          <DashList
+            items={[
+              <>The firmware file and the OSR Updater package. The next section covers both downloads.</>,
+              <>The car&apos;s desktop: a monitor or a{' '}
+                <a href="/docs/software/remote-desktop" style={link}>remote desktop session</a>. OSR Updater is a
+                graphical program and cannot run in a plain SSH session.</>,
+              <>A charged battery. The firmware refuses the update on a low pack.</>,
+            ]}
+          />
+        </section>
+      </ScrollReveal>
+
       <ScrollReveal>
         <Callout type="note" title="What the update keeps">
           The board keeps its settings: PID gains, steering trim, odometry
@@ -87,50 +120,38 @@ export default function FirmwareFlashingPage() {
         </Callout>
       </ScrollReveal>
 
-      {/* You'll need */}
-      <ScrollReveal>
-        <section style={{ paddingBottom: 24 }}>
-          <MonoLabel>You&apos;ll need</MonoLabel>
-          <DashList
-            items={[
-              <>The firmware file and the OSR Updater package. The next section covers both downloads.</>,
-              <>The car&apos;s desktop: a monitor, a{' '}
-                <a href="/docs/software/remote-desktop" style={link}>remote desktop session</a>, or{' '}
-                <code style={mono}>ssh -X</code> from a computer that runs an X server. OSR Updater is a
-                graphical program and cannot run in a plain SSH session.</>,
-              <>A charged battery, above 10.8 V. The firmware refuses the update on a low pack.</>,
-              <>The car on a stand, or the transmitter off. Motion is inhibited during the update, but
-                keep the car still anyway.</>,
-            ]}
-          />
-        </section>
-      </ScrollReveal>
-
-      {/* ── get the files ──────────────────────────────────────────── */}
+      {/* ── download the binary and deb file ───────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 40 }}>
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              GET THE <Red>FILES</Red>
+              DOWNLOAD THE BINARY AND <Red>DEB</Red> FILE
             </DisplayHeading>
             <DashList
               items={[
-                <>The firmware file:{' '}
-                  <a href={FIRMWARE_URL} download style={link}>
-                    <code style={mono}>{FIRMWARE_FILE}</code>
-                  </a>
-                  .</>,
-                <>The updater: on the newest{' '}
-                  <a href={UPDATER_RELEASES_URL} target="_blank" rel="noopener noreferrer" style={link}>OSR Updater release</a>,
-                  under Assets, the <code style={mono}>arm64.deb</code> file, about 17 MB.
-                  You do not need the <code style={mono}>.sha256</code> file or the
-                  source code archives.</>,
+                <>
+                  The firmware binary is the application image that the updater
+                  installs on the OSCORE controller.
+                  <div style={{ margin: '12px 0 4px' }}>
+                    <a href={FIRMWARE_URL} download style={btn}>Download the firmware</a>
+                    <div style={fileCaption}>{FIRMWARE_FILE} · 379 KB</div>
+                  </div>
+                </>,
+                <>
+                  OSR Updater is OSRBOT&apos;s installer program, shipped as a
+                  Debian package. On the newest release, under Assets, download
+                  the <code style={mono}>arm64.deb</code> file; you do not need
+                  the <code style={mono}>.sha256</code> file or the source code
+                  archives.
+                  <div style={{ margin: '12px 0 4px' }}>
+                    <a href={UPDATER_RELEASES_URL} target="_blank" rel="noopener noreferrer" style={btn}>OSR Updater releases</a>
+                    <div style={fileCaption}>osr-updater_1.0.1_arm64.deb · about 17 MB</div>
+                  </div>
+                  Or from a terminal on a Mac or Linux computer:
+                  <Code lang="bash">{`curl -L -o osr-updater_1.0.1_arm64.deb ${UPDATER_DEB_URL}`}</Code>
+                </>,
               ]}
             />
-            <p style={{ ...body, marginTop: 14 }}>
-              From a terminal on a Mac or Linux computer:
-            </p>
-            <Code lang="bash">{`curl -L -o osr-updater_1.0.1_arm64.deb ${UPDATER_DEB_URL}`}</Code>
             <Callout type="note" title="Newer releases">
               If a newer release is listed, use its{' '}
               <code style={mono}>arm64.deb</code> file and change the file name
@@ -147,19 +168,24 @@ export default function FirmwareFlashingPage() {
             <DisplayHeading size="lg">
               COPY THE FILES TO THE <Red>CAR</Red>
             </DisplayHeading>
-            <p style={body}>
-              With your computer on the{' '}
-              <a href="/docs/software/networking" style={link}>same network as the car</a>,
-              make a folder on the car for firmware files, then copy the updater
-              package and the firmware file into it. Replace{' '}
-              <code style={mono}>&lt;path-to&gt;</code> with the folder where you
-              saved each file.
-            </p>
-            <Code lang="bash">{`ssh racecar@<car-address> 'mkdir -p ~/osr-fw'
-scp <path-to>/osr-updater_1.0.1_arm64.deb racecar@<car-address>:~/osr-fw/
-scp <path-to>/${FIRMWARE_FILE} racecar@<car-address>:~/osr-fw/`}</Code>
             <DashList
               items={[
+                <>
+                  With your computer on the{' '}
+                  <a href="/docs/software/networking" style={link}>same network as the car</a>,
+                  make a folder on the car for firmware files:
+                  <Code lang="bash">{`ssh racecar@<car-address> 'mkdir -p ~/osr-fw'`}</Code>
+                </>,
+                <>
+                  Copy the updater package into it:
+                  <Code lang="bash">{`scp <path-to>/osr-updater_1.0.1_arm64.deb racecar@<car-address>:~/osr-fw/`}</Code>
+                </>,
+                <>
+                  Copy the firmware file into it:
+                  <Code lang="bash">{`scp <path-to>/${FIRMWARE_FILE} racecar@<car-address>:~/osr-fw/`}</Code>
+                </>,
+                <>Replace <code style={mono}>&lt;path-to&gt;</code> with the
+                  folder where you saved each file.</>,
                 <>On the car&apos;s own hotspot the address is{' '}
                   <code style={mono}>192.168.10.100</code>. On a shared network
                   use <code style={mono}>neoracer.local</code>.</>,
@@ -214,11 +240,6 @@ sudo fuser -v /dev/osrbot_base`}</Code>
                   running. They do not open the controller&apos;s serial port.</>,
               ]}
             />
-            <Callout type="warn" title="Port in use">
-              If the updater says &quot;The selected serial port is in use by
-              ROS or another program&quot;, one of these services is still
-              running. Run the three commands above again.
-            </Callout>
           </div>
         </section>
       </ScrollReveal>
@@ -287,12 +308,12 @@ sudo fuser -v /dev/osrbot_base`}</Code>
         </section>
       </ScrollReveal>
 
-      {/* ── problems ───────────────────────────────────────────────── */}
+      {/* ── troubleshooting ────────────────────────────────────────── */}
       <ScrollReveal>
-        <section style={{ position: 'relative', paddingBottom: 40 }}>
+        <section style={{ position: 'relative', paddingBottom: 24 }}>
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
-              <Red>PROBLEMS</Red>
+              <Red>TROUBLESHOOTING</Red>
             </DisplayHeading>
             <div style={{ marginTop: 18 }}>
               <DataTable
@@ -324,54 +345,6 @@ sudo fuser -v /dev/osrbot_base`}</Code>
                 ]}
               />
             </div>
-          </div>
-        </section>
-      </ScrollReveal>
-
-      {/* ── command-line alternative ───────────────────────────────── */}
-      <ScrollReveal>
-        <section style={{ position: 'relative', paddingBottom: 24 }}>
-          <div style={{ position: 'relative', zIndex: 1 }}>
-            <DisplayHeading size="lg">
-              COMMAND-LINE <Red>ALTERNATIVE</Red>
-            </DisplayHeading>
-            <p style={body}>
-              OSRBOT also supplies two Python scripts that do the same
-              application update without a graphical session. They are in the{' '}
-              <a href={TOOLS_URL} target="_blank" rel="noopener noreferrer" style={link}>firmware tools</a>{' '}
-              folder of the public firmware repo:
-            </p>
-            <DashList
-              items={[
-                <><code style={mono}>NEORACER_V1_Serial_OTA_Update_Tool.py</code> performs the update.</>,
-                <><code style={mono}>NEORACER_V1_Serial_Diagnostic_Tool.py</code> sends commands to the
-                  board and prints the replies. It imports the first script under
-                  the name <code style={mono}>serial_ota</code>, so keep both
-                  scripts in one folder and add a copy or symlink named{' '}
-                  <code style={mono}>serial_ota.py</code>.</>,
-              ]}
-            />
-            <p style={{ ...body, marginTop: 14 }}>
-              After stopping the programs that use the controller:
-            </p>
-            <Code lang="bash">{`cd ~/osr-fw
-python3 NEORACER_V1_Serial_Diagnostic_Tool.py --port /dev/osrbot_base "stream off" "fw version" "diag"
-python3 NEORACER_V1_Serial_OTA_Update_Tool.py --port /dev/osrbot_base ${FIRMWARE_FILE}`}</Code>
-            <p style={{ ...body, marginTop: 14 }}>
-              Wait for &quot;Done. Device is rebooting into the updated
-              app.&quot; Then after five seconds:
-            </p>
-            <Code lang="bash">{`python3 NEORACER_V1_Serial_Diagnostic_Tool.py --port /dev/osrbot_base "stream off" "fw version" "fw status" "stream sync"`}</Code>
-            <p style={{ ...body, marginTop: 14 }}>
-              The version line must show the new{' '}
-              <code style={mono}>ProjectVer</code>. Then restart the services
-              as above.
-            </p>
-            <Callout type="warn" title="Not covered: full-flash and Factory Restore">
-              Full-flash installation and Factory Restore erase the whole chip.
-              They need a merged image from OSRBOT and the board&apos;s BOOT and
-              RESET buttons. Use them only with OSRBOT&apos;s guidance.
-            </Callout>
           </div>
         </section>
       </ScrollReveal>

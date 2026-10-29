@@ -105,8 +105,11 @@ them.
 
 A file the reader downloads, such as a legal PDF or a firmware image, ships
 from the website repository's `public/` folder (`public/docs/` for PDFs,
-`public/firmware/` for firmware) and is linked directly with the `download`
-attribute. The docs never link a file that is not published.
+`public/firmware/` for firmware). The page offers it as the solid red
+button the legal pages use (`NB.neoboticsRed` background, `NB.haloWhite`
+text, radius 8, no arrow), with a mono file-name caption under the button,
+and the `download` attribute when the site serves the file itself. The docs
+never link a file that is not published.
 
 ## Lists and steps
 
@@ -121,16 +124,17 @@ attribute. The docs never link a file that is not published.
 ## Callouts (note boxes)
 
 `<Callout type="..." title="...">` renders a solid header strip with a fixed
-eyebrow per type. Pick the type by meaning:
+eyebrow and header colour per type. Pick the type by meaning:
 
-| Type     | Eyebrow  | Use for                                           |
-| -------- | -------- | ------------------------------------------------- |
-| `note`   | Note     | context and reassurance the reader may skip       |
-| `tip`    | Tip      | a shortcut or a quicker path                      |
-| `warn`   | Heads up | something that commonly goes wrong                |
-| `danger` | Danger   | risk of damage, data loss or injury               |
+| Type     | Eyebrow  | Header colour     | Use for                                     |
+| -------- | -------- | ----------------- | ------------------------------------------- |
+| `note`   | Note     | `NB.tarmacBlue`   | context and reassurance the reader may skip |
+| `tip`    | Tip      | green `#0E7C49`   | a shortcut or a quicker path                |
+| `warn`   | Heads up | amber `#B5740C`   | something that commonly goes wrong          |
+| `danger` | Danger   | `NB.neoboticsRed` | risk of damage, data loss or injury         |
 
-Brand red is reserved for `danger`. Give every callout a short title.
+Brand red is reserved for `danger`; the green and amber are the Callout
+component's own values, not NB tokens. Give every callout a short title.
 
 ## InfoNote
 
@@ -174,11 +178,12 @@ card, and its Fig caption says what clicking does.
 
 ## Photos
 
-Photos live in the website repository under `public/images/<area>/`. Inside
-step content, photos attach through `<PhotoSteps>`: each item is
-`{ text, photos: [{ src, alt }] }`, which renders the "show a photo" chip
-and a lightbox. Write a real `alt` sentence. Compress photos to roughly
-1600 px on the long edge before committing.
+Photos live in the website repository under `public/images/<area>/`. A photo
+always attaches to the step it belongs to, behind the camera chip that
+expands it in place and opens a lightbox on click: `<PhotoSteps>` items and
+`<NumberedSteps>` steps both take `photos: [{ src, alt }]`. Write a real
+`alt` sentence. Compress photos to roughly 1600 px on the long edge before
+committing.
 
 ## Navigation wiring
 

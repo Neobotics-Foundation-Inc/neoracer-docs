@@ -39,7 +39,7 @@ const SHOW_PLAYGROUND_TEASE = false;
 const pitLane: PitLaneSection[] = [
   { title: 'Setup', href: '/docs/getting-started/unbox', pages: 6 },
   { title: 'Hardware', href: '/docs/hardware/overview', pages: 11 },
-  { title: 'Software', href: '/docs/software/networking', pages: 3 },
+  { title: 'Software', href: '/docs/software/networking', pages: 4 },
   { title: 'API Reference', href: '/docs/api-reference/python/core', pages: 14 },
   { title: 'Reference', href: '/docs/reference/safety', pages: 5 },
   { title: 'Legal', href: '/docs/legal/warranty', pages: 5 },

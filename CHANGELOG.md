@@ -23,6 +23,10 @@ Each merged pull request bumps the version once and adds its entry here.
   with OSR Updater, an application update through the running firmware, with
   the files to download, the services to stop, a problems table, and a
   command-line alternative. It replaces the old browser-flasher draft.
+- DESIGN.md at the repo root records the design rules a new page must
+  follow: page anatomy, ghost numerals, badges, headings, body text,
+  callouts, figures, diagrams, photos, navigation wiring, gating, and the
+  legal page pattern.
 
 ## [0.8.5] - 2026-10-28 (#20)
 

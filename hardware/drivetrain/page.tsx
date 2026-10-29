@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { Metadata } from 'next';
 import DocsShell from '@/components/docs/DocsShell';
 import { NB } from '@/lib/nb-tokens';
@@ -6,6 +7,7 @@ import {
   Red,
   GhostNumeral,
   MonoLabel,
+  Fig,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow, InfoNote, PhotoSteps } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext, DataTable } from '@/components/docs/DocsPrimitives';
@@ -115,6 +117,19 @@ export default function DrivetrainPage() {
           car this size needs, so it will not strip its gears if the car hits a
           wall. It is also waterproof.
         </p>
+        <Fig
+          label="FIG. A / SERVO DIMENSIONS"
+          bg={NB.haloWhite}
+          caption="The steering servo's dimensions, in millimetres."
+        >
+          <Image
+            src="/images/drivetrain/servo-dimensions.jpg"
+            alt="Dimensional drawing of the steering servo: the case is 40 mm long and 20.3 mm wide, and the mounting flange spans 48 mm with 4.9 mm screw holes"
+            width={1373}
+            height={516}
+            style={{ display: 'block', width: '100%', maxWidth: 720, height: 'auto', margin: '0 auto' }}
+          />
+        </Fig>
         <div style={{ marginTop: 18 }}>
           <MonoLabel>Servo specs</MonoLabel>
           <DataTable
@@ -123,8 +138,16 @@ export default function DrivetrainPage() {
               { key: 'v', label: 'Specification', mono: true },
             ]}
             rows={[
-              { k: 'Stall torque', v: '20 kg·cm' },
-              { k: 'Waterproof', v: 'Yes' },
+              { k: 'Model', v: '20 kg waterproof high-torque servo' },
+              { k: 'Servo type', v: 'Digital' },
+              { k: 'Operating voltage', v: 'DC 5-7.4 V' },
+              { k: 'Torque', v: '17 kg·cm @ 5.0 V, 20 kg·cm @ 7.4 V' },
+              { k: 'Response speed', v: '0.13 s/60° @ 5.0 V, 0.10 s/60° @ 7.4 V' },
+              { k: 'Gears', v: 'Full copper gear set' },
+              { k: 'Connector', v: 'JR, black-red-white leads' },
+              { k: 'Cable length', v: '240 mm' },
+              { k: 'Weight', v: '80 g' },
+              { k: 'Certifications', v: 'CE, FCC, RoHS' },
               { k: 'Geometry', v: 'Ackermann linkage' },
             ]}
           />

@@ -354,9 +354,7 @@ ros2 run tf2_ros static_transform_publisher 0.22 0 0.08 0 0 0 base_link camera_l
         </Callout>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'Params', href: '/docs/api-reference/ros2/params' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

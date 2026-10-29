@@ -404,10 +404,7 @@ ros2 topic echo /scan --once | head -20`}</Code>
       </Callout>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'File system', href: '/docs/software/workspaces' }}
-        next={{ label: 'Firmware flashing', href: '/docs/software/firmware-flashing' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

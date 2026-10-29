@@ -299,10 +299,7 @@ http://192.168.10.100:8888     # JupyterLab        (10.42.0.1 on the AP)`}</Code
         </section>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'Chassis & CAD', href: '/docs/hardware/chassis-and-cad' }}
-        next={{ label: 'Remote desktop', href: '/docs/software/remote-desktop' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

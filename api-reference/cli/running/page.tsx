@@ -123,10 +123,7 @@ racecar ws neoracer`}</Code>
         </section>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'Services', href: '/docs/api-reference/cli/service' }}
-        next={{ label: 'Maintenance', href: '/docs/api-reference/cli/setup' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

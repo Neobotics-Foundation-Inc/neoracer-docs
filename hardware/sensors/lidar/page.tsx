@@ -133,10 +133,7 @@ front = racecar_utils.get_lidar_average_distance(scan, 0,   window_angle=4)`}
         </section>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'Compute', href: '/docs/hardware/compute' }}
-        next={{ label: 'Camera', href: '/docs/hardware/sensors/camera' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

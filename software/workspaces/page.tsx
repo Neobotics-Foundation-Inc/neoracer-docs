@@ -303,10 +303,7 @@ docs  logs  README.md  scripts  tests`}</Code>
         />
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'Remote desktop', href: '/docs/software/remote-desktop' }}
-        next={{ label: 'Firmware flashing', href: '/docs/software/firmware-flashing' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

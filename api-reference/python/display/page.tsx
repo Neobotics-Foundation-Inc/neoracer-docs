@@ -131,10 +131,7 @@ rc.go()`}</Code>
         </p>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'rc.physics', href: '/docs/api-reference/python/physics' }}
-        next={{ label: 'rc.vision', href: '/docs/api-reference/python/vision' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

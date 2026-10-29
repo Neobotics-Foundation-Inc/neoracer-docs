@@ -157,10 +157,7 @@ racecar navigation dwb lab        # dwb, on the map named "lab"`}</Code>
         </section>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'Mapping (SLAM)', href: '/docs/software/mapping' }}
-        next={{ label: '3D model', href: '/docs/software/robot-model' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

@@ -88,10 +88,7 @@ rc.display.clear()                 # return to the idle frame`}
         </section>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'Remote control', href: '/docs/hardware/remote-control' }}
-        next={{ label: 'Drivetrain', href: '/docs/hardware/drivetrain' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

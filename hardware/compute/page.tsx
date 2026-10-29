@@ -179,10 +179,7 @@ export default function ComputePage() {
         </section>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'Overview', href: '/docs/hardware/overview' }}
-        next={{ label: 'LiDAR', href: '/docs/hardware/sensors/lidar' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

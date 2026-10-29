@@ -262,10 +262,7 @@ export default function PrepareTheCarPage() {
         />
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'Charge & power', href: '/docs/getting-started/charge-and-power' }}
-        next={{ label: 'Install the driver', href: '/docs/getting-started/install-driver' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

@@ -72,10 +72,7 @@ export default function InstallDriverPage() {
         <MarkdownDoc source={readme} repoUrl={INSTALLER_REPO} skipSections={['Prerequisites']} />
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'Prepare the car', href: '/docs/getting-started/prepare-the-car' }}
-        next={{ label: 'Connect to the router', href: '/docs/getting-started/connect-to-router' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

@@ -193,10 +193,7 @@ print(mag)     # magnetic field vector`}
         </section>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'Camera', href: '/docs/hardware/sensors/camera' }}
-        next={{ label: 'Encoder', href: '/docs/hardware/sensors/encoders' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

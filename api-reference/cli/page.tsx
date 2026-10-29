@@ -109,10 +109,7 @@ racecar navigation <name>    # drive a saved map with Nav2`}</Code>
       </ScrollReveal>
 
 
-      <PrevNext
-        prev={{ label: 'racecar_utils', href: '/docs/api-reference/python/utils' }}
-        next={{ label: 'Services', href: '/docs/api-reference/cli/service' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

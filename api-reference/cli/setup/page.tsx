@@ -136,10 +136,7 @@ racecar source     # or open a new terminal, so the shell picks up the new tool`
         </section>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'Running', href: '/docs/api-reference/cli/running' }}
-        next={{ label: 'Topics', href: '/docs/api-reference/ros2/topics' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

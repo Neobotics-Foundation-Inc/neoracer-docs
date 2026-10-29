@@ -70,10 +70,7 @@ export default function TermsOfSalePage() {
         </section>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'Shipping', href: '/docs/legal/shipping' }}
-        next={{ label: 'Terms of service', href: '/docs/legal/terms-of-service' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

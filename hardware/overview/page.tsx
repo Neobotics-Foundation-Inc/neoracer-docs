@@ -158,10 +158,7 @@ export default function HardwareOverviewPage() {
         </Callout>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'Test the system', href: '/docs/getting-started/test-the-system' }}
-        next={{ label: 'Compute', href: '/docs/hardware/compute' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

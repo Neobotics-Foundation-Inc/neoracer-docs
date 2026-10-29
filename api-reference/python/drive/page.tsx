@@ -149,10 +149,7 @@ rc.go()`}</Code>
         </p>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'racecar_core', href: '/docs/api-reference/python/core' }}
-        next={{ label: 'rc.lidar', href: '/docs/api-reference/python/lidar' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

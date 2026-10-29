@@ -225,10 +225,7 @@ export default function UnboxPage() {
         </section>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'Home', href: '/docs' }}
-        next={{ label: 'Charge & power', href: '/docs/getting-started/charge-and-power' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

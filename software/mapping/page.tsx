@@ -210,10 +210,7 @@ racecar mapping save          # no name given: saves as "map"`}</Code>
         </section>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'Firmware flashing', href: '/docs/software/firmware-flashing' }}
-        next={{ label: 'Navigation (Nav2)', href: '/docs/software/navigation' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

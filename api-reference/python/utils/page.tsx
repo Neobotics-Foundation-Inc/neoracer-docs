@@ -211,10 +211,7 @@ rc.go()`}</Code>
         </p>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'rc.vision', href: '/docs/api-reference/python/vision' }}
-        next={{ label: 'Overview', href: '/docs/api-reference/cli' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

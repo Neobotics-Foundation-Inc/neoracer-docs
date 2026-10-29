@@ -168,10 +168,7 @@ height, width, _ = color.shape   # the size the camera is actually running at`}
         </section>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'LiDAR', href: '/docs/hardware/sensors/lidar' }}
-        next={{ label: 'IMU', href: '/docs/hardware/sensors/imu' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

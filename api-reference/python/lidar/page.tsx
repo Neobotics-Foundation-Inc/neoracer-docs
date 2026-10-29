@@ -176,10 +176,7 @@ rc.go()`}</Code>
         </p>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'rc.drive', href: '/docs/api-reference/python/drive' }}
-        next={{ label: 'rc.camera', href: '/docs/api-reference/python/camera' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

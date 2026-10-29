@@ -136,10 +136,7 @@ export default function SafetyPage() {
         </section>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'Params', href: '/docs/api-reference/ros2/params' }}
-        next={{ label: 'Troubleshooting', href: '/docs/reference/troubleshooting' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

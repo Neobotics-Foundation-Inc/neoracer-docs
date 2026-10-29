@@ -17,7 +17,8 @@ order, with nothing else at the top level:
 2. `<Crumbs>` with the section crumb first, then the page name.
 3. The hero, wrapped in `<MouseFollowGlow>`.
 4. The content sections, each wrapped in `<ScrollReveal>`.
-5. `<PrevNext>` as the last element before `</DocsShell>`.
+5. `<PrevNext />` as the last element before `</DocsShell>`. It takes no
+   props; it computes its own links from the sidebar tree.
 
 ## Metadata
 
@@ -165,21 +166,18 @@ and a lightbox. Write a real `alt` sentence. Compress photos to roughly
 
 ## Navigation wiring
 
-Adding, removing or renaming a page touches four places:
+Adding, removing or renaming a page touches two places:
 
 1. `nav.ts` in the website repository (the sidebar tree).
 2. The search index: run `node scripts/build-search-index.mjs` in the
    website repository after any nav or metadata change.
-3. `<PrevNext>` on the page and on both neighbours, so the reading chain
-   stays unbroken. A label is always the target page's sidebar name from
-   `nav.ts`, nothing more, including across a section boundary. A link to
-   `/docs` is labelled "Home". Crumbs and every other reference to a page
-   also use its sidebar name, even when the page's own title differs.
-4. The contents list on the docs home page derives its counts and links
-   from `nav.ts`, so it updates on its own.
 
-The sidebar order is the reading order, and gated pages are skipped in the
-PrevNext chain until they un-gate.
+Everything else follows `nav.ts` on its own. The contents list on the docs
+home page derives its counts and links from it. `<PrevNext />` derives the
+previous and next links from it: the sidebar order is the reading order,
+gated pages are skipped, each link is labelled with its sidebar name, and
+the two ends of the chain link "Home". Crumbs and every other reference to
+a page also use its sidebar name, even when the page's own title differs.
 
 ## Gated pages
 

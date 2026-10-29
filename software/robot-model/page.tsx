@@ -129,10 +129,7 @@ export default function RobotModelPage() {
         </Callout>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'Navigation (Nav2)', href: '/docs/software/navigation' }}
-        next={{ label: 'racecar_core', href: '/docs/api-reference/python/core' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

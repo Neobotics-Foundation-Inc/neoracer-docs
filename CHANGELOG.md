@@ -35,6 +35,9 @@ Each merged pull request bumps the version once and adds its entry here.
   their sidebar names, hero numerals share one size, lede and body widths
   are standardized, and the docs home contents list now derives its counts
   from the sidebar tree instead of hand-kept numbers.
+- The previous/next links at the foot of every page derive from the sidebar
+  tree instead of being hand-wired per page, so the reading chain can never
+  drift from the sidebar.
 
 ## [0.8.5] - 2026-10-28 (#20)
 

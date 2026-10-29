@@ -118,10 +118,7 @@ rc.go()`}</Code>
         </p>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'rc.display', href: '/docs/api-reference/python/display' }}
-        next={{ label: 'racecar_utils', href: '/docs/api-reference/python/utils' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

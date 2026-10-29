@@ -135,10 +135,7 @@ export default function ChargeAndPowerPage() {
         </Callout>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'Unbox', href: '/docs/getting-started/unbox' }}
-        next={{ label: 'Prepare the car', href: '/docs/getting-started/prepare-the-car' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

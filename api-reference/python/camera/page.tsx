@@ -127,10 +127,7 @@ rc.go()`}</Code>
         </p>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'rc.lidar', href: '/docs/api-reference/python/lidar' }}
-        next={{ label: 'rc.physics', href: '/docs/api-reference/python/physics' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

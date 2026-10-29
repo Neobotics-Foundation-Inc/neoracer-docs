@@ -155,10 +155,7 @@ export default function DrivetrainPage() {
         </section>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'Dot matrix', href: '/docs/hardware/dot-matrix' }}
-        next={{ label: 'OSCORE board', href: '/docs/hardware/oscore-board' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

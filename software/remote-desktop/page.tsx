@@ -112,10 +112,7 @@ export default function RemoteDesktopPage() {
         </Callout>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'Networking', href: '/docs/software/networking' }}
-        next={{ label: 'File system', href: '/docs/software/workspaces' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

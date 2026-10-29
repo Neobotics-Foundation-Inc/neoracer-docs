@@ -132,10 +132,7 @@ rc.go()`}</Code>
         </section>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'Firmware flashing', href: '/docs/software/firmware-flashing' }}
-        next={{ label: 'rc.drive', href: '/docs/api-reference/python/drive' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

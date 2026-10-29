@@ -70,10 +70,7 @@ export default function PrivacyPage() {
         </section>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'Terms of service', href: '/docs/legal/terms-of-service' }}
-        next={{ label: 'Home', href: '/docs' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

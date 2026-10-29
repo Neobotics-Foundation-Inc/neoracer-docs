@@ -157,10 +157,7 @@ print(speed)`}
         </section>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'IMU', href: '/docs/hardware/sensors/imu' }}
-        next={{ label: 'Remote control', href: '/docs/hardware/remote-control' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

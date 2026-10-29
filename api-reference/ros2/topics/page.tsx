@@ -255,10 +255,7 @@ export default function Ros2TopicsPage() {
         </section>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'Maintenance', href: '/docs/api-reference/cli/setup' }}
-        next={{ label: 'Params', href: '/docs/api-reference/ros2/params' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

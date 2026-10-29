@@ -187,10 +187,7 @@ export default function TestTheSystemPage() {
         </section>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'Connect to the router', href: '/docs/getting-started/connect-to-router' }}
-        next={{ label: 'Overview', href: '/docs/hardware/overview' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

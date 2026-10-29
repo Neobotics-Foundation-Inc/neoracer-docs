@@ -70,10 +70,7 @@ export default function ShippingPage() {
         </section>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'Returns & refunds', href: '/docs/legal/return-and-refund' }}
-        next={{ label: 'Terms of sale', href: '/docs/legal/terms-of-sale' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

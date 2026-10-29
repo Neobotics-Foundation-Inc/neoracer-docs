@@ -97,7 +97,7 @@ export default function UnboxPage() {
       <ScrollReveal>
         <Fig
           label="FIG. A / YOUR NEORACER SHIPMENT"
-          caption="The NeoRacer ships in a single cardboard box holding two smaller boxes: the NeoRacer box and the FlySky controller box. The NeoRacer box contains the car itself, the Cudy router, the ToolkitRC M4AC charger, and accessories such as screws, sidepods, antennas, and zip ties (see below). The Cudy router box contains an Ethernet cable and a USB-C cable, and the FlySky box contains the controller, a USB-A to micro-USB cable, and its metal bracket."
+          caption={<>The NeoRacer ships in a single cardboard box holding two smaller boxes: the NeoRacer box and the FlySky controller box. The NeoRacer box contains the car itself, <a href="https://www.cudy.com/en-us/products/tr1200-1-0" target="_blank" rel="noopener noreferrer" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>the Cudy router</a>, <a href="https://www.toolkitrc.com/product/m4ac/" target="_blank" rel="noopener noreferrer" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>the ToolkitRC M4AC charger</a>, and accessories such as screws, sidepods, antennas, and zip ties (see below). The Cudy router box contains an Ethernet cable and a USB-C cable, and the FlySky box contains the controller, a USB-A to micro-USB cable, and its metal bracket.</>}
         >
           <BoxContentsDiagram />
 

@@ -78,6 +78,8 @@ export default function ChargeAndPowerPage() {
             capacity between 4000 and 5500 mAh, a{' '}
             <InfoNote term="C-rating" title="C-rating">A rating of how fast a battery can safely deliver its energy. A higher number means the pack can supply more current without strain, which the car needs during hard acceleration.</InfoNote>{' '}
             of 25 or higher, and an XT60 connector to match the car&apos;s lead.
+            The battery compartment is 150 × 59 × 30 mm (length × width ×
+            height), and a pack has to be smaller than these dimensions to fit.
           </p>
         </section>
       </ScrollReveal>

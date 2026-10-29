@@ -20,6 +20,12 @@ Each merged pull request bumps the version once and adds its entry here.
 
 - This changelog. The docs now carry version numbers; the current version
   shows in the docs sidebar and links here.
+- Drivetrain: the steering servo's full specifications, with a dimensional
+  drawing of the servo.
+- Charge & Power: the battery compartment's dimensions, under Battery specs.
+- Unbox: the ToolkitRC M4AC charger and the Cudy router now link to their
+  manufacturer product pages, from the FIG. A caption and from their boxes
+  in the figure.
 
 ## [0.8.4] - 2026-09-25 (#19)
 

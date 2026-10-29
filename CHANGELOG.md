@@ -21,8 +21,9 @@ Each merged pull request bumps the version once and adds its entry here.
 - Software: the Firmware flashing page is no longer gated. It documents the
   procedure that was run end to end on a car: updating the OSCORE firmware
   with OSR Updater, an application update through the running firmware, with
-  the files to download, the services to stop, and a troubleshooting table.
-  It replaces the old browser-flasher draft.
+  the files to download, the services to stop, a photo of each step in the
+  updater, and a troubleshooting table. It replaces the old browser-flasher
+  draft.
 - DESIGN.md at the repo root records the design rules a new page must
   follow: page anatomy, ghost numerals, badges, headings, body text,
   callouts, figures, diagrams, photos, navigation wiring, gating, and the

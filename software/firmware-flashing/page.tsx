@@ -12,7 +12,7 @@ import {
   MonoLabel,
   NumberedSteps,
 } from '@/components/docs/Editorial';
-import { ScrollReveal, MouseFollowGlow, InfoNote, AnimatedNumeral } from '@/components/docs/Interactive';
+import { ScrollReveal, MouseFollowGlow, InfoNote, AnimatedNumeral, PhotoSteps } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext, Callout, Code, DataTable } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
@@ -168,29 +168,50 @@ export default function FirmwareFlashingPage() {
             <DisplayHeading size="lg">
               COPY THE FILES TO THE <Red>CAR</Red>
             </DisplayHeading>
-            <DashList
+            <PhotoSteps
               items={[
-                <>
-                  With your computer on the{' '}
-                  <a href="/docs/software/networking" style={link}>same network as the car</a>,
-                  make a folder on the car for firmware files:
-                  <Code lang="bash">{`ssh racecar@<car-address> 'mkdir -p ~/osr-fw'`}</Code>
-                </>,
-                <>
-                  Copy the updater package into it:
-                  <Code lang="bash">{`scp <path-to>/osr-updater_1.0.1_arm64.deb racecar@<car-address>:~/osr-fw/`}</Code>
-                </>,
-                <>
-                  Copy the firmware file into it:
-                  <Code lang="bash">{`scp <path-to>/${FIRMWARE_FILE} racecar@<car-address>:~/osr-fw/`}</Code>
-                </>,
-                <>Replace <code style={mono}>&lt;path-to&gt;</code> with the
-                  folder where you saved each file.</>,
-                <>On the car&apos;s own hotspot the address is{' '}
-                  <code style={mono}>192.168.10.100</code>. On a shared network
-                  use <code style={mono}>neoracer.local</code>.</>,
-                <>The password is the car&apos;s{' '}
-                  <a href="/docs/reference/passwords" style={link}>login password</a>.</>,
+                {
+                  text: <>
+                    With your computer on the{' '}
+                    <a href="/docs/software/networking" style={link}>same network as the car</a>,
+                    make a folder on the car for firmware files:
+                    <Code lang="bash">{`ssh racecar@<car-address> 'mkdir -p ~/osr-fw'`}</Code>
+                  </>,
+                },
+                {
+                  text: <>
+                    Copy the updater package into it:
+                    <Code lang="bash">{`scp <path-to>/osr-updater_1.0.1_arm64.deb racecar@<car-address>:~/osr-fw/`}</Code>
+                  </>,
+                },
+                {
+                  text: <>
+                    Copy the firmware file into it:
+                    <Code lang="bash">{`scp <path-to>/${FIRMWARE_FILE} racecar@<car-address>:~/osr-fw/`}</Code>
+                  </>,
+                },
+                {
+                  text: <>The <code style={mono}>osr-fw</code> folder on the car now holds both files.</>,
+                  photos: [
+                    {
+                      src: '/images/firmware/fw_update_osr-fw.png',
+                      alt: 'The osr-fw folder on the car, holding the updater package and the firmware file',
+                    },
+                  ],
+                },
+                {
+                  text: <>Replace <code style={mono}>&lt;path-to&gt;</code> with the
+                    folder where you saved each file.</>,
+                },
+                {
+                  text: <>On the car&apos;s own hotspot the address is{' '}
+                    <code style={mono}>192.168.10.100</code>. On a shared network
+                    use <code style={mono}>neoracer.local</code>.</>,
+                },
+                {
+                  text: <>The password is the car&apos;s{' '}
+                    <a href="/docs/reference/passwords" style={link}>login password</a>.</>,
+                },
               ]}
             />
           </div>
@@ -230,14 +251,36 @@ sudo apt install ./osr-updater_1.0.1_arm64.deb`}</Code>
             <Code lang="bash">{`sudo systemctl stop neoracer-watchdog
 sudo systemctl stop neoracer-teleop
 sudo fuser -v /dev/osrbot_base`}</Code>
-            <DashList
+            <PhotoSteps
               items={[
-                <>Stop the watchdog first: it restarts teleop if teleop stops
-                  on its own.</>,
-                <>The <code style={mono}>fuser</code> command must print
-                  nothing. If it prints a process, stop that process.</>,
-                <>The dashboard, Jupyter, pursuit and V2V services can stay
-                  running. They do not open the controller&apos;s serial port.</>,
+                {
+                  text: <>Stop the watchdog first: it restarts teleop if teleop
+                    stops on its own.</>,
+                },
+                {
+                  text: <>The <code style={mono}>fuser</code> command must print
+                    nothing. If it prints a process, stop that process.</>,
+                  photos: [
+                    {
+                      src: '/images/firmware/fw_update_active_services.png',
+                      alt: 'A terminal on the car listing the processes that still hold the controller’s serial port',
+                    },
+                  ],
+                },
+                {
+                  text: <>The dashboard, Jupyter, pursuit and V2V services can stay
+                    running. They do not open the controller&apos;s serial port.</>,
+                },
+                {
+                  text: <>If the services are still running, the updater refuses
+                    the serial port with an error when you connect.</>,
+                  photos: [
+                    {
+                      src: '/images/firmware/fw_update_error1.png',
+                      alt: 'The updater’s error when the services are still running: the selected serial port is in use by ROS or another program',
+                    },
+                  ],
+                },
               ]}
             />
           </div>
@@ -255,7 +298,13 @@ sudo fuser -v /dev/osrbot_base`}</Code>
               steps={[
                 {
                   title: 'Open OSR Updater',
-                  detail: 'From the application menu, or run osr-updater in the terminal.',
+                  detail: 'From the application menu, or run osr-updater in the terminal. The updater opens on its main screen.',
+                  photos: [
+                    {
+                      src: '/images/firmware/fw_update_osr_update.png',
+                      alt: 'OSR Updater’s main screen when it first opens',
+                    },
+                  ],
                 },
                 {
                   title: 'Choose the serial device',
@@ -263,19 +312,51 @@ sudo fuser -v /dev/osrbot_base`}</Code>
                 },
                 {
                   title: 'Press Inspect',
-                  detail: 'The Firmware line shows the current version, for example NEORACER_V1.1-20260709-g8b28746. The Battery line shows the pack voltage.',
+                  detail: 'With the services stopped, Inspect reads the board. The Firmware line shows the current version, for example NEORACER_V1.1-20260709-g8b28746, and the Battery line shows the pack voltage.',
+                  photos: [
+                    {
+                      src: '/images/firmware/fw_update_inspect.png',
+                      alt: 'The Inspect result: the Firmware line shows the installed version and the Battery line shows the pack voltage',
+                    },
+                  ],
                 },
                 {
                   title: 'Select the firmware file',
-                  detail: 'Press Select file and choose the firmware file from /home/racecar/osr-fw. The panel on the right must show Type: application update. The updater checks the file’s own checksum and refuses a damaged copy.',
+                  detail: 'Press Select file. The picker opens in the racecar home folder, hidden files included, so you may have to scroll right to find osr-fw. Open it, choose the firmware file, and click Open. The panel on the right must show Type: application update; the updater checks the file’s own checksum and refuses a damaged copy.',
+                  photos: [
+                    {
+                      src: '/images/firmware/fw_update_select_file.png',
+                      alt: 'The file picker in the racecar home folder, with the osr-fw folder off to the right',
+                    },
+                    {
+                      src: '/images/firmware/fw_update_file_selected.png',
+                      alt: 'The firmware file inside osr-fw, selected and ready to open',
+                    },
+                  ],
                 },
                 {
                   title: 'Press Install firmware and confirm',
-                  detail: 'A progress bar runs. The board reboots. The updater reconnects and shows the new version.',
+                  detail: 'With the file loaded, the panel populates and Install firmware activates. Press it; a confirmation question appears. Press Yes and the install starts.',
+                  photos: [
+                    {
+                      src: '/images/firmware/fw_update_install.png',
+                      alt: 'The updater with the firmware file loaded and Install firmware ready to press',
+                    },
+                    {
+                      src: '/images/firmware/fw_update_install_confirmation.png',
+                      alt: 'The confirmation question that appears before the install starts',
+                    },
+                  ],
                 },
                 {
                   title: 'Wait for the final message',
-                  detail: '"Operation completed successfully" means the update is done.',
+                  detail: 'A green progress bar runs and the board reboots. When "Operation completed successfully" appears, press OK: the update is done, and the updater reconnects on the new version.',
+                  photos: [
+                    {
+                      src: '/images/firmware/fw_update_install_complete.png',
+                      alt: 'The progress bar complete and the success message after the install',
+                    },
+                  ],
                 },
               ]}
             />

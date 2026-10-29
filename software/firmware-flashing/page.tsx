@@ -113,17 +113,22 @@ export default function FirmwareFlashingPage() {
             <DisplayHeading size="lg">
               GET THE <Red>FILES</Red>
             </DisplayHeading>
-            <p style={body}>
-              Download the firmware file:{' '}
-              <a href={FIRMWARE_URL} download style={link}>
-                <code style={mono}>{FIRMWARE_FILE}</code>
-              </a>
-              . Then download the updater from the{' '}
-              <a href={UPDATER_RELEASES_URL} target="_blank" rel="noopener noreferrer" style={link}>OSR Updater releases</a>{' '}
-              page. The newest release is at the top. Under Assets, click the{' '}
-              <code style={mono}>arm64.deb</code> file; it is about 17 MB. You do
-              not need the <code style={mono}>.sha256</code> file or the source
-              code archives. From a terminal on a Mac or Linux computer:
+            <DashList
+              items={[
+                <>The firmware file:{' '}
+                  <a href={FIRMWARE_URL} download style={link}>
+                    <code style={mono}>{FIRMWARE_FILE}</code>
+                  </a>
+                  .</>,
+                <>The updater: on the newest{' '}
+                  <a href={UPDATER_RELEASES_URL} target="_blank" rel="noopener noreferrer" style={link}>OSR Updater release</a>,
+                  under Assets, the <code style={mono}>arm64.deb</code> file, about 17 MB.
+                  You do not need the <code style={mono}>.sha256</code> file or the
+                  source code archives.</>,
+              ]}
+            />
+            <p style={{ ...body, marginTop: 14 }}>
+              From a terminal on a Mac or Linux computer:
             </p>
             <Code lang="bash">{`curl -L -o osr-updater_1.0.1_arm64.deb ${UPDATER_DEB_URL}`}</Code>
             <Callout type="note" title="Newer releases">
@@ -153,13 +158,15 @@ export default function FirmwareFlashingPage() {
             <Code lang="bash">{`ssh racecar@<car-address> 'mkdir -p ~/osr-fw'
 scp <path-to>/osr-updater_1.0.1_arm64.deb racecar@<car-address>:~/osr-fw/
 scp <path-to>/${FIRMWARE_FILE} racecar@<car-address>:~/osr-fw/`}</Code>
-            <p style={{ ...body, marginTop: 14 }}>
-              On the car&apos;s own hotspot the address is{' '}
-              <code style={mono}>192.168.10.100</code>. On a shared network use{' '}
-              <code style={mono}>neoracer.local</code>. The password is the
-              car&apos;s{' '}
-              <a href="/docs/reference/passwords" style={link}>login password</a>.
-            </p>
+            <DashList
+              items={[
+                <>On the car&apos;s own hotspot the address is{' '}
+                  <code style={mono}>192.168.10.100</code>. On a shared network
+                  use <code style={mono}>neoracer.local</code>.</>,
+                <>The password is the car&apos;s{' '}
+                  <a href="/docs/reference/passwords" style={link}>login password</a>.</>,
+              ]}
+            />
           </div>
         </section>
       </ScrollReveal>
@@ -174,11 +181,14 @@ scp <path-to>/${FIRMWARE_FILE} racecar@<car-address>:~/osr-fw/`}</Code>
             <p style={body}>In a terminal on the car:</p>
             <Code lang="bash">{`cd ~/osr-fw
 sudo apt install ./osr-updater_1.0.1_arm64.deb`}</Code>
-            <p style={{ ...body, marginTop: 14 }}>
-              The package installs <code style={mono}>/usr/bin/osr-updater</code>{' '}
-              and an &quot;OSR Updater&quot; entry in the application menu. This
-              step is needed once per car. Skip it on a car that already has it.
-            </p>
+            <DashList
+              items={[
+                <>The package installs <code style={mono}>/usr/bin/osr-updater</code>{' '}
+                  and an &quot;OSR Updater&quot; entry in the application menu.</>,
+                <>This step is needed once per car. Skip it on a car that
+                  already has it.</>,
+              ]}
+            />
           </div>
         </section>
       </ScrollReveal>
@@ -194,13 +204,16 @@ sudo apt install ./osr-updater_1.0.1_arm64.deb`}</Code>
             <Code lang="bash">{`sudo systemctl stop neoracer-watchdog
 sudo systemctl stop neoracer-teleop
 sudo fuser -v /dev/osrbot_base`}</Code>
-            <p style={{ ...body, marginTop: 14 }}>
-              Stop the watchdog first. The watchdog restarts teleop if teleop
-              stops on its own. The <code style={mono}>fuser</code> command must
-              print nothing. If it prints a process, stop that process. The
-              dashboard, Jupyter, pursuit and V2V services can stay running.
-              They do not open the controller&apos;s serial port.
-            </p>
+            <DashList
+              items={[
+                <>Stop the watchdog first: it restarts teleop if teleop stops
+                  on its own.</>,
+                <>The <code style={mono}>fuser</code> command must print
+                  nothing. If it prints a process, stop that process.</>,
+                <>The dashboard, Jupyter, pursuit and V2V services can stay
+                  running. They do not open the controller&apos;s serial port.</>,
+              ]}
+            />
             <Callout type="warn" title="Port in use">
               If the updater says &quot;The selected serial port is in use by
               ROS or another program&quot;, one of these services is still
@@ -262,12 +275,14 @@ sudo fuser -v /dev/osrbot_base`}</Code>
             <Code lang="bash">{`sudo systemctl start neoracer-teleop neoracer-watchdog`}</Code>
             <p style={{ ...body, marginTop: 14 }}>Check that the sensors are back:</p>
             <Code lang="bash">{`ros2 topic hz /imu`}</Code>
-            <p style={{ ...body, marginTop: 14 }}>
-              The rate should be about 200 Hz, and the web dashboard on port
-              8080 should show live data. The teleop log may print one
-              &quot;Unknown serial frame tag&quot; warning at startup. That
-              warning is harmless.
-            </p>
+            <DashList
+              items={[
+                <>The rate should be about 200 Hz.</>,
+                <>The web dashboard on port 8080 should show live data.</>,
+                <>The teleop log may print one &quot;Unknown serial frame
+                  tag&quot; warning at startup. That warning is harmless.</>,
+              ]}
+            />
           </div>
         </section>
       </ScrollReveal>

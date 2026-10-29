@@ -7,10 +7,11 @@ import {
   Red,
   GhostNumeral,
   ChromeBadge,
+  ClockGlyph,
   DashList,
   NumberedSteps,
 } from '@/components/docs/Editorial';
-import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Interactive';
+import { ScrollReveal, MouseFollowGlow, InfoNote, AnimatedNumeral } from '@/components/docs/Interactive';
 import { Crumbs, PrevNext, Callout, Code, DataTable } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
@@ -54,7 +55,7 @@ export default function FirmwareFlashingPage() {
           <GhostNumeral n="FW" top={-30} right={-20} size={460} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
-              UPDATE THE <Red>FIRMWARE</Red>
+              UPDATING THE <Red>FIRMWARE</Red>
             </DisplayHeading>
             <p style={{ ...body, fontSize: 18, lineHeight: 1.55, maxWidth: 700 }}>
               The OSCORE controller is the ESP32-S3 board that drives the ESC,
@@ -67,12 +68,10 @@ export default function FirmwareFlashingPage() {
                 serial link. The chip is never erased, so there are no buttons
                 to press and nothing to take apart.
               </InfoNote>
-              . It takes about five minutes.
+              .
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-              <ChromeBadge variant="red">OSCORE · ESP32-S3</ChromeBadge>
-              <ChromeBadge variant="outline">~5 minutes</ChromeBadge>
-              <ChromeBadge variant="outline">Settings kept</ChromeBadge>
+              <ChromeBadge variant="outline" icon={<ClockGlyph />}><AnimatedNumeral value={10} prefix="~" suffix=" minutes" /></ChromeBadge>
             </div>
           </div>
         </section>
@@ -97,13 +96,10 @@ export default function FirmwareFlashingPage() {
             </DisplayHeading>
             <DashList
               items={[
-                <><strong>The firmware file.</strong> Download it from the{' '}
-                  <a href={FIRMWARE_URL} target="_blank" rel="noopener noreferrer" style={link}>firmware binaries</a>{' '}
-                  page. The commands below use{' '}
+                <><strong>The firmware file.</strong> The commands below use{' '}
                   <code style={mono}>{FIRMWARE_FILE}</code> as the example.</>,
-                <><strong>The OSR Updater package.</strong>{' '}
-                  <code style={mono}>osr-updater_1.0.1_arm64.deb</code> from the{' '}
-                  <a href={UPDATER_RELEASES_URL} target="_blank" rel="noopener noreferrer" style={link}>OSR Updater releases</a>.</>,
+                <><strong>The OSR Updater package,</strong>{' '}
+                  <code style={mono}>osr-updater_1.0.1_arm64.deb</code>.</>,
                 <><strong>The car&apos;s desktop.</strong> A monitor, a{' '}
                   <a href="/docs/software/remote-desktop" style={link}>remote desktop session</a>, or{' '}
                   <code style={mono}>ssh -X</code> from a computer that runs an X
@@ -263,8 +259,7 @@ sudo fuser -v /dev/osrbot_base`}</Code>
               ]}
             />
             <Callout type="danger" title="Keep power on">
-              Do not unplug USB or power during the update. Wait for the final
-              message.
+              Do not unplug USB or power during the update.
             </Callout>
           </div>
         </section>

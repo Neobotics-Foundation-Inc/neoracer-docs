@@ -14,6 +14,16 @@ Versions follow semantic versioning, adapted for documentation:
 
 Each merged pull request bumps the version once and adds its entry here.
 
+## [0.9.0] - 2026-10-29 (#21)
+
+### Added
+
+- Software: the Firmware flashing page is no longer gated. It documents the
+  procedure that was run end to end on a car: updating the OSCORE firmware
+  with OSR Updater, an application update through the running firmware, with
+  the files to download, the services to stop, a problems table, and a
+  command-line alternative. It replaces the old browser-flasher draft.
+
 ## [0.8.5] - 2026-10-28 (#20)
 
 ### Added

@@ -133,7 +133,7 @@ rc.go()`}</Code>
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'Software · File system', href: '/docs/software/workspaces' }}
+        prev={{ label: 'Software · Firmware flashing', href: '/docs/software/firmware-flashing' }}
         next={{ label: 'rc.drive', href: '/docs/api-reference/python/drive' }}
       />
     </DocsShell>

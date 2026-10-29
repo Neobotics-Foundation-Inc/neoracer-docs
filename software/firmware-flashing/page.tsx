@@ -9,6 +9,7 @@ import {
   ChromeBadge,
   ClockGlyph,
   DashList,
+  MonoLabel,
   NumberedSteps,
 } from '@/components/docs/Editorial';
 import { ScrollReveal, MouseFollowGlow, InfoNote, AnimatedNumeral } from '@/components/docs/Interactive';
@@ -21,13 +22,13 @@ export const metadata: Metadata = {
     'Update the OSCORE (ESP32-S3) controller firmware with OSR Updater: copy the firmware file and the updater to the car, stop teleop and the watchdog, and install the new app image through the running firmware.',
 };
 
-// The firmware binaries and the command-line tools live in the public
-// neoracer-pcb-firmware repo; the updater is OSRBOT's own release.
-const FIRMWARE_URL = 'https://github.com/Neobotics-Foundation-Inc/neoracer-pcb-firmware/tree/main/firmware/binaries';
+// The firmware image is hosted with the docs; the command-line tools live in
+// the public neoracer-pcb-firmware repo; the updater is OSRBOT's own release.
+const FIRMWARE_FILE = 'NEORACER_V1.2_OSCORE_NEO_ESP32S3_IDF_Project_RevA_20260714.bin';
+const FIRMWARE_URL = `/firmware/${FIRMWARE_FILE}`;
 const TOOLS_URL = 'https://github.com/Neobotics-Foundation-Inc/neoracer-pcb-firmware/tree/main/firmware/tools';
 const UPDATER_RELEASES_URL = 'https://github.com/osrbot/osr_updater/releases';
 const UPDATER_DEB_URL = 'https://github.com/osrbot/osr_updater/releases/download/v1.0.1/osr-updater_1.0.1_arm64.deb';
-const FIRMWARE_FILE = 'NEORACER_V1.2_OSCORE_NEO_ESP32S3_IDF_Project_RevA_20260714.bin';
 
 const mono: CSSProperties = { fontFamily: NB.monoFont };
 const body: CSSProperties = {
@@ -86,32 +87,22 @@ export default function FirmwareFlashingPage() {
         </Callout>
       </ScrollReveal>
 
-      {/* ── what you need ──────────────────────────────────────────── */}
+      {/* You'll need */}
       <ScrollReveal>
-        <section style={{ position: 'relative', paddingBottom: 40 }}>
-          <div style={{ position: 'relative', zIndex: 1 }}>
-            <DisplayHeading size="lg">
-              WHAT YOU <Red>NEED</Red>
-            </DisplayHeading>
-            <DashList
-              items={[
-                <><strong>The firmware file.</strong> The commands below use{' '}
-                  <code style={mono}>{FIRMWARE_FILE}</code> as the example.</>,
-                <><strong>The OSR Updater package,</strong>{' '}
-                  <code style={mono}>osr-updater_1.0.1_arm64.deb</code>.</>,
-                <><strong>The car&apos;s desktop.</strong> A monitor, a{' '}
-                  <a href="/docs/software/remote-desktop" style={link}>remote desktop session</a>, or{' '}
-                  <code style={mono}>ssh -X</code> from a computer that runs an X
-                  server (XQuartz on macOS). OSR Updater is a graphical program.
-                  It cannot run in a plain SSH session.</>,
-                <><strong>A charged battery.</strong> The firmware refuses the
-                  update on a low pack. Keep it above 10.8 V.</>,
-                <><strong>The car on a stand, or the transmitter off.</strong>{' '}
-                  Motion is inhibited during the update. Keep the car still
-                  anyway.</>,
-              ]}
-            />
-          </div>
+        <section style={{ paddingBottom: 24 }}>
+          <MonoLabel>You&apos;ll need</MonoLabel>
+          <DashList
+            items={[
+              <>The firmware file and the OSR Updater package. The next section covers both downloads.</>,
+              <>The car&apos;s desktop: a monitor, a{' '}
+                <a href="/docs/software/remote-desktop" style={link}>remote desktop session</a>, or{' '}
+                <code style={mono}>ssh -X</code> from a computer that runs an X server. OSR Updater is a
+                graphical program and cannot run in a plain SSH session.</>,
+              <>A charged battery, above 10.8 V. The firmware refuses the update on a low pack.</>,
+              <>The car on a stand, or the transmitter off. Motion is inhibited during the update, but
+                keep the car still anyway.</>,
+            ]}
+          />
         </section>
       </ScrollReveal>
 
@@ -123,9 +114,11 @@ export default function FirmwareFlashingPage() {
               GET THE <Red>FILES</Red>
             </DisplayHeading>
             <p style={body}>
-              Download the firmware file from the{' '}
-              <a href={FIRMWARE_URL} target="_blank" rel="noopener noreferrer" style={link}>firmware binaries</a>{' '}
-              page. Then download the updater from the{' '}
+              Download the firmware file:{' '}
+              <a href={FIRMWARE_URL} download style={link}>
+                <code style={mono}>{FIRMWARE_FILE}</code>
+              </a>
+              . Then download the updater from the{' '}
               <a href={UPDATER_RELEASES_URL} target="_blank" rel="noopener noreferrer" style={link}>OSR Updater releases</a>{' '}
               page. The newest release is at the top. Under Assets, click the{' '}
               <code style={mono}>arm64.deb</code> file; it is about 17 MB. You do

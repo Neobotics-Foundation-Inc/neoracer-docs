@@ -27,6 +27,8 @@ Each merged pull request bumps the version once and adds its entry here.
   follow: page anatomy, ghost numerals, badges, headings, body text,
   callouts, figures, diagrams, photos, navigation wiring, gating, and the
   legal page pattern.
+- The V1.2 firmware image is hosted with the docs and downloads straight
+  from the Firmware flashing page.
 
 ### Changed
 

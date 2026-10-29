@@ -92,6 +92,22 @@ jokes, no emojis. Address the reader as "you". Name exact things: the real
 file name, the real command, the real button label. If a procedure was not
 run end to end on real hardware, the page does not ship (see Gated pages).
 
+## The You'll need block
+
+A procedure page opens with a You'll need block right after the hero (and
+after any hero callout): a `<section style={{ paddingBottom: 24 }}>` holding
+`<MonoLabel>You'll need</MonoLabel>` over a `<DashList>`. Its items are
+short plain sentences naming what the reader must have ready, with no bold
+lead-ins and no download links; downloads belong to the section that uses
+them.
+
+## Downloads
+
+A file the reader downloads, such as a legal PDF or a firmware image, ships
+from the website repository's `public/` folder (`public/docs/` for PDFs,
+`public/firmware/` for firmware) and is linked directly with the `download`
+attribute. The docs never link a file that is not published.
+
 ## Lists and steps
 
 - `<DashList>` for unordered items. Lead each item with a bold phrase when

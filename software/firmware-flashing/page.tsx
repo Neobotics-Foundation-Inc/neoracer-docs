@@ -102,6 +102,7 @@ export default function FirmwareFlashingPage() {
           <DashList
             items={[
               <>The firmware file and the OSR Updater package. The next section covers both downloads.</>,
+              <>A terminal on your computer, to copy the files to the car.</>,
               <>The car&apos;s desktop: a monitor or a{' '}
                 <a href="/docs/software/remote-desktop" style={link}>remote desktop session</a>. OSR Updater is a
                 graphical program and cannot run in a plain SSH session.</>,
@@ -175,7 +176,10 @@ export default function FirmwareFlashingPage() {
                   text: <>
                     With your computer on the{' '}
                     <a href="/docs/software/networking" style={link}>same network as the car</a>,
-                    make a folder on the car for firmware files:
+                    make a folder on the car for firmware files. There are two
+                    ways: run the command below over SSH, or create the folder
+                    in the file manager over a{' '}
+                    <a href="/docs/software/remote-desktop" style={link}>RustDesk session</a>.
                     <Code lang="bash">{`ssh racecar@<car-address> 'mkdir -p ~/osr-fw'`}</Code>
                   </>,
                 },
@@ -183,22 +187,15 @@ export default function FirmwareFlashingPage() {
                   text: <>
                     Copy the updater package into it:
                     <Code lang="bash">{`scp <path-to>/osr-updater_1.0.1_arm64.deb racecar@<car-address>:~/osr-fw/`}</Code>
+                    <Code lang="output">{`osr-updater_1.0.1_arm64.deb                   100%   17MB   6.0MB/s   00:02`}</Code>
                   </>,
                 },
                 {
                   text: <>
                     Copy the firmware file into it:
                     <Code lang="bash">{`scp <path-to>/${FIRMWARE_FILE} racecar@<car-address>:~/osr-fw/`}</Code>
+                    <Code lang="output">{`NEORACER_V1.2_OSCORE_NEO_ESP32S3_IDF_Project_ 100%  379KB   2.5MB/s   00:00`}</Code>
                   </>,
-                },
-                {
-                  text: <>The <code style={mono}>osr-fw</code> folder on the car now holds both files.</>,
-                  photos: [
-                    {
-                      src: '/images/firmware/fw_update_osr-fw.png',
-                      alt: 'The osr-fw folder on the car, holding the updater package and the firmware file',
-                    },
-                  ],
                 },
                 {
                   text: <>Replace <code style={mono}>&lt;path-to&gt;</code> with the
@@ -212,6 +209,15 @@ export default function FirmwareFlashingPage() {
                 {
                   text: <>The password is the car&apos;s{' '}
                     <a href="/docs/reference/passwords" style={link}>login password</a>.</>,
+                },
+                {
+                  text: <>The <code style={mono}>osr-fw</code> folder on the car now holds both files.</>,
+                  photos: [
+                    {
+                      src: '/images/firmware/fw_update_osr-fw.png',
+                      alt: 'The osr-fw folder on the car, holding the updater package and the firmware file',
+                    },
+                  ],
                 },
               ]}
             />
@@ -227,17 +233,40 @@ export default function FirmwareFlashingPage() {
             <DisplayHeading size="lg">
               INSTALL OSR <Red>UPDATER</Red>
             </DisplayHeading>
-            <p style={body}>In a terminal on the car:</p>
+            <p style={body}>
+              From here on, you no longer need the terminal on your computer.
+              Open a terminal on the car:
+            </p>
             <Code lang="bash">{`cd ~/osr-fw
 sudo apt install ./osr-updater_1.0.1_arm64.deb`}</Code>
-            <DashList
+            <div style={{ maxWidth: 720 }}>
+            <PhotoSteps
               items={[
-                <>The package installs <code style={mono}>/usr/bin/osr-updater</code>{' '}
-                  and an &quot;OSR Updater&quot; entry in the application menu.</>,
-                <>This step is needed once per car. Skip it on a car that
-                  already has it.</>,
+                {
+                  text: <>The install may print &quot;Permission denied&quot; in
+                    the terminal. That message is harmless.</>,
+                },
+                {
+                  text: <>The package installs <code style={mono}>/usr/bin/osr-updater</code>{' '}
+                    and an &quot;OSR Updater&quot; entry in the application menu.</>,
+                },
+                {
+                  text: <>To verify the install, open the app library and scroll
+                    to the end. The OSR Updater app is there.</>,
+                  photos: [
+                    {
+                      src: '/images/firmware/fw_update_app.png',
+                      alt: 'The OSR Updater app at the end of the app library',
+                    },
+                  ],
+                },
+                {
+                  text: <>This step is needed once per car. Skip it on a car
+                    that already has it.</>,
+                },
               ]}
             />
+            </div>
           </div>
         </section>
       </ScrollReveal>
@@ -250,23 +279,20 @@ sudo apt install ./osr-updater_1.0.1_arm64.deb`}</Code>
               STOP THE PROGRAMS THAT USE THE <Red>CONTROLLER</Red>
             </DisplayHeading>
             <p style={body}>In a terminal on the car:</p>
-            <Code lang="bash">{`sudo systemctl stop neoracer-watchdog
-sudo systemctl stop neoracer-teleop
-sudo fuser -v /dev/osrbot_base`}</Code>
+            <Code lang="bash">{`sudo systemctl stop neoracer-watchdog neoracer-teleop
+systemctl list-units 'neoracer-*' --state=active --no-legend`}</Code>
             <div style={{ maxWidth: 720 }}>
             <PhotoSteps
               items={[
                 {
-                  text: <>Stop the watchdog first: it restarts teleop if teleop
-                    stops on its own.</>,
-                },
-                {
-                  text: <>The <code style={mono}>fuser</code> command must print
-                    nothing. If it prints a process, stop that process.</>,
+                  text: <>The second command lists the neoracer services that are
+                    still active. <code style={mono}>neoracer-watchdog</code> and{' '}
+                    <code style={mono}>neoracer-teleop</code> must not be in the
+                    list.</>,
                   photos: [
                     {
-                      src: '/images/firmware/fw_update_active_services.png',
-                      alt: 'A terminal on the car listing the processes that still hold the controller’s serial port',
+                      src: '/images/firmware/fw_update_services_stop.png',
+                      alt: 'The active neoracer services after the stop: the watchdog and teleop are no longer listed',
                     },
                   ],
                 },
@@ -313,10 +339,16 @@ sudo fuser -v /dev/osrbot_base`}</Code>
                 {
                   title: 'Choose the serial device',
                   detail: 'Under Controller, choose /dev/osrbot_base. Press Refresh if it is not listed.',
+                  photos: [
+                    {
+                      src: '/images/firmware/fw_update_choose_serial.png',
+                      alt: 'The Controller dropdown with /dev/osrbot_base selected',
+                    },
+                  ],
                 },
                 {
                   title: 'Press Inspect',
-                  detail: 'With the services stopped, Inspect reads the board. The Firmware line shows the current version, for example NEORACER_V1.1-20260709-g8b28746, and the Battery line shows the pack voltage.',
+                  detail: 'With the services stopped, Inspect reads the board. The Firmware line shows the current version, and the Battery line shows the pack voltage.',
                   photos: [
                     {
                       src: '/images/firmware/fw_update_inspect.png',
@@ -354,7 +386,7 @@ sudo fuser -v /dev/osrbot_base`}</Code>
                 },
                 {
                   title: 'Wait for the final message',
-                  detail: 'A green progress bar runs and the board reboots. When "Operation completed successfully" appears, press OK: the update is done, and the updater reconnects on the new version.',
+                  detail: 'A green progress bar runs and the board reboots. When "Operation completed successfully" appears, press OK: the update is done, and the updater reconnects on the new version. The car also beeps three times when the update completes.',
                   photos: [
                     {
                       src: '/images/firmware/fw_update_install_complete.png',
@@ -380,7 +412,7 @@ sudo fuser -v /dev/osrbot_base`}</Code>
             </DisplayHeading>
             <Code lang="bash">{`sudo systemctl start neoracer-teleop neoracer-watchdog`}</Code>
             <p style={{ ...body, marginTop: 14 }}>Check that the sensors are back:</p>
-            <Code lang="bash">{`ros2 topic hz /imu`}</Code>
+            <Code lang="bash">{`ros2 topic hz /imu/fused`}</Code>
             <DashList
               items={[
                 <>The rate should be about 200 Hz.</>,

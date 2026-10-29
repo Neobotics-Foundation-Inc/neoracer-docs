@@ -200,9 +200,9 @@ export default function FirmwareFlashingPage() {
                     folder where you saved each file.</>,
                 },
                 {
-                  text: <>On the car&apos;s own hotspot the address is{' '}
-                    <code style={mono}>192.168.10.100</code>. On a shared network
-                    use <code style={mono}>neoracer.local</code>.</>,
+                  text: <>Replace <code style={mono}>&lt;car-address&gt;</code> with
+                    the IP address through which you are connecting to the car.
+                    On a shared network use <code style={mono}>neoracer.local</code>.</>,
                 },
                 {
                   text: <>The password is the car&apos;s{' '}

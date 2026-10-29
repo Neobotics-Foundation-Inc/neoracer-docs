@@ -117,6 +117,19 @@ export default function DrivetrainPage() {
           car this size needs, so it will not strip its gears if the car hits a
           wall. It is also waterproof.
         </p>
+        <Fig
+          label="FIG. A / SERVO DIMENSIONS"
+          bg={NB.haloWhite}
+          caption="The steering servo's dimensions, in millimetres."
+        >
+          <Image
+            src="/images/drivetrain/servo-dimensions.jpg"
+            alt="Dimensional drawing of the steering servo: the case is 40 mm long and 20.3 mm wide, and the mounting flange spans 48 mm with 4.9 mm screw holes"
+            width={1373}
+            height={516}
+            style={{ display: 'block', width: '100%', maxWidth: 720, height: 'auto', margin: '0 auto' }}
+          />
+        </Fig>
         <div style={{ marginTop: 18 }}>
           <MonoLabel>Servo specs</MonoLabel>
           <DataTable
@@ -139,19 +152,6 @@ export default function DrivetrainPage() {
             ]}
           />
         </div>
-        <Fig
-          label="FIG. A / SERVO DIMENSIONS"
-          bg={NB.haloWhite}
-          caption="The steering servo's dimensions, in millimetres."
-        >
-          <Image
-            src="/images/drivetrain/servo-dimensions.jpg"
-            alt="Dimensional drawing of the steering servo: the case is 40 mm long and 20.3 mm wide, and the mounting flange spans 48 mm with 4.9 mm screw holes"
-            width={1373}
-            height={516}
-            style={{ display: 'block', width: '100%', maxWidth: 720, height: 'auto', margin: '0 auto' }}
-          />
-        </Fig>
         </section>
       </ScrollReveal>
 

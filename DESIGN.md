@@ -89,8 +89,11 @@ style with the red kicker bar; `size="xl"` is only for the hero.
 
 Short plain sentences, actor first, one fact per sentence. No fluff, no
 jokes, no emojis. Address the reader as "you". Name exact things: the real
-file name, the real command, the real button label. If a procedure was not
-run end to end on real hardware, the page does not ship (see Gated pages).
+file name, the real command, the real button label. Do not personify the
+software or the hardware: nothing refuses, wants, decides or complains.
+Say what happens ("the update will not start on a low pack", not "the
+firmware refuses the update"). If a procedure was not run end to end on
+real hardware, the page does not ship (see Gated pages).
 
 ## The You'll need block
 

@@ -105,7 +105,7 @@ export default function FirmwareFlashingPage() {
               <>The car&apos;s desktop: a monitor or a{' '}
                 <a href="/docs/software/remote-desktop" style={link}>remote desktop session</a>. OSR Updater is a
                 graphical program and cannot run in a plain SSH session.</>,
-              <>A charged battery. The firmware refuses the update on a low pack.</>,
+              <>A charged battery. The update will not start on a low pack.</>,
             ]}
           />
         </section>
@@ -127,6 +127,7 @@ export default function FirmwareFlashingPage() {
             <DisplayHeading size="lg">
               DOWNLOAD THE BINARY AND <Red>DEB</Red> FILE
             </DisplayHeading>
+            <div style={{ maxWidth: 720 }}>
             <DashList
               items={[
                 <>
@@ -152,6 +153,7 @@ export default function FirmwareFlashingPage() {
                 </>,
               ]}
             />
+            </div>
             <Callout type="note" title="Newer releases">
               If a newer release is listed, use its{' '}
               <code style={mono}>arm64.deb</code> file and change the file name
@@ -168,6 +170,7 @@ export default function FirmwareFlashingPage() {
             <DisplayHeading size="lg">
               COPY THE FILES TO THE <Red>CAR</Red>
             </DisplayHeading>
+            <div style={{ maxWidth: 720 }}>
             <PhotoSteps
               items={[
                 {
@@ -214,6 +217,7 @@ export default function FirmwareFlashingPage() {
                 },
               ]}
             />
+            </div>
           </div>
         </section>
       </ScrollReveal>
@@ -251,6 +255,7 @@ sudo apt install ./osr-updater_1.0.1_arm64.deb`}</Code>
             <Code lang="bash">{`sudo systemctl stop neoracer-watchdog
 sudo systemctl stop neoracer-teleop
 sudo fuser -v /dev/osrbot_base`}</Code>
+            <div style={{ maxWidth: 720 }}>
             <PhotoSteps
               items={[
                 {
@@ -272,17 +277,18 @@ sudo fuser -v /dev/osrbot_base`}</Code>
                     running. They do not open the controller&apos;s serial port.</>,
                 },
                 {
-                  text: <>If the services are still running, the updater refuses
-                    the serial port with an error when you connect.</>,
+                  text: <>If the services are still running, this error appears
+                    when you connect.</>,
                   photos: [
                     {
                       src: '/images/firmware/fw_update_error1.png',
-                      alt: 'The updater’s error when the services are still running: the selected serial port is in use by ROS or another program',
+                      alt: 'The error shown when the services are still running: the selected serial port is in use by ROS or another program',
                     },
                   ],
                 },
               ]}
             />
+            </div>
           </div>
         </section>
       </ScrollReveal>
@@ -322,7 +328,7 @@ sudo fuser -v /dev/osrbot_base`}</Code>
                 },
                 {
                   title: 'Select the firmware file',
-                  detail: 'Press Select file. The picker opens in the racecar home folder, hidden files included, so you may have to scroll right to find osr-fw. Open it, choose the firmware file, and click Open. The panel on the right must show Type: application update; the updater checks the file’s own checksum and refuses a damaged copy.',
+                  detail: 'Press Select file. The picker opens in the racecar home folder, hidden files included, so you may have to scroll right to find osr-fw. Open it, choose the firmware file, and click Open. The panel on the right must show Type: application update. A damaged copy fails the file’s checksum check and will not install.',
                   photos: [
                     {
                       src: '/images/firmware/fw_update_select_file.png',
@@ -413,7 +419,7 @@ sudo fuser -v /dev/osrbot_base`}</Code>
                   },
                   {
                     msg: 'fw begin invalid, or a result that says not to retry',
-                    fix: 'The running firmware does not accept this image. Do not retry. Keep the audit log and contact winter@osrbot.com.',
+                    fix: 'This image cannot be installed from the running firmware. Do not retry. Keep the audit log and contact winter@osrbot.com.',
                   },
                   {
                     msg: 'The update stopped part way (power loss, cable pulled)',

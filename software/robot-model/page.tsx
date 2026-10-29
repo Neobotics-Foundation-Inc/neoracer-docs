@@ -33,7 +33,7 @@ export default function RobotModelPage() {
 
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 28, paddingTop: 24 }}>
-          <GhostNumeral n="3D" top={-30} right={-20} size={400} />
+          <GhostNumeral n="08" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               THE ROBOT <Red>MODEL</Red>
@@ -79,7 +79,7 @@ export default function RobotModelPage() {
       {/* ── 01 · Using the model ─────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 8 }}>
-          <GhostNumeral n="01" top={-30} right={-20} size={400} />
+          <GhostNumeral n="01" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
               SEE IT ON THE <Red>CAR</Red>
@@ -131,7 +131,7 @@ export default function RobotModelPage() {
 
       <PrevNext
         prev={{ label: 'Navigation (Nav2)', href: '/docs/software/navigation' }}
-        next={{ label: 'API reference', href: '/docs/api-reference/python/drive' }}
+        next={{ label: 'racecar_core', href: '/docs/api-reference/python/core' }}
       />
     </DocsShell>
   );

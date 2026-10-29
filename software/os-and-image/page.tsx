@@ -41,7 +41,7 @@ export default function OsAndImagePage() {
       {/* ── Hero ────────────────────────────────────────────────────────── */}
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="OS" top={-30} right={-20} size={460} />
+          <GhostNumeral n="04" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               THE PRE-FLASHED <Red>IMAGE</Red>
@@ -92,7 +92,7 @@ export default function OsAndImagePage() {
       {/* ── Section 01 · What's running ────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="01" top={-30} right={-20} size={460} />
+          <GhostNumeral n="01" top={-30} right={-20} size={420} />
         <div style={{ position: 'relative', zIndex: 1 }}>
           <DisplayHeading size="lg">
             WHAT RUNS AT <Red>BOOT</Red>
@@ -195,7 +195,7 @@ export default function OsAndImagePage() {
       {/* ── Section 02 · Flash it yourself ───────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="02" top={-30} right={-20} size={460} />
+          <GhostNumeral n="02" top={-30} right={-20} size={420} />
         <div style={{ position: 'relative', zIndex: 1 }}>
           <DisplayHeading size="lg">
             FLASH A FRESH <Red>SSD</Red>
@@ -238,7 +238,7 @@ export default function OsAndImagePage() {
       {/* ── Section 03 · First boot ─────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="03" top={-30} right={-20} size={460} />
+          <GhostNumeral n="03" top={-30} right={-20} size={420} />
         <div style={{ position: 'relative', zIndex: 1 }}>
           <DisplayHeading size="lg">
             FIRST-BOOT <Red>DEFAULTS</Red>
@@ -314,7 +314,7 @@ export default function OsAndImagePage() {
       {/* ── Section 04 · SSH cheat sheet ───────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="04" top={-30} right={-20} size={460} />
+          <GhostNumeral n="04" top={-30} right={-20} size={420} />
         <div style={{ position: 'relative', zIndex: 1 }}>
           <DisplayHeading size="lg">
             SSH IN AND <Red>VERIFY</Red>
@@ -344,7 +344,7 @@ ros2 topic echo /scan --once | head -20`}</Code>
       {/* ── Section 05 · Recovery ────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 56 }}>
-          <GhostNumeral n="05" top={-30} right={-20} size={460} />
+          <GhostNumeral n="05" top={-30} right={-20} size={420} />
         <div style={{ position: 'relative', zIndex: 1 }}>
           <DisplayHeading size="lg">
             WHEN TO <Red>RE-FLASH</Red>

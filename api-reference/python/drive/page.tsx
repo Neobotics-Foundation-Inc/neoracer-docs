@@ -11,7 +11,7 @@ import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 
 export const metadata: Metadata = {
   alternates: { canonical: 'https://neobotics.org/docs/api-reference/python/drive' },
-  title: 'rc.drive · Python API · NeoRacer Docs',
+  title: 'rc.drive · API Reference · NeoRacer Docs',
   description:
     'The Drive module: set the wheel speed and front-wheel steering angle. set_speed_angle, stop, set_max_speed. Same API in the Playground sim and on the car.',
 };

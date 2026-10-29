@@ -12,7 +12,7 @@ import { Crumbs, PrevNext, Code, DataTable } from '@/components/docs/DocsPrimiti
 
 export const metadata: Metadata = {
   alternates: { canonical: 'https://neobotics.org/docs/api-reference/cli' },
-  title: 'Overview · CLI · NeoRacer Docs',
+  title: 'Overview · API Reference · NeoRacer Docs',
   description:
     'Every racecar subcommand on the car. racecar help prints the same list. Services, running and setup each have their own page.',
 };

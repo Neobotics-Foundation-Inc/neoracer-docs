@@ -40,7 +40,7 @@ The hero is a `<section>` with `position: relative`, `paddingTop: 24` and
 - `<DisplayHeading size="xl">` with the page title in uppercase and exactly
   one word wrapped in `<Red>`.
 - A lede paragraph: `NB.bodyFont`, `fontSize: 18`, `lineHeight: 1.55`,
-  `color: NB.textMutedBeige`, `maxWidth` 680 to 700.
+  `color: NB.textMutedBeige`, `maxWidth: 700`.
 - Optionally a badge row (see Badges).
 
 ## Ghost numerals
@@ -171,11 +171,12 @@ Adding, removing or renaming a page touches four places:
 2. The search index: run `node scripts/build-search-index.mjs` in the
    website repository after any nav or metadata change.
 3. `<PrevNext>` on the page and on both neighbours, so the reading chain
-   stays unbroken. Within a section, labels are the bare page names. Across
-   a section boundary, the label is `Section · Page` ("Software · Firmware
-   flashing").
-4. The contents list on the docs home page, which states how many pages
-   each section has.
+   stays unbroken. A label is always the target page's sidebar name from
+   `nav.ts`, nothing more, including across a section boundary. A link to
+   `/docs` is labelled "Home". Crumbs and every other reference to a page
+   also use its sidebar name, even when the page's own title differs.
+4. The contents list on the docs home page derives its counts and links
+   from `nav.ts`, so it updates on its own.
 
 The sidebar order is the reading order, and gated pages are skipped in the
 PrevNext chain until they un-gate.

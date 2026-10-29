@@ -15,7 +15,7 @@ import { WiringDiagram } from '@/components/docs/WiringDiagram';
 
 export const metadata: Metadata = {
   alternates: { canonical: 'https://neobotics.org/docs/hardware/overview' },
-  title: 'Hardware overview · NeoRacer Docs',
+  title: 'Overview · Hardware · NeoRacer Docs',
   description: 'A single-page anatomy of the NeoRacer M1: compute, sensors, drivetrain, and chassis at a glance.',
 };
 
@@ -121,7 +121,7 @@ export default function HardwareOverviewPage() {
 
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="01" top={-30} right={-20} size={400} />
+          <GhostNumeral n="01" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               THE NEORACER <Red>HARDWARE</Red>

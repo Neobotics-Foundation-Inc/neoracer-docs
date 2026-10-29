@@ -13,6 +13,7 @@ import {
   AnimatedDataFlowDiagram,
 } from '@/components/docs/Interactive';
 import PitLaneNav, { PitLaneSection } from '@/components/docs/PitLaneNav';
+import { docsNav, type DocsNavGroup, type DocsNavItem } from '@/lib/docs/nav';
 
 export const metadata: Metadata = {
   alternates: { canonical: 'https://neobotics.org/docs' },
@@ -34,16 +35,27 @@ export const metadata: Metadata = {
 const SHOW_DATA_FLOW = false;
 const SHOW_PLAYGROUND_TEASE = false;
 
-/* Bay order mirrors the sidebar. Counts are the real page counts in nav.ts;
-   update both together when a page ships. */
-const pitLane: PitLaneSection[] = [
-  { title: 'Setup', href: '/docs/getting-started/unbox', pages: 6 },
-  { title: 'Hardware', href: '/docs/hardware/overview', pages: 11 },
-  { title: 'Software', href: '/docs/software/networking', pages: 4 },
-  { title: 'API Reference', href: '/docs/api-reference/python/core', pages: 14 },
-  { title: 'Reference', href: '/docs/reference/safety', pages: 5 },
-  { title: 'Legal', href: '/docs/legal/warranty', pages: 5 },
-];
+/* Bay order mirrors the sidebar: counts and links derive from nav.ts, so a
+   page shipping (or un-gating) updates this list on its own. */
+function livePages(item: DocsNavItem): number {
+  if (item.disabled) return 0;
+  if ('children' in item) return item.children.reduce((n, c) => n + livePages(c), 0);
+  return 1;
+}
+function firstLivePage(item: DocsNavItem): string | undefined {
+  if (item.disabled) return undefined;
+  if (!('children' in item)) return item.href;
+  for (const child of item.children) {
+    const href = firstLivePage(child);
+    if (href) return href;
+  }
+  return undefined;
+}
+const pitLane: PitLaneSection[] = docsNav.map((group: DocsNavGroup) => ({
+  title: group.title,
+  href: firstLivePage(group) ?? '/docs',
+  pages: livePages(group),
+}));
 
 export default function DocsLandingPage() {
   return (

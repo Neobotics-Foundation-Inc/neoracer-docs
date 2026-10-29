@@ -29,12 +29,12 @@ export default function SafetyPage() {
 
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="01" top={-30} right={-20} size={460} />
+          <GhostNumeral n="01" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               SAFETY <Red>PROCEDURES</Red>
             </DisplayHeading>
-            <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
               We advise reading these safety procedures before using the
               NeoRacer.
             </p>
@@ -137,7 +137,7 @@ export default function SafetyPage() {
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'ROS 2 params', href: '/docs/api-reference/ros2/params' }}
+        prev={{ label: 'Params', href: '/docs/api-reference/ros2/params' }}
         next={{ label: 'Troubleshooting', href: '/docs/reference/troubleshooting' }}
       />
     </DocsShell>

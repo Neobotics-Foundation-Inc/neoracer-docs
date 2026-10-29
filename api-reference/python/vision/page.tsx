@@ -11,7 +11,7 @@ import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 
 export const metadata: Metadata = {
   alternates: { canonical: 'https://neobotics.org/docs/api-reference/python/vision' },
-  title: 'rc.vision · Python API · NeoRacer Docs',
+  title: 'rc.vision · API Reference · NeoRacer Docs',
   description:
     'The Vision module: get_detections returns object detections from the inference node. Each detection carries a class label, a confidence score, and a bounding box.',
 };
@@ -51,7 +51,7 @@ export default function VisionApiPage() {
             <DisplayHeading size="xl">
               RC.<Red>VISION</Red>
             </DisplayHeading>
-            <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
               The vision module provides object detections from the model
               running on the car.
             </p>

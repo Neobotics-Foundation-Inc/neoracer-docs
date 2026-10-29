@@ -227,7 +227,7 @@ export default function Ros2TopicsPage() {
           </DisplayHeading>
           <DataTable columns={COLUMNS} rows={ROWS} />
 
-          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740, marginTop: 26 }}>
+          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 26 }}>
             The driver starts at boot, so every topic above is already live when
             you log in.{' '}
             <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>ros2 topic list</code>{' '}
@@ -245,7 +245,7 @@ export default function Ros2TopicsPage() {
           <DisplayHeading size="lg">
             DRIVE <Red>PIPELINE</Red>
           </DisplayHeading>
-          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
+          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             A drive message does not go straight to the motor. The mux node
             decides whether teleop or autonomy is in control, and the throttle
             node scales the speed to a safe range before the controller node
@@ -256,8 +256,8 @@ export default function Ros2TopicsPage() {
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'CLI · Maintenance', href: '/docs/api-reference/cli/setup' }}
-        next={{ label: 'ROS 2 params', href: '/docs/api-reference/ros2/params' }}
+        prev={{ label: 'Maintenance', href: '/docs/api-reference/cli/setup' }}
+        next={{ label: 'Params', href: '/docs/api-reference/ros2/params' }}
       />
     </DocsShell>
   );

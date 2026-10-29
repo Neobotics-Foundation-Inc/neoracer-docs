@@ -28,7 +28,7 @@ export default function ReturnAndRefundPage() {
 
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="02" top={-30} right={-20} size={460} />
+          <GhostNumeral n="02" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               RETURN AND REFUND <Red>POLICY</Red>

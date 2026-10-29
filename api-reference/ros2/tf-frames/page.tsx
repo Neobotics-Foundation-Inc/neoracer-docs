@@ -319,7 +319,7 @@ export default function Ros2TfFramesPage() {
       <ScrollReveal>
         <section style={{ paddingTop: 28, paddingBottom: 24 }}>
           <MonoLabel>Wiring the tree with static transforms</MonoLabel>
-          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
+          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             The quickest way to give ROS 2 the geometry is one{' '}
             <code style={{ fontFamily: NB.monoFont }}>static_transform_publisher</code>{' '}
             per sensor. The arguments are{' '}
@@ -335,7 +335,7 @@ ros2 run tf2_ros static_transform_publisher 0.05 0 0.05 0 0 0 base_link imu_link
 
 # Camera at the front of the car, angled slightly down if yours is.
 ros2 run tf2_ros static_transform_publisher 0.22 0 0.08 0 0 0 base_link camera_link`}</Code>
-          <p style={{ fontFamily: NB.bodyFont, fontSize: 15, lineHeight: 1.6, color: NB.textMutedBeige, maxWidth: 740, marginTop: 14 }}>
+          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 14 }}>
             For anything beyond a quick test, move these into a{' '}
             <code style={{ fontFamily: NB.monoFont }}>robot_state_publisher</code>{' '}
             driven by a URDF, so the whole tree comes up with one node and stays in
@@ -355,7 +355,7 @@ ros2 run tf2_ros static_transform_publisher 0.22 0 0.08 0 0 0 base_link camera_l
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'ROS 2 parameters', href: '/docs/api-reference/ros2/params' }}
+        prev={{ label: 'Params', href: '/docs/api-reference/ros2/params' }}
       />
     </DocsShell>
   );

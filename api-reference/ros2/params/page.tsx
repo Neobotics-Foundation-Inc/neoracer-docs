@@ -122,7 +122,7 @@ export default function Ros2ParamsPage() {
         items={[
           { label: 'API Reference', href: '/docs/api-reference/python/core' },
           { label: 'ROS 2' },
-          { label: 'Parameters' },
+          { label: 'Params' },
         ]}
       />
 
@@ -146,7 +146,7 @@ export default function Ros2ParamsPage() {
           <DisplayHeading size="lg">
             CHANGING A <Red>VALUE</Red>
           </DisplayHeading>
-          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
+          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             The driver nodes read their parameters once at startup. To change a
             value, edit the matching YAML under{' '}
             <code style={{ fontFamily: NB.monoFont }}>neoracer_ros2_driver/config/</code>{' '}
@@ -169,7 +169,7 @@ racecar service restart`}</Code>
             <Red>THROTTLE</Red>
           </DisplayHeading>
           <MonoLabel>config/throttle.yaml</MonoLabel>
-          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
+          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             A command in [-1, 1] is multiplied by these caps, then by the
             controller&apos;s{' '}
             <code style={{ fontFamily: NB.monoFont }}>max_speed_mps</code>.
@@ -204,7 +204,7 @@ racecar service restart`}</Code>
             <Red>LIDAR</Red>
           </DisplayHeading>
           <MonoLabel>launch arguments</MonoLabel>
-          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
+          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             The LakiBeam1 driver takes these as launch arguments in{' '}
             <code style={{ fontFamily: NB.monoFont }}>lidar.launch.py</code>{' '}
             rather than runtime parameters; the driver pushes them to the
@@ -215,7 +215,7 @@ racecar service restart`}</Code>
       </ScrollReveal>
 
       <PrevNext
-        prev={{ label: 'ROS 2 topics', href: '/docs/api-reference/ros2/topics' }}
+        prev={{ label: 'Topics', href: '/docs/api-reference/ros2/topics' }}
         next={{ label: 'Safety', href: '/docs/reference/safety' }}
       />
     </DocsShell>

@@ -28,6 +28,14 @@ Each merged pull request bumps the version once and adds its entry here.
   callouts, figures, diagrams, photos, navigation wiring, gating, and the
   legal page pattern.
 
+### Changed
+
+- A consistency pass to match DESIGN.md: metadata titles follow one
+  Page · Section pattern, prev/next links and crumbs refer to pages by
+  their sidebar names, hero numerals share one size, lede and body widths
+  are standardized, and the docs home contents list now derives its counts
+  from the sidebar tree instead of hand-kept numbers.
+
 ## [0.8.5] - 2026-10-28 (#20)
 
 ### Added

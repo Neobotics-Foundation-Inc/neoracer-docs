@@ -33,7 +33,7 @@ export default function NavigationPage() {
       {/* ── Hero ────────────────────────────────────────────────────────── */}
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="NAV" top={-30} right={-20} size={460} />
+          <GhostNumeral n="07" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               AUTONOMOUS <Red>NAVIGATION</Red>
@@ -159,7 +159,7 @@ racecar navigation dwb lab        # dwb, on the map named "lab"`}</Code>
 
       <PrevNext
         prev={{ label: 'Mapping (SLAM)', href: '/docs/software/mapping' }}
-        next={{ label: 'API reference', href: '/docs/api-reference/python/drive' }}
+        next={{ label: '3D model', href: '/docs/software/robot-model' }}
       />
     </DocsShell>
   );

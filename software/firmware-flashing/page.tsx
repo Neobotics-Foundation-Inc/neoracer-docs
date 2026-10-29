@@ -370,7 +370,7 @@ python3 NEORACER_V1_Serial_OTA_Update_Tool.py --port /dev/osrbot_base ${FIRMWARE
 
       <PrevNext
         prev={{ label: 'File system', href: '/docs/software/workspaces' }}
-        next={{ label: 'API reference', href: '/docs/api-reference/python/core' }}
+        next={{ label: 'racecar_core', href: '/docs/api-reference/python/core' }}
       />
     </DocsShell>
   );

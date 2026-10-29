@@ -11,7 +11,7 @@ import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 
 export const metadata: Metadata = {
   alternates: { canonical: 'https://neobotics.org/docs/api-reference/python/display' },
-  title: 'rc.display · Python API · NeoRacer Docs',
+  title: 'rc.display · API Reference · NeoRacer Docs',
   description:
     'The Display module: show_text drives the dot matrix on the back of the car, and show_color_image and show_lidar open windows on the Jetson desktop.',
 };
@@ -66,7 +66,7 @@ export default function DisplayApiPage() {
             <DisplayHeading size="xl">
               RC.<Red>DISPLAY</Red>
             </DisplayHeading>
-            <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
               The display module writes text to the dot matrix on the back of
               the car and opens image windows on the Jetson desktop.
             </p>

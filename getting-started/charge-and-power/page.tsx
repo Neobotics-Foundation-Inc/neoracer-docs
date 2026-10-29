@@ -18,7 +18,7 @@ import { ScrollReveal, MouseFollowGlow, InfoNote } from '@/components/docs/Inter
 
 export const metadata: Metadata = {
   alternates: { canonical: 'https://neobotics.org/docs/getting-started/charge-and-power' },
-  title: 'Charge & power · NeoRacer Docs',
+  title: 'Charge & power · Setup · NeoRacer Docs',
   description: 'Charge an 11.1 V LiPo pack safely, power the car for the first time, and learn the LED states.',
 };
 
@@ -34,7 +34,7 @@ export default function ChargeAndPowerPage() {
 
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="02" top={-30} right={-20} size={400} />
+          <GhostNumeral n="02" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               CHARGE &amp; <Red>POWER</Red>

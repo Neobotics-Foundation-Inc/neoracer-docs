@@ -63,7 +63,7 @@ export default function TestTheSystemPage() {
       {/* ── Hero ─────────────────────────────────────────────────────── */}
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="06" top={-30} right={-20} size={400} />
+          <GhostNumeral n="06" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               TEST THE <Red>SYSTEM</Red>
@@ -189,7 +189,7 @@ export default function TestTheSystemPage() {
 
       <PrevNext
         prev={{ label: 'Connect to the router', href: '/docs/getting-started/connect-to-router' }}
-        next={{ label: 'Hardware overview', href: '/docs/hardware/overview' }}
+        next={{ label: 'Overview', href: '/docs/hardware/overview' }}
       />
     </DocsShell>
   );

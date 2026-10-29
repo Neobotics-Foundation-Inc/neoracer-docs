@@ -27,7 +27,7 @@ export default function PrivacyPage() {
 
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="06" top={-30} right={-20} size={460} />
+          <GhostNumeral n="06" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               PRIVACY <Red>POLICY</Red>
@@ -72,7 +72,7 @@ export default function PrivacyPage() {
 
       <PrevNext
         prev={{ label: 'Terms of service', href: '/docs/legal/terms-of-service' }}
-        next={{ label: 'Documentation home', href: '/docs' }}
+        next={{ label: 'Home', href: '/docs' }}
       />
     </DocsShell>
   );

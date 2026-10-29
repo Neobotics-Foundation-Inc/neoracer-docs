@@ -261,10 +261,7 @@ whoami                     # racecar`}</Code>
       </ScrollReveal>
 
       {/* ── Support ──────────────────────────────────────────────────── */}
-      <PrevNext
-        prev={{ label: 'Safety', href: '/docs/reference/safety' }}
-        next={{ label: 'Maintenance', href: '/docs/reference/maintenance' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

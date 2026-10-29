@@ -32,7 +32,7 @@ export default function EncodersPage() {
       {/* ── Hero ──────────────────────────────────────────────────────── */}
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="06" top={-30} right={-20} size={400} />
+          <GhostNumeral n="06" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               THE MOTOR <Red>ENCODER</Red>
@@ -157,10 +157,7 @@ print(speed)`}
         </section>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'IMU', href: '/docs/hardware/sensors/imu' }}
-        next={{ label: 'Remote control', href: '/docs/hardware/remote-control' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

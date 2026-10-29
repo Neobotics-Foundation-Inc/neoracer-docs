@@ -11,7 +11,7 @@ import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 
 export const metadata: Metadata = {
   alternates: { canonical: 'https://neobotics.org/docs/api-reference/python/utils' },
-  title: 'racecar_utils · Python API · NeoRacer Docs',
+  title: 'racecar_utils · API Reference · NeoRacer Docs',
   description:
     'The racecar_utils helper module: clamp, remap_range, crop, contour finding and drawing for color tracking, and AR marker detection.',
 };
@@ -114,7 +114,7 @@ export default function UtilsApiPage() {
             <DisplayHeading size="xl">
               RACECAR_<Red>UTILS</Red>
             </DisplayHeading>
-            <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
               The racecar_utils module provides helper functions for working
               with numbers, images, and the LiDAR. The
               LiDAR helpers are on the{' '}
@@ -211,10 +211,7 @@ rc.go()`}</Code>
         </p>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'rc.vision', href: '/docs/api-reference/python/vision' }}
-        next={{ label: 'CLI overview', href: '/docs/api-reference/cli' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

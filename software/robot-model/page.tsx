@@ -33,7 +33,7 @@ export default function RobotModelPage() {
 
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 28, paddingTop: 24 }}>
-          <GhostNumeral n="3D" top={-30} right={-20} size={400} />
+          <GhostNumeral n="08" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               THE ROBOT <Red>MODEL</Red>
@@ -79,7 +79,7 @@ export default function RobotModelPage() {
       {/* ── 01 · Using the model ─────────────────────────────────────── */}
       <ScrollReveal>
         <section style={{ position: 'relative', paddingBottom: 8 }}>
-          <GhostNumeral n="01" top={-30} right={-20} size={400} />
+          <GhostNumeral n="01" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="lg">
               SEE IT ON THE <Red>CAR</Red>
@@ -112,27 +112,21 @@ export default function RobotModelPage() {
               tree instead of your mouse.
             </p>
           </div>
+          <Callout type="tip" title="How the frames connect">
+            The links you see here are exactly the frames in the car's transform
+            tree. To see the parent-child hierarchy and the measured offsets
+            between them, see{' '}
+            <Link href="/docs/api-reference/ros2/tf-frames" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
+              ROS 2 TF frames
+            </Link>
+            . Note the LiDAR frame is named{' '}
+            <code style={{ fontFamily: NB.monoFont }}>laser</code> in this stack, not{' '}
+            <code style={{ fontFamily: NB.monoFont }}>lidar_link</code>.
+          </Callout>
         </section>
       </ScrollReveal>
 
-      <ScrollReveal>
-        <Callout type="tip" title="How the frames connect">
-          The links you see here are exactly the frames in the car's transform
-          tree. To see the parent-child hierarchy and the measured offsets
-          between them, see{' '}
-          <Link href="/docs/api-reference/ros2/tf-frames" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-            ROS 2 TF frames
-          </Link>
-          . Note the LiDAR frame is named{' '}
-          <code style={{ fontFamily: NB.monoFont }}>laser</code> in this stack, not{' '}
-          <code style={{ fontFamily: NB.monoFont }}>lidar_link</code>.
-        </Callout>
-      </ScrollReveal>
-
-      <PrevNext
-        prev={{ label: 'Navigation (Nav2)', href: '/docs/software/navigation' }}
-        next={{ label: 'API reference', href: '/docs/api-reference/python/drive' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

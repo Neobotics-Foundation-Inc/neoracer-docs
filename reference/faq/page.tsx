@@ -245,10 +245,7 @@ export default function FaqPage() {
         </Callout>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'Passwords', href: '/docs/reference/passwords' }}
-        next={{ label: 'Warranty', href: '/docs/legal/warranty' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

@@ -13,7 +13,7 @@ import { Crumbs, PrevNext, Code } from '@/components/docs/DocsPrimitives';
 
 export const metadata: Metadata = {
   alternates: { canonical: 'https://neobotics.org/docs/api-reference/cli/running' },
-  title: 'Status and Running · CLI · NeoRacer Docs',
+  title: 'Status and Running · API Reference · NeoRacer Docs',
   description:
     'racecar status, teleop, launch and ws: inspect the hardware, run the stack in the foreground, launch one subsystem, or switch workspaces.',
 };
@@ -25,7 +25,7 @@ export default function CliRunningPage() {
         items={[
           { label: 'API Reference', href: '/docs/api-reference/python/core' },
           { label: 'CLI', href: '/docs/api-reference/cli' },
-          { label: 'Status and Running' },
+          { label: 'Running' },
         ]}
       />
 
@@ -123,10 +123,7 @@ racecar ws neoracer`}</Code>
         </section>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'Services', href: '/docs/api-reference/cli/service' }}
-        next={{ label: 'Maintenance', href: '/docs/api-reference/cli/setup' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

@@ -29,7 +29,7 @@ export default function RemoteDesktopPage() {
       {/* ── Hero ─────────────────────────────────────────────────────── */}
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="02" top={-30} right={-20} size={400} />
+          <GhostNumeral n="02" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               REMOTE DESKTOP <Red>SETUP</Red>
@@ -101,21 +101,15 @@ export default function RemoteDesktopPage() {
               ]}
             />
           </div>
+          <Callout type="note" title="Alternative: AnyDesk">
+            If you prefer not to use RustDesk, you can use{' '}
+            <a href="https://anydesk.com" target="_blank" rel="noopener noreferrer" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>AnyDesk</a>{' '}
+            instead. The setup is similar.
+          </Callout>
         </section>
       </ScrollReveal>
 
-      <ScrollReveal>
-        <Callout type="note" title="Alternative: AnyDesk">
-          If you prefer not to use RustDesk, you can use{' '}
-          <a href="https://anydesk.com" target="_blank" rel="noopener noreferrer" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>AnyDesk</a>{' '}
-          instead. The setup is similar.
-        </Callout>
-      </ScrollReveal>
-
-      <PrevNext
-        prev={{ label: 'Networking', href: '/docs/software/networking' }}
-        next={{ label: 'File system', href: '/docs/software/workspaces' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

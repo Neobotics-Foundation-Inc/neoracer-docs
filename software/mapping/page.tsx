@@ -33,7 +33,7 @@ export default function MappingPage() {
       {/* ── Hero ────────────────────────────────────────────────────────── */}
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="MAP" top={-30} right={-20} size={460} />
+          <GhostNumeral n="06" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               BUILD A <Red>MAP</Red>
@@ -210,10 +210,7 @@ racecar mapping save          # no name given: saves as "map"`}</Code>
         </section>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'Firmware flashing', href: '/docs/software/firmware-flashing' }}
-        next={{ label: 'Navigation (Nav2)', href: '/docs/software/navigation' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

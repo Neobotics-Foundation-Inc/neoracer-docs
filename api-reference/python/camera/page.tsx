@@ -11,7 +11,7 @@ import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 
 export const metadata: Metadata = {
   alternates: { canonical: 'https://neobotics.org/docs/api-reference/python/camera' },
-  title: 'rc.camera · Python API · NeoRacer Docs',
+  title: 'rc.camera · API Reference · NeoRacer Docs',
   description:
     "The Camera module: color frames from the NeoRacer's RGB camera as NumPy arrays. The NeoRacer has no depth camera, so use the LiDAR for distance.",
 };
@@ -67,7 +67,7 @@ export default function CameraApiPage() {
             <DisplayHeading size="xl">
               RC.<Red>CAMERA</Red>
             </DisplayHeading>
-            <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
               The camera module provides color frames as a NumPy array.
             </p>
           </div>
@@ -127,10 +127,7 @@ rc.go()`}</Code>
         </p>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'rc.lidar', href: '/docs/api-reference/python/lidar' }}
-        next={{ label: 'rc.physics', href: '/docs/api-reference/python/physics' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

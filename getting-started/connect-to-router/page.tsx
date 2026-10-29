@@ -32,12 +32,12 @@ export default function ConnectToRouterPage() {
       {/* ── Hero ─────────────────────────────────────────────────────── */}
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="05" top={-30} right={-20} size={400} />
+          <GhostNumeral n="05" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               CONNECT TO THE <Red>ROUTER</Red>
             </DisplayHeading>
-            <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
               The monitor and keyboard are not required after installing the
               driver. You can connect to the car using the router.
             </p>
@@ -118,10 +118,7 @@ export default function ConnectToRouterPage() {
         </section>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'Install the driver', href: '/docs/getting-started/install-driver' }}
-        next={{ label: 'Test the system', href: '/docs/getting-started/test-the-system' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

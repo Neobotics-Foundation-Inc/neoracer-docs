@@ -12,7 +12,7 @@ import { Crumbs, PrevNext, Code, DataTable } from '@/components/docs/DocsPrimiti
 
 export const metadata: Metadata = {
   alternates: { canonical: 'https://neobotics.org/docs/api-reference/cli' },
-  title: 'Overview · CLI · NeoRacer Docs',
+  title: 'Overview · API Reference · NeoRacer Docs',
   description:
     'Every racecar subcommand on the car. racecar help prints the same list. Services, running and setup each have their own page.',
 };
@@ -109,10 +109,7 @@ racecar navigation <name>    # drive a saved map with Nav2`}</Code>
       </ScrollReveal>
 
 
-      <PrevNext
-        prev={{ label: 'racecar_utils', href: '/docs/api-reference/python/utils' }}
-        next={{ label: 'Services', href: '/docs/api-reference/cli/service' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

@@ -11,7 +11,7 @@ import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 
 export const metadata: Metadata = {
   alternates: { canonical: 'https://neobotics.org/docs/api-reference/python/drive' },
-  title: 'rc.drive · Python API · NeoRacer Docs',
+  title: 'rc.drive · API Reference · NeoRacer Docs',
   description:
     'The Drive module: set the wheel speed and front-wheel steering angle. set_speed_angle, stop, set_max_speed. Same API in the Playground sim and on the car.',
 };
@@ -124,15 +124,12 @@ def update():
 
 rc.set_start_update(start, update)
 rc.go()`}</Code>
+          <Callout type="note" title="Speed and angle are normalized, not physical units">
+            You send numbers in <code style={{ fontFamily: NB.monoFont }}>[-1, 1]</code>, not m/s or
+            degrees. The library maps them to the car's real throttle and steering
+            range, which is what lets the same script run on the car.
+          </Callout>
         </section>
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <Callout type="note" title="Speed and angle are normalized, not physical units">
-          You send numbers in <code style={{ fontFamily: NB.monoFont }}>[-1, 1]</code>, not m/s or
-          degrees. The library maps them to the car's real throttle and steering
-          range, which is what lets the same script run on the car.
-        </Callout>
       </ScrollReveal>
 
       <ScrollReveal>
@@ -149,10 +146,7 @@ rc.go()`}</Code>
         </p>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'racecar_core', href: '/docs/api-reference/python/core' }}
-        next={{ label: 'rc.lidar', href: '/docs/api-reference/python/lidar' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

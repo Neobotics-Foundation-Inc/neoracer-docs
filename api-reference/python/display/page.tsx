@@ -11,7 +11,7 @@ import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 
 export const metadata: Metadata = {
   alternates: { canonical: 'https://neobotics.org/docs/api-reference/python/display' },
-  title: 'rc.display · Python API · NeoRacer Docs',
+  title: 'rc.display · API Reference · NeoRacer Docs',
   description:
     'The Display module: show_text drives the dot matrix on the back of the car, and show_color_image and show_lidar open windows on the Jetson desktop.',
 };
@@ -66,7 +66,7 @@ export default function DisplayApiPage() {
             <DisplayHeading size="xl">
               RC.<Red>DISPLAY</Red>
             </DisplayHeading>
-            <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
               The display module writes text to the dot matrix on the back of
               the car and opens image windows on the Jetson desktop.
             </p>
@@ -100,21 +100,18 @@ def update():
 
 rc.set_start_update(start, update)
 rc.go()`}</Code>
+          <Callout type="note" title="The panel shows text only">
+            The dot matrix accepts text through{' '}
+            <code style={{ fontFamily: NB.monoFont }}>show_text</code>. The
+            pixel-level methods from the generic library,{' '}
+            <code style={{ fontFamily: NB.monoFont }}>set_matrix</code>,{' '}
+            <code style={{ fontFamily: NB.monoFont }}>get_matrix</code> and{' '}
+            <code style={{ fontFamily: NB.monoFont }}>set_matrix_intensity</code>,
+            raise{' '}
+            <code style={{ fontFamily: NB.monoFont }}>NotImplementedError</code>{' '}
+            on the NeoRacer.
+          </Callout>
         </section>
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <Callout type="note" title="The panel shows text only">
-          The dot matrix accepts text through{' '}
-          <code style={{ fontFamily: NB.monoFont }}>show_text</code>. The
-          pixel-level methods from the generic library,{' '}
-          <code style={{ fontFamily: NB.monoFont }}>set_matrix</code>,{' '}
-          <code style={{ fontFamily: NB.monoFont }}>get_matrix</code> and{' '}
-          <code style={{ fontFamily: NB.monoFont }}>set_matrix_intensity</code>,
-          raise{' '}
-          <code style={{ fontFamily: NB.monoFont }}>NotImplementedError</code>{' '}
-          on the NeoRacer.
-        </Callout>
       </ScrollReveal>
 
       <ScrollReveal>
@@ -131,10 +128,7 @@ rc.go()`}</Code>
         </p>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'rc.physics', href: '/docs/api-reference/python/physics' }}
-        next={{ label: 'rc.vision', href: '/docs/api-reference/python/vision' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

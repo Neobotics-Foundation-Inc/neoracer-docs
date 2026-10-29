@@ -67,12 +67,12 @@ export default function OscoreBoardPage() {
       {/* ── Hero ─────────────────────────────────────────────────────── */}
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="10" top={-30} right={-20} size={400} />
+          <GhostNumeral n="10" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               THE OSCORE <Red>BOARD</Red>
             </DisplayHeading>
-            <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
               The OSCORE board sits between the Jetson and the lower chassis.
               It is an ESP32-S3 robot controller that inputs the LiPo, outputs
               5 V and 3.3 V rails, reads the onboard{' '}
@@ -204,7 +204,7 @@ export default function OscoreBoardPage() {
           <DisplayHeading size="lg">
             POWER AND <Red>LIMITS</Red>
           </DisplayHeading>
-          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
+          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             A TPS54540 switching regulator makes the 5 V rail, an AMS1117 LDO
             makes 3.3 V, and the raw input passes through to the ESC.
           </p>
@@ -256,7 +256,7 @@ export default function OscoreBoardPage() {
           <DisplayHeading size="lg">
             THE SOURCE <Red>FILES</Red>
           </DisplayHeading>
-          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
+          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             OSCORE is open hardware. The complete electrical documentation is
             yours to read, the same files the board was built from:
           </p>
@@ -270,10 +270,7 @@ export default function OscoreBoardPage() {
         </section>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'Drivetrain', href: '/docs/hardware/drivetrain' }}
-        next={{ label: 'Chassis & CAD', href: '/docs/hardware/chassis-and-cad' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

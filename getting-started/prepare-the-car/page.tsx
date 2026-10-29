@@ -35,7 +35,7 @@ export default function PrepareTheCarPage() {
       {/* ── Hero ─────────────────────────────────────────────────────── */}
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="03" top={-30} right={-20} size={400} />
+          <GhostNumeral n="03" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               PREPARE THE <Red>CAR</Red>
@@ -262,10 +262,7 @@ export default function PrepareTheCarPage() {
         />
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'Charge & power', href: '/docs/getting-started/charge-and-power' }}
-        next={{ label: 'Install the driver', href: '/docs/getting-started/install-driver' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

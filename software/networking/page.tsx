@@ -31,7 +31,7 @@ export default function NetworkingPage() {
       {/* ── Hero ────────────────────────────────────────────────────────── */}
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="01" top={-30} right={-20} size={460} />
+          <GhostNumeral n="01" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               NEORACER <Red>NETWORKS</Red>
@@ -299,10 +299,7 @@ http://192.168.10.100:8888     # JupyterLab        (10.42.0.1 on the AP)`}</Code
         </section>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'Chassis & CAD', href: '/docs/hardware/chassis-and-cad' }}
-        next={{ label: 'Remote desktop', href: '/docs/software/remote-desktop' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

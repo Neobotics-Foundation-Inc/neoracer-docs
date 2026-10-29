@@ -11,7 +11,7 @@ import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 
 export const metadata: Metadata = {
   alternates: { canonical: 'https://neobotics.org/docs/api-reference/python/lidar' },
-  title: 'rc.lidar · Python API · NeoRacer Docs',
+  title: 'rc.lidar · API Reference · NeoRacer Docs',
   description:
     'The Lidar module: get_samples returns the scan in centimetres, ~1440 samples at 0.25° on the car and 720 at 0.5° in the simulator. Index 0 is forward, the sensor sees a 270° window, and no-return samples read 0.',
 };
@@ -88,7 +88,7 @@ export default function LidarApiPage() {
             <DisplayHeading size="xl">
               RC.<Red>LIDAR</Red>
             </DisplayHeading>
-            <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
               The Lidar module provides the LiDAR&apos;s current scan,
               number of samples, and distances.
             </p>
@@ -144,22 +144,19 @@ def update():
 
 rc.set_start_update(start, update)
 rc.go()`}</Code>
+          <Callout type="note" title="The 270° window and the rear wedge">
+            The scanner is a{' '}
+            <a href="/docs/hardware/sensors/lidar" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
+              Richbeam LakiBeam1
+            </a>{' '}
+            spinning a full circle at 0.25° per sample, and the scan array covers
+            all 360°. The sensor itself reads a 270° window of that circle, so the
+            ~90° wedge behind the car never carries a return and reads 0. Any
+            sample with no return reads 0 the same way, and the{' '}
+            <code style={{ fontFamily: NB.monoFont }}>racecar_utils</code> helpers skip
+            zeros for you.
+          </Callout>
         </section>
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <Callout type="note" title="The 270° window and the rear wedge">
-          The scanner is a{' '}
-          <a href="/docs/hardware/sensors/lidar" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-            Richbeam LakiBeam1
-          </a>{' '}
-          spinning a full circle at 0.25° per sample, and the scan array covers
-          all 360°. The sensor itself reads a 270° window of that circle, so the
-          ~90° wedge behind the car never carries a return and reads 0. Any
-          sample with no return reads 0 the same way, and the{' '}
-          <code style={{ fontFamily: NB.monoFont }}>racecar_utils</code> helpers skip
-          zeros for you.
-        </Callout>
       </ScrollReveal>
 
       <ScrollReveal>
@@ -176,10 +173,7 @@ rc.go()`}</Code>
         </p>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'rc.drive', href: '/docs/api-reference/python/drive' }}
-        next={{ label: 'rc.camera', href: '/docs/api-reference/python/camera' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

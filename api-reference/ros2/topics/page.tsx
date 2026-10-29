@@ -207,18 +207,15 @@ export default function Ros2TopicsPage() {
               This page lists every topic the driver publishes and subscribes,
               with the message type on each.
             </p>
+            <Callout type="note" title="Where these topics come from">
+              The topics on this page are published by the{' '}
+              <a href="https://github.com/Neobotics-Foundation-Inc/neoracer_ros2_driver" target="_blank" rel="noopener noreferrer" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
+                neoracer_ros2_driver
+              </a>. Verified against a running car.
+            </Callout>
           </div>
         </section>
       </MouseFollowGlow>
-
-      <ScrollReveal>
-        <Callout type="note" title="Where these topics come from">
-          The topics on this page are published by the{' '}
-          <a href="https://github.com/Neobotics-Foundation-Inc/neoracer_ros2_driver" target="_blank" rel="noopener noreferrer" style={{ color: NB.neoboticsRed, fontWeight: 700 }}>
-            neoracer_ros2_driver
-          </a>. Verified against a running car.
-        </Callout>
-      </ScrollReveal>
 
       <ScrollReveal>
         <section style={{ paddingBottom: 8 }}>
@@ -227,7 +224,7 @@ export default function Ros2TopicsPage() {
           </DisplayHeading>
           <DataTable columns={COLUMNS} rows={ROWS} />
 
-          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740, marginTop: 26 }}>
+          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720, marginTop: 26 }}>
             The driver starts at boot, so every topic above is already live when
             you log in.{' '}
             <code style={{ fontFamily: NB.monoFont, color: NB.neoboticsRed }}>ros2 topic list</code>{' '}
@@ -245,7 +242,7 @@ export default function Ros2TopicsPage() {
           <DisplayHeading size="lg">
             DRIVE <Red>PIPELINE</Red>
           </DisplayHeading>
-          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 740 }}>
+          <p style={{ fontFamily: NB.bodyFont, fontSize: 16, lineHeight: 1.65, color: NB.textMutedBeige, maxWidth: 720 }}>
             A drive message does not go straight to the motor. The mux node
             decides whether teleop or autonomy is in control, and the throttle
             node scales the speed to a safe range before the controller node
@@ -255,10 +252,7 @@ export default function Ros2TopicsPage() {
         </section>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'CLI · Maintenance', href: '/docs/api-reference/cli/setup' }}
-        next={{ label: 'ROS 2 params', href: '/docs/api-reference/ros2/params' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

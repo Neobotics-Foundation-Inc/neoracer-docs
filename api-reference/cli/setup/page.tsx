@@ -12,7 +12,7 @@ import { Crumbs, PrevNext, Callout, Code, DataTable } from '@/components/docs/Do
 
 export const metadata: Metadata = {
   alternates: { canonical: 'https://neobotics.org/docs/api-reference/cli/setup' },
-  title: 'Maintenance · CLI · NeoRacer Docs',
+  title: 'Maintenance · API Reference · NeoRacer Docs',
   description:
     'racecar setup, library and update: configure networking, choose the Python library copy, and field-update the driver.',
 };
@@ -136,10 +136,7 @@ racecar source     # or open a new terminal, so the shell picks up the new tool`
         </section>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'Status and Running', href: '/docs/api-reference/cli/running' }}
-        next={{ label: 'ROS 2 topics', href: '/docs/api-reference/ros2/topics' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

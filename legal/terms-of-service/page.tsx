@@ -27,7 +27,7 @@ export default function TermsOfServicePage() {
 
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="05" top={-30} right={-20} size={460} />
+          <GhostNumeral n="05" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               TERMS OF <Red>SERVICE</Red>
@@ -70,10 +70,7 @@ export default function TermsOfServicePage() {
         </section>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'Terms of sale', href: '/docs/legal/terms-of-sale' }}
-        next={{ label: 'Privacy', href: '/docs/legal/privacy' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

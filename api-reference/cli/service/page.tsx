@@ -12,7 +12,7 @@ import { Crumbs, PrevNext, Callout, Code, DataTable } from '@/components/docs/Do
 
 export const metadata: Metadata = {
   alternates: { canonical: 'https://neobotics.org/docs/api-reference/cli/service' },
-  title: 'Services · CLI · NeoRacer Docs',
+  title: 'Services · API Reference · NeoRacer Docs',
   description:
     'racecar service: install, start, stop, enable and tail the systemd units. Four core units, five lab dashboards, and the held autonomy unit.',
 };
@@ -194,10 +194,7 @@ racecar service logs jupyter      # or name one`}</Code>
         </section>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'CLI overview', href: '/docs/api-reference/cli' }}
-        next={{ label: 'Status and Running', href: '/docs/api-reference/cli/running' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

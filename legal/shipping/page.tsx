@@ -27,7 +27,7 @@ export default function ShippingPage() {
 
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="03" top={-30} right={-20} size={460} />
+          <GhostNumeral n="03" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               SHIPPING <Red>POLICY</Red>
@@ -70,10 +70,7 @@ export default function ShippingPage() {
         </section>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'Returns & refunds', href: '/docs/legal/return-and-refund' }}
-        next={{ label: 'Terms of sale', href: '/docs/legal/terms-of-sale' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

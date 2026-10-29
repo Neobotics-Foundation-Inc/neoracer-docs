@@ -11,7 +11,7 @@ import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 
 export const metadata: Metadata = {
   alternates: { canonical: 'https://neobotics.org/docs/api-reference/python/physics' },
-  title: 'rc.physics · Python API · NeoRacer Docs',
+  title: 'rc.physics · API Reference · NeoRacer Docs',
   description:
     'The Physics module is the IMU: get_linear_acceleration, get_angular_velocity, get_magnetic_field. Acceleration in m/s^2, angular velocity in rad/s.',
 };
@@ -69,7 +69,7 @@ export default function PhysicsApiPage() {
             <DisplayHeading size="xl">
               RC.<Red>PHYSICS</Red>
             </DisplayHeading>
-            <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
               The physics module provides the IMU&apos;s acceleration, rotation,
               and magnetic field readings.
             </p>
@@ -124,10 +124,7 @@ rc.go()`}</Code>
         </p>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'rc.camera', href: '/docs/api-reference/python/camera' }}
-        next={{ label: 'rc.display', href: '/docs/api-reference/python/display' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

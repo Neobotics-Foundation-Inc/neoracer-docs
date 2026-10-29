@@ -11,7 +11,7 @@ import { ScrollReveal, MouseFollowGlow } from '@/components/docs/Interactive';
 
 export const metadata: Metadata = {
   alternates: { canonical: 'https://neobotics.org/docs/api-reference/python/core' },
-  title: 'racecar_core · Python API · NeoRacer Docs',
+  title: 'racecar_core · API Reference · NeoRacer Docs',
   description:
     'The racecar_core module: create_racecar, set_start_update, go, go_async, get_delta_time, and set_update_slow_time.',
 };
@@ -88,7 +88,7 @@ export default function CoreApiPage() {
             <DisplayHeading size="xl">
               RACECAR_<Red>CORE</Red>
             </DisplayHeading>
-            <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
               The racecar_core module creates the car object, contains
               multiple submodules to interact with the car, and runs your
               program.
@@ -132,10 +132,7 @@ rc.go()`}</Code>
         </section>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'Software · File system', href: '/docs/software/workspaces' }}
-        next={{ label: 'rc.drive', href: '/docs/api-reference/python/drive' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

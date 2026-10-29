@@ -31,12 +31,12 @@ export default function ComputePage() {
 
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="02" top={-30} right={-20} size={400} />
+          <GhostNumeral n="02" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               THE COMPUTE <Red>STACK</Red>
             </DisplayHeading>
-            <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
               The NeoRacer&apos;s Jetson is its Linux computer. It runs{' '}
               <InfoNote term="ROS 2" title="ROS 2">The Robot Operating System, a framework that lets separate programs on a robot pass messages to each other. It is the standard way most robotics software is built.</InfoNote>, all Python code, the camera, and any
               neural networks deployed.
@@ -179,10 +179,7 @@ export default function ComputePage() {
         </section>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'Hardware overview', href: '/docs/hardware/overview' }}
-        next={{ label: 'LiDAR', href: '/docs/hardware/sensors/lidar' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

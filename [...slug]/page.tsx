@@ -123,7 +123,7 @@ export default function DocsCatchAllPage({ params }: { params: { slug: string[] 
             {title.toUpperCase().split(' ').slice(0, -1).join(' ')}{' '}
             <Red>{title.toUpperCase().split(' ').slice(-1).join(' ')}</Red>
           </DisplayHeading>
-          <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
+          <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
             This page is part of the v1 NeoRacer documentation roadmap, and
             we&apos;re writing it now. The sidebar already includes it so the
             full information architecture is visible, but the content itself

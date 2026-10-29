@@ -29,12 +29,12 @@ export default function DotMatrixPage() {
 
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="08" top={-30} right={-20} size={400} />
+          <GhostNumeral n="08" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               THE DOT <Red>MATRIX</Red>
             </DisplayHeading>
-            <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
               The dot matrix is an 8 by 8 LED display at the back of the car.
             </p>
           </div>
@@ -88,10 +88,7 @@ rc.display.clear()                 # return to the idle frame`}
         </section>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'Remote control', href: '/docs/hardware/remote-control' }}
-        next={{ label: 'Drivetrain', href: '/docs/hardware/drivetrain' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

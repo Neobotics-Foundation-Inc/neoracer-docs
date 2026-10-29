@@ -14,6 +14,37 @@ Versions follow semantic versioning, adapted for documentation:
 
 Each merged pull request bumps the version once and adds its entry here.
 
+## [0.9.0] - 2026-10-29 (#21)
+
+### Added
+
+- Software: the Firmware flashing page is no longer gated. It documents the
+  procedure that was run end to end on a car: updating the OSCORE firmware
+  with OSR Updater, an application update through the running firmware, with
+  the files to download, the services to stop, a photo of each step in the
+  updater, and a troubleshooting table. It replaces the old browser-flasher
+  draft.
+- DESIGN.md at the repo root records the design rules a new page must
+  follow: page anatomy, ghost numerals, badges, headings, body text,
+  callouts, figures, diagrams, photos, navigation wiring, gating, and the
+  legal page pattern.
+- The V1.2 firmware image is hosted with the docs and downloads straight
+  from the Firmware flashing page.
+
+### Changed
+
+- A consistency pass to match DESIGN.md: metadata titles follow one
+  Page · Section pattern, prev/next links and crumbs refer to pages by
+  their sidebar names, hero numerals share one size, lede and body widths
+  are standardized, and the docs home contents list now derives its counts
+  from the sidebar tree instead of hand-kept numbers.
+- The previous/next links at the foot of every page derive from the sidebar
+  tree instead of being hand-wired per page, so the reading chain can never
+  drift from the sidebar.
+- Callouts follow one spacing rhythm across the docs: each sits inside its
+  section with a small fixed gap above, and when it closes a section the
+  gap below is the standard section boundary.
+
 ## [0.8.5] - 2026-10-28 (#20)
 
 ### Added

@@ -33,12 +33,12 @@ export default function ChassisAndCadPage() {
 
       <MouseFollowGlow>
         <section style={{ position: 'relative', paddingBottom: 32, paddingTop: 24 }}>
-          <GhostNumeral n="11" top={-30} right={-20} size={400} />
+          <GhostNumeral n="11" top={-30} right={-20} size={420} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <DisplayHeading size="xl">
               THE CHASSIS AND <Red>CAD</Red>
             </DisplayHeading>
-            <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 680 }}>
+            <p style={{ fontFamily: NB.bodyFont, fontSize: 18, lineHeight: 1.55, color: NB.textMutedBeige, maxWidth: 700 }}>
               The NeoRacer is a 1:12 scale autonomous racing platform, and its
               full mechanical design is open. Every part lives in a public
               repository under CERN-OHL-S-2.0, a reciprocal open-hardware
@@ -157,10 +157,7 @@ export default function ChassisAndCadPage() {
         </section>
       </ScrollReveal>
 
-      <PrevNext
-        prev={{ label: 'OSCORE board', href: '/docs/hardware/oscore-board' }}
-        next={{ label: 'Networking', href: '/docs/software/networking' }}
-      />
+      <PrevNext />
     </DocsShell>
   );
 }

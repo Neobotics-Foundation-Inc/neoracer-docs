@@ -187,14 +187,12 @@ export default function FirmwareFlashingPage() {
                   text: <>
                     Copy the updater package into it:
                     <Code lang="bash">{`scp <path-to>/osr-updater_1.0.1_arm64.deb racecar@<car-address>:~/osr-fw/`}</Code>
-                    <Code lang="output">{`osr-updater_1.0.1_arm64.deb                   100%   17MB   6.0MB/s   00:02`}</Code>
                   </>,
                 },
                 {
                   text: <>
                     Copy the firmware file into it:
                     <Code lang="bash">{`scp <path-to>/${FIRMWARE_FILE} racecar@<car-address>:~/osr-fw/`}</Code>
-                    <Code lang="output">{`NEORACER_V1.2_OSCORE_NEO_ESP32S3_IDF_Project_ 100%  379KB   2.5MB/s   00:00`}</Code>
                   </>,
                 },
                 {
